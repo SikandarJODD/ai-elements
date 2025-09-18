@@ -1,0 +1,56 @@
+<script lang="ts">
+import { cn } from "$lib/utils.js";
+import { Textarea } from "$lib/components/ui/textarea/index.js";
+
+interface Props {
+  class?: string;
+  placeholder?: string;
+  value?: string;
+  onchange?: (event: Event) => void;
+}
+
+let {
+  class: className,
+  placeholder = "What would you like to know?",
+  value = $bindable(""),
+  onchange,
+  ...props
+}: Props = $props();
+
+let handleKeyDown = (e: KeyboardEvent) => {
+  if (e.key === "Enter") {
+    // Don't submit if IME composition is in progress
+    if (e.isComposing) {
+      return;
+    }
+
+    if (e.shiftKey) {
+      // Allow newline
+      return;
+    }
+
+    // Submit on Enter (without Shift)
+    e.preventDefault();
+    let form = (e.currentTarget as HTMLTextAreaElement).form;
+    if (form) {
+      form.requestSubmit();
+    }
+  }
+};
+</script>
+
+<Textarea
+  class={cn(
+    "w-full resize-none rounded-none border-none p-3 shadow-none outline-none ring-0",
+    "field-sizing-content bg-transparent dark:bg-transparent",
+    "max-h-48 min-h-16",
+    "focus-visible:ring-0",
+    className
+  )}
+  name="message"
+  {onchange}
+  onkeydown={handleKeyDown}
+  {placeholder}
+  bind:value
+  {...props}
+/>

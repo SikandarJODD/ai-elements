@@ -1,0 +1,87 @@
+<script lang="ts">
+  import Actions from "$lib/components/examples/Actions.svelte";
+  import ActionHover from "$lib/components/examples/ActionHover.svelte";
+  import BranchExample from "$lib/components/examples/BranchExample.svelte";
+  import ChainOfThoughtExample from "$lib/components/examples/ChainOfThoughtExample.svelte";
+  import ContextExample from "$lib/components/examples/ContextExample.svelte";
+  import ConversationExample from "$lib/components/examples/ConversationExample.svelte";
+  import InlineCitationExample from "$lib/components/examples/InlineCitationExample.svelte";
+  import MessageExample from "$lib/components/examples/MessageExample.svelte";
+  import OpenInChatExample from "$lib/components/examples/OpenInChatExample.svelte";
+  import PromptInputExample from "$lib/components/examples/PromptInputExample.svelte";
+  import ParentOne from "$lib/learning/examples/parent-one.svelte";
+  import ParentTwo from "$lib/learning/examples/parent-two.svelte";
+</script>
+
+<div
+  class="min-h-screen flex flex-col items-center justify-center p-8 space-y-12"
+>
+  <!-- Show grid of 2 where i can show parent comp 1 and 2 in those grid  -->
+  <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
+    <div>
+      <h2 class="text-2xl font-bold mb-4">Parent Component 1</h2>
+      <div class="border rounded-md bg-neutral-800/10 p-4">
+        <ParentOne />
+      </div>
+    </div>
+    <div>
+      <h2 class="text-2xl font-bold mb-4">Parent Component 2</h2>
+      <div class="border rounded-md bg-neutral-800/10 p-4">
+        <ParentOne />
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Message Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Message Example</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <MessageExample />
+    </div>
+  </div>
+
+  <!-- Context Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Context Usage Example</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <ContextExample />
+    </div>
+  </div>
+
+  <!-- Conversation Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Conversation Example</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4 h-96">
+      <ConversationExample />
+    </div>
+  </div>
+
+  <!-- Open in Chat Example Section -->
+  <div class=" max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Open in Chat Example</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <OpenInChatExample />
+    </div>
+  </div>
+
+  <!-- Prompt Input Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Prompt Input Example</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <PromptInputExample />
+    </div>
+  </div>
+
+  <!-- Inline Citation Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Inline Citation Example</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <InlineCitationExample />
+    </div>
+  </div>
+
+  <!-- <Actions />
+  <ActionHover />
+  <BranchExample />
+  <ChainOfThoughtExample /> -->
+</div>
