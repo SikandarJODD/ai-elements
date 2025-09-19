@@ -11,6 +11,9 @@
   import PromptInputExample from "$lib/components/examples/PromptInputExample.svelte";
   import ReasoningExample from "$lib/components/examples/ReasoningExample.svelte";
   import SourcesExample from "$lib/components/examples/SourcesExample.svelte";
+  import SuggestionsExample from "$lib/components/examples/SuggestionsExample.svelte";
+  import TaskExample from "$lib/components/examples/TaskExample.svelte";
+  import WebPreviewExample from "$lib/components/examples/WebPreviewExample.svelte";
   import ParentOne from "$lib/learning/examples/parent-one.svelte";
   import ParentTwo from "$lib/learning/examples/parent-two.svelte";
 </script>
@@ -95,6 +98,30 @@
     <h2 class="text-2xl font-bold mb-4 text-center">Sources Example</h2>
     <div class="border rounded-md bg-neutral-800/10 p-4">
       <SourcesExample />
+    </div>
+  </div>
+
+  <!-- Suggestions Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Suggestions Example</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <SuggestionsExample />
+    </div>
+  </div>
+
+  <!-- Task Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Task Example</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <TaskExample />
+    </div>
+  </div>
+
+  <!-- Web Preview Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Web Preview Example</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <WebPreviewExample />
     </div>
   </div>
 

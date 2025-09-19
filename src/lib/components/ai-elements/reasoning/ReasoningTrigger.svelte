@@ -2,8 +2,9 @@
 	import { cn } from '$lib/utils.js';
 	import { CollapsibleTrigger } from '$lib/components/ui/collapsible/index.js';
 	import { getReasoningContext } from './reasoning-context.svelte.js';
-	import BrainIcon from './BrainIcon.svelte';
+	// import BrainIcon from './BrainIcon.svelte';
 	import ChevronDownIcon from './ChevronDownIcon.svelte';
+  import  BrainIcon  from '@lucide/svelte/icons/brain';
 
 	interface Props {
 		class?: string;
