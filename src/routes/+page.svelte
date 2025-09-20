@@ -10,17 +10,44 @@
   import OpenInChatExample from "$lib/components/examples/OpenInChatExample.svelte";
   import PromptInputExample from "$lib/components/examples/PromptInputExample.svelte";
   import ReasoningExample from "$lib/components/examples/ReasoningExample.svelte";
+  import ResponseExample from "$lib/components/examples/ResponseExample.svelte";
   import SourcesExample from "$lib/components/examples/SourcesExample.svelte";
   import SuggestionsExample from "$lib/components/examples/SuggestionsExample.svelte";
   import TaskExample from "$lib/components/examples/TaskExample.svelte";
   import WebPreviewExample from "$lib/components/examples/WebPreviewExample.svelte";
+  import CodeBlockExample from "$lib/components/examples/CodeBlockExample.svelte";
+  import SimpleCodeBlockExample from "$lib/components/examples/SimpleCodeBlockExample.svelte";
+  import AdvancedCodeExample from "$lib/components/examples/AdvancedCodeExample.svelte";
+  import ToolExample from "$lib/components/examples/ToolExample.svelte";
+  import ArtifactExample from "$lib/components/examples/ArtifactExample.svelte";
   import ParentOne from "$lib/learning/examples/parent-one.svelte";
   import ParentTwo from "$lib/learning/examples/parent-two.svelte";
+  import { ScrollArea } from "$lib/components/ui/scroll-area";
 </script>
 
 <div
   class="min-h-screen flex flex-col items-center justify-center p-8 space-y-12"
 >
+  <!-- Conversation Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Conversation Example</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4 h-96">
+      <ConversationExample />
+    </div>
+  </div>
+
+  <!-- Response Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">
+      Response Example - Streaming Markdown
+    </h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <ScrollArea class="h-[500px] w-full">
+        <ResponseExample />
+      </ScrollArea>
+    </div>
+  </div>
+
   <!-- Show grid of 2 where i can show parent comp 1 and 2 in those grid  -->
   <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
     <div>
@@ -50,14 +77,6 @@
     <h2 class="text-2xl font-bold mb-4 text-center">Context Usage Example</h2>
     <div class="border rounded-md bg-neutral-800/10 p-4">
       <ContextExample />
-    </div>
-  </div>
-
-  <!-- Conversation Example Section -->
-  <div class="w-full max-w-4xl">
-    <h2 class="text-2xl font-bold mb-4 text-center">Conversation Example</h2>
-    <div class="border rounded-md bg-neutral-800/10 p-4 h-96">
-      <ConversationExample />
     </div>
   </div>
 
@@ -117,11 +136,47 @@
     </div>
   </div>
 
+  <!-- CodeBlock Example Section -->
+
+  <!-- Simple CodeBlock Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">
+      Simple CodeBlock Example
+    </h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <CodeBlockExample />
+    </div>
+  </div>
+
+  <!-- Advanced Code Example Section -->
+  <!-- <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Advanced Code Examples</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <AdvancedCodeExample />
+    </div>
+  </div> -->
+
   <!-- Web Preview Example Section -->
   <div class="w-full max-w-4xl">
     <h2 class="text-2xl font-bold mb-4 text-center">Web Preview Example</h2>
     <div class="border rounded-md bg-neutral-800/10 p-4">
       <WebPreviewExample />
+    </div>
+  </div>
+
+  <!-- Tool Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Tool Example</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <ToolExample />
+    </div>
+  </div>
+
+  <!-- Artifact Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Artifact Example</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <ArtifactExample />
     </div>
   </div>
 

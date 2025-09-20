@@ -7,13 +7,13 @@
     TooltipTrigger,
   } from "$lib/components/ui/tooltip";
   import { cn } from "$lib/utils.js";
-  import type { ComponentType } from "svelte";
+  import { type Icon as IconType } from "@lucide/svelte";
 
   interface Props extends ButtonProps {
     class?: string;
     tooltip?: string;
     label?: string;
-    icon?: ComponentType;
+    icon?: typeof IconType;
     size?: ButtonProps["size"];
     variant?: ButtonProps["variant"];
   }
