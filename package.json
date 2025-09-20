@@ -37,8 +37,13 @@
 		]
 	},
 	"dependencies": {
+		"@shikijs/langs": "^3.13.0",
+		"@shikijs/themes": "^3.13.0",
 		"ai": "^5.0.44",
+		"isomorphic-dompurify": "^2.28.0",
 		"mode-watcher": "^1.1.0",
-		"runed": "^0.31.1"
+		"runed": "^0.31.1",
+		"shiki": "^3.13.0",
+		"svelte-toolbelt": "^0.10.5"
 	}
 }

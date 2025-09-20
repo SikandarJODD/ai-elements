@@ -14,6 +14,11 @@
   import SuggestionsExample from "$lib/components/examples/SuggestionsExample.svelte";
   import TaskExample from "$lib/components/examples/TaskExample.svelte";
   import WebPreviewExample from "$lib/components/examples/WebPreviewExample.svelte";
+  import CodeBlockExample from "$lib/components/examples/CodeBlockExample.svelte";
+  import SimpleCodeBlockExample from "$lib/components/examples/SimpleCodeBlockExample.svelte";
+  import AdvancedCodeExample from "$lib/components/examples/AdvancedCodeExample.svelte";
+  import ToolExample from "$lib/components/examples/ToolExample.svelte";
+  import ArtifactExample from "$lib/components/examples/ArtifactExample.svelte";
   import ParentOne from "$lib/learning/examples/parent-one.svelte";
   import ParentTwo from "$lib/learning/examples/parent-two.svelte";
 </script>
@@ -117,11 +122,46 @@
     </div>
   </div>
 
+  <!-- CodeBlock Example Section -->
+
+
+  <!-- Simple CodeBlock Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Simple CodeBlock Example</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <CodeBlockExample />
+    </div>
+  </div>
+
+  <!-- Advanced Code Example Section -->
+  <!-- <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Advanced Code Examples</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <AdvancedCodeExample />
+    </div>
+  </div> -->
+
   <!-- Web Preview Example Section -->
   <div class="w-full max-w-4xl">
     <h2 class="text-2xl font-bold mb-4 text-center">Web Preview Example</h2>
     <div class="border rounded-md bg-neutral-800/10 p-4">
       <WebPreviewExample />
+    </div>
+  </div>
+
+  <!-- Tool Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Tool Example</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <ToolExample />
+    </div>
+  </div>
+
+  <!-- Artifact Example Section -->
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4 text-center">Artifact Example</h2>
+    <div class="border rounded-md bg-neutral-800/10 p-4">
+      <ArtifactExample />
     </div>
   </div>
 
