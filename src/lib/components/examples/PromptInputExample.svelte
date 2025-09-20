@@ -127,7 +127,7 @@
     </PromptInputToolbar>
   </PromptInput>
 
-  <div class="mt-4 p-4 bg-zinc-900 rounded-lg">
+  <div class="mt-4 p-4 bg-background rounded-lg">
     <h3 class="font-semibold mb-2">Debug Info:</h3>
     <p><strong>Text:</strong> {text || "(empty)"}</p>
     <p><strong>Model:</strong> {model}</p>

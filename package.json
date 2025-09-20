@@ -44,6 +44,7 @@
 		"mode-watcher": "^1.1.0",
 		"runed": "^0.31.1",
 		"shiki": "^3.13.0",
+		"svelte-streamdown": "^2.2.7",
 		"svelte-toolbelt": "^0.10.5"
 	}
 }
