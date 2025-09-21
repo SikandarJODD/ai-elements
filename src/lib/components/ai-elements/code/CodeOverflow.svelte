@@ -36,10 +36,19 @@
 		<Button
 			variant="secondary"
 			size="sm"
-			class="absolute bottom-2 left-1/2 z-20 w-fit -translate-x-1/2"
+			class="absolute bottom-0 left-1/2 z-20 w-fit -translate-x-1/2"
 			onclick={state.toggleCollapsed}
 		>
 			Expand
+		</Button>
+		{:else}
+		<Button
+			variant="secondary"
+			size="sm"
+			class="absolute bottom-6 left-1/2 z-20 w-fit -translate-x-1/2"
+			onclick={state.toggleCollapsed}
+		>
+			Collapse
 		</Button>
 	{/if}
 </div>

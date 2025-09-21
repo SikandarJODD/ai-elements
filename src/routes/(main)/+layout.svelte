@@ -7,7 +7,7 @@
 
 <Sidebar.Provider>
   <AppSidebar />
-  <main>
+  <main class="px-6 pb-6 w-full">
     <!-- <Sidebar.Trigger /> -->
     {@render children?.()}
   </main>

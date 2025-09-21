@@ -31,8 +31,8 @@
 
 {#if tooltip}
 	<TooltipProvider>
-		<Tooltip>
-			<TooltipTrigger>
+		<Tooltip delayDuration={150}>
+			<TooltipTrigger >
 				<Button
 					class={buttonClasses}
 					{size}
