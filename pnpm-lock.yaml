@@ -26,6 +26,9 @@ importers:
       runed:
         specifier: ^0.31.1
         version: 0.31.1(svelte@5.39.3)
+      shadcn-svelte:
+        specifier: ^1.0.7
+        version: 1.0.7
       shiki:
         specifier: ^3.13.0
         version: 3.13.0
@@ -840,6 +843,10 @@ packages:
   comma-separated-tokens@2.0.3:
     resolution: {integrity: sha512-Fu4hJdvzeylCfQPp9SGWidpzrMs7tTrlu6Vb8XGaRGck8QSNZJJp538Wrb60Lax4fPwR64ViY468OIUTbRlGZg==}
 
+  commander@14.0.1:
+    resolution: {integrity: sha512-2JkV3gUZUVrbNA+1sjBOYLsMZ5cEEl8GTFP2a4AVz5hvasAMCQ1D2l2le/cX+pV4N6ZU17zjUahLpIXRrnWL8A==}
+    engines: {node: '>=20'}
+
   commander@7.2.0:
     resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==}
     engines: {node: '>= 10'}
@@ -1374,6 +1381,9 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  node-fetch-native@1.6.7:
+    resolution: {integrity: sha512-g9yhqoedzIUm0nTnTqAQvueMPVOuIY16bqgAJJC8XOOubYFNwz6IER9qs0Gq2Xd0+CecCKFjtdDTMA4u4xG06Q==}
+
   oniguruma-parser@0.12.1:
     resolution: {integrity: sha512-8Unqkvk1RYc6yq2WBYRj4hdnsAxVze8i7iPfQr8e4uSP3tRv0rpZcbGUDvxfQQcdwHt/e9PrMvGCsa8OqG9X3w==}
 
@@ -1499,6 +1509,10 @@ packages:
 
   set-cookie-parser@2.7.1:
     resolution: {integrity: sha512-IOc8uWeOZgnb3ptbCURJWNjWUPcO3ZnTTdzsurqERrP6nPyv+paC55vJM0LpOlT2ne+Ix+9+CRG1MNLlyZ4GjQ==}
+
+  shadcn-svelte@1.0.7:
+    resolution: {integrity: sha512-WM012JGATJpEqCaSNd9eAscFr/HKwLmRD5TplBXvhuMgbAVUNsjKiOSyvvjrZDx9L2FEqoEu9Ld5JpKr3xe2yQ==}
+    hasBin: true
 
   shiki@3.13.0:
     resolution: {integrity: sha512-aZW4l8Og16CokuCLf8CF8kq+KK2yOygapU5m3+hoGw0Mdosc6fPitjM+ujYarppj5ZIKGyPDPP1vqmQhr+5/0g==}
@@ -2440,6 +2454,8 @@ snapshots:
 
   comma-separated-tokens@2.0.3: {}
 
+  commander@14.0.1: {}
+
   commander@7.2.0: {}
 
   commander@8.3.0: {}
@@ -3030,6 +3046,8 @@ snapshots:
 
   nanoid@3.3.11: {}
 
+  node-fetch-native@1.6.7: {}
+
   oniguruma-parser@0.12.1: {}
 
   oniguruma-to-es@4.3.3:
@@ -3176,6 +3194,12 @@ snapshots:
   schema-dts@1.1.5: {}
 
   set-cookie-parser@2.7.1: {}
+
+  shadcn-svelte@1.0.7:
+    dependencies:
+      commander: 14.0.1
+      node-fetch-native: 1.6.7
+      postcss: 8.5.6
 
   shiki@3.13.0:
     dependencies:
