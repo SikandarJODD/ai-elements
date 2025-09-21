@@ -16,7 +16,7 @@ importers:
         version: 3.13.0
       ai:
         specifier: ^5.0.44
-        version: 5.0.47(zod@4.1.10)
+        version: 5.0.48(zod@4.1.11)
       isomorphic-dompurify:
         specifier: ^2.28.0
         version: 2.28.0(postcss@8.5.6)
@@ -31,7 +31,7 @@ importers:
         version: 3.13.0
       svelte-streamdown:
         specifier: ^2.2.7
-        version: 2.2.7(svelte@5.39.3)
+        version: 2.3.0(svelte@5.39.3)
       svelte-toolbelt:
         specifier: ^0.10.5
         version: 0.10.5(svelte@5.39.3)
@@ -72,6 +72,9 @@ importers:
       svelte-check:
         specifier: ^4.0.0
         version: 4.3.1(picomatch@4.0.3)(svelte@5.39.3)(typescript@5.9.2)
+      svelte-meta-tags:
+        specifier: ^4.4.1
+        version: 4.4.1(svelte@5.39.3)
       tailwind-merge:
         specifier: ^3.3.1
         version: 3.3.1
@@ -93,8 +96,8 @@ importers:
 
 packages:
 
-  '@ai-sdk/gateway@1.0.24':
-    resolution: {integrity: sha512-Mwp0yYXrEnENoDrc7IH9yVRVJ7RrDW0CXWDtyz1BiyqccbtdWhAKu4wtrDMx2FkeK5riiME1kYYdjRnlba3UFw==}
+  '@ai-sdk/gateway@1.0.25':
+    resolution: {integrity: sha512-eI/6LLmn1tWFzuhjxgcPEqUFXwLjyRuGFrwkCoqLaTKe/qMYBEAV3iddnGUM0AV+Hp4NEykzP4ly5tibOLDMXw==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4
@@ -781,8 +784,8 @@ packages:
     resolution: {integrity: sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==}
     engines: {node: '>= 14'}
 
-  ai@5.0.47:
-    resolution: {integrity: sha512-/DKfU9tTsQVcUYSDCTu1L7jmvEgzUWOr1xf5UHwwDbRf/HED8LDb60QlWYs6f4BkZsVoLvpliCSjliXiRZywFQ==}
+  ai@5.0.48:
+    resolution: {integrity: sha512-+oYhbN3NGRXayGfTFI8k1Fu4rhiJcQ0mbgiAOJGFkzvCxunRRQu5cyDl7y6cHNTj1QvHmIBROK5u655Ss2oI0g==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4
@@ -870,8 +873,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  cssstyle@5.3.0:
-    resolution: {integrity: sha512-RveJPnk3m7aarYQ2bJ6iw+Urh55S6FzUiqtBq+TihnTDP4cI8y/TYDqGOyqgnG1J1a6BxJXZsV9JFSTulm9Z7g==}
+  cssstyle@5.3.1:
+    resolution: {integrity: sha512-g5PC9Aiph9eiczFpcgUhd9S4UUO3F+LHGRIi5NUMZ+4xtoIYbHNZwZnWA2JsFGe8OU8nl4WyaEFiZuGuxlutJQ==}
     engines: {node: '>=20'}
 
   cytoscape-cose-bilkent@4.1.0:
@@ -1491,6 +1494,9 @@ packages:
     resolution: {integrity: sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA==}
     engines: {node: '>=v12.22.7'}
 
+  schema-dts@1.1.5:
+    resolution: {integrity: sha512-RJr9EaCmsLzBX2NDiO5Z3ux2BVosNZN5jo0gWgsyKvxKIUL5R3swNvoorulAeL9kLB0iTSX7V6aokhla2m7xbg==}
+
   set-cookie-parser@2.7.1:
     resolution: {integrity: sha512-IOc8uWeOZgnb3ptbCURJWNjWUPcO3ZnTTdzsurqERrP6nPyv+paC55vJM0LpOlT2ne+Ix+9+CRG1MNLlyZ4GjQ==}
 
@@ -1525,8 +1531,13 @@ packages:
       svelte: ^4.0.0 || ^5.0.0-next.0
       typescript: '>=5.0.0'
 
-  svelte-streamdown@2.2.7:
-    resolution: {integrity: sha512-t3EtYeIGu4Ovtf+JtjrKKh1eJ+Av1gtT7hVHeoC8SpEp9oc0cysywCJPQwxXRBEnFZ143DcAbG448afB97jSRw==}
+  svelte-meta-tags@4.4.1:
+    resolution: {integrity: sha512-MFwlw7NNPC22YdNTRzb/O06ASIcqBha+GNX4uRPtG+klWaKIrXvDRwSmc40/sSm38LoRxje0kQdG9yxwENOjEA==}
+    peerDependencies:
+      svelte: ^5.0.0
+
+  svelte-streamdown@2.3.0:
+    resolution: {integrity: sha512-ea5FVPwVFekdEjftJzLd4E5xCzuTNZ+/7gu8zhPkqTy1lWOXYIgzWFIryYLzfup1s9KQ1hsyj8OPKz1VHRrWBQ==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -1764,26 +1775,26 @@ packages:
   zimmerframe@1.1.4:
     resolution: {integrity: sha512-B58NGBEoc8Y9MWWCQGl/gq9xBCe4IiKM0a2x7GZdQKOW5Exr8S1W24J6OgM1njK8xCRGvAJIL/MxXHf6SkmQKQ==}
 
-  zod@4.1.10:
-    resolution: {integrity: sha512-XuQhz4bDMHS66VWMD/ZQI+BT4DYbOYGjhV/sIlSA4vAzMuxjLT31Oa7m6Z7lEdCGDkt1VCt0x4Ro2PHonEdKFA==}
+  zod@4.1.11:
+    resolution: {integrity: sha512-WPsqwxITS2tzx1bzhIKsEs19ABD5vmCVa4xBo2tq/SrV4RNZtfws1EnCWQXM6yh8bD08a1idvkB5MZSBiZsjwg==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
 snapshots:
 
-  '@ai-sdk/gateway@1.0.24(zod@4.1.10)':
+  '@ai-sdk/gateway@1.0.25(zod@4.1.11)':
     dependencies:
       '@ai-sdk/provider': 2.0.0
-      '@ai-sdk/provider-utils': 3.0.9(zod@4.1.10)
-      zod: 4.1.10
+      '@ai-sdk/provider-utils': 3.0.9(zod@4.1.11)
+      zod: 4.1.11
 
-  '@ai-sdk/provider-utils@3.0.9(zod@4.1.10)':
+  '@ai-sdk/provider-utils@3.0.9(zod@4.1.11)':
     dependencies:
       '@ai-sdk/provider': 2.0.0
       '@standard-schema/spec': 1.0.0
       eventsource-parser: 3.0.6
-      zod: 4.1.10
+      zod: 4.1.11
 
   '@ai-sdk/provider@2.0.0':
     dependencies:
@@ -2372,13 +2383,13 @@ snapshots:
 
   agent-base@7.1.4: {}
 
-  ai@5.0.47(zod@4.1.10):
+  ai@5.0.48(zod@4.1.11):
     dependencies:
-      '@ai-sdk/gateway': 1.0.24(zod@4.1.10)
+      '@ai-sdk/gateway': 1.0.25(zod@4.1.11)
       '@ai-sdk/provider': 2.0.0
-      '@ai-sdk/provider-utils': 3.0.9(zod@4.1.10)
+      '@ai-sdk/provider-utils': 3.0.9(zod@4.1.11)
       '@opentelemetry/api': 1.9.0
-      zod: 4.1.10
+      zod: 4.1.11
 
   aria-query@5.3.2: {}
 
@@ -2454,7 +2465,7 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  cssstyle@5.3.0(postcss@8.5.6):
+  cssstyle@5.3.1(postcss@8.5.6):
     dependencies:
       '@asamuzakjp/css-color': 4.0.4
       '@csstools/css-syntax-patches-for-csstree': 1.0.14(postcss@8.5.6)
@@ -2822,7 +2833,7 @@ snapshots:
   jsdom@27.0.0(postcss@8.5.6):
     dependencies:
       '@asamuzakjp/dom-selector': 6.5.5
-      cssstyle: 5.3.0(postcss@8.5.6)
+      cssstyle: 5.3.1(postcss@8.5.6)
       data-urls: 6.0.0
       decimal.js: 10.6.0
       html-encoding-sniffer: 4.0.0
@@ -3162,6 +3173,8 @@ snapshots:
     dependencies:
       xmlchars: 2.2.0
 
+  schema-dts@1.1.5: {}
+
   set-cookie-parser@2.7.1: {}
 
   shiki@3.13.0:
@@ -3208,7 +3221,12 @@ snapshots:
     transitivePeerDependencies:
       - picomatch
 
-  svelte-streamdown@2.2.7(svelte@5.39.3):
+  svelte-meta-tags@4.4.1(svelte@5.39.3):
+    dependencies:
+      schema-dts: 1.1.5
+      svelte: 5.39.3
+
+  svelte-streamdown@2.3.0(svelte@5.39.3):
     dependencies:
       '@floating-ui/dom': 1.7.4
       clsx: 2.1.1
@@ -3412,6 +3430,6 @@ snapshots:
 
   zimmerframe@1.1.4: {}
 
-  zod@4.1.10: {}
+  zod@4.1.11: {}
 
   zwitch@2.0.4: {}
