@@ -1,13 +1,14 @@
 <script lang="ts">
   import { MetaTags } from "svelte-meta-tags";
   import { Subheading } from "$lib/components/docs";
-  // import Installation from '$lib/components/installation.svelte';
+  import Installation from "$lib/components/docs/installation.svelte";
   import Playground from "$lib/components/docs/playground.svelte";
   import Code from "$lib/components/docs/code.svelte";
   import { examples } from "./examples";
   import { seo } from "./seo";
   import Heading from "$lib/components/docs/heading.svelte";
   import CodeSpan from "$lib/components/docs/code-span.svelte";
+  import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 </script>
 
 <MetaTags {...seo} />
@@ -19,7 +20,8 @@
 <Playground code={examples.basic.code} highlight={[2, [103, 114]]}>
   <examples.basic.Component />
 </Playground>
-<!-- <Installation specifier="ui/avatar-group" /> -->
+<!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
+<Installation specifier={`${PUBLIC_WEBSITE_URL}/r/action.json`} />
 <Subheading>Usage</Subheading>
 <div>
   <Code

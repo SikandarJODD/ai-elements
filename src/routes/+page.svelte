@@ -1,6 +1,5 @@
 <script lang="ts">
   import { MetaTags } from "svelte-meta-tags";
-  import SvelteIcon from "$lib/assets/svelte-ai-elements.png";
 </script>
 
 <MetaTags
@@ -16,7 +15,7 @@
     siteName: "Svelte AI Elements",
     images: [
       {
-        url: SvelteIcon,
+        url: '/assets/svelte-ai-elements.png',
         width: 1200,
         height: 630,
         alt: "Svelte AI Elements",
@@ -31,7 +30,7 @@
     title: "Svelte AI Elements",
     description:
       "Explore a variety of AI-powered components and features designed to enhance user interactions and streamline workflows.",
-    image: SvelteIcon,
+    image: '/assets/svelte-ai-elements.png',
     imageAlt: "Twitter image alt",
   }}
 />
