@@ -9,7 +9,8 @@
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"registry:build": "pnpm shadcn-svelte registry build"
 	},
 	"devDependencies": {
 		"@internationalized/date": "^3.8.1",
@@ -44,6 +45,7 @@
 		"isomorphic-dompurify": "^2.28.0",
 		"mode-watcher": "^1.1.0",
 		"runed": "^0.31.1",
+		"shadcn-svelte": "^1.0.7",
 		"shiki": "^3.13.0",
 		"svelte-streamdown": "^2.2.7",
 		"svelte-toolbelt": "^0.10.5"
