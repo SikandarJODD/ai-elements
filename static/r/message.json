@@ -1,0 +1,38 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "message",
+	"type": "registry:block",
+	"description": "The Message component displays a chat interface message from either a user or an AI. It includes an avatar, a name, and a message content.",
+	"dependencies": [
+		"ai",
+		"tailwind-variants"
+	],
+	"devDependencies": [
+		"tailwind-variants@^1.0.0"
+	],
+	"registryDependencies": [
+		"avatar"
+	],
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from \"$UTILS$\";\r\n\timport type { UIMessage } from \"ai\";\r\n\timport type { HTMLAttributes } from \"svelte/elements\";\r\n\r\n\ttype MessageProps = HTMLAttributes<HTMLDivElement> & {\r\n\t\tfrom: UIMessage[\"role\"];\r\n\t};\r\n\r\n\tlet {\r\n\t\tclass: className = \"\",\r\n\t\tfrom,\r\n\t\tchildren,\r\n\t\t...restProps\r\n\t}: MessageProps = $props();\r\n\r\n\tconst id = crypto.randomUUID();\r\n\r\n\tconst messageClasses = $derived.by(() =>\r\n\t\tcn(\r\n\t\t\t\"group flex w-full items-end justify-end gap-2 py-4\",\r\n\t\t\tfrom === \"user\" ? \"is-user\" : \"is-assistant flex-row-reverse justify-end\",\r\n\t\t\tclassName\r\n\t\t)\r\n\t);\r\n</script>\r\n\r\n<div\r\n\tclass={messageClasses}\r\n\tdata-message-id={id}\r\n\t{...restProps}\r\n>\r\n\t{@render children?.()}\r\n</div>",
+			"type": "registry:component",
+			"target": "ai-elements/message/Message.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from \"$UTILS$\";\r\n\timport { Avatar, AvatarImage, AvatarFallback } from \"$lib/components/ui/avatar/index.js\";\r\n\timport type { ComponentProps } from \"svelte\";\r\n\r\n\ttype MessageAvatarProps = ComponentProps<typeof Avatar> & {\r\n\t\tsrc: string;\r\n\t\tname?: string;\r\n\t};\r\n\r\n\tlet {\r\n\t\tsrc,\r\n\t\tname,\r\n\t\tclass: className = \"\",\r\n\t\t...restProps\r\n\t}: MessageAvatarProps = $props();\r\n\r\n\tconst id = crypto.randomUUID();\r\n\r\n\tconst avatarClasses = $derived.by(() =>\r\n\t\tcn(\"size-8 ring-1 ring-border\", className)\r\n\t);\r\n\r\n\tconst fallbackText = $derived.by(() =>\r\n\t\tname?.slice(0, 2) || \"ME\"\r\n\t);\r\n</script>\r\n\r\n<Avatar class={avatarClasses} data-avatar-id={id} {...restProps}>\r\n\t<AvatarImage alt=\"\" class=\"mt-0 mb-0\" {src} />\r\n\t<AvatarFallback>{fallbackText}</AvatarFallback>\r\n</Avatar>",
+			"type": "registry:component",
+			"target": "ai-elements/message/MessageAvatar.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from \"$UTILS$\";\r\n\timport { tv, type VariantProps } from \"tailwind-variants\";\r\n\timport type { HTMLAttributes } from \"svelte/elements\";\r\n\r\n\tconst messageContentVariants = tv({\r\n\t\tbase: \"flex flex-col gap-2 overflow-hidden rounded-lg text-sm\",\r\n\t\tvariants: {\r\n\t\t\tvariant: {\r\n\t\t\t\tcontained: [\r\n\t\t\t\t\t\"max-w-[80%] px-4 py-3\",\r\n\t\t\t\t\t\"group-[.is-user]:bg-primary group-[.is-user]:text-primary-foreground\",\r\n\t\t\t\t\t\"group-[.is-assistant]:bg-secondary group-[.is-assistant]:text-foreground\",\r\n\t\t\t\t],\r\n\t\t\t\tflat: [\r\n\t\t\t\t\t\"group-[.is-user]:max-w-[80%] group-[.is-user]:bg-secondary group-[.is-user]:px-4 group-[.is-user]:py-3 group-[.is-user]:text-foreground\",\r\n\t\t\t\t\t\"group-[.is-assistant]:text-foreground\",\r\n\t\t\t\t],\r\n\t\t\t},\r\n\t\t},\r\n\t\tdefaultVariants: {\r\n\t\t\tvariant: \"contained\",\r\n\t\t},\r\n\t});\r\n\r\n\ttype MessageContentProps = HTMLAttributes<HTMLDivElement> &\r\n\t\tVariantProps<typeof messageContentVariants>;\r\n\r\n\tlet {\r\n\t\tclass: className = \"\",\r\n\t\tvariant,\r\n\t\tchildren,\r\n\t\t...restProps\r\n\t}: MessageContentProps = $props();\r\n\r\n\tconst id = crypto.randomUUID();\r\n\r\n\tconst contentClasses = $derived.by(() =>\r\n\t\tcn(messageContentVariants({ variant }), className)\r\n\t);\r\n</script>\r\n\r\n<div\r\n\tclass={contentClasses}\r\n\tdata-content-id={id}\r\n\t{...restProps}\r\n>\r\n\t{@render children?.()}\r\n</div>",
+			"type": "registry:component",
+			"target": "ai-elements/message/MessageContent.svelte"
+		},
+		{
+			"content": "import Message from \"./Message.svelte\";\r\nimport MessageContent from \"./MessageContent.svelte\";\r\nimport MessageAvatar from \"./MessageAvatar.svelte\";\r\n\r\nexport {\r\n\tMessage,\r\n\tMessageContent,\r\n\tMessageAvatar,\r\n};",
+			"type": "registry:file",
+			"target": "ai-elements/message/index.ts"
+		}
+	]
+}

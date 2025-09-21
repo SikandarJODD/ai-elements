@@ -1,10 +1,9 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
-	"name": "Action",
+	"name": "action",
 	"type": "registry:block",
 	"description": "The Actions component provides a flexible row of action buttons for AI responses with common actions like retry, like, dislike, copy, and share.",
 	"registryDependencies": [
-		"clsx",
 		"button",
 		"tooltip"
 	],
@@ -15,17 +14,17 @@
 		{
 			"content": "<script lang=\"ts\">\r\n\timport { cn } from \"$UTILS$.js\";\r\n\timport Button, { type ButtonProps } from \"$lib/components/ui/button/button.svelte\";\r\n\timport {\r\n\t\tTooltip,\r\n\t\tTooltipContent,\r\n\t\tTooltipProvider,\r\n\t\tTooltipTrigger,\r\n\t} from \"$lib/components/ui/tooltip/index.js\";\r\n\r\n\texport type ActionProps = ButtonProps & {\r\n\t\ttooltip?: string;\r\n\t\tlabel?: string;\r\n\t};\r\n\r\n\tlet {\r\n\t\ttooltip,\r\n\t\tchildren,\r\n\t\tlabel,\r\n\t\tclass: className,\r\n\t\tvariant = \"ghost\",\r\n\t\tsize = \"sm\",\r\n\t\t...restProps\r\n\t}: ActionProps = $props();\r\n\r\n\tconst buttonClasses = cn(\r\n\t\t\"relative size-9 p-1.5 text-muted-foreground hover:text-foreground\",\r\n\t\tclassName\r\n\t);\r\n</script>\r\n\r\n{#if tooltip}\r\n\t<TooltipProvider>\r\n\t\t<Tooltip delayDuration={150}>\r\n\t\t\t<TooltipTrigger >\r\n\t\t\t\t<Button\r\n\t\t\t\t\tclass={buttonClasses}\r\n\t\t\t\t\t{size}\r\n\t\t\t\t\ttype=\"button\"\r\n\t\t\t\t\t{variant}\r\n\t\t\t\t\t{...restProps}\r\n\t\t\t\t>\r\n\t\t\t\t\t{@render children?.()}\r\n\t\t\t\t\t<span class=\"sr-only\">{label || tooltip}</span>\r\n\t\t\t\t</Button>\r\n\t\t\t</TooltipTrigger>\r\n\t\t\t<TooltipContent>\r\n\t\t\t\t<p>{tooltip}</p>\r\n\t\t\t</TooltipContent>\r\n\t\t</Tooltip>\r\n\t</TooltipProvider>\r\n{:else}\r\n\t<Button\r\n\t\tclass={buttonClasses}\r\n\t\t{size}\r\n\t\ttype=\"button\"\r\n\t\t{variant}\r\n\t\t{...restProps}\r\n\t>\r\n\t\t{@render children?.()}\r\n\t\t<span class=\"sr-only\">{label || tooltip}</span>\r\n\t</Button>\r\n{/if}\r\n",
 			"type": "registry:component",
-			"target": "Action.svelte"
+			"target": "ai-elements/action/Action.svelte"
 		},
 		{
 			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$.js\";\r\n  import type { HTMLAttributes } from \"svelte/elements\";\r\n\r\n  export type ActionsProps = HTMLAttributes<HTMLDivElement>;\r\n\r\n  let { class: className, children, ...restProps }: ActionsProps = $props();\r\n</script>\r\n\r\n<div class={cn(\"flex items-center gap-1\", className)} {...restProps}>\r\n  {@render children?.()}\r\n</div>\r\n",
 			"type": "registry:component",
-			"target": "Actions.svelte"
+			"target": "ai-elements/action/Actions.svelte"
 		},
 		{
 			"content": "import Action from \"./Action.svelte\";\r\nimport Actions from \"./Actions.svelte\";\r\n\r\nexport { Action, Actions };\r\n",
 			"type": "registry:file",
-			"target": "Action/index.ts"
+			"target": "ai-elements/action/index.ts"
 		}
 	]
 }
