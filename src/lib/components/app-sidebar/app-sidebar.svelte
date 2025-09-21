@@ -9,94 +9,94 @@
         items: [
           {
             title: "Introduction",
-            url: "#",
+            url: "/docs/introduction",
             isActive: true,
           },
           {
             title: "Installation",
-            url: "#",
+            url: "/docs/installation",
           },
         ],
       },
       {
         title: "Components",
-        url: "#",
+        url: "/components",
         items: [
           {
             title: "Actions",
-            url: "#",
+            url: "/components/actions",
           },
           {
             title: "Artifact",
-            url: "#",
+            url: "/components/artifact",
           },
           {
             title: "Branch",
-            url: "#",
+            url: "/components/branch",
           },
           {
             title: "Chain of Thought",
-            url: "#",
+            url: "/components/chain-of-thought",
           },
           {
             title: "Code Block",
-            url: "#",
+            url: "/components/code-block",
           },
           {
             title: "Context",
-            url: "#",
+            url: "/components/context",
           },
           {
             title: "Conversation",
-            url: "#",
+            url: "/components/conversation",
           },
           {
             title: "Inline Citation",
-            url: "#",
+            url: "/components/inline-citation",
           },
           {
             title: "Loader",
-            url: "#",
+            url: "/components/loader",
           },
           {
             title: "Message",
-            url: "#",
+            url: "/components/message",
           },
           {
             title: "Open in Chat",
-            url: "#",
+            url: "/components/open-in-chat",
           },
           {
             title: "Prompt Input",
-            url: "#",
+            url: "/components/prompt-input",
           },
           {
             title: "Reasoning",
-            url: "#",
+            url: "/components/reasoning",
           },
           {
             title: "Response",
-            url: "#",
+            url: "/components/response",
           },
           {
             title: "Sources",
-            url: "#",
+            url: "/components/sources",
           },
           {
             title: "Suggestion",
-            url: "#",
+            url: "/components/suggestion",
           },
           {
             title: "Task",
-            url: "#",
+            url: "/components/task",
           },
           {
             title: "Tool",
-            url: "#",
+            url: "/components/tool",
           },
           {
             title: "Web Preview",
-            url: "#",
+            url: "/components/web-preview",
           },
         ],
       },
@@ -116,11 +116,7 @@
 
 <script lang="ts">
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-  import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
-  import { Separator } from "$lib/components/ui/separator/index.js";
-  import GalleryVerticalEndIcon from "@lucide/svelte/icons/gallery-vertical-end";
   import type { ComponentProps } from "svelte";
-  import SidebarOptInForm from "./sidebar-opt-in-form.svelte";
   let {
     ref = $bindable(null),
     ...restProps
@@ -149,7 +145,7 @@
       </Sidebar.MenuItem>
     </Sidebar.Menu>
   </Sidebar.Header> -->
-  <Sidebar.Content class="no-scrollbar">
+  <Sidebar.Content class="no-scrollbar mb-4 bg-background ">
     <Sidebar.Group>
       <Sidebar.Menu>
         {#each data.navMain as item (item.title)}
@@ -179,10 +175,10 @@
       </Sidebar.Menu>
     </Sidebar.Group>
   </Sidebar.Content>
-  <Sidebar.Footer>
+  <!-- <Sidebar.Footer>
     <div class="p-1">
       <SidebarOptInForm />
     </div>
-  </Sidebar.Footer>
+  </Sidebar.Footer> -->
   <!-- <Sidebar.Rail /> -->
 </Sidebar.Root>
