@@ -20,7 +20,7 @@
 <h2
 	bind:this={ref}
 	{id}
-	class={cn('mt-6 scroll-m-20 border-b pb-1 text-2xl font-semibold', className)}
+	class={cn('mt-6 mb-2 scroll-m-20 border-b pb-1 text-2xl font-semibold', className)}
 	{...rest}
 >
 	{@render children?.()}

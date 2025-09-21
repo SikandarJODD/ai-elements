@@ -1,12 +1,12 @@
 <script lang="ts">
-  import Actions from "$lib/components/ai-elements/action/Actions.svelte";
-  import Action from "$lib/components/ai-elements/action/Action.svelte";
+  import { Actions, Action } from "$lib/components/ai-elements/action/index";
   import {
     Copy,
     RefreshCcw,
     Share,
     ThumbsDown,
     ThumbsUp,
+    ThumbsUpIcon,
   } from "@lucide/svelte";
 
   // Define message type
@@ -92,7 +92,7 @@
       <!-- Message content -->
       <div
         class="rounded-lg px-4 py-2 max-w-[80%] {message.from === 'assistant'
-          ? 'bg-gray-100 dark:bg-gray-800'
+          ? 'bg-gray-100 dark:bg-secondary'
           : 'bg-blue-500 text-white'}"
       >
         <p>{message.content}</p>
@@ -118,9 +118,9 @@
 </div>
 
 <!-- Debug state display -->
-<div class="mt-8 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
+<!-- <div class="mt-8 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
   <h3 class="text-sm font-medium mb-2">Debug State:</h3>
   <p class="text-xs text-gray-600 dark:text-gray-400">
     Liked: {liked} | Disliked: {disliked} | Favorited: {favorited}
   </p>
-</div>
+</div> -->

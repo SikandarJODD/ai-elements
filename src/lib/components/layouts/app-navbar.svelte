@@ -26,7 +26,7 @@
     { href: "/", label: "Home", active: true },
     { href: "/docs", label: "Docs", active: false },
     { href: "/components", label: "Components", active: false },
-    { href: "#", label: "About", active: false },
+    // { href: "#", label: "About", active: false },
   ]);
 </script>
 
