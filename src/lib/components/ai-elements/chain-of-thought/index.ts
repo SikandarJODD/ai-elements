@@ -7,7 +7,7 @@ export { default as ChainOfThoughtSearchResult } from './ChainOfThoughtSearchRes
 export { default as ChainOfThoughtImage } from './ChainOfThoughtImage.svelte';
 
 export {
+	ChainOfThoughtContext,
 	getChainOfThoughtContext,
-	setChainOfThoughtContext,
-	type ChainOfThoughtContextValue
-} from './chain-of-thought-context.js';
+	setChainOfThoughtContext
+} from './chain-of-thought-context.svelte.js';

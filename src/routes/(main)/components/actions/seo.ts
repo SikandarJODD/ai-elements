@@ -1,5 +1,5 @@
 import type { MetaTagsProps } from "svelte-meta-tags";
-import SvelteIcon from "$lib/assets/svelte-ai-elements.png";
+
 export let seo: MetaTagsProps = {
   title: "Actions",
   description:
@@ -12,6 +12,14 @@ export let seo: MetaTagsProps = {
     url: "https://ai-elements.vercel.app/components/actions",
     type: "website",
     siteName: "Svelte AI Elements",
+    images:[
+      {
+        url: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+        width: 1200,
+        height: 630,
+        alt: "Svelte AI Elements",
+      }
+    ]
   },
   twitter: {
     creator: "@Sikandar_Bhide",
@@ -20,7 +28,7 @@ export let seo: MetaTagsProps = {
     title: "Actions - Svelte AI Elements",
     description:
       "Pre-built actions to enhance user interactions and functionality in your Svelte applications.",
-    image: SvelteIcon,
+    image: 'https://ai-elements.vercel.app/assets/svelte-ai-elements.png',
     imageAlt: "Twitter image alt",
   },
 };

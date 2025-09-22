@@ -4,8 +4,8 @@
   import Installation from "$lib/components/docs/installation.svelte";
   import Playground from "$lib/components/docs/playground.svelte";
   import Code from "$lib/components/docs/code.svelte";
-  import { examples } from "./examples";
-  import { seo } from "./seo";
+  import { examples } from "./examples/examples";
+  import { seo } from "./examples/seo";
   import Heading from "$lib/components/docs/heading.svelte";
   import CodeSpan from "$lib/components/docs/code-span.svelte";
   import { PUBLIC_WEBSITE_URL } from "$env/static/public";
@@ -26,12 +26,13 @@
   >
     <!-- Main Content Area -->
     <main class="min-w-0" bind:this={toc.ref}>
-      <Subheading class="md:text-3xl">Actions</Subheading>
+      <Subheading class="md:text-3xl">Branch</Subheading>
 
       <p class="my-2 !text-muted-foreground text-lg">
-        The <CodeSpan>Action</CodeSpan> component provides a flexible row of action
-        buttons for AI responses with common actions like retry, like, dislike, copy,
-        and share.
+        The <CodeSpan>Branch</CodeSpan> component manages multiple versions of AI
+        messages, allowing users to navigate between different response branches.
+        It provides a clean, modern interface with customizable themes and keyboard-accessible
+        navigation buttons.
       </p>
 
       <Playground code={examples.basic.code} highlight={[2, [103, 114]]}>
@@ -48,28 +49,45 @@
         <Code
           lang="svelte"
           code={`\<script lang="ts"\>
-	 import { Actions, Action } from "$lib/components/ai-elements/action/index";
+	import {
+		Branch,
+		BranchMessages,
+		BranchNext,
+		BranchPage,
+		BranchPrevious,
+		BranchSelector
+	} from '$lib/components/ai-elements/branch/index';
 \<\/script\>
 
-<Actions class="mt-2">
-  <Action label="Like" tooltip="Like">
-    <ThumbsUpIcon class="size-4" />
-  </Action>
-</Actions>`}
+<Branch defaultBranch={0}>
+  <BranchMessages>
+    <Message from="user">
+      <MessageContent>Hello</MessageContent>
+    </Message>
+    <Message from="user">
+      <MessageContent>Hi!</MessageContent>
+    </Message>
+  </BranchMessages>
+  <BranchSelector from="user">
+    <BranchPrevious />
+    <BranchPage />
+    <BranchNext />
+  </BranchSelector>
+</Branch>`}
         />
       </div>
 
       <!-- Examples  -->
-      <Subheading>Examples</Subheading>
+      <!-- <Subheading>Examples</Subheading>
 
       <Playground code={examples.messageAction.code}>
         <examples.messageAction.Component />
-      </Playground>
+      </Playground> -->
     </main>
 
     <!-- TOC Sidebar - Sticky on larger screens -->
     <aside
-      class="hidden md:flex sticky top-24 h-fit max-h-[calc(100vh-3rem)] overflow-y-auto "
+      class="hidden md:flex sticky top-24 h-fit max-h-[calc(100vh-3rem)] overflow-y-auto"
     >
       <!-- TOC Component -->
       <div>

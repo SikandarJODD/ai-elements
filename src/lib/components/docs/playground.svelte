@@ -51,7 +51,7 @@
         </Button>
       {/if}
       {#key remountCount}
-        <div class="flex size-full place-items-center justify-center">
+        <div class="w-full p-4 md:p-6 flex place-items-center justify-center">
           {@render children()}
         </div>
       {/key}

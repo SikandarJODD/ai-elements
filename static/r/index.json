@@ -13,6 +13,36 @@
 		"relativeUrl": "action.json"
 	},
 	{
+		"name": "artifact",
+		"type": "registry:block",
+		"description": "The Artifact component provides a structured container for displaying generated content like code, documents, or other outputs with built-in header actions.",
+		"registryDependencies": [
+			"button",
+			"tooltip"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "artifact.json"
+	},
+	{
+		"name": "chain-of-thought",
+		"type": "registry:block",
+		"description": "The ChainOfThought component provides a visual representation of an AI's reasoning process, showing step-by-step thinking with support for search results, images, and progress indicators. It helps users understand how AI arrives at conclusions.",
+		"dependencies": [
+			"ai",
+			"@lucidesvelte"
+		],
+		"registryDependencies": [
+			"badge",
+			"collapsible"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "chain-of-thought.json"
+	},
+	{
 		"name": "message",
 		"type": "registry:block",
 		"description": "The Message component displays a chat interface message from either a user or an AI. It includes an avatar, a name, and a message content.",

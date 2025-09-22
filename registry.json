@@ -33,6 +33,128 @@
       }
     },
     {
+      "name": "artifact",
+      "type": "registry:block",
+      "description": "The Artifact component provides a structured container for displaying generated content like code, documents, or other outputs with built-in header actions.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/artifact/Artifact.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/artifact/Artifact.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/artifact/ArtifactHeader.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/artifact/ArtifactHeader.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/artifact/ArtifactContent.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/artifact/ArtifactContent.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/artifact/ArtifactDescription.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/artifact/ArtifactDescription.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/artifact/ArtifactAction.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/artifact/ArtifactAction.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/artifact/ArtifactActions.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/artifact/ArtifactActions.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/artifact/ArtifactTitle.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/artifact/ArtifactTitle.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/artifact/ArtifactClose.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/artifact/ArtifactClose.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/artifact/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/artifact/index.ts"
+        }
+      ],
+      "registryDependencies": [
+        "button",
+        "tooltip"
+      ],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
+      "name": "chain-of-thought",
+      "type": "registry:block",
+      "description": "The ChainOfThought component provides a visual representation of an AI's reasoning process, showing step-by-step thinking with support for search results, images, and progress indicators. It helps users understand how AI arrives at conclusions.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/chain-of-thought/ChainOfThought.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/chain-of-thought/ChainOfThought.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/chain-of-thought/ChainOfThoughtHeader.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/chain-of-thought/ChainOfThoughtHeader.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/chain-of-thought/ChainOfThoughtContent.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/chain-of-thought/ChainOfThoughtContent.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/chain-of-thought/ChainOfThoughtStep.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/chain-of-thought/ChainOfThoughtStep.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/chain-of-thought/chain-of-thought-context.svelte.ts",
+          "type": "registry:file",
+          "target": "ai-elements/chain-of-thought/chain-of-thought-context.svelte.ts"
+        },
+        {
+          "path": "src/lib/components/ai-elements/chain-of-thought/ChainOfThoughtImage.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/chain-of-thought/ChainOfThoughtImage.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/chain-of-thought/ChainOfThoughtSearchResult.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/chain-of-thought/ChainOfThoughtSearchResult.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/chain-of-thought/ChainOfThoughtSearchResults.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/chain-of-thought/ChainOfThoughtSearchResults.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/chain-of-thought/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/chain-of-thought/index.ts"
+        }
+      ],
+      "registryDependencies": [
+        "badge",
+        "collapsible"
+      ],
+      "dependencies": [
+        "ai",
+        "@lucidesvelte"
+      ],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
       "name": "message",
       "type": "registry:block",
       "description": "The Message component displays a chat interface message from either a user or an AI. It includes an avatar, a name, and a message content.",
