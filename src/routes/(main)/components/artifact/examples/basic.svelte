@@ -7,8 +7,8 @@
     ArtifactDescription,
     ArtifactHeader,
     ArtifactTitle,
-  } from "$lib/components/ai-elements/artifact/index.js";
-  import * as Code from "$lib/components/ai-elements/code/index.js";
+  } from "$lib/components/ai-elements/artifact/index";
+  import * as Code from "$lib/components/ai-elements/code/index";
   import {
     CopyIcon,
     DownloadIcon,
@@ -119,7 +119,7 @@ print(dijkstra(graph, 'A'))`;
       lang="python"
       hideLines={false}
     >
-      <Code.CopyButton  />
+      <Code.CopyButton />
     </Code.Root>
   </ArtifactContent>
 </Artifact>

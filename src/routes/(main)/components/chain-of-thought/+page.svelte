@@ -4,8 +4,8 @@
   import Installation from "$lib/components/docs/installation.svelte";
   import Playground from "$lib/components/docs/playground.svelte";
   import Code from "$lib/components/docs/code.svelte";
-  import { examples } from "./examples";
-  import { seo } from "./seo";
+  import { examples } from "./examples/examples";
+  import { seo } from "./examples/seo";
   import Heading from "$lib/components/docs/heading.svelte";
   import CodeSpan from "$lib/components/docs/code-span.svelte";
   import { PUBLIC_WEBSITE_URL } from "$env/static/public";
@@ -26,20 +26,27 @@
   >
     <!-- Main Content Area -->
     <main class="min-w-0" bind:this={toc.ref}>
-      <Subheading class="md:text-3xl">Actions</Subheading>
+      <Subheading class="md:text-3xl">Chain of Thought</Subheading>
 
       <p class="my-2 !text-muted-foreground text-lg">
-        The <CodeSpan>Action</CodeSpan> component provides a flexible row of action
-        buttons for AI responses with common actions like retry, like, dislike, copy,
-        and share.
+        The <CodeSpan>ChainOfThought</CodeSpan> component provides a visual representation
+        of an AI's reasoning process, showing step-by-step thinking with support
+        for search results, images, and progress indicators. It helps users understand
+        how AI arrives at conclusions.
       </p>
 
-      <Playground code={examples.basic.code} highlight={[2, [103, 114]]}>
-        <examples.basic.Component />
+      <Playground
+        code={examples.basic.code}
+        highlight={[2, [103, 114]]}
+        class="flex items-start justify-start"
+      >
+        <div class="w-full mx-auto">
+          <examples.basic.Component />
+        </div>
       </Playground>
 
       <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
-      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/action.json`} />
+      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/chain-of-thought.json`} />
 
       <!-- Usage -->
       <Subheading>Usage</Subheading>
@@ -48,28 +55,47 @@
         <Code
           lang="svelte"
           code={`\<script lang="ts"\>
-	 import { Actions, Action } from "$lib/components/ai-elements/action/index";
+	 import {
+    ChainOfThought,
+    ChainOfThoughtContent,
+    ChainOfThoughtHeader,
+    ChainOfThoughtImage,
+    ChainOfThoughtSearchResult,
+    ChainOfThoughtSearchResults,
+    ChainOfThoughtStep,
+  } from "$lib/components/ai-elements/chain-of-thought/index";
 \<\/script\>
 
-<Actions class="mt-2">
-  <Action label="Like" tooltip="Like">
-    <ThumbsUpIcon class="size-4" />
-  </Action>
-</Actions>`}
+<ChainOfThought defaultOpen>
+  <ChainOfThoughtHeader />
+  <ChainOfThoughtContent>
+    <ChainOfThoughtStep
+      icon={SearchIcon}
+      label="Searching for information"
+      status="complete"
+    >
+      <ChainOfThoughtSearchResults>
+        <ChainOfThoughtSearchResult>
+          Result 1
+        </ChainOfThoughtSearchResult>
+      </ChainOfThoughtSearchResults>
+    </ChainOfThoughtStep>
+  </ChainOfThoughtContent>
+</ChainOfThought>`}
         />
       </div>
 
       <!-- Examples  -->
-      <Subheading>Examples</Subheading>
+      <!-- <Subheading>Examples</Subheading>
 
       <Playground code={examples.messageAction.code}>
         <examples.messageAction.Component />
-      </Playground>
+      </Playground> -->
     </main>
 
     <!-- TOC Sidebar - Sticky on larger screens -->
     <aside
-      class="hidden md:flex sticky top-24 h-fit max-h-[calc(100vh-3rem)] overflow-y-auto "
+      class="hidden md:flex sticky top-24 h-fit max-h-[calc(100vh-3rem)] overflow-y-auto"
     >
       <!-- TOC Component -->
       <div>

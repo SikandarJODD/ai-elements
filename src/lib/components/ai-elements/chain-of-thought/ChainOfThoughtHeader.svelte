@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { cn } from '$lib/utils.js';
-	import { getChainOfThoughtContext } from './chain-of-thought-context.js';
-	import { Collapsible, CollapsibleTrigger } from '$lib/components/ui/collapsible/index.js';
-	import { BrainIcon, ChevronDownIcon } from '@lucide/svelte';
+	import { getChainOfThoughtContext } from './chain-of-thought-context.svelte.js';
+	import { CollapsibleTrigger } from '$lib/components/ui/collapsible/index.js';
+	import BrainIcon from '@lucide/svelte/icons/brain';
+	import ChevronDownIcon from '@lucide/svelte/icons/chevron-down';
 	import type { Snippet } from 'svelte';
-	import type { HTMLButtonAttributes } from 'svelte/elements';
 
-	interface ChainOfThoughtHeaderProps extends HTMLButtonAttributes {
+	interface ChainOfThoughtHeaderProps {
 		/**
 		 * Children content (optional, defaults to "Chain of Thought")
 		 */
@@ -19,33 +19,30 @@
 
 	let {
 		children,
-		class: className,
-		...restProps
+		class: className
 	}: ChainOfThoughtHeaderProps = $props();
 
-	const { isOpen, setIsOpen } = getChainOfThoughtContext();
+	const context = getChainOfThoughtContext();
 </script>
 
-<Collapsible open={isOpen} onOpenChange={setIsOpen}>
-	<CollapsibleTrigger
+<CollapsibleTrigger
+	class={cn(
+		'flex w-full items-center gap-2 text-muted-foreground text-sm transition-colors hover:text-foreground',
+		className
+	)}
+>
+	<BrainIcon class="size-4" />
+	<span class="flex-1 text-left">
+		{#if children}
+			{@render children()}
+		{:else}
+			Chain of Thought
+		{/if}
+	</span>
+	<ChevronDownIcon
 		class={cn(
-			'flex w-full items-center gap-2 text-muted-foreground text-sm transition-colors hover:text-foreground',
-			className
+			'size-4 transition-transform',
+			context.isOpen ? 'rotate-180' : 'rotate-0'
 		)}
-	>
-		<BrainIcon class="size-4" />
-		<span class="flex-1 text-left">
-			{#if children}
-				{@render children()}
-			{:else}
-				Chain of Thought
-			{/if}
-		</span>
-		<ChevronDownIcon
-			class={cn(
-				'size-4 transition-transform',
-				isOpen ? 'rotate-180' : 'rotate-0'
-			)}
-		/>
-	</CollapsibleTrigger>
-</Collapsible>
+	/>
+</CollapsibleTrigger>

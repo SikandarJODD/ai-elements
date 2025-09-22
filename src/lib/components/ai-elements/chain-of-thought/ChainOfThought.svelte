@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { cn } from '$lib/utils.js';
-	import { setChainOfThoughtContext } from './chain-of-thought-context.js';
+	import { Collapsible } from '$lib/components/ui/collapsible/index.js';
+	import {
+		ChainOfThoughtContext,
+		setChainOfThoughtContext
+	} from './chain-of-thought-context.svelte.js';
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 
@@ -28,7 +32,7 @@
 	}
 
 	let {
-		open = $bindable(false),
+		open = $bindable(undefined),
 		defaultOpen = false,
 		onOpenChange,
 		children,
@@ -36,34 +40,25 @@
 		...restProps
 	}: ChainOfThoughtProps = $props();
 
-	// Controllable state using Svelte 5 runes
-	let internalOpen = $state(defaultOpen);
+	// Create context instance with proper controllable state
+	const context = new ChainOfThoughtContext({
+		isOpen: open !== undefined ? open : defaultOpen,
+		onOpenChange
+	});
 
-	// Derived state that handles both controlled and uncontrolled modes
-	let isOpen = $state(open !== undefined ? open : defaultOpen);
-
-	function setIsOpen(newOpen: boolean) {
+	// Handle controlled mode synchronization
+	$effect(() => {
 		if (open !== undefined) {
-			// Controlled mode
-			onOpenChange?.(newOpen);
-		} else {
-			// Uncontrolled mode
-			internalOpen = newOpen;
-
-			onOpenChange?.(newOpen);
+			context.isOpen = open;
 		}
-	}
+	});
 
 	// Set the context for child components
-	setChainOfThoughtContext({
-		isOpen,
-		setIsOpen
-	});
+	setChainOfThoughtContext(context);
 </script>
 
-<div
-	class={cn('not-prose max-w-prose space-y-4', className)}
-	{...restProps}
->
-	{@render children()}
-</div>
+<Collapsible open={context.isOpen} onOpenChange={context.setIsOpen}>
+	<div class={cn('not-prose max-w-prose space-y-4', className)} {...restProps}>
+		{@render children()}
+	</div>
+</Collapsible>

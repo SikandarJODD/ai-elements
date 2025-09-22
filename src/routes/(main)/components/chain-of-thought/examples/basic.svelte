@@ -7,23 +7,22 @@
     ChainOfThoughtSearchResult,
     ChainOfThoughtSearchResults,
     ChainOfThoughtStep,
-  } from "$lib/components/ai-elements/chain-of-thought/index";
+  } from "$lib/components/ai-elements/chain-of-thought/index.js";
   import SearchIcon from "@lucide/svelte/icons/search";
   import ImageIcon from "@lucide/svelte/icons/image";
 
-  let exampleImage =
-    "https://i.pinimg.com/736x/75/f1/8f/75f18f979262c802ed8e36b3c4f2ff4f.jpg";
+  const exampleImage = 'https://i.pinimg.com/736x/75/f1/8f/75f18f979262c802ed8e36b3c4f2ff4f.jpg';
 
-  let websites1 = [
+  const websites1 = [
     "https://www.x.com",
     "https://www.instagram.com",
     "https://www.github.com",
   ];
 
-  let websites2 = ["https://www.github.com", "https://www.dribbble.com"];
+  const websites2 = ["https://www.github.com", "https://www.dribbble.com"];
 </script>
 
-<ChainOfThought defaultOpen>
+<ChainOfThought defaultOpen={true}>
   <ChainOfThoughtHeader />
   <ChainOfThoughtContent>
     <ChainOfThoughtStep
@@ -45,9 +44,7 @@
       label="Found the profile photo for Hayden Bleasel"
       status="complete"
     >
-      <ChainOfThoughtImage
-        caption="Hayden Bleasel's profile photo from x.com, showing a Ghibli-style man."
-      >
+      <ChainOfThoughtImage caption="Hayden Bleasel's profile photo from x.com, showing a Ghibli-style man.">
         <img
           src={exampleImage}
           alt="Example generated image"
