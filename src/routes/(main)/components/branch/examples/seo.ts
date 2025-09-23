@@ -6,9 +6,9 @@ export let seo: MetaTagsProps = {
     "The Branch component manages multiple versions of AI messages, allowing users to navigate between different response branches. - Svelte AI Elements",
   titleTemplate: "%s | Svelte AI Elements",
   openGraph: {
-    title: "The Branch component manages multiple versions of AI messages, allowing users to navigate between different response branches. - Svelte AI Elements",
+    title: "Branch - Svelte AI Elements",
     description:
-      "The Branch component manages multiple versions of AI messages, allowing users to navigate between different response branches. ",
+      "The Branch component manages multiple versions of AI messages, allowing users to navigate between different response branches.",
     url: "https://ai-elements.vercel.app/components/actions",
     type: "website",
     siteName: "Svelte AI Elements",

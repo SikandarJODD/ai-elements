@@ -4,7 +4,7 @@
   import type { CodeRootProps } from "./types";
   import { useCode } from "./code.svelte.js";
   import { box } from "svelte-toolbelt";
-  import "../../../../app.css";
+  // import "../../../../app.css";
 
   let {
     ref = $bindable(null),

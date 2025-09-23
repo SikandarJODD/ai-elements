@@ -37,7 +37,7 @@
 
       <Playground
         code={examples.basic.code}
-        highlight={[2, [103, 114]]}
+
         class="flex items-start justify-start"
       >
         <div class="w-full mx-auto">
