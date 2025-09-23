@@ -5,7 +5,7 @@
 		TaskItem,
 		TaskItemFile,
 		TaskTrigger
-	} from '$lib/components/ai-elements/task/index.js';
+	} from '$lib/components/ai-elements/task';
 	import SvelteIcon from '$lib/components/ai-elements/task/SvelteIcon.svelte';
 
 	// Using crypto.randomUUID() as requested instead of nanoid

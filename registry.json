@@ -29,7 +29,15 @@
         "tooltip"
       ],
       "meta": {
-        "author": "SikandarJODD"
+        "author": "SikandarJODD",
+        "version": "1.0.0",
+        "tags": ["actions", "buttons", "ai-response", "interactive", "feedback"],
+        "category": "AI Response",
+        "documentation": "https://ai-elements.vercel.app/components/actions",
+        "repository": "https://github.com/SikandarJODD/ai-elements",
+        "complexity": "beginner",
+        "updated": "2025-09-24",
+        "featured": true
       }
     },
     {
@@ -155,6 +163,352 @@
       }
     },
     {
+      "name": "code",
+      "type": "registry:block",
+      "description": "The Code component displays formatted code snippets with syntax highlighting, line numbers, and a copy-to-clipboard feature. It supports multiple programming languages and themes for better readability.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/code/Code.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/code/Code.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/code/CodeCopyButton.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/code/CodeCopyButton.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/code/CodeOverflow.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/code/CodeOverflow.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/code/code.svelte.ts",
+          "type": "registry:file",
+          "target": "ai-elements/code/code.svelte.ts"
+        },
+        {
+          "path": "src/lib/components/ai-elements/code/shiki.ts",
+          "type": "registry:file",
+          "target": "ai-elements/code/shiki.ts"
+        },
+        {
+          "path": "src/lib/components/ai-elements/code/types.ts",
+          "type": "registry:file",
+          "target": "ai-elements/code/types.ts"
+        },
+        {
+          "path": "src/lib/components/ai-elements/code/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/code/index.ts"
+        }
+      ],
+      "registryDependencies": [
+        "button",
+        "tooltip"
+      ],
+      "dependencies": [
+        "svelte-toolbelt",
+        "isomorphic-dompurify",
+        "shiki",
+        "runed",
+        "@shiki/langs",
+        "@shiki/themes"
+      ],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
+      "name": "context",
+      "type": "registry:block",
+      "description": "The Context component provides a comprehensive view of AI model usage, displaying token consumption, costs, and performance metrics through an interactive hover card interface.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/context/Context.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/context/Context.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/context/ContextCacheUsage.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/context/ContextCacheUsage.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/context/ContextContent.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/context/ContextContent.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/context/ContextContentBody.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/context/ContextContentBody.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/context/ContextContentFooter.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/context/ContextContentFooter.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/context/ContextContentHeader.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/context/ContextContentHeader.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/context/ContextIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/context/ContextIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/context/ContextInputUsage.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/context/ContextInputUsage.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/context/ContextOutputUsage.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/context/ContextOutputUsage.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/context/ContextReasoningUsage.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/context/ContextReasoningUsage.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/context/ContextTrigger.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/context/ContextTrigger.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/context/TokensWithCost.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/context/TokensWithCost.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/context/context-context.svelte.ts",
+          "type": "registry:file",
+          "target": "ai-elements/context/context-context.svelte.ts"
+        },
+        {
+          "path": "src/lib/components/ai-elements/context/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/context/index.ts"
+        }
+      ],
+      "registryDependencies": [
+        "hover-card"
+      ],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
+      "name": "conversation",
+      "type": "registry:block",
+      "description": "The Conversation component provides a structured layout for displaying a series of chat messages between a user and an AI. It supports features like message grouping, typing indicators, and customizable avatars.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/conversation/Conversation.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/conversation/Conversation.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/conversation/ConversationContent.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/conversation/ConversationContent.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/conversation/ConversationEmptyState.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/conversation/ConversationEmptyState.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/conversation/ConversationScrollButton.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/conversation/ConversationScrollButton.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/conversation/stick-to-bottom-context.svelte.ts",
+          "type": "registry:file",
+          "target": "ai-elements/conversation/stick-to-bottom-context.svelte.ts"
+        },
+        {
+          "path": "src/lib/components/ai-elements/conversation/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/conversation/index.ts"
+        }
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
+      "name": "copy-button",
+      "type": "registry:block",
+      "description": "The CopyButton component provides a button that allows users to copy text to their clipboard with visual feedback indicating success or failure.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/copy-button/CopyButton.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/copy-button/CopyButton.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/copy-button/types.ts",
+          "type": "registry:file",
+          "target": "ai-elements/copy-button/types.ts"
+        },
+        {
+          "path": "src/lib/hooks/use-clipboard.svelte.ts",
+          "type": "registry:file",
+          "target": "hooks/use-clipboard.svelte.ts"
+        },
+        {
+          "path": "src/lib/components/ai-elements/copy-button/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/copy-button/index.ts"
+        }
+      ],
+      "registryDependencies": [
+        "button",
+        "tooltip"
+      ],
+      "dependencies": [
+        "@lucide/svelte"
+      ],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
+      "name": "inline-citation",
+      "type": "registry:block",
+      "description": "The InlineCitation component displays a citation or reference within text, typically used to attribute sources in AI-generated content. It includes a tooltip for additional information.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/InlineCitation.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/inline-citation/InlineCitation.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/InlineCitationCard.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/inline-citation/InlineCitationCard.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/InlineCitationCardBody.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/inline-citation/InlineCitationCardBody.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/InlineCitationTrigger.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/inline-citation/InlineCitationTrigger.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/InlineCitationCarousel.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/inline-citation/InlineCitationCarousel.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/InlineCitationCarouselContent.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/inline-citation/InlineCitationCarouselContent.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/InlineCitationCarouselHeader.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/inline-citation/InlineCitationCarouselHeader.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/InlineCitationCarouselIndex.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/inline-citation/InlineCitationCarouselIndex.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/InlineCitationCarouselItem.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/inline-citation/InlineCitationCarouselItem.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/InlineCitationCarouselNext.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/inline-citation/InlineCitationCarouselNext.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/InlineCitationCarouselPrev.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/inline-citation/InlineCitationCarouselPrev.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/InlineCitationQuote.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/inline-citation/InlineCitationQuote.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/InlineCitationSource.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/inline-citation/InlineCitationSource.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/InlineCitationText.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/inline-citation/InlineCitationText.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/carousel-context.svelte.ts",
+          "type": "registry:file",
+          "target": "ai-elements/inline-citation/carousel-context.svelte.ts"
+        },
+        {
+          "path": "src/lib/components/ai-elements/inline-citation/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/inline-citation/index.ts"
+        }
+      ],
+      "registryDependencies": [
+        "tooltip",
+        "hover-card",
+        "badge",
+        "button",
+        "carousel"
+      ],
+      "dependencies": [
+        "@lucide/svelte"
+      ],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
+      "name": "loader",
+      "type": "registry:block",
+      "description": "The Loader component provides a visual indicator of loading or processing states in an AI application. It includes various styles and animations to enhance user experience during wait times.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/loader/Loader.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/loader/Loader.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/loader/LoaderIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/loader/LoaderIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/loader/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/loader/index.ts"
+        }
+      ],
+      "registryDependencies": [],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
       "name": "message",
       "type": "registry:block",
       "description": "The Message component displays a chat interface message from either a user or an AI. It includes an avatar, a name, and a message content.",
@@ -187,6 +541,589 @@
         "ai",
         "tailwind-variants"
       ]
+    },
+    {
+      "name": "open-in-chat",
+      "type": "registry:block",
+      "description": "The OpenIn component provides a dropdown menu that allows users to open queries in different AI chat platforms (ChatGPT, Claude, V0, etc.) with a single click.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/OpenIn.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/OpenIn.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/OpenInContent.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/OpenInContent.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/OpenInItem.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/OpenInItem.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/OpenInLabel.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/OpenInLabel.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/OpenInSeparator.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/OpenInSeparator.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/OpenInTrigger.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/OpenInTrigger.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/OpenInChatGPT.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/OpenInChatGPT.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/OpenInClaude.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/OpenInClaude.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/OpenInT3.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/OpenInT3.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/OpenInScira.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/OpenInScira.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/OpenInV0.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/OpenInV0.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/GitHubIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/GitHubIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/SciraIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/SciraIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/ChatGPTIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/ChatGPTIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/ClaudeIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/ClaudeIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/V0Icon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/open-in-chat/V0Icon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/open-in-context.svelte.ts",
+          "type": "registry:file",
+          "target": "ai-elements/open-in-chat/open-in-context.svelte.ts"
+        },
+        {
+          "path": "src/lib/components/ai-elements/open-in-chat/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/open-in-chat/index.ts"
+        }
+      ],
+      "registryDependencies": [
+        "button",
+        "dropdown-menu",
+        "tooltip"
+      ],
+      "dependencies": [
+        "@lucide/svelte"
+      ],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
+      "name": "prompt-input",
+      "type": "registry:block",
+      "description": "The PromptInput component allows a user to send a message with file attachments to a large language model. It includes a textarea, file upload capabilities, a submit button, and a dropdown for selecting the model.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInput.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInput.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputBody.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputBody.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputTextarea.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputTextarea.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputToolbar.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputToolbar.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputTools.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputTools.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputButton.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputButton.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputAttachment.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputAttachment.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputAttachments.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputAttachments.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputActionMenu.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputActionMenu.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputActionMenuTrigger.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputActionMenuTrigger.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputActionMenuContent.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputActionMenuContent.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputActionMenuItem.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputActionMenuItem.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputActionAddAttachments.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputActionAddAttachments.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputSubmit.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputSubmit.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputModelSelect.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputModelSelect.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputModelSelectTrigger.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputModelSelectTrigger.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputModelSelectContent.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputModelSelectContent.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputModelSelectItem.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputModelSelectItem.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputModelSelectValue.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputModelSelectValue.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/ImageIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/ImageIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/Loader2Icon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/Loader2Icon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PaperclipIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PaperclipIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PlusIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PlusIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/SendIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/SendIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/SquareIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/SquareIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/XIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/XIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/GlobeIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/GlobeIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/MicIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/MicIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/attachments-context.svelte.ts",
+          "type": "registry:file",
+          "target": "ai-elements/prompt-input/attachments-context.svelte.ts"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/prompt-input/index.ts"
+        }
+      ],
+      "registryDependencies": [
+        "button",
+        "textarea",
+        "select",
+        "dropdown-menu",
+        "tooltip"
+      ],
+      "dependencies": [
+        "runed"
+      ],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
+      "name": "reasoning",
+      "type": "registry:block",
+      "description": "The Reasoning component displays AI reasoning content, automatically opening during streaming and closing when finished.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/reasoning/Reasoning.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/reasoning/Reasoning.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/reasoning/ReasoningTrigger.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/reasoning/ReasoningTrigger.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/reasoning/ReasoningContent.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/reasoning/ReasoningContent.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/reasoning/Response.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/reasoning/Response.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/reasoning/BrainIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/reasoning/BrainIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/reasoning/ChevronDownIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/reasoning/ChevronDownIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/reasoning/reasoning-context.svelte.ts",
+          "type": "registry:file",
+          "target": "ai-elements/reasoning/reasoning-context.svelte.ts"
+        },
+        {
+          "path": "src/lib/components/ai-elements/reasoning/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/reasoning/index.ts"
+        }
+      ],
+      "registryDependencies": [
+        "collapsible"
+      ],
+      "dependencies": [
+        "runed"
+      ],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
+      "name": "response",
+      "type": "registry:block",
+      "description": "The Response component provides a structured container for displaying AI responses with consistent formatting and styling.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/response/Response.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/response/Response.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/response/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/response/index.ts"
+        }
+      ],
+      "registryDependencies": [],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
+      "name": "sources",
+      "type": "registry:block",
+      "description": "The Sources component displays a collapsible list of sources and references used in AI responses, with expandable content and visual indicators.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/sources/Sources.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/sources/Sources.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/sources/SourcesTrigger.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/sources/SourcesTrigger.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/sources/SourcesContent.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/sources/SourcesContent.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/sources/Source.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/sources/Source.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/sources/BookIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/sources/BookIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/sources/ChevronDownIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/sources/ChevronDownIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/sources/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/sources/index.ts"
+        }
+      ],
+      "registryDependencies": [
+        "collapsible"
+      ],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
+      "name": "suggestion",
+      "type": "registry:block",
+      "description": "The Suggestion component provides interactive suggestions for user input, offering quick actions and prompts to enhance the conversation experience.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/suggestion/Suggestion.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/suggestion/Suggestion.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/suggestion/Suggestions.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/suggestion/Suggestions.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/suggestion/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/suggestion/index.ts"
+        }
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
+      "name": "task",
+      "type": "registry:block",
+      "description": "The Task component displays structured task information with collapsible content, file attachments, and progress indicators for AI-generated tasks.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/task/Task.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/task/Task.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/task/TaskContent.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/task/TaskContent.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/task/TaskItem.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/task/TaskItem.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/task/TaskItemFile.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/task/TaskItemFile.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/task/TaskTrigger.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/task/TaskTrigger.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/task/SvelteIcon.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/task/SvelteIcon.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/task/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/task/index.ts"
+        }
+      ],
+      "registryDependencies": [
+        "collapsible",
+        "badge"
+      ],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
+      "name": "tool",
+      "type": "registry:block",
+      "description": "The Tool component provides a comprehensive interface for displaying AI tool usage, including input parameters, execution status, and output results with collapsible sections.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/tool/Tool.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/tool/Tool.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/tool/ToolHeader.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/tool/ToolHeader.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/tool/ToolContent.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/tool/ToolContent.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/tool/ToolInput.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/tool/ToolInput.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/tool/ToolOutput.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/tool/ToolOutput.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/tool/tool-context.svelte.ts",
+          "type": "registry:file",
+          "target": "ai-elements/tool/tool-context.svelte.ts"
+        },
+        {
+          "path": "src/lib/components/ai-elements/tool/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/tool/index.ts"
+        }
+      ],
+      "registryDependencies": [
+        "collapsible",
+        "badge"
+      ],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
+      "name": "web-preview",
+      "type": "registry:block",
+      "description": "The WebPreview component provides an interactive web browser interface for displaying and navigating web content with console logging capabilities.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/web-preview/WebPreview.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/web-preview/WebPreview.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/web-preview/WebPreviewNavigation.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/web-preview/WebPreviewNavigation.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/web-preview/WebPreviewNavigationButton.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/web-preview/WebPreviewNavigationButton.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/web-preview/WebPreviewUrl.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/web-preview/WebPreviewUrl.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/web-preview/WebPreviewBody.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/web-preview/WebPreviewBody.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/web-preview/WebPreviewConsole.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/web-preview/WebPreviewConsole.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/web-preview/web-preview-context.svelte.ts",
+          "type": "registry:file",
+          "target": "ai-elements/web-preview/web-preview-context.svelte.ts"
+        },
+        {
+          "path": "src/lib/components/ai-elements/web-preview/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/web-preview/index.ts"
+        }
+      ],
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "meta": {
+        "author": "SikandarJODD"
+      }
     }
   ]
 }

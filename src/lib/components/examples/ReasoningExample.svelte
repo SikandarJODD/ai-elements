@@ -3,7 +3,7 @@
     Reasoning,
     ReasoningTrigger,
     ReasoningContent,
-  } from "../ai-elements/reasoning/index.js";
+  } from "$lib/components/ai-elements/reasoning";
   import { onMount } from "svelte";
   import { watch } from "runed";
 

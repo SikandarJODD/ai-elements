@@ -35,7 +35,7 @@
         navigation buttons.
       </p>
 
-      <Playground code={examples.basic.code} highlight={[2, [103, 114]]}>
+      <Playground code={examples.basic.code}  >
         <examples.basic.Component />
       </Playground>
 
