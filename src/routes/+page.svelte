@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Hero from "$lib/components/landing/Hero.svelte";
   import { MetaTags } from "svelte-meta-tags";
 </script>
 
@@ -15,7 +16,7 @@
     siteName: "Svelte AI Elements",
     images: [
       {
-        url: 'https://ai-elements.vercel.app/assets/svelte-ai-elements.png',
+        url: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
         width: 1200,
         height: 630,
         alt: "Svelte AI Elements",
@@ -30,7 +31,8 @@
     title: "Svelte AI Elements",
     description:
       "Explore a variety of AI-powered components and features designed to enhance user interactions and streamline workflows.",
-    image: 'https://ai-elements.vercel.app/assets/svelte-ai-elements.png',
+    image: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
     imageAlt: "Twitter image alt",
   }}
 />
+<Hero />
