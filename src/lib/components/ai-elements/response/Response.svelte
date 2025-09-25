@@ -14,5 +14,6 @@
     "size-full [&>*:first-child]:mt-0 [&>*:last-child]:mb-0",
     className
   )}
+  shikiPreloadThemes={["github-light-default", "github-dark-default"]}
   {...restProps}
 />

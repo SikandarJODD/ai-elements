@@ -64,6 +64,6 @@
 <div class="w-full p-4" style="height: 300px;">
   <Reasoning class="w-full" {isStreaming}>
     <ReasoningTrigger />
-    <ReasoningContent>{content}</ReasoningContent>
+    <ReasoningContent>{@html marked(content)}</ReasoningContent>
   </Reasoning>
 </div>

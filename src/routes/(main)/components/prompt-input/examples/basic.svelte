@@ -65,11 +65,11 @@
     }, STREAMING_TIMEOUT);
   };
 
-  // $inspect(model, model_name, "model");
+  $inspect(model, model_name, "model");
 </script>
 
 <div class="max-w-2xl mx-auto p-4">
-  <h2 class="text-2xl font-bold mb-4">Prompt Input Example</h2>
+  <!-- <h2 class="text-2xl font-bold mb-4">Prompt Input Example</h2> -->
 
   <PromptInput globalDrop multiple onSubmit={handleSubmit}>
     <PromptInputBody>
@@ -127,10 +127,10 @@
     </PromptInputToolbar>
   </PromptInput>
 
-  <div class="mt-4 p-4 bg-background rounded-lg">
+  <!-- <div class="mt-4 p-4 bg-background rounded-lg">
     <h3 class="font-semibold mb-2">Debug Info:</h3>
     <p><strong>Text:</strong> {text || "(empty)"}</p>
     <p><strong>Model:</strong> {model}</p>
     <p><strong>Status:</strong> {status}</p>
-  </div>
+  </div> -->
 </div>

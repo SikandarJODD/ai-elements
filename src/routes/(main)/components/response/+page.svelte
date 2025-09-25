@@ -29,12 +29,17 @@
       <Subheading class="md:text-3xl">Response</Subheading>
 
       <p class="my-2 !text-muted-foreground text-lg">
-        The Response component renders a Markdown response from a large language model. It uses Streamdown under the hood to render the markdown.
+        The Response component renders a Markdown response from a large language
+        model. It uses Streamdown under the hood to render the markdown.
       </p>
 
-      <Playground code={examples.basic.code}>
-        <examples.basic.Component />
-      </Playground>
+      <div data-toc-index={false}>
+        <Playground code={examples.basic.code} replay>
+          <div class="w-full overflow-y-auto dark-scrollbar max-h-[500px]">
+            <examples.basic.Component />
+          </div>
+        </Playground>
+      </div>
 
       <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
       <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/response.json`} />

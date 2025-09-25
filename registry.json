@@ -403,9 +403,9 @@
           "target": "ai-elements/inline-citation/InlineCitationCardBody.svelte"
         },
         {
-          "path": "src/lib/components/ai-elements/inline-citation/InlineCitationTrigger.svelte",
+          "path": "src/lib/components/ai-elements/inline-citation/InlineCitationCardTrigger.svelte",
           "type": "registry:component",
-          "target": "ai-elements/inline-citation/InlineCitationTrigger.svelte"
+          "target": "ai-elements/inline-citation/InlineCitationCardTrigger.svelte"
         },
         {
           "path": "src/lib/components/ai-elements/inline-citation/InlineCitationCarousel.svelte",

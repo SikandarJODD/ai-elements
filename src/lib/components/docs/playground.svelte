@@ -44,7 +44,7 @@
         <Button
           size="icon"
           variant="ghost"
-          class="absolute top-3 left-3"
+          class="absolute top-3 right-3"
           onclick={() => remountCount++}
         >
           <RefreshCwIcon class="size-4" />
@@ -60,7 +60,7 @@
   <Tabs.Content value="code" class="w-full pb-4">
     <div
       class={cn(
-        "border-border relative flex min-h-[400px]  rounded-lg border w-full",
+        "border-border relative flex min-h-[400px] rounded-lg border w-full",
         className
       )}
     >

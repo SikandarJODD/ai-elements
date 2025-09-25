@@ -32,7 +32,7 @@
         The <CodeSpan>Reasoning</CodeSpan> component displays AI reasoning content, automatically opening during streaming and closing when finished.
       </p>
 
-      <Playground code={examples.basic.code}>
+      <Playground code={examples.basic.code} replay>
         <examples.basic.Component />
       </Playground>
 
@@ -54,9 +54,9 @@
 \<\/script\>
 
 <Reasoning class="w-full" {isStreaming}>
-    <ReasoningTrigger />
-    <ReasoningContent>{content}</ReasoningContent>
-  </Reasoning>
+  <ReasoningTrigger />
+  <ReasoningContent>{content}</ReasoningContent>
+</Reasoning>
   `}
         />
       </div>
