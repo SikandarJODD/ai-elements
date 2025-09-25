@@ -1,7 +1,12 @@
-<script lang="ts" module>
-  // Add this inside components below inside data
-  // Components : Branch, Chain of Thought, Code Block, Context, Converation, Inline Citation, Loader, Message, Open in Chat, Prompt Input, Reasoning, Response, Sources, Suggestion, Task, Tool, Web Preview
-  let data = {
+<script lang="ts">
+  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+  import type { ComponentProps } from "svelte";
+  let {
+    ref = $bindable(null),
+    ...restProps
+  }: ComponentProps<typeof Sidebar.Root> = $props();
+
+  let data = $state({
     navMain: [
       {
         title: "Getting Started",
@@ -10,12 +15,11 @@
           {
             title: "Introduction",
             url: "/docs/introduction",
-            isActive: true,
           },
-          {
-            title: "Installation",
-            url: "/docs/installation",
-          },
+          // {
+          //   title: "Installation",
+          //   url: "/docs/installation",
+          // },
         ],
       },
       {
@@ -25,15 +29,16 @@
           {
             title: "Actions",
             url: "/components/actions",
+            isActive: true,
           },
           {
             title: "Artifact",
             url: "/components/artifact",
           },
-          {
-            title: "Branch",
-            url: "/components/branch",
-          },
+          // {
+          //   title: "Branch",
+          //   url: "/components/branch",
+          // },
           {
             title: "Chain of Thought",
             url: "/components/chain-of-thought",
@@ -111,16 +116,15 @@
       //   ],
       // },
     ],
-  };
-</script>
+  });
 
-<script lang="ts">
-  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-  import type { ComponentProps } from "svelte";
-  let {
-    ref = $bindable(null),
-    ...restProps
-  }: ComponentProps<typeof Sidebar.Root> = $props();
+  let updateIsActive = (url: string) => {
+    data.navMain.forEach((item) => {
+      item.items?.forEach((subItem) => {
+        subItem.isActive = subItem.url === url;
+      });
+    });
+  };
 </script>
 
 <Sidebar.Root class="mt-16 h-[calc(100vh-4rem)]" {...restProps} bind:ref>
@@ -161,7 +165,7 @@
               <Sidebar.MenuSub>
                 {#each item.items as subItem (subItem.title)}
                   <Sidebar.MenuSubItem>
-                    <Sidebar.MenuSubButton isActive={subItem.isActive}>
+                    <Sidebar.MenuSubButton isActive={subItem.isActive} onclick={() => updateIsActive(subItem.url)}>
                       {#snippet child({ props })}
                         <a href={subItem.url} {...props}>{subItem.title}</a>
                       {/snippet}

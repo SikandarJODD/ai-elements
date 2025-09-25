@@ -29,11 +29,16 @@
       <Subheading class="md:text-3xl">Web Preview</Subheading>
 
       <p class="my-2 !text-muted-foreground text-lg">
-        The <CodeSpan>Web Preview</CodeSpan> component provides a flexible way to showcase the result of a generated UI component, along with its source code. It is designed for documentation and demo purposes, allowing users to interact with live examples and view the underlying implementation.
+        The <CodeSpan>Web Preview</CodeSpan> component provides a flexible way to
+        showcase the result of a generated UI component, along with its source code.
+        It is designed for documentation and demo purposes, allowing users to interact
+        with live examples and view the underlying implementation.
       </p>
 
       <Playground code={examples.basic.code}>
-        <examples.basic.Component />
+        <div class="w-full">
+          <examples.basic.Component />
+        </div>
       </Playground>
 
       <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
@@ -57,7 +62,7 @@
 	} from '$lib/components/ai-elements/web-preview';
 \<\/script\>
 
-<WebPreview defaultUrl="https://svelte.dev" style={{ height: '400px' }}>
+<WebPreview defaultUrl="https://svelte.dev">
   <WebPreviewNavigation>
     <WebPreviewUrl src="https://svelte.dev" />
   </WebPreviewNavigation>

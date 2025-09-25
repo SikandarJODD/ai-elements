@@ -1,0 +1,24 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "response",
+	"type": "registry:block",
+	"description": "The Response component provides a structured container for displaying AI responses with consistent formatting and styling.",
+	"dependencies": [
+		"svelte-streamdown@^2.3.0"
+	],
+	"meta": {
+		"author": "SikandarJODD"
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\r\n  import { Streamdown, type StreamdownProps } from \"svelte-streamdown\";\r\n  import { cn } from \"$UTILS$.js\";\r\n\r\n  type Props = StreamdownProps & {\r\n    class?: string;\r\n  };\r\n\r\n  let { class: className, ...restProps }: Props = $props();\r\n</script>\r\n\r\n<Streamdown\r\n  class={cn(\r\n    \"size-full [&>*:first-child]:mt-0 [&>*:last-child]:mb-0\",\r\n    className\r\n  )}\r\n  shikiPreloadThemes={[\"github-light-default\", \"github-dark-default\"]}\r\n  {...restProps}\r\n/>\r\n",
+			"type": "registry:component",
+			"target": "ai-elements/response/Response.svelte"
+		},
+		{
+			"content": "export { default as Response } from './Response.svelte';",
+			"type": "registry:file",
+			"target": "ai-elements/response/index.ts"
+		}
+	]
+}

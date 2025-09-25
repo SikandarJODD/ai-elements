@@ -29,11 +29,16 @@
       <Subheading class="md:text-3xl">Prompt Input</Subheading>
 
       <p class="my-2 !text-muted-foreground text-lg">
-        The <CodeSpan>Prompt Input</CodeSpan> component allows a user to send a message with file attachments to a large language model. It includes a textarea, file upload capabilities, a submit button, and a dropdown for selecting the model.
+        The <CodeSpan>Prompt Input</CodeSpan> component allows a user to send a message
+        with file attachments to a large language model. It includes a textarea,
+        file upload capabilities, a submit button, and a dropdown for selecting the
+        model.
       </p>
 
-      <Playground code={examples.basic.code} >
-        <examples.basic.Component />
+      <Playground code={examples.basic.code}>
+        <div class="w-full">
+          <examples.basic.Component />
+        </div>
       </Playground>
 
       <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->

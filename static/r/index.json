@@ -8,7 +8,21 @@
 			"tooltip"
 		],
 		"meta": {
-			"author": "SikandarJODD"
+			"author": "SikandarJODD",
+			"version": "1.0.0",
+			"tags": [
+				"actions",
+				"buttons",
+				"ai-response",
+				"interactive",
+				"feedback"
+			],
+			"category": "AI Response",
+			"documentation": "https://ai-elements.vercel.app/components/actions",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "beginner",
+			"updated": "2025-09-24",
+			"featured": true
 		},
 		"relativeUrl": "action.json"
 	},
@@ -43,6 +57,96 @@
 		"relativeUrl": "chain-of-thought.json"
 	},
 	{
+		"name": "code",
+		"type": "registry:block",
+		"description": "The Code component displays formatted code snippets with syntax highlighting, line numbers, and a copy-to-clipboard feature. It supports multiple programming languages and themes for better readability.",
+		"dependencies": [
+			"svelte-toolbelt",
+			"isomorphic-dompurify",
+			"shiki",
+			"runed",
+			"@shiki/langs",
+			"@shiki/themes"
+		],
+		"registryDependencies": [
+			"button",
+			"tooltip"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "code.json"
+	},
+	{
+		"name": "context",
+		"type": "registry:block",
+		"description": "The Context component provides a comprehensive view of AI model usage, displaying token consumption, costs, and performance metrics through an interactive hover card interface.",
+		"registryDependencies": [
+			"hover-card"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "context.json"
+	},
+	{
+		"name": "conversation",
+		"type": "registry:block",
+		"description": "The Conversation component provides a structured layout for displaying a series of chat messages between a user and an AI. It supports features like message grouping, typing indicators, and customizable avatars.",
+		"registryDependencies": [
+			"button"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "conversation.json"
+	},
+	{
+		"name": "copy-button",
+		"type": "registry:block",
+		"description": "The CopyButton component provides a button that allows users to copy text to their clipboard with visual feedback indicating success or failure.",
+		"dependencies": [
+			"@lucide/svelte"
+		],
+		"registryDependencies": [
+			"button",
+			"tooltip"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "copy-button.json"
+	},
+	{
+		"name": "inline-citation",
+		"type": "registry:block",
+		"description": "The InlineCitation component displays a citation or reference within text, typically used to attribute sources in AI-generated content. It includes a tooltip for additional information.",
+		"dependencies": [
+			"@lucide/svelte"
+		],
+		"registryDependencies": [
+			"tooltip",
+			"hover-card",
+			"badge",
+			"button",
+			"carousel"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "inline-citation.json"
+	},
+	{
+		"name": "loader",
+		"type": "registry:block",
+		"description": "The Loader component provides a visual indicator of loading or processing states in an AI application. It includes various styles and animations to enhance user experience during wait times.",
+		"registryDependencies": [],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "loader.json"
+	},
+	{
 		"name": "message",
 		"type": "registry:block",
 		"description": "The Message component displays a chat interface message from either a user or an AI. It includes an avatar, a name, and a message content.",
@@ -54,5 +158,129 @@
 			"avatar"
 		],
 		"relativeUrl": "message.json"
+	},
+	{
+		"name": "open-in-chat",
+		"type": "registry:block",
+		"description": "The OpenIn component provides a dropdown menu that allows users to open queries in different AI chat platforms (ChatGPT, Claude, V0, etc.) with a single click.",
+		"dependencies": [
+			"@lucide/svelte"
+		],
+		"registryDependencies": [
+			"button",
+			"dropdown-menu",
+			"tooltip"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "open-in-chat.json"
+	},
+	{
+		"name": "prompt-input",
+		"type": "registry:block",
+		"description": "The PromptInput component allows a user to send a message with file attachments to a large language model. It includes a textarea, file upload capabilities, a submit button, and a dropdown for selecting the model.",
+		"dependencies": [
+			"runed"
+		],
+		"registryDependencies": [
+			"button",
+			"textarea",
+			"select",
+			"dropdown-menu",
+			"tooltip"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "prompt-input.json"
+	},
+	{
+		"name": "reasoning",
+		"type": "registry:block",
+		"description": "The Reasoning component displays AI reasoning content, automatically opening during streaming and closing when finished.",
+		"dependencies": [
+			"runed"
+		],
+		"registryDependencies": [
+			"collapsible"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "reasoning.json"
+	},
+	{
+		"name": "response",
+		"type": "registry:block",
+		"description": "The Response component provides a structured container for displaying AI responses with consistent formatting and styling.",
+		"registryDependencies": [],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "response.json"
+	},
+	{
+		"name": "sources",
+		"type": "registry:block",
+		"description": "The Sources component displays a collapsible list of sources and references used in AI responses, with expandable content and visual indicators.",
+		"registryDependencies": [
+			"collapsible"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "sources.json"
+	},
+	{
+		"name": "suggestion",
+		"type": "registry:block",
+		"description": "The Suggestion component provides interactive suggestions for user input, offering quick actions and prompts to enhance the conversation experience.",
+		"registryDependencies": [
+			"button"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "suggestion.json"
+	},
+	{
+		"name": "task",
+		"type": "registry:block",
+		"description": "The Task component displays structured task information with collapsible content, file attachments, and progress indicators for AI-generated tasks.",
+		"registryDependencies": [
+			"collapsible",
+			"badge"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "task.json"
+	},
+	{
+		"name": "tool",
+		"type": "registry:block",
+		"description": "The Tool component provides a comprehensive interface for displaying AI tool usage, including input parameters, execution status, and output results with collapsible sections.",
+		"registryDependencies": [
+			"collapsible",
+			"badge"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "tool.json"
+	},
+	{
+		"name": "web-preview",
+		"type": "registry:block",
+		"description": "The WebPreview component provides an interactive web browser interface for displaying and navigating web content with console logging capabilities.",
+		"registryDependencies": [
+			"button",
+			"input"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "web-preview.json"
 	}
 ]

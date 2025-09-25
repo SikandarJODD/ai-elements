@@ -93,7 +93,7 @@
     <span
       class="text-muted-foreground font-mono text-sm leading-none font-light text-nowrap"
     >
-      {commandText}
+       {commandText}
     </span>
   </div>
 </div>

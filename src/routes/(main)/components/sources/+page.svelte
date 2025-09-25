@@ -29,11 +29,14 @@
       <Subheading class="md:text-3xl">Sources</Subheading>
 
       <p class="my-2 !text-muted-foreground text-lg">
-        The <CodeSpan>Sources</CodeSpan> component allows a user to view the sources or citations used to generate a response.
+        The <CodeSpan>Sources</CodeSpan> component allows a user to view the sources
+        or citations used to generate a response.
       </p>
 
-      <Playground code={examples.basic.code} >
-        <examples.basic.Component />
+      <Playground code={examples.basic.code}>
+        <div class="min-w-xs">
+          <examples.basic.Component />
+        </div>
       </Playground>
 
       <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->

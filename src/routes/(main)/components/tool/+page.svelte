@@ -29,13 +29,15 @@
       <Subheading class="md:text-3xl">Tool</Subheading>
 
       <p class="my-2 !text-muted-foreground text-lg">
-        The <CodeSpan>Tool</CodeSpan> component displays a collapsible interface for showing/hiding
-        tool details. It is designed to take the ToolUIPart type from the AI SDK
-        and display it in a collapsible interface.
+        The <CodeSpan>Tool</CodeSpan> component displays a collapsible interface
+        for showing/hiding tool details. It is designed to take the ToolUIPart type
+        from the AI SDK and display it in a collapsible interface.
       </p>
 
       <Playground code={examples.basic.code}>
-        <examples.basic.Component />
+        <div class="w-full">
+          <examples.basic.Component />
+        </div>
       </Playground>
 
       <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->

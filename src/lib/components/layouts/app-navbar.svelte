@@ -24,8 +24,8 @@
   // Navigation links array to be used in both desktop and mobile menus
   let navigationLinks: NavigationLink[] = $state([
     { href: "/", label: "Home", active: true },
-    { href: "/docs", label: "Docs", active: false },
-    { href: "/components", label: "Components", active: false },
+    { href: "/docs/introduction", label: "Docs", active: false },
+    { href: "/components/actions", label: "Components", active: false },
     // { href: "#", label: "About", active: false },
   ]);
 </script>

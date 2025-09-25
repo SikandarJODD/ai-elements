@@ -7,6 +7,7 @@
 
   import { onMount } from "svelte";
   import { watch } from "runed";
+  import { marked } from "marked";
 
   let reasoningSteps = [
     "Let me think about this problem step by step.",
@@ -65,6 +66,6 @@
 <div class="w-full p-4" style="height: 300px;">
   <Reasoning class="w-full" {isStreaming}>
     <ReasoningTrigger />
-    <ReasoningContent>{content}</ReasoningContent>
+    <ReasoningContent>{@html marked(content)}</ReasoningContent>
   </Reasoning>
 </div>

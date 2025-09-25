@@ -20,6 +20,9 @@ importers:
       isomorphic-dompurify:
         specifier: ^2.28.0
         version: 2.28.0(postcss@8.5.6)
+      marked:
+        specifier: ^16.3.0
+        version: 16.3.0
       mode-watcher:
         specifier: ^1.1.0
         version: 1.1.0(svelte@5.39.3)
@@ -36,7 +39,7 @@ importers:
         specifier: ^3.13.0
         version: 3.13.0
       svelte-streamdown:
-        specifier: ^2.2.7
+        specifier: ^2.3.0
         version: 2.3.0(svelte@5.39.3)
       svelte-toolbelt:
         specifier: ^0.10.5

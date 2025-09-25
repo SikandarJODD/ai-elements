@@ -141,9 +141,30 @@ const createHeading = (element: HTMLHeadingElement, index: number): Heading => {
  * @returns
  */
 const getToc = (el: HTMLElement): Heading[] => {
-  const headings = Array.from(
+  const allHeadings = Array.from(
     el.querySelectorAll("h1, h2, h3, h4, h5, h6")
-  ).map((h, i) => createHeading(h as HTMLHeadingElement, i));
+  );
+
+  // Filter out headings that should be excluded from TOC
+  const filteredHeadings = allHeadings.filter((heading) => {
+    // Check if the heading itself has data-toc-index="false"
+    if (heading.getAttribute('data-toc-index') === 'false') {
+      return false;
+    }
+
+    // Check if any parent element has data-toc-index="false"
+    let parent = heading.parentElement;
+    while (parent && parent !== el) {
+      if (parent.getAttribute('data-toc-index') === 'false') {
+        return false;
+      }
+      parent = parent.parentElement;
+    }
+
+    return true;
+  });
+
+  const headings = filteredHeadings.map((h, i) => createHeading(h as HTMLHeadingElement, i));
 
   if (headings.length === 0) return [];
 

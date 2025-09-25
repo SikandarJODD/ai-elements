@@ -242,4 +242,4 @@
   });
 </script>
 
-<Response {content} class="h-[500px]" />
+<Response {content} class="h-[500px]"  />

@@ -29,11 +29,16 @@
       <Subheading class="md:text-3xl">Task</Subheading>
 
       <p class="my-2 !text-muted-foreground text-lg">
-       The <CodeSpan>Task</CodeSpan> component provides a structured way to display task lists or workflow progress with collapsible details, status indicators, and progress tracking. It consists of a main Task container with TaskTrigger for the clickable header and TaskContent for the collapsible content area.
+        The <CodeSpan>Task</CodeSpan> component provides a structured way to display
+        task lists or workflow progress with collapsible details, status indicators,
+        and progress tracking. It consists of a main Task container with TaskTrigger
+        for the clickable header and TaskContent for the collapsible content area.
       </p>
 
       <Playground code={examples.basic.code}>
-        <examples.basic.Component />
+        <div class="min-w-lg">
+          <examples.basic.Component />
+        </div>
       </Playground>
 
       <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
