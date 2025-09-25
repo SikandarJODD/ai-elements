@@ -3,7 +3,6 @@
 
   import * as Icons from "$lib/components/icons";
   import { LightSwitch } from "$lib/components/ui/light-switch";
-  import SvelteLogo from "$lib/assets/svelte.svg";
   import {
     NavigationMenuItem,
     NavigationMenuLink,
@@ -104,7 +103,7 @@
                 <NavigationMenuLink
                   active={link.active}
                   href={link.href}
-                  class="text-muted-foreground hover:text-primary py-1.5 font-medium"
+                  class="text-muted-foreground hover:text-primary bg-none hover:bg-transparent py-1.5 font-medium"
                 >
                   {link.label}
                 </NavigationMenuLink>
@@ -123,6 +122,14 @@
         target="_blank"
       >
         <Icons.GitHub class="size-4" />
+      </Button>
+      <Button
+        variant="ghost"
+        size="icon"
+        href="https://x.com/Sikandar_Bhide"
+        target="_blank"
+      >
+        <Icons.Twitter class="size-4" />
       </Button>
       <LightSwitch variant="ghost" />
     </div>

@@ -128,27 +128,6 @@
 </script>
 
 <Sidebar.Root class="mt-16 h-[calc(100vh-4rem)]" {...restProps} bind:ref>
-  <!-- <Sidebar.Header>
-    <Sidebar.Menu>
-      <Sidebar.MenuItem>
-        <Sidebar.MenuButton size="lg">
-          {#snippet child({ props })}
-            <a href="##" {...props}>
-              <div
-                class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
-              >
-                <GalleryVerticalEndIcon class="size-4" />
-              </div>
-              <div class="flex flex-col gap-0.5 leading-none">
-                <span class="font-medium">Documentation</span>
-                <span class="">v1.0.0</span>
-              </div>
-            </a>
-          {/snippet}
-        </Sidebar.MenuButton>
-      </Sidebar.MenuItem>
-    </Sidebar.Menu>
-  </Sidebar.Header> -->
   <Sidebar.Content class="no-scrollbar mb-4 bg-background ">
     <Sidebar.Group>
       <Sidebar.Menu>
