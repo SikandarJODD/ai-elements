@@ -23,9 +23,9 @@
   }}
 />
 
-<div class="p-4">
+<div class="md:px-6 py-4 md:py-6">
   <h1 class="text-3xl font-bold">Svelte AI Elements</h1>
-  <p class="mt-4 max-w-4xl text-xl text-muted-foreground">
+  <p class="mt-4 max-w-4xl text-lg md:text-xl text-muted-foreground">
     Svelte AI Elements is a custom registry built on top of <a
       class="underline hover:text-primary text-primary underline-offset-2"
       href="https://shadcn-svelte.com"
@@ -35,7 +35,7 @@
     like prompt input, messages, response and more.
   </p>
 
-  <p class="mt-4 max-w-4xl text-xl text-muted-foreground">
+  <p class="mt-4 max-w-4xl text-lg md:text-xl text-muted-foreground">
     you can install components via commands mentioned in the documentation.
   </p>
 </div>

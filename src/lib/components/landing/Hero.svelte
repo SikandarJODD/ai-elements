@@ -15,7 +15,7 @@
     ></div>
   </div>
   <section>
-    <div class="relative pt-24">
+    <div class="relative md:pt-24">
       <div
         class="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"
       ></div>

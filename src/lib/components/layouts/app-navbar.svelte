@@ -25,7 +25,7 @@
     { href: "/", label: "Home", active: true },
     { href: "/docs/introduction", label: "Docs", active: false },
     { href: "/components/actions", label: "Components", active: false },
-    // { href: "/response", label: "Response", active: false }, // only in development
+    // { href: "/response", label: "Response", act ive: false }, // only in development
     // { href: "#", label: "About", active: false },
   ]);
 </script>
@@ -104,7 +104,7 @@
                 <NavigationMenuLink
                   active={link.active}
                   href={link.href}
-                  class="text-muted-foreground hover:text-primary bg-none hover:bg-transparent py-1.5 font-medium"
+                  class="text-muted-foreground active:bg-transparent hover:text-primary bg-none hover:bg-transparent py-1.5 font-medium"
                 >
                   {link.label}
                 </NavigationMenuLink>
