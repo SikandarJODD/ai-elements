@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from "$lib/components/ui/button/button.svelte";
+  import * as Sidebar from "$lib/components/ui/sidebar/index";
 
   import * as Icons from "$lib/components/icons";
   import { LightSwitch } from "$lib/components/ui/light-switch";
@@ -25,7 +26,7 @@
     { href: "/", label: "Home", active: true },
     { href: "/docs/introduction", label: "Docs", active: false },
     { href: "/components/actions", label: "Components", active: false },
-    // { href: "/response", label: "Response", active: false }, // only in development
+    // { href: "/response", label: "Response", act ive: false }, // only in development
     // { href: "#", label: "About", active: false },
   ]);
 </script>
@@ -92,7 +93,7 @@
       </Popover>
       <!-- Main nav  -->
       <div class="flex items-center gap-6">
-        <a href="/" class="text-primary font-semibold hover:text-primary/90">
+        <a href="/" class="text-primary font-semibold  hover:text-primary/90">
           <!-- <img src={SvelteLogo} alt="" class="size-5" /> -->
           Svelte AI Elements
         </a>
@@ -104,7 +105,7 @@
                 <NavigationMenuLink
                   active={link.active}
                   href={link.href}
-                  class="text-muted-foreground hover:text-primary bg-none hover:bg-transparent py-1.5 font-medium"
+                  class="text-muted-foreground active:bg-transparent hover:text-primary bg-none hover:bg-transparent py-1.5 font-medium"
                 >
                   {link.label}
                 </NavigationMenuLink>
@@ -115,7 +116,7 @@
       </div>
     </div>
     <!-- Right side  -->
-    <div class="flex items-center gap-2">
+    <div class="flex items-center md:gap-2">
       <Button
         variant="ghost"
         size="icon"
@@ -129,6 +130,7 @@
         size="icon"
         href="https://x.com/Sikandar_Bhide"
         target="_blank"
+        class="hidden md:inline-flex"
       >
         <Icons.Twitter class="size-4" />
       </Button>

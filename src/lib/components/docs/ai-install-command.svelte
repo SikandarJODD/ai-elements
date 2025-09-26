@@ -91,7 +91,7 @@
   </div>
   <div class="no-scrollbar overflow-x-auto p-3">
     <span
-      class="text-muted-foreground font-mono text-sm leading-none font-light text-nowrap"
+      class="dark:text-muted-foreground font-mono text-sm leading-none font-light text-nowrap"
     >
        {commandText}
     </span>

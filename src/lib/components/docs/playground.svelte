@@ -28,7 +28,7 @@
   let tab: "preview" | "code" = $state("preview");
 </script>
 
-<Tabs.Root bind:value={tab} class="w-full">
+<Tabs.Root bind:value={tab} class="w-full mt-4">
   <Tabs.List>
     <Tabs.Trigger value="preview">Preview</Tabs.Trigger>
     <Tabs.Trigger value="code">Code</Tabs.Trigger>

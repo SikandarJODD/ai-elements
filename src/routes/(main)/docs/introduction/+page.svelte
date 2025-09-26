@@ -1,14 +1,15 @@
 <script lang="ts">
   import { MetaTags } from "svelte-meta-tags";
+  import * as Sidebar from "$lib/components/ui/sidebar/index";
 </script>
 
 <MetaTags
   title="Introduction - Svelte AI Elements"
-  description="Svelte AI Elements is a custom registry built on top of shadcn-svelte to help you build AI-native Applications faster. It provides pre-built components like prompt input, messages, response ( svelte-streamdown) and more."
+  description="Svelte AI Elements is a curated set of Svelte components for building polished AI interfaces, from prompt inputs to streaming responses."
   openGraph={{
     title: "Introduction - Svelte AI Elements",
     description:
-      "Svelte AI Elements is a custom registry built on top of shadcn-svelte to help you build AI-native Applications faster. It provides pre-built components like prompt input, messages, response ( svelte-streamdown) and more.",
+      "Svelte AI Elements is a curated set of Svelte components for building polished AI interfaces, from prompt inputs to streaming responses.",
     type: "website",
     url: "https://ai-elements.vercel.app/docs/introduction",
     images: [
@@ -23,19 +24,45 @@
   }}
 />
 
-<div class="p-4">
-  <h1 class="text-3xl font-bold">Svelte AI Elements</h1>
-  <p class="mt-4 max-w-4xl text-xl text-muted-foreground">
-    Svelte AI Elements is a custom registry built on top of <a
-      class="underline hover:text-primary text-primary underline-offset-2"
-      href="https://shadcn-svelte.com"
-      target="_blank">shadcn-svelte</a
-    >
-    to help you build AI-native Applications faster. It provides pre-built components
-    like prompt input, messages, response and more.
-  </p>
+<Sidebar.Inset class="px-4 md:px-6 py-8 md:py-12 lg:py-12">
+  <!-- <div class="md:px-6 py-4 md:py-6"> -->
+  <h1
+    class="text-3xl md:text-4xl font-semibold md:font-bold leading-tight tracking-tight text-foreground"
+  >
+    Introduction
+  </h1>
 
-  <p class="mt-4 max-w-4xl text-xl text-muted-foreground">
-    you can install components via commands mentioned in the documentation.
-  </p>
-</div>
+  <div class="mt-8 flex flex-col gap-6 md:gap-5">
+    <p
+      class="max-w-4xl text-base sm:text-lg md:text-lg leading-7 md:leading-8 text-muted-foreground"
+    >
+      <span class="text-primary">Svelte AI Elements</span> is a custom registy
+      built on top of
+      <a
+        class="underline hover:text-primary text-primary underline-offset-2"
+        href="https://shadcn-svelte.com"
+        target="_blank"
+        rel="noreferrer noopener">shadcn-svelte</a
+      > to help you build AI-native applications faster.
+    </p>
+
+    <p
+      class="max-w-4xl text-base sm:text-lg leading-7 md:leading-8 text-muted-foreground"
+    >
+      It provides a set of customizable, high-quality components build for AI
+      applications like prompt input, messages, conversation, response and more.
+    </p>
+
+    <p
+      class="max-w-4xl text-base sm:text-lg leading-7 md:leading-8 text-muted-foreground"
+    >
+        Svelte AI Elements is open source. Check out the code and contribute on <a
+        class="underline hover:text-primary text-primary underline-offset-2"
+        href="https://github.com/SikandarJODD/ai-elements"
+        target="_blank"
+        rel="noreferrer noopener">GitHub</a
+      >.
+    </p>
+  </div>
+  <!-- </div> -->
+</Sidebar.Inset>

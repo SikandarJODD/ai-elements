@@ -34,7 +34,7 @@
         and share.
       </p>
 
-      <Playground code={examples.basic.code}  >
+      <Playground code={examples.basic.code}>
         <examples.basic.Component />
       </Playground>
 
@@ -69,7 +69,7 @@
 
     <!-- TOC Sidebar - Sticky on larger screens -->
     <aside
-      class="hidden md:flex sticky top-24 h-fit max-h-[calc(100vh-3rem)] overflow-y-auto "
+      class="hidden md:flex sticky top-24 h-fit max-h-[calc(100vh-3rem)] overflow-y-auto"
     >
       <!-- TOC Component -->
       <div>
