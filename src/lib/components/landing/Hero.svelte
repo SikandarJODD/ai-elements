@@ -1,5 +1,6 @@
 <script>
   import Button from "$lib/components/ui/button/button.svelte";
+  import * as Icons from "$lib/components/icons/index";
 </script>
 
 <main class="overflow-hidden">
@@ -19,7 +20,7 @@
       <div
         class="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"
       ></div>
-      <div class="mx-auto max-w-5xl px-6">
+      <div class="mx-auto max-w-5xl px-6 md:px-6">
         <div class="sm:mx-auto lg:mr-auto lg:mt-0">
           <h1
             class="mt-8 max-w-2xl text-balance text-5xl font-semibold md:text-6xl lg:mt-16"
@@ -38,17 +39,24 @@
             prompt input, response and more.
           </p>
 
-          <div class="mt-12 flex items-center gap-2">
-            <Button size="lg" class="rounded-xl text-base h-10.5" href="/docs/introduction">
+          <div class="mt-12 flex items-center gap-1 md:gap-3">
+            <Button
+              size="lg"
+              class="rounded-full md:text-base h-10.5 font-normal"
+              href="/docs/introduction"
+            >
               Get Started
             </Button>
             <Button
               size="lg"
               variant="secondary"
-              class="h-10.5 rounded-xl  text-base"
-              href="/components/actions"
+              href="https://github.com/SikandarJODD/ai-elements"
+              target="_blank"
+              rel="noreferrer"
+              class="rounded-full border border-secondary md:text-base font-normal h-10.5"
             >
-              Components
+              <Icons.GitHub class="mr-1 size-5" />
+              Star on Github
             </Button>
           </div>
         </div>

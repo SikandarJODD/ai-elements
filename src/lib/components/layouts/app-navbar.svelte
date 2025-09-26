@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from "$lib/components/ui/button/button.svelte";
+  import * as Sidebar from "$lib/components/ui/sidebar/index";
 
   import * as Icons from "$lib/components/icons";
   import { LightSwitch } from "$lib/components/ui/light-switch";
@@ -92,7 +93,7 @@
       </Popover>
       <!-- Main nav  -->
       <div class="flex items-center gap-6">
-        <a href="/" class="text-primary font-semibold hover:text-primary/90">
+        <a href="/" class="text-primary font-semibold  hover:text-primary/90">
           <!-- <img src={SvelteLogo} alt="" class="size-5" /> -->
           Svelte AI Elements
         </a>
@@ -115,7 +116,7 @@
       </div>
     </div>
     <!-- Right side  -->
-    <div class="flex items-center gap-2">
+    <div class="flex items-center md:gap-2">
       <Button
         variant="ghost"
         size="icon"
@@ -129,6 +130,7 @@
         size="icon"
         href="https://x.com/Sikandar_Bhide"
         target="_blank"
+        class="hidden md:inline-flex"
       >
         <Icons.Twitter class="size-4" />
       </Button>

@@ -13,7 +13,7 @@
     name: string;
   };
 
-  const messages: MessageData[] = $state([
+  let messages: MessageData[] = $state([
     {
       key: crypto.randomUUID(),
       from: "user",
@@ -49,7 +49,7 @@
 
 <div class="space-y-4">
   {#each messages as { content, key, from, avatar, name }}
-    <Message {from} data-key={key}>
+    <Message {from}>
       <MessageContent>{content}</MessageContent>
       <MessageAvatar {name} src={avatar} />
     </Message>
