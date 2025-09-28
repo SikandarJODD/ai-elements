@@ -6,11 +6,9 @@
   let { children } = $props();
 </script>
 
-
 <AppNavbar />
-<ModeWatcher  />
+<ModeWatcher />
 <svelte:head>
   <link rel="icon" href={favicon} />
 </svelte:head>
-
 {@render children?.()}
