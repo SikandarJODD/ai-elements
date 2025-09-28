@@ -9,6 +9,7 @@
 
 <script lang="ts">
   import type { Heading } from "$lib/hooks/use-toc.svelte";
+  import { pushState } from "$app/navigation";
   import { cn } from "$lib/utils";
   import Self from "./toc.svelte";
 
@@ -30,7 +31,9 @@
     if (id) {
       smoothScrollTo(id);
       // Update URL without triggering page reload
-      history.pushState(null, "", `#${id}`);
+      // history.pushState(null, "", `#${id}`);
+      // pushState(null, "", `#${id}`);
+      pushState(``, `#${id}`);
     }
   }
 </script>

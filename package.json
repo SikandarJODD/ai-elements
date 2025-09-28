@@ -39,9 +39,11 @@
 		]
 	},
 	"dependencies": {
+		"@ai-sdk/svelte": "^3.0.56",
+		"@openrouter/ai-sdk-provider": "^1.2.0",
 		"@shikijs/langs": "^3.13.0",
 		"@shikijs/themes": "^3.13.0",
-		"ai": "^5.0.44",
+		"ai": "^5.0.55",
 		"isomorphic-dompurify": "^2.28.0",
 		"marked": "^16.3.0",
 		"mode-watcher": "^1.1.0",

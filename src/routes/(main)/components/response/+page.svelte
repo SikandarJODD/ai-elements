@@ -6,7 +6,6 @@
   import Code from "$lib/components/docs/code.svelte";
   import { examples } from "./examples/examples";
   import { seo } from "./examples/seo";
-  import Heading from "$lib/components/docs/heading.svelte";
   import CodeSpan from "$lib/components/docs/code-span.svelte";
   import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
@@ -25,38 +24,63 @@
     class="grid grid-cols-1 md:grid-cols-[1fr_280px] lg:grid-cols-[1fr_240px] gap-8 min-h-svh md:px-6 md:pb-6"
   >
     <!-- Main Content Area -->
-    <main class="min-w-0" bind:this={toc.ref}>
-      <Subheading class="md:text-3xl">Response</Subheading>
+    <main class="min-w-0 space-y-8" bind:this={toc.ref}>
+      <div class="space-y-4">
+        <Subheading class="md:text-3xl">Response</Subheading>
 
-      <p class="my-2 !text-muted-foreground text-lg">
-        The Response component renders a Markdown response from a large language
-        model. It uses Streamdown under the hood to render the markdown.
-      </p>
+        <p class="!text-muted-foreground text-lg leading-relaxed">
+          The Response component renders a Markdown response from a large language
+          model. It uses Streamdown under the hood to render the markdown.
+        </p>
 
-      <div data-toc-index={false}>
-        <Playground code={examples.basic.code} replay>
-          <div class="w-full overflow-y-auto dark-scrollbar max-h-[500px]">
-            <examples.basic.Component />
-          </div>
-        </Playground>
+        <div data-toc-index={false} class="mt-6">
+          <Playground code={examples.basic.code} replay>
+            <div class="w-full overflow-y-auto dark-scrollbar max-h-[500px]">
+              <examples.basic.Component />
+            </div>
+          </Playground>
+        </div>
       </div>
 
       <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
-      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/response.json`} />
+      <div class="mt-8">
+        <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/response.json`} />
+      </div>
+
+      <!-- CSS Configuration -->
+      <div class="space-y-4">
+        <Subheading>CSS Configuration</Subheading>
+
+        <p class="!text-muted-foreground leading-relaxed">
+          Add the following imports to your <CodeSpan>app.css</CodeSpan> file to include
+          Tailwind CSS and Streamdown styles:
+        </p>
+
+        <div class="mt-4">
+          <Code
+            lang="css"
+            code={`@import 'tailwindcss';
+/* Add Streamdown styles to your Tailwind build */
+@source "../node_modules/svelte-streamdown/**/*";`}
+          />
+        </div>
+      </div>
 
       <!-- Usage -->
-      <Subheading>Usage</Subheading>
+      <div class="space-y-4">
+        <Subheading>Usage</Subheading>
 
-      <div>
-        <Code
-          lang="svelte"
-          code={`\<script lang="ts"\>
+        <div class="mt-4">
+          <Code
+            lang="svelte"
+            code={`\<script lang="ts"\>
 	 import { Response } from "$lib/components/ai-elements/response";
+   let content = "# Hello, World!\\nThis is a sample response from a large language model.";
 \<\/script\>
 
-<Response {content} class="h-[500px]" />
-  `}
-        />
+<Response {content} />`}
+          />
+        </div>
       </div>
     </main>
 

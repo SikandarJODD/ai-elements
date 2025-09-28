@@ -26,6 +26,7 @@
     { href: "/", label: "Home", active: true },
     { href: "/docs/introduction", label: "Docs", active: false },
     { href: "/components/actions", label: "Components", active: false },
+    { href: "/examples/one", label: "Examples", active: false },
     // { href: "/response", label: "Response", act ive: false }, // only in development
     // { href: "#", label: "About", active: false },
   ]);

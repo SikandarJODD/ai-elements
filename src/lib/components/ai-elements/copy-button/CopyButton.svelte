@@ -46,12 +46,12 @@
 >
   {#if clipboard.status === "success"}
     <div in:scale={{ duration: animationDuration, start: 0.85 }}>
-      <CheckIcon tabindex={-1} />
+      <CheckIcon tabindex={-1} strokeWidth={1.8} />
       <span class="sr-only">Copied</span>
     </div>
   {:else if clipboard.status === "failure"}
     <div in:scale={{ duration: animationDuration, start: 0.85 }}>
-      <XIcon tabindex={-1} />
+      <XIcon tabindex={-1} strokeWidth={1.8} />
       <span class="sr-only">Failed to copy</span>
     </div>
   {:else}
@@ -59,7 +59,7 @@
       {#if icon}
         {@render icon()}
       {:else}
-        <CopyIcon tabindex={-1} />
+        <CopyIcon tabindex={-1} strokeWidth={1.8} />
       {/if}
       <span class="sr-only">Copy</span>
     </div>

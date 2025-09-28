@@ -48,7 +48,7 @@
 </script>
 
 <div class="space-y-4">
-  {#each messages as { content, key, from, avatar, name }}
+  {#each messages as { content, from, avatar, name }}
     <Message {from}>
       <MessageContent>{content}</MessageContent>
       <MessageAvatar {name} src={avatar} />
