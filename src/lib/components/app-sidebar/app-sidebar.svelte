@@ -1,6 +1,8 @@
 <script lang="ts">
   import { page } from "$app/state";
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+  import * as Collapsible from "$lib/components/ui/collapsible/index.js";
+  import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
   import { onMount, type ComponentProps } from "svelte";
   let {
     ref = $bindable(null),
@@ -106,16 +108,16 @@
           },
         ],
       },
-      // {
-      //   title: "Community",
-      //   url: "#",
-      //   items: [
-      //     {
-      //       title: "Contribution Guide",
-      //       url: "#",
-      //     },
-      //   ],
-      // },
+      {
+        title: "Examples",
+        url: "#",
+        items: [
+          {
+            title: "Svelte 5 + AI SDK Integraion",
+            url: "/examples/one",
+          },
+        ],
+      },
     ],
   });
 
@@ -135,39 +137,52 @@
   });
 </script>
 
-<Sidebar.Root class="mt-16 h-[calc(100vh-4rem)]" {...restProps} bind:ref>
-  <Sidebar.Content class="no-scrollbar mb-4 bg-background ">
-    <Sidebar.Group>
-      <Sidebar.Menu>
-        {#each data.navMain as item (item.title)}
-          <Sidebar.MenuItem>
-            <Sidebar.MenuButton class="font-medium">
-              {#snippet child({ props })}
-                <a href={item.url} {...props}>
-                  {item.title}
-                </a>
-              {/snippet}
-            </Sidebar.MenuButton>
-            {#if item.items?.length}
-              <Sidebar.MenuSub>
+<Sidebar.Root
+  class="mt-16 h-[calc(100vh-4rem)] pl-6 pr-2"
+  {...restProps}
+  bind:ref
+>
+  <Sidebar.Content class="gap-0 no-scrollbar mb-4 bg-background pt-6">
+    <!-- We create a collapsible SidebarGroup for each parent. -->
+    {#each data.navMain as item (item.title)}
+      <Collapsible.Root title={item.title} open class="group/collapsible">
+        <Sidebar.Group class="p-0">
+          <Sidebar.GroupLabel
+            class="group/label text-sidebar-foreground hover:bg-transparent hover:text-sidebar-accent-foreground text-sm"
+          >
+            {#snippet child({ props })}
+              <Collapsible.Trigger {...props}>
+                {item.title}
+                <ChevronRightIcon
+                  class="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90"
+                />
+              </Collapsible.Trigger>
+            {/snippet}
+          </Sidebar.GroupLabel>
+          <Collapsible.Content class="mb-2">
+            <Sidebar.GroupContent>
+              <Sidebar.Menu class="gap-0.5">
                 {#each item.items as subItem (subItem.title)}
-                  <Sidebar.MenuSubItem>
-                    <Sidebar.MenuSubButton
+                  <Sidebar.MenuItem>
+                    <Sidebar.MenuButton
                       isActive={subItem.isActive}
-                      onclick={() => updateIsActive(subItem.url)}
+                      class="hover:bg-transparent hover:text-primary  data-[active=true]:font-normal text-muted-foreground data-[active=true]:text-blue-500 data-[active=true]:bg-transparent active:bg-transparent active:text-primary"
+                      onclick={() => {
+                        updateIsActive(subItem.url);
+                      }}
                     >
                       {#snippet child({ props })}
                         <a href={subItem.url} {...props}>{subItem.title}</a>
                       {/snippet}
-                    </Sidebar.MenuSubButton>
-                  </Sidebar.MenuSubItem>
+                    </Sidebar.MenuButton>
+                  </Sidebar.MenuItem>
                 {/each}
-              </Sidebar.MenuSub>
-            {/if}
-          </Sidebar.MenuItem>
-        {/each}
-      </Sidebar.Menu>
-    </Sidebar.Group>
+              </Sidebar.Menu>
+            </Sidebar.GroupContent>
+          </Collapsible.Content>
+        </Sidebar.Group>
+      </Collapsible.Root>
+    {/each}
   </Sidebar.Content>
   <!-- <Sidebar.Footer>
     <div class="p-1">
