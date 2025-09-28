@@ -34,17 +34,17 @@
     "SvelteKit AI",
     "chat interface",
   ]}
-  canonical="https://svelte-ai-elements.dev/examples/one"
+  canonical="https://svelte-ai-elements.vercel.app/examples/one"
   openGraph={{
     type: "article",
     title: "Svelte 5 + AI SDK Integration Guide",
     description:
       "Master Svelte 5 runes with AI SDK integration. Build reactive AI chat applications using modern patterns and streaming responses.",
-    url: "https://svelte-ai-elements.dev/examples/one",
+    url: "https://svelte-ai-elements.vercel.app/examples/one",
     siteName: "Svelte AI Elements",
     images: [
       {
-        url: "https://svelte-ai-elements.dev/assets/blog-og.png",
+        url: "https://svelte-ai-elements.vercel.app/assets/blog-og.png",
         width: 1200,
         height: 630,
         alt: "Svelte 5 + AI SDK Integration Guide",
