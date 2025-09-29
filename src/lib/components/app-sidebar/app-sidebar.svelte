@@ -48,7 +48,7 @@
           },
           {
             title: "Code Block",
-            url: "/components/code-block",
+            url: "/components/code",
           },
           {
             title: "Context",
