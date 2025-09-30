@@ -8,8 +8,8 @@
 		"isomorphic-dompurify",
 		"shiki",
 		"runed",
-		"@shiki/langs",
-		"@shiki/themes"
+		"@shikijs/langs",
+		"@shikijs/themes"
 	],
 	"devDependencies": [
 		"bits-ui@^2.8.6",

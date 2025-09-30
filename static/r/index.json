@@ -65,8 +65,8 @@
 			"isomorphic-dompurify",
 			"shiki",
 			"runed",
-			"@shiki/langs",
-			"@shiki/themes"
+			"@shikijs/langs",
+			"@shikijs/themes"
 		],
 		"registryDependencies": [
 			"button",
