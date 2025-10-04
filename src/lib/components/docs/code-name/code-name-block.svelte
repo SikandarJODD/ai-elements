@@ -57,7 +57,7 @@
 
 <div class={cn('not-prose relative overflow-hidden rounded-lg border', className)} {...rest}>
 	<!-- Header with filename, icon, and copy button -->
-	<div class="flex items-center justify-between border-b bg-muted/50 px-4 py-2">
+	<div class="flex items-center justify-between border-b bg-muted/50 pl-4 pr-2 py-2">
 		<div class="flex items-center gap-2 min-w-0">
 			<IconComponent class="size-4 shrink-0" />
 			<span class="text-sm font-medium text-muted-foreground truncate">{filename}</span>

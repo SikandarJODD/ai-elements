@@ -1,5 +1,6 @@
 <script lang="ts">
   import { MetaTags } from "svelte-meta-tags";
+  import { PUBLIC_WEBSITE_URL } from "$env/static/public";
   import * as Icons from "$lib/components/icons";
   import {
     CodeNameBlock,
@@ -7,11 +8,13 @@
     AiInstallCommand,
     Installation,
     Subheading,
+    BasicSetupPrereq,
   } from "$lib/components/docs";
   import { Card } from "$lib/components/ui/card";
   import * as Toc from "$lib/components/docs/toc";
   import { UseToc } from "$lib/hooks/use-toc.svelte";
   import { Button } from "$lib/components/ui/button";
+  import { Action } from "$lib/components/ai-elements/action";
 
   let toc = new UseToc();
 </script>
@@ -34,13 +37,13 @@
     "SvelteKit AI",
     "chat interface",
   ]}
-  canonical="https://svelte-ai-elements.vercel.app/examples/one"
+  canonical="https://svelte-ai-elements.vercel.app/guides/svelte-5-ai-sdk-integration"
   openGraph={{
     type: "article",
     title: "Svelte 5 + AI SDK Integration Guide",
     description:
       "Master Svelte 5 runes with AI SDK integration. Build reactive AI chat applications using modern patterns and streaming responses.",
-    url: "https://svelte-ai-elements.vercel.app/examples/one",
+    url: "https://svelte-ai-elements.vercel.app/guides/svelte-5-ai-sdk-integration",
     siteName: "Svelte AI Elements",
     images: [
       {
@@ -85,173 +88,18 @@
         </div>
       </header>
 
-      <section class="mb-12 sm:mb-16">
-        <Subheading>Project Setup</Subheading>
-        <p class="mb-6 text-sm sm:text-base leading-relaxed">
-          Create a new SvelteKit project with Tailwind CSS support:
+      <!-- Prerequisites Section -->
+      <BasicSetupPrereq />
+
+      <!-- add small note to continue the project  -->
+      <div
+        class="bg-zinc-50 dark:bg-zinc-900/50 border-l-4 border-zinc-300 dark:border-zinc-600 pl-4 py-3 mb-8 sm:mb-10 rounded-r"
+      >
+        <p class="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+          Note: Continue building the project by implementing the necessary
+          components and logic as outlined in the guide.
         </p>
-        <div class="mb-6">
-          <AiInstallCommand
-            command="execute"
-            args={["sv", "create", "my-app"]}
-          />
-        </div>
-
-        <p class="mt-6 mb-5 text-sm sm:text-base leading-relaxed">
-          When prompted, select:
-        </p>
-        <ul class="list-disc pl-6 mb-6 text-muted-foreground space-y-2">
-          <li>
-            Which template? → <span class="text-primary">SvelteKit minimal</span
-            >
-          </li>
-          <li>
-            Add type checking? → <span class="text-primary"
-              >Yes, using TypeScript</span
-            >
-          </li>
-          <li>
-            Add additional options? → <span class="text-primary"
-              >Add Tailwind CSS</span
-            >
-          </li>
-        </ul>
-
-        <div class="mt-6">
-          <CodeNameBlock filename="terminal" lang="bash" code={`cd my-app`} />
-        </div>
-      </section>
-
-      <section class="mb-12 sm:mb-16">
-        <Subheading>UI Setup with shadcn-svelte</Subheading>
-        <p class="mb-6 text-sm sm:text-base leading-relaxed">
-          Install and configure <strong>shadcn-svelte</strong> for beautiful, accessible
-          UI components:
-        </p>
-
-        <!-- pnpm dlx shadcn-svelte@latest init -->
-        <div class="mb-6">
-          <AiInstallCommand
-            command="execute"
-            args={["pnpm", "dlx", "shadcn-svelte@latest", "init"]}
-          />
-        </div>
-
-        <p class="mt-6 mb-5 text-sm sm:text-base leading-relaxed">
-          This will create a <CodeSpan>lib/components/ui</CodeSpan> directory with
-          pre-built components that integrate seamlessly with Tailwind CSS.
-        </p>
-
-        <p
-          class="mt-6 mb-5 text-sm sm:text-base leading-relaxed text-muted-foreground"
-        >
-          Follow the prompts to configure <CodeSpan>components.json</CodeSpan>:
-        </p>
-
-        <div class="bg-card border-border w-full rounded-lg border mb-6">
-          <div class="no-scrollbar overflow-x-auto p-4">
-            <pre
-              class="dark:text-muted-foreground font-mono text-sm leading-relaxed"><code
-                >Which base color would you like to use? › <span
-                  class="text-primary">Neutral</span
-                >
-Where is your global CSS file? (this file will be overwritten) › <span
-                  class="text-primary">src/app.css</span
-                >
-Configure the import alias for lib: › <span class="text-primary">$lib</span>
-Configure the import alias for components: › <span class="text-primary"
-                  >$lib/components</span
-                >
-Configure the import alias for utils: › <span class="text-primary"
-                  >$lib/utils</span
-                >
-Configure the import alias for hooks: › <span class="text-primary"
-                  >$lib/hooks</span
-                >
-Configure the import alias for ui: › <span class="text-primary"
-                  >$lib/components/ui</span
-                ></code
-              ></pre>
-          </div>
-        </div>
-      </section>
-
-      <section class="mb-12 sm:mb-16">
-        <Subheading>AI SDK Integration & OpenRouter Setup</Subheading>
-        <p class="mb-6 text-sm sm:text-base leading-relaxed">
-          Install the Vercel AI SDK and set up OpenRouter for accessing AI
-          models:
-        </p>
-
-        <!-- <CodeNameBlock
-          filename="install.sh"
-          lang="bash"
-          code={`# Install AI SDK for Svelte
-bun add -d ai @ai-sdk/svelte @openrouter/ai-sdk-provider`}
-        /> -->
-        <div class="mb-6">
-          <AiInstallCommand
-            command="add"
-            args={["ai", "@ai-sdk/svelte", "@openrouter/ai-sdk-provider"]}
-          />
-        </div>
-
-        <p class="mt-6 mb-5 text-sm sm:text-base leading-relaxed">
-          Create a <CodeSpan>.env.local</CodeSpan> file:
-        </p>
-
-        <div class="mb-6">
-          <CodeNameBlock
-            filename=".env.local"
-            lang="bash"
-            code={`# Get your API key from https://openrouter.ai/keys
-OPENROUTER_API_KEY=your_api_key_here`}
-          />
-        </div>
-
-        <p class="mt-6 text-muted-foreground leading-relaxed">
-          <strong class="text-primary">Note:</strong> Sign up at
-          <a
-            href="https://openrouter.ai"
-            class="underline underline-offset-1 text-primary"
-            target="_blank"
-            rel="noopener">OpenRouter</a
-          >
-          to get your free API key. OpenRouter provides access to multiple AI models
-          through a single API.
-        </p>
-      </section>
-
-      <section class="mb-12 sm:mb-16">
-        <Subheading>Text Streaming Configuration</Subheading>
-        <p class="mb-6 text-sm sm:text-base leading-relaxed">
-          Configure <CodeSpan>streamText</CodeSpan> and <CodeSpan
-            >UIMessage[]</CodeSpan
-          > to handle real-time AI responses:
-        </p>
-
-        <div class="mb-6">
-          <CodeNameBlock
-            filename="ai-config.ts"
-            lang="typescript"
-            code={`// src/lib/ai-config.ts
-import { createOpenRouter } from '@openrouter/ai-sdk-provider';
-import { OPENROUTER_API_KEY } from '$env/static/private';
-
-export const openrouter = createOpenRouter({
-  apiKey: OPENROUTER_API_KEY,
-});
-
-export const defaultModel = 'z-ai/glm-4.5-air:free';`}
-          />
-        </div>
-
-        <p class="mt-6 text-muted-foreground leading-relaxed">
-          This configuration allows your app to stream AI responses in
-          real-time, providing a smooth user experience similar to ChatGPT's
-          interface.
-        </p>
-      </section>
+      </div>
 
       <section class="mb-10 sm:mb-12">
         <Subheading>File Structure & Backend API</Subheading>
@@ -358,6 +206,22 @@ export const POST: RequestHandler = async ({ request }) => {
 
       <section class="mb-10 sm:mb-12">
         <Subheading>Add Actions, Message, Prompt Input Component</Subheading>
+        <p class="mb-6 text-sm sm:text-base leading-relaxed">
+          To install the necessary components, run the following commands:
+        </p>
+
+        <div class="mb-6">
+          <CodeNameBlock
+            filename="terminal"
+            lang="bash"
+            code={`bun x shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/action.json
+bun x shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/message.json
+bun x shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/conversation.json
+bun x shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/response.json
+bun x shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/prompt-input.json`}
+          />
+        </div>
+
         <p class="mb-6 text-sm sm:text-base leading-relaxed">
           Enhance your chat interface with actions, messages, and a prompt input
           from Svelte AI Elements:
@@ -670,16 +534,19 @@ export const POST: RequestHandler = async ({ request }) => {
       <section class="mb-8 sm:mb-12">
         <Subheading>Free AI Models for Testing</Subheading>
 
-        <div
-          class="bg-zinc-50 dark:bg-zinc-900/50 border-l-4 border-zinc-300 dark:border-zinc-600 pl-4 py-3 mb-6 rounded-r"
+        <!-- <p class="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+          Experiment with these free models from <strong
+            class="text-zinc-900 dark:text-zinc-100">OpenRouter</strong
+          > while building and testing your applications. Perfect for development
+          and prototyping.
+        </p> -->
+
+        <p
+          class="mb-6 text-sm sm:text-base leading-relaxed text-muted-foreground"
         >
-          <p class="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
-            Experiment with these free models from <strong
-              class="text-zinc-900 dark:text-zinc-100">OpenRouter</strong
-            > while building and testing your applications. Perfect for development
-            and prototyping.
-          </p>
-        </div>
+          Here are some free OpenRouter models you can use for testing and
+          development:
+        </p>
 
         <div class="grid gap-4 sm:grid-cols-2">
           <Card
