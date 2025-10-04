@@ -15,6 +15,9 @@ const config = {
     alias: {
       "@/*": "./path/to/lib/*",
     },
+    prerender: {
+      entries: ["/guides/basic-setup", "/guides/svelte-5-ai-sdk-integration"],
+    },
   },
   vitePlugin: {
     inspector: {

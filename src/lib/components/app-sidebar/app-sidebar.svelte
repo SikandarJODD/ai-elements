@@ -109,12 +109,16 @@
         ],
       },
       {
-        title: "Examples",
-        url: "#",
+        title: "Guides",
+        url: "/guides",
         items: [
           {
-            title: "Svelte 5 + AI SDK Integraion",
-            url: "/examples/one",
+            title: "Basic Setup Guide",
+            url: "/guides/basic-setup",
+          },
+          {
+            title: "Svelte 5 + AI SDK Integration",
+            url: "/guides/svelte-5-ai-sdk-integration",
           },
         ],
       },

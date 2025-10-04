@@ -173,11 +173,11 @@ export const navigationData: NavigationItem[] = [
   // Guides
   {
     title: "Svelte 5 + AI SDK Integration Guide",
-    href: "/examples/one",
+    href: "/guides/svelte-5-ai-sdk-integration",
     description:
       "Integrate Svelte 5 with the AI SDK for powerful AI-driven applications",
     category: "guide",
-    keywords: ["ai", "integration", "svelte", "response"],
+    keywords: ["ai", "integration", "svelte", "response", "streaming", "chat"],
   },
 ];
 
