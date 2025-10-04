@@ -15,6 +15,7 @@
     PopoverContent,
     PopoverTrigger,
   } from "$lib/components/ui/popover";
+  import AppSearchbar from "./app-searchbar.svelte";
 
   type NavigationLink = {
     active: boolean;
@@ -117,7 +118,11 @@
       </div>
     </div>
     <!-- Right side  -->
-    <div class="flex items-center md:gap-2">
+    <div class="flex items-center gap-2 md:gap-2">
+      <!-- Search Bar -->
+      <div class="hidden md:block">
+        <AppSearchbar />
+      </div>
       <Button
         variant="ghost"
         size="icon"

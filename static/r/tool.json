@@ -7,7 +7,7 @@
 		"runed@^0.31.1"
 	],
 	"devDependencies": [
-		"@lucide/svelte@^0.515.0"
+		"@lucide/svelte@^0.544.0"
 	],
 	"registryDependencies": [
 		"collapsible",

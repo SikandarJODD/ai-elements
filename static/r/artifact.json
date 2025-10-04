@@ -4,7 +4,7 @@
 	"type": "registry:block",
 	"description": "The Artifact component provides a structured container for displaying generated content like code, documents, or other outputs with built-in header actions.",
 	"devDependencies": [
-		"@lucide/svelte@^0.515.0"
+		"@lucide/svelte@^0.544.0"
 	],
 	"registryDependencies": [
 		"button",

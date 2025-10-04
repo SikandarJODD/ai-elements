@@ -4,9 +4,9 @@
 	"type": "registry:block",
 	"description": "The Task component displays structured task information with collapsible content, file attachments, and progress indicators for AI-generated tasks.",
 	"devDependencies": [
-		"bits-ui@^2.8.6",
+		"bits-ui@^2.11.4",
 		"@internationalized/date@^3.8.1",
-		"@lucide/svelte@^0.515.0"
+		"@lucide/svelte@^0.544.0"
 	],
 	"registryDependencies": [
 		"collapsible",
