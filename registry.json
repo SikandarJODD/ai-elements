@@ -383,6 +383,35 @@
       }
     },
     {
+      "name": "image",
+      "type": "registry:block",
+      "description": "The Image component displays AI-generated images from base64 encoded data with proper styling and accessibility features.",
+      "files": [
+        {
+          "path": "src/lib/components/ai-elements/image/Image.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/image/Image.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/image/types.ts",
+          "type": "registry:file",
+          "target": "ai-elements/image/types.ts"
+        },
+        {
+          "path": "src/lib/components/ai-elements/image/index.ts",
+          "type": "registry:file",
+          "target": "ai-elements/image/index.ts"
+        }
+      ],
+      "dependencies": [
+        "ai"
+      ],
+      "registryDependencies": [],
+      "meta": {
+        "author": "SikandarJODD"
+      }
+    },
+    {
       "name": "inline-citation",
       "type": "registry:block",
       "description": "The InlineCitation component displays a citation or reference within text, typically used to attribute sources in AI-generated content. It includes a tooltip for additional information.",

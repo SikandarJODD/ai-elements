@@ -1,6 +1,6 @@
 <script lang="ts">
   import { MetaTags } from "svelte-meta-tags";
-  import { Subheading } from "$lib/components/docs";
+  import { Subheading, CodeNameBlock } from "$lib/components/docs";
   import Installation from "$lib/components/docs/installation.svelte";
   import Playground from "$lib/components/docs/playground.svelte";
   import Code from "$lib/components/docs/code.svelte";
@@ -70,6 +70,182 @@
 </WebPreview>`}
         />
       </div>
+
+      <!-- Usage with AI SDK -->
+      <Subheading>Usage with AI SDK</Subheading>
+
+      <p class="mb-4 text-sm sm:text-base leading-relaxed">
+        Build a simple v0-like clone that generates UI components and previews them
+        in real-time using <CodeSpan>useChat</CodeSpan> and the <CodeSpan>v0-sdk</CodeSpan>.
+      </p>
+
+      <p class="mb-4 text-sm sm:text-base leading-relaxed">
+        First, install the <CodeSpan>v0-sdk</CodeSpan> package:
+      </p>
+
+      <div class="mb-6">
+        <Code
+          lang="bash"
+          code={`pnpm add v0-sdk`}
+        />
+      </div>
+
+      <p class="mb-4 text-sm sm:text-base leading-relaxed">
+        Add the following component to your frontend:
+      </p>
+
+      <div class="mb-6">
+        <CodeNameBlock
+          filename="+page.svelte"
+          lang="svelte"
+          code={`\<script lang="ts"\>
+  import { useChat } from "@ai-sdk/svelte";
+  import { DefaultChatTransport } from "ai";
+  import { Button } from "$lib/components/ui/button";
+  import {
+    WebPreview,
+    WebPreviewNavigation,
+    WebPreviewUrl,
+    WebPreviewBody
+  } from "$lib/components/ai-elements/web-preview";
+  import {
+    Input,
+    PromptInputTextarea,
+    PromptInputSubmit
+  } from "$lib/components/ai-elements/prompt-input";
+  import { Loader } from "$lib/components/ai-elements/loader";
+
+  let previewUrl = $state("");
+  let prompt = $state("");
+
+  let { messages, sendMessage, status } = $derived(
+    useChat({
+      transport: new DefaultChatTransport({
+        api: "/api/chat",
+      }),
+      async onFinish(message) {
+        // Extract the demo URL from the response
+        const data = JSON.parse(message.content);
+        if (data.demo) {
+          previewUrl = data.demo;
+        }
+      },
+    })
+  );
+
+  const handleSubmit = (e: SubmitEvent) => {
+    e.preventDefault();
+    if (!prompt.trim() || status !== "ready") return;
+
+    const message = prompt;
+    prompt = "";
+    sendMessage({ text: message });
+  };
+
+  const isGenerating = $derived(status === "streaming");
+\<\/script\>
+
+<div class="max-w-4xl mx-auto p-6 relative size-full rounded-lg border h-[600px]">
+  <div class="flex flex-col h-full">
+    <div class="flex-1 mb-4">
+      {#if isGenerating}
+        <div class="flex flex-col items-center justify-center h-full">
+          <Loader />
+          <p class="mt-4 text-muted-foreground">
+            Generating app, this may take a few seconds...
+          </p>
+        </div>
+      {:else if previewUrl}
+        <WebPreview defaultUrl={previewUrl}>
+          <WebPreviewNavigation>
+            <WebPreviewUrl />
+          </WebPreviewNavigation>
+          <WebPreviewBody src={previewUrl} />
+        </WebPreview>
+      {:else}
+        <div class="flex items-center justify-center h-full text-muted-foreground">
+          Your generated app will appear here
+        </div>
+      {/if}
+    </div>
+
+    <Input
+      onsubmit={handleSubmit}
+      class="w-full max-w-2xl mx-auto relative"
+    >
+      <PromptInputTextarea
+        bind:value={prompt}
+        placeholder="Describe the app you want to build..."
+        class="pr-12 min-h-[60px]"
+      />
+      <PromptInputSubmit
+        status={isGenerating ? "streaming" : "ready"}
+        disabled={!prompt.trim()}
+        class="absolute bottom-1 right-1"
+      />
+    </Input>
+  </div>
+</div>`}
+        />
+      </div>
+
+      <p class="mb-4 text-sm sm:text-base leading-relaxed">
+        Add the following route to your backend:
+      </p>
+
+      <div class="mb-6">
+        <CodeNameBlock
+          filename="/api/chat/+server.ts"
+          lang="typescript"
+          code={`import { v0 } from "v0-sdk";
+import type { RequestHandler } from "./$types";
+
+export const POST: RequestHandler = async ({ request }) => {
+  const { messages } = await request.json();
+
+  // Get the latest user message
+  const prompt = messages[messages.length - 1]?.content || "";
+
+  const result = await v0.chats.create({
+    system: "You are an expert coder",
+    message: prompt,
+    modelConfiguration: {
+      modelId: "v0-1.5-sm",
+      imageGenerations: false,
+      thinking: false,
+    },
+  });
+
+  return new Response(
+    JSON.stringify({
+      demo: result.demo,
+      webUrl: result.webUrl,
+    }),
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+};`}
+        />
+      </div>
+
+      <!-- Features -->
+      <Subheading>Features</Subheading>
+
+      <ul class="list-disc list-inside space-y-2 mb-6 text-sm sm:text-base">
+        <li>Live preview of UI components</li>
+        <li>Composable architecture with dedicated sub-components</li>
+        <li>Responsive design modes (Desktop, Tablet, Mobile)</li>
+        <li>Navigation controls with back/forward functionality</li>
+        <li>URL input and example selector</li>
+        <li>Full screen mode support</li>
+        <li>Console logging with timestamps</li>
+        <li>Context-based state management</li>
+        <li>Consistent styling with the design system</li>
+        <li>Easy integration into documentation pages</li>
+      </ul>
     </main>
 
     <!-- TOC Sidebar - Sticky on larger screens -->
