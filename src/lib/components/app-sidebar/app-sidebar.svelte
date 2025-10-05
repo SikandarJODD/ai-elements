@@ -59,6 +59,10 @@
             url: "/components/conversation",
           },
           {
+            title: "Image",
+            url: "/components/image",
+          },
+          {
             title: "Inline Citation",
             url: "/components/inline-citation",
           },
