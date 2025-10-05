@@ -9,6 +9,7 @@
   import Heading from "$lib/components/docs/heading.svelte";
   import CodeSpan from "$lib/components/docs/code-span.svelte";
   import { PUBLIC_WEBSITE_URL } from "$env/static/public";
+  import { CodeNameBlock } from "$lib/components/docs";
 
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 
@@ -60,6 +61,145 @@
   `}
         />
       </div>
+
+      <!-- Usage with AI SDK -->
+      <Subheading>Usage with AI SDK</Subheading>
+
+      <p class="mb-4 text-sm sm:text-base leading-relaxed">
+        Build a chatbot with reasoning using Deepseek R1.
+      </p>
+
+      <p class="mb-4 text-sm sm:text-base leading-relaxed">
+        Add the following component to your frontend:
+      </p>
+
+      <div class="mb-6">
+        <CodeNameBlock
+          filename="+page.svelte"
+          lang="svelte"
+          code={`\<script lang="ts"\>
+  import { Chat } from "@ai-sdk/svelte";
+  import {
+    Reasoning,
+    ReasoningContent,
+    ReasoningTrigger,
+  } from "$lib/components/ai-elements/reasoning";
+  import {
+    Conversation,
+    ConversationContent,
+    ConversationScrollButton,
+  } from "$lib/components/ai-elements/conversation";
+  import {
+    PromptInput,
+    PromptInputTextarea,
+    PromptInputSubmit,
+  } from "$lib/components/ai-elements/prompt-input";
+  import { Loader } from "$lib/components/ai-elements/loader";
+  import { Message, MessageContent } from "$lib/components/ai-elements/message";
+  import { Response } from "$lib/components/ai-elements/response";
+
+  let chat = new Chat({});
+  let input = $state("");
+
+  function handleSubmit(e: SubmitEvent) {
+    e.preventDefault();
+    chat.sendMessage({ text: input });
+    input = "";
+  }
+\<\/script\>
+
+<div class="max-w-4xl mx-auto p-6 relative size-full rounded-lg border h-[600px]">
+  <div class="flex flex-col h-full">
+    <Conversation>
+      <ConversationContent>
+        {#each chat.messages as message (message.id)}
+          <Message from={message.role}>
+            <MessageContent>
+              {#each message.parts as part, i (i)}
+                {#if part.type === "text"}
+                  <Response>
+                    {part.text}
+                  </Response>
+                {:else if part.type === "reasoning"}
+                  <Reasoning
+                    class="w-full"
+                    isStreaming={chat.status === "streaming" &&
+                      i === message.parts.length - 1 &&
+                      message.id === chat.messages.at(-1)?.id}
+                  >
+                    <ReasoningTrigger />
+                    <ReasoningContent>{part.text}</ReasoningContent>
+                  </Reasoning>
+                {/if}
+              {/each}
+            </MessageContent>
+          </Message>
+        {/each}
+        {#if chat.status === "streaming"}
+          <Loader />
+        {/if}
+      </ConversationContent>
+      <ConversationScrollButton />
+    </Conversation>
+
+    <PromptInput onsubmit={handleSubmit} class="mt-4 w-full max-w-2xl mx-auto relative">
+      <PromptInputTextarea
+        bind:value={input}
+        placeholder="Say something..."
+        class="pr-12"
+      />
+      <PromptInputSubmit
+        status={chat.status === "streaming" ? "streaming" : "ready"}
+        disabled={!input.trim()}
+        class="absolute bottom-1 right-1"
+      />
+    </PromptInput>
+  </div>
+</div>`}
+        />
+      </div>
+
+      <p class="mb-4 text-sm sm:text-base leading-relaxed">
+        Add the following route to your backend:
+      </p>
+
+      <div class="mb-6">
+        <CodeNameBlock
+          filename="api/chat/+server.ts"
+          lang="typescript"
+          code={`import { streamText, type UIMessage, convertToModelMessages } from "ai";
+import type { RequestHandler } from "./$types";
+
+export const POST: RequestHandler = async ({ request }) => {
+  const { messages }: { messages: UIMessage[] } = await request.json();
+
+  const result = streamText({
+    model: "deepseek/deepseek-r1",
+    messages: convertToModelMessages(messages),
+  });
+
+  return result.toUIMessageStreamResponse({
+    sendReasoning: true,
+  });
+};`}
+        />
+      </div>
+
+      <!-- Features -->
+      <Subheading>Features</Subheading>
+
+      <ul class="mb-6 ml-6 list-disc [&>li]:mt-2 text-sm sm:text-base">
+        <li>Automatically opens when streaming content and closes when finished</li>
+        <li>Manual toggle control for user interaction</li>
+        <li>Smooth animations and transitions powered by Radix UI</li>
+        <li>Visual streaming indicator with pulsing animation</li>
+        <li>Composable architecture with separate trigger and content components</li>
+        <li>Built with accessibility in mind including keyboard navigation</li>
+        <li>Responsive design that works across different screen sizes</li>
+        <li>Seamlessly integrates with both light and dark themes</li>
+        <li>Built on top of shadcn-svelte Collapsible primitives</li>
+        <li>TypeScript support with proper type definitions</li>
+      </ul>
     </main>
 
     <!-- TOC Sidebar - Sticky on larger screens -->

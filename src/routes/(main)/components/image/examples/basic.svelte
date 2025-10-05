@@ -1,0 +1,18 @@
+<script lang="ts">
+  import { Image } from "$lib/components/ai-elements/image/index.js";
+
+  // Example base64 image - a small 150x150 gradient image
+  const exampleImage = {
+    base64:
+      "iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAA8AXHiAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAARLSURBVHgB7d0xTlNRFIbh/5DQUbADWAGwAlgBsAJYAawAVgArAFaAWAGwAmAFQEdBR0FLQ3KTNiYkJsJ7c+85z5c0hUIy+ZN7z733nlsAAAAAAAAAAAAAAAAAAAAAAABg1u7M+xfzs/l5mD/P8+f83pL/d5Z/f8g/f5o/z/P7y/xxBcDMtRbJw/zZU7taLp9D1d6zBzGgxSJZfZp3F/hwT+hzPrsDMLDlMvlQ+CppLZvHWjbAoNrCvPRVoRbPByBQy2Xy8cpflVo+u0CY2le56uXfWke0fgHlPNGyAfq01ko5G+h9aj3YcwcOOASzF+HAodHjIIGDh08HOoDh83x+vh858BkA8RYe6g60wKGdgRY4sOkCq8LBoWtAgUPDDjp9niQOEjo+UOjoQKGDg4GODhQ6OhjoQKGDg4GODhS6D+hoocN9QUcLHe4jOljocN/Q4UKHhx066OChhU4fWvRwn9HhQov3JR0ttPg+pcOFFu9zOlxo8X1PBwst3hd1sNDifVPng0JbzN8v+B5+FVy0n5Mszr5J/iiH0KL9LM8+tnhf1Y18vNDZ75N99vOF+0qH+6AOF1p8H9XBQovvs76vQl99h81fDjq8r+sXs+0fyaK2QJCErCZUYrKTVU9WE8p3+bSSUInJTlY9WU2oxGQnq56sJpRvyqklVFKyk9VMVhPKN+VUEyop2clqJqsJ5ZtyagmVlOxkNZPVhErqXk+opGQnq5msJpRvyqkmVFKyk9VMVhPKN+VUEyop2clqJqsJ5Ztyit4n9DBZSEp2sprJakL5ppx6QiUlO1nNZDWhkpKdrGaymrD1xwsdfMl0/3Khc39dn35C+aacarKTVU9WEyo52cmqJ6sJlZTsZNWT1YTyTTnVZCernqwmVFKyk1VPVhMqKdnJqierCeWbcqrJTlY9WU2opGQnq56sJpRvyqkmO1n1ZDWhkpKdrHqymlC+KSeZ7GTVk9WESkp2surJakIlJTtZ9WQ1oXxTTjXZyaonqwmVlOxk1ZPVhEpKdrLqyWpC+aacZLKTVU9WEyop2cmqJ6sJlZTsZNWT1YTyTTm3nuxk1ZPVhEpKdrLqyWpCJSU7WfVkNaF8U041ty47WfVkNaGSkp2serKaUEnJTlY9WU0o35RTTXay6slqQiUlO1n1ZDWhkpKdrHqymlC+KSeZ7GTVk9WESkp2surJakIlJTtZ9WQ1oXxTTjXZyaonqwmVlOxk1ZPVhEpKdrLqyWpC+aacZLKTVU9WEyop2cmqJ6sJlZTsZNWT1YTyTTm3nuxk1ZPVhEpKdrLqyWpCJSU7WfVkNaF8U041t57sZNWT1YRKSnaJ8Qplt0y4GkP7FTEvQFp/X6wTT6ikbiQLWc18C3X+BNCyeQXSev5quXiVBFb1S7S/3DsMiXkN0toquExPf+T/2GQC4IrOl8tXSe+1YoDZO18uH4dYMcDsnfxu8KW3RAAAAAAAAAAAAAAAAAAAAAAAAIC/+wXsB57h7CmjWwAAAABJRU5ErkJggg==",
+    mediaType: "image/png",
+  };
+</script>
+
+<div class="flex items-center justify-center p-6">
+  <Image
+    {...exampleImage}
+    alt="Example generated image"
+    class="aspect-square h-[150px] border"
+  />
+</div>

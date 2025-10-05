@@ -1,6 +1,6 @@
 <script lang="ts">
   import { MetaTags } from "svelte-meta-tags";
-  import { Subheading } from "$lib/components/docs";
+  import { Subheading, CodeNameBlock } from "$lib/components/docs";
   import Installation from "$lib/components/docs/installation.svelte";
   import Playground from "$lib/components/docs/playground.svelte";
   import Code from "$lib/components/docs/code.svelte";
@@ -81,6 +81,101 @@
 <Response {content} />`}
           />
         </div>
+      </div>
+
+      <!-- Usage with AI SDK -->
+      <div class="space-y-4">
+        <Subheading>Usage with AI SDK</Subheading>
+
+        <p class="!text-muted-foreground leading-relaxed">
+          Populate a markdown response with messages from <CodeSpan>Chat</CodeSpan>.
+        </p>
+
+        <p class="mb-4 text-sm sm:text-base leading-relaxed">
+          Add the following component to your frontend:
+        </p>
+
+        <div class="mb-6">
+          <CodeNameBlock
+            filename="+page.svelte"
+            lang="svelte"
+            code={`\<script lang="ts"\>
+  import { Chat } from "@ai-sdk/svelte";
+  import {
+    Conversation,
+    ConversationContent,
+    ConversationScrollButton
+  } from "$lib/components/ai-elements/conversation";
+  import { Message, MessageContent } from "$lib/components/ai-elements/message";
+  import { Response } from "$lib/components/ai-elements/response";
+
+  let chat = new Chat({});
+\<\/script\>
+
+<div class="max-w-4xl mx-auto p-6 relative size-full rounded-lg border h-[600px]">
+  <div class="flex flex-col h-full">
+    <Conversation>
+      <ConversationContent>
+        {#each chat.messages as message (message.id)}
+          <Message from={message.role}>
+            <MessageContent>
+              {#each message.parts as part, i (i)}
+                {#if part.type === "text"}
+                  <Response content={part.text} />
+                {/if}
+              {/each}
+            </MessageContent>
+          </Message>
+        {/each}
+      </ConversationContent>
+      <ConversationScrollButton />
+    </Conversation>
+  </div>
+</div>`}
+          />
+        </div>
+
+        <p class="mb-4 text-sm sm:text-base leading-relaxed">
+          Add the following route to your backend:
+        </p>
+
+        <div class="mb-6">
+          <CodeNameBlock
+            filename="api/chat/+server.ts"
+            lang="typescript"
+            code={`import { streamText, type UIMessage, convertToModelMessages } from "ai";
+import type { RequestHandler } from "./$types";
+
+export const POST: RequestHandler = async ({ request }) => {
+  const { messages }: { messages: UIMessage[] } = await request.json();
+
+  const result = streamText({
+    model: "openai/gpt-4o", // or your preferred model
+    messages: convertToModelMessages(messages),
+  });
+
+  return result.toUIMessageStreamResponse();
+};`}
+          />
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="space-y-4">
+        <Subheading>Features</Subheading>
+
+        <ul class="space-y-3 text-sm sm:text-base leading-relaxed list-disc list-inside !text-muted-foreground">
+          <li>Renders markdown content with support for paragraphs, links, and code blocks</li>
+          <li>Supports GFM features like tables, task lists, and strikethrough text via <CodeSpan>remark-gfm</CodeSpan></li>
+          <li>Supports rendering Math Equations via <CodeSpan>rehype-katex</CodeSpan></li>
+          <li>Smart streaming support - automatically completes incomplete formatting during real-time text streaming</li>
+          <li>Code blocks are rendered with syntax highlighting for various programming languages</li>
+          <li>Code blocks include a button to easily copy code to clipboard</li>
+          <li>Adapts to different screen sizes while maintaining readability</li>
+          <li>Seamlessly integrates with both light and dark themes</li>
+          <li>Customizable appearance through className props and Tailwind CSS utilities</li>
+          <li>Built with accessibility in mind for all users</li>
+        </ul>
       </div>
     </main>
 

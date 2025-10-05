@@ -15,6 +15,7 @@
   import * as Toc from "$lib/components/docs/toc";
   import { UseToc } from "$lib/hooks/use-toc.svelte";
   let toc = new UseToc();
+  import { CodeNameBlock } from "$lib/components/docs";
 </script>
 
 <!-- SEO Meta Tags -->
@@ -58,6 +59,106 @@
     <Suggestion {suggestion} onclick={handleSuggestionClick} />
   {/each}
 </Suggestions>`}
+        />
+      </div>
+
+      <!-- Usage with AI SDK -->
+      <Subheading>Usage with AI SDK</Subheading>
+
+      <p class="mb-4 text-sm sm:text-base leading-relaxed">
+        Build a simple input with suggestions users can click to send a message to the LLM.
+      </p>
+
+      <p class="mb-4 text-sm sm:text-base leading-relaxed">
+        Add the following component to your frontend:
+      </p>
+
+      <div class="mb-6">
+        <CodeNameBlock
+          filename="+page.svelte"
+          lang="svelte"
+          code={`\<script lang="ts"\>
+  import { Chat } from "@ai-sdk/svelte";
+  import {
+    PromptInput,
+    PromptInputBody,
+    PromptInputSubmit,
+    PromptInputTextarea,
+    type PromptInputMessage,
+  } from "$lib/components/ai-elements/prompt-input";
+  import { Suggestion, Suggestions } from "$lib/components/ai-elements/suggestion";
+
+  const suggestions = [
+    "Can you explain how to play tennis?",
+    "What is the weather in Tokyo?",
+    "How do I make a really good fish taco?",
+  ];
+
+  let text = $state<string>("");
+
+  let chat = new Chat({});
+
+  const handleSubmit = (message: PromptInputMessage) => {
+    if (!message.text?.trim()) return;
+    chat.sendMessage({ text: message.text });
+    text = "";
+  };
+
+  const handleSuggestionClick = (suggestion: string) => {
+    chat.sendMessage({ text: suggestion });
+  };
+\<\/script\>
+
+<div class="max-w-4xl mx-auto p-6 relative size-full rounded-lg border h-[600px]">
+  <div class="flex flex-col h-full">
+    <div class="flex flex-col gap-4">
+      <Suggestions scrollbarXClasses="hidden">
+        {#each suggestions as suggestion (suggestion)}
+          <Suggestion {suggestion} onclick={handleSuggestionClick} />
+        {/each}
+      </Suggestions>
+      <PromptInput onSubmit={handleSubmit} class="mt-4 w-full max-w-2xl mx-auto relative">
+        <PromptInputBody>
+          <PromptInputTextarea
+            bind:value={text}
+            placeholder="Say something..."
+            onchange={(e) => (text = (e.target as HTMLTextAreaElement).value)}
+            class="pr-12"
+          />
+        </PromptInputBody>
+        <PromptInputSubmit
+          status={chat.status === "streaming" ? "streaming" : "ready"}
+          disabled={!text.trim()}
+          class="absolute bottom-1 right-1"
+        />
+      </PromptInput>
+    </div>
+  </div>
+</div>`}
+        />
+      </div>
+
+      <p class="mb-4 text-sm sm:text-base leading-relaxed">
+        Add the following route to your backend:
+      </p>
+
+      <div class="mb-6">
+        <CodeNameBlock
+          filename="api/chat/+server.ts"
+          lang="typescript"
+          code={`import { streamText, type UIMessage, convertToModelMessages } from "ai";
+import type { RequestHandler } from "./$types";
+
+export const POST: RequestHandler = async ({ request }) => {
+  const { messages }: { messages: UIMessage[] } = await request.json();
+
+  const result = streamText({
+    model: "openai:gpt-4o",
+    messages: convertToModelMessages(messages),
+  });
+
+  return result.toUIMessageStreamResponse();
+};`}
         />
       </div>
     </main>

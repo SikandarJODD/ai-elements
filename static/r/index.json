@@ -118,6 +118,19 @@
 		"relativeUrl": "copy-button.json"
 	},
 	{
+		"name": "image",
+		"type": "registry:block",
+		"description": "The Image component displays AI-generated images from base64 encoded data with proper styling and accessibility features.",
+		"dependencies": [
+			"ai"
+		],
+		"registryDependencies": [],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "image.json"
+	},
+	{
 		"name": "inline-citation",
 		"type": "registry:block",
 		"description": "The InlineCitation component displays a citation or reference within text, typically used to attribute sources in AI-generated content. It includes a tooltip for additional information.",

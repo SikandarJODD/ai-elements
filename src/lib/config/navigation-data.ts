@@ -86,6 +86,13 @@ export const navigationData: NavigationItem[] = [
     keywords: ["copy", "clipboard", "button", "duplicate"],
   },
   {
+    title: "Image",
+    href: "/components/image",
+    description: "Display AI-generated images from base64 data",
+    category: "component",
+    keywords: ["image", "picture", "generated", "base64", "media", "visual"],
+  },
+  {
     title: "Inline Citation",
     href: "/components/inline-citation",
     description: "Add inline citations to AI responses",

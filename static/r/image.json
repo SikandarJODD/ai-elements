@@ -1,0 +1,29 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "image",
+	"type": "registry:block",
+	"description": "The Image component displays AI-generated images from base64 encoded data with proper styling and accessibility features.",
+	"dependencies": [
+		"ai"
+	],
+	"meta": {
+		"author": "SikandarJODD"
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$\";\r\n  import type { ImageProps } from \"./types\";\r\n\r\n  let {\r\n    ref = $bindable(null),\r\n    base64,\r\n    uint8Array,\r\n    mediaType,\r\n    alt,\r\n    class: className,\r\n    ...rest\r\n  }: ImageProps = $props();\r\n</script>\r\n\r\n<img\r\n  bind:this={ref}\r\n  {alt}\r\n  class={cn(\"h-auto max-w-full overflow-hidden rounded-md\", className)}\r\n  src={`data:${mediaType};base64,${base64}`}\r\n  {...rest}\r\n/>\r\n",
+			"type": "registry:component",
+			"target": "ai-elements/image/Image.svelte"
+		},
+		{
+			"content": "import type { HTMLImgAttributes } from \"svelte/elements\";\r\n\r\nexport type Experimental_GeneratedImage = {\r\n  base64: string;\r\n  uint8Array?: Uint8Array;\r\n  mediaType?: string;\r\n};\r\n\r\nexport type ImageProps = Experimental_GeneratedImage &\r\n  HTMLImgAttributes & {\r\n    ref?: HTMLImageElement | null;\r\n    class?: string;\r\n  };\r\n",
+			"type": "registry:file",
+			"target": "ai-elements/image/types.ts"
+		},
+		{
+			"content": "import Image from \"./Image.svelte\";\r\n\r\nexport { Image };\r\nexport type { ImageProps } from \"./types\";\r\n",
+			"type": "registry:file",
+			"target": "ai-elements/image/index.ts"
+		}
+	]
+}

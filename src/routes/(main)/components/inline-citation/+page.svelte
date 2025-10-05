@@ -1,6 +1,6 @@
 <script lang="ts">
   import { MetaTags } from "svelte-meta-tags";
-  import { Subheading } from "$lib/components/docs";
+  import { Subheading, CodeNameBlock } from "$lib/components/docs";
   import Installation from "$lib/components/docs/installation.svelte";
   import Playground from "$lib/components/docs/playground.svelte";
   import Code from "$lib/components/docs/code.svelte";
@@ -104,6 +104,195 @@
 			</InlineCitation>`}
         />
       </div>
+
+      <!-- Usage with AI SDK -->
+      <Subheading>Usage with AI SDK</Subheading>
+
+      <p class="mb-4 text-sm sm:text-base leading-relaxed">
+        Build citations for AI-generated content using <CodeSpan>experimental_useObject</CodeSpan> from <CodeSpan>@ai-sdk/svelte</CodeSpan>.
+      </p>
+
+      <p class="mb-4 text-sm sm:text-base leading-relaxed">
+        Add the following component to your frontend:
+      </p>
+
+      <div class="mb-6">
+        <CodeNameBlock
+          filename="+page.svelte"
+          lang="svelte"
+          code={`\<script lang="ts"\>
+  import { experimental_useObject as useObject } from '@ai-sdk/svelte';
+  import {
+    InlineCitation,
+    InlineCitationCard,
+    InlineCitationCardTrigger,
+    InlineCitationCardBody,
+    InlineCitationCarousel,
+    InlineCitationCarouselContent,
+    InlineCitationCarouselItem,
+    InlineCitationCarouselHeader,
+    InlineCitationCarouselIndex,
+    InlineCitationCarouselPrev,
+    InlineCitationCarouselNext,
+    InlineCitationSource,
+    InlineCitationQuote,
+  } from '$lib/components/ai-elements/inline-citation';
+  import { Button } from '$lib/components/ui/button';
+  import type { citationSchema } from './api/citation/+server';
+
+  let object = $state<typeof citationSchema | undefined>(undefined);
+  let isLoading = $state(false);
+
+  async function handleSubmit(topic: string) {
+    isLoading = true;
+    const { submit } = useObject({
+      api: '/api/citation',
+      schema: citationSchema,
+    });
+
+    const result = await submit({ prompt: topic });
+    object = result.object;
+    isLoading = false;
+  }
+\<\/script\>
+
+<div class="max-w-4xl mx-auto p-6 space-y-6">
+  <div class="flex gap-2 mb-6">
+    <Button
+      onclick={() => handleSubmit('artificial intelligence')}
+      disabled={isLoading}
+      variant="outline"
+    >
+      Generate AI Content
+    </Button>
+    <Button
+      onclick={() => handleSubmit('climate change')}
+      disabled={isLoading}
+      variant="outline"
+    >
+      Generate Climate Content
+    </Button>
+  </div>
+
+  {#if isLoading && !object}
+    <div class="text-muted-foreground">
+      Generating content with citations...
+    </div>
+  {/if}
+
+  {#if object?.content}
+    <div class="prose prose-sm max-w-none">
+      <p class="leading-relaxed">
+        {#each object.content.split(/(\[\\d+\])/) as part, index}
+          {@const citationMatch = part.match(/\[(\\d+)\]/)}
+          {#if citationMatch}
+            {@const citationNumber = citationMatch[1]}
+            {@const citation = object.citations?.find(
+              (c) => c.number === citationNumber
+            )}
+            {#if citation}
+              <InlineCitation>
+                <InlineCitationCard>
+                  <InlineCitationCardTrigger sources={[citation.url]} />
+                  <InlineCitationCardBody>
+                    <InlineCitationCarousel>
+                      <InlineCitationCarouselHeader>
+                        <InlineCitationCarouselPrev />
+                        <InlineCitationCarouselNext />
+                        <InlineCitationCarouselIndex />
+                      </InlineCitationCarouselHeader>
+                      <InlineCitationCarouselContent>
+                        <InlineCitationCarouselItem>
+                          <InlineCitationSource
+                            title={citation.title}
+                            url={citation.url}
+                            description={citation.description}
+                          />
+                          {#if citation.quote}
+                            <InlineCitationQuote>
+                              {citation.quote}
+                            </InlineCitationQuote>
+                          {/if}
+                        </InlineCitationCarouselItem>
+                      </InlineCitationCarouselContent>
+                    </InlineCitationCarousel>
+                  </InlineCitationCardBody>
+                </InlineCitationCard>
+              </InlineCitation>
+            {/if}
+          {:else}
+            {part}
+          {/if}
+        {/each}
+      </p>
+    </div>
+  {/if}
+</div>`}
+        />
+      </div>
+
+      <p class="mb-4 text-sm sm:text-base leading-relaxed">
+        Add the following route to your backend:
+      </p>
+
+      <div class="mb-6">
+        <CodeNameBlock
+          filename="api/citation/+server.ts"
+          lang="typescript"
+          code={`import { streamObject } from 'ai';
+import { z } from 'zod';
+import { openrouter, defaultModel } from '$lib/config/ai-config';
+import type { RequestHandler } from './$types';
+
+export const citationSchema = z.object({
+  content: z.string(),
+  citations: z.array(
+    z.object({
+      number: z.string(),
+      title: z.string(),
+      url: z.string(),
+      description: z.string().optional(),
+      quote: z.string().optional(),
+    })
+  ),
+});
+
+export const POST: RequestHandler = async ({ request }) => {
+  const { prompt } = await request.json();
+
+  const result = streamObject({
+    model: openrouter(defaultModel),
+    schema: citationSchema,
+    prompt: \`Generate a well-researched paragraph about \${prompt} with proper citations.
+      Include:
+      - A comprehensive paragraph with inline citations marked as [1], [2], etc.
+      - 2-3 citations with realistic source information
+      - Each citation should have a title, URL, and optional description/quote
+      - Make the content informative and the sources credible
+
+      Format citations as numbered references within the text.\`,
+  });
+
+  return result.toTextStreamResponse();
+};`}
+        />
+      </div>
+
+      <!-- Features -->
+      <Subheading>Features</Subheading>
+
+      <ul class="list-disc list-inside space-y-2 mb-6 text-sm sm:text-base leading-relaxed">
+        <li>Hover interaction to reveal detailed citation information</li>
+        <li>Carousel navigation for multiple citations with prev/next controls</li>
+        <li>Live index tracking showing current slide position (e.g., "1/5")</li>
+        <li>Support for source titles, URLs, and descriptions</li>
+        <li>Optional quote blocks for relevant excerpts</li>
+        <li>Composable architecture for flexible citation formats</li>
+        <li>Accessible design with proper keyboard navigation</li>
+        <li>Seamless integration with AI-generated content</li>
+        <li>Clean visual design that doesn't disrupt reading flow</li>
+        <li>Smart badge display showing source hostname and count</li>
+      </ul>
 
       <!-- Examples  -->
       <!-- <Subheading>Examples</Subheading>
