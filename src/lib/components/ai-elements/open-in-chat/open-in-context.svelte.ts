@@ -77,7 +77,7 @@ export const providers = {
       })}`,
   },
   v0: {
-    title: "Open in V0",
+    title: "Open in v0",
     createUrl: (q: string) =>
       `https://v0.app?${new URLSearchParams({
         q,

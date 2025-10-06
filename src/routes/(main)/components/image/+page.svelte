@@ -46,7 +46,8 @@
       <Subheading>Usage</Subheading>
 
       <div>
-        <Code
+        <CodeNameBlock
+          filename="image-usage.svelte"
           lang="svelte"
           code={`\<script lang="ts"\>
   import { Image } from "$lib/components/ai-elements/image/index";
@@ -69,7 +70,8 @@
       <Subheading>Usage with AI SDK</Subheading>
 
       <p class="mb-4 text-sm sm:text-base leading-relaxed">
-        Build a simple app allowing users to generate images given a prompt using the AI SDK's image generation capabilities.
+        Build a simple app allowing users to generate images given a prompt
+        using the AI SDK's image generation capabilities.
       </p>
 
       <p class="mb-4 text-sm sm:text-base leading-relaxed">
@@ -203,13 +205,14 @@ export const POST: RequestHandler = async ({ request }) => {
               <div class="flex items-baseline gap-2">
                 <code class="text-sm font-mono">base64</code>
                 <span class="text-xs text-muted-foreground">string</span>
-                <span class="text-xs bg-destructive/10 text-destructive px-2 py-0.5 rounded"
+                <span
+                  class="text-xs bg-destructive/10 text-destructive px-2 py-0.5 rounded"
                   >required</span
                 >
               </div>
               <p class="text-sm text-muted-foreground mt-1">
-                The base64 encoded image data. This is the actual image content encoded
-                as a base64 string.
+                The base64 encoded image data. This is the actual image content
+                encoded as a base64 string.
               </p>
             </div>
 
@@ -217,13 +220,14 @@ export const POST: RequestHandler = async ({ request }) => {
               <div class="flex items-baseline gap-2">
                 <code class="text-sm font-mono">mediaType</code>
                 <span class="text-xs text-muted-foreground">string</span>
-                <span class="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
+                <span
+                  class="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
                   >optional</span
                 >
               </div>
               <p class="text-sm text-muted-foreground mt-1">
-                The MIME type of the image (e.g., "image/png", "image/jpeg", "image/webp").
-                Used to construct the data URL.
+                The MIME type of the image (e.g., "image/png", "image/jpeg",
+                "image/webp"). Used to construct the data URL.
               </p>
             </div>
 
@@ -231,13 +235,15 @@ export const POST: RequestHandler = async ({ request }) => {
               <div class="flex items-baseline gap-2">
                 <code class="text-sm font-mono">uint8Array</code>
                 <span class="text-xs text-muted-foreground">Uint8Array</span>
-                <span class="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
+                <span
+                  class="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
                   >optional</span
                 >
               </div>
               <p class="text-sm text-muted-foreground mt-1">
-                The raw binary data as a Uint8Array. This is typically provided by the
-                AI SDK but not directly used by the component (uses base64 instead).
+                The raw binary data as a Uint8Array. This is typically provided
+                by the AI SDK but not directly used by the component (uses
+                base64 instead).
               </p>
             </div>
 
@@ -245,12 +251,14 @@ export const POST: RequestHandler = async ({ request }) => {
               <div class="flex items-baseline gap-2">
                 <code class="text-sm font-mono">alt</code>
                 <span class="text-xs text-muted-foreground">string</span>
-                <span class="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
+                <span
+                  class="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
                   >optional</span
                 >
               </div>
               <p class="text-sm text-muted-foreground mt-1">
-                Alternative text description for the image. Important for accessibility.
+                Alternative text description for the image. Important for
+                accessibility.
               </p>
             </div>
 
@@ -258,28 +266,32 @@ export const POST: RequestHandler = async ({ request }) => {
               <div class="flex items-baseline gap-2">
                 <code class="text-sm font-mono">class</code>
                 <span class="text-xs text-muted-foreground">string</span>
-                <span class="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
+                <span
+                  class="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
                   >optional</span
                 >
               </div>
               <p class="text-sm text-muted-foreground mt-1">
-                Additional CSS classes to apply to the image element. Merged with default
-                classes using <code class="text-sm">cn()</code> utility.
+                Additional CSS classes to apply to the image element. Merged
+                with default classes using <code class="text-sm">cn()</code> utility.
               </p>
             </div>
 
             <div class="border-l-2 border-primary pl-4">
               <div class="flex items-baseline gap-2">
                 <code class="text-sm font-mono">ref</code>
-                <span class="text-xs text-muted-foreground">HTMLImageElement | null</span>
-                <span class="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
+                <span class="text-xs text-muted-foreground"
+                  >HTMLImageElement | null</span
+                >
+                <span
+                  class="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
                   >optional</span
                 >
               </div>
               <p class="text-sm text-muted-foreground mt-1">
-                A reference to the underlying <code class="text-sm">img</code> element.
-                Can be used with <code class="text-sm">bind:ref</code> for direct DOM
-                access.
+                A reference to the underlying <code class="text-sm">img</code>
+                element. Can be used with <code class="text-sm">bind:ref</code> for
+                direct DOM access.
               </p>
             </div>
 
@@ -291,8 +303,8 @@ export const POST: RequestHandler = async ({ request }) => {
                 >
               </div>
               <p class="text-sm text-muted-foreground mt-1">
-                All other standard HTML image attributes are supported (width, height,
-                loading, etc.).
+                All other standard HTML image attributes are supported (width,
+                height, loading, etc.).
               </p>
             </div>
           </div>
@@ -303,10 +315,17 @@ export const POST: RequestHandler = async ({ request }) => {
       <Subheading>Features</Subheading>
 
       <ul class="list-disc pl-6 space-y-2 mb-6 text-sm sm:text-base">
-        <li>Accepts <CodeSpan>Experimental_GeneratedImage</CodeSpan> objects directly from the AI SDK</li>
-        <li>Automatically creates proper data URLs from base64-encoded image data</li>
+        <li>
+          Accepts <CodeSpan>Experimental_GeneratedImage</CodeSpan> objects directly
+          from the AI SDK
+        </li>
+        <li>
+          Automatically creates proper data URLs from base64-encoded image data
+        </li>
         <li>Supports all standard HTML image attributes</li>
-        <li>Responsive by default with <CodeSpan>max-w-full h-auto</CodeSpan> styling</li>
+        <li>
+          Responsive by default with <CodeSpan>max-w-full h-auto</CodeSpan> styling
+        </li>
         <li>Customizable with additional CSS classes</li>
         <li>Includes proper TypeScript types for AI SDK compatibility</li>
       </ul>
@@ -315,7 +334,8 @@ export const POST: RequestHandler = async ({ request }) => {
       <Subheading>Default Styling</Subheading>
 
       <p class="text-muted-foreground mb-4">
-        The Image component comes with sensible default styles that can be overridden:
+        The Image component comes with sensible default styles that can be
+        overridden:
       </p>
 
       <ul class="list-disc list-inside space-y-2 text-muted-foreground">
@@ -324,14 +344,15 @@ export const POST: RequestHandler = async ({ request }) => {
           aspect ratio
         </li>
         <li>
-          <code class="text-sm">max-w-full</code> - Prevents overflow from parent container
+          <code class="text-sm">max-w-full</code> - Prevents overflow from parent
+          container
         </li>
         <li>
           <code class="text-sm">overflow-hidden</code> - Clips any content that overflows
         </li>
         <li>
-          <code class="text-sm">rounded-md</code> - Applies medium border radius for a
-          polished look
+          <code class="text-sm">rounded-md</code> - Applies medium border radius
+          for a polished look
         </li>
       </ul>
 
@@ -339,11 +360,12 @@ export const POST: RequestHandler = async ({ request }) => {
       <Subheading>Integration with AI SDK</Subheading>
 
       <p class="text-muted-foreground mb-4">
-        The Image component is designed to work seamlessly with the AI SDK's experimental
-        image generation features. Here's a complete example:
+        The Image component is designed to work seamlessly with the AI SDK's
+        experimental image generation features. Here's a complete example:
       </p>
 
-      <Code
+      <CodeNameBlock
+        filename="image-with-ai-sdk.svelte"
         lang="svelte"
         code={`\<script lang="ts"\>
   import { useChat } from '@ai-sdk/svelte';
@@ -382,10 +404,12 @@ export const POST: RequestHandler = async ({ request }) => {
 
       <h3 class="text-base font-semibold mb-2">Custom Styling</h3>
       <p class="text-muted-foreground mb-4">
-        You can easily customize the appearance of images using Tailwind classes:
+        You can easily customize the appearance of images using Tailwind
+        classes:
       </p>
 
-      <Code
+      <CodeNameBlock
+        filename="custom-styling.svelte"
         lang="svelte"
         code={`<!-- Square thumbnail -->
 <Image
@@ -414,7 +438,8 @@ export const POST: RequestHandler = async ({ request }) => {
         Create a responsive image gallery with generated images:
       </p>
 
-      <Code
+      <CodeNameBlock
+        filename="responsive-gallery.svelte"
         lang="svelte"
         code={`\<script lang="ts"\>
   import { Image } from '$lib/components/ai-elements/image';
@@ -441,11 +466,12 @@ export const POST: RequestHandler = async ({ request }) => {
       <Subheading>Accessibility</Subheading>
 
       <p class="text-muted-foreground mb-4">
-        Always provide meaningful <code class="text-sm">alt</code> text for images to ensure
-        your application is accessible to all users:
+        Always provide meaningful <code class="text-sm">alt</code> text for images
+        to ensure your application is accessible to all users:
       </p>
 
-      <Code
+      <CodeNameBlock
+        filename="accessibility-example.svelte"
         lang="svelte"
         code={`<!-- Good: Descriptive alt text -->
 <Image
@@ -465,13 +491,13 @@ export const POST: RequestHandler = async ({ request }) => {
 
       <ul class="list-disc list-inside space-y-2 text-muted-foreground">
         <li>
-          The component constructs a data URL using the format: <code class="text-sm"
-            >data:{`{mediaType}`};base64,{`{base64}`}</code
+          The component constructs a data URL using the format: <code
+            class="text-sm">data:{`{mediaType}`};base64,{`{base64}`}</code
           >
         </li>
         <li>
-          Base64 encoded images are embedded directly in the HTML, which may increase
-          page size for large images
+          Base64 encoded images are embedded directly in the HTML, which may
+          increase page size for large images
         </li>
         <li>
           Consider using lazy loading for multiple images: <code class="text-sm"
@@ -479,12 +505,12 @@ export const POST: RequestHandler = async ({ request }) => {
           >
         </li>
         <li>
-          The component supports all standard HTML image attributes through the spread
-          operator
+          The component supports all standard HTML image attributes through the
+          spread operator
         </li>
         <li>
-          Use proper <code class="text-sm">mediaType</code> values for best browser compatibility:
-          "image/png", "image/jpeg", "image/webp", "image/gif", etc.
+          Use proper <code class="text-sm">mediaType</code> values for best browser
+          compatibility: "image/png", "image/jpeg", "image/webp", "image/gif", etc.
         </li>
       </ul>
     </main>
