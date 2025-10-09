@@ -28,11 +28,11 @@
   )}
   {...restProps}
 >
-  <!-- {#if handles.target} -->
+  {#if handles.target}
   <Handle position={Position.Left} type="target" isConnectable />
-  <!-- {/if} -->
-  <!-- {#if handles.source} -->
+  {/if}
+  {#if handles.source}
   <Handle position={Position.Right} type="source" isConnectable />
-  <!-- {/if} -->
+  {/if}
   {@render children?.()}
 </Card>

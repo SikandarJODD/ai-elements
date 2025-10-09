@@ -7,6 +7,8 @@
     NodeHeader,
     NodeTitle,
   } from "$lib/components/ai-elements/workflow/node";
+  import Toolbar from "$lib/components/ai-elements/workflow/toolbar/toolbar.svelte";
+  import Button from "$lib/components/ui/button/button.svelte";
   import type { NodeProps } from "@xyflow/svelte";
 
   type WorkflowNodeData = {
@@ -25,13 +27,17 @@
 
 <Node handles={workflowData.handles}>
   <NodeHeader>
-    <NodeTitle>{workflowData.label}</NodeTitle>
-    <NodeDescription>{workflowData.description}</NodeDescription>
+    <NodeTitle>{data.label}</NodeTitle>
+    <NodeDescription>{data.description}</NodeDescription>
   </NodeHeader>
   <NodeContent>
-    <p>test</p>
+    <p class="text-sm">{data.content}</p>
   </NodeContent>
   <NodeFooter>
-    <p>test</p>
+    <p class="text-muted-foreground text-xs">{data.footer}</p>
   </NodeFooter>
+  <Toolbar>
+    <Button size="sm" variant="ghost">Edit</Button>
+    <Button size="sm" variant="ghost">Delete</Button>
+  </Toolbar>
 </Node>

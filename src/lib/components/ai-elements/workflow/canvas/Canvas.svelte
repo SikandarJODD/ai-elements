@@ -16,9 +16,6 @@
     edges = $bindable([]),
     ...restProps
   }: CanvasProps = $props();
-
-  $inspect(nodes, "Nodes");
-  $inspect(edges, "Edges");
 </script>
 
 <SvelteFlow
