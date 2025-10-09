@@ -113,6 +113,40 @@
         ],
       },
       {
+        title: "Workflow",
+        url: "/components/workflow",
+        items: [
+          {
+            title: "Canvas",
+            url: "/components/workflow/canvas",
+          },
+          {
+            title: "Connection",
+            url: "/components/workflow/connection",
+          },
+          {
+            title: "Controls",
+            url: "/components/workflow/controls",
+          },
+          {
+            title: "Edge",
+            url: "/components/workflow/edge",
+          },
+          {
+            title: "Node",
+            url: "/components/workflow/node",
+          },
+          {
+            title: "Panel",
+            url: "/components/workflow/panel",
+          },
+          {
+            title: "Toolbar",
+            url: "/components/workflow/toolbar",
+          },
+        ],
+      },
+      {
         title: "Guides",
         url: "/guides",
         items: [
