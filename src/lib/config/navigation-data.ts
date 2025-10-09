@@ -177,6 +177,62 @@ export const navigationData: NavigationItem[] = [
     keywords: ["preview", "link", "webpage", "url"],
   },
 
+  // Workflow Components
+  {
+    title: "Canvas",
+    href: "/components/workflow/canvas",
+    description:
+      "Svelte Flow-based canvas for building interactive node-based interfaces",
+    category: "component",
+    keywords: ["workflow", "canvas", "svelte flow", "nodes", "graph", "diagram"],
+  },
+  {
+    title: "Connection",
+    href: "/components/workflow/connection",
+    description:
+      "Styled connection line for Svelte Flow canvases with animated bezier curves",
+    category: "component",
+    keywords: ["workflow", "connection", "line", "edge", "bezier", "animated"],
+  },
+  {
+    title: "Controls",
+    href: "/components/workflow/controls",
+    description: "Interactive zoom and fit view controls for Svelte Flow canvases",
+    category: "component",
+    keywords: ["workflow", "controls", "zoom", "pan", "fit view", "navigation"],
+  },
+  {
+    title: "Edge",
+    href: "/components/workflow/edge",
+    description:
+      "Pre-styled edge types for Svelte Flow: Temporary and Animated connections",
+    category: "component",
+    keywords: ["workflow", "edge", "connection", "animated", "temporary", "line"],
+  },
+  {
+    title: "Node",
+    href: "/components/workflow/node",
+    description:
+      "Composable Card-based node for Svelte Flow with connection handles",
+    category: "component",
+    keywords: ["workflow", "node", "card", "handles", "composable", "block"],
+  },
+  {
+    title: "Panel",
+    href: "/components/workflow/panel",
+    description:
+      "Positioned container for custom UI elements on Svelte Flow canvases",
+    category: "component",
+    keywords: ["workflow", "panel", "container", "overlay", "toolbar", "ui"],
+  },
+  {
+    title: "Toolbar",
+    href: "/components/workflow/toolbar",
+    description: "Positioned toolbar that attaches to nodes in Svelte Flow canvases",
+    category: "component",
+    keywords: ["workflow", "toolbar", "node toolbar", "actions", "buttons"],
+  },
+
   // Guides
   {
     title: "Svelte 5 + AI SDK Integration Guide",
