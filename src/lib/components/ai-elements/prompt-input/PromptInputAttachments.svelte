@@ -14,6 +14,15 @@ let attachments = getAttachmentsContext();
 let height = $state(0);
 let contentRef = $state<HTMLDivElement | null>(null);
 
+// Separate files and images for grouped rendering
+let nonImageFiles = $derived(
+  attachments.files.filter((f) => !(f.mediaType?.startsWith("image/") && f.url))
+);
+
+let imageFiles = $derived(
+  attachments.files.filter((f) => f.mediaType?.startsWith("image/") && f.url)
+);
+
 // Watch for resize changes using ResizeObserver
 watch(
   () => contentRef,
@@ -47,11 +56,27 @@ let computedHeight = $derived.by(() => {
   style:height="{computedHeight}px"
   {...props}
 >
-  <div class="flex flex-wrap gap-2 p-3 pt-3" bind:this={contentRef}>
-    {#each attachments.files as file (file.id)}
-      {#if children}
-        {@render children(file)}
-      {/if}
-    {/each}
+  <div class="space-y-2 py-1 px-3" bind:this={contentRef}>
+    <!-- Non-image files first -->
+    {#if nonImageFiles.length > 0}
+      <div class="flex flex-wrap gap-2">
+        {#each nonImageFiles as file (file.id)}
+          {#if children}
+            {@render children(file)}
+          {/if}
+        {/each}
+      </div>
+    {/if}
+
+    <!-- Images second -->
+    {#if imageFiles.length > 0}
+      <div class="flex flex-wrap gap-2">
+        {#each imageFiles as file (file.id)}
+          {#if children}
+            {@render children(file)}
+          {/if}
+        {/each}
+      </div>
+    {/if}
   </div>
 </div>

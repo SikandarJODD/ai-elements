@@ -111,7 +111,35 @@ export class AttachmentsContext {
   };
 }
 
+// ============================================================================
+// Provider Context for Global State Management
+// ============================================================================
+
+export class TextInputController {
+  value = $state('');
+
+  setInput = (newValue: string) => {
+    this.value = newValue;
+  };
+
+  clear = () => {
+    this.value = '';
+  };
+}
+
+export class PromptInputController {
+  textInput: TextInputController;
+  attachments: AttachmentsContext;
+
+  constructor(initialInput = '', accept?: string, multiple?: boolean) {
+    this.textInput = new TextInputController();
+    this.textInput.value = initialInput;
+    this.attachments = new AttachmentsContext(accept, multiple);
+  }
+}
+
 const ATTACHMENTS_CONTEXT_KEY = Symbol('attachments');
+const PROVIDER_CONTEXT_KEY = Symbol('prompt-input-provider');
 
 export function setAttachmentsContext(context: AttachmentsContext) {
   setContext(ATTACHMENTS_CONTEXT_KEY, context);
@@ -121,6 +149,23 @@ export function getAttachmentsContext(): AttachmentsContext {
   let context = getContext<AttachmentsContext>(ATTACHMENTS_CONTEXT_KEY);
   if (!context) {
     throw new Error('usePromptInputAttachments must be used within a PromptInput');
+  }
+  return context;
+}
+
+// Provider context (optional, for external state management)
+export function setPromptInputProvider(controller: PromptInputController) {
+  setContext(PROVIDER_CONTEXT_KEY, controller);
+}
+
+export function getPromptInputProvider(): PromptInputController | null {
+  return getContext<PromptInputController>(PROVIDER_CONTEXT_KEY) || null;
+}
+
+export function getPromptInputController(): PromptInputController {
+  let context = getContext<PromptInputController>(PROVIDER_CONTEXT_KEY);
+  if (!context) {
+    throw new Error('getPromptInputController must be used within a PromptInputProvider');
   }
   return context;
 }

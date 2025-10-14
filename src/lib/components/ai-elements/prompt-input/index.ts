@@ -1,5 +1,6 @@
 // Main component
 export { default as PromptInput } from "./PromptInput.svelte";
+export { default as PromptInputProvider } from "./PromptInputProvider.svelte";
 
 // Form components
 export { default as PromptInputBody } from "./PromptInputBody.svelte";
@@ -45,8 +46,13 @@ export {
   AttachmentsContext,
   getAttachmentsContext,
   setAttachmentsContext,
+  PromptInputController,
+  TextInputController,
+  getPromptInputProvider,
+  getPromptInputController,
+  setPromptInputProvider,
   type FileUIPart,
   type FileWithId,
   type PromptInputMessage,
-  type ChatStatus
+  type ChatStatus,
 } from "./attachments-context.svelte.js";
