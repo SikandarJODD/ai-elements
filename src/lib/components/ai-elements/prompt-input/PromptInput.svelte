@@ -26,7 +26,10 @@
       code: "max_files" | "max_file_size" | "accept";
       message: string;
     }) => void;
-    onSubmit: (message: PromptInputMessage, event: SubmitEvent) => void;
+    onSubmit: (
+      message: PromptInputMessage,
+      event: SubmitEvent
+    ) => void | Promise<void>;
     children?: import("svelte").Snippet;
   }
 
@@ -146,21 +149,53 @@
     }
   };
 
-  let handleSubmit = (event: SubmitEvent) => {
+  // Convert blob URLs to data URLs for proper serialization
+  async function convertBlobUrlToDataUrl(url: string): Promise<string> {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  let handleSubmit = async (event: SubmitEvent) => {
     event.preventDefault();
 
-    let formData = new FormData(event.currentTarget as HTMLFormElement);
-    let files: FileUIPart[] = attachmentsContext.files.map(
-      ({ id, ...item }) => ({
-        ...item,
-      })
-    );
+    let form = event.currentTarget as HTMLFormElement;
+    let formData = new FormData(form);
+    let text = (formData.get("message") as string) || "";
 
-    onSubmit({ text: formData.get("message") as string, files }, event);
+    // Convert blob URLs to data URLs asynchronously
+    let filesPromises = attachmentsContext.files.map(async ({ id, ...item }) => {
+      if (item.url && item.url.startsWith("blob:")) {
+        return {
+          ...item,
+          url: await convertBlobUrlToDataUrl(item.url),
+        };
+      }
+      return item;
+    });
 
-    // Clear attachments after submission if clearOnSubmit is true
-    if (clearOnSubmit) {
-      attachmentsContext.clear();
+    try {
+      let files = await Promise.all(filesPromises);
+      let result = onSubmit({ text, files }, event);
+
+      // Handle both sync and async onSubmit
+      if (result && typeof result === 'object' && 'then' in result) {
+        await result;
+      }
+
+      // Only clear if submission was successful
+      if (clearOnSubmit) {
+        attachmentsContext.clear();
+        form.reset();
+      }
+    } catch (error) {
+      // Don't clear on error - user may want to retry
+      console.error("Submit failed:", error);
     }
   };
 

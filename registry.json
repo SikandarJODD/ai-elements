@@ -204,6 +204,7 @@
         }
       ],
       "registryDependencies": [
+        "copy-button",
         "button",
         "tooltip"
       ],
@@ -682,12 +683,17 @@
     {
       "name": "prompt-input",
       "type": "registry:block",
-      "description": "The PromptInput component allows a user to send a message with file attachments to a large language model. It includes a textarea, file upload capabilities, a submit button, and a dropdown for selecting the model.",
+      "description": "A comprehensive prompt input component for AI chat interfaces with file attachments, drag-and-drop support, model selection, and advanced state management. Features include PromptInputProvider for external state control, async error handling, automatic blob-to-data URL conversion, grouped attachment rendering, and paste image support. Perfect for building ChatGPT-like interfaces.",
       "files": [
         {
           "path": "src/lib/components/ai-elements/prompt-input/PromptInput.svelte",
           "type": "registry:component",
           "target": "ai-elements/prompt-input/PromptInput.svelte"
+        },
+        {
+          "path": "src/lib/components/ai-elements/prompt-input/PromptInputProvider.svelte",
+          "type": "registry:component",
+          "target": "ai-elements/prompt-input/PromptInputProvider.svelte"
         },
         {
           "path": "src/lib/components/ai-elements/prompt-input/PromptInputBody.svelte",
@@ -846,7 +852,36 @@
         "runed"
       ],
       "meta": {
-        "author": "SikandarJODD"
+        "author": "SikandarJODD",
+        "version": "2.0.0",
+        "tags": ["prompt", "input", "chat", "attachments", "upload", "ai-interface", "provider", "state-management", "drag-drop", "async"],
+        "category": "AI Input",
+        "documentation": "https://ai-elements.vercel.app/components/prompt-input",
+        "repository": "https://github.com/SikandarJODD/ai-elements",
+        "complexity": "intermediate",
+        "updated": "2025-10-15",
+        "featured": true,
+        "features": [
+          "PromptInputProvider for external state management",
+          "Async error handling with data preservation",
+          "Automatic blob-to-data URL conversion",
+          "Grouped attachment rendering (files/images)",
+          "File tooltips with full details",
+          "Paste image support",
+          "Drag and drop file upload",
+          "Global drop zone support",
+          "Model selection dropdown",
+          "File validation (size, type, count)",
+          "Svelte 5 runes with watch() from runed"
+        ],
+        "improvements": [
+          "Added PromptInputProvider for global state control",
+          "Enhanced async submit with proper error handling",
+          "Blob URL conversion for API compatibility",
+          "Separate rendering for files and images",
+          "File attachment tooltips showing full filename and media type",
+          "Prevent data loss on submission errors"
+        ]
       }
     },
     {
@@ -1093,6 +1128,7 @@
         }
       ],
       "registryDependencies": [
+        "code",
         "collapsible",
         "badge"
       ],
@@ -1168,7 +1204,9 @@
       "dependencies": [
         "@xyflow/svelte"
       ],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "controls"
+      ],
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
