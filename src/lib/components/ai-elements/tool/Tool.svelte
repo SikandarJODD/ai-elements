@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Collapsible } from "$lib/components/ui/collapsible/index.js";
-  import { cn } from "$lib/utils.js";
+  import { cn } from "$lib/utils/utils.js";
   import type { Snippet } from "svelte";
 
   interface ToolProps {

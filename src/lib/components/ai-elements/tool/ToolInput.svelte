@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils.js";
+  import { cn } from "$lib/utils/utils.js";
   import * as Code from "$lib/components/ai-elements/code/index.js";
 
   interface ToolInputProps {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js';
+	import { cn } from '$lib/utils/utils.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '$lib/components/ui/collapsible/index.js';
 	import { getWebPreviewContext, type LogEntry } from './web-preview-context.svelte.js';

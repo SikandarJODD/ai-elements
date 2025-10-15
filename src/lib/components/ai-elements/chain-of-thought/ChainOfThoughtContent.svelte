@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js';
+	import { cn } from '$lib/utils/utils.js';
 	import { getChainOfThoughtContext } from './chain-of-thought-context.svelte.js';
 	import { CollapsibleContent } from '$lib/components/ui/collapsible/index.js';
 	import type { Snippet } from 'svelte';

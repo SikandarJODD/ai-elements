@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils";
+  import { cn } from "$lib/utils/utils.js";
   import type { ImageProps } from "./types";
 
   let {
