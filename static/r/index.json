@@ -69,6 +69,7 @@
 			"@shikijs/themes"
 		],
 		"registryDependencies": [
+			"copy-button",
 			"button",
 			"tooltip"
 		],
@@ -192,7 +193,7 @@
 	{
 		"name": "prompt-input",
 		"type": "registry:block",
-		"description": "The PromptInput component allows a user to send a message with file attachments to a large language model. It includes a textarea, file upload capabilities, a submit button, and a dropdown for selecting the model.",
+		"description": "A comprehensive prompt input component for AI chat interfaces with file attachments, drag-and-drop support, model selection, and advanced state management. Features include PromptInputProvider for external state control, async error handling, automatic blob-to-data URL conversion, grouped attachment rendering, and paste image support. Perfect for building ChatGPT-like interfaces.",
 		"dependencies": [
 			"runed"
 		],
@@ -204,7 +205,47 @@
 			"tooltip"
 		],
 		"meta": {
-			"author": "SikandarJODD"
+			"author": "SikandarJODD",
+			"version": "2.0.0",
+			"tags": [
+				"prompt",
+				"input",
+				"chat",
+				"attachments",
+				"upload",
+				"ai-interface",
+				"provider",
+				"state-management",
+				"drag-drop",
+				"async"
+			],
+			"category": "AI Input",
+			"documentation": "https://ai-elements.vercel.app/components/prompt-input",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "intermediate",
+			"updated": "2025-10-15",
+			"featured": true,
+			"features": [
+				"PromptInputProvider for external state management",
+				"Async error handling with data preservation",
+				"Automatic blob-to-data URL conversion",
+				"Grouped attachment rendering (files/images)",
+				"File tooltips with full details",
+				"Paste image support",
+				"Drag and drop file upload",
+				"Global drop zone support",
+				"Model selection dropdown",
+				"File validation (size, type, count)",
+				"Svelte 5 runes with watch() from runed"
+			],
+			"improvements": [
+				"Added PromptInputProvider for global state control",
+				"Enhanced async submit with proper error handling",
+				"Blob URL conversion for API compatibility",
+				"Separate rendering for files and images",
+				"File attachment tooltips showing full filename and media type",
+				"Prevent data loss on submission errors"
+			]
 		},
 		"relativeUrl": "prompt-input.json"
 	},
@@ -275,6 +316,7 @@
 		"type": "registry:block",
 		"description": "The Tool component provides a comprehensive interface for displaying AI tool usage, including input parameters, execution status, and output results with collapsible sections.",
 		"registryDependencies": [
+			"code",
 			"collapsible",
 			"badge"
 		],
@@ -295,5 +337,204 @@
 			"author": "SikandarJODD"
 		},
 		"relativeUrl": "web-preview.json"
+	},
+	{
+		"name": "canvas",
+		"type": "registry:block",
+		"description": "The Canvas component provides the main container for rendering workflow diagrams with nodes and edges. It wraps @xyflow/svelte's SvelteFlow component with custom styling and configuration for AI workflow visualization.",
+		"dependencies": [
+			"@xyflow/svelte"
+		],
+		"registryDependencies": [
+			"controls"
+		],
+		"meta": {
+			"author": "SikandarJODD",
+			"version": "1.0.0",
+			"tags": [
+				"workflow",
+				"canvas",
+				"flow",
+				"diagram",
+				"visualization"
+			],
+			"category": "AI Workflow",
+			"documentation": "https://ai-elements.vercel.app/components/workflow",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "intermediate",
+			"updated": "2025-10-10",
+			"featured": false
+		},
+		"relativeUrl": "canvas.json"
+	},
+	{
+		"name": "connection",
+		"type": "registry:block",
+		"description": "The Connection component displays the connection line preview when dragging to create new edges between nodes in the workflow. It provides visual feedback during node connection operations.",
+		"dependencies": [
+			"@xyflow/svelte"
+		],
+		"registryDependencies": [],
+		"meta": {
+			"author": "SikandarJODD",
+			"version": "1.0.0",
+			"tags": [
+				"workflow",
+				"connection",
+				"edge",
+				"drag",
+				"preview"
+			],
+			"category": "AI Workflow",
+			"documentation": "https://ai-elements.vercel.app/components/workflow",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "intermediate",
+			"updated": "2025-10-10",
+			"featured": false
+		},
+		"relativeUrl": "connection.json"
+	},
+	{
+		"name": "controls",
+		"type": "registry:block",
+		"description": "The Controls component provides interactive controls for manipulating the workflow canvas, including zoom in, zoom out, fit view, and other navigation controls for better workflow visualization.",
+		"dependencies": [
+			"@xyflow/svelte"
+		],
+		"registryDependencies": [
+			"button"
+		],
+		"meta": {
+			"author": "SikandarJODD",
+			"version": "1.0.0",
+			"tags": [
+				"workflow",
+				"controls",
+				"zoom",
+				"navigation",
+				"viewport"
+			],
+			"category": "AI Workflow",
+			"documentation": "https://ai-elements.vercel.app/components/workflow",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "beginner",
+			"updated": "2025-10-10",
+			"featured": false
+		},
+		"relativeUrl": "controls.json"
+	},
+	{
+		"name": "edge",
+		"type": "registry:block",
+		"description": "The Edge component provides custom edge types for workflow connections. Includes Animated edges for active connections and Temporary edges for conditional or inactive paths, with smooth transitions and visual styling.",
+		"dependencies": [
+			"@xyflow/svelte"
+		],
+		"registryDependencies": [],
+		"meta": {
+			"author": "SikandarJODD",
+			"version": "1.0.0",
+			"tags": [
+				"workflow",
+				"edge",
+				"connection",
+				"animated",
+				"path"
+			],
+			"category": "AI Workflow",
+			"documentation": "https://ai-elements.vercel.app/components/workflow",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "intermediate",
+			"updated": "2025-10-10",
+			"featured": false
+		},
+		"relativeUrl": "edge.json"
+	},
+	{
+		"name": "node",
+		"type": "registry:block",
+		"description": "The Node component provides a comprehensive set of sub-components for building workflow nodes. Includes Node container with handle management, Header, Title, Description, Action buttons, Content area, and Footer for displaying workflow step information with full customization.",
+		"dependencies": [
+			"@xyflow/svelte"
+		],
+		"registryDependencies": [
+			"card"
+		],
+		"meta": {
+			"author": "SikandarJODD",
+			"version": "1.0.0",
+			"tags": [
+				"workflow",
+				"node",
+				"step",
+				"card",
+				"process"
+			],
+			"category": "AI Workflow",
+			"documentation": "https://ai-elements.vercel.app/components/workflow",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "intermediate",
+			"updated": "2025-10-10",
+			"featured": true
+		},
+		"relativeUrl": "node.json"
+	},
+	{
+		"name": "panel",
+		"type": "registry:block",
+		"description": "The Panel component provides an overlay panel for displaying additional workflow information, settings, or controls. It can be positioned at various locations on the canvas for contextual information display.",
+		"dependencies": [
+			"@xyflow/svelte"
+		],
+		"registryDependencies": [
+			"card"
+		],
+		"meta": {
+			"author": "SikandarJODD",
+			"version": "1.0.0",
+			"tags": [
+				"workflow",
+				"panel",
+				"overlay",
+				"information",
+				"settings"
+			],
+			"category": "AI Workflow",
+			"documentation": "https://ai-elements.vercel.app/components/workflow",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "beginner",
+			"updated": "2025-10-10",
+			"featured": false
+		},
+		"relativeUrl": "panel.json"
+	},
+	{
+		"name": "toolbar",
+		"type": "registry:block",
+		"description": "The Toolbar component provides an action toolbar that appears on hover over workflow nodes. It contains quick action buttons for common node operations like edit, delete, duplicate, or other custom actions.",
+		"dependencies": [
+			"@xyflow/svelte"
+		],
+		"registryDependencies": [
+			"button"
+		],
+		"meta": {
+			"author": "SikandarJODD",
+			"version": "1.0.0",
+			"tags": [
+				"workflow",
+				"toolbar",
+				"actions",
+				"node-actions",
+				"hover"
+			],
+			"category": "AI Workflow",
+			"documentation": "https://ai-elements.vercel.app/components/workflow",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "beginner",
+			"updated": "2025-10-10",
+			"featured": false
+		},
+		"relativeUrl": "toolbar.json"
 	}
 ]

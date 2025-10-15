@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ChevronUpIcon from "@lucide/svelte/icons/chevron-up";
 	import { Select as SelectPrimitive } from "bits-ui";
-	import { cn, type WithoutChildrenOrChild } from "$lib/utils.js";
+	import { cn, type WithoutChildrenOrChild } from "$lib/utils/utils.js";
 
 	let {
 		ref = $bindable(null),

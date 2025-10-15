@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Button, type ButtonProps } from "$lib/components/ui/button";
-	import { cn } from "$lib/utils.js";
+	import { cn } from "$lib/utils/utils.js";
 
 	interface Props extends ButtonProps {
 		class?: string;

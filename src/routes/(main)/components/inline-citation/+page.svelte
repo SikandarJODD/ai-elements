@@ -42,6 +42,8 @@
       <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
       <Installation
         specifier={`${PUBLIC_WEBSITE_URL}/r/inline-citation.json`}
+        is_jsrepo={true}
+        blockname="inline-citation"
       />
 
       <!-- Usage -->

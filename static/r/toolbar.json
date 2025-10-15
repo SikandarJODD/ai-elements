@@ -1,0 +1,41 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "toolbar",
+	"type": "registry:block",
+	"description": "The Toolbar component provides an action toolbar that appears on hover over workflow nodes. It contains quick action buttons for common node operations like edit, delete, duplicate, or other custom actions.",
+	"dependencies": [
+		"@xyflow/svelte"
+	],
+	"registryDependencies": [
+		"button"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"workflow",
+			"toolbar",
+			"actions",
+			"node-actions",
+			"hover"
+		],
+		"category": "AI Workflow",
+		"documentation": "https://ai-elements.vercel.app/components/workflow",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "beginner",
+		"updated": "2025-10-10",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { NodeToolbar, Position } from '@xyflow/svelte';\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\timport type { Snippet } from 'svelte';\r\n\timport type { NodeToolbarProps } from '@xyflow/svelte';\r\n\r\n\tinterface ToolbarProps extends Omit<NodeToolbarProps, 'children'> {\r\n\t\tclass?: string;\r\n\t\tchildren?: Snippet;\r\n\t}\r\n\r\n\tlet {\r\n\t\tclass: className,\r\n\t\tchildren,\r\n\t\tposition = Position.Bottom,\r\n\t\t...restProps\r\n\t}: ToolbarProps = $props();\r\n</script>\r\n\r\n<NodeToolbar\r\n\tclass={cn(\r\n\t\t'flex items-center gap-1 rounded-sm border bg-background p-1.5',\r\n\t\tclassName\r\n\t)}\r\n\t{position}\r\n\t{...restProps}\r\n>\r\n\t{#if children}\r\n\t\t{@render children()}\r\n\t{/if}\r\n</NodeToolbar>\r\n",
+			"type": "registry:component",
+			"target": "ai-elements/workflow/toolbar/toolbar.svelte"
+		},
+		{
+			"content": "export { default as Toolbar } from './toolbar.svelte';\r\n",
+			"type": "registry:file",
+			"target": "ai-elements/workflow/toolbar/index.ts"
+		}
+	]
+}

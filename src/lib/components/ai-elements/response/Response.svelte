@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Streamdown, type StreamdownProps } from "svelte-streamdown";
-  import { cn } from "$lib/utils.js";
+  import { cn } from "$lib/utils/utils.js";
   import { mode } from "mode-watcher";
 
   type Props = StreamdownProps & {

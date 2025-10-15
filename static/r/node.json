@@ -1,0 +1,71 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "node",
+	"type": "registry:block",
+	"description": "The Node component provides a comprehensive set of sub-components for building workflow nodes. Includes Node container with handle management, Header, Title, Description, Action buttons, Content area, and Footer for displaying workflow step information with full customization.",
+	"dependencies": [
+		"@xyflow/svelte"
+	],
+	"registryDependencies": [
+		"card"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"workflow",
+			"node",
+			"step",
+			"card",
+			"process"
+		],
+		"category": "AI Workflow",
+		"documentation": "https://ai-elements.vercel.app/components/workflow",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "intermediate",
+		"updated": "2025-10-10",
+		"featured": true
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\r\n  import { Card } from \"$lib/components/ui/card\";\r\n  import { Handle, Position } from \"@xyflow/svelte\";\r\n  import { cn, type WithElementRef } from \"$UTILS$/utils.js\";\r\n  import type { HTMLAttributes } from \"svelte/elements\";\r\n\r\n  type Props = WithElementRef<HTMLAttributes<HTMLDivElement>> & {\r\n    handles: {\r\n      target: boolean;\r\n      source: boolean;\r\n    };\r\n  };\r\n\r\n  let {\r\n    ref = $bindable(null),\r\n    handles,\r\n    class: className,\r\n    children,\r\n    ...restProps\r\n  }: Props = $props();\r\n</script>\r\n\r\n<Card\r\n  bind:ref\r\n  class={cn(\r\n    \"node-container relative size-full h-auto w-sm gap-0 rounded-md p-0\",\r\n    className\r\n  )}\r\n  {...restProps}\r\n>\r\n  {#if handles.target}\r\n  <Handle position={Position.Left} type=\"target\" isConnectable />\r\n  {/if}\r\n  {#if handles.source}\r\n  <Handle position={Position.Right} type=\"source\" isConnectable />\r\n  {/if}\r\n  {@render children?.()}\r\n</Card>\r\n",
+			"type": "registry:component",
+			"target": "ai-elements/workflow/node/node.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { CardHeader } from \"$lib/components/ui/card\";\r\n\timport { cn, type WithElementRef } from \"$UTILS$/utils.js\";\r\n\timport type { HTMLAttributes } from \"svelte/elements\";\r\n\r\n\ttype Props = WithElementRef<HTMLAttributes<HTMLDivElement>>;\r\n\r\n\tlet {\r\n\t\tref = $bindable(null),\r\n\t\tclass: className,\r\n\t\tchildren,\r\n\t\t...restProps\r\n\t}: Props = $props();\r\n</script>\r\n\r\n<CardHeader\r\n\tbind:ref\r\n\tclass={cn(\"gap-0.5 rounded-t-md border-b bg-secondary p-3!\", className)}\r\n\t{...restProps}\r\n>\r\n\t{@render children?.()}\r\n</CardHeader>\r\n",
+			"type": "registry:component",
+			"target": "ai-elements/workflow/node/node-header.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { CardTitle } from \"$lib/components/ui/card\";\r\n\timport type { WithElementRef } from \"$UTILS$/utils.js\";\r\n\timport type { HTMLAttributes } from \"svelte/elements\";\r\n\r\n\ttype Props = WithElementRef<HTMLAttributes<HTMLDivElement>>;\r\n\r\n\tlet {\r\n\t\tref = $bindable(null),\r\n\t\tclass: className,\r\n\t\tchildren,\r\n\t\t...restProps\r\n\t}: Props = $props();\r\n</script>\r\n\r\n<CardTitle bind:ref class={className} {...restProps}>\r\n\t{@render children?.()}\r\n</CardTitle>\r\n",
+			"type": "registry:component",
+			"target": "ai-elements/workflow/node/node-title.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { CardDescription } from \"$lib/components/ui/card\";\r\n\timport type { WithElementRef } from \"$UTILS$/utils.js\";\r\n\timport type { HTMLAttributes } from \"svelte/elements\";\r\n\r\n\ttype Props = WithElementRef<HTMLAttributes<HTMLParagraphElement>>;\r\n\r\n\tlet {\r\n\t\tref = $bindable(null),\r\n\t\tclass: className,\r\n\t\tchildren,\r\n\t\t...restProps\r\n\t}: Props = $props();\r\n</script>\r\n\r\n<CardDescription bind:ref class={className} {...restProps}>\r\n\t{@render children?.()}\r\n</CardDescription>\r\n",
+			"type": "registry:component",
+			"target": "ai-elements/workflow/node/node-description.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { CardAction } from \"$lib/components/ui/card\";\r\n\timport type { WithElementRef } from \"$UTILS$/utils.js\";\r\n\timport type { HTMLAttributes } from \"svelte/elements\";\r\n\r\n\ttype Props = WithElementRef<HTMLAttributes<HTMLDivElement>>;\r\n\r\n\tlet {\r\n\t\tref = $bindable(null),\r\n\t\tclass: className,\r\n\t\tchildren,\r\n\t\t...restProps\r\n\t}: Props = $props();\r\n</script>\r\n\r\n<CardAction bind:ref class={className} {...restProps}>\r\n\t{@render children?.()}\r\n</CardAction>\r\n",
+			"type": "registry:component",
+			"target": "ai-elements/workflow/node/node-action.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n  import { CardContent } from \"$lib/components/ui/card\";\r\n  import { cn, type WithElementRef } from \"$UTILS$/utils.js\";\r\n  import type { HTMLAttributes } from \"svelte/elements\";\r\n\r\n  type Props = WithElementRef<HTMLAttributes<HTMLDivElement>>;\r\n\r\n  let {\r\n    ref = $bindable(null),\r\n    class: className,\r\n    children,\r\n    ...restProps\r\n  }: Props = $props();\r\n</script>\r\n\r\n<CardContent bind:ref class={cn(\"p-3\", className)} {...restProps}>\r\n  {@render children?.()}\r\n</CardContent>\r\n",
+			"type": "registry:component",
+			"target": "ai-elements/workflow/node/node-content.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { CardFooter } from \"$lib/components/ui/card\";\r\n\timport { cn, type WithElementRef } from \"$UTILS$/utils.js\";\r\n\timport type { HTMLAttributes } from \"svelte/elements\";\r\n\r\n\ttype Props = WithElementRef<HTMLAttributes<HTMLDivElement>>;\r\n\r\n\tlet {\r\n\t\tref = $bindable(null),\r\n\t\tclass: className,\r\n\t\tchildren,\r\n\t\t...restProps\r\n\t}: Props = $props();\r\n</script>\r\n\r\n<CardFooter\r\n\tbind:ref\r\n\tclass={cn(\"rounded-b-md border-t bg-secondary p-3!\", className)}\r\n\t{...restProps}\r\n>\r\n\t{@render children?.()}\r\n</CardFooter>\r\n",
+			"type": "registry:component",
+			"target": "ai-elements/workflow/node/node-footer.svelte"
+		},
+		{
+			"content": "import Root from \"./node.svelte\";\r\nimport Header from \"./node-header.svelte\";\r\nimport Title from \"./node-title.svelte\";\r\nimport Description from \"./node-description.svelte\";\r\nimport Action from \"./node-action.svelte\";\r\nimport Content from \"./node-content.svelte\";\r\nimport Footer from \"./node-footer.svelte\";\r\n\r\nexport {\r\n\tRoot,\r\n\tHeader,\r\n\tTitle,\r\n\tDescription,\r\n\tAction,\r\n\tContent,\r\n\tFooter,\r\n\t//\r\n\tRoot as Node,\r\n\tHeader as NodeHeader,\r\n\tTitle as NodeTitle,\r\n\tDescription as NodeDescription,\r\n\tAction as NodeAction,\r\n\tContent as NodeContent,\r\n\tFooter as NodeFooter,\r\n};\r\n",
+			"type": "registry:file",
+			"target": "ai-elements/workflow/node/index.ts"
+		}
+	]
+}

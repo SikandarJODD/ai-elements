@@ -1,5 +1,5 @@
 <script lang="ts">
-import { cn } from "$lib/utils.js";
+import { cn } from "$lib/utils/utils.js";
 import Button from "$lib/components/ui/button/button.svelte";
 import * as Tooltip from "$lib/components/ui/tooltip/index.js";
 import { getAttachmentsContext, type FileWithId } from "./attachments-context.svelte.js";

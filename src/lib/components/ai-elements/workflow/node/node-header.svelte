@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { CardHeader } from "$lib/components/ui/card";
-	import { cn, type WithElementRef } from "$lib/utils.js";
+	import { cn, type WithElementRef } from "$lib/utils/utils.js";
 	import type { HTMLAttributes } from "svelte/elements";
 
 	type Props = WithElementRef<HTMLAttributes<HTMLDivElement>>;

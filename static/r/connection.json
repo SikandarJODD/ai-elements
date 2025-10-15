@@ -1,0 +1,33 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "connection",
+	"type": "registry:block",
+	"description": "The Connection component displays the connection line preview when dragging to create new edges between nodes in the workflow. It provides visual feedback during node connection operations.",
+	"dependencies": [
+		"@xyflow/svelte"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"workflow",
+			"connection",
+			"edge",
+			"drag",
+			"preview"
+		],
+		"category": "AI Workflow",
+		"documentation": "https://ai-elements.vercel.app/components/workflow",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "intermediate",
+		"updated": "2025-10-10",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\r\n  import { useConnection } from \"@xyflow/svelte\";\r\n\r\n  let connection = useConnection();\r\n  const HALF = 0.5;\r\n\r\n\r\n  let pathD: string | null = $derived.by(() => {\r\n    if (connection.current.inProgress) {\r\n      const { from, to } = connection.current;\r\n      return `M${from.x},${from.y} C ${from.x + (to.x - from.x) * HALF},${from.y} ${from.x + (to.x - from.x) * HALF},${to.y} ${to.x},${to.y}`;\r\n    }\r\n    return null;\r\n  });\r\n</script>\r\n\r\n{#if connection.current.inProgress}\r\n  <g>\r\n    <path\r\n      class=\"animated\"\r\n      d={pathD}\r\n      fill=\"none\"\r\n      stroke=\"var(--color-ring)\"\r\n      stroke-width={1}\r\n    />\r\n    <circle\r\n      cx={connection.current.to.x}\r\n      cy={connection.current.to.y}\r\n      fill=\"#fff\"\r\n      r={3}\r\n      stroke=\"var(--color-ring)\"\r\n      stroke-width={1}\r\n    />\r\n  </g>\r\n{/if}\r\n",
+			"type": "registry:component",
+			"target": "ai-elements/workflow/connection/Connection.svelte"
+		}
+	]
+}

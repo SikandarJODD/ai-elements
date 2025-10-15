@@ -1,0 +1,43 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "edge",
+	"type": "registry:block",
+	"description": "The Edge component provides custom edge types for workflow connections. Includes Animated edges for active connections and Temporary edges for conditional or inactive paths, with smooth transitions and visual styling.",
+	"dependencies": [
+		"@xyflow/svelte"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"workflow",
+			"edge",
+			"connection",
+			"animated",
+			"path"
+		],
+		"category": "AI Workflow",
+		"documentation": "https://ai-elements.vercel.app/components/workflow",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "intermediate",
+		"updated": "2025-10-10",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\r\n  import { BaseEdge, getBezierPath, type EdgeProps } from \"@xyflow/svelte\";\r\n\r\n  let {\r\n    id,\r\n    sourceX,\r\n    sourceY,\r\n    targetX,\r\n    targetY,\r\n    sourcePosition,\r\n    targetPosition,\r\n    markerEnd,\r\n    style,\r\n  }: EdgeProps = $props();\r\n\r\n  let edgePath = $derived.by(\r\n    () =>\r\n      getBezierPath({\r\n        sourceX,\r\n        sourceY,\r\n        sourcePosition,\r\n        targetX,\r\n        targetY,\r\n        targetPosition,\r\n      })[0]\r\n  );\r\n</script>\r\n\r\n{#if edgePath}\r\n  <BaseEdge {id} {markerEnd} path={edgePath} {style} />\r\n  <circle fill=\"var(--primary)\" r=\"4\">\r\n    <animateMotion dur=\"2s\" path={edgePath} repeatCount=\"indefinite\" />\r\n  </circle>\r\n{/if}\r\n",
+			"type": "registry:component",
+			"target": "ai-elements/workflow/edge/Animated.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n  import { BaseEdge, getBezierPath, type EdgeProps } from \"@xyflow/svelte\";\r\n\r\n  let {\r\n    id,\r\n    sourceX,\r\n    sourceY,\r\n    targetX,\r\n    targetY,\r\n    sourcePosition,\r\n    targetPosition,\r\n  }: EdgeProps = $props();\r\n\r\n  let edgePath = $derived.by(\r\n    () =>\r\n      getBezierPath({\r\n        sourceX,\r\n        sourceY,\r\n        sourcePosition,\r\n        targetX,\r\n        targetY,\r\n        targetPosition,\r\n      })[0]\r\n  );\r\n\r\n\t$inspect(edgePath,'Edge path');\r\n</script>\r\n\r\n<BaseEdge\r\n  class=\"stroke-1 stroke-ring\"\r\n  {id}\r\n  path={edgePath}\r\n  style=\"stroke-dasharray: 5, 5;\"\r\n/>\r\n",
+			"type": "registry:component",
+			"target": "ai-elements/workflow/edge/Temporary.svelte"
+		},
+		{
+			"content": "import Temporary from './Temporary.svelte';\r\nimport Animated from './Animated.svelte';\r\n\r\nexport const Edge = {\r\n\tTemporary,\r\n\tAnimated\r\n};\r\n",
+			"type": "registry:file",
+			"target": "ai-elements/workflow/edge/index.ts"
+		}
+	]
+}

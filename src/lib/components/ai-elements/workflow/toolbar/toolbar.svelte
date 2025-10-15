@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { NodeToolbar, Position } from '@xyflow/svelte';
-	import { cn } from '$lib/utils.js';
+	import { cn } from '$lib/utils/utils.js';
 	import type { Snippet } from 'svelte';
 	import type { NodeToolbarProps } from '@xyflow/svelte';
 
