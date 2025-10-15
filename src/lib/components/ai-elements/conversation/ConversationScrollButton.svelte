@@ -1,5 +1,5 @@
 <script lang="ts" module>
-  import { cn } from "$lib/utils.js";
+  import { cn } from "$lib/utils/utils.js";
   import type { ButtonProps } from "$lib/components/ui/button/button.svelte";
 
   export interface ConversationScrollButtonProps extends ButtonProps {}

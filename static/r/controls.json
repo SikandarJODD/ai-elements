@@ -1,0 +1,36 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "controls",
+	"type": "registry:block",
+	"description": "The Controls component provides interactive controls for manipulating the workflow canvas, including zoom in, zoom out, fit view, and other navigation controls for better workflow visualization.",
+	"dependencies": [
+		"@xyflow/svelte"
+	],
+	"registryDependencies": [
+		"button"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"workflow",
+			"controls",
+			"zoom",
+			"navigation",
+			"viewport"
+		],
+		"category": "AI Workflow",
+		"documentation": "https://ai-elements.vercel.app/components/workflow",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "beginner",
+		"updated": "2025-10-10",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$/utils.js\";\r\n  import {\r\n    Controls as ControlsPrimitive,\r\n    type ControlsProps,\r\n  } from \"@xyflow/svelte\";\r\n\r\n  let { class: className, ...restProps }: ControlsProps = $props();\r\n</script>\r\n\r\n<ControlsPrimitive\r\n  class={cn(\r\n    \"gap-px overflow-hidden rounded-md border bg-card p-1 shadow-none!\",\r\n    \"[&>button]:rounded-md [&>button]:border-none! [&>button]:bg-transparent! [&>button]:hover:bg-secondary!\",\r\n    className\r\n  )}\r\n  {...restProps}\r\n/>\r\n",
+			"type": "registry:component",
+			"target": "ai-elements/workflow/controls/Controls.svelte"
+		}
+	]
+}

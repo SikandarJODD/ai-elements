@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, type ButtonProps } from "$lib/components/ui/button/index.js";
-  import { cn } from "$lib/utils.js";
+  import { cn } from "$lib/utils/utils.js";
   import type { Snippet } from "svelte";
 
   interface Props extends Omit<ButtonProps, "onclick"> {

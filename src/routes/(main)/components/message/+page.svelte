@@ -38,7 +38,7 @@
       </Playground>
 
       <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
-      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/message.json`} />
+      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/message.json`} is_jsrepo={true} blockname="message" />
 
       <!-- Usage -->
       <Subheading>Usage</Subheading>

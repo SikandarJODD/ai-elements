@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js';
+	import { cn } from '$lib/utils/utils.js';
 	import * as Carousel from '$lib/components/ui/carousel/index.js';
 	import { CarouselContext, setCarouselContext, type CarouselApi } from './carousel-context.svelte.js';
 	import type { Snippet } from 'svelte';

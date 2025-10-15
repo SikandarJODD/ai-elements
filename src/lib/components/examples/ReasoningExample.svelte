@@ -6,6 +6,7 @@
   } from "$lib/components/ai-elements/reasoning";
   import { onMount } from "svelte";
   import { watch } from "runed";
+  import { marked } from "marked";
 
   let reasoningSteps = [
     "Let me think about this problem step by step.",

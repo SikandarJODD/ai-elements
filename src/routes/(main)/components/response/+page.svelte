@@ -44,7 +44,7 @@
 
       <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
       <div class="mt-8">
-        <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/response.json`} />
+        <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/response.json`} is_jsrepo={true} blockname="response" />
       </div>
 
       <!-- CSS Configuration -->

@@ -11,7 +11,7 @@
 	},
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$\";\r\n  import type { ImageProps } from \"./types\";\r\n\r\n  let {\r\n    ref = $bindable(null),\r\n    base64,\r\n    uint8Array,\r\n    mediaType,\r\n    alt,\r\n    class: className,\r\n    ...rest\r\n  }: ImageProps = $props();\r\n</script>\r\n\r\n<img\r\n  bind:this={ref}\r\n  {alt}\r\n  class={cn(\"h-auto max-w-full overflow-hidden rounded-md\", className)}\r\n  src={`data:${mediaType};base64,${base64}`}\r\n  {...rest}\r\n/>\r\n",
+			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$/utils.js\";\r\n  import type { ImageProps } from \"./types\";\r\n\r\n  let {\r\n    ref = $bindable(null),\r\n    base64,\r\n    uint8Array,\r\n    mediaType,\r\n    alt,\r\n    class: className,\r\n    ...rest\r\n  }: ImageProps = $props();\r\n</script>\r\n\r\n<img\r\n  bind:this={ref}\r\n  {alt}\r\n  class={cn(\"h-auto max-w-full overflow-hidden rounded-md\", className)}\r\n  src={`data:${mediaType};base64,${base64}`}\r\n  {...rest}\r\n/>\r\n",
 			"type": "registry:component",
 			"target": "ai-elements/image/Image.svelte"
 		},

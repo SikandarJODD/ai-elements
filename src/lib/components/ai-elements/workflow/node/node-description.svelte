@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { CardDescription } from "$lib/components/ui/card";
-	import type { WithElementRef } from "$lib/utils.js";
+	import type { WithElementRef } from "$lib/utils/utils.js";
 	import type { HTMLAttributes } from "svelte/elements";
 
 	type Props = WithElementRef<HTMLAttributes<HTMLParagraphElement>>;

@@ -40,7 +40,7 @@
       </Playground>
 
       <!-- Installation -->
-      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/image.json`} />
+      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/image.json`} is_jsrepo={true} blockname="image" />
 
       <!-- Usage -->
       <Subheading>Usage</Subheading>
