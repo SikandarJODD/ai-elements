@@ -39,7 +39,7 @@
       </Playground>
 
       <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/suggestion.json -->
-      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/suggestion.json`} />
+      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/suggestion.json`} is_jsrepo={true} blockname="suggestion" />
 
       <!-- Usage -->
       <Subheading>Usage</Subheading>

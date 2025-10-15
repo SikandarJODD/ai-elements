@@ -5,7 +5,7 @@
   "dirs": ["./src/lib", "./src/lib/components"],
   "includeCategories": ["ai-elements", "ui", "lib", "hooks", "utils"],
   "excludeBlocks": ["index", "assets", "components", "config", "hooks", "learning"],
-  "allowSubdirectories": false,
+  "allowSubdirectories": true,
   "excludeDeps": [
     "svelte",
     "@sveltejs/kit",

@@ -33,7 +33,7 @@
         <examples.basic.Component />
       </Playground>
 
-      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/controls.json`} />
+      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/controls.json`} is_jsrepo={true} blockname="workflow" />
 
       <Subheading>Usage</Subheading>
 

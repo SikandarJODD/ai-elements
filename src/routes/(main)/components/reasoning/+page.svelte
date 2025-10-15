@@ -38,7 +38,7 @@
       </Playground>
 
       <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
-      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/reasoning.json`} />
+      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/reasoning.json`} is_jsrepo={true} blockname="reasoning" />
 
       <!-- Usage -->
       <Subheading>Usage</Subheading>

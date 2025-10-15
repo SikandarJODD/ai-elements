@@ -39,7 +39,7 @@
       </Playground>
 
       <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/loader.json -->
-      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/loader.json`} />
+      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/loader.json`} is_jsrepo={true} blockname="loader" />
 
       <!-- Usage -->
       <Subheading>Usage</Subheading>
