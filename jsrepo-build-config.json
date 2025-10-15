@@ -2,16 +2,14 @@
   "$schema": "https://unpkg.com/jsrepo@1.47.0/schemas/registry-config.json",
   "name": "@ai/elements",
   "version": "0.1.0",
-  "dirs": ["./src/lib/components/ai-elements"],
+  "dirs": ["./src/lib", "./src/lib/components"],
+  "includeCategories": ["ai-elements", "ui", "lib", "hooks", "utils"],
+  "excludeBlocks": ["index", "assets", "components", "config", "hooks", "learning"],
   "allowSubdirectories": false,
   "excludeDeps": [
     "svelte",
     "@sveltejs/kit",
-    "tailwindcss",
-    "clsx",
-    "tailwind-merge",
-    "tailwind-variants",
-    "bits-ui"
+    "tailwindcss"
   ],
   "meta": {
     "authors": ["SikandarJODD"],
@@ -44,19 +42,5 @@
       "version": "4.x.x",
       "message": "AI Elements requires Tailwind CSS v4. See: https://tailwindcss.com/docs/installation"
     }
-  },
-  "configFiles": [
-    {
-      "name": "Global Styles (app.css)",
-      "path": "./src/app.css",
-      "expectedPath": "./src/app.css",
-      "optional": false
-    }
-  ],
-  "rules": {
-    "no-framework-dependency": "error",
-    "no-unpinned-dependency": "warn",
-    "require-local-dependency-exists": "error",
-    "no-circular-dependency": "error"
   }
 }

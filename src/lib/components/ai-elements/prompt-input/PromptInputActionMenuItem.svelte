@@ -1,5 +1,5 @@
 <script lang="ts">
-import { cn } from "$lib/utils.js";
+import { cn } from "$lib/utils/utils.js";
 import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
 
 interface Props {

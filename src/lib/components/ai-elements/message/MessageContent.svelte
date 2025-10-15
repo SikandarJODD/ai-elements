@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils";
+  import { cn } from "$lib/utils/utils.js";
   import { tv, type VariantProps } from "tailwind-variants";
   import type { HTMLAttributes } from "svelte/elements";
 

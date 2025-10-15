@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Panel as PanelPrimitive, type PanelProps } from "@xyflow/svelte";
-  import { cn } from "$lib/utils.js";
+  import { cn } from "$lib/utils/utils.js";
 
   type PanelComponentProps = PanelProps & {
     class?: string;

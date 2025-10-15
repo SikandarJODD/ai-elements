@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '$lib/utils/utils.js';
 	import * as Code from '$lib/components/ai-elements/code';
 	import { CopyButton } from '$lib/components/ai-elements/copy-button';
 	import { TypeScript as TypescriptIcon, Svelte as SvelteIcon, Terminal as TerminalIcon, CodeIcon } from '$lib/components/icons';

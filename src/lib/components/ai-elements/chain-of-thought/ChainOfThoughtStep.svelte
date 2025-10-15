@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils.js";
+  import { cn } from "$lib/utils/utils.js";
   import { DotIcon, type Icon as IconType } from "@lucide/svelte";
   import { getChainOfThoughtContext } from './chain-of-thought-context.svelte.js';
   import type { Snippet } from "svelte";

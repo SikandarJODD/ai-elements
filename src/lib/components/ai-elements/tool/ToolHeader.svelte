@@ -1,7 +1,7 @@
 <script lang="ts">
   import { CollapsibleTrigger } from "$lib/components/ui/collapsible/index.js";
   import { Badge } from "$lib/components/ui/badge/index.js";
-  import { cn } from "$lib/utils.js";
+  import { cn } from "$lib/utils/utils.js";
   import {
     CheckCircleIcon,
     ChevronDownIcon,
