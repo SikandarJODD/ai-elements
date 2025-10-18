@@ -27,6 +27,14 @@
   import KitCodeBlockThemeExample from "$lib/components/kit-examples/kit-code-block-theme-example.svelte";
   import KitMarkdownBasicExample from "$lib/components/kit-examples/kit-markdown-basic-example.svelte";
   import KitMarkdownCustomComponentsExample from "$lib/components/kit-examples/kit-markdown-custom-components-example.svelte";
+  import KitChatContainerBasicExample from "$lib/components/kit-examples/kit-chat-container-basic-example.svelte";
+  import KitChatContainerStreamingExample from "$lib/components/kit-examples/kit-chat-container-streaming-example.svelte";
+  import KitScrollButtonBasicExample from "$lib/components/kit-examples/kit-scroll-button-basic-example.svelte";
+  import KitScrollButtonCustomExample from "$lib/components/kit-examples/kit-scroll-button-custom-example.svelte";
+  import KitScrollButtonWithChatExample from "$lib/components/kit-examples/kit-scroll-button-with-chat-example.svelte";
+  import KitReasoningBasicExample from "$lib/components/kit-examples/kit-reasoning-basic-example.svelte";
+  import KitReasoningMarkdownExample from "$lib/components/kit-examples/kit-reasoning-markdown-example.svelte";
+  import KitImageBasicExample from "$lib/components/kit-examples/kit-image-basic-example.svelte";
 </script>
 
 <div class="mx-auto max-w-2xl p-4">
@@ -168,5 +176,45 @@
   <div class="mx-auto max-w-4xl p-4">
     <h2 class="mb-4 mt-8 text-2xl font-bold">Markdown - Custom Theme Example</h2>
     <KitMarkdownCustomComponentsExample />
+  </div>
+  <!-- Chat Container Basic example  -->
+  <div class="mx-auto max-w-4xl p-4">
+    <h2 class="mb-4 mt-8 text-2xl font-bold">Chat Container - Basic Example</h2>
+    <KitChatContainerBasicExample />
+  </div>
+  <!-- Chat Container Streaming example  -->
+  <div class="mx-auto max-w-4xl p-4">
+    <h2 class="mb-4 mt-8 text-2xl font-bold">Chat Container - Streaming Text Example</h2>
+    <KitChatContainerStreamingExample />
+  </div>
+  <!-- Scroll Button Basic example  -->
+  <div class="mx-auto max-w-4xl p-4">
+    <h2 class="mb-4 mt-8 text-2xl font-bold">Scroll Button - Basic Example</h2>
+    <KitScrollButtonBasicExample />
+  </div>
+  <!-- Scroll Button Custom example  -->
+  <div class="mx-auto max-w-4xl p-4">
+    <h2 class="mb-4 mt-8 text-2xl font-bold">Scroll Button - Custom Variant</h2>
+    <KitScrollButtonCustomExample />
+  </div>
+  <!-- Scroll Button With Chat example  -->
+  <div class="mx-auto max-w-4xl p-4">
+    <h2 class="mb-4 mt-8 text-2xl font-bold">Scroll Button - With Chat Container</h2>
+    <KitScrollButtonWithChatExample />
+  </div>
+  <!-- Reasoning Basic example  -->
+  <div class="mx-auto max-w-4xl p-4">
+    <h2 class="mb-4 mt-8 text-2xl font-bold">Reasoning - Basic Example</h2>
+    <KitReasoningBasicExample />
+  </div>
+  <!-- Reasoning Markdown example  -->
+  <div class="mx-auto max-w-4xl p-4">
+    <h2 class="mb-4 mt-8 text-2xl font-bold">Reasoning - With Markdown</h2>
+    <KitReasoningMarkdownExample />
+  </div>
+  <!-- Image Basic example  -->
+  <div class="mx-auto max-w-2xl p-4">
+    <h2 class="mb-4 mt-8 text-2xl font-bold">Image - Basic Example</h2>
+    <KitImageBasicExample />
   </div>
 </div>
