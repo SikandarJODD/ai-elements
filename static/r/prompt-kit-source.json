@@ -1,0 +1,54 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "prompt-kit-source",
+	"type": "registry:block",
+	"description": "The Source component displays collapsible source information and references in AI responses. Features trigger and content components with context management for showing citations and sources.",
+	"registryDependencies": [
+		"collapsible",
+		"button"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"prompt-kit",
+			"source",
+			"citation",
+			"reference",
+			"collapsible"
+		],
+		"category": "Prompt Kit",
+		"documentation": "https://ai-elements.vercel.app/prompt-kit/source",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "intermediate",
+		"updated": "2025-10-19",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { HoverCard } from '$lib/components/ui/hover-card/index.js';\r\n\timport { SourceClass, setSourceContext } from './source-context.svelte.js';\r\n\timport type { Snippet } from 'svelte';\r\n\r\n\tlet {\r\n\t\thref,\r\n\t\tchildren\r\n\t}: {\r\n\t\thref: string;\r\n\t\tchildren: Snippet;\r\n\t} = $props();\r\n\r\n\tconst contextInstance = new SourceClass({ href });\r\n\tsetSourceContext(contextInstance);\r\n</script>\r\n\r\n<HoverCard openDelay={150} closeDelay={0}>\r\n\t{@render children()}\r\n</HoverCard>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/source/Source.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$/utils.js\";\r\n  import HoverCardTrigger from \"$lib/components/ui/hover-card/hover-card-trigger.svelte\";\r\n  import { getSourceContext } from \"./source-context.svelte.js\";\r\n\r\n  interface Props {\r\n    label?: string | number;\r\n    showFavicon?: boolean;\r\n    class?: string;\r\n    [key: string]: any;\r\n  }\r\n\r\n  let {\r\n    label,\r\n    showFavicon = false,\r\n    class: className,\r\n    ...restProps\r\n  }: Props = $props();\r\n\r\n  const { href, domain } = getSourceContext();\r\n\r\n  let labelToShow = $derived(label ?? domain.replace(\"www.\", \"\"));\r\n  let faviconUrl = $derived(\r\n    `https://www.google.com/s2/favicons?sz=64&domain_url=${encodeURIComponent(href)}`\r\n  );\r\n</script>\r\n\r\n<HoverCardTrigger>\r\n  <a\r\n    {...restProps}\r\n    {href}\r\n    target=\"_blank\"\r\n    rel=\"noopener noreferrer\"\r\n    class={cn(\r\n      \"bg-muted text-muted-foreground hover:bg-muted-foreground/30 hover:text-primary inline-flex h-5 max-w-32 items-center gap-1 overflow-hidden rounded-full py-0 text-xs leading-none no-underline transition-colors duration-150\",\r\n      showFavicon ? \"pr-2 pl-1\" : \"px-1\",\r\n      className\r\n    )}\r\n  >\r\n    {#if showFavicon}\r\n      <img\r\n        src={faviconUrl}\r\n        alt=\"favicon\"\r\n        width=\"14\"\r\n        height=\"14\"\r\n        class=\"size-3.5 rounded-full\"\r\n      />\r\n    {/if}\r\n    <span class=\"truncate text-center font-normal\">{labelToShow}</span>\r\n  </a>\r\n</HoverCardTrigger>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/source/SourceTrigger.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$/utils.js\";\r\n  import HoverCardContent from \"$lib/components/ui/hover-card/hover-card-content.svelte\";\r\n  import { getSourceContext } from \"./source-context.svelte.js\";\r\n\r\n  interface Props {\r\n    title: string;\r\n    description: string;\r\n    class?: string;\r\n    [key: string]: any;\r\n  }\r\n\r\n  let { title, description, class: className, ...restProps }: Props = $props();\r\n\r\n  const { href, domain } = getSourceContext();\r\n\r\n  let displayDomain = $derived(domain.replace(\"www.\", \"\"));\r\n  let faviconUrl = $derived(\r\n    `https://www.google.com/s2/favicons?sz=64&domain_url=${encodeURIComponent(href)}`\r\n  );\r\n</script>\r\n\r\n<HoverCardContent class={cn(\"w-80 p-0 shadow-xs\", className)} {...restProps}>\r\n  <a\r\n    {href}\r\n    target=\"_blank\"\r\n    rel=\"noopener noreferrer\"\r\n    class=\"flex flex-col gap-2 p-3\"\r\n  >\r\n    <div class=\"flex items-center gap-1.5\">\r\n      <img\r\n        src={faviconUrl}\r\n        alt=\"favicon\"\r\n        class=\"size-4 rounded-full\"\r\n        width=\"16\"\r\n        height=\"16\"\r\n      />\r\n      <div class=\"text-primary truncate text-sm\">\r\n        {displayDomain}\r\n      </div>\r\n    </div>\r\n    <div class=\"line-clamp-2 text-sm font-medium\">{title}</div>\r\n    <div class=\"text-muted-foreground line-clamp-2 text-sm\">\r\n      {description}\r\n    </div>\r\n  </a>\r\n</HoverCardContent>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/source/SourceContent.svelte"
+		},
+		{
+			"content": "import { getContext, setContext } from 'svelte';\r\n\r\nexport type SourceSchema = {\r\n\thref: string;\r\n\tdomain: string;\r\n};\r\n\r\nexport class SourceClass {\r\n\thref = $state<string>('');\r\n\tdomain = $state<string>('');\r\n\r\n\tconstructor(props: { href: string }) {\r\n\t\tthis.href = props.href;\r\n\r\n\t\t// Extract domain from href\r\n\t\ttry {\r\n\t\t\tthis.domain = new URL(props.href).hostname;\r\n\t\t} catch {\r\n\t\t\tthis.domain = props.href.split('/').pop() || props.href;\r\n\t\t}\r\n\t}\r\n}\r\n\r\nconst SOURCE_KEY = Symbol('source');\r\n\r\nexport function setSourceContext(contextInstance: SourceClass) {\r\n\tsetContext(SOURCE_KEY, contextInstance);\r\n}\r\n\r\nexport function getSourceContext(): SourceClass {\r\n\tconst context = getContext<SourceClass>(SOURCE_KEY);\r\n\r\n\tif (!context) {\r\n\t\tthrow new Error('Source.* must be used inside <Source>');\r\n\t}\r\n\r\n\treturn context;\r\n}\r\n",
+			"type": "registry:file",
+			"target": "prompt-kit/source/source-context.svelte.ts"
+		},
+		{
+			"content": "import Root from './Source.svelte';\r\nimport Trigger from './SourceTrigger.svelte';\r\nimport Content from './SourceContent.svelte';\r\n\r\nexport {\r\n\tRoot,\r\n\tTrigger,\r\n\tContent,\r\n\t//\r\n\tRoot as Source,\r\n\tTrigger as SourceTrigger,\r\n\tContent as SourceContent\r\n};\r\n\r\nexport * from './source-context.svelte.js';\r\n",
+			"type": "registry:file",
+			"target": "prompt-kit/source/index.ts"
+		}
+	]
+}

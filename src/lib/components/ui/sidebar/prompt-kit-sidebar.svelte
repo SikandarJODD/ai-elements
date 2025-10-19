@@ -1,0 +1,167 @@
+<script lang="ts">
+  import { page } from "$app/state";
+  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+  import * as Collapsible from "$lib/components/ui/collapsible/index.js";
+  import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
+  import { onMount, type ComponentProps } from "svelte";
+  let {
+    ref = $bindable(null),
+    ...restProps
+  }: ComponentProps<typeof Sidebar.Root> = $props();
+
+  let data = $state({
+    navMain: [
+      {
+        title: "Getting Started",
+        url: "#",
+        items: [
+          // {
+          //   title: "Introduction",
+          //   url: "/prompt-kit",
+          // },
+          {
+            title: "Installation",
+            url: "/prompt-kit/installation",
+          },
+        ],
+      },
+      {
+        title: "Components",
+        url: "/prompt-kit",
+        items: [
+          {
+            title: "Chat Container",
+            url: "/prompt-kit/chat-container",
+            isActive: true,
+          },
+          {
+            title: "Code Block",
+            url: "/prompt-kit/code-block",
+          },
+          {
+            title: "File Upload",
+            url: "/prompt-kit/file-upload",
+          },
+          {
+            title: "Image",
+            url: "/prompt-kit/image",
+          },
+          {
+            title: "Loader",
+            url: "/prompt-kit/loader",
+          },
+          {
+            title: "Markdown",
+            url: "/prompt-kit/markdown",
+          },
+          {
+            title: "Message",
+            url: "/prompt-kit/message",
+          },
+          {
+            title: "Prompt Input",
+            url: "/prompt-kit/prompt-input",
+          },
+          {
+            title: "Prompt Suggestion",
+            url: "/prompt-kit/prompt-suggestion",
+          },
+          {
+            title: "Reasoning",
+            url: "/prompt-kit/reasoning",
+          },
+          // {
+          //   title: "Scroll Button",
+          //   url: "/prompt-kit/scroll-button",
+          // },
+          {
+            title: "Source",
+            url: "/prompt-kit/source",
+          },
+          {
+            title: "Steps",
+            url: "/prompt-kit/steps",
+          },
+          {
+            title: "System Message",
+            url: "/prompt-kit/system-message",
+          },
+          {
+            title: "Tool",
+            url: "/prompt-kit/tool",
+          },
+        ],
+      },
+    ],
+  });
+
+  let updateIsActive = (url: string) => {
+    data.navMain.forEach((item) => {
+      item.items?.forEach((subItem) => {
+        subItem.isActive = subItem.url === url;
+      });
+    });
+  };
+
+  let currentPath = $state("");
+
+  onMount(() => {
+    currentPath = page.url.pathname;
+    updateIsActive(currentPath);
+  });
+</script>
+
+<Sidebar.Root
+  class="mt-16 h-[calc(100vh-4rem)] pl-6 pr-2"
+  {...restProps}
+  bind:ref
+>
+  <Sidebar.Content class="gap-0 no-scrollbar mb-4 bg-background pt-6">
+    <!-- We create a collapsible SidebarGroup for each parent. -->
+    {#each data.navMain as item (item.title)}
+      <Collapsible.Root title={item.title} open class="group/collapsible">
+        <Sidebar.Group class="p-0">
+          <Sidebar.GroupLabel
+            class="group/label text-sidebar-foreground hover:bg-transparent hover:text-sidebar-accent-foreground text-sm"
+          >
+            {#snippet child({ props })}
+              <Collapsible.Trigger {...props}>
+                {item.title}
+                <ChevronRightIcon
+                  class="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90"
+                />
+              </Collapsible.Trigger>
+            {/snippet}
+          </Sidebar.GroupLabel>
+          <Collapsible.Content class="mb-2">
+            <Sidebar.GroupContent>
+              <Sidebar.Menu class="gap-0.5">
+                {#each item.items as subItem (subItem.title)}
+                  <Sidebar.MenuItem>
+                    <Sidebar.MenuButton
+                      isActive={subItem.isActive}
+                      class="hover:bg-transparent hover:text-primary  data-[active=true]:font-normal text-muted-foreground data-[active=true]:text-blue-500 data-[active=true]:bg-transparent active:bg-transparent active:text-primary"
+                      onclick={() => {
+                        updateIsActive(subItem.url);
+                      }}
+                    >
+                      {#snippet child({ props })}
+                        <a href={subItem.url} {...props}>{subItem.title}</a>
+                      {/snippet}
+                    </Sidebar.MenuButton>
+                  </Sidebar.MenuItem>
+                {/each}
+              </Sidebar.Menu>
+            </Sidebar.GroupContent>
+          </Collapsible.Content>
+        </Sidebar.Group>
+      </Collapsible.Root>
+    {/each}
+  </Sidebar.Content>
+  <!-- <Sidebar.Footer>
+    <div class="p-1">
+      <SidebarOptInForm />
+    </div>
+  </Sidebar.Footer> -->
+  <!-- <Sidebar.Rail /> -->
+</Sidebar.Root>

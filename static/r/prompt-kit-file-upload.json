@@ -1,0 +1,56 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "prompt-kit-file-upload",
+	"type": "registry:block",
+	"description": "The FileUpload component provides drag-and-drop file upload functionality with preview, validation, and context-based state management. Features trigger and content components for flexible upload UI.",
+	"dependencies": [
+		"runed"
+	],
+	"registryDependencies": [
+		"button"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"prompt-kit",
+			"file-upload",
+			"drag-drop",
+			"attachments",
+			"validation"
+		],
+		"category": "Prompt Kit",
+		"documentation": "https://ai-elements.vercel.app/prompt-kit/file-upload",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "intermediate",
+		"updated": "2025-10-19",
+		"featured": true
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { setContext } from 'svelte';\r\n\timport type { Snippet } from 'svelte';\r\n\timport { FileUploadContext } from './file-upload-context.svelte';\r\n\r\n\ttype Props = {\r\n\t\tonFilesAdded: (files: File[]) => void;\r\n\t\tchildren: Snippet;\r\n\t\tmultiple?: boolean;\r\n\t\taccept?: string;\r\n\t\tdisabled?: boolean;\r\n\t};\r\n\r\n\tlet {\r\n\t\tonFilesAdded,\r\n\t\tchildren,\r\n\t\tmultiple = true,\r\n\t\taccept,\r\n\t\tdisabled = false\r\n\t}: Props = $props();\r\n\r\n\tconst ctx = new FileUploadContext(multiple, disabled);\r\n\tsetContext('file-upload', ctx);\r\n\r\n\tlet dragCounter = 0;\r\n\r\n\tfunction handleFiles(files: FileList) {\r\n\t\tconst newFiles = Array.from(files);\r\n\t\tif (multiple) {\r\n\t\t\tonFilesAdded(newFiles);\r\n\t\t} else {\r\n\t\t\tonFilesAdded(newFiles.slice(0, 1));\r\n\t\t}\r\n\t}\r\n\r\n\tfunction handleDrag(e: DragEvent) {\r\n\t\te.preventDefault();\r\n\t\te.stopPropagation();\r\n\t}\r\n\r\n\tfunction handleDragIn(e: DragEvent) {\r\n\t\thandleDrag(e);\r\n\t\tdragCounter++;\r\n\t\tif (e.dataTransfer?.items.length) {\r\n\t\t\tctx.isDragging = true;\r\n\t\t}\r\n\t}\r\n\r\n\tfunction handleDragOut(e: DragEvent) {\r\n\t\thandleDrag(e);\r\n\t\tdragCounter--;\r\n\t\tif (dragCounter === 0) {\r\n\t\t\tctx.isDragging = false;\r\n\t\t}\r\n\t}\r\n\r\n\tfunction handleDrop(e: DragEvent) {\r\n\t\thandleDrag(e);\r\n\t\tctx.isDragging = false;\r\n\t\tdragCounter = 0;\r\n\t\tif (e.dataTransfer?.files.length) {\r\n\t\t\thandleFiles(e.dataTransfer.files);\r\n\t\t}\r\n\t}\r\n\r\n\tfunction handleFileSelect(e: Event) {\r\n\t\tconst target = e.target as HTMLInputElement;\r\n\t\tif (target.files?.length) {\r\n\t\t\thandleFiles(target.files);\r\n\t\t\ttarget.value = '';\r\n\t\t}\r\n\t}\r\n</script>\r\n\r\n<svelte:window\r\n\tondragenter={handleDragIn}\r\n\tondragleave={handleDragOut}\r\n\tondragover={handleDrag}\r\n\tondrop={handleDrop}\r\n/>\r\n\r\n<input\r\n\ttype=\"file\"\r\n\tbind:this={ctx.inputRef}\r\n\tonchange={handleFileSelect}\r\n\tclass=\"hidden\"\r\n\t{multiple}\r\n\t{accept}\r\n\taria-hidden=\"true\"\r\n\t{disabled}\r\n/>\r\n\r\n{@render children()}\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/file-upload/file-upload.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { getContext } from 'svelte';\r\n\timport type { FileUploadContext } from './file-upload-context.svelte';\r\n\timport type { Snippet } from 'svelte';\r\n\timport { cn } from '$UTILS$/utils';\r\n\r\n\ttype Props = {\r\n\t\tasChild?: boolean;\r\n\t\tclass?: string;\r\n\t\tchildren: Snippet;\r\n\t\tonclick?: (e: MouseEvent) => void;\r\n\t\t[key: string]: any;\r\n\t};\r\n\r\n\tlet { asChild = false, class: className, children, onclick, ...restProps }: Props = $props();\r\n\r\n\tconst context = getContext<FileUploadContext>('file-upload');\r\n\r\n\tfunction handleClick(e: MouseEvent) {\r\n\t\te.stopPropagation();\r\n\t\tcontext?.inputRef?.click();\r\n\t\tonclick?.(e);\r\n\t}\r\n</script>\r\n\r\n{#if asChild}\r\n\t<div\r\n\t\trole=\"button\"\r\n\t\ttabindex=\"0\"\r\n\t\tclass={className}\r\n\t\tonclick={handleClick}\r\n\t\tonkeydown={(e) => {\r\n\t\t\tif (e.key === 'Enter' || e.key === ' ') {\r\n\t\t\t\te.preventDefault();\r\n\t\t\t\thandleClick(e as any);\r\n\t\t\t}\r\n\t\t}}\r\n\t\t{...restProps}\r\n\t>\r\n\t\t{@render children()}\r\n\t</div>\r\n{:else}\r\n\t<button type=\"button\" class={className} onclick={handleClick} {...restProps}>\r\n\t\t{@render children()}\r\n\t</button>\r\n{/if}\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/file-upload/file-upload-trigger.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { getContext, onMount } from 'svelte';\r\n\timport type { FileUploadContext } from './file-upload-context.svelte';\r\n\timport type { Snippet } from 'svelte';\r\n\timport { cn } from '$UTILS$/utils';\r\n\r\n\ttype Props = {\r\n\t\tclass?: string;\r\n\t\tchildren?: Snippet;\r\n\t\t[key: string]: any;\r\n\t};\r\n\r\n\tlet { class: className, children, ...restProps }: Props = $props();\r\n\r\n\tconst context = getContext<FileUploadContext>('file-upload');\r\n\tlet mounted = $state(false);\r\n\r\n\tonMount(() => {\r\n\t\tmounted = true;\r\n\t\treturn () => {\r\n\t\t\tmounted = false;\r\n\t\t};\r\n\t});\r\n\r\n\tconst shouldRender = $derived(\r\n\t\tcontext?.isDragging && mounted && !context?.disabled\r\n\t);\r\n</script>\r\n\r\n{#if shouldRender}\r\n\t<div\r\n\t\tclass={cn(\r\n\t\t\t'bg-background/80 fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm',\r\n\t\t\t'animate-in fade-in-0 slide-in-from-bottom-10 zoom-in-90 duration-150',\r\n\t\t\tclassName\r\n\t\t)}\r\n\t\t{...restProps}\r\n\t>\r\n\t\t{#if children}\r\n\t\t\t{@render children()}\r\n\t\t{/if}\r\n\t</div>\r\n{/if}\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/file-upload/file-upload-content.svelte"
+		},
+		{
+			"content": "export class FileUploadContext {\r\n\tisDragging = $state(false);\r\n\tinputRef = $state<HTMLInputElement | null>(null);\r\n\tmultiple = $state<boolean>(true);\r\n\tdisabled = $state<boolean>(false);\r\n\r\n\tconstructor(multiple: boolean = true, disabled: boolean = false) {\r\n\t\tthis.multiple = multiple;\r\n\t\tthis.disabled = disabled;\r\n\t}\r\n}\r\n",
+			"type": "registry:file",
+			"target": "prompt-kit/file-upload/file-upload-context.svelte.ts"
+		},
+		{
+			"content": "export { default as FileUpload } from './file-upload.svelte';\r\nexport { default as FileUploadTrigger } from './file-upload-trigger.svelte';\r\nexport { default as FileUploadContent } from './file-upload-content.svelte';\r\nexport { FileUploadContext } from './file-upload-context.svelte';\r\n",
+			"type": "registry:file",
+			"target": "prompt-kit/file-upload/index.ts"
+		}
+	]
+}
