@@ -27,51 +27,55 @@
 </script>
 
 <div {...rest} bind:this={ref} class={cn(codeVariants({ variant }), className)}>
-  {@html codeState.highlighted}
-  {@render children?.()}
+  <div class="ai-code-wrapper">
+    {@html codeState.highlighted}
+    {@render children?.()}
+  </div>
 </div>
 
 <style>
   @reference '../../../../app.css';
 
-  :global(.dark) {
-    :global(.shiki, .shiki span) {
-      color: var(--shiki-dark) !important;
-      font-style: var(--shiki-dark-font-style) !important;
-      font-weight: var(--shiki-dark-font-weight) !important;
-      text-decoration: var(--shiki-dark-text-decoration) !important;
-    }
-  }
-
-  /* Shiki see: https://shiki.matsu.io/guide/dual-themes#class-based-dark-mode */
-  :global(html.dark .shiki, html.dark .shiki span) {
+  /* Scoped global styles - only affect elements within .ai-code-wrapper */
+  /* Dark mode: check dark class on parent, then scope to wrapper */
+  :global(.dark) .ai-code-wrapper :global(.shiki),
+  :global(.dark) .ai-code-wrapper :global(.shiki span) {
     color: var(--shiki-dark) !important;
     font-style: var(--shiki-dark-font-style) !important;
     font-weight: var(--shiki-dark-font-weight) !important;
     text-decoration: var(--shiki-dark-text-decoration) !important;
   }
 
-  :global(pre.shiki) {
+  /* Shiki see: https://shiki.matsu.io/guide/dual-themes#class-based-dark-mode */
+  :global(html.dark) .ai-code-wrapper :global(.shiki),
+  :global(html.dark) .ai-code-wrapper :global(.shiki span) {
+    color: var(--shiki-dark) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+
+  .ai-code-wrapper :global(pre.shiki) {
     @apply overflow-x-auto rounded-lg bg-inherit py-4 text-sm;
   }
 
-  :global(pre.shiki:not([data-code-overflow] *):not([data-code-overflow])) {
+  .ai-code-wrapper :global(pre.shiki:not([data-code-overflow] *):not([data-code-overflow])) {
     @apply overflow-y-auto;
     max-height: min(100%, 650px);
   }
 
-  :global(pre.shiki code) {
+  .ai-code-wrapper :global(pre.shiki code) {
     @apply grid min-w-full rounded-none border-0 bg-transparent p-0 break-words;
     counter-reset: line;
     box-decoration-break: clone;
   }
 
-  :global(pre.line-numbers) {
+  .ai-code-wrapper :global(pre.line-numbers) {
     counter-reset: step;
     counter-increment: step 0;
   }
 
-  :global(pre.line-numbers .line::before) {
+  .ai-code-wrapper :global(pre.line-numbers .line::before) {
     content: counter(step);
     counter-increment: step;
     display: inline-block;
@@ -80,24 +84,24 @@
     text-align: right;
   }
 
-  :global(pre.line-numbers .line::before) {
+  .ai-code-wrapper :global(pre.line-numbers .line::before) {
     @apply text-muted-foreground;
   }
 
-  :global(pre .line.line--highlighted) {
+  .ai-code-wrapper :global(pre .line.line--highlighted) {
     @apply bg-secondary;
     /* border-l-2 border-primary/40 if needed */
   }
 
-  :global(pre .line.line--highlighted span) {
+  .ai-code-wrapper :global(pre .line.line--highlighted span) {
     @apply relative;
   }
 
-  :global(pre .line) {
+  .ai-code-wrapper :global(pre .line) {
     @apply inline-block min-h-4 w-full px-4 py-0.5;
   }
 
-  :global(pre.line-numbers .line) {
+  .ai-code-wrapper :global(pre.line-numbers .line) {
     @apply px-2;
   }
 </style>

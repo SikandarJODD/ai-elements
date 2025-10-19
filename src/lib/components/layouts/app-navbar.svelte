@@ -27,6 +27,7 @@
     { href: "/", label: "Home", active: true },
     { href: "/docs/introduction", label: "Docs", active: false },
     { href: "/components/actions", label: "Components", active: false },
+    { href: "/prompt-kit/prompt-input", label: "Prompt Kit", active: false },
     { href: "/guides", label: "Guides", active: false },
     // { href: "/response", label: "Response", act ive: false }, // only in development
     // { href: "#", label: "About", active: false },

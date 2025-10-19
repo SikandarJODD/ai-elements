@@ -1,0 +1,63 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "prompt-kit-steps",
+	"type": "registry:block",
+	"description": "The Steps component provides a visual step-by-step progress indicator for AI processes. Features step items, trigger, content, and progress bar with context-based state management.",
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
+	],
+	"registryDependencies": [
+		"collapsible",
+		"button"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"prompt-kit",
+			"steps",
+			"progress",
+			"workflow",
+			"process",
+			"stepper"
+		],
+		"category": "Prompt Kit",
+		"documentation": "https://ai-elements.vercel.app/prompt-kit/steps",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "intermediate",
+		"updated": "2025-10-19",
+		"featured": true
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { Collapsible } from '$lib/components/ui/collapsible';\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\timport type { Snippet } from 'svelte';\r\n\r\n\tlet {\r\n\t\tdefaultOpen = true,\r\n\t\topen = $bindable(defaultOpen),\r\n\t\tclass: className,\r\n\t\tchildren\r\n\t}: {\r\n\t\tdefaultOpen?: boolean;\r\n\t\topen?: boolean;\r\n\t\tclass?: string;\r\n\t\tchildren?: Snippet;\r\n\t} = $props();\r\n</script>\r\n\r\n<Collapsible bind:open class={cn(className)}>\r\n\t{#if children}\r\n\t\t{@render children()}\r\n\t{/if}\r\n</Collapsible>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/steps/steps.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\timport type { Snippet } from 'svelte';\r\n\timport type { HTMLAttributes } from 'svelte/elements';\r\n\r\n\tinterface StepsItemProps extends HTMLAttributes<HTMLDivElement> {\r\n\t\tchildren?: Snippet;\r\n\t}\r\n\r\n\tlet { class: className, children, ...restProps }: StepsItemProps = $props();\r\n</script>\r\n\r\n<div class={cn('text-muted-foreground text-sm', className)} {...restProps}>\r\n\t{#if children}\r\n\t\t{@render children()}\r\n\t{/if}\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/steps/steps-item.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { CollapsibleTrigger } from '$lib/components/ui/collapsible';\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\timport { ChevronDown } from '@lucide/svelte';\r\n\timport type { Snippet } from 'svelte';\r\n\r\n\tlet {\r\n\t\tclass: className,\r\n\t\tleftIcon,\r\n\t\tswapIconOnHover = true,\r\n\t\tchildren\r\n\t}: {\r\n\t\tclass?: string;\r\n\t\tleftIcon?: Snippet;\r\n\t\tswapIconOnHover?: boolean;\r\n\t\tchildren?: Snippet;\r\n\t} = $props();\r\n</script>\r\n\r\n<CollapsibleTrigger\r\n\tclass={cn(\r\n\t\t'group text-muted-foreground hover:text-foreground flex w-full cursor-pointer items-center justify-start gap-1 text-sm transition-colors',\r\n\t\tclassName\r\n\t)}\r\n>\r\n\t<div class=\"flex items-center gap-2\">\r\n\t\t{#if leftIcon}\r\n\t\t\t<span class=\"relative inline-flex size-4 items-center justify-center\">\r\n\t\t\t\t<span class={cn('transition-opacity', swapIconOnHover && 'group-hover:opacity-0')}>\r\n\t\t\t\t\t{@render leftIcon()}\r\n\t\t\t\t</span>\r\n\t\t\t\t{#if swapIconOnHover}\r\n\t\t\t\t\t<ChevronDown\r\n\t\t\t\t\t\tclass=\"absolute size-4 opacity-0 transition-opacity group-hover:opacity-100 group-data-[state=open]:rotate-180\"\r\n\t\t\t\t\t/>\r\n\t\t\t\t{/if}\r\n\t\t\t</span>\r\n\t\t{/if}\r\n\t\t{#if children}\r\n\t\t\t<span>{@render children()}</span>\r\n\t\t{/if}\r\n\t</div>\r\n\t{#if !leftIcon}\r\n\t\t<ChevronDown class=\"size-4 transition-transform group-data-[state=open]:rotate-180\" />\r\n\t{/if}\r\n</CollapsibleTrigger>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/steps/steps-trigger.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { CollapsibleContent } from '$lib/components/ui/collapsible';\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\timport type { Snippet } from 'svelte';\r\n\timport StepsBar from './steps-bar.svelte';\r\n\r\n\tlet {\r\n\t\tclass: className,\r\n\t\tbar,\r\n\t\tchildren\r\n\t}: {\r\n\t\tclass?: string;\r\n\t\tbar?: Snippet;\r\n\t\tchildren?: Snippet;\r\n\t} = $props();\r\n</script>\r\n\r\n<CollapsibleContent\r\n\tclass={cn(\r\n\t\t'text-popover-foreground data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden',\r\n\t\tclassName\r\n\t)}\r\n>\r\n\t<div\r\n\t\tclass=\"mt-3 grid max-w-full min-w-0 grid-cols-[min-content_minmax(0,1fr)] items-start gap-x-3\"\r\n\t>\r\n\t\t<div class=\"min-w-0 self-stretch\">\r\n\t\t\t{#if bar}\r\n\t\t\t\t{@render bar()}\r\n\t\t\t{:else}\r\n\t\t\t\t<StepsBar />\r\n\t\t\t{/if}\r\n\t\t</div>\r\n\t\t<div class=\"min-w-0 space-y-2\">\r\n\t\t\t{#if children}\r\n\t\t\t\t{@render children()}\r\n\t\t\t{/if}\r\n\t\t</div>\r\n\t</div>\r\n</CollapsibleContent>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/steps/steps-content.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\timport type { HTMLAttributes } from 'svelte/elements';\r\n\r\n\tinterface StepsBarProps extends HTMLAttributes<HTMLDivElement> {}\r\n\r\n\tlet { class: className, ...restProps }: StepsBarProps = $props();\r\n</script>\r\n\r\n<div class={cn('bg-muted h-full w-[2px]', className)} aria-hidden=\"true\" {...restProps}></div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/steps/steps-bar.svelte"
+		},
+		{
+			"content": "import Steps from './steps.svelte';\r\nimport StepsBar from './steps-bar.svelte';\r\nimport StepsContent from './steps-content.svelte';\r\nimport StepsItem from './steps-item.svelte';\r\nimport StepsTrigger from './steps-trigger.svelte';\r\n\r\nexport { Steps, StepsBar, StepsContent, StepsItem, StepsTrigger };\r\n",
+			"type": "registry:file",
+			"target": "prompt-kit/steps/index.ts"
+		}
+	]
+}

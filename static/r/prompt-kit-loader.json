@@ -1,0 +1,96 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "prompt-kit-loader",
+	"type": "registry:block",
+	"description": "The Loader component provides multiple animated loading indicators for AI responses. Includes 13 different loader styles: bars, circular, classic, dots, pulse-dot, pulse, terminal, text-blink, text-dots, text-shimmer, typing, wave, and a base loader with customizable animations and colors.",
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"prompt-kit",
+			"loader",
+			"loading",
+			"spinner",
+			"animation",
+			"ai-response"
+		],
+		"category": "Prompt Kit",
+		"documentation": "https://ai-elements.vercel.app/prompt-kit/loader",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "beginner",
+		"updated": "2025-10-19",
+		"featured": true
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\timport CircularLoader from './circular-loader.svelte';\r\n\timport ClassicLoader from './classic-loader.svelte';\r\n\timport PulseLoader from './pulse-loader.svelte';\r\n\timport PulseDotLoader from './pulse-dot-loader.svelte';\r\n\timport DotsLoader from './dots-loader.svelte';\r\n\timport TypingLoader from './typing-loader.svelte';\r\n\timport WaveLoader from './wave-loader.svelte';\r\n\timport BarsLoader from './bars-loader.svelte';\r\n\timport TerminalLoader from './terminal-loader.svelte';\r\n\timport TextBlinkLoader from './text-blink-loader.svelte';\r\n\timport TextShimmerLoader from './text-shimmer-loader.svelte';\r\n\timport TextDotsLoader from './text-dots-loader.svelte';\r\n\r\n\tinterface Props {\r\n\t\tvariant?:\r\n\t\t\t| 'circular'\r\n\t\t\t| 'classic'\r\n\t\t\t| 'pulse'\r\n\t\t\t| 'pulse-dot'\r\n\t\t\t| 'dots'\r\n\t\t\t| 'typing'\r\n\t\t\t| 'wave'\r\n\t\t\t| 'bars'\r\n\t\t\t| 'terminal'\r\n\t\t\t| 'text-blink'\r\n\t\t\t| 'text-shimmer'\r\n\t\t\t| 'loading-dots';\r\n\t\tsize?: 'sm' | 'md' | 'lg';\r\n\t\ttext?: string;\r\n\t\tclass?: string;\r\n\t}\r\n\r\n\tlet { variant = 'circular', size = 'md', text, class: className }: Props = $props();\r\n</script>\r\n\r\n{#if variant === 'circular'}\r\n\t<CircularLoader {size} class={className} />\r\n{:else if variant === 'classic'}\r\n\t<ClassicLoader {size} class={className} />\r\n{:else if variant === 'pulse'}\r\n\t<PulseLoader {size} class={className} />\r\n{:else if variant === 'pulse-dot'}\r\n\t<PulseDotLoader {size} class={className} />\r\n{:else if variant === 'dots'}\r\n\t<DotsLoader {size} class={className} />\r\n{:else if variant === 'typing'}\r\n\t<TypingLoader {size} class={className} />\r\n{:else if variant === 'wave'}\r\n\t<WaveLoader {size} class={className} />\r\n{:else if variant === 'bars'}\r\n\t<BarsLoader {size} class={className} />\r\n{:else if variant === 'terminal'}\r\n\t<TerminalLoader {size} class={className} />\r\n{:else if variant === 'text-blink'}\r\n\t<TextBlinkLoader {text} {size} class={className} />\r\n{:else if variant === 'text-shimmer'}\r\n\t<TextShimmerLoader {text} {size} class={className} />\r\n{:else if variant === 'loading-dots'}\r\n\t<TextDotsLoader {text} {size} class={className} />\r\n{:else}\r\n\t<CircularLoader {size} class={className} />\r\n{/if}\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/loader/loader.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$/utils.js\";\r\n\r\n  interface Props {\r\n    class?: string;\r\n    size?: \"sm\" | \"md\" | \"lg\";\r\n  }\r\n\r\n  let { class: className, size = \"md\" }: Props = $props();\r\n\r\n  let barWidths = {\r\n    sm: \"w-1\",\r\n    md: \"w-1.5\",\r\n    lg: \"w-2\",\r\n  };\r\n\r\n  let containerSizes = {\r\n    sm: \"h-4 gap-1\",\r\n    md: \"h-5 gap-1.5\",\r\n    lg: \"h-6 gap-2\",\r\n  };\r\n</script>\r\n\r\n<div class={cn(\"flex\", containerSizes[size], className)}>\r\n  {#each Array(3) as _, i}\r\n    <!-- svelte-ignore element_invalid_self_closing_tag -->\r\n    <div\r\n      class={cn(\r\n        \"bg-primary h-full animate-[wave-bars_1.2s_ease-in-out_infinite]\",\r\n        barWidths[size]\r\n      )}\r\n      style:animation-delay=\"{i * 0.2}s\"\r\n    />\r\n  {/each}\r\n  <span class=\"sr-only\">Loading</span>\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/loader/bars-loader.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\r\n\tinterface Props {\r\n\t\tclass?: string;\r\n\t\tsize?: 'sm' | 'md' | 'lg';\r\n\t}\r\n\r\n\tlet { class: className, size = 'md' }: Props = $props();\r\n\r\n\tconst sizeClasses = {\r\n\t\tsm: 'size-4',\r\n\t\tmd: 'size-5',\r\n\t\tlg: 'size-6'\r\n\t};\r\n</script>\r\n\r\n<div\r\n\tclass={cn(\r\n\t\t'border-primary animate-spin rounded-full border-2 border-t-transparent',\r\n\t\tsizeClasses[size],\r\n\t\tclassName\r\n\t)}\r\n>\r\n\t<span class=\"sr-only\">Loading</span>\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/loader/circular-loader.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\r\n\tinterface Props {\r\n\t\tclass?: string;\r\n\t\tsize?: 'sm' | 'md' | 'lg';\r\n\t}\r\n\r\n\tlet { class: className, size = 'md' }: Props = $props();\r\n\r\n\tconst sizeClasses = {\r\n\t\tsm: 'size-4',\r\n\t\tmd: 'size-5',\r\n\t\tlg: 'size-6'\r\n\t};\r\n\r\n\tconst barSizes = {\r\n\t\tsm: { height: '6px', width: '1.5px' },\r\n\t\tmd: { height: '8px', width: '2px' },\r\n\t\tlg: { height: '10px', width: '2.5px' }\r\n\t};\r\n\r\n\tconst marginLeft = {\r\n\t\tsm: '-0.75px',\r\n\t\tmd: '-1px',\r\n\t\tlg: '-1.25px'\r\n\t};\r\n\r\n\tconst transformOrigin = {\r\n\t\tsm: '0.75px 10px',\r\n\t\tmd: '1px 12px',\r\n\t\tlg: '1.25px 14px'\r\n\t};\r\n</script>\r\n\r\n<div class={cn('relative', sizeClasses[size], className)}>\r\n\t<div class=\"absolute h-full w-full\">\r\n\t\t{#each Array(12) as _, i}\r\n\t\t\t<div\r\n\t\t\t\tclass=\"bg-primary absolute animate-[spinner-fade_1.2s_linear_infinite] rounded-full\"\r\n\t\t\t\tstyle:top=\"0\"\r\n\t\t\t\tstyle:left=\"50%\"\r\n\t\t\t\tstyle:margin-left={marginLeft[size]}\r\n\t\t\t\tstyle:transform-origin={transformOrigin[size]}\r\n\t\t\t\tstyle:transform=\"rotate({i * 30}deg)\"\r\n\t\t\t\tstyle:opacity=\"0\"\r\n\t\t\t\tstyle:animation-delay=\"{i * 0.1}s\"\r\n\t\t\t\tstyle:height={barSizes[size].height}\r\n\t\t\t\tstyle:width={barSizes[size].width}\r\n\t\t\t/>\r\n\t\t{/each}\r\n\t</div>\r\n\t<span class=\"sr-only\">Loading</span>\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/loader/classic-loader.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\r\n\tinterface Props {\r\n\t\tclass?: string;\r\n\t\tsize?: 'sm' | 'md' | 'lg';\r\n\t}\r\n\r\n\tlet { class: className, size = 'md' }: Props = $props();\r\n\r\n\tconst dotSizes = {\r\n\t\tsm: 'h-1.5 w-1.5',\r\n\t\tmd: 'h-2 w-2',\r\n\t\tlg: 'h-2.5 w-2.5'\r\n\t};\r\n\r\n\tconst containerSizes = {\r\n\t\tsm: 'h-4',\r\n\t\tmd: 'h-5',\r\n\t\tlg: 'h-6'\r\n\t};\r\n</script>\r\n\r\n<div class={cn('flex items-center space-x-1', containerSizes[size], className)}>\r\n\t{#each Array(3) as _, i}\r\n\t\t<div\r\n\t\t\tclass={cn(\r\n\t\t\t\t'bg-primary animate-[bounce-dots_1.4s_ease-in-out_infinite] rounded-full',\r\n\t\t\t\tdotSizes[size]\r\n\t\t\t)}\r\n\t\t\tstyle:animation-delay=\"{i * 160}ms\"\r\n\t\t/>\r\n\t{/each}\r\n\t<span class=\"sr-only\">Loading</span>\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/loader/dots-loader.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\r\n\tinterface Props {\r\n\t\tclass?: string;\r\n\t\tsize?: 'sm' | 'md' | 'lg';\r\n\t}\r\n\r\n\tlet { class: className, size = 'md' }: Props = $props();\r\n\r\n\tconst sizeClasses = {\r\n\t\tsm: 'size-1',\r\n\t\tmd: 'size-2',\r\n\t\tlg: 'size-3'\r\n\t};\r\n</script>\r\n\r\n<div\r\n\tclass={cn(\r\n\t\t'bg-primary animate-[pulse-dot_1.2s_ease-in-out_infinite] rounded-full',\r\n\t\tsizeClasses[size],\r\n\t\tclassName\r\n\t)}\r\n>\r\n\t<span class=\"sr-only\">Loading</span>\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/loader/pulse-dot-loader.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\r\n\tinterface Props {\r\n\t\tclass?: string;\r\n\t\tsize?: 'sm' | 'md' | 'lg';\r\n\t}\r\n\r\n\tlet { class: className, size = 'md' }: Props = $props();\r\n\r\n\tconst sizeClasses = {\r\n\t\tsm: 'size-4',\r\n\t\tmd: 'size-5',\r\n\t\tlg: 'size-6'\r\n\t};\r\n</script>\r\n\r\n<div class={cn('relative', sizeClasses[size], className)}>\r\n\t<div\r\n\t\tclass=\"border-primary absolute inset-0 animate-[thin-pulse_1.5s_ease-in-out_infinite] rounded-full border-2\"\r\n\t></div>\r\n\t<span class=\"sr-only\">Loading</span>\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/loader/pulse-loader.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\r\n\tinterface Props {\r\n\t\tclass?: string;\r\n\t\tsize?: 'sm' | 'md' | 'lg';\r\n\t}\r\n\r\n\tlet { class: className, size = 'md' }: Props = $props();\r\n\r\n\tconst cursorSizes = {\r\n\t\tsm: 'h-3 w-1.5',\r\n\t\tmd: 'h-4 w-2',\r\n\t\tlg: 'h-5 w-2.5'\r\n\t};\r\n\r\n\tconst textSizes = {\r\n\t\tsm: 'text-xs',\r\n\t\tmd: 'text-sm',\r\n\t\tlg: 'text-base'\r\n\t};\r\n\r\n\tconst containerSizes = {\r\n\t\tsm: 'h-4',\r\n\t\tmd: 'h-5',\r\n\t\tlg: 'h-6'\r\n\t};\r\n</script>\r\n\r\n<div class={cn('flex items-center space-x-1', containerSizes[size], className)}>\r\n\t<span class={cn('text-primary font-mono', textSizes[size])}>&gt;</span>\r\n\t<div class={cn('bg-primary animate-[blink_1s_step-end_infinite]', cursorSizes[size])} />\r\n\t<span class=\"sr-only\">Loading</span>\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/loader/terminal-loader.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\r\n\tinterface Props {\r\n\t\ttext?: string;\r\n\t\tclass?: string;\r\n\t\tsize?: 'sm' | 'md' | 'lg';\r\n\t}\r\n\r\n\tlet { text = 'Thinking', class: className, size = 'md' }: Props = $props();\r\n\r\n\tconst textSizes = {\r\n\t\tsm: 'text-xs',\r\n\t\tmd: 'text-sm',\r\n\t\tlg: 'text-base'\r\n\t};\r\n</script>\r\n\r\n<div class={cn('animate-[text-blink_2s_ease-in-out_infinite] font-medium', textSizes[size], className)}>\r\n\t{text}\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/loader/text-blink-loader.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\r\n\tinterface Props {\r\n\t\tclass?: string;\r\n\t\ttext?: string;\r\n\t\tsize?: 'sm' | 'md' | 'lg';\r\n\t}\r\n\r\n\tlet { class: className, text = 'Thinking', size = 'md' }: Props = $props();\r\n\r\n\tconst textSizes = {\r\n\t\tsm: 'text-xs',\r\n\t\tmd: 'text-sm',\r\n\t\tlg: 'text-base'\r\n\t};\r\n</script>\r\n\r\n<div class={cn('inline-flex items-center', className)}>\r\n\t<span class={cn('text-primary font-medium', textSizes[size])}>\r\n\t\t{text}\r\n\t</span>\r\n\t<span class=\"inline-flex\">\r\n\t\t<span class=\"text-primary animate-[loading-dots_1.4s_infinite_0.2s]\">.</span>\r\n\t\t<span class=\"text-primary animate-[loading-dots_1.4s_infinite_0.4s]\">.</span>\r\n\t\t<span class=\"text-primary animate-[loading-dots_1.4s_infinite_0.6s]\">.</span>\r\n\t</span>\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/loader/text-dots-loader.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\r\n\tinterface Props {\r\n\t\ttext?: string;\r\n\t\tclass?: string;\r\n\t\tsize?: 'sm' | 'md' | 'lg';\r\n\t}\r\n\r\n\tlet { text = 'Thinking', class: className, size = 'md' }: Props = $props();\r\n\r\n\tconst textSizes = {\r\n\t\tsm: 'text-xs',\r\n\t\tmd: 'text-sm',\r\n\t\tlg: 'text-base'\r\n\t};\r\n</script>\r\n\r\n<div\r\n\tclass={cn(\r\n\t\t'bg-[linear-gradient(to_right,var(--muted-foreground)_40%,var(--foreground)_60%,var(--muted-foreground)_80%)]',\r\n\t\t'bg-size-[200%_auto] bg-clip-text font-medium text-transparent',\r\n\t\t'animate-[shimmer_4s_infinite_linear]',\r\n\t\ttextSizes[size],\r\n\t\tclassName\r\n\t)}\r\n>\r\n\t{text}\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/loader/text-shimmer-loader.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\r\n\tinterface Props {\r\n\t\tclass?: string;\r\n\t\tsize?: 'sm' | 'md' | 'lg';\r\n\t}\r\n\r\n\tlet { class: className, size = 'md' }: Props = $props();\r\n\r\n\tconst dotSizes = {\r\n\t\tsm: 'h-1 w-1',\r\n\t\tmd: 'h-1.5 w-1.5',\r\n\t\tlg: 'h-2 w-2'\r\n\t};\r\n\r\n\tconst containerSizes = {\r\n\t\tsm: 'h-4',\r\n\t\tmd: 'h-5',\r\n\t\tlg: 'h-6'\r\n\t};\r\n</script>\r\n\r\n<div class={cn('flex items-center space-x-1', containerSizes[size], className)}>\r\n\t{#each Array(3) as _, i}\r\n\t\t<div\r\n\t\t\tclass={cn('bg-primary animate-[typing_1s_infinite] rounded-full', dotSizes[size])}\r\n\t\t\tstyle:animation-delay=\"{i * 250}ms\"\r\n\t\t/>\r\n\t{/each}\r\n\t<span class=\"sr-only\">Loading</span>\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/loader/typing-loader.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\r\n\tinterface Props {\r\n\t\tclass?: string;\r\n\t\tsize?: 'sm' | 'md' | 'lg';\r\n\t}\r\n\r\n\tlet { class: className, size = 'md' }: Props = $props();\r\n\r\n\tconst barWidths = {\r\n\t\tsm: 'w-0.5',\r\n\t\tmd: 'w-0.5',\r\n\t\tlg: 'w-1'\r\n\t};\r\n\r\n\tconst containerSizes = {\r\n\t\tsm: 'h-4',\r\n\t\tmd: 'h-5',\r\n\t\tlg: 'h-6'\r\n\t};\r\n\r\n\tconst heights = {\r\n\t\tsm: ['6px', '9px', '12px', '9px', '6px'],\r\n\t\tmd: ['8px', '12px', '16px', '12px', '8px'],\r\n\t\tlg: ['10px', '15px', '20px', '15px', '10px']\r\n\t};\r\n</script>\r\n\r\n<div class={cn('flex items-center gap-0.5', containerSizes[size], className)}>\r\n\t{#each Array(5) as _, i}\r\n\t\t<div\r\n\t\t\tclass={cn(\r\n\t\t\t\t'bg-primary animate-[wave_1s_ease-in-out_infinite] rounded-full',\r\n\t\t\t\tbarWidths[size]\r\n\t\t\t)}\r\n\t\t\tstyle:animation-delay=\"{i * 100}ms\"\r\n\t\t\tstyle:height={heights[size][i]}\r\n\t\t/>\r\n\t{/each}\r\n\t<span class=\"sr-only\">Loading</span>\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/loader/wave-loader.svelte"
+		},
+		{
+			"content": "export { default as Loader } from './loader.svelte';\r\nexport { default as CircularLoader } from './circular-loader.svelte';\r\nexport { default as ClassicLoader } from './classic-loader.svelte';\r\nexport { default as PulseLoader } from './pulse-loader.svelte';\r\nexport { default as PulseDotLoader } from './pulse-dot-loader.svelte';\r\nexport { default as DotsLoader } from './dots-loader.svelte';\r\nexport { default as TypingLoader } from './typing-loader.svelte';\r\nexport { default as WaveLoader } from './wave-loader.svelte';\r\nexport { default as BarsLoader } from './bars-loader.svelte';\r\nexport { default as TerminalLoader } from './terminal-loader.svelte';\r\nexport { default as TextBlinkLoader } from './text-blink-loader.svelte';\r\nexport { default as TextShimmerLoader } from './text-shimmer-loader.svelte';\r\nexport { default as TextDotsLoader } from './text-dots-loader.svelte';\r\n",
+			"type": "registry:file",
+			"target": "prompt-kit/loader/index.ts"
+		}
+	]
+}
