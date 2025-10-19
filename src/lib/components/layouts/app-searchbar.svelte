@@ -53,7 +53,7 @@
     () => ({ query: searchQuery, isOpen: open }),
     ({ query, isOpen }) => {
       if (!query.trim() && isOpen) {
-        // Show all components and docs when search is empty
+        // Show docs, AI Elements, and Prompt Kit when search is empty
         searchResults = [
           ...navigationGroups.docs,
           ...navigationGroups.components,
@@ -168,8 +168,8 @@
 
       <Command.Separator />
 
-      <Command.Group heading="All Components">
-        {#each navigationGroups.components as item (item.href)}
+      <Command.Group heading="AI Elements">
+        {#each navigationGroups.components.filter(item => !item.title.startsWith('Prompt Kit')) as item (item.href)}
           {@const Icon = getCategoryIcon(item.category)}
           <Command.Item
             value={item.title}
@@ -178,6 +178,28 @@
             <Icon class="mr-2 size-4" strokeWidth={1.2} />
             <div class="flex flex-col">
               <span>{item.title}</span>
+              {#if item.description}
+                <span class="text-muted-foreground text-xs"
+                  >{item.description}</span
+                >
+              {/if}
+            </div>
+          </Command.Item>
+        {/each}
+      </Command.Group>
+
+      <Command.Separator />
+
+      <Command.Group heading="Prompt Kit">
+        {#each navigationGroups.components.filter(item => item.title.startsWith('Prompt Kit')) as item (item.href)}
+          {@const Icon = getCategoryIcon(item.category)}
+          <Command.Item
+            value={item.title}
+            onSelect={() => handleSelect(item.href)}
+          >
+            <Icon class="mr-2 size-4" strokeWidth={1.2} />
+            <div class="flex flex-col">
+              <span>{item.title.replace('Prompt Kit - ', '')}</span>
               {#if item.description}
                 <span class="text-muted-foreground text-xs"
                   >{item.description}</span

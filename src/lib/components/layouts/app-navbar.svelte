@@ -1,6 +1,5 @@
 <script lang="ts">
   import Button from "$lib/components/ui/button/button.svelte";
-  import * as Sidebar from "$lib/components/ui/sidebar/index";
 
   import * as Icons from "$lib/components/icons";
   import { LightSwitch } from "$lib/components/ui/light-switch";
@@ -29,8 +28,6 @@
     { href: "/components/actions", label: "Components", active: false },
     { href: "/prompt-kit/prompt-input", label: "Prompt Kit", active: false },
     { href: "/guides", label: "Guides", active: false },
-    // { href: "/response", label: "Response", act ive: false }, // only in development
-    // { href: "#", label: "About", active: false },
   ]);
 </script>
 
