@@ -1,0 +1,49 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "prompt-kit-scroll-button",
+	"type": "registry:block",
+	"description": "The ScrollButton component provides a floating button to scroll to the bottom of chat containers. Features context-based visibility management and smooth scrolling behavior.",
+	"dependencies": [
+		"runed"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
+	],
+	"registryDependencies": [
+		"button"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"prompt-kit",
+			"scroll",
+			"button",
+			"navigation",
+			"chat"
+		],
+		"category": "Prompt Kit",
+		"documentation": "https://ai-elements.vercel.app/prompt-kit/scroll-button",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "beginner",
+		"updated": "2025-10-19",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\" module>\r\n  import { cn } from \"$UTILS$/utils.js\";\r\n  import { type ButtonSize, type ButtonVariant } from \"$lib/components/ui/button/index.js\";\r\n\r\n  export type ScrollButtonProps = {\r\n    class?: string;\r\n    variant?: ButtonVariant;\r\n    size?: ButtonSize;\r\n    ref?: HTMLElement | null;\r\n    onclick?: (event: MouseEvent) => void;\r\n  };\r\n</script>\r\n\r\n<script lang=\"ts\">\r\n  import { Button } from \"$lib/components/ui/button/index.js\";\r\n  import ChevronDown from \"@lucide/svelte/icons/chevron-down\";\r\n  import { getScrollContext } from \"./scroll-context.svelte.js\";\r\n\r\n  let {\r\n    class: className,\r\n    variant = \"outline\",\r\n    size = \"sm\",\r\n    ref = $bindable(null),\r\n    onclick,\r\n    ...restProps\r\n  }: ScrollButtonProps = $props();\r\n\r\n  const scrollContext = getScrollContext();\r\n  const isAtBottom = $derived(scrollContext.isAtBottom);\r\n\r\n  const handleClick = (event: MouseEvent) => {\r\n    scrollContext.scrollToBottom();\r\n    onclick?.(event);\r\n  };\r\n</script>\r\n\r\n<Button\r\n  bind:ref\r\n  {variant}\r\n  {size}\r\n  class={cn(\r\n    \"h-10 w-10 rounded-full transition-all duration-150 ease-out\",\r\n    !isAtBottom\r\n      ? \"translate-y-0 scale-100 opacity-100\"\r\n      : \"pointer-events-none translate-y-4 scale-95 opacity-0\",\r\n    className\r\n  )}\r\n  onclick={handleClick}\r\n>\r\n  <ChevronDown class=\"h-5 w-5\" />\r\n</Button>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/scroll-button/ScrollButton.svelte"
+		},
+		{
+			"content": "import { watch } from \"runed\";\r\nimport { setContext, getContext } from \"svelte\";\r\n\r\nconst SCROLL_CONTEXT_KEY = Symbol(\"scroll-context\");\r\n\r\nclass ScrollContext {\r\n  #element: HTMLElement | null = $state(null);\r\n  #isAtBottom = $state(true);\r\n\r\n  isAtBottom = $derived(this.#isAtBottom);\r\n\r\n  constructor() {\r\n    watch(\r\n      () => this.#element,\r\n      () => {\r\n        if (this.#element) {\r\n          this.#setupScrollListener();\r\n          return () => this.#cleanup();\r\n        }\r\n      }\r\n    );\r\n  }\r\n\r\n  setElement(element: HTMLElement) {\r\n    this.#element = element;\r\n  }\r\n\r\n  scrollToBottom = (behavior: ScrollBehavior = \"smooth\") => {\r\n    if (!this.#element) return;\r\n\r\n    this.#element.scrollTo({\r\n      top: this.#element.scrollHeight,\r\n      behavior,\r\n    });\r\n  };\r\n\r\n  #handleScroll = () => {\r\n    if (!this.#element) return;\r\n\r\n    const { scrollTop, scrollHeight, clientHeight } = this.#element;\r\n    const threshold = 50;\r\n    const isAtBottom = scrollTop + clientHeight >= scrollHeight - threshold;\r\n\r\n    this.#isAtBottom = isAtBottom;\r\n  };\r\n\r\n  #setupScrollListener() {\r\n    if (!this.#element) return;\r\n\r\n    this.#element.addEventListener(\"scroll\", this.#handleScroll, {\r\n      passive: true,\r\n    });\r\n\r\n    // Initial check\r\n    this.#handleScroll();\r\n  }\r\n\r\n  #cleanup() {\r\n    if (this.#element) {\r\n      this.#element.removeEventListener(\"scroll\", this.#handleScroll);\r\n    }\r\n  }\r\n}\r\n\r\nexport function setScrollContext() {\r\n  const context = new ScrollContext();\r\n  setContext(SCROLL_CONTEXT_KEY, context);\r\n  return context;\r\n}\r\n\r\nexport function getScrollContext(): ScrollContext {\r\n  const context = getContext<ScrollContext>(SCROLL_CONTEXT_KEY);\r\n  if (!context) {\r\n    throw new Error(\"ScrollContext not found. Make sure to call setScrollContext() in a parent component.\");\r\n  }\r\n  return context;\r\n}\r\n",
+			"type": "registry:file",
+			"target": "prompt-kit/scroll-button/scroll-context.svelte.ts"
+		},
+		{
+			"content": "export { default as ScrollButton } from './ScrollButton.svelte';\r\n\r\nexport * from './scroll-context.svelte.js';\r\n",
+			"type": "registry:file",
+			"target": "prompt-kit/scroll-button/index.ts"
+		}
+	]
+}

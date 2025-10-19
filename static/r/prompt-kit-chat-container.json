@@ -1,0 +1,54 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "prompt-kit-chat-container",
+	"type": "registry:block",
+	"description": "The ChatContainer component provides a comprehensive chat interface with scroll management, auto-scrolling, and scroll anchoring. Features context-based state management for handling message scrolling and sticky-to-bottom behavior.",
+	"dependencies": [
+		"runed"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"prompt-kit",
+			"chat",
+			"container",
+			"scroll",
+			"auto-scroll",
+			"messages"
+		],
+		"category": "Prompt Kit",
+		"documentation": "https://ai-elements.vercel.app/prompt-kit/chat-container",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "intermediate",
+		"updated": "2025-10-19",
+		"featured": true
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\r\n  import { setChatContainerContext, type ResizeMode, type InitialMode } from \"./chat-container-context.svelte\";\r\n  import { cn } from \"$UTILS$/utils\";\r\n  import { watch } from \"runed\";\r\n\r\n  let {\r\n    children,\r\n    class: className,\r\n    resize = \"smooth\",\r\n    initial = \"instant\",\r\n    ...restProps\r\n  }: {\r\n    children?: import(\"svelte\").Snippet;\r\n    class?: string;\r\n    resize?: ResizeMode;\r\n    initial?: InitialMode;\r\n    [key: string]: any;\r\n  } = $props();\r\n\r\n  const context = setChatContainerContext(resize, initial);\r\n\r\n  let containerElement: HTMLElement;\r\n\r\n  watch(\r\n    () => containerElement,\r\n    () => {\r\n      if (containerElement) {\r\n        context.setElement(containerElement);\r\n      }\r\n    }\r\n  );\r\n</script>\r\n\r\n<div\r\n  bind:this={containerElement}\r\n  class={cn(\"flex overflow-y-auto\", className)}\r\n  role=\"log\"\r\n  {...restProps}\r\n>\r\n  {@render children?.()}\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/chat-container/chat-container-root.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$/utils\";\r\n\r\n  let {\r\n    children,\r\n    class: className,\r\n    ...restProps\r\n  }: {\r\n    children?: import(\"svelte\").Snippet;\r\n    class?: string;\r\n    [key: string]: any;\r\n  } = $props();\r\n</script>\r\n\r\n<div\r\n  class={cn(\"flex w-full flex-col\", className)}\r\n  {...restProps}\r\n>\r\n  {@render children?.()}\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/chat-container/chat-container-content.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$/utils\";\r\n\r\n  let {\r\n    class: className,\r\n    ...restProps\r\n  }: {\r\n    class?: string;\r\n    [key: string]: any;\r\n  } = $props();\r\n</script>\r\n\r\n<div\r\n  class={cn(\"h-px w-full shrink-0 scroll-mt-4\", className)}\r\n  aria-hidden=\"true\"\r\n  {...restProps}\r\n/>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit/chat-container/chat-container-scroll-anchor.svelte"
+		},
+		{
+			"content": "import { watch } from \"runed\";\r\nimport { setContext, getContext } from \"svelte\";\r\n\r\nconst CHAT_CONTAINER_CONTEXT_KEY = Symbol(\"chat-container-context\");\r\n\r\ntype ResizeMode = \"smooth\" | \"instant\";\r\ntype InitialMode = \"smooth\" | \"instant\";\r\n\r\nclass ChatContainerContext {\r\n  #element: HTMLElement | null = $state(null);\r\n  #isAtBottom = $state(true);\r\n  #resizeObserver: ResizeObserver | null = null;\r\n  #mutationObserver: MutationObserver | null = null;\r\n  #intersectionObserver: IntersectionObserver | null = null;\r\n  #sentinel: HTMLElement | null = null;\r\n  #userHasScrolled = $state(false);\r\n  #resizeMode: ResizeMode = \"smooth\";\r\n  #initialMode: InitialMode = \"instant\";\r\n  #isInitialized = false;\r\n\r\n  isAtBottom = $derived(this.#isAtBottom);\r\n\r\n  constructor(resizeMode: ResizeMode = \"smooth\", initialMode: InitialMode = \"instant\") {\r\n    this.#resizeMode = resizeMode;\r\n    this.#initialMode = initialMode;\r\n\r\n    watch(\r\n      () => this.#element,\r\n      () => {\r\n        if (this.#element) {\r\n          this.#setupObservers();\r\n          return () => this.#cleanup();\r\n        }\r\n      }\r\n    );\r\n  }\r\n\r\n  setElement(element: HTMLElement) {\r\n    this.#element = element;\r\n  }\r\n\r\n  scrollToBottom = (behavior?: ScrollBehavior) => {\r\n    if (!this.#element) return;\r\n\r\n    // Use initial mode for first scroll, then use provided behavior or resize mode\r\n    let scrollBehavior: ScrollBehavior;\r\n    if (!this.#isInitialized) {\r\n      scrollBehavior = this.#initialMode === \"instant\" ? \"instant\" : \"smooth\";\r\n      this.#isInitialized = true;\r\n    } else {\r\n      scrollBehavior = behavior || (this.#resizeMode === \"smooth\" ? \"smooth\" : \"instant\");\r\n    }\r\n\r\n    this.#userHasScrolled = false;\r\n    this.#element.scrollTo({\r\n      top: this.#element.scrollHeight,\r\n      behavior: scrollBehavior,\r\n    });\r\n  };\r\n\r\n  #handleScroll = () => {\r\n    if (!this.#element) return;\r\n\r\n    const { scrollTop, scrollHeight, clientHeight } = this.#element;\r\n    const threshold = 50;\r\n    const isAtBottom = scrollTop + clientHeight >= scrollHeight - threshold;\r\n\r\n    this.#isAtBottom = isAtBottom;\r\n\r\n    if (!isAtBottom) {\r\n      this.#userHasScrolled = true;\r\n    } else if (isAtBottom && this.#userHasScrolled) {\r\n      this.#userHasScrolled = false;\r\n    }\r\n  };\r\n\r\n  #setupObservers() {\r\n    if (!this.#element) return;\r\n\r\n    this.#createSentinel();\r\n\r\n    this.#intersectionObserver = new IntersectionObserver(\r\n      (entries) => {\r\n        const entry = entries[0];\r\n        if (entry.isIntersecting && !this.#userHasScrolled) {\r\n          this.#isAtBottom = true;\r\n        }\r\n      },\r\n      {\r\n        threshold: 0,\r\n        root: this.#element\r\n      }\r\n    );\r\n\r\n    if (this.#sentinel) {\r\n      this.#intersectionObserver.observe(this.#sentinel);\r\n    }\r\n\r\n    this.#element.addEventListener(\"scroll\", this.#handleScroll, {\r\n      passive: true,\r\n    });\r\n\r\n    this.#resizeObserver = new ResizeObserver(() => {\r\n      this.#checkScrollPosition();\r\n      if (this.#isAtBottom && !this.#userHasScrolled) {\r\n        const behavior = this.#resizeMode === \"smooth\" ? \"smooth\" : \"instant\";\r\n        this.scrollToBottom(behavior);\r\n      }\r\n    });\r\n\r\n    this.#resizeObserver.observe(this.#element);\r\n\r\n    this.#mutationObserver = new MutationObserver(() => {\r\n      requestAnimationFrame(() => {\r\n        const shouldAutoScroll = this.#isAtBottom && !this.#userHasScrolled;\r\n        this.#checkScrollPosition();\r\n\r\n        if (shouldAutoScroll) {\r\n          this.scrollToBottom(\"smooth\");\r\n        }\r\n      });\r\n    });\r\n\r\n    this.#mutationObserver.observe(this.#element, {\r\n      childList: true,\r\n      subtree: true,\r\n      characterData: true,\r\n    });\r\n\r\n    // Initial scroll to bottom\r\n    requestAnimationFrame(() => {\r\n      this.#checkScrollPosition();\r\n      this.scrollToBottom();\r\n    });\r\n  }\r\n\r\n  #createSentinel() {\r\n    if (!this.#element) return;\r\n\r\n    this.#sentinel = document.createElement(\"div\");\r\n    this.#sentinel.style.height = \"1px\";\r\n    this.#sentinel.style.width = \"100%\";\r\n    this.#sentinel.style.pointerEvents = \"none\";\r\n    this.#sentinel.style.opacity = \"0\";\r\n    this.#sentinel.setAttribute(\"data-chat-container-sentinel\", \"\");\r\n\r\n    this.#element.appendChild(this.#sentinel);\r\n  }\r\n\r\n  #checkScrollPosition() {\r\n    if (!this.#element) return;\r\n\r\n    const { scrollTop, scrollHeight, clientHeight } = this.#element;\r\n    const threshold = 50;\r\n    const isAtBottom = scrollTop + clientHeight >= scrollHeight - threshold;\r\n\r\n    this.#isAtBottom = isAtBottom;\r\n  }\r\n\r\n  #cleanup() {\r\n    this.#resizeObserver?.disconnect();\r\n    this.#mutationObserver?.disconnect();\r\n    this.#intersectionObserver?.disconnect();\r\n\r\n    if (this.#element) {\r\n      this.#element.removeEventListener(\"scroll\", this.#handleScroll);\r\n    }\r\n\r\n    if (this.#sentinel && this.#element?.contains(this.#sentinel)) {\r\n      this.#element.removeChild(this.#sentinel);\r\n    }\r\n\r\n    this.#resizeObserver = null;\r\n    this.#mutationObserver = null;\r\n    this.#intersectionObserver = null;\r\n    this.#sentinel = null;\r\n  }\r\n}\r\n\r\nexport function setChatContainerContext(\r\n  resizeMode: ResizeMode = \"smooth\",\r\n  initialMode: InitialMode = \"instant\"\r\n): ChatContainerContext {\r\n  const context = new ChatContainerContext(resizeMode, initialMode);\r\n  setContext(CHAT_CONTAINER_CONTEXT_KEY, context);\r\n  return context;\r\n}\r\n\r\nexport function getChatContainerContext(): ChatContainerContext {\r\n  const context = getContext<ChatContainerContext>(CHAT_CONTAINER_CONTEXT_KEY);\r\n  if (!context) {\r\n    throw new Error(\r\n      \"ChatContainerContext must be used within a ChatContainerRoot component\"\r\n    );\r\n  }\r\n  return context;\r\n}\r\n\r\nexport { ChatContainerContext };\r\nexport type { ResizeMode, InitialMode };\r\n",
+			"type": "registry:file",
+			"target": "prompt-kit/chat-container/chat-container-context.svelte.ts"
+		},
+		{
+			"content": "export { default as ChatContainerRoot } from \"./chat-container-root.svelte\";\r\nexport { default as ChatContainerContent } from \"./chat-container-content.svelte\";\r\nexport { default as ChatContainerScrollAnchor } from \"./chat-container-scroll-anchor.svelte\";\r\nexport { getChatContainerContext, type ChatContainerContext } from \"./chat-container-context.svelte\";\r\n",
+			"type": "registry:file",
+			"target": "prompt-kit/chat-container/index.ts"
+		}
+	]
+}
