@@ -7,7 +7,8 @@
     "email": "sikandar6174@gmail.com",
     "description": "Maintainer of Svelte AI Elements, Svelte Form Builder, Svelte Animations. Building open source AI UI components for the Svelte ecosystem.",
     "webpageUrl": {
-      "url": "https://svelte-ai-elements.vercel.app"
+      "url": "https://svelte-ai-elements.vercel.app",
+      "wellKnown": "https://svelte-ai-elements.vercel.app/.well-known/funding-manifest-urls"
     }
   },
   "projects": [
@@ -16,10 +17,12 @@
       "name": "Svelte AI Elements",
       "description": "A collection of open source AI UI components for Svelte, making it easy to build AI-powered apps.",
       "webpageUrl": {
-        "url": "https://svelte-ai-elements.vercel.app"
+        "url": "https://svelte-ai-elements.vercel.app",
+        "wellKnown": "https://svelte-ai-elements.vercel.app/.well-known/funding-manifest-urls"
       },
       "repositoryUrl": {
-        "url": "https://github.com/SikandarJODD/ai-elements"
+        "url": "https://github.com/SikandarJODD/ai-elements",
+        "wellKnown": "https://github.com/SikandarJODD/ai-elements/blob/main/.well-known/funding-manifest-urls"
       },
       "licenses": [
         "spdx:MIT"
