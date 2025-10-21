@@ -1,0 +1,72 @@
+{
+  "version": "v1.0.0",
+  "entity": {
+    "type": "individual",
+    "role": "maintainer",
+    "name": "Sikandar JODD",
+    "email": "sikandar6174@gmail.com",
+    "description": "Maintainer of Svelte AI Elements. Building open source AI UI components for the Svelte ecosystem.",
+    "webpageUrl": {
+      "url": "https://svelte-ai-elements.vercel.app"
+    }
+  },
+  "projects": [
+    {
+      "guid": "svelte-ai-elements",
+      "name": "Svelte AI Elements",
+      "description": "A collection of open source AI UI components for Svelte, making it easy to build AI-powered apps.",
+      "webpageUrl": {
+        "url": "https://svelte-ai-elements.vercel.app"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/SikandarJODD/ai-elements"
+      },
+      "licenses": [
+        "spdx:MIT"
+      ],
+      "tags": [
+        "svelte",
+        "ai",
+        "components",
+        "ui",
+        "open-source",
+        "vercel",
+        "sdk",
+        "javascript",
+        "frontend",
+        "web-development",
+        "opensource"
+      ]
+    }
+  ],
+  "funding": {
+    "channels": [
+      {
+        "guid": "github-sponsors",
+        "type": "payment-provider",
+        "address": "https://github.com/sponsors/SikandarJODD",
+        "description": "Sponsor via GitHub Sponsors."
+      },
+      {
+        "guid": "my-bank",
+        "type": "bank",
+        "address": "Account No: 40260857049, IFSC: SBIN0007212, Branch : State Bank of India, Vikhroli East Mumbai",
+        "description": "Will accept direct bank transfers. Please e-mail me for details."
+      }
+    ],
+    "plans": [
+      {
+        "guid": "support-any",
+        "status": "active",
+        "name": "General Support",
+        "description": "Support the project with any amount via GitHub Sponsors.",
+        "amount": 0,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": [
+          "github-sponsors"
+        ]
+      }
+    ]
+  }
+}

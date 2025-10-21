@@ -42,15 +42,20 @@
   };
 
   // Mobile navigation with organized sections
-  const mobileNavigationLinks: MobileNavigationItem[] = [
+  let mobileNavigationLinks: MobileNavigationItem[] = [
     { href: "/", label: "Home", icon: HomeIcon },
     { href: "/docs/introduction", label: "Documentation", icon: BookOpenIcon },
+    { href: "/guides", label: "Guides", icon: FileTextIcon },
     {
       label: "AI Elements",
       submenu: true,
       type: "description",
-
       items: [
+        {
+          description: "Prompt input field",
+          href: "/components/prompt-input",
+          label: "Prompt Input",
+        },
         {
           description: "Interactive actions within AI responses",
           href: "/components/actions",
@@ -91,6 +96,81 @@
           href: "/components/sources",
           label: "Sources",
         },
+        {
+          description: "Display tool usage and results",
+          href: "/components/tool",
+          label: "Tool",
+        },
+        {
+          description: "Panel for grouping content",
+          href: "/components/panel",
+          label: "Panel",
+        },
+        {
+          description: "Inline citation for sources",
+          href: "/components/inline-citation",
+          label: "Inline Citation",
+        },
+        {
+          description: "Loader for async operations",
+          href: "/components/loader",
+          label: "Loader",
+        },
+        {
+          description: "Open in chat button",
+          href: "/components/open-in-chat",
+          label: "Open In Chat",
+        },
+        {
+          description: "Toolbar for actions",
+          href: "/components/toolbar",
+          label: "Toolbar",
+        },
+        {
+          description: "Copy button for content",
+          href: "/components/copy-button",
+          label: "Copy Button",
+        },
+        {
+          description: "Task display component",
+          href: "/components/task",
+          label: "Task",
+        },
+        {
+          description: "Web preview display",
+          href: "/components/web-preview",
+          label: "Web Preview",
+        },
+        {
+          description: "Edge for graph visualizations",
+          href: "/components/edge",
+          label: "Edge",
+        },
+        {
+          description: "Node for graph visualizations",
+          href: "/components/node",
+          label: "Node",
+        },
+        {
+          description: "Canvas for drawing",
+          href: "/components/canvas",
+          label: "Canvas",
+        },
+        {
+          description: "Context display",
+          href: "/components/context",
+          label: "Context",
+        },
+        {
+          description: "Connection visualization",
+          href: "/components/connection",
+          label: "Connection",
+        },
+        {
+          description: "Controls for UI",
+          href: "/components/controls",
+          label: "Controls",
+        },
       ],
     },
     {
@@ -98,6 +178,11 @@
       submenu: true,
       type: "description",
       items: [
+        {
+          description: "Input component for AI prompts",
+          href: "/prompt-kit/prompt-input",
+          label: "Prompt Input",
+        },
         {
           description: "Chat container with message handling",
           href: "/prompt-kit/chat-container",
@@ -133,11 +218,7 @@
           href: "/prompt-kit/message",
           label: "Message",
         },
-        {
-          description: "Input component for AI prompts",
-          href: "/prompt-kit/prompt-input",
-          label: "Prompt Input",
-        },
+
         {
           description: "Prompt suggestions and quick actions",
           href: "/prompt-kit/prompt-suggestion",
@@ -170,7 +251,6 @@
         },
       ],
     },
-    { href: "/guides", label: "Guides", icon: FileTextIcon },
   ];
 
   // desktop links
@@ -197,7 +277,7 @@
     <div class="flex items-center gap-2">
       <!-- Mobile menu trigger  -->
       <Popover>
-        <PopoverTrigger>
+        <PopoverTrigger class="md:hidden">
           {#snippet child({ props })}
             <Button
               class="group size-8 md:hidden"
@@ -235,7 +315,7 @@
         </PopoverTrigger>
         <PopoverContent
           align="start"
-          class="z-50 w-72 p-0 md:hidden max-h-[calc(100vh-5rem)] overflow-y-auto dark-scrollbar"
+          class="z-50 w-72 p-0 md:hidden max-h-[calc(100vh-10rem)] overflow-y-auto dark-scrollbar"
         >
           <div class="p-2">
             <NavigationMenuRoot class="max-w-none *:w-full">
@@ -287,7 +367,7 @@
                         role="separator"
                         aria-orientation="horizontal"
                         class="bg-border my-2 h-px w-full"
-                      />
+                      ></div>
                     {/if}
                   </NavigationMenuItem>
                 {/each}
@@ -298,8 +378,7 @@
       </Popover>
       <!-- Main nav  -->
       <div class="flex items-center gap-6">
-        <a href="#" class="text-primary hover:text-primary/90">
-          <!-- <Logo /> -->
+        <a href="/" class="text-primary hover:text-primary/90">
           Svelte AI Elements
         </a>
         <!-- Navigation menu  -->

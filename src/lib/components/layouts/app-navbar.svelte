@@ -40,10 +40,10 @@
         <PopoverTrigger>
           {#snippet child({ props })}
             <Button
-              {...props}
               class="group size-8 md:hidden"
               variant="ghost"
               size="icon"
+              {...props}
             >
               <svg
                 class="pointer-events-none"
@@ -93,7 +93,7 @@
       </Popover>
       <!-- Main nav  -->
       <div class="flex items-center gap-6">
-        <a href="/" class="text-primary font-semibold  hover:text-primary/90">
+        <a href="/" class="text-primary font-semibold hover:text-primary/90">
           <!-- <img src={SvelteLogo} alt="" class="size-5" /> -->
           Svelte AI Elements
         </a>
