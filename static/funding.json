@@ -5,7 +5,7 @@
     "role": "maintainer",
     "name": "Sikandar JODD",
     "email": "sikandar6174@gmail.com",
-    "description": "Maintainer of Svelte AI Elements. Building open source AI UI components for the Svelte ecosystem.",
+    "description": "Maintainer of Svelte AI Elements, Svelte Form Builder, Svelte Animations. Building open source AI UI components for the Svelte ecosystem.",
     "webpageUrl": {
       "url": "https://svelte-ai-elements.vercel.app"
     }
@@ -34,8 +34,7 @@
         "sdk",
         "javascript",
         "frontend",
-        "web-development",
-        "opensource"
+        "web-development"
       ]
     }
   ],
