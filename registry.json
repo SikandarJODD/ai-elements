@@ -1,7 +1,14 @@
 {
   "$schema": "https://shadcn-svelte.com/schema/registry.json",
   "name": "Svelte AI Elements",
-  "homepage": "https://ai-elements.vercel.app",
+  "homepage": "https://svelte-ai-elements.vercel.app",
+  "aliases": {
+    "lib": "$lib",
+    "components": "$lib/components",
+    "utils": "$lib/utils/utils",
+    "ui": "$lib/components/ui",
+    "hooks": "$lib/hooks"
+  },
   "items": [
     {
       "name": "action",
@@ -313,7 +320,8 @@
         }
       ],
       "registryDependencies": [
-        "hover-card"
+        "hover-card",
+        "progress"
       ],
       "meta": {
         "author": "SikandarJODD"
@@ -383,8 +391,7 @@
         },
         {
           "path": "src/lib/hooks/use-clipboard.svelte.ts",
-          "type": "registry:file",
-          "target": "hooks/use-clipboard.svelte.ts"
+          "type": "registry:hook"
         },
         {
           "path": "src/lib/components/ai-elements/copy-button/index.ts",
@@ -1630,7 +1637,7 @@
       ],
       "registryDependencies": [
         "button",
-        "copy-button"
+        "local:copy-button"
       ],
       "dependencies": [
         "shiki",
@@ -2351,12 +2358,5 @@
         "featured": true
       }
     }
-  ],
-  "aliases": {
-    "components": "$lib/components",
-    "utils": "$lib/utils/utils",
-    "ui": "$lib/components/ui",
-    "hooks": "$lib/hooks",
-    "lib": "$lib"
-  }
+  ]
 }

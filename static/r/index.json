@@ -93,7 +93,8 @@
 		"author": "SikandarJODD",
 		"description": "The Context component provides a comprehensive view of AI model usage, displaying token consumption, costs, and performance metrics through an interactive hover card interface.",
 		"registryDependencies": [
-			"hover-card"
+			"hover-card",
+			"progress"
 		],
 		"meta": {
 			"author": "SikandarJODD"
@@ -636,7 +637,7 @@
 		],
 		"registryDependencies": [
 			"button",
-			"copy-button"
+			"local:copy-button"
 		],
 		"meta": {
 			"author": "SikandarJODD",

@@ -10,7 +10,7 @@
 	],
 	"registryDependencies": [
 		"button",
-		"copy-button"
+		"./copy-button.json"
 	],
 	"meta": {
 		"author": "SikandarJODD",
