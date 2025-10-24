@@ -1,22 +1,25 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
 	"name": "suggestion",
+	"title": "Suggestion",
 	"type": "registry:block",
+	"author": "SikandarJODD",
 	"description": "The Suggestion component provides interactive suggestions for user input, offering quick actions and prompts to enhance the conversation experience.",
 	"registryDependencies": [
-		"button"
+		"button",
+		"scroll-area"
 	],
 	"meta": {
 		"author": "SikandarJODD"
 	},
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\r\n  import { Button, type ButtonProps } from \"$lib/components/ui/button/index.js\";\r\n  import { cn } from \"$UTILS$/utils.js\";\r\n  import type { Snippet } from \"svelte\";\r\n\r\n  interface Props extends Omit<ButtonProps, \"onclick\"> {\r\n    suggestion: string;\r\n    onclick?: (suggestion: string) => void;\r\n    children?: Snippet;\r\n    class?: string;\r\n    variant?: ButtonProps[\"variant\"];\r\n    size?: ButtonProps[\"size\"];\r\n  }\r\n\r\n  let {\r\n    suggestion,\r\n    onclick,\r\n    class: className,\r\n    variant = \"outline\",\r\n    size = \"sm\",\r\n    children,\r\n    ...restProps\r\n  }: Props = $props();\r\n\r\n  let handleClick = () => {\r\n    onclick?.(suggestion);\r\n  };\r\n</script>\r\n\r\n<Button\r\n  class={cn(\"cursor-pointer rounded-full px-4\", className)}\r\n  onclick={handleClick}\r\n  {size}\r\n  type=\"button\"\r\n  {variant}\r\n  {...restProps}\r\n>\r\n  {#if children}\r\n    {@render children?.()}\r\n  {:else}\r\n    {suggestion}\r\n  {/if}\r\n</Button>\r\n",
+			"content": "<script lang=\"ts\">\r\n  import { Button, type ButtonProps } from \"$COMPONENTS$/ui/button/index.js\";\r\n  import { cn } from \"$UTILS$\";\r\n  import type { Snippet } from \"svelte\";\r\n\r\n  interface Props extends Omit<ButtonProps, \"onclick\"> {\r\n    suggestion: string;\r\n    onclick?: (suggestion: string) => void;\r\n    children?: Snippet;\r\n    class?: string;\r\n    variant?: ButtonProps[\"variant\"];\r\n    size?: ButtonProps[\"size\"];\r\n  }\r\n\r\n  let {\r\n    suggestion,\r\n    onclick,\r\n    class: className,\r\n    variant = \"outline\",\r\n    size = \"sm\",\r\n    children,\r\n    ...restProps\r\n  }: Props = $props();\r\n\r\n  let handleClick = () => {\r\n    onclick?.(suggestion);\r\n  };\r\n</script>\r\n\r\n<Button\r\n  class={cn(\"cursor-pointer rounded-full px-4\", className)}\r\n  onclick={handleClick}\r\n  {size}\r\n  type=\"button\"\r\n  {variant}\r\n  {...restProps}\r\n>\r\n  {#if children}\r\n    {@render children?.()}\r\n  {:else}\r\n    {suggestion}\r\n  {/if}\r\n</Button>\r\n",
 			"type": "registry:component",
 			"target": "ai-elements/suggestion/Suggestion.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\r\n  import { ScrollArea } from \"$lib/components/ui/scroll-area/index\";\r\n  import { cn } from \"$UTILS$/utils.js\";\r\n  import type { Snippet } from \"svelte\";\r\n\r\n  interface Props {\r\n    children?: Snippet;\r\n    class?: string;\r\n    orientation?: \"vertical\" | \"horizontal\" | \"both\";\r\n    scrollbarXClasses?: string;\r\n    scrollbarYClasses?: string;\r\n  }\r\n\r\n  let {\r\n    children,\r\n    class: className,\r\n    orientation = \"horizontal\",\r\n    scrollbarXClasses,\r\n    scrollbarYClasses,\r\n    ...restProps\r\n  }: Props = $props();\r\n</script>\r\n\r\n<ScrollArea\r\n  {orientation}\r\n  {scrollbarXClasses}\r\n  {scrollbarYClasses}\r\n  class=\"w-full whitespace-nowrap\"\r\n  {...restProps}\r\n>\r\n  <div class={cn(\"flex w-max flex-nowrap items-center gap-2\", className)}>\r\n    {@render children?.()}\r\n  </div>\r\n</ScrollArea>\r\n",
+			"content": "<script lang=\"ts\">\r\n  import { ScrollArea } from \"$COMPONENTS$/ui/scroll-area/index\";\r\n  import { cn } from \"$UTILS$\";\r\n  import type { Snippet } from \"svelte\";\r\n\r\n  interface Props {\r\n    children?: Snippet;\r\n    class?: string;\r\n    orientation?: \"vertical\" | \"horizontal\" | \"both\";\r\n    scrollbarXClasses?: string;\r\n    scrollbarYClasses?: string;\r\n  }\r\n\r\n  let {\r\n    children,\r\n    class: className,\r\n    orientation = \"horizontal\",\r\n    scrollbarXClasses,\r\n    scrollbarYClasses,\r\n    ...restProps\r\n  }: Props = $props();\r\n</script>\r\n\r\n<ScrollArea\r\n  {orientation}\r\n  {scrollbarXClasses}\r\n  {scrollbarYClasses}\r\n  class=\"w-full whitespace-nowrap\"\r\n  {...restProps}\r\n>\r\n  <div class={cn(\"flex w-max flex-nowrap items-center gap-2\", className)}>\r\n    {@render children?.()}\r\n  </div>\r\n</ScrollArea>\r\n",
 			"type": "registry:component",
 			"target": "ai-elements/suggestion/Suggestions.svelte"
 		},

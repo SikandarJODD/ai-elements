@@ -1,7 +1,9 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
 	"name": "connection",
+	"title": "Workflow Connection",
 	"type": "registry:block",
+	"author": "SikandarJODD",
 	"description": "The Connection component displays the connection line preview when dragging to create new edges between nodes in the workflow. It provides visual feedback during node connection operations.",
 	"dependencies": [
 		"@xyflow/svelte"

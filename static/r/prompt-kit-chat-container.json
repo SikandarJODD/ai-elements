@@ -26,17 +26,17 @@
 	},
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\r\n  import { setChatContainerContext, type ResizeMode, type InitialMode } from \"./chat-container-context.svelte\";\r\n  import { cn } from \"$UTILS$/utils\";\r\n  import { watch } from \"runed\";\r\n\r\n  let {\r\n    children,\r\n    class: className,\r\n    resize = \"smooth\",\r\n    initial = \"instant\",\r\n    ...restProps\r\n  }: {\r\n    children?: import(\"svelte\").Snippet;\r\n    class?: string;\r\n    resize?: ResizeMode;\r\n    initial?: InitialMode;\r\n    [key: string]: any;\r\n  } = $props();\r\n\r\n  const context = setChatContainerContext(resize, initial);\r\n\r\n  let containerElement: HTMLElement;\r\n\r\n  watch(\r\n    () => containerElement,\r\n    () => {\r\n      if (containerElement) {\r\n        context.setElement(containerElement);\r\n      }\r\n    }\r\n  );\r\n</script>\r\n\r\n<div\r\n  bind:this={containerElement}\r\n  class={cn(\"flex overflow-y-auto\", className)}\r\n  role=\"log\"\r\n  {...restProps}\r\n>\r\n  {@render children?.()}\r\n</div>\r\n",
+			"content": "<script lang=\"ts\">\r\n  import { setChatContainerContext, type ResizeMode, type InitialMode } from \"./chat-container-context.svelte\";\r\n  import { cn } from \"$UTILS$\";\r\n  import { watch } from \"runed\";\r\n\r\n  let {\r\n    children,\r\n    class: className,\r\n    resize = \"smooth\",\r\n    initial = \"instant\",\r\n    ...restProps\r\n  }: {\r\n    children?: import(\"svelte\").Snippet;\r\n    class?: string;\r\n    resize?: ResizeMode;\r\n    initial?: InitialMode;\r\n    [key: string]: any;\r\n  } = $props();\r\n\r\n  const context = setChatContainerContext(resize, initial);\r\n\r\n  let containerElement: HTMLElement;\r\n\r\n  watch(\r\n    () => containerElement,\r\n    () => {\r\n      if (containerElement) {\r\n        context.setElement(containerElement);\r\n      }\r\n    }\r\n  );\r\n</script>\r\n\r\n<div\r\n  bind:this={containerElement}\r\n  class={cn(\"flex overflow-y-auto\", className)}\r\n  role=\"log\"\r\n  {...restProps}\r\n>\r\n  {@render children?.()}\r\n</div>\r\n",
 			"type": "registry:component",
 			"target": "prompt-kit/chat-container/chat-container-root.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$/utils\";\r\n\r\n  let {\r\n    children,\r\n    class: className,\r\n    ...restProps\r\n  }: {\r\n    children?: import(\"svelte\").Snippet;\r\n    class?: string;\r\n    [key: string]: any;\r\n  } = $props();\r\n</script>\r\n\r\n<div\r\n  class={cn(\"flex w-full flex-col\", className)}\r\n  {...restProps}\r\n>\r\n  {@render children?.()}\r\n</div>\r\n",
+			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$\";\r\n\r\n  let {\r\n    children,\r\n    class: className,\r\n    ...restProps\r\n  }: {\r\n    children?: import(\"svelte\").Snippet;\r\n    class?: string;\r\n    [key: string]: any;\r\n  } = $props();\r\n</script>\r\n\r\n<div\r\n  class={cn(\"flex w-full flex-col\", className)}\r\n  {...restProps}\r\n>\r\n  {@render children?.()}\r\n</div>\r\n",
 			"type": "registry:component",
 			"target": "prompt-kit/chat-container/chat-container-content.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$/utils\";\r\n\r\n  let {\r\n    class: className,\r\n    ...restProps\r\n  }: {\r\n    class?: string;\r\n    [key: string]: any;\r\n  } = $props();\r\n</script>\r\n\r\n<div\r\n  class={cn(\"h-px w-full shrink-0 scroll-mt-4\", className)}\r\n  aria-hidden=\"true\"\r\n  {...restProps}\r\n/>\r\n",
+			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$\";\r\n\r\n  let {\r\n    class: className,\r\n    ...restProps\r\n  }: {\r\n    class?: string;\r\n    [key: string]: any;\r\n  } = $props();\r\n</script>\r\n\r\n<div\r\n  class={cn(\"h-px w-full shrink-0 scroll-mt-4\", className)}\r\n  aria-hidden=\"true\"\r\n  {...restProps}\r\n/>\r\n",
 			"type": "registry:component",
 			"target": "prompt-kit/chat-container/chat-container-scroll-anchor.svelte"
 		},

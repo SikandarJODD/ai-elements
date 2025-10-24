@@ -1,7 +1,9 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
 	"name": "panel",
+	"title": "Workflow Panel",
 	"type": "registry:block",
+	"author": "SikandarJODD",
 	"description": "The Panel component provides an overlay panel for displaying additional workflow information, settings, or controls. It can be positioned at various locations on the canvas for contextual information display.",
 	"dependencies": [
 		"@xyflow/svelte"
@@ -28,7 +30,7 @@
 	},
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\r\n  import { Panel as PanelPrimitive, type PanelProps } from \"@xyflow/svelte\";\r\n  import { cn } from \"$UTILS$/utils.js\";\r\n\r\n  type PanelComponentProps = PanelProps & {\r\n    class?: string;\r\n  };\r\n\r\n  let { class: className, ...restProps }: PanelComponentProps = $props();\r\n</script>\r\n\r\n<PanelPrimitive\r\n  class={cn(\"m-4 overflow-hidden rounded-md border bg-card p-1\", className)}\r\n  {...restProps}\r\n/>\r\n",
+			"content": "<script lang=\"ts\">\r\n  import { Panel as PanelPrimitive, type PanelProps } from \"@xyflow/svelte\";\r\n  import { cn } from \"$UTILS$\";\r\n\r\n  type PanelComponentProps = PanelProps & {\r\n    class?: string;\r\n  };\r\n\r\n  let { class: className, ...restProps }: PanelComponentProps = $props();\r\n</script>\r\n\r\n<PanelPrimitive\r\n  class={cn(\"m-4 overflow-hidden rounded-md border bg-card p-1\", className)}\r\n  {...restProps}\r\n/>\r\n",
 			"type": "registry:component",
 			"target": "ai-elements/workflow/panel/panel.svelte"
 		},

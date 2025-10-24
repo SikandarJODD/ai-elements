@@ -1,7 +1,9 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
 	"name": "loader",
+	"title": "Loader",
 	"type": "registry:block",
+	"author": "SikandarJODD",
 	"description": "The Loader component provides a visual indicator of loading or processing states in an AI application. It includes various styles and animations to enhance user experience during wait times.",
 	"meta": {
 		"author": "SikandarJODD"

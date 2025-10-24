@@ -28,7 +28,7 @@
 	},
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\r\n\timport { NodeToolbar, Position } from '@xyflow/svelte';\r\n\timport { cn } from '$UTILS$/utils.js';\r\n\timport type { Snippet } from 'svelte';\r\n\timport type { NodeToolbarProps } from '@xyflow/svelte';\r\n\r\n\tinterface ToolbarProps extends Omit<NodeToolbarProps, 'children'> {\r\n\t\tclass?: string;\r\n\t\tchildren?: Snippet;\r\n\t}\r\n\r\n\tlet {\r\n\t\tclass: className,\r\n\t\tchildren,\r\n\t\tposition = Position.Bottom,\r\n\t\t...restProps\r\n\t}: ToolbarProps = $props();\r\n</script>\r\n\r\n<NodeToolbar\r\n\tclass={cn(\r\n\t\t'flex items-center gap-1 rounded-sm border bg-background p-1.5',\r\n\t\tclassName\r\n\t)}\r\n\t{position}\r\n\t{...restProps}\r\n>\r\n\t{#if children}\r\n\t\t{@render children()}\r\n\t{/if}\r\n</NodeToolbar>\r\n",
+			"content": "<script lang=\"ts\">\r\n\timport { NodeToolbar, Position } from '@xyflow/svelte';\r\n\timport { cn } from '$UTILS$';\r\n\timport type { Snippet } from 'svelte';\r\n\timport type { NodeToolbarProps } from '@xyflow/svelte';\r\n\r\n\tinterface ToolbarProps extends Omit<NodeToolbarProps, 'children'> {\r\n\t\tclass?: string;\r\n\t\tchildren?: Snippet;\r\n\t}\r\n\r\n\tlet {\r\n\t\tclass: className,\r\n\t\tchildren,\r\n\t\tposition = Position.Bottom,\r\n\t\t...restProps\r\n\t}: ToolbarProps = $props();\r\n</script>\r\n\r\n<NodeToolbar\r\n\tclass={cn(\r\n\t\t'flex items-center gap-1 rounded-sm border bg-background p-1.5',\r\n\t\tclassName\r\n\t)}\r\n\t{position}\r\n\t{...restProps}\r\n>\r\n\t{#if children}\r\n\t\t{@render children()}\r\n\t{/if}\r\n</NodeToolbar>\r\n",
 			"type": "registry:component",
 			"target": "ai-elements/workflow/toolbar/toolbar.svelte"
 		},

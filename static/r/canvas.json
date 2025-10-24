@@ -1,7 +1,9 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
 	"name": "canvas",
+	"title": "Workflow Canvas",
 	"type": "registry:block",
+	"author": "SikandarJODD",
 	"description": "The Canvas component provides the main container for rendering workflow diagrams with nodes and edges. It wraps @xyflow/svelte's SvelteFlow component with custom styling and configuration for AI workflow visualization.",
 	"dependencies": [
 		"@xyflow/svelte"

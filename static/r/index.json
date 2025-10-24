@@ -1,7 +1,9 @@
 [
 	{
 		"name": "action",
+		"title": "Action Buttons",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Actions component provides a flexible row of action buttons for AI responses with common actions like retry, like, dislike, copy, and share.",
 		"registryDependencies": [
 			"button",
@@ -28,7 +30,9 @@
 	},
 	{
 		"name": "artifact",
+		"title": "Artifact",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Artifact component provides a structured container for displaying generated content like code, documents, or other outputs with built-in header actions.",
 		"registryDependencies": [
 			"button",
@@ -41,11 +45,13 @@
 	},
 	{
 		"name": "chain-of-thought",
+		"title": "Chain of Thought",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The ChainOfThought component provides a visual representation of an AI's reasoning process, showing step-by-step thinking with support for search results, images, and progress indicators. It helps users understand how AI arrives at conclusions.",
 		"dependencies": [
 			"ai",
-			"@lucidesvelte"
+			"@lucide/svelte"
 		],
 		"registryDependencies": [
 			"badge",
@@ -58,7 +64,9 @@
 	},
 	{
 		"name": "code",
+		"title": "Code Block",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Code component displays formatted code snippets with syntax highlighting, line numbers, and a copy-to-clipboard feature. It supports multiple programming languages and themes for better readability.",
 		"dependencies": [
 			"svelte-toolbelt",
@@ -69,7 +77,7 @@
 			"@shikijs/themes"
 		],
 		"registryDependencies": [
-			"copy-button",
+			"local:copy-button",
 			"button",
 			"tooltip"
 		],
@@ -80,7 +88,9 @@
 	},
 	{
 		"name": "context",
+		"title": "Context Usage",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Context component provides a comprehensive view of AI model usage, displaying token consumption, costs, and performance metrics through an interactive hover card interface.",
 		"registryDependencies": [
 			"hover-card"
@@ -92,7 +102,9 @@
 	},
 	{
 		"name": "conversation",
+		"title": "Conversation",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Conversation component provides a structured layout for displaying a series of chat messages between a user and an AI. It supports features like message grouping, typing indicators, and customizable avatars.",
 		"registryDependencies": [
 			"button"
@@ -104,7 +116,9 @@
 	},
 	{
 		"name": "copy-button",
+		"title": "Copy Button",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The CopyButton component provides a button that allows users to copy text to their clipboard with visual feedback indicating success or failure.",
 		"dependencies": [
 			"@lucide/svelte"
@@ -120,7 +134,9 @@
 	},
 	{
 		"name": "image",
+		"title": "AI Image",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Image component displays AI-generated images from base64 encoded data with proper styling and accessibility features.",
 		"dependencies": [
 			"ai"
@@ -133,7 +149,9 @@
 	},
 	{
 		"name": "inline-citation",
+		"title": "Inline Citation",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The InlineCitation component displays a citation or reference within text, typically used to attribute sources in AI-generated content. It includes a tooltip for additional information.",
 		"dependencies": [
 			"@lucide/svelte"
@@ -152,7 +170,9 @@
 	},
 	{
 		"name": "loader",
+		"title": "Loader",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Loader component provides a visual indicator of loading or processing states in an AI application. It includes various styles and animations to enhance user experience during wait times.",
 		"registryDependencies": [],
 		"meta": {
@@ -162,7 +182,9 @@
 	},
 	{
 		"name": "message",
+		"title": "Message",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Message component displays a chat interface message from either a user or an AI. It includes an avatar, a name, and a message content.",
 		"dependencies": [
 			"ai",
@@ -171,11 +193,16 @@
 		"registryDependencies": [
 			"avatar"
 		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
 		"relativeUrl": "message.json"
 	},
 	{
 		"name": "open-in-chat",
+		"title": "Open in Chat",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The OpenIn component provides a dropdown menu that allows users to open queries in different AI chat platforms (ChatGPT, Claude, V0, etc.) with a single click.",
 		"dependencies": [
 			"@lucide/svelte"
@@ -251,10 +278,13 @@
 	},
 	{
 		"name": "reasoning",
+		"title": "Reasoning",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Reasoning component displays AI reasoning content, automatically opening during streaming and closing when finished.",
 		"dependencies": [
-			"runed"
+			"runed",
+			"@lucide/svelte"
 		],
 		"registryDependencies": [
 			"collapsible"
@@ -266,8 +296,12 @@
 	},
 	{
 		"name": "response",
+		"title": "Response",
 		"type": "registry:block",
 		"description": "The Response component provides a structured container for displaying AI responses with consistent formatting and styling.",
+		"dependencies": [
+			"svelte-streamdown"
+		],
 		"registryDependencies": [],
 		"meta": {
 			"author": "SikandarJODD"
@@ -276,8 +310,13 @@
 	},
 	{
 		"name": "sources",
+		"title": "Sources",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Sources component displays a collapsible list of sources and references used in AI responses, with expandable content and visual indicators.",
+		"dependencies": [
+			"@lucide/svelte"
+		],
 		"registryDependencies": [
 			"collapsible"
 		],
@@ -288,10 +327,13 @@
 	},
 	{
 		"name": "suggestion",
+		"title": "Suggestion",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Suggestion component provides interactive suggestions for user input, offering quick actions and prompts to enhance the conversation experience.",
 		"registryDependencies": [
-			"button"
+			"button",
+			"scroll-area"
 		],
 		"meta": {
 			"author": "SikandarJODD"
@@ -300,7 +342,9 @@
 	},
 	{
 		"name": "task",
+		"title": "Task",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Task component displays structured task information with collapsible content, file attachments, and progress indicators for AI-generated tasks.",
 		"registryDependencies": [
 			"collapsible",
@@ -313,10 +357,12 @@
 	},
 	{
 		"name": "tool",
+		"title": "Tool",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Tool component provides a comprehensive interface for displaying AI tool usage, including input parameters, execution status, and output results with collapsible sections.",
 		"registryDependencies": [
-			"code",
+			"local:code",
 			"collapsible",
 			"badge"
 		],
@@ -327,7 +373,9 @@
 	},
 	{
 		"name": "web-preview",
+		"title": "Web Preview",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The WebPreview component provides an interactive web browser interface for displaying and navigating web content with console logging capabilities.",
 		"registryDependencies": [
 			"button",
@@ -340,7 +388,9 @@
 	},
 	{
 		"name": "canvas",
+		"title": "Workflow Canvas",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Canvas component provides the main container for rendering workflow diagrams with nodes and edges. It wraps @xyflow/svelte's SvelteFlow component with custom styling and configuration for AI workflow visualization.",
 		"dependencies": [
 			"@xyflow/svelte"
@@ -369,7 +419,9 @@
 	},
 	{
 		"name": "connection",
+		"title": "Workflow Connection",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Connection component displays the connection line preview when dragging to create new edges between nodes in the workflow. It provides visual feedback during node connection operations.",
 		"dependencies": [
 			"@xyflow/svelte"
@@ -396,7 +448,9 @@
 	},
 	{
 		"name": "controls",
+		"title": "Workflow Controls",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Controls component provides interactive controls for manipulating the workflow canvas, including zoom in, zoom out, fit view, and other navigation controls for better workflow visualization.",
 		"dependencies": [
 			"@xyflow/svelte"
@@ -425,7 +479,9 @@
 	},
 	{
 		"name": "edge",
+		"title": "Workflow Edge",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Edge component provides custom edge types for workflow connections. Includes Animated edges for active connections and Temporary edges for conditional or inactive paths, with smooth transitions and visual styling.",
 		"dependencies": [
 			"@xyflow/svelte"
@@ -452,7 +508,9 @@
 	},
 	{
 		"name": "node",
+		"title": "Workflow Node",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Node component provides a comprehensive set of sub-components for building workflow nodes. Includes Node container with handle management, Header, Title, Description, Action buttons, Content area, and Footer for displaying workflow step information with full customization.",
 		"dependencies": [
 			"@xyflow/svelte"
@@ -481,7 +539,9 @@
 	},
 	{
 		"name": "panel",
+		"title": "Workflow Panel",
 		"type": "registry:block",
+		"author": "SikandarJODD",
 		"description": "The Panel component provides an overlay panel for displaying additional workflow information, settings, or controls. It can be positioned at various locations on the canvas for contextual information display.",
 		"dependencies": [
 			"@xyflow/svelte"
