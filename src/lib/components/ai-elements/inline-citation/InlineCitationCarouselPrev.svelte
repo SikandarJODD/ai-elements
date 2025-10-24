@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils.js';
+	import { cn } from '$lib/utils/utils';
 	import { getCarouselContext } from './carousel-context.svelte.js';
 	import { ArrowLeft } from '@lucide/svelte';
 	import type { HTMLButtonAttributes } from 'svelte/elements';

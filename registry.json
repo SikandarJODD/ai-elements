@@ -31,7 +31,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["actions", "buttons", "ai-response", "interactive", "feedback"],
+        "tags": [
+          "actions",
+          "buttons",
+          "ai-response",
+          "interactive",
+          "feedback"
+        ],
         "category": "AI Response",
         "documentation": "https://ai-elements.vercel.app/components/actions",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -204,7 +210,7 @@
         }
       ],
       "registryDependencies": [
-        "copy-button",
+        "./copy-button.json",
         "button",
         "tooltip"
       ],
@@ -854,7 +860,18 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "2.0.0",
-        "tags": ["prompt", "input", "chat", "attachments", "upload", "ai-interface", "provider", "state-management", "drag-drop", "async"],
+        "tags": [
+          "prompt",
+          "input",
+          "chat",
+          "attachments",
+          "upload",
+          "ai-interface",
+          "provider",
+          "state-management",
+          "drag-drop",
+          "async"
+        ],
         "category": "AI Input",
         "documentation": "https://ai-elements.vercel.app/components/prompt-input",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -942,6 +959,7 @@
     },
     {
       "name": "response",
+      "title": "Response",
       "type": "registry:block",
       "description": "The Response component provides a structured container for displaying AI responses with consistent formatting and styling.",
       "files": [
@@ -957,6 +975,9 @@
         }
       ],
       "registryDependencies": [],
+      "dependencies": [
+        "svelte-streamdown"
+      ],
       "meta": {
         "author": "SikandarJODD"
       }
@@ -1031,7 +1052,8 @@
         }
       ],
       "registryDependencies": [
-        "button"
+        "button",
+        "scroll-area"
       ],
       "meta": {
         "author": "SikandarJODD"
@@ -1210,7 +1232,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["workflow", "canvas", "flow", "diagram", "visualization"],
+        "tags": [
+          "workflow",
+          "canvas",
+          "flow",
+          "diagram",
+          "visualization"
+        ],
         "category": "AI Workflow",
         "documentation": "https://ai-elements.vercel.app/components/workflow",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1237,7 +1265,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["workflow", "connection", "edge", "drag", "preview"],
+        "tags": [
+          "workflow",
+          "connection",
+          "edge",
+          "drag",
+          "preview"
+        ],
         "category": "AI Workflow",
         "documentation": "https://ai-elements.vercel.app/components/workflow",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1266,7 +1300,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["workflow", "controls", "zoom", "navigation", "viewport"],
+        "tags": [
+          "workflow",
+          "controls",
+          "zoom",
+          "navigation",
+          "viewport"
+        ],
         "category": "AI Workflow",
         "documentation": "https://ai-elements.vercel.app/components/workflow",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1303,7 +1343,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["workflow", "edge", "connection", "animated", "path"],
+        "tags": [
+          "workflow",
+          "edge",
+          "connection",
+          "animated",
+          "path"
+        ],
         "category": "AI Workflow",
         "documentation": "https://ai-elements.vercel.app/components/workflow",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1367,7 +1413,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["workflow", "node", "step", "card", "process"],
+        "tags": [
+          "workflow",
+          "node",
+          "step",
+          "card",
+          "process"
+        ],
         "category": "AI Workflow",
         "documentation": "https://ai-elements.vercel.app/components/workflow",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1401,7 +1453,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["workflow", "panel", "overlay", "information", "settings"],
+        "tags": [
+          "workflow",
+          "panel",
+          "overlay",
+          "information",
+          "settings"
+        ],
         "category": "AI Workflow",
         "documentation": "https://ai-elements.vercel.app/components/workflow",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1435,7 +1493,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["workflow", "toolbar", "actions", "node-actions", "hover"],
+        "tags": [
+          "workflow",
+          "toolbar",
+          "actions",
+          "node-actions",
+          "hover"
+        ],
         "category": "AI Workflow",
         "documentation": "https://ai-elements.vercel.app/components/workflow",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1482,7 +1546,14 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["prompt-kit", "chat", "container", "scroll", "auto-scroll", "messages"],
+        "tags": [
+          "prompt-kit",
+          "chat",
+          "container",
+          "scroll",
+          "auto-scroll",
+          "messages"
+        ],
         "category": "Prompt Kit",
         "documentation": "https://ai-elements.vercel.app/prompt-kit/chat-container",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1534,7 +1605,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["prompt-kit", "code", "syntax-highlighting", "copy", "code-block"],
+        "tags": [
+          "prompt-kit",
+          "code",
+          "syntax-highlighting",
+          "copy",
+          "code-block"
+        ],
         "category": "Prompt Kit",
         "documentation": "https://ai-elements.vercel.app/prompt-kit/code-block",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1583,7 +1660,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["prompt-kit", "file-upload", "drag-drop", "attachments", "validation"],
+        "tags": [
+          "prompt-kit",
+          "file-upload",
+          "drag-drop",
+          "attachments",
+          "validation"
+        ],
         "category": "Prompt Kit",
         "documentation": "https://ai-elements.vercel.app/prompt-kit/file-upload",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1612,7 +1695,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["prompt-kit", "image", "media", "display", "loading"],
+        "tags": [
+          "prompt-kit",
+          "image",
+          "media",
+          "display",
+          "loading"
+        ],
         "category": "Prompt Kit",
         "documentation": "https://ai-elements.vercel.app/prompt-kit/image",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1701,7 +1790,14 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["prompt-kit", "loader", "loading", "spinner", "animation", "ai-response"],
+        "tags": [
+          "prompt-kit",
+          "loader",
+          "loading",
+          "spinner",
+          "animation",
+          "ai-response"
+        ],
         "category": "Prompt Kit",
         "documentation": "https://ai-elements.vercel.app/prompt-kit/loader",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1734,7 +1830,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["prompt-kit", "markdown", "rendering", "content", "formatting"],
+        "tags": [
+          "prompt-kit",
+          "markdown",
+          "rendering",
+          "content",
+          "formatting"
+        ],
         "category": "Prompt Kit",
         "documentation": "https://ai-elements.vercel.app/prompt-kit/markdown",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1791,7 +1893,14 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["prompt-kit", "message", "chat", "avatar", "actions", "conversation"],
+        "tags": [
+          "prompt-kit",
+          "message",
+          "chat",
+          "avatar",
+          "actions",
+          "conversation"
+        ],
         "category": "Prompt Kit",
         "documentation": "https://ai-elements.vercel.app/prompt-kit/message",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1846,7 +1955,14 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["prompt-kit", "input", "prompt", "textarea", "chat-input", "actions"],
+        "tags": [
+          "prompt-kit",
+          "input",
+          "prompt",
+          "textarea",
+          "chat-input",
+          "actions"
+        ],
         "category": "Prompt Kit",
         "documentation": "https://ai-elements.vercel.app/prompt-kit/prompt-input",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1877,7 +1993,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["prompt-kit", "suggestion", "prompts", "quick-start", "examples"],
+        "tags": [
+          "prompt-kit",
+          "suggestion",
+          "prompts",
+          "quick-start",
+          "examples"
+        ],
         "category": "Prompt Kit",
         "documentation": "https://ai-elements.vercel.app/prompt-kit/prompt-suggestion",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1924,7 +2046,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["prompt-kit", "reasoning", "thinking", "ai-process", "collapsible"],
+        "tags": [
+          "prompt-kit",
+          "reasoning",
+          "thinking",
+          "ai-process",
+          "collapsible"
+        ],
         "category": "Prompt Kit",
         "documentation": "https://ai-elements.vercel.app/prompt-kit/reasoning",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1963,7 +2091,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["prompt-kit", "scroll", "button", "navigation", "chat"],
+        "tags": [
+          "prompt-kit",
+          "scroll",
+          "button",
+          "navigation",
+          "chat"
+        ],
         "category": "Prompt Kit",
         "documentation": "https://ai-elements.vercel.app/prompt-kit/scroll-button",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -2010,7 +2144,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["prompt-kit", "source", "citation", "reference", "collapsible"],
+        "tags": [
+          "prompt-kit",
+          "source",
+          "citation",
+          "reference",
+          "collapsible"
+        ],
         "category": "Prompt Kit",
         "documentation": "https://ai-elements.vercel.app/prompt-kit/source",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -2062,7 +2202,14 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["prompt-kit", "steps", "progress", "workflow", "process", "stepper"],
+        "tags": [
+          "prompt-kit",
+          "steps",
+          "progress",
+          "workflow",
+          "process",
+          "stepper"
+        ],
         "category": "Prompt Kit",
         "documentation": "https://ai-elements.vercel.app/prompt-kit/steps",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -2091,7 +2238,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["prompt-kit", "system", "message", "notification", "status"],
+        "tags": [
+          "prompt-kit",
+          "system",
+          "message",
+          "notification",
+          "status"
+        ],
         "category": "Prompt Kit",
         "documentation": "https://ai-elements.vercel.app/prompt-kit/system-message",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -2148,7 +2301,13 @@
       "meta": {
         "author": "SikandarJODD",
         "version": "1.0.0",
-        "tags": ["prompt-kit", "tool", "execution", "ai-tools", "function-calling"],
+        "tags": [
+          "prompt-kit",
+          "tool",
+          "execution",
+          "ai-tools",
+          "function-calling"
+        ],
         "category": "Prompt Kit",
         "documentation": "https://ai-elements.vercel.app/prompt-kit/tool",
         "repository": "https://github.com/SikandarJODD/ai-elements",
@@ -2157,5 +2316,12 @@
         "featured": true
       }
     }
-  ]
+  ],
+  "aliases": {
+    "components": "$lib/components",
+    "utils": "$lib/utils/utils",
+    "ui": "$lib/components/ui",
+    "hooks": "$lib/hooks",
+    "lib": "$lib"
+  }
 }

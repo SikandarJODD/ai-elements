@@ -1,5 +1,5 @@
 <script lang="ts" module>
-  import { cn } from "$lib/utils/utils.js";
+  import { cn } from "$lib/utils/utils";
   import { type ButtonSize, type ButtonVariant } from "$lib/components/ui/button/index.js";
 
   export type ScrollButtonProps = {

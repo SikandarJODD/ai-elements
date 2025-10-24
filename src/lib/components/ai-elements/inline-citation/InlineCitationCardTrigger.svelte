@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/utils.js";
+  import { cn } from "$lib/utils/utils";
   import * as Badge from "$lib/components/ui/badge/index.js";
   import * as HoverCard from "$lib/components/ui/hover-card/index";
   import type { Snippet } from "svelte";

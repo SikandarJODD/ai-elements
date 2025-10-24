@@ -3,7 +3,7 @@
   import * as Tabs from "$lib/components/ui/tabs";
   import * as Code from "$lib/components/ai-elements/code";
   import Button from "$lib/components/ui/button/button.svelte";
-  import { cn } from "$lib/utils/utils.js";
+  import { cn } from "$lib/utils/utils";
 
   import RefreshCwIcon from "@lucide/svelte/icons/refresh-cw";
 

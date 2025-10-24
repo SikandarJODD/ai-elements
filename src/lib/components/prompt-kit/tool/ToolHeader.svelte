@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getToolContext } from './tool-context.svelte.js';
-	import { cn } from '$lib/utils/utils.js';
+	import { cn } from '$lib/utils/utils';
 	import {
 		CheckCircle,
 		Loader2,

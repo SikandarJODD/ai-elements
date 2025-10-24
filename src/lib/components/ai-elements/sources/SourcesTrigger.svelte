@@ -1,8 +1,8 @@
 <script lang="ts">
   import { CollapsibleTrigger } from "$lib/components/ui/collapsible/index.js";
-  import { cn } from "$lib/utils/utils.js";
+  import { cn } from "$lib/utils/utils";
   import type { Snippet } from "svelte";
-  import ChevronDownIcon from "./ChevronDownIcon.svelte";
+  import ChevronDownIcon from "@lucide/svelte/icons/chevron-down";
 
   interface Props {
     class?: string;

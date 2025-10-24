@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils.js';
+	import { cn } from '$lib/utils/utils';
 	import { WebPreviewContext, setWebPreviewContext } from './web-preview-context.svelte.js';
 
 	let {

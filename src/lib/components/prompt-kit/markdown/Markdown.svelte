@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils.js';
+	import { cn } from '$lib/utils/utils';
 	import { Streamdown, type StreamdownProps } from 'svelte-streamdown';
 	import { mode } from 'mode-watcher';
 	import type { HTMLAttributes } from 'svelte/elements';

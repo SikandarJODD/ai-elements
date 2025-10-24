@@ -1,38 +1,18 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/utils.js";
-  import { DotIcon, type Icon as IconType } from "@lucide/svelte";
-  import { getChainOfThoughtContext } from './chain-of-thought-context.svelte.js';
+  import { cn } from "$lib/utils/utils";
+  import { type Icon as IconType } from "@lucide/svelte";
+  import DotIcon from "@lucide/svelte/icons/dot";
+  import { getChainOfThoughtContext } from "./chain-of-thought-context.svelte.js";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
 
   interface ChainOfThoughtStepProps extends HTMLAttributes<HTMLDivElement> {
-    /**
-     * Icon component to display (defaults to DotIcon)
-     */
     icon?: typeof IconType;
-    /**
-     * Label text for the step
-     */
     label: string;
-    /**
-     * Optional description text
-     */
     description?: string;
-    /**
-     * Status of the step
-     */
     status?: "complete" | "active" | "pending";
-    /**
-     * Additional content
-     */
     children?: Snippet;
-    /**
-     * Additional CSS classes
-     */
     class?: string;
-    /**
-     * Animation delay in milliseconds (optional, auto-calculated if not provided)
-     */
     delay?: number;
   }
 
@@ -60,7 +40,9 @@
   // Calculate step index based on DOM position
   function getStepIndex(): number {
     if (!element?.parentElement) return 0;
-    const steps = Array.from(element.parentElement.querySelectorAll('[data-chain-step]'));
+    const steps = Array.from(
+      element.parentElement.querySelectorAll("[data-chain-step]")
+    );
     return steps.indexOf(element);
   }
 
@@ -86,9 +68,7 @@
   class={cn(
     "flex gap-2 text-sm transition-all duration-500 ease-out",
     statusStyles[status],
-    isVisible
-      ? "opacity-100 translate-y-0"
-      : "opacity-0 translate-y-3",
+    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3",
     className
   )}
   {...restProps}

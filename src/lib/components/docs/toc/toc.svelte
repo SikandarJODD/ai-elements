@@ -10,7 +10,7 @@
 <script lang="ts">
   import type { Heading } from "$lib/hooks/use-toc.svelte";
   import { pushState } from "$app/navigation";
-  import { cn } from "$lib/utils/utils.js";
+  import { cn } from "$lib/utils/utils";
   import Self from "./toc.svelte";
 
   let { toc, isChild = false, class: className }: TocProps = $props();

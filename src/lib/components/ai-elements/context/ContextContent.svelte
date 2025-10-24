@@ -1,6 +1,6 @@
 <script lang="ts">
 	import HoverCardContent from '$lib/components/ui/hover-card/hover-card-content.svelte';
-	import { cn } from '$lib/utils/utils.js';
+	import { cn } from '$lib/utils/utils';
 
 	interface Props {
 		children?: import('svelte').Snippet;

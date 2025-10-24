@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { cn } from "$lib/utils/utils.js";
+	import { cn } from "$lib/utils/utils";
 	import { tv } from "tailwind-variants";
 
 	export const navigationMenuTriggerStyle = tv({

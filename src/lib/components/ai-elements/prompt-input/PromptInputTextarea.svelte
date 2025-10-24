@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/utils.js";
+  import { cn } from "$lib/utils/utils";
   import { Textarea } from "$lib/components/ui/textarea/index.js";
   import { getAttachmentsContext } from "./attachments-context.svelte.js";
 

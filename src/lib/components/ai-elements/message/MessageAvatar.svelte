@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from "$lib/utils/utils.js";
+	import { cn } from "$lib/utils/utils";
 	import { Avatar, AvatarImage, AvatarFallback } from "$lib/components/ui/avatar/index.js";
 	import type { ComponentProps } from "svelte";
 

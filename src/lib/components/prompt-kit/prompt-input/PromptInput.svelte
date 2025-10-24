@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils.js';
+	import { cn } from '$lib/utils/utils';
 	import { Tooltip as TooltipPrimitive } from 'bits-ui';
 	import {
 		PromptInputClass,

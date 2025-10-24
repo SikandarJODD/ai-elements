@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/utils.js";
+  import { cn } from "$lib/utils/utils";
   import { codeToHtml, type bundledThemes } from "shiki";
   import { watch } from "runed";
   import type { HTMLAttributes } from "svelte/elements";

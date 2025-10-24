@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/utils.js";
+  import { cn } from "$lib/utils/utils";
   import HoverCardContent from "$lib/components/ui/hover-card/hover-card-content.svelte";
   import { getSourceContext } from "./source-context.svelte.js";
 

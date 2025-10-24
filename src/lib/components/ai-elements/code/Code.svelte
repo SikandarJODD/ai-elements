@@ -1,10 +1,9 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/utils.js";
+  import { cn } from "$lib/utils/utils";
   import { codeVariants } from ".";
   import type { CodeRootProps } from "./types";
   import { useCode } from "./code.svelte.js";
   import { box } from "svelte-toolbelt";
-  // import "../../../../app.css";
 
   let {
     ref = $bindable(null),

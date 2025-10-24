@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { CollapsibleTrigger } from '$lib/components/ui/collapsible';
-	import { cn } from '$lib/utils/utils.js';
+	import { cn } from '$lib/utils/utils';
 	import { ChevronDown } from '@lucide/svelte';
 	import type { Snippet } from 'svelte';
 

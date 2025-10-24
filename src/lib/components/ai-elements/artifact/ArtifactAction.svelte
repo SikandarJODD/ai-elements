@@ -6,7 +6,7 @@
     TooltipProvider,
     TooltipTrigger,
   } from "$lib/components/ui/tooltip";
-  import { cn } from "$lib/utils/utils.js";
+  import { cn } from "$lib/utils/utils";
   import { type Icon as IconType } from "@lucide/svelte";
 
   interface Props extends ButtonProps {

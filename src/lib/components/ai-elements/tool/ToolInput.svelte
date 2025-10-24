@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/utils.js";
+  import { cn } from "$lib/utils/utils";
   import * as Code from "$lib/components/ai-elements/code/index.js";
 
   interface ToolInputProps {
@@ -17,11 +17,7 @@
   let id = $props.id();
 </script>
 
-<div
-  {id}
-  class={cn("space-y-2 overflow-hidden p-4", className)}
-  {...restProps}
->
+<div {id} class={cn("space-y-2 overflow-hidden p-4", className)} {...restProps}>
   <h4 class="font-medium text-muted-foreground text-xs uppercase tracking-wide">
     Parameters
   </h4>

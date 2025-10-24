@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils.js';
+	import { cn } from '$lib/utils/utils';
 	import type { ToolPart } from './tool-context.svelte.js';
 	import { Tool, ToolHeader, ToolContent, ToolDetails } from './index.js';
 	import type { HTMLAttributes } from 'svelte/elements';

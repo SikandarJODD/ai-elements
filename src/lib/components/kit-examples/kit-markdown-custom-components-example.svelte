@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Markdown } from '$lib/components/prompt-kit/markdown';
 	import { Streamdown } from 'svelte-streamdown';
-	import { cn } from '$lib/utils/utils.js';
+	import { cn } from '$lib/utils/utils';
 	import { mode } from 'mode-watcher';
 
 	const markdownContent = `# Custom Components Example

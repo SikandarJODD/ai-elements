@@ -1,5 +1,5 @@
 <script lang="ts" module>
-  import { cn, type WithElementRef } from "$lib/utils/utils.js";
+  import { cn, type WithElementRef } from "$lib/utils/utils";
   import type { WithChildren } from "bits-ui";
   import type {
     HTMLAnchorAttributes,

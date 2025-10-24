@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/utils.js";
+  import { cn } from "$lib/utils/utils";
   import { CollapsibleContent } from "$lib/components/ui/collapsible/index.js";
   import Response from "./Response.svelte";
 

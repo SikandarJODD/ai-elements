@@ -1,6 +1,6 @@
 <script lang="ts" module>
 	import type { ButtonVariant, ButtonSize } from '$lib/components/ui/button/index.js';
-	import { cn } from '$lib/utils/utils.js';
+	import { cn } from '$lib/utils/utils';
 	import type { Snippet } from 'svelte';
 
 	export type PromptSuggestionProps = {
