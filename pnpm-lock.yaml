@@ -27,8 +27,8 @@ importers:
         specifier: ^5.0.55
         version: 5.0.78(zod@3.25.76)
       isomorphic-dompurify:
-        specifier: ^2.28.0
-        version: 2.30.1(postcss@8.5.6)
+        specifier: 2.28.0
+        version: 2.28.0(postcss@8.5.6)
       jsrepo:
         specifier: ^2.5.0
         version: 2.5.0(typescript@5.9.3)(ws@8.18.3)(zod@3.25.76)
@@ -52,7 +52,7 @@ importers:
         version: 3.13.0
       svelte-streamdown:
         specifier: ^2.3.0
-        version: 2.5.2(svelte@5.42.0)
+        version: 2.6.0(svelte@5.42.0)
       svelte-toolbelt:
         specifier: ^0.10.5
         version: 0.10.6(@sveltejs/kit@2.47.3(@opentelemetry/api@1.9.0)(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.42.0)(vite@7.1.12(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.42.0)(vite@7.1.12(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.42.0)
@@ -1678,9 +1678,9 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  isomorphic-dompurify@2.30.1:
-    resolution: {integrity: sha512-VJFbthRrns7BE+q3qSUJ5zxGNjuq4FqiaWXKCwnMoJbumnoQJoeOeOzP/oejKLPPtENckLWoDxGQiv5OkEFC+Q==}
-    engines: {node: '>=20.19.5'}
+  isomorphic-dompurify@2.28.0:
+    resolution: {integrity: sha512-9G5v8g4tYoix5odskjG704Khm1zNrqqqOC4YjCwEUhx0OvuaijRCprAV2GwJ9iw/01c6H1R+rs/2AXPZLlgDaQ==}
+    engines: {node: '>=18'}
 
   jackspeak@3.4.3:
     resolution: {integrity: sha512-OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==}
@@ -2259,8 +2259,8 @@ packages:
     peerDependencies:
       svelte: ^5.0.0
 
-  svelte-streamdown@2.5.2:
-    resolution: {integrity: sha512-okKW7A/r8pG6HM5cIhnrQUjpBKZEz5XABC/UO3Kn98bNTNlsd4vH2JLAdKOwkNwg0m1xXJY7ZBHbSj3v6GZzpQ==}
+  svelte-streamdown@2.6.0:
+    resolution: {integrity: sha512-D3FQ5hPjMsAQFeHuMoqreiBT4FUHlbdxq0ZaHd+3zR9cCBG4RY0SKLUtLxAgaE37q6yjY/vh2Zsq2kYjEL4iAA==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -4113,7 +4113,7 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  isomorphic-dompurify@2.30.1(postcss@8.5.6):
+  isomorphic-dompurify@2.28.0(postcss@8.5.6):
     dependencies:
       dompurify: 3.3.0
       jsdom: 27.0.1(postcss@8.5.6)
@@ -4791,7 +4791,7 @@ snapshots:
       schema-dts: 1.1.5
       svelte: 5.42.0
 
-  svelte-streamdown@2.5.2(svelte@5.42.0):
+  svelte-streamdown@2.6.0(svelte@5.42.0):
     dependencies:
       '@floating-ui/dom': 1.7.4
       clsx: 2.1.1
