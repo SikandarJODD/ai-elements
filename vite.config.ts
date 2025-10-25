@@ -11,6 +11,6 @@ export default defineConfig({
 		]
 	},
 	ssr: {
-		noExternal: ['shiki', '@shikijs/langs', '@shikijs/themes', 'isomorphic-dompurify']
+		noExternal: ['shiki', '@shikijs/langs', '@shikijs/themes']
 	}
 });
