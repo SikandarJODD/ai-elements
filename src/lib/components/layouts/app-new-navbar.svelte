@@ -25,6 +25,7 @@
   import { cn } from "$lib/utils/utils";
   import AppSearchbar from "./app-searchbar.svelte";
   import LightSwitch from "../ui/light-switch/light-switch.svelte";
+  import McpDialog from "./mcp-dialog.svelte";
 
   type MobileNavigationItem = {
     label: string;
@@ -270,7 +271,7 @@
 </script>
 
 <header
-  class="border-b fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 md:px-6"
+  class="border-b fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 px-4 md:px-6"
 >
   <div class="flex h-16 items-center justify-between gap-4">
     <!-- Left side  -->
@@ -299,15 +300,15 @@
               >
                 <path
                   d="M4 12L20 12"
-                  class="origin-center -translate-y-[7px] transition-all duration-300 [transition-timing-function:cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-315"
+                  class="origin-center -translate-y-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-315"
                 />
                 <path
                   d="M4 12H20"
-                  class="origin-center transition-all duration-300 [transition-timing-function:cubic-bezier(.5,.85,0.25,1.8)] group-aria-expanded:rotate-45"
+                  class="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,0.25,1.8)] group-aria-expanded:rotate-45"
                 />
                 <path
                   d="M4 12H20"
-                  class="origin-center translate-y-[7px] transition-all duration-300 [transition-timing-function:cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-135"
+                  class="origin-center translate-y-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-135"
                 />
               </svg>
             </Button>
@@ -405,6 +406,7 @@
     <div class="flex items-center gap-2 md:gap-2">
       <!-- Search Bar -->
       <div class="hidden md:block">
+        <McpDialog />
         <AppSearchbar />
       </div>
       <Button
