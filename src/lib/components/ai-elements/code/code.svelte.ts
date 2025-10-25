@@ -2,8 +2,17 @@ import { Context } from 'runed';
 import type { ReadableBoxedValues, WritableBoxedValues } from 'svelte-toolbelt';
 import type { CodeRootProps } from './types';
 import { highlighter } from './shiki';
-import DOMPurify from 'isomorphic-dompurify';
+// import DOMPurify from 'isomorphic-dompurify';
 import type { HighlighterCore } from 'shiki';
+
+let DOMPurify: any;
+
+// ✅ Dynamically import only in the browser
+if (typeof window !== 'undefined') {
+	import('isomorphic-dompurify').then(({ default: createDOMPurify }) => {
+		DOMPurify = createDOMPurify(window);
+	});
+}
 
 type CodeOverflowStateProps = WritableBoxedValues<{
 	collapsed: boolean;
@@ -74,7 +83,12 @@ class CodeRootState {
 		return this.opts.code.current;
 	}
 
-	highlighted = $derived(DOMPurify.sanitize(this.highlight(this.code) ?? ''));
+	// highlighted = $derived(DOMPurify.sanitize(this.highlight(this.code) ?? ''));
+	highlighted = $derived(
+		typeof window !== 'undefined' && DOMPurify
+			? DOMPurify.sanitize(this.highlight(this.code) ?? '')
+			: this.highlight(this.code) ?? ''
+	);
 }
 
 function within(num: number, range: CodeRootProps['highlight']) {
@@ -101,7 +115,7 @@ function within(num: number, range: CodeRootProps['highlight']) {
 }
 
 class CodeCopyButtonState {
-	constructor(readonly root: CodeRootState) {}
+	constructor(readonly root: CodeRootState) { }
 
 	get code() {
 		return this.root.opts.code.current;

@@ -10,7 +10,7 @@ export default defineConfig({
 			'@lucide/svelte',
 		]
 	},
-	// ssr: {
-	// 	noExternal: ['shiki', '@shikijs/langs', '@shikijs/themes']
-	// }
+	ssr: {
+		noExternal: ['shiki', '@shikijs/langs', '@shikijs/themes', 'isomorphic-dompurify']
+	}
 });
