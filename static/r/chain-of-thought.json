@@ -51,7 +51,7 @@
 			"target": "ai-elements/chain-of-thought/ChainOfThoughtImage.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$\";\r\n  import { Badge } from \"$COMPONENTS$/ui/badge/index.js\";\r\n  import type { Snippet } from \"svelte\";\r\n  import type { HTMLAttributes } from \"svelte/elements\";\r\n\r\n  interface ChainOfThoughtSearchResultProps\r\n    extends HTMLAttributes<HTMLDivElement> {\r\n    children: Snippet;\r\n    class?: string;\r\n  }\r\n\r\n  let {\r\n    children,\r\n    class: className,\r\n    ...restProps\r\n  }: ChainOfThoughtSearchResultProps = $props();\r\n</script>\r\n\r\n<Badge\r\n  class={cn(\"gap-1 px-2 py-0.5 font-normal text-xs\", className)}\r\n  variant=\"secondary\"\r\n  {...restProps}\r\n>\r\n  {@render children()}\r\n</Badge>\r\n",
+			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$\";\r\n  import { Badge } from \"$COMPONENTS$/ui/badge/index\";\r\n  import type { Snippet } from \"svelte\";\r\n  import type { HTMLAttributes } from \"svelte/elements\";\r\n\r\n  interface ChainOfThoughtSearchResultProps\r\n    extends HTMLAttributes<HTMLElement> {\r\n    children: Snippet;\r\n    class?: string;\r\n  }\r\n\r\n  let {\r\n    children,\r\n    class: className,\r\n    ...restProps\r\n  }: ChainOfThoughtSearchResultProps = $props();\r\n</script>\r\n\r\n<Badge\r\n  class={cn(\"gap-1 px-2 py-0.5 font-normal text-xs\", className)}\r\n  variant=\"secondary\"\r\n  {...restProps}\r\n>\r\n  {@render children()}\r\n</Badge>\r\n",
 			"type": "registry:component",
 			"target": "ai-elements/chain-of-thought/ChainOfThoughtSearchResult.svelte"
 		},

@@ -48,6 +48,7 @@
       <ChainOfThoughtImage
         caption="Hayden Bleasel's profile photo from x.com, showing a Ghibli-style man."
       >
+        <!-- svelte-ignore a11y_img_redundant_alt -->
         <img
           src={exampleImage}
           alt="Example generated image"

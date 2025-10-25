@@ -36,7 +36,7 @@
 			"target": "prompt-kit/chat-container/chat-container-content.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$\";\r\n\r\n  let {\r\n    class: className,\r\n    ...restProps\r\n  }: {\r\n    class?: string;\r\n    [key: string]: any;\r\n  } = $props();\r\n</script>\r\n\r\n<div\r\n  class={cn(\"h-px w-full shrink-0 scroll-mt-4\", className)}\r\n  aria-hidden=\"true\"\r\n  {...restProps}\r\n/>\r\n",
+			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$\";\r\n\r\n  let {\r\n    class: className,\r\n    ...restProps\r\n  }: {\r\n    class?: string;\r\n    [key: string]: any;\r\n  } = $props();\r\n</script>\r\n\r\n<div\r\n  class={cn(\"h-px w-full shrink-0 scroll-mt-4\", className)}\r\n  aria-hidden=\"true\"\r\n  {...restProps}\r\n></div>\r\n",
 			"type": "registry:component",
 			"target": "prompt-kit/chat-container/chat-container-scroll-anchor.svelte"
 		},

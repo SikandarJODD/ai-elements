@@ -10,7 +10,9 @@
 	],
 	"registryDependencies": [
 		"button",
-		"input"
+		"input",
+		"tooltip",
+		"collapsible"
 	],
 	"meta": {
 		"author": "SikandarJODD"

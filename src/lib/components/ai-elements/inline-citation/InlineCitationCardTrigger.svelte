@@ -1,6 +1,6 @@
 <script lang="ts">
   import { cn } from "$lib/utils/utils";
-  import * as Badge from "$lib/components/ui/badge/index.js";
+  import { Badge } from "$lib/components/ui/badge/index";
   import * as HoverCard from "$lib/components/ui/hover-card/index";
   import type { Snippet } from "svelte";
 
@@ -36,15 +36,11 @@
 </script>
 
 <HoverCard.Trigger>
-  <Badge.Root
-    class={cn("ml-1 rounded-full", className)}
-    {variant}
-    {...restProps}
-  >
+  <Badge class={cn("ml-1 rounded-full", className)} {variant} {...restProps}>
     {#if children}
       {@render children()}
     {:else}
       {badgeContent}
     {/if}
-  </Badge.Root>
+  </Badge>
 </HoverCard.Trigger>

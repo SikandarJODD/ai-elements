@@ -36,7 +36,7 @@
 			)}
 			style:animation-delay="{i * 100}ms"
 			style:height={heights[size][i]}
-		/>
+		></div>
 	{/each}
 	<span class="sr-only">Loading</span>
 </div>

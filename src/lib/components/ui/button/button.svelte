@@ -44,18 +44,6 @@
       variant?: ButtonVariant;
       size?: ButtonSize;
     };
-
-  export type ButtonPropsWithoutHTML = WithChildren<{
-    ref?: HTMLElement | null;
-    variant?: ButtonVariant;
-    size?: ButtonSize;
-    loading?: boolean;
-    onClickPromise?: (
-      e: MouseEvent & {
-        currentTarget: EventTarget & HTMLButtonElement;
-      }
-    ) => Promise<void>;
-  }>;
 </script>
 
 <script lang="ts">

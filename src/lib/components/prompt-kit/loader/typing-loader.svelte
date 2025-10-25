@@ -26,7 +26,7 @@
 		<div
 			class={cn('bg-primary animate-[typing_1s_infinite] rounded-full', dotSizes[size])}
 			style:animation-delay="{i * 250}ms"
-		/>
+		></div>
 	{/each}
 	<span class="sr-only">Loading</span>
 </div>

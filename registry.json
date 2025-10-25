@@ -321,7 +321,8 @@
       ],
       "registryDependencies": [
         "hover-card",
-        "progress"
+        "progress",
+        "button"
       ],
       "meta": {
         "author": "SikandarJODD"
@@ -390,13 +391,13 @@
           "target": "ai-elements/copy-button/types.ts"
         },
         {
-          "path": "src/lib/hooks/use-clipboard.svelte.ts",
-          "type": "registry:hook"
-        },
-        {
           "path": "src/lib/components/ai-elements/copy-button/index.ts",
           "type": "registry:file",
           "target": "ai-elements/copy-button/index.ts"
+        },
+        {
+          "path": "src/lib/hooks/use-clipboard.svelte.ts",
+          "type": "registry:hook"
         }
       ],
       "registryDependencies": [
@@ -1236,7 +1237,9 @@
       ],
       "registryDependencies": [
         "button",
-        "input"
+        "input",
+        "tooltip",
+        "collapsible"
       ],
       "meta": {
         "author": "SikandarJODD"

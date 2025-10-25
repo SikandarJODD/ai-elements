@@ -27,18 +27,18 @@
   import LightSwitch from "../ui/light-switch/light-switch.svelte";
 
   type MobileNavigationItem = {
-    href?: string;
     label: string;
+    href?: string;
     icon?: Component;
     description?: string;
     submenu?: boolean;
     type?: "simple" | "description" | "icon";
-    items?: Array<{
+    items?: {
       href: string;
       label: string;
       icon?: Component;
       description?: string;
-    }>;
+    }[];
   };
 
   // Mobile navigation with organized sections
@@ -328,28 +328,30 @@
                       >
                         {link.label}
                       </div>
-                      <ul class="space-y-0.5 pb-2">
-                        {#each link.items as item (item.label)}
-                          <li>
-                            <NavigationMenuLink
-                              href={item.href}
-                              class="hover:bg-accent hover:text-accent-foreground flex flex-col gap-0.5 rounded-md px-3 py-2 text-sm transition-colors"
-                            >
-                              <span class="font-medium">{item.label}</span>
-                              {#if item.description}
-                                <span
-                                  class="text-muted-foreground text-xs line-clamp-1"
-                                >
-                                  {item.description}
-                                </span>
-                              {/if}
-                            </NavigationMenuLink>
-                          </li>
-                        {/each}
-                      </ul>
+                      {#if link.items}
+                        <ul class="space-y-0.5 pb-2">
+                          {#each link.items as item}
+                            <li>
+                              <NavigationMenuLink
+                                href={item.href}
+                                class="hover:bg-accent hover:text-accent-foreground flex flex-col gap-0.5 rounded-md px-3 py-2 text-sm transition-colors"
+                              >
+                                <span class="font-medium">{item.label}</span>
+                                {#if item.description}
+                                  <span
+                                    class="text-muted-foreground text-xs line-clamp-1"
+                                  >
+                                    {item.description}
+                                  </span>
+                                {/if}
+                              </NavigationMenuLink>
+                            </li>
+                          {/each}
+                        </ul>
+                      {/if}
                     {:else}
                       <a
-                        href={link.href}
+                        href={link.href || "#"}
                         class="hover:bg-accent hover:text-accent-foreground flex flex-row items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors w-full"
                       >
                         {#if link.icon}

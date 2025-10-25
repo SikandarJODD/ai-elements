@@ -14,4 +14,4 @@
   class={cn("h-px w-full shrink-0 scroll-mt-4", className)}
   aria-hidden="true"
   {...restProps}
-/>
+></div>

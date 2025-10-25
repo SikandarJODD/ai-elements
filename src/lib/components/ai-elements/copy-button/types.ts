@@ -1,8 +1,21 @@
 import type { Snippet } from "svelte";
-import type { ButtonPropsWithoutHTML } from "$lib/components/ui/button/button.svelte";
 import type { UseClipboard } from "$lib/hooks/use-clipboard.svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import type { WithChildren, WithoutChildren } from "bits-ui";
+
+import type { ButtonSize, ButtonVariant } from "$lib/components/ui/button";
+
+export type ButtonPropsWithoutHTML = WithChildren<{
+  ref?: HTMLElement | null;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  loading?: boolean;
+  onClickPromise?: (
+    e: MouseEvent & {
+      currentTarget: EventTarget & HTMLButtonElement;
+    }
+  ) => Promise<void>;
+}>;
 
 export type CopyButtonPropsWithoutHTML = WithChildren<
   Pick<ButtonPropsWithoutHTML, "size" | "variant"> & {

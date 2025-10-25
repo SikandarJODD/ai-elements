@@ -47,7 +47,7 @@
 				style:animation-delay="{i * 0.1}s"
 				style:height={barSizes[size].height}
 				style:width={barSizes[size].width}
-			/>
+			></div>
 		{/each}
 	</div>
 	<span class="sr-only">Loading</span>

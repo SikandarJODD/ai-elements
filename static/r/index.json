@@ -94,7 +94,8 @@
 		"description": "The Context component provides a comprehensive view of AI model usage, displaying token consumption, costs, and performance metrics through an interactive hover card interface.",
 		"registryDependencies": [
 			"hover-card",
-			"progress"
+			"progress",
+			"button"
 		],
 		"meta": {
 			"author": "SikandarJODD"
@@ -380,7 +381,9 @@
 		"description": "The WebPreview component provides an interactive web browser interface for displaying and navigating web content with console logging capabilities.",
 		"registryDependencies": [
 			"button",
-			"input"
+			"input",
+			"tooltip",
+			"collapsible"
 		],
 		"meta": {
 			"author": "SikandarJODD"

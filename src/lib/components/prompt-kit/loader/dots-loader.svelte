@@ -29,7 +29,7 @@
 				dotSizes[size]
 			)}
 			style:animation-delay="{i * 160}ms"
-		/>
+		></div>
 	{/each}
 	<span class="sr-only">Loading</span>
 </div>

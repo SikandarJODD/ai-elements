@@ -1,11 +1,11 @@
 <script lang="ts">
   import { cn } from "$lib/utils/utils";
-  import { Badge } from "$lib/components/ui/badge/index.js";
+  import { Badge } from "$lib/components/ui/badge/index";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
 
   interface ChainOfThoughtSearchResultProps
-    extends HTMLAttributes<HTMLDivElement> {
+    extends HTMLAttributes<HTMLElement> {
     children: Snippet;
     class?: string;
   }

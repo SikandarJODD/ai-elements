@@ -52,7 +52,6 @@
 
 <div class="flex h-[400px] w-full flex-col overflow-hidden">
 	<div class="flex items-center justify-between border-b p-3">
-		<div />
 		<div class="flex items-center gap-2">
 			<Button size="sm" onclick={addMessage}>Add Message</Button>
 		</div>
