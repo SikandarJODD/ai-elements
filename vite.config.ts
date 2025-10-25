@@ -8,7 +8,6 @@ export default defineConfig({
 		exclude: [
 			// Icon library
 			'@lucide/svelte',
-
 		]
 	},
 	// ssr: {
