@@ -8,9 +8,10 @@ export default defineConfig({
 		exclude: [
 			// Icon library
 			'@lucide/svelte',
+
 		]
 	},
-	ssr: {
-		noExternal: ['shiki', '@shikijs/langs', '@shikijs/themes']
-	}
+	// ssr: {
+	// 	noExternal: ['shiki', '@shikijs/langs', '@shikijs/themes']
+	// }
 });
