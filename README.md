@@ -34,7 +34,7 @@ Svelte AI Elements is a custom registy built on top of shadcn-svelte to help you
 - 26 AI Elements Components
 - 2 Guides
   1. Basic Setup Guide : [Visit](https://svelte-ai-elements.vercel.app/guides/basic-setup)
-  2. Svelte 5 + AI SDK Integration : [Visit](https://svelte-ai-elements.vercel.app/guides/svelte-5-ai-sdk-integration)
+  2. Svelte 5+ AI SDK Integration : [Visit](https://svelte-ai-elements.vercel.app/guides/svelte-5-ai-sdk-integration)
 
 
 
