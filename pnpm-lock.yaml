@@ -27,8 +27,8 @@ importers:
         specifier: ^5.0.55
         version: 5.0.78(zod@3.25.76)
       isomorphic-dompurify:
-        specifier: ^2.28.0
-        version: 2.30.1(postcss@8.5.6)
+        specifier: 2.28.0
+        version: 2.28.0(postcss@8.5.6)
       jsrepo:
         specifier: ^2.5.0
         version: 2.5.0(typescript@5.9.3)(ws@8.18.3)(zod@3.25.76)
@@ -1622,9 +1622,9 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  isomorphic-dompurify@2.30.1:
-    resolution: {integrity: sha512-VJFbthRrns7BE+q3qSUJ5zxGNjuq4FqiaWXKCwnMoJbumnoQJoeOeOzP/oejKLPPtENckLWoDxGQiv5OkEFC+Q==}
-    engines: {node: '>=20.19.5'}
+  isomorphic-dompurify@2.28.0:
+    resolution: {integrity: sha512-9G5v8g4tYoix5odskjG704Khm1zNrqqqOC4YjCwEUhx0OvuaijRCprAV2GwJ9iw/01c6H1R+rs/2AXPZLlgDaQ==}
+    engines: {node: '>=18'}
 
   jackspeak@4.1.1:
     resolution: {integrity: sha512-zptv57P3GpL+O0I7VdMJNBZCu+BPHVQUk55Ft8/QCJjTVxrnJHuVuX/0Bl2A6/+2oyR/ZMEuFKwmzqqZ/U5nPQ==}
@@ -3932,7 +3932,7 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  isomorphic-dompurify@2.30.1(postcss@8.5.6):
+  isomorphic-dompurify@2.28.0(postcss@8.5.6):
     dependencies:
       dompurify: 3.3.0
       jsdom: 27.0.1(postcss@8.5.6)
