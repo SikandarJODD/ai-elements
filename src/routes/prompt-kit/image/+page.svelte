@@ -1,119 +1,135 @@
 <script lang="ts">
-  import { MetaTags } from "svelte-meta-tags";
-  import { Subheading, AiInstallCommand, ComponentAPITable } from "$lib/components/docs";
-  import Playground from "$lib/components/docs/playground.svelte";
-  import { examples } from "./examples/examples";
-  import { seo } from "./examples/seo";
+	import { MetaTags } from "svelte-meta-tags";
+	import { Subheading, AiInstallCommand, ComponentAPITable } from "$lib/components/docs";
+	import Playground from "$lib/components/docs/playground.svelte";
+	import { examples } from "./examples/examples";
+	import { seo } from "./examples/seo";
 
-  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 
-  import * as Toc from "$lib/components/docs/toc";
-  import { UseToc } from "$lib/hooks/use-toc.svelte";
-  let toc = new UseToc();
+	import * as Toc from "$lib/components/docs/toc";
+	import { UseToc } from "$lib/hooks/use-toc.svelte";
+	let toc = new UseToc();
 
-  // Component API Props Data
-  const imageProps = [
-    {
-      name: "base64",
-      type: "string",
-      description: "Base64-encoded image data",
-    },
-    {
-      name: "uint8Array",
-      type: "Uint8Array",
-      description: "Raw image data as Uint8Array",
-    },
-    {
-      name: "mediaType",
-      type: "string",
-      default: "'image/png'",
-      description: "MIME type of the image (e.g., 'image/jpeg')",
-    },
-    {
-      name: "alt",
-      type: "string",
-      description: "Alternative text for accessibility (required)",
-    },
-    {
-      name: "className",
-      type: "string",
-      description: "Additional CSS classes",
-    },
-    {
-      name: "...props",
-      type: "ImgHTMLAttributes<HTMLImageElement>",
-      description: "All standard HTML <img> attributes",
-    },
-  ];
+	// Component API Props Data
+	const imageProps = [
+		{
+			name: "base64",
+			type: "string",
+			description: "Base64-encoded image data",
+		},
+		{
+			name: "uint8Array",
+			type: "Uint8Array",
+			description: "Raw image data as Uint8Array",
+		},
+		{
+			name: "mediaType",
+			type: "string",
+			default: "'image/png'",
+			description: "MIME type of the image (e.g., 'image/jpeg')",
+		},
+		{
+			name: "alt",
+			type: "string",
+			description: "Alternative text for accessibility (required)",
+		},
+		{
+			name: "className",
+			type: "string",
+			description: "Additional CSS classes",
+		},
+		{
+			name: "...props",
+			type: "ImgHTMLAttributes<HTMLImageElement>",
+			description: "All standard HTML <img> attributes",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
 <Sidebar.Inset class="min-h-svh">
-  <div
-    class="grid grid-cols-1 md:grid-cols-[1fr_280px] lg:grid-cols-[1fr_240px] gap-8 min-h-svh md:px-6 md:pb-6"
-  >
-    <!-- Main Content Area -->
-    <main class="min-w-0" bind:this={toc.ref}>
-      <!-- Title -->
-      <Subheading class="md:text-3xl">Image</Subheading>
+	<div
+		class="grid min-h-svh grid-cols-1 gap-8 md:grid-cols-[1fr_280px] md:px-6 md:pb-6 lg:grid-cols-[1fr_240px]"
+	>
+		<!-- Main Content Area -->
+		<main class="min-w-0" bind:this={toc.ref}>
+			<!-- Title -->
+			<Subheading class="md:text-3xl">Image</Subheading>
 
-      <!-- Description -->
-      <p class="my-4 text-muted-foreground text-base sm:text-lg leading-relaxed">
-        The <code class="bg-muted px-1.5 py-0.5 rounded text-sm">Image</code> component displays images from base64 or Uint8Array data, supporting all standard HTML image attributes. It is ideal for showing AI-generated images or user uploads in chat and AI apps. Compatible with AI SDK v5 architecture.
-      </p>
+			<!-- Description -->
+			<p class="text-muted-foreground my-4 text-base leading-relaxed sm:text-lg">
+				The <code class="bg-muted rounded px-1.5 py-0.5 text-sm">Image</code> component displays
+				images from base64 or Uint8Array data, supporting all standard HTML image attributes.
+				It is ideal for showing AI-generated images or user uploads in chat and AI apps. Compatible
+				with AI SDK v5 architecture.
+			</p>
 
-      <!-- Features Section -->
-      <h3 class="text-lg font-semibold mb-3 mt-6" id="features">Features</h3>
-      <ul class="list-disc list-inside space-y-2 text-sm sm:text-base text-muted-foreground mb-6">
-        <li>Accepts base64 or Uint8Array image data</li>
-        <li>Supports all standard HTML image attributes</li>
-        <li>Responsive by default with <code class="bg-muted px-1.5 py-0.5 rounded text-sm">max-w-full h-auto</code></li>
-        <li>Customizable with Tailwind classes</li>
-        <li>Fully accessible (alt required)</li>
-      </ul>
+			<!-- Features Section -->
+			<h3 class="mt-6 mb-3 text-lg font-semibold" id="features">Features</h3>
+			<ul
+				class="text-muted-foreground mb-6 list-inside list-disc space-y-2 text-sm sm:text-base"
+			>
+				<li>Accepts base64 or Uint8Array image data</li>
+				<li>Supports all standard HTML image attributes</li>
+				<li>
+					Responsive by default with <code class="bg-muted rounded px-1.5 py-0.5 text-sm"
+						>max-w-full h-auto</code
+					>
+				</li>
+				<li>Customizable with Tailwind classes</li>
+				<li>Fully accessible (alt required)</li>
+			</ul>
 
-      <!-- Examples Section -->
-      <Subheading>Examples</Subheading>
+			<!-- Examples Section -->
+			<Subheading>Examples</Subheading>
 
-      <!-- Example 1: Basic Usage -->
-      <h3 class="text-lg font-semibold mb-3 mt-6" id="basic-usage">Basic Usage</h3>
-      <Playground code={examples.basic.code}>
-        <div class="w-full flex justify-center">
-          <examples.basic.Component />
-        </div>
-      </Playground>
+			<!-- Example 1: Basic Usage -->
+			<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-usage">Basic Usage</h3>
+			<Playground code={examples.basic.code}>
+				<div class="flex w-full justify-center">
+					<examples.basic.Component />
+				</div>
+			</Playground>
 
-      <!-- Installation Section -->
-      <Subheading>Installation</Subheading>
+			<!-- Installation Section -->
+			<Subheading>Installation</Subheading>
 
-      <p class="mb-4 text-sm sm:text-base leading-relaxed">
-        Copy and paste the following code into your project.
-      </p>
+			<p class="mb-4 text-sm leading-relaxed sm:text-base">
+				Copy and paste the following code into your project.
+			</p>
 
-      <div class="mb-6">
-        <AiInstallCommand
-          command="execute"
-          args={["shadcn-svelte@latest", "add", "https://ai-elements.vercel.app/r/prompt-kit-image.json"]}
-        />
-      </div>
+			<div class="mb-6">
+				<AiInstallCommand
+					command="execute"
+					args={[
+						"shadcn-svelte@latest",
+						"add",
+						"https://ai-elements.vercel.app/r/prompt-kit-image.json",
+					]}
+				/>
+			</div>
 
-      <!-- Component API Section -->
-      <Subheading>Component API</Subheading>
+			<!-- Component API Section -->
+			<Subheading>Component API</Subheading>
 
-      <!-- Image -->
-      <ComponentAPITable componentName="Image" props={imageProps} class="mt-6" id="image-props" />
-    </main>
+			<!-- Image -->
+			<ComponentAPITable
+				componentName="Image"
+				props={imageProps}
+				class="mt-6"
+				id="image-props"
+			/>
+		</main>
 
-    <!-- TOC Sidebar - Sticky on larger screens -->
-    <aside
-      class="hidden md:flex sticky top-24 h-fit max-h-[calc(100vh-3rem)] overflow-y-auto"
-    >
-      <div>
-        <h3 class="text-sm font-semibold mb-4">On this page</h3>
-        <Toc.Root toc={toc.current} />
-      </div>
-    </aside>
-  </div>
+		<!-- TOC Sidebar - Sticky on larger screens -->
+		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">
+			<div>
+				<h3 class="mb-4 text-sm font-semibold">On this page</h3>
+				<Toc.Root toc={toc.current} />
+			</div>
+		</aside>
+	</div>
 </Sidebar.Inset>

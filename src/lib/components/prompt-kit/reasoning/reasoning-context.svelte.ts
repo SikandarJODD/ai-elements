@@ -1,4 +1,4 @@
-import { getContext } from 'svelte';
+import { getContext } from "svelte";
 
 class ReasoningContext {
 	private _isOpen = $state(false);
@@ -37,9 +37,9 @@ export function createReasoningContext(
 }
 
 export function getReasoningContext(): ReasoningContext {
-	const context = getContext<ReasoningContext>('reasoning');
+	const context = getContext<ReasoningContext>("reasoning");
 	if (!context) {
-		throw new Error('getReasoningContext must be used within a Reasoning component');
+		throw new Error("getReasoningContext must be used within a Reasoning component");
 	}
 	return context;
 }

@@ -1,6 +1,6 @@
-import { getContext, setContext } from 'svelte';
+import { getContext, setContext } from "svelte";
 
-const CAROUSEL_CONTEXT_KEY = Symbol('carousel-context');
+const CAROUSEL_CONTEXT_KEY = Symbol("carousel-context");
 
 export interface CarouselApi {
 	scrollPrev: () => void;

@@ -1,8 +1,8 @@
-import { getContext, setContext } from 'svelte';
+import { getContext, setContext } from "svelte";
 
-const WEB_PREVIEW_CONTEXT_KEY = Symbol('web-preview');
+const WEB_PREVIEW_CONTEXT_KEY = Symbol("web-preview");
 
-export type LogLevel = 'log' | 'warn' | 'error';
+export type LogLevel = "log" | "warn" | "error";
 
 export type LogEntry = {
 	level: LogLevel;
@@ -11,11 +11,11 @@ export type LogEntry = {
 };
 
 export class WebPreviewContext {
-	#url = $state('');
+	#url = $state("");
 	#consoleOpen = $state(false);
 	#onUrlChange?: (url: string) => void;
 
-	constructor(defaultUrl: string = '', onUrlChange?: (url: string) => void) {
+	constructor(defaultUrl: string = "", onUrlChange?: (url: string) => void) {
 		this.#url = defaultUrl;
 		this.#onUrlChange = onUrlChange;
 	}
@@ -45,7 +45,7 @@ export function setWebPreviewContext(context: WebPreviewContext) {
 export function getWebPreviewContext(): WebPreviewContext {
 	let context = getContext<WebPreviewContext>(WEB_PREVIEW_CONTEXT_KEY);
 	if (!context) {
-		throw new Error('WebPreview components must be used within a WebPreview');
+		throw new Error("WebPreview components must be used within a WebPreview");
 	}
 	return context;
 }

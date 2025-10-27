@@ -1,8 +1,12 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils';
-	import { MessageClass, setMessageContext, type MessageSchema } from './message-context.svelte.js';
-	import type { Snippet } from 'svelte';
-	import type { HTMLAttributes } from 'svelte/elements';
+	import { cn } from "$lib/utils/utils";
+	import {
+		MessageClass,
+		setMessageContext,
+		type MessageSchema,
+	} from "./message-context.svelte.js";
+	import type { Snippet } from "svelte";
+	import type { HTMLAttributes } from "svelte/elements";
 
 	let {
 		class: className,
@@ -17,6 +21,6 @@
 	setMessageContext(contextInstance);
 </script>
 
-<div class={cn('flex gap-3', className)} {...restProps}>
+<div class={cn("flex gap-3", className)} {...restProps}>
 	{@render children()}
 </div>

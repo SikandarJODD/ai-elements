@@ -1,60 +1,60 @@
 <script lang="ts">
-	import { ToolComposed } from '$lib/components/prompt-kit/tool';
-	import type { ToolPart } from '$lib/components/prompt-kit/tool';
+	import { ToolComposed } from "$lib/components/prompt-kit/tool";
+	import type { ToolPart } from "$lib/components/prompt-kit/tool";
 
 	const toolBasic: ToolPart = {
-		type: 'search_web',
-		state: 'output-available',
+		type: "search_web",
+		state: "output-available",
 		input: {
-			query: 'prompt-kit documentation',
-			max_results: 5
+			query: "prompt-kit documentation",
+			max_results: 5,
 		},
 		output: {
 			results: [
 				{
-					title: 'Prompt Kit - Documentation',
-					url: 'https://prompt-kit.com/docs',
-					snippet: 'A comprehensive guide to using Prompt Kit components...'
+					title: "Prompt Kit - Documentation",
+					url: "https://prompt-kit.com/docs",
+					snippet: "A comprehensive guide to using Prompt Kit components...",
 				},
 				{
-					title: 'Getting Started with Prompt Kit',
-					url: 'https://prompt-kit.com/docs/installation',
-					snippet: 'Learn how to install and use Prompt Kit in your project...'
-				}
-			]
+					title: "Getting Started with Prompt Kit",
+					url: "https://prompt-kit.com/docs/installation",
+					snippet: "Learn how to install and use Prompt Kit in your project...",
+				},
+			],
 		},
-		toolCallId: 'call_abc123'
+		toolCallId: "call_abc123",
 	};
 
 	const toolProcessing: ToolPart = {
-		type: 'fetch_data',
-		state: 'input-streaming',
+		type: "fetch_data",
+		state: "input-streaming",
 		input: {
-			endpoint: '/api/users',
-			method: 'GET'
+			endpoint: "/api/users",
+			method: "GET",
 		},
-		toolCallId: 'call_xyz789'
+		toolCallId: "call_xyz789",
 	};
 
 	const toolReady: ToolPart = {
-		type: 'calculate',
-		state: 'input-available',
+		type: "calculate",
+		state: "input-available",
 		input: {
-			expression: '2 + 2 * 3',
-			precision: 2
+			expression: "2 + 2 * 3",
+			precision: 2,
 		},
-		toolCallId: 'call_def456'
+		toolCallId: "call_def456",
 	};
 
 	const toolError: ToolPart = {
-		type: 'database_query',
-		state: 'output-error',
+		type: "database_query",
+		state: "output-error",
 		input: {
-			query: 'SELECT * FROM users WHERE id = ?',
-			params: [123]
+			query: "SELECT * FROM users WHERE id = ?",
+			params: [123],
 		},
-		errorText: 'Connection timeout: Unable to connect to database server at localhost:5432',
-		toolCallId: 'call_ghi789'
+		errorText: "Connection timeout: Unable to connect to database server at localhost:5432",
+		toolCallId: "call_ghi789",
 	};
 </script>
 

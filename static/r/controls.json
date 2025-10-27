@@ -30,7 +30,7 @@
 	},
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\r\n  import { cn } from \"$UTILS$\";\r\n  import {\r\n    Controls as ControlsPrimitive,\r\n    type ControlsProps,\r\n  } from \"@xyflow/svelte\";\r\n\r\n  let { class: className, ...restProps }: ControlsProps = $props();\r\n</script>\r\n\r\n<ControlsPrimitive\r\n  class={cn(\r\n    \"gap-px overflow-hidden rounded-md border bg-card p-1 shadow-none!\",\r\n    \"[&>button]:rounded-md [&>button]:border-none! [&>button]:bg-transparent! [&>button]:hover:bg-secondary!\",\r\n    className\r\n  )}\r\n  {...restProps}\r\n/>\r\n",
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { Controls as ControlsPrimitive, type ControlsProps } from \"@xyflow/svelte\";\n\n\tlet { class: className, ...restProps }: ControlsProps = $props();\n</script>\n\n<ControlsPrimitive\n\tclass={cn(\n\t\t\"bg-card gap-px overflow-hidden rounded-md border p-1 shadow-none!\",\n\t\t\"[&>button]:hover:bg-secondary! [&>button]:rounded-md [&>button]:border-none! [&>button]:bg-transparent!\",\n\t\tclassName\n\t)}\n\t{...restProps}\n/>\n",
 			"type": "registry:component",
 			"target": "ai-elements/workflow/controls/Controls.svelte"
 		}

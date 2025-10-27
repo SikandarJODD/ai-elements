@@ -30,7 +30,7 @@
 	},
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\r\n  import { Background, SvelteFlow, type SvelteFlowProps } from \"@xyflow/svelte\";\r\n\r\n  import \"@xyflow/svelte/dist/style.css\";\r\n\r\n  import { mode } from \"mode-watcher\";\r\n  import Controls from \"../controls/Controls.svelte\";\r\n  import type { Snippet } from \"svelte\";\r\n\r\n  type CanvasProps = SvelteFlowProps & {\r\n    children?: Snippet;\r\n  };\r\n  let {\r\n    children,\r\n    nodes = $bindable([]),\r\n    edges = $bindable([]),\r\n    ...restProps\r\n  }: CanvasProps = $props();\r\n</script>\r\n\r\n<SvelteFlow\r\n  colorMode={mode.current}\r\n  bind:nodes\r\n  bind:edges\r\n  fitView\r\n  zoomOnDoubleClick\r\n  {...restProps}\r\n>\r\n  <!-- panOnDrag={false} panOnScroll -->\r\n  <Controls />\r\n  <Background bgColor=\"var(--sidebar)\" />\r\n  {@render children?.()}\r\n</SvelteFlow>\r\n",
+			"content": "<script lang=\"ts\">\n\timport { Background, SvelteFlow, type SvelteFlowProps } from \"@xyflow/svelte\";\n\n\timport \"@xyflow/svelte/dist/style.css\";\n\n\timport { mode } from \"mode-watcher\";\n\timport Controls from \"../controls/Controls.svelte\";\n\timport type { Snippet } from \"svelte\";\n\n\ttype CanvasProps = SvelteFlowProps & {\n\t\tchildren?: Snippet;\n\t};\n\tlet {\n\t\tchildren,\n\t\tnodes = $bindable([]),\n\t\tedges = $bindable([]),\n\t\t...restProps\n\t}: CanvasProps = $props();\n</script>\n\n<SvelteFlow colorMode={mode.current} bind:nodes bind:edges fitView zoomOnDoubleClick {...restProps}>\n\t<!-- panOnDrag={false} panOnScroll -->\n\t<Controls />\n\t<Background bgColor=\"var(--sidebar)\" />\n\t{@render children?.()}\n</SvelteFlow>\n",
 			"type": "registry:component",
 			"target": "ai-elements/workflow/canvas/Canvas.svelte"
 		}

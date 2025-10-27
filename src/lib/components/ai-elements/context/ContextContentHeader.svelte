@@ -1,10 +1,10 @@
 <script lang="ts">
-  import Progress from '$lib/components/ui/progress/progress.svelte';
-	import { cn } from '$lib/utils/utils';
-	import { getContextValue, PERCENT_MAX } from './context-context.svelte';
+	import Progress from "$lib/components/ui/progress/progress.svelte";
+	import { cn } from "$lib/utils/utils";
+	import { getContextValue, PERCENT_MAX } from "./context-context.svelte";
 
 	interface Props {
-		children?: import('svelte').Snippet;
+		children?: import("svelte").Snippet;
 		class?: string;
 		[key: string]: any;
 	}
@@ -14,13 +14,13 @@
 	const context = getContextValue();
 </script>
 
-<div class={cn('w-full space-y-2 p-3', className)} {...props}>
+<div class={cn("w-full space-y-2 p-3", className)} {...props}>
 	{#if children}
 		{@render children()}
 	{:else}
 		<div class="flex items-center justify-between gap-3 text-xs">
 			<p>{context.displayPercent}</p>
-			<p class="font-mono text-muted-foreground">
+			<p class="text-muted-foreground font-mono">
 				{context.usedTokensFormatted} / {context.maxTokensFormatted}
 			</p>
 		</div>

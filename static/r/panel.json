@@ -30,12 +30,12 @@
 	},
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\r\n  import { Panel as PanelPrimitive, type PanelProps } from \"@xyflow/svelte\";\r\n  import { cn } from \"$UTILS$\";\r\n\r\n  type PanelComponentProps = PanelProps & {\r\n    class?: string;\r\n  };\r\n\r\n  let { class: className, ...restProps }: PanelComponentProps = $props();\r\n</script>\r\n\r\n<PanelPrimitive\r\n  class={cn(\"m-4 overflow-hidden rounded-md border bg-card p-1\", className)}\r\n  {...restProps}\r\n/>\r\n",
+			"content": "<script lang=\"ts\">\n\timport { Panel as PanelPrimitive, type PanelProps } from \"@xyflow/svelte\";\n\timport { cn } from \"$UTILS$\";\n\n\ttype PanelComponentProps = PanelProps & {\n\t\tclass?: string;\n\t};\n\n\tlet { class: className, ...restProps }: PanelComponentProps = $props();\n</script>\n\n<PanelPrimitive\n\tclass={cn(\"bg-card m-4 overflow-hidden rounded-md border p-1\", className)}\n\t{...restProps}\n/>\n",
 			"type": "registry:component",
 			"target": "ai-elements/workflow/panel/panel.svelte"
 		},
 		{
-			"content": "export { default as Panel } from './panel.svelte';\r\n",
+			"content": "export { default as Panel } from \"./panel.svelte\";\n",
 			"type": "registry:file",
 			"target": "ai-elements/workflow/panel/index.ts"
 		}

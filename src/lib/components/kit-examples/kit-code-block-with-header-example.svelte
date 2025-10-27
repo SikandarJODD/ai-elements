@@ -2,10 +2,10 @@
 	import {
 		CodeBlock,
 		CodeBlockCode,
-		CodeBlockGroup
-	} from '$lib/components/prompt-kit/code-block';
-	import { Button } from '$lib/components/ui/button';
-	import { Check, Copy } from '@lucide/svelte';
+		CodeBlockGroup,
+	} from "$lib/components/prompt-kit/code-block";
+	import { Button } from "$lib/components/ui/button";
+	import { Check, Copy } from "@lucide/svelte";
 
 	let copied = $state(false);
 

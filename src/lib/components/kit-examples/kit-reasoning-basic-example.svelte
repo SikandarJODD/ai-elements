@@ -2,11 +2,11 @@
 	import {
 		Reasoning,
 		ReasoningContent,
-		ReasoningTrigger
-	} from '$lib/components/prompt-kit/reasoning';
-	import { Button } from '$lib/components/ui/button';
+		ReasoningTrigger,
+	} from "$lib/components/prompt-kit/reasoning";
+	import { Button } from "$lib/components/ui/button";
 
-	let reasoningText = $state('');
+	let reasoningText = $state("");
 	let isStreaming = $state(false);
 
 	// Simulated streaming function
@@ -21,7 +21,7 @@
 6. Final result: improved contrast and color harmony`;
 
 		isStreaming = true;
-		reasoningText = '';
+		reasoningText = "";
 
 		// Simulate character-by-character streaming
 		for (let i = 0; i <= reasoning.length; i++) {
@@ -39,7 +39,7 @@
 
 <div class="flex w-full flex-col items-start gap-4">
 	<Button variant="outline" size="sm" onclick={handleGenerateReasoning} disabled={isStreaming}>
-		{isStreaming ? 'Generating...' : 'Generate Reasoning'}
+		{isStreaming ? "Generating..." : "Generate Reasoning"}
 	</Button>
 
 	<Reasoning {isStreaming}>

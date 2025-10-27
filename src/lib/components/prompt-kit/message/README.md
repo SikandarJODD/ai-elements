@@ -22,6 +22,7 @@ A flexible message component system for building chat interfaces in Svelte. Port
 ## Installation
 
 The component uses the following dependencies (already in your project):
+
 - `bits-ui` for tooltip primitives
 - UI components: Avatar, Tooltip
 - `cn` utility for className merging
@@ -35,19 +36,13 @@ The component uses the following dependencies (already in your project):
   import {
     Message,
     MessageAvatar,
-    MessageContent
-  } from '$lib/components/prompt-kit/message';
+    MessageContent,
+  } from "$lib/components/prompt-kit/message";
 </script>
 
 <Message>
-  <MessageAvatar
-    src="/user-avatar.png"
-    alt="User"
-    fallback="U"
-  />
-  <MessageContent>
-    Hello, this is a message!
-  </MessageContent>
+  <MessageAvatar src="/user-avatar.png" alt="User" fallback="U" />
+  <MessageContent>Hello, this is a message!</MessageContent>
 </Message>
 ```
 
@@ -60,10 +55,10 @@ The component uses the following dependencies (already in your project):
     MessageAvatar,
     MessageContent,
     MessageActions,
-    MessageAction
-  } from '$lib/components/prompt-kit/message';
-  import { Copy, ThumbsUp, ThumbsDown } from '@lucide/svelte';
-  import { Button } from '$lib/components/ui/button';
+    MessageAction,
+  } from "$lib/components/prompt-kit/message";
+  import { Copy, ThumbsUp, ThumbsDown } from "@lucide/svelte";
+  import { Button } from "$lib/components/ui/button";
 
   function handleCopy() {
     // Copy logic
@@ -79,15 +74,9 @@ The component uses the following dependencies (already in your project):
 </script>
 
 <Message>
-  <MessageAvatar
-    src="/bot-avatar.png"
-    alt="AI Assistant"
-    fallback="AI"
-  />
+  <MessageAvatar src="/bot-avatar.png" alt="AI Assistant" fallback="AI" />
   <div class="flex flex-col gap-2">
-    <MessageContent>
-      Here's a helpful response!
-    </MessageContent>
+    <MessageContent>Here's a helpful response!</MessageContent>
 
     <MessageActions>
       <MessageAction>
@@ -125,15 +114,9 @@ The component uses the following dependencies (already in your project):
 
 ```svelte
 <Message>
-  <MessageAvatar
-    src="/assistant.png"
-    alt="Assistant"
-    fallback="AI"
-  />
+  <MessageAvatar src="/assistant.png" alt="Assistant" fallback="AI" />
   <MessageContent markdown={true}>
-    # This is markdown
-    - List item 1
-    - List item 2
+    # This is markdown - List item 1 - List item 2
   </MessageContent>
 </Message>
 ```
@@ -146,11 +129,7 @@ All components accept a `class` prop for custom styling:
 
 ```svelte
 <Message class="border-b pb-4">
-  <MessageAvatar
-    class="h-10 w-10"
-    src="/user.png"
-    alt="User"
-  />
+  <MessageAvatar class="h-10 w-10" src="/user.png" alt="User" />
   <MessageContent class="bg-primary text-primary-foreground">
     Styled message content
   </MessageContent>
@@ -160,11 +139,7 @@ All components accept a `class` prop for custom styling:
 ### Avatar Example
 
 ```svelte
-<MessageAvatar
-  src="/user.png"
-  alt="User"
-  fallback="U"
-/>
+<MessageAvatar src="/user.png" alt="User" fallback="U" />
 ```
 
 ## API Reference
@@ -174,6 +149,7 @@ All components accept a `class` prop for custom styling:
 Root container for the message.
 
 **Props:**
+
 - `class?: string` - Additional CSS classes
 - `...props` - All HTML div attributes
 
@@ -182,6 +158,7 @@ Root container for the message.
 Displays an avatar with fallback support.
 
 **Props:**
+
 - `src: string` - Avatar image URL (required)
 - `alt: string` - Alt text for the image (required)
 - `fallback?: string` - Text to display if image fails to load
@@ -192,6 +169,7 @@ Displays an avatar with fallback support.
 Container for message content.
 
 **Props:**
+
 - `markdown?: boolean` - Enable markdown rendering (default: false)
 - `class?: string` - Additional CSS classes
 - `...props` - All HTML div attributes
@@ -201,6 +179,7 @@ Container for message content.
 Container for action buttons.
 
 **Props:**
+
 - `class?: string` - Additional CSS classes
 - `...props` - All HTML div attributes
 
@@ -209,6 +188,7 @@ Container for action buttons.
 Individual action button with tooltip.
 
 **Props:**
+
 - `tooltip: Snippet` - Tooltip content (required)
 - `side?: 'top' | 'bottom' | 'left' | 'right'` - Tooltip position (default: 'top')
 - `class?: string` - Additional CSS classes for tooltip content

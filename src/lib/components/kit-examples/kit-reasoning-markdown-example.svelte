@@ -2,11 +2,11 @@
 	import {
 		Reasoning,
 		ReasoningContent,
-		ReasoningTrigger
-	} from '$lib/components/prompt-kit/reasoning';
-	import { Button } from '$lib/components/ui/button';
+		ReasoningTrigger,
+	} from "$lib/components/prompt-kit/reasoning";
+	import { Button } from "$lib/components/ui/button";
 
-	let reasoningText = $state('');
+	let reasoningText = $state("");
 	let isStreaming = $state(false);
 
 	// Simulated streaming function with markdown content
@@ -29,7 +29,7 @@ I need to find a number that, when **multiplied by itself**, equals 144.
 > **Answer:** The square root of 144 is **12**.`;
 
 		isStreaming = true;
-		reasoningText = '';
+		reasoningText = "";
 
 		// Simulate character-by-character streaming
 		for (let i = 0; i <= reasoning.length; i++) {
@@ -47,7 +47,7 @@ I need to find a number that, when **multiplied by itself**, equals 144.
 
 <div class="flex w-full flex-col items-start gap-4">
 	<Button variant="outline" size="sm" onclick={handleGenerateReasoning} disabled={isStreaming}>
-		{isStreaming ? 'Thinking...' : 'Generate Reasoning'}
+		{isStreaming ? "Thinking..." : "Generate Reasoning"}
 	</Button>
 
 	<Reasoning {isStreaming}>

@@ -9,5 +9,16 @@ import CodeNameBlock from "./code-name/code-name-block.svelte";
 import BasicSetupPrereq from "./basic-setup-prereq.svelte";
 import ComponentAPITable from "./component-api-table.svelte";
 
-export { Subheading, CodeSpan, Heading, H3, AiInstallCommand, Installation, Code, CodeNameBlock, BasicSetupPrereq, ComponentAPITable };
+export {
+	Subheading,
+	CodeSpan,
+	Heading,
+	H3,
+	AiInstallCommand,
+	Installation,
+	Code,
+	CodeNameBlock,
+	BasicSetupPrereq,
+	ComponentAPITable,
+};
 export type { PropDefinition, ComponentAPITableProps } from "./component-api-table.types";

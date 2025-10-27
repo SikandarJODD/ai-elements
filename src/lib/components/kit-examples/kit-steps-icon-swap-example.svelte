@@ -4,9 +4,9 @@
 		StepsBar,
 		StepsContent,
 		StepsItem,
-		StepsTrigger
-	} from '$lib/components/prompt-kit/steps';
-	import { Hammer } from '@lucide/svelte';
+		StepsTrigger,
+	} from "$lib/components/prompt-kit/steps";
+	import { Hammer } from "@lucide/svelte";
 </script>
 
 <div class="space-y-4">

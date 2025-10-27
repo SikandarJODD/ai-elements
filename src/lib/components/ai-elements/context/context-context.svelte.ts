@@ -1,4 +1,4 @@
-import { getContext, setContext } from 'svelte';
+import { getContext, setContext } from "svelte";
 
 export const PERCENT_MAX = 100;
 export const ICON_RADIUS = 10;
@@ -40,21 +40,21 @@ export class ContextClass {
 	}
 
 	get displayPercent() {
-		return new Intl.NumberFormat('en-US', {
-			style: 'percent',
-			maximumFractionDigits: 1
+		return new Intl.NumberFormat("en-US", {
+			style: "percent",
+			maximumFractionDigits: 1,
 		}).format(this.usedPercent);
 	}
 
 	get usedTokensFormatted() {
-		return new Intl.NumberFormat('en-US', {
-			notation: 'compact'
+		return new Intl.NumberFormat("en-US", {
+			notation: "compact",
 		}).format(this.usedTokens);
 	}
 
 	get maxTokensFormatted() {
-		return new Intl.NumberFormat('en-US', {
-			notation: 'compact'
+		return new Intl.NumberFormat("en-US", {
+			notation: "compact",
 		}).format(this.maxTokens);
 	}
 
@@ -67,7 +67,7 @@ export class ContextClass {
 	}
 }
 
-let CONTEXT_KEY = Symbol('context');
+let CONTEXT_KEY = Symbol("context");
 
 export function setContextValue(contextInstance: ContextClass) {
 	setContext(CONTEXT_KEY, contextInstance);
@@ -77,7 +77,7 @@ export function getContextValue(): ContextClass {
 	const context = getContext<ContextClass>(CONTEXT_KEY);
 
 	if (!context) {
-		throw new Error('Context components must be used within Context');
+		throw new Error("Context components must be used within Context");
 	}
 
 	return context;
@@ -91,7 +91,7 @@ export function estimateCost(params: {
 		output?: number;
 		reasoningTokens?: number;
 		cacheReads?: number;
-	}
+	};
 }) {
 	// Mock implementation - replace with actual tokenlens
 	const inputCost = (params.usage.input || 0) * 0.00001;
@@ -100,6 +100,6 @@ export function estimateCost(params: {
 	const cacheCost = (params.usage.cacheReads || 0) * 0.000005;
 
 	return {
-		totalUSD: inputCost + outputCost + reasoningCost + cacheCost
+		totalUSD: inputCost + outputCost + reasoningCost + cacheCost,
 	};
 }

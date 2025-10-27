@@ -1,23 +1,19 @@
 <script lang="ts">
-import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils/utils";
 
-interface Props {
-  class?: string;
-  children?: import("svelte").Snippet;
-}
+	interface Props {
+		class?: string;
+		children?: import("svelte").Snippet;
+	}
 
-let { class: className, children, ...props }: Props = $props();
+	let { class: className, children, ...props }: Props = $props();
 </script>
 
 <div
-  class={cn(
-    "flex items-center gap-1",
-    "[&_button:first-child]:rounded-bl-xl",
-    className
-  )}
-  {...props}
+	class={cn("flex items-center gap-1", "[&_button:first-child]:rounded-bl-xl", className)}
+	{...props}
 >
-  {#if children}
-    {@render children()}
-  {/if}
+	{#if children}
+		{@render children()}
+	{/if}
 </div>

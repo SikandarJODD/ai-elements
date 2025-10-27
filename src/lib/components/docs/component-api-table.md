@@ -6,7 +6,10 @@ A reusable component for displaying component API documentation in a clean, form
 
 ```svelte
 <script lang="ts">
-  import { ComponentAPITable, type PropDefinition } from "$lib/components/docs";
+  import {
+    ComponentAPITable,
+    type PropDefinition,
+  } from "$lib/components/docs";
 
   const myComponentProps: PropDefinition[] = [
     {
@@ -36,20 +39,20 @@ A reusable component for displaying component API documentation in a clean, form
 
 ### ComponentAPITable
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `componentName` | `string` | - | Name of the component being documented |
-| `props` | `PropDefinition[]` | - | Array of prop definitions to display |
-| `class` | `string` | - | Optional additional CSS classes |
+| Prop            | Type               | Default | Description                            |
+| --------------- | ------------------ | ------- | -------------------------------------- |
+| `componentName` | `string`           | -       | Name of the component being documented |
+| `props`         | `PropDefinition[]` | -       | Array of prop definitions to display   |
+| `class`         | `string`           | -       | Optional additional CSS classes        |
 
 ### PropDefinition
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `name` | `string` | ✅ | Name of the prop |
-| `type` | `string` | ✅ | TypeScript type of the prop |
-| `default` | `string` | ❌ | Default value (optional) |
-| `description` | `string` | ✅ | Description of the prop |
+| Field         | Type     | Required | Description                 |
+| ------------- | -------- | -------- | --------------------------- |
+| `name`        | `string` | ✅       | Name of the prop            |
+| `type`        | `string` | ✅       | TypeScript type of the prop |
+| `default`     | `string` | ❌       | Default value (optional)    |
+| `description` | `string` | ✅       | Description of the prop     |
 
 ## Features
 

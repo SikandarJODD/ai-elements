@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
-	import type { FileUploadContext } from './file-upload-context.svelte';
-	import type { Snippet } from 'svelte';
-	import { cn } from '$lib/utils/utils';
+	import { getContext } from "svelte";
+	import type { FileUploadContext } from "./file-upload-context.svelte";
+	import type { Snippet } from "svelte";
+	import { cn } from "$lib/utils/utils";
 
 	type Props = {
 		asChild?: boolean;
@@ -14,7 +14,7 @@
 
 	let { asChild = false, class: className, children, onclick, ...restProps }: Props = $props();
 
-	const context = getContext<FileUploadContext>('file-upload');
+	const context = getContext<FileUploadContext>("file-upload");
 
 	function handleClick(e: MouseEvent) {
 		e.stopPropagation();
@@ -30,7 +30,7 @@
 		class={className}
 		onclick={handleClick}
 		onkeydown={(e) => {
-			if (e.key === 'Enter' || e.key === ' ') {
+			if (e.key === "Enter" || e.key === " ") {
 				e.preventDefault();
 				handleClick(e as any);
 			}

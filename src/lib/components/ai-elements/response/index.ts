@@ -1,1 +1,1 @@
-export { default as Response } from './Response.svelte';
+export { default as Response } from "./Response.svelte";

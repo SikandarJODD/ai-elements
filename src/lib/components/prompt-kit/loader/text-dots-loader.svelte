@@ -1,23 +1,23 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils';
+	import { cn } from "$lib/utils/utils";
 
 	interface Props {
 		class?: string;
 		text?: string;
-		size?: 'sm' | 'md' | 'lg';
+		size?: "sm" | "md" | "lg";
 	}
 
-	let { class: className, text = 'Thinking', size = 'md' }: Props = $props();
+	let { class: className, text = "Thinking", size = "md" }: Props = $props();
 
 	const textSizes = {
-		sm: 'text-xs',
-		md: 'text-sm',
-		lg: 'text-base'
+		sm: "text-xs",
+		md: "text-sm",
+		lg: "text-base",
 	};
 </script>
 
-<div class={cn('inline-flex items-center', className)}>
-	<span class={cn('text-primary font-medium', textSizes[size])}>
+<div class={cn("inline-flex items-center", className)}>
+	<span class={cn("text-primary font-medium", textSizes[size])}>
 		{text}
 	</span>
 	<span class="inline-flex">

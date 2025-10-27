@@ -1,46 +1,42 @@
 {
-  "$schema": "https://unpkg.com/jsrepo@1.47.0/schemas/registry-config.json",
-  "name": "@ai/elements",
-  "version": "0.1.0",
-  "dirs": ["./src/lib", "./src/lib/components"],
-  "includeCategories": ["ai-elements", "ui", "lib", "hooks", "utils"],
-  "excludeBlocks": ["index", "assets", "components", "config", "hooks", "learning"],
-  "allowSubdirectories": true,
-  "excludeDeps": [
-    "svelte",
-    "@sveltejs/kit",
-    "tailwindcss"
-  ],
-  "meta": {
-    "authors": ["SikandarJODD"],
-    "description": "⚡ AI-powered Svelte components built on shadcn-svelte. Requires shadcn-svelte installation. Add beautiful conversational AI interfaces to your SvelteKit apps.",
-    "homepage": "https://github.com/SikandarJODD/ai-elements",
-    "repository": "https://github.com/SikandarJODD/ai-elements",
-    "bugs": "https://github.com/SikandarJODD/ai-elements/issues",
-    "tags": [
-      "svelte",
-      "ai",
-      "shadcn-svelte",
-      "components",
-      "chatbot",
-      "conversation",
-      "ai-sdk",
-      "vercel-ai",
-      "ui-components"
-    ]
-  },
-  "peerDependencies": {
-    "svelte": {
-      "version": "5.x.x",
-      "message": "AI Elements requires Svelte 5. Install: pnpm add svelte@latest"
-    },
-    "@sveltejs/kit": {
-      "version": "2.x.x",
-      "message": "AI Elements requires SvelteKit. Create project: pnpm create svelte@latest"
-    },
-    "tailwindcss": {
-      "version": "4.x.x",
-      "message": "AI Elements requires Tailwind CSS v4. See: https://tailwindcss.com/docs/installation"
-    }
-  }
+	"$schema": "https://unpkg.com/jsrepo@1.47.0/schemas/registry-config.json",
+	"name": "@ai/elements",
+	"version": "0.1.0",
+	"dirs": ["./src/lib", "./src/lib/components"],
+	"includeCategories": ["ai-elements", "ui", "lib", "hooks", "utils"],
+	"excludeBlocks": ["index", "assets", "components", "config", "hooks", "learning"],
+	"allowSubdirectories": true,
+	"excludeDeps": ["svelte", "@sveltejs/kit", "tailwindcss"],
+	"meta": {
+		"authors": ["SikandarJODD"],
+		"description": "⚡ AI-powered Svelte components built on shadcn-svelte. Requires shadcn-svelte installation. Add beautiful conversational AI interfaces to your SvelteKit apps.",
+		"homepage": "https://github.com/SikandarJODD/ai-elements",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"bugs": "https://github.com/SikandarJODD/ai-elements/issues",
+		"tags": [
+			"svelte",
+			"ai",
+			"shadcn-svelte",
+			"components",
+			"chatbot",
+			"conversation",
+			"ai-sdk",
+			"vercel-ai",
+			"ui-components"
+		]
+	},
+	"peerDependencies": {
+		"svelte": {
+			"version": "5.x.x",
+			"message": "AI Elements requires Svelte 5. Install: pnpm add svelte@latest"
+		},
+		"@sveltejs/kit": {
+			"version": "2.x.x",
+			"message": "AI Elements requires SvelteKit. Create project: pnpm create svelte@latest"
+		},
+		"tailwindcss": {
+			"version": "4.x.x",
+			"message": "AI Elements requires Tailwind CSS v4. See: https://tailwindcss.com/docs/installation"
+		}
+	}
 }

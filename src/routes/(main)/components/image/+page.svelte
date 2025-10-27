@@ -1,56 +1,60 @@
 <script lang="ts">
-  import { MetaTags } from "svelte-meta-tags";
-  import { Subheading } from "$lib/components/docs";
-  import Installation from "$lib/components/docs/installation.svelte";
-  import Playground from "$lib/components/docs/playground.svelte";
-  import Code from "$lib/components/docs/code.svelte";
-  import { examples } from "./examples/examples";
-  import { seo } from "./examples/seo";
-  import CodeSpan from "$lib/components/docs/code-span.svelte";
-  import { CodeNameBlock } from "$lib/components/docs";
-  import { PUBLIC_WEBSITE_URL } from "$env/static/public";
+	import { MetaTags } from "svelte-meta-tags";
+	import { Subheading } from "$lib/components/docs";
+	import Installation from "$lib/components/docs/installation.svelte";
+	import Playground from "$lib/components/docs/playground.svelte";
+	import Code from "$lib/components/docs/code.svelte";
+	import { examples } from "./examples/examples";
+	import { seo } from "./examples/seo";
+	import CodeSpan from "$lib/components/docs/code-span.svelte";
+	import { CodeNameBlock } from "$lib/components/docs";
+	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
-  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 
-  import * as Toc from "$lib/components/docs/toc";
-  import { UseToc } from "$lib/hooks/use-toc.svelte";
-  let toc = new UseToc();
+	import * as Toc from "$lib/components/docs/toc";
+	import { UseToc } from "$lib/hooks/use-toc.svelte";
+	let toc = new UseToc();
 </script>
 
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
 <Sidebar.Inset class="min-h-svh">
-  <div
-    class="grid grid-cols-1 md:grid-cols-[1fr_280px] lg:grid-cols-[1fr_240px] gap-8 min-h-svh md:px-6 md:pb-6"
-  >
-    <!-- Main Content Area -->
-    <main class="min-w-0" bind:this={toc.ref}>
-      <Subheading class="md:text-3xl">Image</Subheading>
+	<div
+		class="grid min-h-svh grid-cols-1 gap-8 md:grid-cols-[1fr_280px] md:px-6 md:pb-6 lg:grid-cols-[1fr_240px]"
+	>
+		<!-- Main Content Area -->
+		<main class="min-w-0" bind:this={toc.ref}>
+			<Subheading class="md:text-3xl">Image</Subheading>
 
-      <p class="my-2 !text-muted-foreground text-lg">
-        The <CodeSpan>Image</CodeSpan> component displays AI-generated images from
-        base64 encoded data. It's designed to work seamlessly with the AI SDK's
-        <CodeSpan>Experimental_GeneratedImage</CodeSpan> type and provides automatic
-        styling with proper accessibility features.
-      </p>
+			<p class="!text-muted-foreground my-2 text-lg">
+				The <CodeSpan>Image</CodeSpan> component displays AI-generated images from base64 encoded
+				data. It's designed to work seamlessly with the AI SDK's
+				<CodeSpan>Experimental_GeneratedImage</CodeSpan> type and provides automatic styling
+				with proper accessibility features.
+			</p>
 
-      <Playground code={examples.basic.code}>
-        <examples.basic.Component />
-      </Playground>
+			<Playground code={examples.basic.code}>
+				<examples.basic.Component />
+			</Playground>
 
-      <!-- Installation -->
-      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/image.json`} is_jsrepo={true} blockname="image" />
+			<!-- Installation -->
+			<Installation
+				specifier={`${PUBLIC_WEBSITE_URL}/r/image.json`}
+				is_jsrepo={true}
+				blockname="image"
+			/>
 
-      <!-- Usage -->
-      <Subheading>Usage</Subheading>
+			<!-- Usage -->
+			<Subheading>Usage</Subheading>
 
-      <div>
-        <CodeNameBlock
-          filename="image-usage.svelte"
-          lang="svelte"
-          code={`\<script lang="ts"\>
-  import { Image } from "$lib/components/ai-elements/image/index";
+			<div>
+				<CodeNameBlock
+					filename="image-usage.svelte"
+					lang="svelte"
+					code={`\<script lang="ts"\>
+  import { Image } from "$lib/components/ai-elements/image/index.js";
 
   const exampleImage = {
     base64: "iVBORw0KGgoAAAANSUhEUgAA...", // Your base64 encoded image data
@@ -63,33 +67,33 @@
   alt="Example generated image"
   class="aspect-square h-[150px] border"
 />`}
-        />
-      </div>
+				/>
+			</div>
 
-      <!-- Usage with AI SDK -->
-      <Subheading>Usage with AI SDK</Subheading>
+			<!-- Usage with AI SDK -->
+			<Subheading>Usage with AI SDK</Subheading>
 
-      <p class="mb-4 text-sm sm:text-base leading-relaxed">
-        Build a simple app allowing users to generate images given a prompt
-        using the AI SDK's image generation capabilities.
-      </p>
+			<p class="mb-4 text-sm leading-relaxed sm:text-base">
+				Build a simple app allowing users to generate images given a prompt using the AI
+				SDK's image generation capabilities.
+			</p>
 
-      <p class="mb-4 text-sm sm:text-base leading-relaxed">
-        Add the following component to your frontend:
-      </p>
+			<p class="mb-4 text-sm leading-relaxed sm:text-base">
+				Add the following component to your frontend:
+			</p>
 
-      <div class="mb-6">
-        <CodeNameBlock
-          filename="+page.svelte"
-          lang="svelte"
-          code={`<\script lang="ts"\>
-  import { Image } from "$lib/components/ai-elements/image/index";
+			<div class="mb-6">
+				<CodeNameBlock
+					filename="+page.svelte"
+					lang="svelte"
+					code={`<\script lang="ts"\>
+  import { Image } from "$lib/components/ai-elements/image/index.js";
   import {
     Input,
     PromptInputTextarea,
     PromptInputSubmit,
-  } from "$lib/components/ai-elements/prompt-input/index";
-  import { Loader } from "$lib/components/ai-elements/loader/index";
+  } from "$lib/components/ai-elements/prompt-input/index.js";
+  import { Loader } from "$lib/components/ai-elements/loader/index.js";
 
   let prompt = $state("A futuristic cityscape at sunset");
   let imageData = $state<{
@@ -157,18 +161,18 @@
     </Input>
   </div>
 </div>`}
-        />
-      </div>
+				/>
+			</div>
 
-      <p class="mb-4 text-sm sm:text-base leading-relaxed">
-        Add the following route to your backend:
-      </p>
+			<p class="mb-4 text-sm leading-relaxed sm:text-base">
+				Add the following route to your backend:
+			</p>
 
-      <div class="mb-6">
-        <CodeNameBlock
-          filename="api/chat/+server.ts"
-          lang="typescript"
-          code={`import { experimental_generateImage as generateImage } from "ai";
+			<div class="mb-6">
+				<CodeNameBlock
+					filename="api/chat/+server.ts"
+					lang="typescript"
+					code={`import { experimental_generateImage as generateImage } from "ai";
 import { openai } from "@ai-sdk/openai";
 import type { RequestHandler } from "./$types";
 
@@ -191,185 +195,179 @@ export const POST: RequestHandler = async ({ request }) => {
     }
   );
 };`}
-        />
-      </div>
+				/>
+			</div>
 
-      <!-- API Reference -->
-      <Subheading>API Reference</Subheading>
+			<!-- API Reference -->
+			<Subheading>API Reference</Subheading>
 
-      <div class="space-y-4">
-        <div>
-          <h3 class="text-base font-semibold mb-2">Props</h3>
-          <div class="space-y-3">
-            <div class="border-l-2 border-primary pl-4">
-              <div class="flex items-baseline gap-2">
-                <code class="text-sm font-mono">base64</code>
-                <span class="text-xs text-muted-foreground">string</span>
-                <span
-                  class="text-xs bg-destructive/10 text-destructive px-2 py-0.5 rounded"
-                  >required</span
-                >
-              </div>
-              <p class="text-sm text-muted-foreground mt-1">
-                The base64 encoded image data. This is the actual image content
-                encoded as a base64 string.
-              </p>
-            </div>
+			<div class="space-y-4">
+				<div>
+					<h3 class="mb-2 text-base font-semibold">Props</h3>
+					<div class="space-y-3">
+						<div class="border-primary border-l-2 pl-4">
+							<div class="flex items-baseline gap-2">
+								<code class="font-mono text-sm">base64</code>
+								<span class="text-muted-foreground text-xs">string</span>
+								<span
+									class="bg-destructive/10 text-destructive rounded px-2 py-0.5 text-xs"
+									>required</span
+								>
+							</div>
+							<p class="text-muted-foreground mt-1 text-sm">
+								The base64 encoded image data. This is the actual image content
+								encoded as a base64 string.
+							</p>
+						</div>
 
-            <div class="border-l-2 border-primary pl-4">
-              <div class="flex items-baseline gap-2">
-                <code class="text-sm font-mono">mediaType</code>
-                <span class="text-xs text-muted-foreground">string</span>
-                <span
-                  class="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
-                  >optional</span
-                >
-              </div>
-              <p class="text-sm text-muted-foreground mt-1">
-                The MIME type of the image (e.g., "image/png", "image/jpeg",
-                "image/webp"). Used to construct the data URL.
-              </p>
-            </div>
+						<div class="border-primary border-l-2 pl-4">
+							<div class="flex items-baseline gap-2">
+								<code class="font-mono text-sm">mediaType</code>
+								<span class="text-muted-foreground text-xs">string</span>
+								<span
+									class="bg-muted text-muted-foreground rounded px-2 py-0.5 text-xs"
+									>optional</span
+								>
+							</div>
+							<p class="text-muted-foreground mt-1 text-sm">
+								The MIME type of the image (e.g., "image/png", "image/jpeg",
+								"image/webp"). Used to construct the data URL.
+							</p>
+						</div>
 
-            <div class="border-l-2 border-primary pl-4">
-              <div class="flex items-baseline gap-2">
-                <code class="text-sm font-mono">uint8Array</code>
-                <span class="text-xs text-muted-foreground">Uint8Array</span>
-                <span
-                  class="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
-                  >optional</span
-                >
-              </div>
-              <p class="text-sm text-muted-foreground mt-1">
-                The raw binary data as a Uint8Array. This is typically provided
-                by the AI SDK but not directly used by the component (uses
-                base64 instead).
-              </p>
-            </div>
+						<div class="border-primary border-l-2 pl-4">
+							<div class="flex items-baseline gap-2">
+								<code class="font-mono text-sm">uint8Array</code>
+								<span class="text-muted-foreground text-xs">Uint8Array</span>
+								<span
+									class="bg-muted text-muted-foreground rounded px-2 py-0.5 text-xs"
+									>optional</span
+								>
+							</div>
+							<p class="text-muted-foreground mt-1 text-sm">
+								The raw binary data as a Uint8Array. This is typically provided by
+								the AI SDK but not directly used by the component (uses base64
+								instead).
+							</p>
+						</div>
 
-            <div class="border-l-2 border-primary pl-4">
-              <div class="flex items-baseline gap-2">
-                <code class="text-sm font-mono">alt</code>
-                <span class="text-xs text-muted-foreground">string</span>
-                <span
-                  class="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
-                  >optional</span
-                >
-              </div>
-              <p class="text-sm text-muted-foreground mt-1">
-                Alternative text description for the image. Important for
-                accessibility.
-              </p>
-            </div>
+						<div class="border-primary border-l-2 pl-4">
+							<div class="flex items-baseline gap-2">
+								<code class="font-mono text-sm">alt</code>
+								<span class="text-muted-foreground text-xs">string</span>
+								<span
+									class="bg-muted text-muted-foreground rounded px-2 py-0.5 text-xs"
+									>optional</span
+								>
+							</div>
+							<p class="text-muted-foreground mt-1 text-sm">
+								Alternative text description for the image. Important for
+								accessibility.
+							</p>
+						</div>
 
-            <div class="border-l-2 border-primary pl-4">
-              <div class="flex items-baseline gap-2">
-                <code class="text-sm font-mono">class</code>
-                <span class="text-xs text-muted-foreground">string</span>
-                <span
-                  class="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
-                  >optional</span
-                >
-              </div>
-              <p class="text-sm text-muted-foreground mt-1">
-                Additional CSS classes to apply to the image element. Merged
-                with default classes using <code class="text-sm">cn()</code> utility.
-              </p>
-            </div>
+						<div class="border-primary border-l-2 pl-4">
+							<div class="flex items-baseline gap-2">
+								<code class="font-mono text-sm">class</code>
+								<span class="text-muted-foreground text-xs">string</span>
+								<span
+									class="bg-muted text-muted-foreground rounded px-2 py-0.5 text-xs"
+									>optional</span
+								>
+							</div>
+							<p class="text-muted-foreground mt-1 text-sm">
+								Additional CSS classes to apply to the image element. Merged with
+								default classes using <code class="text-sm">cn()</code> utility.
+							</p>
+						</div>
 
-            <div class="border-l-2 border-primary pl-4">
-              <div class="flex items-baseline gap-2">
-                <code class="text-sm font-mono">ref</code>
-                <span class="text-xs text-muted-foreground"
-                  >HTMLImageElement | null</span
-                >
-                <span
-                  class="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
-                  >optional</span
-                >
-              </div>
-              <p class="text-sm text-muted-foreground mt-1">
-                A reference to the underlying <code class="text-sm">img</code>
-                element. Can be used with <code class="text-sm">bind:ref</code> for
-                direct DOM access.
-              </p>
-            </div>
+						<div class="border-primary border-l-2 pl-4">
+							<div class="flex items-baseline gap-2">
+								<code class="font-mono text-sm">ref</code>
+								<span class="text-muted-foreground text-xs"
+									>HTMLImageElement | null</span
+								>
+								<span
+									class="bg-muted text-muted-foreground rounded px-2 py-0.5 text-xs"
+									>optional</span
+								>
+							</div>
+							<p class="text-muted-foreground mt-1 text-sm">
+								A reference to the underlying <code class="text-sm">img</code>
+								element. Can be used with
+								<code class="text-sm">bind:ref</code> for direct DOM access.
+							</p>
+						</div>
 
-            <div class="border-l-2 border-primary pl-4">
-              <div class="flex items-baseline gap-2">
-                <code class="text-sm font-mono">...rest</code>
-                <span class="text-xs text-muted-foreground"
-                  >HTMLImgAttributes</span
-                >
-              </div>
-              <p class="text-sm text-muted-foreground mt-1">
-                All other standard HTML image attributes are supported (width,
-                height, loading, etc.).
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+						<div class="border-primary border-l-2 pl-4">
+							<div class="flex items-baseline gap-2">
+								<code class="font-mono text-sm">...rest</code>
+								<span class="text-muted-foreground text-xs">HTMLImgAttributes</span>
+							</div>
+							<p class="text-muted-foreground mt-1 text-sm">
+								All other standard HTML image attributes are supported (width,
+								height, loading, etc.).
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
 
-      <!-- Features -->
-      <Subheading>Features</Subheading>
+			<!-- Features -->
+			<Subheading>Features</Subheading>
 
-      <ul class="list-disc pl-6 space-y-2 mb-6 text-sm sm:text-base">
-        <li>
-          Accepts <CodeSpan>Experimental_GeneratedImage</CodeSpan> objects directly
-          from the AI SDK
-        </li>
-        <li>
-          Automatically creates proper data URLs from base64-encoded image data
-        </li>
-        <li>Supports all standard HTML image attributes</li>
-        <li>
-          Responsive by default with <CodeSpan>max-w-full h-auto</CodeSpan> styling
-        </li>
-        <li>Customizable with additional CSS classes</li>
-        <li>Includes proper TypeScript types for AI SDK compatibility</li>
-      </ul>
+			<ul class="mb-6 list-disc space-y-2 pl-6 text-sm sm:text-base">
+				<li>
+					Accepts <CodeSpan>Experimental_GeneratedImage</CodeSpan> objects directly from the
+					AI SDK
+				</li>
+				<li>Automatically creates proper data URLs from base64-encoded image data</li>
+				<li>Supports all standard HTML image attributes</li>
+				<li>
+					Responsive by default with <CodeSpan>max-w-full h-auto</CodeSpan> styling
+				</li>
+				<li>Customizable with additional CSS classes</li>
+				<li>Includes proper TypeScript types for AI SDK compatibility</li>
+			</ul>
 
-      <!-- Default Styling -->
-      <Subheading>Default Styling</Subheading>
+			<!-- Default Styling -->
+			<Subheading>Default Styling</Subheading>
 
-      <p class="text-muted-foreground mb-4">
-        The Image component comes with sensible default styles that can be
-        overridden:
-      </p>
+			<p class="text-muted-foreground mb-4">
+				The Image component comes with sensible default styles that can be overridden:
+			</p>
 
-      <ul class="list-disc list-inside space-y-2 text-muted-foreground">
-        <li>
-          <code class="text-sm">h-auto</code> - Height adjusts automatically to maintain
-          aspect ratio
-        </li>
-        <li>
-          <code class="text-sm">max-w-full</code> - Prevents overflow from parent
-          container
-        </li>
-        <li>
-          <code class="text-sm">overflow-hidden</code> - Clips any content that overflows
-        </li>
-        <li>
-          <code class="text-sm">rounded-md</code> - Applies medium border radius
-          for a polished look
-        </li>
-      </ul>
+			<ul class="text-muted-foreground list-inside list-disc space-y-2">
+				<li>
+					<code class="text-sm">h-auto</code> - Height adjusts automatically to maintain aspect
+					ratio
+				</li>
+				<li>
+					<code class="text-sm">max-w-full</code> - Prevents overflow from parent container
+				</li>
+				<li>
+					<code class="text-sm">overflow-hidden</code> - Clips any content that overflows
+				</li>
+				<li>
+					<code class="text-sm">rounded-md</code> - Applies medium border radius for a polished
+					look
+				</li>
+			</ul>
 
-      <!-- Integration with AI SDK -->
-      <Subheading>Integration with AI SDK</Subheading>
+			<!-- Integration with AI SDK -->
+			<Subheading>Integration with AI SDK</Subheading>
 
-      <p class="text-muted-foreground mb-4">
-        The Image component is designed to work seamlessly with the AI SDK's
-        experimental image generation features. Here's a complete example:
-      </p>
+			<p class="text-muted-foreground mb-4">
+				The Image component is designed to work seamlessly with the AI SDK's experimental
+				image generation features. Here's a complete example:
+			</p>
 
-      <CodeNameBlock
-        filename="image-with-ai-sdk.svelte"
-        lang="svelte"
-        code={`\<script lang="ts"\>
+			<CodeNameBlock
+				filename="image-with-ai-sdk.svelte"
+				lang="svelte"
+				code={`\<script lang="ts"\>
   import { useChat } from '@ai-sdk/svelte';
-  import { Image } from '$lib/components/ai-elements/image';
+  import { Image } from '$lib/components/ai-elements/image/index.js';
 
   const { messages, input, handleSubmit } = useChat();
 \<\/script\>
@@ -397,21 +395,20 @@ export const POST: RequestHandler = async ({ request }) => {
   <input bind:value={input} placeholder="Ask AI to generate an image..." />
   <button type="submit">Send</button>
 </form>`}
-      />
+			/>
 
-      <!-- Examples -->
-      <Subheading>Examples</Subheading>
+			<!-- Examples -->
+			<Subheading>Examples</Subheading>
 
-      <h3 class="text-base font-semibold mb-2">Custom Styling</h3>
-      <p class="text-muted-foreground mb-4">
-        You can easily customize the appearance of images using Tailwind
-        classes:
-      </p>
+			<h3 class="mb-2 text-base font-semibold">Custom Styling</h3>
+			<p class="text-muted-foreground mb-4">
+				You can easily customize the appearance of images using Tailwind classes:
+			</p>
 
-      <CodeNameBlock
-        filename="custom-styling.svelte"
-        lang="svelte"
-        code={`<!-- Square thumbnail -->
+			<CodeNameBlock
+				filename="custom-styling.svelte"
+				lang="svelte"
+				code={`<!-- Square thumbnail -->
 <Image
   {...generatedImage}
   alt="Square thumbnail"
@@ -431,18 +428,18 @@ export const POST: RequestHandler = async ({ request }) => {
   alt="Interactive image"
   class="transition-transform hover:scale-105 shadow-lg"
 />`}
-      />
+			/>
 
-      <h3 class="text-base font-semibold mb-2 mt-6">Responsive Gallery</h3>
-      <p class="text-muted-foreground mb-4">
-        Create a responsive image gallery with generated images:
-      </p>
+			<h3 class="mt-6 mb-2 text-base font-semibold">Responsive Gallery</h3>
+			<p class="text-muted-foreground mb-4">
+				Create a responsive image gallery with generated images:
+			</p>
 
-      <CodeNameBlock
-        filename="responsive-gallery.svelte"
-        lang="svelte"
-        code={`\<script lang="ts"\>
-  import { Image } from '$lib/components/ai-elements/image';
+			<CodeNameBlock
+				filename="responsive-gallery.svelte"
+				lang="svelte"
+				code={`\<script lang="ts"\>
+  import { Image } from '$lib/components/ai-elements/image/index.js';
 
   let images = [
     { base64: "...", mediaType: "image/png" },
@@ -460,20 +457,20 @@ export const POST: RequestHandler = async ({ request }) => {
     />
   {/each}
 </div>`}
-      />
+			/>
 
-      <!-- Accessibility -->
-      <Subheading>Accessibility</Subheading>
+			<!-- Accessibility -->
+			<Subheading>Accessibility</Subheading>
 
-      <p class="text-muted-foreground mb-4">
-        Always provide meaningful <code class="text-sm">alt</code> text for images
-        to ensure your application is accessible to all users:
-      </p>
+			<p class="text-muted-foreground mb-4">
+				Always provide meaningful <code class="text-sm">alt</code> text for images to ensure
+				your application is accessible to all users:
+			</p>
 
-      <CodeNameBlock
-        filename="accessibility-example.svelte"
-        lang="svelte"
-        code={`<!-- Good: Descriptive alt text -->
+			<CodeNameBlock
+				filename="accessibility-example.svelte"
+				lang="svelte"
+				code={`<!-- Good: Descriptive alt text -->
 <Image
   {...generatedImage}
   alt="A serene mountain landscape at sunset with orange and pink clouds"
@@ -484,46 +481,44 @@ export const POST: RequestHandler = async ({ request }) => {
   {...generatedImage}
   alt="image"
 />`}
-      />
+			/>
 
-      <!-- Notes -->
-      <Subheading>Notes</Subheading>
+			<!-- Notes -->
+			<Subheading>Notes</Subheading>
 
-      <ul class="list-disc list-inside space-y-2 text-muted-foreground">
-        <li>
-          The component constructs a data URL using the format: <code
-            class="text-sm">data:{`{mediaType}`};base64,{`{base64}`}</code
-          >
-        </li>
-        <li>
-          Base64 encoded images are embedded directly in the HTML, which may
-          increase page size for large images
-        </li>
-        <li>
-          Consider using lazy loading for multiple images: <code class="text-sm"
-            >loading="lazy"</code
-          >
-        </li>
-        <li>
-          The component supports all standard HTML image attributes through the
-          spread operator
-        </li>
-        <li>
-          Use proper <code class="text-sm">mediaType</code> values for best browser
-          compatibility: "image/png", "image/jpeg", "image/webp", "image/gif", etc.
-        </li>
-      </ul>
-    </main>
+			<ul class="text-muted-foreground list-inside list-disc space-y-2">
+				<li>
+					The component constructs a data URL using the format: <code class="text-sm"
+						>data:{`{mediaType}`};base64,{`{base64}`}</code
+					>
+				</li>
+				<li>
+					Base64 encoded images are embedded directly in the HTML, which may increase page
+					size for large images
+				</li>
+				<li>
+					Consider using lazy loading for multiple images: <code class="text-sm"
+						>loading="lazy"</code
+					>
+				</li>
+				<li>
+					The component supports all standard HTML image attributes through the spread
+					operator
+				</li>
+				<li>
+					Use proper <code class="text-sm">mediaType</code> values for best browser compatibility:
+					"image/png", "image/jpeg", "image/webp", "image/gif", etc.
+				</li>
+			</ul>
+		</main>
 
-    <!-- TOC Sidebar - Sticky on larger screens -->
-    <aside
-      class="hidden md:flex sticky top-24 h-fit max-h-[calc(100vh-3rem)] overflow-y-auto"
-    >
-      <!-- TOC Component -->
-      <div>
-        <h3 class="text-sm">On this page</h3>
-        <Toc.Root toc={toc.current} />
-      </div>
-    </aside>
-  </div>
+		<!-- TOC Sidebar - Sticky on larger screens -->
+		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">
+			<!-- TOC Component -->
+			<div>
+				<h3 class="text-sm">On this page</h3>
+				<Toc.Root toc={toc.current} />
+			</div>
+		</aside>
+	</div>
 </Sidebar.Inset>

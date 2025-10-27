@@ -11,22 +11,22 @@ import KitStepsWithLoaderExample from "$lib/components/kit-examples/kit-steps-wi
 import kitStepsWithLoaderExampleRaw from "$lib/components/kit-examples/kit-steps-with-loader-example.svelte?raw";
 
 const examples = {
-  basic: {
-    code: kitStepsBasicExampleRaw,
-    Component: KitStepsBasicExample,
-  },
-  withSource: {
-    code: kitStepsWithSourceExampleRaw,
-    Component: KitStepsWithSourceExample,
-  },
-  iconSwap: {
-    code: kitStepsIconSwapExampleRaw,
-    Component: KitStepsIconSwapExample,
-  },
-  withLoader: {
-    code: kitStepsWithLoaderExampleRaw,
-    Component: KitStepsWithLoaderExample,
-  },
+	basic: {
+		code: kitStepsBasicExampleRaw,
+		Component: KitStepsBasicExample,
+	},
+	withSource: {
+		code: kitStepsWithSourceExampleRaw,
+		Component: KitStepsWithSourceExample,
+	},
+	iconSwap: {
+		code: kitStepsIconSwapExampleRaw,
+		Component: KitStepsIconSwapExample,
+	},
+	withLoader: {
+		code: kitStepsWithLoaderExampleRaw,
+		Component: KitStepsWithLoaderExample,
+	},
 };
 
 export { examples };

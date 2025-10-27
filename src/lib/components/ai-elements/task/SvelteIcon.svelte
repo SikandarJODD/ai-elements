@@ -4,7 +4,7 @@
 		size?: number;
 	}
 
-	let { class: className = '', size = 16 }: SvelteIconProps = $props();
+	let { class: className = "", size = 16 }: SvelteIconProps = $props();
 </script>
 
 <svg

@@ -1,19 +1,19 @@
 <script lang="ts">
-	import { Loader } from '$lib/components/prompt-kit/loader';
+	import { Loader } from "$lib/components/prompt-kit/loader";
 
 	const variants = [
-		'circular',
-		'classic',
-		'pulse',
-		'pulse-dot',
-		'dots',
-		'typing',
-		'wave',
-		'bars',
-		'terminal',
-		'text-blink',
-		'text-shimmer',
-		'loading-dots'
+		"circular",
+		"classic",
+		"pulse",
+		"pulse-dot",
+		"dots",
+		"typing",
+		"wave",
+		"bars",
+		"terminal",
+		"text-blink",
+		"text-shimmer",
+		"loading-dots",
 	] as const;
 </script>
 

@@ -4,21 +4,21 @@
 		MessageAvatar,
 		MessageContent,
 		MessageActions,
-		MessageAction
-	} from '$lib/components/prompt-kit/message/index.js';
-	import { Button } from '$lib/components/ui/button';
-	import { Copy, ThumbsUp, ThumbsDown } from '@lucide/svelte';
+		MessageAction,
+	} from "$lib/components/prompt-kit/message/index.js";
+	import { Button } from "$lib/components/ui/button";
+	import { Copy, ThumbsUp, ThumbsDown } from "@lucide/svelte";
 
 	function handleCopy() {
-		console.log('Copy clicked');
+		console.log("Copy clicked");
 	}
 
 	function handleLike() {
-		console.log('Like clicked');
+		console.log("Like clicked");
 	}
 
 	function handleDislike() {
-		console.log('Dislike clicked');
+		console.log("Dislike clicked");
 	}
 </script>
 
@@ -31,8 +31,9 @@
 		<MessageAvatar src="/avatars/ai.png" alt="AI" fallback="AI" />
 		<div class="flex flex-col gap-2">
 			<MessageContent class="bg-transparent p-0">
-				I can help with a variety of tasks: answering questions, providing information, assisting
-				with coding, generating creative content. What would you like help with today?
+				I can help with a variety of tasks: answering questions, providing information,
+				assisting with coding, generating creative content. What would you like help with
+				today?
 			</MessageContent>
 
 			<MessageActions>

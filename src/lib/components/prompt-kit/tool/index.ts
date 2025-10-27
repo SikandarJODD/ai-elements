@@ -1,8 +1,8 @@
-import Root from './Tool.svelte';
-import Header from './ToolHeader.svelte';
-import Content from './ToolContent.svelte';
-import Details from './ToolDetails.svelte';
-import Composed from './ToolComposed.svelte';
+import Root from "./Tool.svelte";
+import Header from "./ToolHeader.svelte";
+import Content from "./ToolContent.svelte";
+import Details from "./ToolDetails.svelte";
+import Composed from "./ToolComposed.svelte";
 
 export {
 	Root,
@@ -15,7 +15,7 @@ export {
 	Header as ToolHeader,
 	Content as ToolContent,
 	Details as ToolDetails,
-	Composed as ToolComposed
+	Composed as ToolComposed,
 };
 
-export * from './tool-context.svelte.js';
+export * from "./tool-context.svelte.js";

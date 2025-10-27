@@ -1,58 +1,57 @@
 <script lang="ts">
-  import { MetaTags } from "svelte-meta-tags";
-  import { Subheading, CodeNameBlock } from "$lib/components/docs";
-  import Installation from "$lib/components/docs/installation.svelte";
-  import Playground from "$lib/components/docs/playground.svelte";
-  import Code from "$lib/components/docs/code.svelte";
-  import { examples } from "./examples/examples";
-  import { seo } from "./examples/seo";
-  import CodeSpan from "$lib/components/docs/code-span.svelte";
-  import { PUBLIC_WEBSITE_URL } from "$env/static/public";
+	import { MetaTags } from "svelte-meta-tags";
+	import { Subheading, CodeNameBlock } from "$lib/components/docs";
+	import Installation from "$lib/components/docs/installation.svelte";
+	import Playground from "$lib/components/docs/playground.svelte";
+	import Code from "$lib/components/docs/code.svelte";
+	import { examples } from "./examples/examples";
+	import { seo } from "./examples/seo";
+	import CodeSpan from "$lib/components/docs/code-span.svelte";
+	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
-  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 
-  import * as Toc from "$lib/components/docs/toc";
-  import { UseToc } from "$lib/hooks/use-toc.svelte";
-  let toc = new UseToc();
+	import * as Toc from "$lib/components/docs/toc";
+	import { UseToc } from "$lib/hooks/use-toc.svelte";
+	let toc = new UseToc();
 </script>
 
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
 <Sidebar.Inset class="min-h-svh">
-  <div
-    class="grid grid-cols-1 md:grid-cols-[1fr_280px] lg:grid-cols-[1fr_240px] gap-8 min-h-svh md:px-6 md:pb-6"
-  >
-    <!-- Main Content Area -->
-    <main class="min-w-0" bind:this={toc.ref}>
-      <Subheading class="md:text-3xl">Inline Citation</Subheading>
+	<div
+		class="grid min-h-svh grid-cols-1 gap-8 md:grid-cols-[1fr_280px] md:px-6 md:pb-6 lg:grid-cols-[1fr_240px]"
+	>
+		<!-- Main Content Area -->
+		<main class="min-w-0" bind:this={toc.ref}>
+			<Subheading class="md:text-3xl">Inline Citation</Subheading>
 
-      <p class="my-2 !text-muted-foreground text-lg">
-        The <CodeSpan>Inline Citation</CodeSpan> component provides a way to display
-        citations inline with text content, similar to academic papers or research
-        documents. It consists of a citation pill that shows detailed source information
-        on hover, making it perfect for AI-generated content that needs to reference
-        sources.
-      </p>
+			<p class="!text-muted-foreground my-2 text-lg">
+				The <CodeSpan>Inline Citation</CodeSpan> component provides a way to display citations
+				inline with text content, similar to academic papers or research documents. It consists
+				of a citation pill that shows detailed source information on hover, making it perfect
+				for AI-generated content that needs to reference sources.
+			</p>
 
-      <Playground code={examples.basic.code}  >
-        <examples.basic.Component />
-      </Playground>
+			<Playground code={examples.basic.code}>
+				<examples.basic.Component />
+			</Playground>
 
-      <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
-      <Installation
-        specifier={`${PUBLIC_WEBSITE_URL}/r/inline-citation.json`}
-        is_jsrepo={true}
-        blockname="inline-citation"
-      />
+			<!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
+			<Installation
+				specifier={`${PUBLIC_WEBSITE_URL}/r/inline-citation.json`}
+				is_jsrepo={true}
+				blockname="inline-citation"
+			/>
 
-      <!-- Usage -->
-      <Subheading>Usage</Subheading>
+			<!-- Usage -->
+			<Subheading>Usage</Subheading>
 
-      <div>
-        <Code
-          lang="svelte"
-          code={`\<script lang="ts"\>
+			<div>
+				<Code
+					lang="svelte"
+					code={`\<script lang="ts"\>
 	import {
 		InlineCitation,
 		InlineCitationText,
@@ -68,7 +67,7 @@
 		InlineCitationCarouselNext,
 		InlineCitationSource,
 		InlineCitationQuote
-	} from '$lib/components/ai-elements/inline-citation/index';
+	} from '$lib/components/ai-elements/inline-citation/index.js';
 \<\/script\>
 
 <InlineCitation>
@@ -104,25 +103,27 @@
 					</InlineCitationCardBody>
 				</InlineCitationCard>
 			</InlineCitation>`}
-        />
-      </div>
+				/>
+			</div>
 
-      <!-- Usage with AI SDK -->
-      <Subheading>Usage with AI SDK</Subheading>
+			<!-- Usage with AI SDK -->
+			<Subheading>Usage with AI SDK</Subheading>
 
-      <p class="mb-4 text-sm sm:text-base leading-relaxed">
-        Build citations for AI-generated content using <CodeSpan>experimental_useObject</CodeSpan> from <CodeSpan>@ai-sdk/svelte</CodeSpan>.
-      </p>
+			<p class="mb-4 text-sm leading-relaxed sm:text-base">
+				Build citations for AI-generated content using <CodeSpan
+					>experimental_useObject</CodeSpan
+				> from <CodeSpan>@ai-sdk/svelte</CodeSpan>.
+			</p>
 
-      <p class="mb-4 text-sm sm:text-base leading-relaxed">
-        Add the following component to your frontend:
-      </p>
+			<p class="mb-4 text-sm leading-relaxed sm:text-base">
+				Add the following component to your frontend:
+			</p>
 
-      <div class="mb-6">
-        <CodeNameBlock
-          filename="+page.svelte"
-          lang="svelte"
-          code={`\<script lang="ts"\>
+			<div class="mb-6">
+				<CodeNameBlock
+					filename="+page.svelte"
+					lang="svelte"
+					code={`\<script lang="ts"\>
   import { experimental_useObject as useObject } from '@ai-sdk/svelte';
   import {
     InlineCitation,
@@ -138,8 +139,8 @@
     InlineCitationCarouselNext,
     InlineCitationSource,
     InlineCitationQuote,
-  } from '$lib/components/ai-elements/inline-citation';
-  import { Button } from '$lib/components/ui/button';
+  } from '$lib/components/ai-elements/inline-citation/index.js';
+  import { Button } from '$lib/components/ui/button/index.js';
   import type { citationSchema } from './api/citation/+server';
 
   let object = $state<typeof citationSchema | undefined>(undefined);
@@ -230,18 +231,18 @@
     </div>
   {/if}
 </div>`}
-        />
-      </div>
+				/>
+			</div>
 
-      <p class="mb-4 text-sm sm:text-base leading-relaxed">
-        Add the following route to your backend:
-      </p>
+			<p class="mb-4 text-sm leading-relaxed sm:text-base">
+				Add the following route to your backend:
+			</p>
 
-      <div class="mb-6">
-        <CodeNameBlock
-          filename="api/citation/+server.ts"
-          lang="typescript"
-          code={`import { streamObject } from 'ai';
+			<div class="mb-6">
+				<CodeNameBlock
+					filename="api/citation/+server.ts"
+					lang="typescript"
+					code={`import { streamObject } from 'ai';
 import { z } from 'zod';
 import { openrouter, defaultModel } from '$lib/config/ai-config';
 import type { RequestHandler } from './$types';
@@ -277,42 +278,40 @@ export const POST: RequestHandler = async ({ request }) => {
 
   return result.toTextStreamResponse();
 };`}
-        />
-      </div>
+				/>
+			</div>
 
-      <!-- Features -->
-      <Subheading>Features</Subheading>
+			<!-- Features -->
+			<Subheading>Features</Subheading>
 
-      <ul class="list-disc list-inside space-y-2 mb-6 text-sm sm:text-base leading-relaxed">
-        <li>Hover interaction to reveal detailed citation information</li>
-        <li>Carousel navigation for multiple citations with prev/next controls</li>
-        <li>Live index tracking showing current slide position (e.g., "1/5")</li>
-        <li>Support for source titles, URLs, and descriptions</li>
-        <li>Optional quote blocks for relevant excerpts</li>
-        <li>Composable architecture for flexible citation formats</li>
-        <li>Accessible design with proper keyboard navigation</li>
-        <li>Seamless integration with AI-generated content</li>
-        <li>Clean visual design that doesn't disrupt reading flow</li>
-        <li>Smart badge display showing source hostname and count</li>
-      </ul>
+			<ul class="mb-6 list-inside list-disc space-y-2 text-sm leading-relaxed sm:text-base">
+				<li>Hover interaction to reveal detailed citation information</li>
+				<li>Carousel navigation for multiple citations with prev/next controls</li>
+				<li>Live index tracking showing current slide position (e.g., "1/5")</li>
+				<li>Support for source titles, URLs, and descriptions</li>
+				<li>Optional quote blocks for relevant excerpts</li>
+				<li>Composable architecture for flexible citation formats</li>
+				<li>Accessible design with proper keyboard navigation</li>
+				<li>Seamless integration with AI-generated content</li>
+				<li>Clean visual design that doesn't disrupt reading flow</li>
+				<li>Smart badge display showing source hostname and count</li>
+			</ul>
 
-      <!-- Examples  -->
-      <!-- <Subheading>Examples</Subheading>
+			<!-- Examples  -->
+			<!-- <Subheading>Examples</Subheading>
 
       <Playground code={examples.messageAction.code}>
         <examples.messageAction.Component />
       </Playground> -->
-    </main>
+		</main>
 
-    <!-- TOC Sidebar - Sticky on larger screens -->
-    <aside
-      class="hidden md:flex sticky top-24 h-fit max-h-[calc(100vh-3rem)] overflow-y-auto"
-    >
-      <!-- TOC Component -->
-      <div>
-        <h3 class="text-sm">On this page</h3>
-        <Toc.Root toc={toc.current} />
-      </div>
-    </aside>
-  </div>
+		<!-- TOC Sidebar - Sticky on larger screens -->
+		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">
+			<!-- TOC Component -->
+			<div>
+				<h3 class="text-sm">On this page</h3>
+				<Toc.Root toc={toc.current} />
+			</div>
+		</aside>
+	</div>
 </Sidebar.Inset>

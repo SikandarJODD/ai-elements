@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils';
+	import { cn } from "$lib/utils/utils";
 
 	let {
 		class: className,
@@ -7,14 +7,11 @@
 		...restProps
 	}: {
 		class?: string;
-		children: import('svelte').Snippet;
+		children: import("svelte").Snippet;
 		[key: string]: any;
 	} = $props();
 </script>
 
-<div
-	class={cn("flex items-center gap-1 border-b p-2", className)}
-	{...restProps}
->
+<div class={cn("flex items-center gap-1 border-b p-2", className)} {...restProps}>
 	{@render children()}
 </div>

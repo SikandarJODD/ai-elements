@@ -5,14 +5,14 @@ import MessageAction from "./message-action.svelte";
 import messageActionRaw from "./message-action.svelte?raw";
 
 const examples = {
-  basic: {
-    code: basicRaw,
-    Component: Basic,
-  },
-  messageAction: {
-    code: messageActionRaw,
-    Component: MessageAction,
-  },
+	basic: {
+		code: basicRaw,
+		Component: Basic,
+	},
+	messageAction: {
+		code: messageActionRaw,
+		Component: MessageAction,
+	},
 };
 
 export { examples };

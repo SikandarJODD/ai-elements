@@ -1,33 +1,26 @@
 <script lang="ts">
-  import { Background, SvelteFlow, type SvelteFlowProps } from "@xyflow/svelte";
+	import { Background, SvelteFlow, type SvelteFlowProps } from "@xyflow/svelte";
 
-  import "@xyflow/svelte/dist/style.css";
+	import "@xyflow/svelte/dist/style.css";
 
-  import { mode } from "mode-watcher";
-  import Controls from "../controls/Controls.svelte";
-  import type { Snippet } from "svelte";
+	import { mode } from "mode-watcher";
+	import Controls from "../controls/Controls.svelte";
+	import type { Snippet } from "svelte";
 
-  type CanvasProps = SvelteFlowProps & {
-    children?: Snippet;
-  };
-  let {
-    children,
-    nodes = $bindable([]),
-    edges = $bindable([]),
-    ...restProps
-  }: CanvasProps = $props();
+	type CanvasProps = SvelteFlowProps & {
+		children?: Snippet;
+	};
+	let {
+		children,
+		nodes = $bindable([]),
+		edges = $bindable([]),
+		...restProps
+	}: CanvasProps = $props();
 </script>
 
-<SvelteFlow
-  colorMode={mode.current}
-  bind:nodes
-  bind:edges
-  fitView
-  zoomOnDoubleClick
-  {...restProps}
->
-  <!-- panOnDrag={false} panOnScroll -->
-  <Controls />
-  <Background bgColor="var(--sidebar)" />
-  {@render children?.()}
+<SvelteFlow colorMode={mode.current} bind:nodes bind:edges fitView zoomOnDoubleClick {...restProps}>
+	<!-- panOnDrag={false} panOnScroll -->
+	<Controls />
+	<Background bgColor="var(--sidebar)" />
+	{@render children?.()}
 </SvelteFlow>

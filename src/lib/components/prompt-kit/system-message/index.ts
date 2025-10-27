@@ -1,1 +1,1 @@
-export { default as SystemMessage } from './system-message.svelte';
+export { default as SystemMessage } from "./system-message.svelte";

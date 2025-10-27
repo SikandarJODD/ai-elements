@@ -2,18 +2,18 @@
 	import {
 		PromptInput,
 		PromptInputActions,
-		PromptInputTextarea
-	} from '$lib/components/prompt-kit/prompt-input';
-	import { PromptSuggestion } from '$lib/components/prompt-kit/prompt-suggestion';
-	import { Button } from '$lib/components/ui/button';
-	import { ArrowUp } from '@lucide/svelte';
+		PromptInputTextarea,
+	} from "$lib/components/prompt-kit/prompt-input";
+	import { PromptSuggestion } from "$lib/components/prompt-kit/prompt-suggestion";
+	import { Button } from "$lib/components/ui/button";
+	import { ArrowUp } from "@lucide/svelte";
 
-	let inputValue = $state('');
+	let inputValue = $state("");
 
 	function handleSend() {
 		if (inputValue.trim()) {
-			console.log('Sending:', inputValue);
-			inputValue = '';
+			console.log("Sending:", inputValue);
+			inputValue = "";
 		}
 	}
 
@@ -24,23 +24,23 @@
 
 <div class="flex w-full flex-col space-y-4">
 	<div class="flex flex-wrap gap-2">
-		<PromptSuggestion onclick={() => (inputValue = 'Tell me a joke')}>
+		<PromptSuggestion onclick={() => (inputValue = "Tell me a joke")}>
 			Tell me a joke
 		</PromptSuggestion>
 
-		<PromptSuggestion onclick={() => (inputValue = 'How does this work?')}>
+		<PromptSuggestion onclick={() => (inputValue = "How does this work?")}>
 			How does this work?
 		</PromptSuggestion>
 
-		<PromptSuggestion onclick={() => (inputValue = 'Generate an image of a cat')}>
+		<PromptSuggestion onclick={() => (inputValue = "Generate an image of a cat")}>
 			Generate an image of a cat
 		</PromptSuggestion>
 
-		<PromptSuggestion onclick={() => (inputValue = 'Write a poem')}>
+		<PromptSuggestion onclick={() => (inputValue = "Write a poem")}>
 			Write a poem
 		</PromptSuggestion>
 
-		<PromptSuggestion onclick={() => (inputValue = 'Code a Svelte component')}>
+		<PromptSuggestion onclick={() => (inputValue = "Code a Svelte component")}>
 			Code a Svelte component
 		</PromptSuggestion>
 	</div>

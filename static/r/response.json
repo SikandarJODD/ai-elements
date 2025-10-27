@@ -12,12 +12,12 @@
 	},
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\r\n  import { Streamdown, type StreamdownProps } from \"svelte-streamdown\";\r\n  import { cn } from \"$UTILS$\";\r\n  import { mode } from \"mode-watcher\";\r\n\r\n  type Props = StreamdownProps & {\r\n    class?: string;\r\n  };\r\n\r\n  let { class: className, ...restProps }: Props = $props();\r\n</script>\r\n\r\n<Streamdown\r\n  class={cn(\r\n    \"size-full [&>*:first-child]:mt-0 [&>*:last-child]:mb-0\",\r\n    className\r\n  )}\r\n  shikiTheme={mode.current === \"dark\"\r\n    ? \"github-dark-default\"\r\n    : \"github-light-default\"}\r\n  shikiPreloadThemes={[\"github-dark-default\", \"github-light-default\"]}\r\n  baseTheme=\"shadcn\"\r\n  {...restProps}\r\n/>\r\n",
+			"content": "<script lang=\"ts\">\n\timport { Streamdown, type StreamdownProps } from \"svelte-streamdown\";\n\timport { cn } from \"$UTILS$\";\n\timport { mode } from \"mode-watcher\";\n\n\ttype Props = StreamdownProps & {\n\t\tclass?: string;\n\t};\n\n\tlet { class: className, ...restProps }: Props = $props();\n</script>\n\n<Streamdown\n\tclass={cn(\"size-full [&>*:first-child]:mt-0 [&>*:last-child]:mb-0\", className)}\n\tshikiTheme={mode.current === \"dark\" ? \"github-dark-default\" : \"github-light-default\"}\n\tshikiPreloadThemes={[\"github-dark-default\", \"github-light-default\"]}\n\tbaseTheme=\"shadcn\"\n\t{...restProps}\n/>\n",
 			"type": "registry:component",
 			"target": "ai-elements/response/Response.svelte"
 		},
 		{
-			"content": "export { default as Response } from './Response.svelte';",
+			"content": "export { default as Response } from \"./Response.svelte\";\n",
 			"type": "registry:file",
 			"target": "ai-elements/response/index.ts"
 		}

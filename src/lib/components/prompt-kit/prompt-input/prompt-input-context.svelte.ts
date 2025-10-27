@@ -1,4 +1,4 @@
-import { getContext, setContext } from 'svelte';
+import { getContext, setContext } from "svelte";
 
 export type PromptInputSchema = {
 	isLoading?: boolean;
@@ -11,7 +11,7 @@ export type PromptInputSchema = {
 
 export class PromptInputClass {
 	isLoading = $state(false);
-	value = $state('');
+	value = $state("");
 	maxHeight = $state<number | string>(240);
 	onSubmit = $state<(() => void) | undefined>(undefined);
 	disabled = $state(false);
@@ -20,7 +20,7 @@ export class PromptInputClass {
 
 	constructor(props: PromptInputSchema) {
 		this.isLoading = props.isLoading ?? false;
-		this.value = props.value ?? '';
+		this.value = props.value ?? "";
 		this.maxHeight = props.maxHeight ?? 240;
 		this.onSubmit = props.onSubmit;
 		this.disabled = props.disabled ?? false;
@@ -33,7 +33,7 @@ export class PromptInputClass {
 	}
 }
 
-const PROMPT_INPUT_KEY = Symbol('prompt-input');
+const PROMPT_INPUT_KEY = Symbol("prompt-input");
 
 export function setPromptInputContext(contextInstance: PromptInputClass) {
 	setContext(PROMPT_INPUT_KEY, contextInstance);
@@ -43,7 +43,7 @@ export function getPromptInputContext(): PromptInputClass {
 	const context = getContext<PromptInputClass>(PROMPT_INPUT_KEY);
 
 	if (!context) {
-		throw new Error('PromptInput components must be used within PromptInput');
+		throw new Error("PromptInput components must be used within PromptInput");
 	}
 
 	return context;

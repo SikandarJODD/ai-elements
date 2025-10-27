@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils';
-	import { getWebPreviewContext } from './web-preview-context.svelte.js';
+	import { cn } from "$lib/utils/utils";
+	import { getWebPreviewContext } from "./web-preview-context.svelte.js";
 
 	let {
 		loading,
@@ -8,7 +8,7 @@
 		class: className,
 		...restProps
 	}: {
-		loading?: import('svelte').Snippet;
+		loading?: import("svelte").Snippet;
 		src?: string;
 		class?: string;
 		[key: string]: any;

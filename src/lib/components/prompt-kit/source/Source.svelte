@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { HoverCard } from '$lib/components/ui/hover-card/index.js';
-	import { SourceClass, setSourceContext } from './source-context.svelte.js';
-	import type { Snippet } from 'svelte';
+	import { HoverCard } from "$lib/components/ui/hover-card/index.js";
+	import { SourceClass, setSourceContext } from "./source-context.svelte.js";
+	import type { Snippet } from "svelte";
 
 	let {
 		href,
-		children
+		children,
 	}: {
 		href: string;
 		children: Snippet;

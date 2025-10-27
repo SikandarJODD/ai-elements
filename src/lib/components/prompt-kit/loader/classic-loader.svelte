@@ -1,39 +1,39 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils';
+	import { cn } from "$lib/utils/utils";
 
 	interface Props {
 		class?: string;
-		size?: 'sm' | 'md' | 'lg';
+		size?: "sm" | "md" | "lg";
 	}
 
-	let { class: className, size = 'md' }: Props = $props();
+	let { class: className, size = "md" }: Props = $props();
 
 	const sizeClasses = {
-		sm: 'size-4',
-		md: 'size-5',
-		lg: 'size-6'
+		sm: "size-4",
+		md: "size-5",
+		lg: "size-6",
 	};
 
 	const barSizes = {
-		sm: { height: '6px', width: '1.5px' },
-		md: { height: '8px', width: '2px' },
-		lg: { height: '10px', width: '2.5px' }
+		sm: { height: "6px", width: "1.5px" },
+		md: { height: "8px", width: "2px" },
+		lg: { height: "10px", width: "2.5px" },
 	};
 
 	const marginLeft = {
-		sm: '-0.75px',
-		md: '-1px',
-		lg: '-1.25px'
+		sm: "-0.75px",
+		md: "-1px",
+		lg: "-1.25px",
 	};
 
 	const transformOrigin = {
-		sm: '0.75px 10px',
-		md: '1px 12px',
-		lg: '1.25px 14px'
+		sm: "0.75px 10px",
+		md: "1px 12px",
+		lg: "1.25px 14px",
 	};
 </script>
 
-<div class={cn('relative', sizeClasses[size], className)}>
+<div class={cn("relative", sizeClasses[size], className)}>
 	<div class="absolute h-full w-full">
 		{#each Array(12) as _, i}
 			<div

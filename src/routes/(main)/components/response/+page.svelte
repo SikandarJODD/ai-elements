@@ -1,113 +1,117 @@
 <script lang="ts">
-  import { MetaTags } from "svelte-meta-tags";
-  import { Subheading, CodeNameBlock } from "$lib/components/docs";
-  import Installation from "$lib/components/docs/installation.svelte";
-  import Playground from "$lib/components/docs/playground.svelte";
-  import Code from "$lib/components/docs/code.svelte";
-  import { examples } from "./examples/examples";
-  import { seo } from "./examples/seo";
-  import CodeSpan from "$lib/components/docs/code-span.svelte";
-  import { PUBLIC_WEBSITE_URL } from "$env/static/public";
+	import { MetaTags } from "svelte-meta-tags";
+	import { Subheading, CodeNameBlock } from "$lib/components/docs";
+	import Installation from "$lib/components/docs/installation.svelte";
+	import Playground from "$lib/components/docs/playground.svelte";
+	import Code from "$lib/components/docs/code.svelte";
+	import { examples } from "./examples/examples";
+	import { seo } from "./examples/seo";
+	import CodeSpan from "$lib/components/docs/code-span.svelte";
+	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
-  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 
-  import * as Toc from "$lib/components/docs/toc";
-  import { UseToc } from "$lib/hooks/use-toc.svelte";
-  let toc = new UseToc();
+	import * as Toc from "$lib/components/docs/toc";
+	import { UseToc } from "$lib/hooks/use-toc.svelte";
+	let toc = new UseToc();
 </script>
 
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
 <Sidebar.Inset class="min-h-svh">
-  <div
-    class="grid grid-cols-1 md:grid-cols-[1fr_280px] lg:grid-cols-[1fr_240px] gap-8 min-h-svh md:px-6 md:pb-6"
-  >
-    <!-- Main Content Area -->
-    <main class="min-w-0 space-y-8" bind:this={toc.ref}>
-      <div class="space-y-4">
-        <Subheading class="md:text-3xl">Response</Subheading>
+	<div
+		class="grid min-h-svh grid-cols-1 gap-8 md:grid-cols-[1fr_280px] md:px-6 md:pb-6 lg:grid-cols-[1fr_240px]"
+	>
+		<!-- Main Content Area -->
+		<main class="min-w-0 space-y-8" bind:this={toc.ref}>
+			<div class="space-y-4">
+				<Subheading class="md:text-3xl">Response</Subheading>
 
-        <p class="!text-muted-foreground text-lg leading-relaxed">
-          The Response component renders a Markdown response from a large language
-          model. It uses Streamdown under the hood to render the markdown.
-        </p>
+				<p class="!text-muted-foreground text-lg leading-relaxed">
+					The Response component renders a Markdown response from a large language model.
+					It uses Streamdown under the hood to render the markdown.
+				</p>
 
-        <div data-toc-index={false} class="mt-6">
-          <Playground code={examples.basic.code} replay>
-            <div class="w-full overflow-y-auto dark-scrollbar max-h-[500px]">
-              <examples.basic.Component />
-            </div>
-          </Playground>
-        </div>
-      </div>
+				<div data-toc-index={false} class="mt-6">
+					<Playground code={examples.basic.code} replay>
+						<div class="dark-scrollbar max-h-[500px] w-full overflow-y-auto">
+							<examples.basic.Component />
+						</div>
+					</Playground>
+				</div>
+			</div>
 
-      <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
-      <div class="mt-8">
-        <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/response.json`} is_jsrepo={true} blockname="response" />
-      </div>
+			<!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
+			<div class="mt-8">
+				<Installation
+					specifier={`${PUBLIC_WEBSITE_URL}/r/response.json`}
+					is_jsrepo={true}
+					blockname="response"
+				/>
+			</div>
 
-      <!-- CSS Configuration -->
-      <div class="space-y-4">
-        <Subheading>CSS Configuration</Subheading>
+			<!-- CSS Configuration -->
+			<div class="space-y-4">
+				<Subheading>CSS Configuration</Subheading>
 
-        <p class="!text-muted-foreground leading-relaxed">
-          Add the following imports to your <CodeSpan>app.css</CodeSpan> file to include
-          Tailwind CSS and Streamdown styles:
-        </p>
+				<p class="!text-muted-foreground leading-relaxed">
+					Add the following imports to your <CodeSpan>app.css</CodeSpan> file to include Tailwind
+					CSS and Streamdown styles:
+				</p>
 
-        <div class="mt-4">
-          <Code
-            lang="css"
-            code={`@import 'tailwindcss';
+				<div class="mt-4">
+					<Code
+						lang="css"
+						code={`@import 'tailwindcss';
 /* Add Streamdown styles to your Tailwind build */
 @source "../node_modules/svelte-streamdown/**/*";`}
-          />
-        </div>
-      </div>
+					/>
+				</div>
+			</div>
 
-      <!-- Usage -->
-      <div class="space-y-4">
-        <Subheading>Usage</Subheading>
+			<!-- Usage -->
+			<div class="space-y-4">
+				<Subheading>Usage</Subheading>
 
-        <div class="mt-4">
-          <Code
-            lang="svelte"
-            code={`\<script lang="ts"\>
-	 import { Response } from "$lib/components/ai-elements/response";
+				<div class="mt-4">
+					<Code
+						lang="svelte"
+						code={`\<script lang="ts"\>
+	 import { Response } from "$lib/components/ai-elements/response/index.js";
    let content = "# Hello, World!\\nThis is a sample response from a large language model.";
 \<\/script\>
 
 <Response {content} />`}
-          />
-        </div>
-      </div>
+					/>
+				</div>
+			</div>
 
-      <!-- Usage with AI SDK -->
-      <div class="space-y-4">
-        <Subheading>Usage with AI SDK</Subheading>
+			<!-- Usage with AI SDK -->
+			<div class="space-y-4">
+				<Subheading>Usage with AI SDK</Subheading>
 
-        <p class="!text-muted-foreground leading-relaxed">
-          Populate a markdown response with messages from <CodeSpan>Chat</CodeSpan>.
-        </p>
+				<p class="!text-muted-foreground leading-relaxed">
+					Populate a markdown response with messages from <CodeSpan>Chat</CodeSpan>.
+				</p>
 
-        <p class="mb-4 text-sm sm:text-base leading-relaxed">
-          Add the following component to your frontend:
-        </p>
+				<p class="mb-4 text-sm leading-relaxed sm:text-base">
+					Add the following component to your frontend:
+				</p>
 
-        <div class="mb-6">
-          <CodeNameBlock
-            filename="+page.svelte"
-            lang="svelte"
-            code={`\<script lang="ts"\>
+				<div class="mb-6">
+					<CodeNameBlock
+						filename="+page.svelte"
+						lang="svelte"
+						code={`\<script lang="ts"\>
   import { Chat } from "@ai-sdk/svelte";
   import {
     Conversation,
     ConversationContent,
     ConversationScrollButton
-  } from "$lib/components/ai-elements/conversation";
-  import { Message, MessageContent } from "$lib/components/ai-elements/message";
-  import { Response } from "$lib/components/ai-elements/response";
+  } from "$lib/components/ai-elements/conversation/index.js";
+  import { Message, MessageContent } from "$lib/components/ai-elements/message/index.js";
+  import { Response } from "$lib/components/ai-elements/response/index.js";
 
   let chat = new Chat({});
 \<\/script\>
@@ -132,18 +136,18 @@
     </Conversation>
   </div>
 </div>`}
-          />
-        </div>
+					/>
+				</div>
 
-        <p class="mb-4 text-sm sm:text-base leading-relaxed">
-          Add the following route to your backend:
-        </p>
+				<p class="mb-4 text-sm leading-relaxed sm:text-base">
+					Add the following route to your backend:
+				</p>
 
-        <div class="mb-6">
-          <CodeNameBlock
-            filename="api/chat/+server.ts"
-            lang="typescript"
-            code={`import { streamText, type UIMessage, convertToModelMessages } from "ai";
+				<div class="mb-6">
+					<CodeNameBlock
+						filename="api/chat/+server.ts"
+						lang="typescript"
+						code={`import { streamText, type UIMessage, convertToModelMessages } from "ai";
 import type { RequestHandler } from "./$types";
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -156,38 +160,54 @@ export const POST: RequestHandler = async ({ request }) => {
 
   return result.toUIMessageStreamResponse();
 };`}
-          />
-        </div>
-      </div>
+					/>
+				</div>
+			</div>
 
-      <!-- Features -->
-      <div class="space-y-4">
-        <Subheading>Features</Subheading>
+			<!-- Features -->
+			<div class="space-y-4">
+				<Subheading>Features</Subheading>
 
-        <ul class="space-y-3 text-sm sm:text-base leading-relaxed list-disc list-inside !text-muted-foreground">
-          <li>Renders markdown content with support for paragraphs, links, and code blocks</li>
-          <li>Supports GFM features like tables, task lists, and strikethrough text via <CodeSpan>remark-gfm</CodeSpan></li>
-          <li>Supports rendering Math Equations via <CodeSpan>rehype-katex</CodeSpan></li>
-          <li>Smart streaming support - automatically completes incomplete formatting during real-time text streaming</li>
-          <li>Code blocks are rendered with syntax highlighting for various programming languages</li>
-          <li>Code blocks include a button to easily copy code to clipboard</li>
-          <li>Adapts to different screen sizes while maintaining readability</li>
-          <li>Seamlessly integrates with both light and dark themes</li>
-          <li>Customizable appearance through className props and Tailwind CSS utilities</li>
-          <li>Built with accessibility in mind for all users</li>
-        </ul>
-      </div>
-    </main>
+				<ul
+					class="!text-muted-foreground list-inside list-disc space-y-3 text-sm leading-relaxed sm:text-base"
+				>
+					<li>
+						Renders markdown content with support for paragraphs, links, and code blocks
+					</li>
+					<li>
+						Supports GFM features like tables, task lists, and strikethrough text via <CodeSpan
+							>remark-gfm</CodeSpan
+						>
+					</li>
+					<li>
+						Supports rendering Math Equations via <CodeSpan>rehype-katex</CodeSpan>
+					</li>
+					<li>
+						Smart streaming support - automatically completes incomplete formatting
+						during real-time text streaming
+					</li>
+					<li>
+						Code blocks are rendered with syntax highlighting for various programming
+						languages
+					</li>
+					<li>Code blocks include a button to easily copy code to clipboard</li>
+					<li>Adapts to different screen sizes while maintaining readability</li>
+					<li>Seamlessly integrates with both light and dark themes</li>
+					<li>
+						Customizable appearance through className props and Tailwind CSS utilities
+					</li>
+					<li>Built with accessibility in mind for all users</li>
+				</ul>
+			</div>
+		</main>
 
-    <!-- TOC Sidebar - Sticky on larger screens -->
-    <aside
-      class="hidden md:flex sticky top-24 h-fit max-h-[calc(100vh-3rem)] overflow-y-auto"
-    >
-      <!-- TOC Component -->
-      <div>
-        <h3 class="text-sm">On this page</h3>
-        <Toc.Root toc={toc.current} />
-      </div>
-    </aside>
-  </div>
+		<!-- TOC Sidebar - Sticky on larger screens -->
+		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">
+			<!-- TOC Component -->
+			<div>
+				<h3 class="text-sm">On this page</h3>
+				<Toc.Root toc={toc.current} />
+			</div>
+		</aside>
+	</div>
 </Sidebar.Inset>

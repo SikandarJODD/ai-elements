@@ -1,4 +1,4 @@
-import { getContext, setContext } from 'svelte';
+import { getContext, setContext } from "svelte";
 
 export type CodeBlockSchema = {
 	// Add any shared state if needed in the future
@@ -14,7 +14,7 @@ export class CodeBlockClass {
 	}
 }
 
-const CODE_BLOCK_KEY = Symbol('code-block');
+const CODE_BLOCK_KEY = Symbol("code-block");
 
 export function setCodeBlockContext(contextInstance: CodeBlockClass) {
 	setContext(CODE_BLOCK_KEY, contextInstance);
@@ -24,7 +24,7 @@ export function getCodeBlockContext(): CodeBlockClass {
 	const context = getContext<CodeBlockClass>(CODE_BLOCK_KEY);
 
 	if (!context) {
-		throw new Error('CodeBlock subcomponents must be used within CodeBlock');
+		throw new Error("CodeBlock subcomponents must be used within CodeBlock");
 	}
 
 	return context;

@@ -2,8 +2,8 @@
 	import {
 		Message,
 		MessageAvatar,
-		MessageContent
-	} from '$lib/components/prompt-kit/message/index.js';
+		MessageContent,
+	} from "$lib/components/prompt-kit/message/index.js";
 </script>
 
 <div class="flex flex-col gap-8">

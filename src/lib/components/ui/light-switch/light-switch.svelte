@@ -1,11 +1,11 @@
 <script lang="ts">
-	import SunIcon from '@lucide/svelte/icons/sun';
-	import MoonIcon from '@lucide/svelte/icons/moon';
-	import { toggleMode } from 'mode-watcher';
-	import { Button } from '$lib/components/ui/button/index.js';
-	import type { LightSwitchProps } from './types';
+	import SunIcon from "@lucide/svelte/icons/sun";
+	import MoonIcon from "@lucide/svelte/icons/moon";
+	import { toggleMode } from "mode-watcher";
+	import { Button } from "$lib/components/ui/button/index.js";
+	import type { LightSwitchProps } from "./types";
 
-	let { variant = 'outline' }: LightSwitchProps = $props();
+	let { variant = "outline" }: LightSwitchProps = $props();
 </script>
 
 <Button onclick={toggleMode} {variant} size="icon">

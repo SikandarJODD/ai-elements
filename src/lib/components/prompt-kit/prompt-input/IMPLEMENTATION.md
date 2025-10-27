@@ -61,12 +61,10 @@ PromptInput (Provider)
 ## Usage
 
 ```svelte
-import {
-  PromptInput,
-  PromptInputTextarea,
-  PromptInputActions,
-  PromptInputAction
-} from '$lib/components/prompt-kit/prompt-input';
+import {(PromptInput,
+PromptInputTextarea,
+PromptInputActions,
+PromptInputAction)} from '$lib/components/prompt-kit/prompt-input';
 ```
 
 See `PromptInputExample.svelte` for a complete working example!

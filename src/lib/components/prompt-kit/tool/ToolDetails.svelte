@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { getToolContext } from './tool-context.svelte.js';
-	import { cn } from '$lib/utils/utils';
-	import type { HTMLAttributes } from 'svelte/elements';
+	import { getToolContext } from "./tool-context.svelte.js";
+	import { cn } from "$lib/utils/utils";
+	import type { HTMLAttributes } from "svelte/elements";
 
 	let {
 		class: className,
@@ -13,10 +13,10 @@
 	const context = getToolContext();
 
 	function formatValue(value: unknown): string {
-		if (value === null) return 'null';
-		if (value === undefined) return 'undefined';
-		if (typeof value === 'string') return value;
-		if (typeof value === 'object') {
+		if (value === null) return "null";
+		if (value === undefined) return "undefined";
+		if (typeof value === "string") return value;
+		if (typeof value === "object") {
 			return JSON.stringify(value, null, 2);
 		}
 		return String(value);
@@ -25,7 +25,7 @@
 	const { input, output, state, toolCallId, errorText } = $derived(context.toolPart);
 </script>
 
-<div class={cn('bg-background space-y-3 p-3', className)} {...restProps}>
+<div class={cn("bg-background space-y-3 p-3", className)} {...restProps}>
 	{#if input && Object.keys(input).length > 0}
 		<div>
 			<h4 class="text-muted-foreground mb-2 text-sm font-medium">Input</h4>
@@ -49,7 +49,7 @@
 		</div>
 	{/if}
 
-	{#if state === 'output-error' && errorText}
+	{#if state === "output-error" && errorText}
 		<div>
 			<h4 class="mb-2 text-sm font-medium text-red-500">Error</h4>
 			<div
@@ -60,7 +60,7 @@
 		</div>
 	{/if}
 
-	{#if state === 'input-streaming'}
+	{#if state === "input-streaming"}
 		<div class="text-muted-foreground text-sm">Processing tool call...</div>
 	{/if}
 

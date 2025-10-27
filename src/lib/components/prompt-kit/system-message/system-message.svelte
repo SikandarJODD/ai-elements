@@ -1,61 +1,61 @@
 <script lang="ts">
-	import { tv, type VariantProps } from 'tailwind-variants';
-	import { AlertCircle, AlertTriangle, Info } from '@lucide/svelte';
-	import { Button } from '$lib/components/ui/button';
-	import type { Snippet } from 'svelte';
-	import type { HTMLAttributes } from 'svelte/elements';
-	import { cn } from '$lib/utils/utils';
-	import type { Component } from 'svelte';
+	import { tv, type VariantProps } from "tailwind-variants";
+	import { AlertCircle, AlertTriangle, Info } from "@lucide/svelte";
+	import { Button } from "$lib/components/ui/button";
+	import type { Snippet } from "svelte";
+	import type { HTMLAttributes } from "svelte/elements";
+	import { cn } from "$lib/utils/utils";
+	import type { Component } from "svelte";
 
 	const systemMessageVariants = tv({
-		base: 'flex flex-row items-center gap-3 rounded-[12px] border py-2 pr-2 pl-3',
+		base: "flex flex-row items-center gap-3 rounded-[12px] border py-2 pr-2 pl-3",
 		variants: {
 			variant: {
-				action: 'text-zinc-700 dark:text-zinc-300',
-				error: 'text-red-700 dark:text-red-800',
-				warning: 'text-amber-700 dark:text-amber-700'
+				action: "text-zinc-700 dark:text-zinc-300",
+				error: "text-red-700 dark:text-red-800",
+				warning: "text-amber-700 dark:text-amber-700",
 			},
 			fill: {
-				true: 'bg-background',
-				false: ''
-			}
+				true: "bg-background",
+				false: "",
+			},
 		},
 		compoundVariants: [
 			{
-				variant: 'action',
+				variant: "action",
 				fill: true,
-				class: 'bg-zinc-100 dark:bg-zinc-900 border-transparent'
+				class: "border-transparent bg-zinc-100 dark:bg-zinc-900",
 			},
 			{
-				variant: 'error',
+				variant: "error",
 				fill: true,
-				class: 'bg-red-100 dark:bg-red-900/20 border-transparent'
+				class: "border-transparent bg-red-100 dark:bg-red-900/20",
 			},
 			{
-				variant: 'warning',
+				variant: "warning",
 				fill: true,
-				class: 'bg-amber-100 dark:bg-amber-900/20 border-transparent'
+				class: "border-transparent bg-amber-100 dark:bg-amber-900/20",
 			},
 			{
-				variant: 'action',
+				variant: "action",
 				fill: false,
-				class: 'border-zinc-200 dark:border-zinc-800'
+				class: "border-zinc-200 dark:border-zinc-800",
 			},
 			{
-				variant: 'error',
+				variant: "error",
 				fill: false,
-				class: 'border-red-600 dark:border-red-900'
+				class: "border-red-600 dark:border-red-900",
 			},
 			{
-				variant: 'warning',
+				variant: "warning",
 				fill: false,
-				class: 'border-amber-600 dark:border-amber-900'
-			}
+				class: "border-amber-600 dark:border-amber-900",
+			},
 		],
 		defaultVariants: {
-			variant: 'action',
-			fill: false
-		}
+			variant: "action",
+			fill: false,
+		},
 	});
 
 	type Props = HTMLAttributes<HTMLDivElement> &
@@ -65,14 +65,14 @@
 			cta?: {
 				label: string;
 				onClick?: () => void;
-				variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
+				variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
 			};
 			children: Snippet;
 		};
 
 	let {
 		children,
-		variant = 'action',
+		variant = "action",
 		fill = false,
 		icon,
 		isIconHidden = false,
@@ -85,9 +85,9 @@
 		if (isIconHidden) return null;
 
 		switch (variant) {
-			case 'error':
+			case "error":
 				return AlertCircle;
-			case 'warning':
+			case "warning":
 				return AlertTriangle;
 			default:
 				return Info;
@@ -118,7 +118,7 @@
 	</div>
 
 	{#if cta}
-		<Button variant={cta.variant || 'default'} size="sm" onclick={cta.onClick}>
+		<Button variant={cta.variant || "default"} size="sm" onclick={cta.onClick}>
 			{cta.label}
 		</Button>
 	{/if}

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { setContext } from 'svelte';
-	import { createReasoningContext } from './reasoning-context.svelte.js';
-	import type { Snippet } from 'svelte';
-	import type { HTMLAttributes } from 'svelte/elements';
+	import { setContext } from "svelte";
+	import { createReasoningContext } from "./reasoning-context.svelte.js";
+	import type { Snippet } from "svelte";
+	import type { HTMLAttributes } from "svelte/elements";
 
 	interface Props extends HTMLAttributes<HTMLDivElement> {
 		children: Snippet;
@@ -21,7 +21,7 @@
 	}: Props = $props();
 
 	const context = createReasoningContext(open, onOpenChange, isStreaming);
-	setContext('reasoning', context);
+	setContext("reasoning", context);
 
 	// Bind context state to open prop if controlled
 	$effect(() => {

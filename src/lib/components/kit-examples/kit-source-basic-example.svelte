@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Source, SourceContent, SourceTrigger } from '$lib/components/prompt-kit/source';
+	import { Source, SourceContent, SourceTrigger } from "$lib/components/prompt-kit/source";
 </script>
 
 <div class="flex flex-wrap justify-center gap-2">

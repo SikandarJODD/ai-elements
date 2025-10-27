@@ -8,18 +8,18 @@ import KitToolStatesCompactExample from "$lib/components/kit-examples/kit-tool-s
 import kitToolStatesCompactExampleRaw from "$lib/components/kit-examples/kit-tool-states-compact-example.svelte?raw";
 
 const examples = {
-  basic: {
-    code: kitToolExampleRaw,
-    Component: KitToolExample,
-  },
-  states: {
-    code: kitToolStatesExampleRaw,
-    Component: KitToolStatesExample,
-  },
-  statesCompact: {
-    code: kitToolStatesCompactExampleRaw,
-    Component: KitToolStatesCompactExample,
-  },
+	basic: {
+		code: kitToolExampleRaw,
+		Component: KitToolExample,
+	},
+	states: {
+		code: kitToolStatesExampleRaw,
+		Component: KitToolStatesExample,
+	},
+	statesCompact: {
+		code: kitToolStatesCompactExampleRaw,
+		Component: KitToolStatesCompactExample,
+	},
 };
 
 export { examples };
