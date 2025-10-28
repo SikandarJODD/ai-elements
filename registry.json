@@ -1475,7 +1475,7 @@
 					"target": "prompt-kit/code-block/index.ts"
 				}
 			],
-			"registryDependencies": ["button", "local:copy-button"],
+			"registryDependencies": ["button", "local:prompt-kit-copy-button"],
 			"dependencies": ["shiki", "@shikijs/langs", "@shikijs/themes"],
 			"meta": {
 				"author": "SikandarJODD",
@@ -1487,6 +1487,39 @@
 				"complexity": "intermediate",
 				"updated": "2025-10-19",
 				"featured": true
+			}
+		},
+		{
+			"name": "prompt-kit-copy-button",
+			"title": "Copy Button",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "The CopyButton component provides a button that allows users to copy text to their clipboard with visual feedback indicating success or failure.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/copy-button/CopyButton.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/copy-button/CopyButton.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/copy-button/types.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/copy-button/types.ts"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/copy-button/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/copy-button/index.ts"
+				},
+				{
+					"path": "src/lib/hooks/use-clipboard.svelte.ts",
+					"type": "registry:hook"
+				}
+			],
+			"registryDependencies": ["button", "tooltip"],
+			"dependencies": ["@lucide/svelte"],
+			"meta": {
+				"author": "SikandarJODD"
 			}
 		},
 		{
