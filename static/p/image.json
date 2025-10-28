@@ -1,6 +1,6 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
-	"name": "prompt-kit-image",
+	"name": "image",
 	"type": "registry:block",
 	"description": "The Image component displays images with proper styling, loading states, and accessibility features. Optimized for AI-generated or user-uploaded images in chat interfaces.",
 	"meta": {

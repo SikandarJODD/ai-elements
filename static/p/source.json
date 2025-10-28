@@ -1,11 +1,12 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
-	"name": "prompt-kit-source",
+	"name": "source",
 	"type": "registry:block",
 	"description": "The Source component displays collapsible source information and references in AI responses. Features trigger and content components with context management for showing citations and sources.",
 	"registryDependencies": [
 		"collapsible",
-		"button"
+		"button",
+		"hover-card"
 	],
 	"meta": {
 		"author": "SikandarJODD",

@@ -1,6 +1,6 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
-	"name": "prompt-kit-message",
+	"name": "message",
 	"type": "registry:block",
 	"description": "The Message component displays chat messages with avatar, content, and action buttons. Features context-based state management for flexible message layouts in AI chat interfaces. Includes Message, MessageAvatar, MessageContent, MessageAction, and MessageActions components.",
 	"devDependencies": [
@@ -9,7 +9,8 @@
 	],
 	"registryDependencies": [
 		"avatar",
-		"button"
+		"button",
+		"tooltip"
 	],
 	"meta": {
 		"author": "SikandarJODD",

@@ -1,6 +1,6 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
-	"name": "prompt-kit-file-upload",
+	"name": "file-upload",
 	"type": "registry:block",
 	"description": "The FileUpload component provides drag-and-drop file upload functionality with preview, validation, and context-based state management. Features trigger and content components for flexible upload UI.",
 	"dependencies": [

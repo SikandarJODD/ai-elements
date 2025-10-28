@@ -1,6 +1,6 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
-	"name": "prompt-kit-prompt-input",
+	"name": "prompt-input",
 	"type": "registry:block",
 	"description": "The PromptInput component provides a comprehensive text input interface for AI chat with actions, textarea, and state management. Features context-based control for building flexible prompt input experiences.",
 	"dependencies": [
@@ -12,7 +12,8 @@
 	],
 	"registryDependencies": [
 		"textarea",
-		"button"
+		"button",
+		"tooltip"
 	],
 	"meta": {
 		"author": "SikandarJODD",

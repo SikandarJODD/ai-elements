@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
 	import { Subheading, AiInstallCommand, ComponentAPITable } from "$lib/components/docs";
 	import Playground from "$lib/components/docs/playground.svelte";
@@ -93,6 +94,24 @@
 				operations.
 			</p>
 
+			<!-- Installation Section -->
+			<Subheading>Installation</Subheading>
+
+			<p class="mb-4 text-sm leading-relaxed sm:text-base">
+				Copy and paste the following code into your project.
+			</p>
+
+			<div class="mb-6">
+				<AiInstallCommand
+					command="execute"
+					args={[
+						"shadcn-svelte@latest",
+						"add",
+						`${PUBLIC_WEBSITE_URL}/p/file-upload.json`,
+					]}
+				/>
+			</div>
+
 			<!-- Examples Section -->
 			<Subheading>Examples</Subheading>
 
@@ -111,24 +130,6 @@
 					<examples.withPromptInput.Component />
 				</div>
 			</Playground>
-
-			<!-- Installation Section -->
-			<Subheading>Installation</Subheading>
-
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Copy and paste the following code into your project.
-			</p>
-
-			<div class="mb-6">
-				<AiInstallCommand
-					command="execute"
-					args={[
-						"shadcn-svelte@latest",
-						"add",
-						"https://ai-elements.vercel.app/r/prompt-kit-file-upload.json",
-					]}
-				/>
-			</div>
 
 			<!-- Component API Section -->
 			<Subheading>Component API</Subheading>

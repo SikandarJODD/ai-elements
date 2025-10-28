@@ -1,6 +1,6 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
-	"name": "prompt-kit-loader",
+	"name": "loader",
 	"type": "registry:block",
 	"description": "The Loader component provides multiple animated loading indicators for AI responses. Includes 13 different loader styles: bars, circular, classic, dots, pulse-dot, pulse, terminal, text-blink, text-dots, text-shimmer, typing, wave, and a base loader with customizable animations and colors.",
 	"meta": {

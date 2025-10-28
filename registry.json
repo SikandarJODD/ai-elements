@@ -1723,7 +1723,7 @@
 					"target": "prompt-kit/message/index.ts"
 				}
 			],
-			"registryDependencies": ["avatar", "button"],
+			"registryDependencies": ["avatar", "button", "tooltip"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
@@ -1772,7 +1772,7 @@
 					"target": "prompt-kit/prompt-input/index.ts"
 				}
 			],
-			"registryDependencies": ["textarea", "button"],
+			"registryDependencies": ["textarea", "button", "tooltip"],
 			"dependencies": ["runed"],
 			"meta": {
 				"author": "SikandarJODD",
@@ -1925,7 +1925,7 @@
 					"target": "prompt-kit/source/index.ts"
 				}
 			],
-			"registryDependencies": ["collapsible", "button"],
+			"registryDependencies": ["collapsible", "button", "hover-card"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
@@ -2003,7 +2003,7 @@
 					"target": "prompt-kit/system-message/index.ts"
 				}
 			],
-			"registryDependencies": [],
+			"registryDependencies": ["button"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
@@ -2057,7 +2057,7 @@
 					"target": "prompt-kit/tool/index.ts"
 				}
 			],
-			"registryDependencies": ["collapsible", "badge"],
+			"registryDependencies": ["collapsible", "badge", "button"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",

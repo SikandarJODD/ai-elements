@@ -11,7 +11,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"registry:build": "pnpm shadcn-svelte registry build",
+		"registry:build": "node scripts/build-registries.js",
+		"registry:build:old": "pnpm shadcn-svelte registry build",
 		"jsrepo:build": "jsrepo build",
 		"jsrepo:publish": "jsrepo publish",
 		"jsrepo:publish:dry": "jsrepo publish --dry-run"

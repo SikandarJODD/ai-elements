@@ -1,6 +1,6 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
-	"name": "prompt-kit-chat-container",
+	"name": "chat-container",
 	"type": "registry:block",
 	"description": "The ChatContainer component provides a comprehensive chat interface with scroll management, auto-scrolling, and scroll anchoring. Features context-based state management for handling message scrolling and sticky-to-bottom behavior.",
 	"dependencies": [
