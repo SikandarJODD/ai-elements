@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CodeNameBlock } from '$lib';
+	import { CodeNameBlock } from "$lib";
 
 	const typescriptCode = `function addNumbers(a: number, b: number): number {
 	return a + b;
@@ -31,37 +31,25 @@ npm run dev`;
 
 	<!-- TypeScript Example -->
 	<div>
-		<h3 class="text-lg font-semibold mb-4">TypeScript File</h3>
-		<CodeNameBlock
-			filename="utils.ts"
-			lang="typescript"
-			code={typescriptCode}
-		/>
+		<h3 class="mb-4 text-lg font-semibold">TypeScript File</h3>
+		<CodeNameBlock filename="utils.ts" lang="typescript" code={typescriptCode} />
 	</div>
 
 	<!-- Svelte Example -->
 	<div>
-		<h3 class="text-lg font-semibold mb-4">Svelte Component</h3>
-		<CodeNameBlock
-			filename="Counter.svelte"
-			lang="svelte"
-			code={svelteCode}
-		/>
+		<h3 class="mb-4 text-lg font-semibold">Svelte Component</h3>
+		<CodeNameBlock filename="Counter.svelte" lang="svelte" code={svelteCode} />
 	</div>
 
 	<!-- Bash Example -->
 	<div>
-		<h3 class="text-lg font-semibold mb-4">Shell Script</h3>
-		<CodeNameBlock
-			filename="setup.sh"
-			lang="bash"
-			code={bashCode}
-		/>
+		<h3 class="mb-4 text-lg font-semibold">Shell Script</h3>
+		<CodeNameBlock filename="setup.sh" lang="bash" code={bashCode} />
 	</div>
 
 	<!-- Default Example -->
 	<div>
-		<h3 class="text-lg font-semibold mb-4">Generic Code File</h3>
+		<h3 class="mb-4 text-lg font-semibold">Generic Code File</h3>
 		<CodeNameBlock
 			filename="config.json"
 			lang="json"

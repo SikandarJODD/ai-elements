@@ -3,7 +3,8 @@
 	import type { HTMLAttributes } from "svelte/elements";
 	import type { Snippet } from "svelte";
 
-	export interface ConversationEmptyStateProps extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
+	export interface ConversationEmptyStateProps
+		extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
 		title?: string;
 		description?: string;
 		icon?: Snippet;
@@ -40,7 +41,7 @@
 			</div>
 		{/if}
 		<div class="space-y-1">
-			<h3 class="font-medium text-sm">{title}</h3>
+			<h3 class="text-sm font-medium">{title}</h3>
 			{#if description}
 				<p class="text-muted-foreground text-sm">{description}</p>
 			{/if}

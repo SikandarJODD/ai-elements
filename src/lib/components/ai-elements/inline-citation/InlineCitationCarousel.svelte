@@ -1,15 +1,19 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils';
-	import * as Carousel from '$lib/components/ui/carousel/index.js';
-	import { CarouselContext, setCarouselContext, type CarouselApi } from './carousel-context.svelte.js';
-	import type { Snippet } from 'svelte';
+	import { cn } from "$lib/utils/utils";
+	import * as Carousel from "$lib/components/ui/carousel/index.js";
+	import {
+		CarouselContext,
+		setCarouselContext,
+		type CarouselApi,
+	} from "./carousel-context.svelte.js";
+	import type { Snippet } from "svelte";
 
 	type Props = {
 		children: Snippet;
 		class?: string;
 		opts?: object;
 		plugins?: any[];
-		orientation?: 'horizontal' | 'vertical';
+		orientation?: "horizontal" | "vertical";
 	};
 
 	let {
@@ -17,7 +21,7 @@
 		class: className,
 		opts = {},
 		plugins = [],
-		orientation = 'horizontal',
+		orientation = "horizontal",
 		...restProps
 	}: Props = $props();
 
@@ -35,7 +39,7 @@
 	{plugins}
 	{orientation}
 	{...restProps}
-  setApi={setApi}
+	{setApi}
 >
 	{@render children()}
 </Carousel.Root>

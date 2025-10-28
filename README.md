@@ -6,11 +6,10 @@
 
 <!--
 [![Svelte](https://img.shields.io/badge/Svelte-5.0-orange.svg)](https://svelte.dev/) -->
+
 [![jsrepo](https://jsrepo.com/badges/@ai/elements/dm)](https://jsrepo.com/@sv/cnblocks)
 [![jsrepo](https://jsrepo.dev/badges/registry/blocks?url=@ai/elements)](https://jsrepo.dev/registry?url=@ai/elements)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-
-
 
 ## Overview
 
@@ -18,10 +17,10 @@ Svelte AI Elements is a custom registy built on top of shadcn-svelte to help you
 
 ## Key Features
 
--  **Beautiful Design**: Built on top of shadcn-svelte with modern, accessible UI components
--  **Highly Customizable**: Easily modify components to match your brand and requirements
--  **Responsive**: Works seamlessly across desktop and mobile devices
--  **Accessible**: Built with accessibility best practices in mind
+- **Beautiful Design**: Built on top of shadcn-svelte with modern, accessible UI components
+- **Highly Customizable**: Easily modify components to match your brand and requirements
+- **Responsive**: Works seamlessly across desktop and mobile devices
+- **Accessible**: Built with accessibility best practices in mind
 - **TypeScript Ready**: Full TypeScript support with comprehensive type definitions
 
 ## Installation
@@ -30,13 +29,12 @@ Svelte AI Elements is a custom registy built on top of shadcn-svelte to help you
 - Prompt Kit Docs : [Visit](https://svelte-ai-elements.vercel.app/prompt-kit/installation)
 
 ## Available Components & Guides
+
 - 14 Prompt Kit Components
 - 26 AI Elements Components
 - 2 Guides
   1. Basic Setup Guide : [Visit](https://svelte-ai-elements.vercel.app/guides/basic-setup)
   2. Svelte 5+ AI SDK Integration : [Visit](https://svelte-ai-elements.vercel.app/guides/svelte-5-ai-sdk-integration)
-
-
 
 ## License
 
@@ -67,5 +65,3 @@ This project draws inspiration from several excellent projects in the web develo
     <a href="https://github.com/SikandarJODD/ai-elements/issues">Issues</a>
   </p>
 </div>
-
-

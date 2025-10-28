@@ -8,18 +8,18 @@ import KitSystemMessageCtaExample from "$lib/components/kit-examples/kit-system-
 import kitSystemMessageCtaExampleRaw from "$lib/components/kit-examples/kit-system-message-cta-example.svelte?raw";
 
 const examples = {
-  basic: {
-    code: kitSystemMessageExampleRaw,
-    Component: KitSystemMessageExample,
-  },
-  filledVariants: {
-    code: kitSystemMessageFilledVariantsExampleRaw,
-    Component: KitSystemMessageFilledVariantsExample,
-  },
-  withCta: {
-    code: kitSystemMessageCtaExampleRaw,
-    Component: KitSystemMessageCtaExample,
-  },
+	basic: {
+		code: kitSystemMessageExampleRaw,
+		Component: KitSystemMessageExample,
+	},
+	filledVariants: {
+		code: kitSystemMessageFilledVariantsExampleRaw,
+		Component: KitSystemMessageFilledVariantsExample,
+	},
+	withCta: {
+		code: kitSystemMessageCtaExampleRaw,
+		Component: KitSystemMessageCtaExample,
+	},
 };
 
 export { examples };

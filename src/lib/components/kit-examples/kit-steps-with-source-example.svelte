@@ -1,11 +1,6 @@
 <script lang="ts">
-	import { Source, SourceContent, SourceTrigger } from '$lib/components/prompt-kit/source';
-	import {
-		Steps,
-		StepsContent,
-		StepsItem,
-		StepsTrigger
-	} from '$lib/components/prompt-kit/steps';
+	import { Source, SourceContent, SourceTrigger } from "$lib/components/prompt-kit/source";
+	import { Steps, StepsContent, StepsItem, StepsTrigger } from "$lib/components/prompt-kit/steps";
 </script>
 
 <div class="space-y-4">

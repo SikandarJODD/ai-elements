@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { SystemMessage } from '$lib/components/prompt-kit/system-message/index.js';
+	import { SystemMessage } from "$lib/components/prompt-kit/system-message/index.js";
 </script>
 
 <div class="flex flex-col gap-3">

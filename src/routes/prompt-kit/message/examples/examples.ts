@@ -8,18 +8,18 @@ import KitMessageActionsExample from "$lib/components/kit-examples/kit-message-a
 import kitMessageActionsExampleRaw from "$lib/components/kit-examples/kit-message-actions-example.svelte?raw";
 
 const examples = {
-  basic: {
-    code: kitMessageExampleRaw,
-    Component: KitMessageExample,
-  },
-  markdown: {
-    code: kitMessageMarkdownExampleRaw,
-    Component: KitMessageMarkdownExample,
-  },
-  withActions: {
-    code: kitMessageActionsExampleRaw,
-    Component: KitMessageActionsExample,
-  },
+	basic: {
+		code: kitMessageExampleRaw,
+		Component: KitMessageExample,
+	},
+	markdown: {
+		code: kitMessageMarkdownExampleRaw,
+		Component: KitMessageMarkdownExample,
+	},
+	withActions: {
+		code: kitMessageActionsExampleRaw,
+		Component: KitMessageActionsExample,
+	},
 };
 
 export { examples };

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CodeBlock, CodeBlockCode } from '$lib/components/prompt-kit/code-block';
+	import { CodeBlock, CodeBlockCode } from "$lib/components/prompt-kit/code-block";
 
 	const code = `.button {
   background-color: #4CAF50;

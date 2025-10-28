@@ -1,4 +1,4 @@
-import { getContext, setContext } from 'svelte';
+import { getContext, setContext } from "svelte";
 
 export type SourceSchema = {
 	href: string;
@@ -6,8 +6,8 @@ export type SourceSchema = {
 };
 
 export class SourceClass {
-	href = $state<string>('');
-	domain = $state<string>('');
+	href = $state<string>("");
+	domain = $state<string>("");
 
 	constructor(props: { href: string }) {
 		this.href = props.href;
@@ -16,12 +16,12 @@ export class SourceClass {
 		try {
 			this.domain = new URL(props.href).hostname;
 		} catch {
-			this.domain = props.href.split('/').pop() || props.href;
+			this.domain = props.href.split("/").pop() || props.href;
 		}
 	}
 }
 
-const SOURCE_KEY = Symbol('source');
+const SOURCE_KEY = Symbol("source");
 
 export function setSourceContext(contextInstance: SourceClass) {
 	setContext(SOURCE_KEY, contextInstance);
@@ -31,7 +31,7 @@ export function getSourceContext(): SourceClass {
 	const context = getContext<SourceClass>(SOURCE_KEY);
 
 	if (!context) {
-		throw new Error('Source.* must be used inside <Source>');
+		throw new Error("Source.* must be used inside <Source>");
 	}
 
 	return context;

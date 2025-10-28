@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { CollapsibleContent } from '$lib/components/ui/collapsible';
-	import { cn } from '$lib/utils/utils';
-	import type { Snippet } from 'svelte';
-	import StepsBar from './steps-bar.svelte';
+	import { CollapsibleContent } from "$lib/components/ui/collapsible";
+	import { cn } from "$lib/utils/utils";
+	import type { Snippet } from "svelte";
+	import StepsBar from "./steps-bar.svelte";
 
 	let {
 		class: className,
 		bar,
-		children
+		children,
 	}: {
 		class?: string;
 		bar?: Snippet;
@@ -17,7 +17,7 @@
 
 <CollapsibleContent
 	class={cn(
-		'text-popover-foreground data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden',
+		"text-popover-foreground data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden",
 		className
 	)}
 >

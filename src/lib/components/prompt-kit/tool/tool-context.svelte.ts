@@ -1,10 +1,6 @@
-import { getContext, setContext } from 'svelte';
+import { getContext, setContext } from "svelte";
 
-export type ToolState =
-	| 'input-streaming'
-	| 'input-available'
-	| 'output-available'
-	| 'output-error';
+export type ToolState = "input-streaming" | "input-available" | "output-available" | "output-error";
 
 export type ToolPart = {
 	type: string;
@@ -38,7 +34,7 @@ export class ToolClass {
 	}
 }
 
-const TOOL_KEY = Symbol('tool');
+const TOOL_KEY = Symbol("tool");
 
 export function setToolContext(contextInstance: ToolClass) {
 	setContext(TOOL_KEY, contextInstance);
@@ -48,7 +44,7 @@ export function getToolContext(): ToolClass {
 	const context = getContext<ToolClass>(TOOL_KEY);
 
 	if (!context) {
-		throw new Error('Tool subcomponents must be used within Tool');
+		throw new Error("Tool subcomponents must be used within Tool");
 	}
 
 	return context;

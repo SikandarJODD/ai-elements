@@ -8,18 +8,18 @@ import KitPromptSuggestionChatCompleteExample from "$lib/components/kit-examples
 import kitPromptSuggestionChatCompleteExampleRaw from "$lib/components/kit-examples/kit-prompt-suggestion-chat-complete-example.svelte?raw";
 
 const examples = {
-  basic: {
-    code: kitPromptSuggestionExampleRaw,
-    Component: KitPromptSuggestionExample,
-  },
-  highlight: {
-    code: kitPromptSuggestionHighlightExampleRaw,
-    Component: KitPromptSuggestionHighlightExample,
-  },
-  chatComplete: {
-    code: kitPromptSuggestionChatCompleteExampleRaw,
-    Component: KitPromptSuggestionChatCompleteExample,
-  },
+	basic: {
+		code: kitPromptSuggestionExampleRaw,
+		Component: KitPromptSuggestionExample,
+	},
+	highlight: {
+		code: kitPromptSuggestionHighlightExampleRaw,
+		Component: KitPromptSuggestionHighlightExample,
+	},
+	chatComplete: {
+		code: kitPromptSuggestionChatCompleteExampleRaw,
+		Component: KitPromptSuggestionChatCompleteExample,
+	},
 };
 
 export { examples };

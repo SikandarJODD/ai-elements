@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils';
-	import { WebPreviewContext, setWebPreviewContext } from './web-preview-context.svelte.js';
+	import { cn } from "$lib/utils/utils";
+	import { WebPreviewContext, setWebPreviewContext } from "./web-preview-context.svelte.js";
 
 	let {
-		defaultUrl = '',
+		defaultUrl = "",
 		onUrlChange,
 		class: className,
 		children,
@@ -12,7 +12,7 @@
 		defaultUrl?: string;
 		onUrlChange?: (url: string) => void;
 		class?: string;
-		children: import('svelte').Snippet;
+		children: import("svelte").Snippet;
 		[key: string]: any;
 	} = $props();
 
@@ -21,12 +21,6 @@
 	setWebPreviewContext(context);
 </script>
 
-<div
-	class={cn(
-		"flex size-full flex-col rounded-lg border bg-card",
-		className
-	)}
-	{...restProps}
->
+<div class={cn("bg-card flex size-full flex-col rounded-lg border", className)} {...restProps}>
 	{@render children()}
 </div>

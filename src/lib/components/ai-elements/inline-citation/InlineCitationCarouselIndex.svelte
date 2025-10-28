@@ -1,19 +1,15 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils';
-	import { getCarouselContext } from './carousel-context.svelte.js';
-	import type { Snippet } from 'svelte';
-	import type { HTMLAttributes } from 'svelte/elements';
+	import { cn } from "$lib/utils/utils";
+	import { getCarouselContext } from "./carousel-context.svelte.js";
+	import type { Snippet } from "svelte";
+	import type { HTMLAttributes } from "svelte/elements";
 
 	type Props = HTMLAttributes<HTMLDivElement> & {
 		children?: Snippet;
 		class?: string;
 	};
 
-	let {
-		children,
-		class: className,
-		...restProps
-	}: Props = $props();
+	let { children, class: className, ...restProps }: Props = $props();
 
 	const carouselContext = getCarouselContext();
 
@@ -37,18 +33,18 @@
 			current = api.selectedScrollSnap() + 1;
 		};
 
-		api.on('select', handleSelect);
+		api.on("select", handleSelect);
 
 		// Cleanup
 		return () => {
-			api.off?.('select', handleSelect);
+			api.off?.("select", handleSelect);
 		};
 	});
 </script>
 
 <div
 	class={cn(
-		"flex flex-1 items-center justify-end px-3 py-1 text-muted-foreground text-xs",
+		"text-muted-foreground flex flex-1 items-center justify-end px-3 py-1 text-xs",
 		className
 	)}
 	{...restProps}

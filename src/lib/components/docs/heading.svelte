@@ -1,30 +1,27 @@
 <script lang="ts">
-  import { cn } from "$lib/utils/utils";
-  import { onMount } from "svelte";
-  import type { HTMLAttributes } from "svelte/elements";
+	import { cn } from "$lib/utils/utils";
+	import { onMount } from "svelte";
+	import type { HTMLAttributes } from "svelte/elements";
 
-  interface Props extends Omit<HTMLAttributes<HTMLHeadingElement>, "id"> {
-    class?: string;
-  }
+	interface Props extends Omit<HTMLAttributes<HTMLHeadingElement>, "id"> {
+		class?: string;
+	}
 
-  let { class: className = undefined, children, ...rest }: Props = $props();
+	let { class: className = undefined, children, ...rest }: Props = $props();
 
-  let ref = $state<HTMLHeadingElement>();
-  let id = $state<string>();
+	let ref = $state<HTMLHeadingElement>();
+	let id = $state<string>();
 
-  onMount(() => {
-    id = ref?.innerText.split(" ").join("-").toLowerCase();
-  });
+	onMount(() => {
+		id = ref?.innerText.split(" ").join("-").toLowerCase();
+	});
 </script>
 
 <h1
-  bind:this={ref}
-  {id}
-  class={cn(
-    "mt-6 scroll-m-20 border-b pb-1 text-2xl md:text-3xl font-semibold",
-    className
-  )}
-  {...rest}
+	bind:this={ref}
+	{id}
+	class={cn("mt-6 scroll-m-20 border-b pb-1 text-2xl font-semibold md:text-3xl", className)}
+	{...rest}
 >
-  {@render children?.()}
+	{@render children?.()}
 </h1>

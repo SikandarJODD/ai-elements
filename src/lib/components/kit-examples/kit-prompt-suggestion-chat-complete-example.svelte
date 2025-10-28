@@ -2,68 +2,68 @@
 	import {
 		PromptInput,
 		PromptInputActions,
-		PromptInputTextarea
-	} from '$lib/components/prompt-kit/prompt-input';
-	import { PromptSuggestion } from '$lib/components/prompt-kit/prompt-suggestion';
-	import { Button } from '$lib/components/ui/button';
-	import { ArrowUp, Brain } from '@lucide/svelte';
+		PromptInputTextarea,
+	} from "$lib/components/prompt-kit/prompt-input";
+	import { PromptSuggestion } from "$lib/components/prompt-kit/prompt-suggestion";
+	import { Button } from "$lib/components/ui/button";
+	import { ArrowUp, Brain } from "@lucide/svelte";
 
-	let inputValue = $state('');
-	let activeCategory = $state('');
+	let inputValue = $state("");
+	let activeCategory = $state("");
 
 	const suggestionGroups = [
 		{
-			label: 'Summary',
-			highlight: 'Summarize',
+			label: "Summary",
+			highlight: "Summarize",
 			items: [
-				'Summarize a document',
-				'Summarize a video',
-				'Summarize a podcast',
-				'Summarize a book'
-			]
+				"Summarize a document",
+				"Summarize a video",
+				"Summarize a podcast",
+				"Summarize a book",
+			],
 		},
 		{
-			label: 'Code',
-			highlight: 'Help me',
+			label: "Code",
+			highlight: "Help me",
 			items: [
-				'Help me write Svelte components',
-				'Help me debug code',
-				'Help me learn Python',
-				'Help me learn SQL'
-			]
+				"Help me write Svelte components",
+				"Help me debug code",
+				"Help me learn Python",
+				"Help me learn SQL",
+			],
 		},
 		{
-			label: 'Design',
-			highlight: 'Design',
+			label: "Design",
+			highlight: "Design",
 			items: [
-				'Design a small logo',
-				'Design a hero section',
-				'Design a landing page',
-				'Design a social media post'
-			]
+				"Design a small logo",
+				"Design a hero section",
+				"Design a landing page",
+				"Design a social media post",
+			],
 		},
 		{
-			label: 'Research',
-			highlight: 'Research',
+			label: "Research",
+			highlight: "Research",
 			items: [
-				'Research the best practices for SEO',
-				'Research the best running shoes',
-				'Research the best restaurants in Paris',
-				'Research the best AI tools'
-			]
-		}
+				"Research the best practices for SEO",
+				"Research the best running shoes",
+				"Research the best restaurants in Paris",
+				"Research the best AI tools",
+			],
+		},
 	];
 
 	function handleSend() {
 		if (inputValue.trim()) {
-			console.log('Sending:', inputValue);
-			inputValue = '';
-			activeCategory = '';
+			console.log("Sending:", inputValue);
+			inputValue = "";
+			activeCategory = "";
 		}
 	}
 
 	function handleKeyDown(e: KeyboardEvent) {
-		if (e.key === 'Enter' && !e.shiftKey) {
+		if (e.key === "Enter" && !e.shiftKey) {
 			e.preventDefault();
 			handleSend();
 		}
@@ -72,8 +72,8 @@
 	function handlePromptInputValueChange(value: string) {
 		inputValue = value;
 		// Clear active category when typing something different
-		if (value.trim() === '') {
-			activeCategory = '';
+		if (value.trim() === "") {
+			activeCategory = "";
 		}
 	}
 
@@ -83,7 +83,7 @@
 	);
 
 	// Determine which suggestions to show
-	const showCategorySuggestions = $derived(activeCategory !== '');
+	const showCategorySuggestions = $derived(activeCategory !== "");
 </script>
 
 <div class="flex w-full flex-col space-y-4">
@@ -133,7 +133,7 @@
 						<PromptSuggestion
 							onclick={() => {
 								activeCategory = suggestion.label;
-								inputValue = ''; // Clear input when selecting a category
+								inputValue = ""; // Clear input when selecting a category
 							}}
 							class="capitalize"
 						>

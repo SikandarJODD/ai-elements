@@ -5,14 +5,14 @@ import KitMarkdownCustomComponentsExample from "$lib/components/kit-examples/kit
 import kitMarkdownCustomComponentsExampleRaw from "$lib/components/kit-examples/kit-markdown-custom-components-example.svelte?raw";
 
 const examples = {
-  basic: {
-    code: kitMarkdownBasicExampleRaw,
-    Component: KitMarkdownBasicExample,
-  },
-  customComponents: {
-    code: kitMarkdownCustomComponentsExampleRaw,
-    Component: KitMarkdownCustomComponentsExample,
-  },
+	basic: {
+		code: kitMarkdownBasicExampleRaw,
+		Component: KitMarkdownBasicExample,
+	},
+	customComponents: {
+		code: kitMarkdownCustomComponentsExampleRaw,
+		Component: KitMarkdownCustomComponentsExample,
+	},
 };
 
 export { examples };

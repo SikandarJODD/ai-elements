@@ -31,6 +31,7 @@ Import and use the reusable component at the beginning of your guide:
 ```
 
 This displays a nice callout box with:
+
 - Clear prerequisites list
 - Link to the Basic Setup Guide
 - Professional styling with icons
@@ -79,18 +80,21 @@ For this tutorial, you'll need the following components:
 The Basic Setup Guide includes:
 
 ✅ **Comprehensive Keywords:**
+
 - Svelte setup, AI Elements setup, SvelteKit installation
 - shadcn-svelte setup, OpenRouter API setup
 - AI SDK installation, Svelte AI tutorial
 - Getting started Svelte AI, Svelte AI Elements guide
 
 ✅ **Meta Tags:**
+
 - Optimized title, description, and keywords
 - Open Graph tags for social sharing
 - Twitter Card support
 - Canonical URL
 
 ✅ **Structured Content:**
+
 - Clear headings (H2, H3) for SEO hierarchy
 - Step-by-step numbered sections
 - Code examples with syntax highlighting
@@ -99,12 +103,14 @@ The Basic Setup Guide includes:
 ## Benefits of This Approach
 
 ### For Content Creators:
+
 - ✅ **No Repetition** - Write setup instructions once, reference everywhere
 - ✅ **Shorter Guides** - Focus on the actual tutorial content
 - ✅ **Easy Maintenance** - Update setup steps in one place
 - ✅ **Consistency** - Same setup instructions across all guides
 
 ### For Users:
+
 - ✅ **Clear Prerequisites** - Know exactly what's needed before starting
 - ✅ **Reusable Setup** - Complete setup once, use for all tutorials
 - ✅ **Quick Reference** - Bookmark the setup guide for future projects

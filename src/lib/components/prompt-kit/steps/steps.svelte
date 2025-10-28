@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { Collapsible } from '$lib/components/ui/collapsible';
-	import { cn } from '$lib/utils/utils';
-	import type { Snippet } from 'svelte';
+	import { Collapsible } from "$lib/components/ui/collapsible";
+	import { cn } from "$lib/utils/utils";
+	import type { Snippet } from "svelte";
 
 	let {
 		defaultOpen = true,
 		open = $bindable(defaultOpen),
 		class: className,
-		children
+		children,
 	}: {
 		defaultOpen?: boolean;
 		open?: boolean;

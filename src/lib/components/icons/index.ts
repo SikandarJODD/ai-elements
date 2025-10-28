@@ -8,9 +8,9 @@ import Code from "./code.svelte";
 import MCP from "./mcp.svelte";
 
 export interface Props extends HTMLAttributes<SVGElement> {
-  class?: string;
-  width?: number;
-  height?: number;
+	class?: string;
+	width?: number;
+	height?: number;
 }
 
 export { GitHub, TypeScript, Twitter, Svelte, Terminal, Code as CodeIcon, MCP };

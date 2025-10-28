@@ -1,57 +1,60 @@
 <script lang="ts">
-  import { MetaTags } from "svelte-meta-tags";
-  import { Subheading } from "$lib/components/docs";
-  import Installation from "$lib/components/docs/installation.svelte";
-  import Playground from "$lib/components/docs/playground.svelte";
-  import Code from "$lib/components/docs/code.svelte";
-  import { examples } from "./examples/examples";
-  import { seo } from "./examples/seo";
-  import Heading from "$lib/components/docs/heading.svelte";
-  import CodeSpan from "$lib/components/docs/code-span.svelte";
-  import { PUBLIC_WEBSITE_URL } from "$env/static/public";
+	import { MetaTags } from "svelte-meta-tags";
+	import { Subheading } from "$lib/components/docs";
+	import Installation from "$lib/components/docs/installation.svelte";
+	import Playground from "$lib/components/docs/playground.svelte";
+	import Code from "$lib/components/docs/code.svelte";
+	import { examples } from "./examples/examples";
+	import { seo } from "./examples/seo";
+	import Heading from "$lib/components/docs/heading.svelte";
+	import CodeSpan from "$lib/components/docs/code-span.svelte";
+	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
-  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 
-  import * as Toc from "$lib/components/docs/toc";
-  import { UseToc } from "$lib/hooks/use-toc.svelte";
-  let toc = new UseToc();
-  import { CodeNameBlock } from "$lib/components/docs";
+	import * as Toc from "$lib/components/docs/toc";
+	import { UseToc } from "$lib/hooks/use-toc.svelte";
+	let toc = new UseToc();
+	import { CodeNameBlock } from "$lib/components/docs";
 </script>
 
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
 <Sidebar.Inset class="min-h-svh">
-  <div
-    class="grid grid-cols-1 md:grid-cols-[1fr_280px] lg:grid-cols-[1fr_240px] gap-8 min-h-svh md:px-6 md:pb-6"
-  >
-    <!-- Main Content Area -->
-    <main class="min-w-0" bind:this={toc.ref}>
-      <Subheading class="md:text-3xl">Prompt Input</Subheading>
+	<div
+		class="grid min-h-svh grid-cols-1 gap-8 md:grid-cols-[1fr_280px] md:px-6 md:pb-6 lg:grid-cols-[1fr_240px]"
+	>
+		<!-- Main Content Area -->
+		<main class="min-w-0" bind:this={toc.ref}>
+			<Subheading class="md:text-3xl">Prompt Input</Subheading>
 
-      <p class="my-2 !text-muted-foreground text-lg">
-        The <CodeSpan>Prompt Input</CodeSpan> component allows a user to send a message
-        with file attachments to a large language model. It includes a textarea,
-        file upload capabilities, a submit button, and a dropdown for selecting the
-        model.
-      </p>
+			<p class="!text-muted-foreground my-2 text-lg">
+				The <CodeSpan>Prompt Input</CodeSpan> component allows a user to send a message with
+				file attachments to a large language model. It includes a textarea, file upload capabilities,
+				a submit button, and a dropdown for selecting the model.
+			</p>
 
-      <Playground code={examples.basic.code}>
-        <div class="w-full">
-          <examples.basic.Component />
-        </div>
-      </Playground>
+			<Playground code={examples.basic.code}>
+				<div class="w-full">
+					<examples.basic.Component />
+				</div>
+			</Playground>
 
-      <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
-      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/prompt-input.json`} is_jsrepo={true} blockname="prompt-input" />
+			<!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
+			<Installation
+				specifier={`${PUBLIC_WEBSITE_URL}/r/prompt-input.json`}
+				is_jsrepo={true}
+				blockname="prompt-input"
+			/>
 
-      <!-- Usage -->
-      <Subheading>Usage</Subheading>
+			<!-- Usage -->
+			<Subheading>Usage</Subheading>
 
-      <div>
-        <Code
-          lang="svelte"
-          code={`\<script lang="ts"\>
+			<div>
+				<Code
+					lang="svelte"
+					code={`\<script lang="ts"\>
 	import {
     PromptInput,
     PromptInputActionAddAttachments,
@@ -73,7 +76,7 @@
     PromptInputToolbar,
     PromptInputTools,
     type ChatStatus,
-  } from "$lib/components/ai-elements/prompt-input";
+  } from "$lib/components/ai-elements/prompt-input/index.js";
 \<\/script\>
 
 <PromptInput globalDrop multiple onSubmit={handleSubmit}>
@@ -131,31 +134,28 @@
       <PromptInputSubmit {status} />
     </PromptInputToolbar>
 </PromptInput>`}
-        />
-      </div>
+				/>
+			</div>
 
-      <!-- Usage with AI SDK -->
-      <Subheading>Usage with AI SDK</Subheading>
+			<!-- Usage with AI SDK -->
+			<Subheading>Usage with AI SDK</Subheading>
 
-      <p class="mb-4 text-sm sm:text-base leading-relaxed">
-        Build a fully functional chat app using <CodeSpan>PromptInput</CodeSpan>,
-        <a
-          href="/components/conversation"
-          class="text-primary hover:underline font-medium"
-        >
-          Conversation
-        </a> with a model picker:
-      </p>
+			<p class="mb-4 text-sm leading-relaxed sm:text-base">
+				Build a fully functional chat app using <CodeSpan>PromptInput</CodeSpan>,
+				<a href="/components/conversation" class="text-primary font-medium hover:underline">
+					Conversation
+				</a> with a model picker:
+			</p>
 
-      <p class="mb-4 text-sm sm:text-base leading-relaxed">
-        Add the following component to your frontend:
-      </p>
+			<p class="mb-4 text-sm leading-relaxed sm:text-base">
+				Add the following component to your frontend:
+			</p>
 
-      <div class="mb-6">
-        <CodeNameBlock
-          filename="+page.svelte"
-          lang="svelte"
-          code={`\<script lang="ts"\>
+			<div class="mb-6">
+				<CodeNameBlock
+					filename="+page.svelte"
+					lang="svelte"
+					code={`\<script lang="ts"\>
   import { Chat } from "@ai-sdk/svelte";
   import {
     PromptInput,
@@ -177,14 +177,14 @@
     PromptInputTextarea,
     PromptInputToolbar,
     PromptInputTools,
-  } from "$lib/components/ai-elements/prompt-input";
+  } from "$lib/components/ai-elements/prompt-input/index.js";
   import {
     Conversation,
     ConversationContent,
     ConversationScrollButton,
-  } from "$lib/components/ai-elements/conversation";
-  import { Message, MessageContent } from "$lib/components/ai-elements/message";
-  import { Response } from "$lib/components/ai-elements/response";
+  } from "$lib/components/ai-elements/conversation/index.js";
+  import { Message, MessageContent } from "$lib/components/ai-elements/message/index.js";
+  import { Response } from "$lib/components/ai-elements/response/index.js";
   import { MicIcon, GlobeIcon } from "lucide-svelte";
 
   const models = [
@@ -305,18 +305,18 @@
     </PromptInput>
   </div>
 </div>`}
-        />
-      </div>
+				/>
+			</div>
 
-      <p class="mb-4 text-sm sm:text-base leading-relaxed">
-        Add the following route to your backend:
-      </p>
+			<p class="mb-4 text-sm leading-relaxed sm:text-base">
+				Add the following route to your backend:
+			</p>
 
-      <div class="mb-6">
-        <CodeNameBlock
-          filename="api/chat/+server.ts"
-          lang="typescript"
-          code={`import { streamText, type UIMessage, convertToModelMessages } from "ai";
+			<div class="mb-6">
+				<CodeNameBlock
+					filename="api/chat/+server.ts"
+					lang="typescript"
+					code={`import { streamText, type UIMessage, convertToModelMessages } from "ai";
 import type { RequestHandler } from "./$types";
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -337,50 +337,44 @@ export const POST: RequestHandler = async ({ request }) => {
 
   return result.toUIMessageStreamResponse();
 };`}
-        />
-      </div>
+				/>
+			</div>
 
-      <!-- Features -->
-      <Subheading>Features</Subheading>
+			<!-- Features -->
+			<Subheading>Features</Subheading>
 
-      <ul
-        class="list-disc list-inside space-y-2 mb-6 text-sm sm:text-base leading-relaxed"
-      >
-        <li>Auto-resizing textarea that adjusts height based on content</li>
-        <li>File attachment support with drag-and-drop</li>
-        <li>Image preview for image attachments</li>
-        <li>Configurable file constraints (max files, max size, accepted types)</li>
-        <li>Automatic submit button icons based on status</li>
-        <li>
-          Support for keyboard shortcuts (Enter to submit, Shift+Enter for new line)
-        </li>
-        <li>Customizable min/max height for the textarea</li>
-        <li>Flexible toolbar with support for custom actions and tools</li>
-        <li>Built-in model selection dropdown</li>
-        <li>Responsive design with mobile-friendly controls</li>
-        <li>Clean, modern styling with customizable themes</li>
-        <li>Form-based submission handling</li>
-        <li>Hidden file input sync for native form posts</li>
-        <li>Global document drop support (opt-in)</li>
-      </ul>
+			<ul class="mb-6 list-inside list-disc space-y-2 text-sm leading-relaxed sm:text-base">
+				<li>Auto-resizing textarea that adjusts height based on content</li>
+				<li>File attachment support with drag-and-drop</li>
+				<li>Image preview for image attachments</li>
+				<li>Configurable file constraints (max files, max size, accepted types)</li>
+				<li>Automatic submit button icons based on status</li>
+				<li>Support for keyboard shortcuts (Enter to submit, Shift+Enter for new line)</li>
+				<li>Customizable min/max height for the textarea</li>
+				<li>Flexible toolbar with support for custom actions and tools</li>
+				<li>Built-in model selection dropdown</li>
+				<li>Responsive design with mobile-friendly controls</li>
+				<li>Clean, modern styling with customizable themes</li>
+				<li>Form-based submission handling</li>
+				<li>Hidden file input sync for native form posts</li>
+				<li>Global document drop support (opt-in)</li>
+			</ul>
 
-      <!-- Examples  -->
-      <!-- <Subheading>Examples</Subheading>
+			<!-- Examples  -->
+			<!-- <Subheading>Examples</Subheading>
 
       <Playground code={examples.messageAction.code}>
         <examples.messageAction.Component />
       </Playground> -->
-    </main>
+		</main>
 
-    <!-- TOC Sidebar - Sticky on larger screens -->
-    <aside
-      class="hidden md:flex sticky top-24 h-fit max-h-[calc(100vh-3rem)] overflow-y-auto"
-    >
-      <!-- TOC Component -->
-      <div>
-        <h3 class="text-sm">On this page</h3>
-        <Toc.Root toc={toc.current} />
-      </div>
-    </aside>
-  </div>
+		<!-- TOC Sidebar - Sticky on larger screens -->
+		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">
+			<!-- TOC Component -->
+			<div>
+				<h3 class="text-sm">On this page</h3>
+				<Toc.Root toc={toc.current} />
+			</div>
+		</aside>
+	</div>
 </Sidebar.Inset>

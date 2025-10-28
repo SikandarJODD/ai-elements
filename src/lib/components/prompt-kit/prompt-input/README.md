@@ -14,6 +14,7 @@ A flexible and composable prompt input component for Svelte applications, perfec
 ## Installation
 
 This component uses:
+
 - `bits-ui` for tooltips
 - `@lucide/svelte` for icons
 - `runed` for reactive utilities (watch)
@@ -26,44 +27,44 @@ Make sure these dependencies are installed in your project.
 
 ```svelte
 <script lang="ts">
-	import {
-		PromptInput,
-		PromptInputTextarea,
-		PromptInputActions,
-		PromptInputAction
-	} from '$lib/components/prompt-kit/prompt-input';
-	import { Button } from '$lib/components/ui/button';
-	import SendIcon from '@lucide/svelte/icons/send';
+  import {
+    PromptInput,
+    PromptInputTextarea,
+    PromptInputActions,
+    PromptInputAction,
+  } from "$lib/components/prompt-kit/prompt-input";
+  import { Button } from "$lib/components/ui/button";
+  import SendIcon from "@lucide/svelte/icons/send";
 
-	let value = $state('');
-	let isLoading = $state(false);
+  let value = $state("");
+  let isLoading = $state(false);
 
-	function handleSubmit() {
-		console.log('Submitting:', value);
-	}
+  function handleSubmit() {
+    console.log("Submitting:", value);
+  }
 
-	function handleValueChange(newValue: string) {
-		value = newValue;
-	}
+  function handleValueChange(newValue: string) {
+    value = newValue;
+  }
 </script>
 
 <PromptInput
-	{isLoading}
-	{value}
-	onValueChange={handleValueChange}
-	onSubmit={handleSubmit}
+  {isLoading}
+  {value}
+  onValueChange={handleValueChange}
+  onSubmit={handleSubmit}
 >
-	<PromptInputTextarea placeholder="Type your message..." />
-	<PromptInputActions>
-		<PromptInputAction>
-			{#snippet tooltip()}
-				<p>Send message</p>
-			{/snippet}
-			<Button size="icon" onclick={handleSubmit}>
-				<SendIcon class="h-4 w-4" />
-			</Button>
-		</PromptInputAction>
-	</PromptInputActions>
+  <PromptInputTextarea placeholder="Type your message..." />
+  <PromptInputActions>
+    <PromptInputAction>
+      {#snippet tooltip()}
+        <p>Send message</p>
+      {/snippet}
+      <Button size="icon" onclick={handleSubmit}>
+        <SendIcon class="h-4 w-4" />
+      </Button>
+    </PromptInputAction>
+  </PromptInputActions>
 </PromptInput>
 ```
 
@@ -71,82 +72,82 @@ Make sure these dependencies are installed in your project.
 
 ```svelte
 <script lang="ts">
-	import {
-		PromptInput,
-		PromptInputTextarea,
-		PromptInputActions,
-		PromptInputAction
-	} from '$lib/components/prompt-kit/prompt-input';
-	import { Button } from '$lib/components/ui/button';
-	import SendIcon from '@lucide/svelte/icons/send';
-	import PaperclipIcon from '@lucide/svelte/icons/paperclip';
-	import MicIcon from '@lucide/svelte/icons/mic';
-	import ImagePlusIcon from '@lucide/svelte/icons/image-plus';
+  import {
+    PromptInput,
+    PromptInputTextarea,
+    PromptInputActions,
+    PromptInputAction,
+  } from "$lib/components/prompt-kit/prompt-input";
+  import { Button } from "$lib/components/ui/button";
+  import SendIcon from "@lucide/svelte/icons/send";
+  import PaperclipIcon from "@lucide/svelte/icons/paperclip";
+  import MicIcon from "@lucide/svelte/icons/mic";
+  import ImagePlusIcon from "@lucide/svelte/icons/image-plus";
 
-	let value = $state('');
-	let isLoading = $state(false);
+  let value = $state("");
+  let isLoading = $state(false);
 
-	function handleSubmit() {
-		if (value.trim()) {
-			console.log('Submitting:', value);
-		}
-	}
+  function handleSubmit() {
+    if (value.trim()) {
+      console.log("Submitting:", value);
+    }
+  }
 </script>
 
 <PromptInput
-	{isLoading}
-	{value}
-	onValueChange={(v) => value = v}
-	onSubmit={handleSubmit}
-	maxHeight={300}
+  {isLoading}
+  {value}
+  onValueChange={(v) => (value = v)}
+  onSubmit={handleSubmit}
+  maxHeight={300}
 >
-	<div class="flex w-full flex-col gap-2">
-		<PromptInputTextarea placeholder="Ask me anything..." />
+  <div class="flex w-full flex-col gap-2">
+    <PromptInputTextarea placeholder="Ask me anything..." />
 
-		<PromptInputActions class="justify-between">
-			<div class="flex gap-1">
-				<PromptInputAction>
-					{#snippet tooltip()}
-						<p>Attach file</p>
-					{/snippet}
-					<Button variant="ghost" size="icon">
-						<PaperclipIcon class="h-4 w-4" />
-					</Button>
-				</PromptInputAction>
+    <PromptInputActions class="justify-between">
+      <div class="flex gap-1">
+        <PromptInputAction>
+          {#snippet tooltip()}
+            <p>Attach file</p>
+          {/snippet}
+          <Button variant="ghost" size="icon">
+            <PaperclipIcon class="h-4 w-4" />
+          </Button>
+        </PromptInputAction>
 
-				<PromptInputAction>
-					{#snippet tooltip()}
-						<p>Add image</p>
-					{/snippet}
-					<Button variant="ghost" size="icon">
-						<ImagePlusIcon class="h-4 w-4" />
-					</Button>
-				</PromptInputAction>
+        <PromptInputAction>
+          {#snippet tooltip()}
+            <p>Add image</p>
+          {/snippet}
+          <Button variant="ghost" size="icon">
+            <ImagePlusIcon class="h-4 w-4" />
+          </Button>
+        </PromptInputAction>
 
-				<PromptInputAction>
-					{#snippet tooltip()}
-						<p>Voice input</p>
-					{/snippet}
-					<Button variant="ghost" size="icon">
-						<MicIcon class="h-4 w-4" />
-					</Button>
-				</PromptInputAction>
-			</div>
+        <PromptInputAction>
+          {#snippet tooltip()}
+            <p>Voice input</p>
+          {/snippet}
+          <Button variant="ghost" size="icon">
+            <MicIcon class="h-4 w-4" />
+          </Button>
+        </PromptInputAction>
+      </div>
 
-			<PromptInputAction side="left">
-				{#snippet tooltip()}
-					<p>Send message (Enter)</p>
-				{/snippet}
-				<Button
-					size="icon"
-					disabled={!value.trim() || isLoading}
-					onclick={handleSubmit}
-				>
-					<SendIcon class="h-4 w-4" />
-				</Button>
-			</PromptInputAction>
-		</PromptInputActions>
-	</div>
+      <PromptInputAction side="left">
+        {#snippet tooltip()}
+          <p>Send message (Enter)</p>
+        {/snippet}
+        <Button
+          size="icon"
+          disabled={!value.trim() || isLoading}
+          onclick={handleSubmit}
+        >
+          <SendIcon class="h-4 w-4" />
+        </Button>
+      </PromptInputAction>
+    </PromptInputActions>
+  </div>
 </PromptInput>
 ```
 
@@ -158,14 +159,14 @@ The main container component that provides context to all child components.
 
 **Props:**
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `string` | `''` | Controlled value of the input |
-| `onValueChange` | `(value: string) => void` | - | Callback when value changes |
-| `isLoading` | `boolean` | `false` | Loading state (disables input) |
-| `maxHeight` | `number \| string` | `240` | Maximum height for auto-resize |
-| `onSubmit` | `() => void` | - | Callback when Enter is pressed |
-| `class` | `string` | - | Additional CSS classes |
+| Prop            | Type                      | Default | Description                    |
+| --------------- | ------------------------- | ------- | ------------------------------ |
+| `value`         | `string`                  | `''`    | Controlled value of the input  |
+| `onValueChange` | `(value: string) => void` | -       | Callback when value changes    |
+| `isLoading`     | `boolean`                 | `false` | Loading state (disables input) |
+| `maxHeight`     | `number \| string`        | `240`   | Maximum height for auto-resize |
+| `onSubmit`      | `() => void`              | -       | Callback when Enter is pressed |
+| `class`         | `string`                  | -       | Additional CSS classes         |
 
 ### PromptInputTextarea
 
@@ -173,14 +174,15 @@ The textarea input component.
 
 **Props:**
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `placeholder` | `string` | - | Placeholder text |
-| `disableAutosize` | `boolean` | `false` | Disable auto-resize behavior |
-| `class` | `string` | - | Additional CSS classes |
-| ...rest | - | - | All standard textarea attributes |
+| Prop              | Type      | Default | Description                      |
+| ----------------- | --------- | ------- | -------------------------------- |
+| `placeholder`     | `string`  | -       | Placeholder text                 |
+| `disableAutosize` | `boolean` | `false` | Disable auto-resize behavior     |
+| `class`           | `string`  | -       | Additional CSS classes           |
+| ...rest           | -         | -       | All standard textarea attributes |
 
 **Features:**
+
 - Auto-resizes based on content
 - Submit on Enter, new line on Shift+Enter
 - Automatically focuses when container is clicked
@@ -191,10 +193,10 @@ Container for action buttons.
 
 **Props:**
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `class` | `string` | - | Additional CSS classes |
-| ...rest | - | - | All standard div attributes |
+| Prop    | Type     | Default | Description                 |
+| ------- | -------- | ------- | --------------------------- |
+| `class` | `string` | -       | Additional CSS classes      |
+| ...rest | -        | -       | All standard div attributes |
 
 ### PromptInputAction
 
@@ -202,11 +204,11 @@ Wrapper for individual action buttons with tooltip support.
 
 **Props:**
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `tooltip` | `Snippet` | - | Tooltip content (required) |
-| `side` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` | Tooltip position |
-| `class` | `string` | - | Additional CSS classes for tooltip |
+| Prop      | Type                                     | Default | Description                        |
+| --------- | ---------------------------------------- | ------- | ---------------------------------- |
+| `tooltip` | `Snippet`                                | -       | Tooltip content (required)         |
+| `side`    | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` | Tooltip position                   |
+| `class`   | `string`                                 | -       | Additional CSS classes for tooltip |
 
 ## Keyboard Shortcuts
 
@@ -231,10 +233,10 @@ The component uses Svelte context for state management. You can access the conte
 
 ```svelte
 <script lang="ts">
-	import { getPromptInputContext } from '$lib/components/prompt-kit/prompt-input';
+  import { getPromptInputContext } from "$lib/components/prompt-kit/prompt-input";
 
-	const context = getPromptInputContext();
-	// Access: context.value, context.isLoading, context.setValue(), etc.
+  const context = getPromptInputContext();
+  // Access: context.value, context.isLoading, context.setValue(), etc.
 </script>
 ```
 

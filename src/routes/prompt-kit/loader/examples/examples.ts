@@ -5,14 +5,14 @@ import KitLoaderSizeExample from "$lib/components/kit-examples/kit-loader-size-e
 import kitLoaderSizeExampleRaw from "$lib/components/kit-examples/kit-loader-size-example.svelte?raw";
 
 const examples = {
-  basic: {
-    code: kitLoaderExampleRaw,
-    Component: KitLoaderExample,
-  },
-  sizes: {
-    code: kitLoaderSizeExampleRaw,
-    Component: KitLoaderSizeExample,
-  },
+	basic: {
+		code: kitLoaderExampleRaw,
+		Component: KitLoaderExample,
+	},
+	sizes: {
+		code: kitLoaderSizeExampleRaw,
+		Component: KitLoaderSizeExample,
+	},
 };
 
 export { examples };

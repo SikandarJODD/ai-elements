@@ -13,6 +13,7 @@ npx shadcn-svelte@latest init
 ```
 
 This sets up:
+
 - `$lib/utils.ts` with the `cn()` utility
 - Tailwind CSS configuration
 - Component structure
@@ -53,18 +54,18 @@ jsrepo add prompt-input
 
 Different AI Elements require different shadcn components:
 
-| AI Element | Required shadcn Components | Additional npm Packages |
-|------------|---------------------------|------------------------|
-| `message` | `avatar`, `button` | `ai`, `@ai-sdk/svelte` |
-| `code` | `button` | `@shikijs/langs`, `@shikijs/themes`, `marked` |
-| `conversation` | `scroll-area`, `button` | `ai` |
-| `prompt-input` | `button`, `tooltip`, `popover` | `ai` |
-| `workflow` | `card`, `button` | `@xyflow/svelte` |
-| `tool` | `button`, `badge` | `ai` |
-| `artifact` | `card` | `ai` |
-| `response` | - | `ai` |
-| `sources` | `card`, `badge` | - |
-| `copy-button` | `button`, `tooltip` | - |
+| AI Element     | Required shadcn Components     | Additional npm Packages                       |
+| -------------- | ------------------------------ | --------------------------------------------- |
+| `message`      | `avatar`, `button`             | `ai`, `@ai-sdk/svelte`                        |
+| `code`         | `button`                       | `@shikijs/langs`, `@shikijs/themes`, `marked` |
+| `conversation` | `scroll-area`, `button`        | `ai`                                          |
+| `prompt-input` | `button`, `tooltip`, `popover` | `ai`                                          |
+| `workflow`     | `card`, `button`               | `@xyflow/svelte`                              |
+| `tool`         | `button`, `badge`              | `ai`                                          |
+| `artifact`     | `card`                         | `ai`                                          |
+| `response`     | -                              | `ai`                                          |
+| `sources`      | `card`, `badge`                | -                                             |
+| `copy-button`  | `button`, `tooltip`            | -                                             |
 
 **Pro Tip**: Install all commonly used shadcn components at once:
 
@@ -78,17 +79,19 @@ After installation, import and use components:
 
 ```svelte
 <script lang="ts">
-  import { Message, MessageContent, MessageAvatar } from '$lib/components/ai-elements/message';
-  import { Code } from '$lib/components/ai-elements/code';
-  import { Conversation } from '$lib/components/ai-elements/conversation';
+  import {
+    Message,
+    MessageContent,
+    MessageAvatar,
+  } from "$lib/components/ai-elements/message/index.js";
+  import { Code } from "$lib/components/ai-elements/code/index.js";
+  import { Conversation } from "$lib/components/ai-elements/conversation/index.js";
 </script>
 
 <Conversation>
   <Message from="user">
     <MessageAvatar />
-    <MessageContent>
-      Hello, AI!
-    </MessageContent>
+    <MessageContent>Hello, AI!</MessageContent>
   </Message>
 
   <Message from="assistant">
@@ -105,18 +108,21 @@ After installation, import and use components:
 ### Import Errors
 
 **Error: Cannot find module '$lib/utils'**
+
 ```bash
 # Solution: Initialize shadcn-svelte
 npx shadcn-svelte@latest init
 ```
 
 **Error: Cannot find module '$lib/components/ui/button'**
+
 ```bash
 # Solution: Install missing shadcn component
 npx shadcn-svelte@latest add button
 ```
 
 **Error: Module not found: '@ai-sdk/svelte'**
+
 ```bash
 # Solution: Install AI SDK
 pnpm add ai @ai-sdk/svelte
@@ -141,6 +147,7 @@ pnpm add -D @types/node typescript
 ## 📚 Documentation
 
 For detailed component documentation and examples, visit:
+
 - [GitHub Repository](https://github.com/SikandarJODD/ai-elements)
 - [Component Examples](https://github.com/SikandarJODD/ai-elements/tree/main/src/routes)
 

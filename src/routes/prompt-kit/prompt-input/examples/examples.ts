@@ -5,14 +5,14 @@ import KitPromptInputActionsExample from "$lib/components/kit-examples/kit-promp
 import kitPromptInputActionsExampleRaw from "$lib/components/kit-examples/kit-prompt-input-actions-example.svelte?raw";
 
 const examples = {
-  basic: {
-    code: kitPromptInputExampleRaw,
-    Component: KitPromptInputExample,
-  },
-  withActions: {
-    code: kitPromptInputActionsExampleRaw,
-    Component: KitPromptInputActionsExample,
-  },
+	basic: {
+		code: kitPromptInputExampleRaw,
+		Component: KitPromptInputExample,
+	},
+	withActions: {
+		code: kitPromptInputActionsExampleRaw,
+		Component: KitPromptInputActionsExample,
+	},
 };
 
 export { examples };

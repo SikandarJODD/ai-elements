@@ -1,7 +1,7 @@
 <script lang="ts">
-  import * as Code from "$lib/components/ai-elements/code";
-  // JavaScript Example - Modern ES6+ Features
-  let javascriptCode = `// Modern JavaScript - API Service with Error Handling
+	import * as Code from "$lib/components/ai-elements/code/index.js";
+	// JavaScript Example - Modern ES6+ Features
+	let javascriptCode = `// Modern JavaScript - API Service with Error Handling
 class ApiService {
   constructor(baseURL) {
     this.baseURL = baseURL;
@@ -71,8 +71,8 @@ const api = new ApiService('https://api.example.com');
   }
 })();`;
 
-  // Python Example - Data Analysis with Type Hints
-  let pythonCode = `"""
+	// Python Example - Data Analysis with Type Hints
+	let pythonCode = `"""
 Advanced Python - Data Analysis Pipeline
 """
 from typing import List, Dict, Optional, Union, TypeVar, Generic
@@ -179,8 +179,8 @@ def main() -> None:
 if __name__ == "__main__":
     main()`;
 
-  // TypeScript Example - Advanced Patterns
-  let typescriptCode = `// Advanced TypeScript - Generic Repository with Decorators
+	// TypeScript Example - Advanced Patterns
+	let typescriptCode = `// Advanced TypeScript - Generic Repository with Decorators
 interface Entity {
   id: string;
   createdAt: Date;
@@ -385,8 +385,8 @@ const userService = new UserService(userRepository);
   }
 })();`;
 
-  // React/JSX Example - Modern Hooks and Patterns
-  let reactCode = `// Modern React - Advanced Hooks and Component Patterns
+	// React/JSX Example - Modern Hooks and Patterns
+	let reactCode = `// Modern React - Advanced Hooks and Component Patterns
 import React, {
   useState,
   useEffect,
@@ -630,149 +630,139 @@ export const App: React.FC = () => {
 };`;
 </script>
 
-<div class="max-w-6xl mx-auto space-y-8 p-6">
-  <!-- Header -->
-  <div class="text-center space-y-3">
-    <h1 class="text-4xl font-bold tracking-tight">Advanced Code Examples</h1>
-    <p class="text-xl text-muted-foreground">
-      Modern programming patterns and best practices across different languages
-    </p>
-    <div
-      class="flex items-center justify-center gap-2 text-sm text-muted-foreground"
-    >
-      <span class="px-3 py-1 bg-primary/10 text-primary rounded-full"
-        >JavaScript</span
-      >
-      <span class="px-3 py-1 bg-primary/10 text-primary rounded-full"
-        >Python</span
-      >
-      <span class="px-3 py-1 bg-primary/10 text-primary rounded-full"
-        >TypeScript</span
-      >
-      <span class="px-3 py-1 bg-primary/10 text-primary rounded-full"
-        >React</span
-      >
-    </div>
-  </div>
+<div class="mx-auto max-w-6xl space-y-8 p-6">
+	<!-- Header -->
+	<div class="space-y-3 text-center">
+		<h1 class="text-4xl font-bold tracking-tight">Advanced Code Examples</h1>
+		<p class="text-muted-foreground text-xl">
+			Modern programming patterns and best practices across different languages
+		</p>
+		<div class="text-muted-foreground flex items-center justify-center gap-2 text-sm">
+			<span class="bg-primary/10 text-primary rounded-full px-3 py-1">JavaScript</span>
+			<span class="bg-primary/10 text-primary rounded-full px-3 py-1">Python</span>
+			<span class="bg-primary/10 text-primary rounded-full px-3 py-1">TypeScript</span>
+			<span class="bg-primary/10 text-primary rounded-full px-3 py-1">React</span>
+		</div>
+	</div>
 
-  <!-- Examples Grid -->
-  <div class="space-y-10">
-    <!-- JavaScript Example -->
-    <section class="space-y-4">
-      <div class="flex items-center justify-between">
-        <div>
-          <h2 class="text-2xl font-bold">Modern JavaScript</h2>
-          <p class="text-muted-foreground">
-            API Service with caching, async iterators, and error handling
-          </p>
-        </div>
-        <div class="flex items-center gap-2">
-          <span
-            class="px-3 py-1 text-xs font-medium bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-md"
-          >
-            ES2024
-          </span>
-          <span
-            class="px-3 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-md"
-          >
-            Async/Await
-          </span>
-        </div>
-      </div>
-      <Code.Root code={javascriptCode} lang="javascript">
-        <Code.CopyButton />
-      </Code.Root>
-    </section>
+	<!-- Examples Grid -->
+	<div class="space-y-10">
+		<!-- JavaScript Example -->
+		<section class="space-y-4">
+			<div class="flex items-center justify-between">
+				<div>
+					<h2 class="text-2xl font-bold">Modern JavaScript</h2>
+					<p class="text-muted-foreground">
+						API Service with caching, async iterators, and error handling
+					</p>
+				</div>
+				<div class="flex items-center gap-2">
+					<span
+						class="rounded-md bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+					>
+						ES2024
+					</span>
+					<span
+						class="rounded-md bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+					>
+						Async/Await
+					</span>
+				</div>
+			</div>
+			<Code.Root code={javascriptCode} lang="javascript">
+				<Code.CopyButton />
+			</Code.Root>
+		</section>
 
-    <!-- Python Example -->
-    <section class="space-y-4">
-      <div class="flex items-center justify-between">
-        <div>
-          <h2 class="text-2xl font-bold">Advanced Python</h2>
-          <p class="text-muted-foreground">
-            Data analysis pipeline with type hints, generics, and dataclasses
-          </p>
-        </div>
-        <div class="flex items-center gap-2">
-          <span
-            class="px-3 py-1 text-xs font-medium bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-md"
-          >
-            Python 3.12
-          </span>
-          <span
-            class="px-3 py-1 text-xs font-medium bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-md"
-          >
-            Type Hints
-          </span>
-        </div>
-      </div>
-      <Code.Root code={pythonCode} lang="python">
-        <Code.CopyButton />
-      </Code.Root>
-    </section>
+		<!-- Python Example -->
+		<section class="space-y-4">
+			<div class="flex items-center justify-between">
+				<div>
+					<h2 class="text-2xl font-bold">Advanced Python</h2>
+					<p class="text-muted-foreground">
+						Data analysis pipeline with type hints, generics, and dataclasses
+					</p>
+				</div>
+				<div class="flex items-center gap-2">
+					<span
+						class="rounded-md bg-green-100 px-3 py-1 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-200"
+					>
+						Python 3.12
+					</span>
+					<span
+						class="rounded-md bg-purple-100 px-3 py-1 text-xs font-medium text-purple-800 dark:bg-purple-900 dark:text-purple-200"
+					>
+						Type Hints
+					</span>
+				</div>
+			</div>
+			<Code.Root code={pythonCode} lang="python">
+				<Code.CopyButton />
+			</Code.Root>
+		</section>
 
-    <!-- TypeScript Example -->
-    <section class="space-y-4">
-      <div class="flex items-center justify-between">
-        <div>
-          <h2 class="text-2xl font-bold">Enterprise TypeScript</h2>
-          <p class="text-muted-foreground">
-            Generic repository pattern with decorators and advanced type safety
-          </p>
-        </div>
-        <div class="flex items-center gap-2">
-          <span
-            class="px-3 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-md"
-          >
-            TypeScript 5.0
-          </span>
-          <span
-            class="px-3 py-1 text-xs font-medium bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-md"
-          >
-            Generics
-          </span>
-          <span
-            class="px-3 py-1 text-xs font-medium bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-md"
-          >
-            Decorators
-          </span>
-        </div>
-      </div>
-      <Code.Root code={typescriptCode} lang="typescript">
-        <Code.CopyButton />
-      </Code.Root>
-    </section>
+		<!-- TypeScript Example -->
+		<section class="space-y-4">
+			<div class="flex items-center justify-between">
+				<div>
+					<h2 class="text-2xl font-bold">Enterprise TypeScript</h2>
+					<p class="text-muted-foreground">
+						Generic repository pattern with decorators and advanced type safety
+					</p>
+				</div>
+				<div class="flex items-center gap-2">
+					<span
+						class="rounded-md bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+					>
+						TypeScript 5.0
+					</span>
+					<span
+						class="rounded-md bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200"
+					>
+						Generics
+					</span>
+					<span
+						class="rounded-md bg-orange-100 px-3 py-1 text-xs font-medium text-orange-800 dark:bg-orange-900 dark:text-orange-200"
+					>
+						Decorators
+					</span>
+				</div>
+			</div>
+			<Code.Root code={typescriptCode} lang="typescript">
+				<Code.CopyButton />
+			</Code.Root>
+		</section>
 
-    <!-- React Example -->
-    <section class="space-y-4">
-      <div class="flex items-center justify-between">
-        <div>
-          <h2 class="text-2xl font-bold">Modern React</h2>
-          <p class="text-muted-foreground">
-            Advanced hooks, context patterns, and component architecture
-          </p>
-        </div>
-        <div class="flex items-center gap-2">
-          <span
-            class="px-3 py-1 text-xs font-medium bg-cyan-100 dark:bg-cyan-900 text-cyan-800 dark:text-cyan-200 rounded-md"
-          >
-            React 18
-          </span>
-          <span
-            class="px-3 py-1 text-xs font-medium bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 rounded-md"
-          >
-            Hooks
-          </span>
-          <span
-            class="px-3 py-1 text-xs font-medium bg-violet-100 dark:bg-violet-900 text-violet-800 dark:text-violet-200 rounded-md"
-          >
-            Context
-          </span>
-        </div>
-      </div>
-      <Code.Root code={reactCode} lang="tsx">
-        <Code.CopyButton />
-      </Code.Root>
-    </section>
-  </div>
+		<!-- React Example -->
+		<section class="space-y-4">
+			<div class="flex items-center justify-between">
+				<div>
+					<h2 class="text-2xl font-bold">Modern React</h2>
+					<p class="text-muted-foreground">
+						Advanced hooks, context patterns, and component architecture
+					</p>
+				</div>
+				<div class="flex items-center gap-2">
+					<span
+						class="rounded-md bg-cyan-100 px-3 py-1 text-xs font-medium text-cyan-800 dark:bg-cyan-900 dark:text-cyan-200"
+					>
+						React 18
+					</span>
+					<span
+						class="rounded-md bg-pink-100 px-3 py-1 text-xs font-medium text-pink-800 dark:bg-pink-900 dark:text-pink-200"
+					>
+						Hooks
+					</span>
+					<span
+						class="rounded-md bg-violet-100 px-3 py-1 text-xs font-medium text-violet-800 dark:bg-violet-900 dark:text-violet-200"
+					>
+						Context
+					</span>
+				</div>
+			</div>
+			<Code.Root code={reactCode} lang="tsx">
+				<Code.CopyButton />
+			</Code.Root>
+		</section>
+	</div>
 </div>

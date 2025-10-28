@@ -3,20 +3,20 @@
 		Tooltip,
 		TooltipContent,
 		TooltipProvider,
-		TooltipTrigger
-	} from '$lib/components/ui/tooltip/index.js';
-	import type { Snippet } from 'svelte';
-	import type { Tooltip as TooltipPrimitive } from 'bits-ui';
+		TooltipTrigger,
+	} from "$lib/components/ui/tooltip/index.js";
+	import type { Snippet } from "svelte";
+	import type { Tooltip as TooltipPrimitive } from "bits-ui";
 
 	let {
 		tooltip,
-		side = 'top',
+		side = "top",
 		class: className,
 		children,
 		...restProps
 	}: {
 		tooltip: Snippet;
-		side?: 'top' | 'bottom' | 'left' | 'right';
+		side?: "top" | "bottom" | "left" | "right";
 		class?: string;
 		children: Snippet;
 	} & TooltipPrimitive.RootProps = $props();

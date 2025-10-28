@@ -1,10 +1,16 @@
 <script lang="ts">
-	import { getContextValue, ICON_RADIUS, ICON_VIEWBOX, ICON_CENTER, ICON_STROKE_WIDTH } from './context-context.svelte.js';
+	import {
+		getContextValue,
+		ICON_RADIUS,
+		ICON_VIEWBOX,
+		ICON_CENTER,
+		ICON_STROKE_WIDTH,
+	} from "./context-context.svelte.js";
 
 	const context = getContextValue();
 	const { circumference, dashOffset } = $derived({
 		circumference: context.circumference,
-		dashOffset: context.dashOffset
+		dashOffset: context.dashOffset,
 	});
 </script>
 

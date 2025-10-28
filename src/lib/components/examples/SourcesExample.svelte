@@ -3,7 +3,7 @@
 		Source,
 		Sources,
 		SourcesContent,
-		SourcesTrigger
+		SourcesTrigger,
 	} from "$lib/components/ai-elements/sources/index.js";
 
 	let sources = [
@@ -11,8 +11,8 @@
 		{ href: "https://docs.github.com/en/rest", title: "GitHub REST API" },
 		{
 			href: "https://docs.aws.amazon.com/sdk-for-javascript/",
-			title: "AWS SDK for JavaScript"
-		}
+			title: "AWS SDK for JavaScript",
+		},
 	];
 </script>
 

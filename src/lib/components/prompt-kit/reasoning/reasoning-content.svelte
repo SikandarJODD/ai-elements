@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { getReasoningContext } from './reasoning-context.svelte.js';
-	import { cn } from '$lib/utils/utils';
-	import { watch } from 'runed';
-	import type { Snippet } from 'svelte';
-	import type { HTMLAttributes } from 'svelte/elements';
+	import { getReasoningContext } from "./reasoning-context.svelte.js";
+	import { cn } from "$lib/utils/utils";
+	import { watch } from "runed";
+	import type { Snippet } from "svelte";
+	import type { HTMLAttributes } from "svelte/elements";
 
 	interface Props {
 		children: Snippet | string;
@@ -49,31 +49,23 @@
 	);
 
 	// Compute max height reactively
-	let maxHeight = $derived(
-		context.isOpen && contentRef ? `${contentRef.scrollHeight}px` : '0px'
-	);
+	let maxHeight = $derived(context.isOpen && contentRef ? `${contentRef.scrollHeight}px` : "0px");
 </script>
 
 <div
 	bind:this={contentRef}
-	class={cn(
-		'overflow-hidden transition-[max-height] duration-150 ease-out',
-		className
-	)}
+	class={cn("overflow-hidden transition-[max-height] duration-150 ease-out", className)}
 	style:max-height={maxHeight}
 	{...rest}
 >
 	<div
 		bind:this={innerRef}
-		class={cn(
-			'text-muted-foreground prose prose-sm dark:prose-invert',
-			contentClassName
-		)}
+		class={cn("text-muted-foreground prose prose-sm dark:prose-invert", contentClassName)}
 	>
-		{#if markdown && typeof children === 'string'}
+		{#if markdown && typeof children === "string"}
 			<!-- TODO: Add Markdown component if available -->
 			{@html children}
-		{:else if typeof children === 'function'}
+		{:else if typeof children === "function"}
 			{@render children()}
 		{:else}
 			{children}

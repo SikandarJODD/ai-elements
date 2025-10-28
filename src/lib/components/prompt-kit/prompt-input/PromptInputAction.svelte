@@ -1,20 +1,20 @@
 <script lang="ts">
-	import { Tooltip as TooltipPrimitive } from 'bits-ui';
-	import TooltipContent from '$lib/components/ui/tooltip/tooltip-content.svelte';
-	import TooltipTrigger from '$lib/components/ui/tooltip/tooltip-trigger.svelte';
-	import { getPromptInputContext } from './prompt-input-context.svelte.js';
+	import { Tooltip as TooltipPrimitive } from "bits-ui";
+	import TooltipContent from "$lib/components/ui/tooltip/tooltip-content.svelte";
+	import TooltipTrigger from "$lib/components/ui/tooltip/tooltip-trigger.svelte";
+	import { getPromptInputContext } from "./prompt-input-context.svelte.js";
 
 	let {
 		tooltip,
 		children,
 		class: className,
-		side = 'top',
+		side = "top",
 		...restProps
 	}: {
-		tooltip: import('svelte').Snippet;
-		children: import('svelte').Snippet;
+		tooltip: import("svelte").Snippet;
+		children: import("svelte").Snippet;
 		class?: string;
-		side?: 'top' | 'bottom' | 'left' | 'right';
+		side?: "top" | "bottom" | "left" | "right";
 	} & Partial<TooltipPrimitive.RootProps> = $props();
 
 	const context = getPromptInputContext();

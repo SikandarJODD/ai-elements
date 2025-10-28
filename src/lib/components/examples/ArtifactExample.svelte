@@ -1,23 +1,17 @@
 <script lang="ts">
-  import {
-    Artifact,
-    ArtifactAction,
-    ArtifactActions,
-    ArtifactContent,
-    ArtifactDescription,
-    ArtifactHeader,
-    ArtifactTitle,
-  } from "$lib/components/ai-elements/artifact/index.js";
-  import * as Code from "$lib/components/ai-elements/code/index.js";
-  import {
-    CopyIcon,
-    DownloadIcon,
-    PlayIcon,
-    RefreshCwIcon,
-    ShareIcon,
-  } from "@lucide/svelte";
+	import {
+		Artifact,
+		ArtifactAction,
+		ArtifactActions,
+		ArtifactContent,
+		ArtifactDescription,
+		ArtifactHeader,
+		ArtifactTitle,
+	} from "$lib/components/ai-elements/artifact/index.js";
+	import * as Code from "$lib/components/ai-elements/code/index.js";
+	import { CopyIcon, DownloadIcon, PlayIcon, RefreshCwIcon, ShareIcon } from "@lucide/svelte";
 
-  let code = `# Dijkstra's Algorithm implementation
+	let code = `# Dijkstra's Algorithm implementation
 import heapq
 
 def dijkstra(graph, start):
@@ -50,76 +44,71 @@ graph = {
 
 print(dijkstra(graph, 'A'))`;
 
-  let handleRunClick = () => {
-    console.log("Run");
-  };
+	let handleRunClick = () => {
+		console.log("Run");
+	};
 
-  let handleCopyClick = () => {
-    console.log("Copy");
-  };
+	let handleCopyClick = () => {
+		console.log("Copy");
+	};
 
-  let handleRegenerateClick = () => {
-    console.log("Regenerate");
-  };
+	let handleRegenerateClick = () => {
+		console.log("Regenerate");
+	};
 
-  let handleDownloadClick = () => {
-    console.log("Download");
-  };
+	let handleDownloadClick = () => {
+		console.log("Download");
+	};
 
-  let handleShareClick = () => {
-    console.log("Share");
-  };
+	let handleShareClick = () => {
+		console.log("Share");
+	};
 </script>
 
 <Artifact>
-  <ArtifactHeader>
-    <div>
-      <ArtifactTitle>Dijkstra's Algorithm Implementation</ArtifactTitle>
-      <ArtifactDescription>Updated 1 minute ago</ArtifactDescription>
-    </div>
-    <div class="flex items-center gap-2">
-      <ArtifactActions>
-        <ArtifactAction
-          icon={PlayIcon}
-          label="Run"
-          onclick={handleRunClick}
-          tooltip="Run code"
-        />
-        <ArtifactAction
-          icon={CopyIcon}
-          label="Copy"
-          onclick={handleCopyClick}
-          tooltip="Copy to clipboard"
-        />
-        <ArtifactAction
-          icon={RefreshCwIcon}
-          label="Regenerate"
-          onclick={handleRegenerateClick}
-          tooltip="Regenerate content"
-        />
-        <ArtifactAction
-          icon={DownloadIcon}
-          label="Download"
-          onclick={handleDownloadClick}
-          tooltip="Download file"
-        />
-        <ArtifactAction
-          icon={ShareIcon}
-          label="Share"
-          onclick={handleShareClick}
-          tooltip="Share artifact"
-        />
-      </ArtifactActions>
-    </div>
-  </ArtifactHeader>
-  <ArtifactContent class="p-0">
-    <Code.Root
-      class="border-none"
-      {code}
-      lang="python"
-      hideLines={false}
-    >
-      <Code.CopyButton  />
-    </Code.Root>
-  </ArtifactContent>
+	<ArtifactHeader>
+		<div>
+			<ArtifactTitle>Dijkstra's Algorithm Implementation</ArtifactTitle>
+			<ArtifactDescription>Updated 1 minute ago</ArtifactDescription>
+		</div>
+		<div class="flex items-center gap-2">
+			<ArtifactActions>
+				<ArtifactAction
+					icon={PlayIcon}
+					label="Run"
+					onclick={handleRunClick}
+					tooltip="Run code"
+				/>
+				<ArtifactAction
+					icon={CopyIcon}
+					label="Copy"
+					onclick={handleCopyClick}
+					tooltip="Copy to clipboard"
+				/>
+				<ArtifactAction
+					icon={RefreshCwIcon}
+					label="Regenerate"
+					onclick={handleRegenerateClick}
+					tooltip="Regenerate content"
+				/>
+				<ArtifactAction
+					icon={DownloadIcon}
+					label="Download"
+					onclick={handleDownloadClick}
+					tooltip="Download file"
+				/>
+				<ArtifactAction
+					icon={ShareIcon}
+					label="Share"
+					onclick={handleShareClick}
+					tooltip="Share artifact"
+				/>
+			</ArtifactActions>
+		</div>
+	</ArtifactHeader>
+	<ArtifactContent class="p-0">
+		<Code.Root class="border-none" {code} lang="python" hideLines={false}>
+			<Code.CopyButton />
+		</Code.Root>
+	</ArtifactContent>
 </Artifact>

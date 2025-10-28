@@ -2,18 +2,18 @@
 	import {
 		FileUpload,
 		FileUploadContent,
-		FileUploadTrigger
-	} from '$lib/components/prompt-kit/file-upload';
+		FileUploadTrigger,
+	} from "$lib/components/prompt-kit/file-upload";
 	import {
 		PromptInput,
 		PromptInputAction,
 		PromptInputActions,
-		PromptInputTextarea
-	} from '$lib/components/prompt-kit/prompt-input';
-	import { Button } from '$lib/components/ui/button';
-	import { ArrowUp, Paperclip, Square, X } from '@lucide/svelte';
+		PromptInputTextarea,
+	} from "$lib/components/prompt-kit/prompt-input";
+	import { Button } from "$lib/components/ui/button";
+	import { ArrowUp, Paperclip, Square, X } from "@lucide/svelte";
 
-	let input = $state('');
+	let input = $state("");
 	let isLoading = $state(false);
 	let files = $state<File[]>([]);
 
@@ -26,7 +26,7 @@
 			isLoading = true;
 			setTimeout(() => {
 				isLoading = false;
-				input = '';
+				input = "";
 				files = [];
 			}, 2000);
 		}
@@ -93,9 +93,14 @@
 
 			<PromptInputAction>
 				{#snippet tooltip()}
-					{isLoading ? 'Stop generation' : 'Send message'}
+					{isLoading ? "Stop generation" : "Send message"}
 				{/snippet}
-				<Button variant="default" size="icon" class="h-8 w-8 rounded-full" onclick={handleSubmit}>
+				<Button
+					variant="default"
+					size="icon"
+					class="h-8 w-8 rounded-full"
+					onclick={handleSubmit}
+				>
 					{#if isLoading}
 						<Square class="size-5 fill-current" />
 					{:else}

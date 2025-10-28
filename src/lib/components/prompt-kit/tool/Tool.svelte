@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils';
-	import { ToolClass, setToolContext, type ToolSchema } from './tool-context.svelte.js';
-	import type { Snippet } from 'svelte';
-	import type { HTMLAttributes } from 'svelte/elements';
+	import { cn } from "$lib/utils/utils";
+	import { ToolClass, setToolContext, type ToolSchema } from "./tool-context.svelte.js";
+	import type { Snippet } from "svelte";
+	import type { HTMLAttributes } from "svelte/elements";
 
 	let {
 		class: className,
@@ -17,6 +17,6 @@
 	setToolContext(contextInstance);
 </script>
 
-<div class={cn('border-border mt-3 overflow-hidden rounded-lg border', className)}>
+<div class={cn("border-border mt-3 overflow-hidden rounded-lg border", className)}>
 	{@render children()}
 </div>

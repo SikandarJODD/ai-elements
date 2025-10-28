@@ -43,16 +43,16 @@ export { default as MicIcon } from "./MicIcon.svelte";
 
 // Context and types
 export {
-  AttachmentsContext,
-  getAttachmentsContext,
-  setAttachmentsContext,
-  PromptInputController,
-  TextInputController,
-  getPromptInputProvider,
-  getPromptInputController,
-  setPromptInputProvider,
-  type FileUIPart,
-  type FileWithId,
-  type PromptInputMessage,
-  type ChatStatus,
+	AttachmentsContext,
+	getAttachmentsContext,
+	setAttachmentsContext,
+	PromptInputController,
+	TextInputController,
+	getPromptInputProvider,
+	getPromptInputController,
+	setPromptInputProvider,
+	type FileUIPart,
+	type FileWithId,
+	type PromptInputMessage,
+	type ChatStatus,
 } from "./attachments-context.svelte.js";

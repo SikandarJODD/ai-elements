@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils';
-	import { getBranchContext } from './branch-context.js';
-	import type { Snippet } from 'svelte';
+	import { cn } from "$lib/utils/utils";
+	import { getBranchContext } from "./branch-context.js";
+	import type { Snippet } from "svelte";
 
 	interface Props {
-		from: 'user' | 'assistant' | 'system' | 'function' | 'data' | 'tool';
+		from: "user" | "assistant" | "system" | "function" | "data" | "tool";
 		class?: string;
 		children: Snippet;
 		[key: string]: any;
@@ -21,8 +21,8 @@
 {#if shouldRender}
 	<div
 		class={cn(
-			'flex items-center gap-2 self-end px-10',
-			from === 'assistant' ? 'justify-start' : 'justify-end',
+			"flex items-center gap-2 self-end px-10",
+			from === "assistant" ? "justify-start" : "justify-end",
 			className
 		)}
 		{...restProps}

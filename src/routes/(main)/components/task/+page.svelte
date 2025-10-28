@@ -1,63 +1,67 @@
 <script lang="ts">
-  import { MetaTags } from "svelte-meta-tags";
-  import { Subheading, CodeNameBlock } from "$lib/components/docs";
-  import Installation from "$lib/components/docs/installation.svelte";
-  import Playground from "$lib/components/docs/playground.svelte";
-  import Code from "$lib/components/docs/code.svelte";
-  import { examples } from "./examples/examples";
-  import { seo } from "./examples/seo";
-  import Heading from "$lib/components/docs/heading.svelte";
-  import CodeSpan from "$lib/components/docs/code-span.svelte";
-  import { PUBLIC_WEBSITE_URL } from "$env/static/public";
+	import { MetaTags } from "svelte-meta-tags";
+	import { Subheading, CodeNameBlock } from "$lib/components/docs";
+	import Installation from "$lib/components/docs/installation.svelte";
+	import Playground from "$lib/components/docs/playground.svelte";
+	import Code from "$lib/components/docs/code.svelte";
+	import { examples } from "./examples/examples";
+	import { seo } from "./examples/seo";
+	import Heading from "$lib/components/docs/heading.svelte";
+	import CodeSpan from "$lib/components/docs/code-span.svelte";
+	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
-  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 
-  import * as Toc from "$lib/components/docs/toc";
-  import { UseToc } from "$lib/hooks/use-toc.svelte";
-  let toc = new UseToc();
+	import * as Toc from "$lib/components/docs/toc";
+	import { UseToc } from "$lib/hooks/use-toc.svelte";
+	let toc = new UseToc();
 </script>
 
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
 <Sidebar.Inset class="min-h-svh">
-  <div
-    class="grid grid-cols-1 md:grid-cols-[1fr_280px] lg:grid-cols-[1fr_240px] gap-8 min-h-svh md:px-6 md:pb-6"
-  >
-    <!-- Main Content Area -->
-    <main class="min-w-0" bind:this={toc.ref}>
-      <Subheading class="md:text-3xl">Task</Subheading>
+	<div
+		class="grid min-h-svh grid-cols-1 gap-8 md:grid-cols-[1fr_280px] md:px-6 md:pb-6 lg:grid-cols-[1fr_240px]"
+	>
+		<!-- Main Content Area -->
+		<main class="min-w-0" bind:this={toc.ref}>
+			<Subheading class="md:text-3xl">Task</Subheading>
 
-      <p class="my-2 !text-muted-foreground text-lg">
-        The <CodeSpan>Task</CodeSpan> component provides a structured way to display
-        task lists or workflow progress with collapsible details, status indicators,
-        and progress tracking. It consists of a main Task container with TaskTrigger
-        for the clickable header and TaskContent for the collapsible content area.
-      </p>
+			<p class="!text-muted-foreground my-2 text-lg">
+				The <CodeSpan>Task</CodeSpan> component provides a structured way to display task lists
+				or workflow progress with collapsible details, status indicators, and progress tracking.
+				It consists of a main Task container with TaskTrigger for the clickable header and TaskContent
+				for the collapsible content area.
+			</p>
 
-      <Playground code={examples.basic.code}>
-        <div class="min-w-lg">
-          <examples.basic.Component />
-        </div>
-      </Playground>
+			<Playground code={examples.basic.code}>
+				<div class="min-w-lg">
+					<examples.basic.Component />
+				</div>
+			</Playground>
 
-      <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
-      <Installation specifier={`${PUBLIC_WEBSITE_URL}/r/task.json`} is_jsrepo={true} blockname="task" />
+			<!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
+			<Installation
+				specifier={`${PUBLIC_WEBSITE_URL}/r/task.json`}
+				is_jsrepo={true}
+				blockname="task"
+			/>
 
-      <!-- Usage -->
-      <Subheading>Usage</Subheading>
+			<!-- Usage -->
+			<Subheading>Usage</Subheading>
 
-      <div>
-        <Code
-          lang="svelte"
-          code={`\<script lang="ts"\>
+			<div>
+				<Code
+					lang="svelte"
+					code={`\<script lang="ts"\>
 	import {
 		Task,
 		TaskContent,
 		TaskItem,
 		TaskItemFile,
 		TaskTrigger
-	} from '$lib/components/ai-elements/task';
+	} from '$lib/components/ai-elements/task/index.js';
 \<\/script\>
 
 <Task class="w-full">
@@ -68,25 +72,27 @@
     </TaskItem>
   </TaskContent>
 </Task>`}
-        />
-      </div>
+				/>
+			</div>
 
-      <!-- Usage with AI SDK -->
-      <Subheading>Usage with AI SDK</Subheading>
+			<!-- Usage with AI SDK -->
+			<Subheading>Usage with AI SDK</Subheading>
 
-      <p class="mb-4 text-sm sm:text-base leading-relaxed">
-        Build a mock async programming agent using <CodeSpan>experimental_useObject</CodeSpan>.
-      </p>
+			<p class="mb-4 text-sm leading-relaxed sm:text-base">
+				Build a mock async programming agent using <CodeSpan
+					>experimental_useObject</CodeSpan
+				>.
+			</p>
 
-      <p class="mb-4 text-sm sm:text-base leading-relaxed">
-        Add the following component to your frontend:
-      </p>
+			<p class="mb-4 text-sm leading-relaxed sm:text-base">
+				Add the following component to your frontend:
+			</p>
 
-      <div class="mb-6">
-        <CodeNameBlock
-          filename="+page.svelte"
-          lang="svelte"
-          code={`\<script lang="ts"\>
+			<div class="mb-6">
+				<CodeNameBlock
+					filename="+page.svelte"
+					lang="svelte"
+					code={`\<script lang="ts"\>
   import { experimental_useObject as useObject } from "@ai-sdk/svelte";
   import {
     Task,
@@ -94,8 +100,8 @@
     TaskItemFile,
     TaskTrigger,
     TaskContent,
-  } from "$lib/components/ai-elements/task";
-  import { Button } from "$lib/components/ui/button";
+  } from "$lib/components/ai-elements/task/index.js";
+  import { Button } from "$lib/components/ui/button/index.js";
   import { tasksSchema } from "$lib/schemas/tasks-schema";
   import {
     SiReact,
@@ -208,18 +214,18 @@
     </div>
   </div>
 </div>`}
-        />
-      </div>
+				/>
+			</div>
 
-      <p class="mb-4 text-sm sm:text-base leading-relaxed">
-        Add the following route to your backend:
-      </p>
+			<p class="mb-4 text-sm leading-relaxed sm:text-base">
+				Add the following route to your backend:
+			</p>
 
-      <div class="mb-6">
-        <CodeNameBlock
-          filename="api/chat/+server.ts"
-          lang="typescript"
-          code={`import { streamObject } from "ai";
+			<div class="mb-6">
+				<CodeNameBlock
+					filename="api/chat/+server.ts"
+					lang="typescript"
+					code={`import { streamObject } from "ai";
 import { z } from "zod";
 import type { RequestHandler } from "./$types";
 
@@ -272,39 +278,37 @@ export const POST: RequestHandler = async ({ request }) => {
 
   return result.toTextStreamResponse();
 };`}
-        />
-      </div>
+				/>
+			</div>
 
-      <!-- Features -->
-      <Subheading>Features</Subheading>
+			<!-- Features -->
+			<Subheading>Features</Subheading>
 
-      <ul class="list-disc list-inside space-y-2 mb-6 text-sm sm:text-base">
-        <li>Visual icons for pending, in-progress, completed, and error states</li>
-        <li>Expandable content for task descriptions and additional information</li>
-        <li>Built-in progress counter showing completed vs total tasks</li>
-        <li>Optional progressive reveal of tasks with customizable timing</li>
-        <li>Support for custom content within task items</li>
-        <li>Full type safety with proper TypeScript definitions</li>
-        <li>Keyboard navigation and screen reader support</li>
-      </ul>
+			<ul class="mb-6 list-inside list-disc space-y-2 text-sm sm:text-base">
+				<li>Visual icons for pending, in-progress, completed, and error states</li>
+				<li>Expandable content for task descriptions and additional information</li>
+				<li>Built-in progress counter showing completed vs total tasks</li>
+				<li>Optional progressive reveal of tasks with customizable timing</li>
+				<li>Support for custom content within task items</li>
+				<li>Full type safety with proper TypeScript definitions</li>
+				<li>Keyboard navigation and screen reader support</li>
+			</ul>
 
-      <!-- Examples  -->
-      <!-- <Subheading>Examples</Subheading>
+			<!-- Examples  -->
+			<!-- <Subheading>Examples</Subheading>
 
       <Playground code={examples.messageAction.code}>
         <examples.messageAction.Component />
       </Playground> -->
-    </main>
+		</main>
 
-    <!-- TOC Sidebar - Sticky on larger screens -->
-    <aside
-      class="hidden md:flex sticky top-24 h-fit max-h-[calc(100vh-3rem)] overflow-y-auto"
-    >
-      <!-- TOC Component -->
-      <div>
-        <h3 class="text-sm">On this page</h3>
-        <Toc.Root toc={toc.current} />
-      </div>
-    </aside>
-  </div>
+		<!-- TOC Sidebar - Sticky on larger screens -->
+		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">
+			<!-- TOC Component -->
+			<div>
+				<h3 class="text-sm">On this page</h3>
+				<Toc.Root toc={toc.current} />
+			</div>
+		</aside>
+	</div>
 </Sidebar.Inset>

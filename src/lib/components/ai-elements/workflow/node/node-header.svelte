@@ -5,17 +5,12 @@
 
 	type Props = WithElementRef<HTMLAttributes<HTMLDivElement>>;
 
-	let {
-		ref = $bindable(null),
-		class: className,
-		children,
-		...restProps
-	}: Props = $props();
+	let { ref = $bindable(null), class: className, children, ...restProps }: Props = $props();
 </script>
 
 <CardHeader
 	bind:ref
-	class={cn("gap-0.5 rounded-t-md border-b bg-secondary p-3!", className)}
+	class={cn("bg-secondary gap-0.5 rounded-t-md border-b p-3!", className)}
 	{...restProps}
 >
 	{@render children?.()}

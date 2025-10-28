@@ -3,14 +3,14 @@ import { SvelteMap } from "svelte/reactivity";
 export type HeadingKind = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 export type Heading = {
-  index: number;
-  ref: Element;
-  kind: HeadingKind;
-  id?: string;
-  level: number;
-  label: string;
-  active: boolean;
-  children: Heading[];
+	index: number;
+	ref: Element;
+	kind: HeadingKind;
+	id?: string;
+	level: number;
+	label: string;
+	active: boolean;
+	children: Heading[];
 };
 
 export const INDEX_ATTRIBUTE = "data-toc-index";
@@ -30,109 +30,108 @@ export const INDEX_ATTRIBUTE = "data-toc-index";
  * ```
  */
 export class UseToc {
-  #ref = $state<HTMLElement>();
-  #toc = $state<Heading[]>([]);
+	#ref = $state<HTMLElement>();
+	#toc = $state<Heading[]>([]);
 
-  // This sets everything up once #ref is bound
-  set ref(ref: HTMLElement | undefined) {
-    this.#ref = ref;
+	// This sets everything up once #ref is bound
+	set ref(ref: HTMLElement | undefined) {
+		this.#ref = ref;
 
-    if (!this.#ref) return;
+		if (!this.#ref) return;
 
-    this.#toc = getToc(this.#ref);
+		this.#toc = getToc(this.#ref);
 
-    // should detect if a heading is added / removed / updated
-    const mutationObserver = new MutationObserver(() => {
-      if (!this.#ref) return;
+		// should detect if a heading is added / removed / updated
+		const mutationObserver = new MutationObserver(() => {
+			if (!this.#ref) return;
 
-      this.#toc = getToc(this.#ref);
-    });
+			this.#toc = getToc(this.#ref);
+		});
 
-    mutationObserver.observe(this.#ref, { childList: true, subtree: true });
+		mutationObserver.observe(this.#ref, { childList: true, subtree: true });
 
-    const resetActiveHeading = (headings: Heading[]) => {
-      for (let i = 0; i < headings.length; i++) {
-        headings[i].active = false;
+		const resetActiveHeading = (headings: Heading[]) => {
+			for (let i = 0; i < headings.length; i++) {
+				headings[i].active = false;
 
-        resetActiveHeading(headings[i].children);
-      }
-    };
+				resetActiveHeading(headings[i].children);
+			}
+		};
 
-    const setHeadingActive = (headings: Heading[], index: number) => {
-      for (let i = 0; i < headings.length; i++) {
-        if (index === headings[i].index) {
-          headings[i].active = true;
-          break;
-        }
+		const setHeadingActive = (headings: Heading[], index: number) => {
+			for (let i = 0; i < headings.length; i++) {
+				if (index === headings[i].index) {
+					headings[i].active = true;
+					break;
+				}
 
-        setHeadingActive(headings[i].children, index);
-      }
-    };
+				setHeadingActive(headings[i].children, index);
+			}
+		};
 
-    // reactive to the table of contents
-    $effect(() => {
-      const sectionVisibility = new SvelteMap<Element, number>();
+		// reactive to the table of contents
+		$effect(() => {
+			const sectionVisibility = new SvelteMap<Element, number>();
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) =>
-          sectionVisibility.set(entry.target, entry.intersectionRatio)
-        );
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) =>
+					sectionVisibility.set(entry.target, entry.intersectionRatio)
+				);
 
-        // headings that are (partly) visible
-        const visible = [...sectionVisibility.entries()]
-          .filter(([, ratio]) => ratio > 0)
-          // sort by distance from viewport top
-          .sort(
-            ([a], [b]) =>
-              a.getBoundingClientRect().top - b.getBoundingClientRect().top
-          );
+				// headings that are (partly) visible
+				const visible = [...sectionVisibility.entries()]
+					.filter(([, ratio]) => ratio > 0)
+					// sort by distance from viewport top
+					.sort(
+						([a], [b]) => a.getBoundingClientRect().top - b.getBoundingClientRect().top
+					);
 
-        if (visible.length === 0) return;
+				if (visible.length === 0) return;
 
-        // the heading nearest to the top wins
-        const activeEl = visible[0][0];
-        const idx = +activeEl.getAttribute(INDEX_ATTRIBUTE)!;
+				// the heading nearest to the top wins
+				const activeEl = visible[0][0];
+				const idx = +activeEl.getAttribute(INDEX_ATTRIBUTE)!;
 
-        resetActiveHeading(this.#toc);
-        setHeadingActive(this.#toc, idx);
-      });
+				resetActiveHeading(this.#toc);
+				setHeadingActive(this.#toc, idx);
+			});
 
-      const observe = (heading: Heading) => {
-        observer.observe(heading.ref);
-        heading.children.forEach(observe);
-      };
+			const observe = (heading: Heading) => {
+				observer.observe(heading.ref);
+				heading.children.forEach(observe);
+			};
 
-      this.#toc.forEach(observe);
+			this.#toc.forEach(observe);
 
-      return () => observer.disconnect();
-    });
-  }
+			return () => observer.disconnect();
+		});
+	}
 
-  get ref() {
-    return this.#ref;
-  }
+	get ref() {
+		return this.#ref;
+	}
 
-  /** The generated table of contents */
-  get current() {
-    return this.#toc;
-  }
+	/** The generated table of contents */
+	get current() {
+		return this.#toc;
+	}
 }
 
 const createHeading = (element: HTMLHeadingElement, index: number): Heading => {
-  const kind = element.tagName.toLowerCase() as HeadingKind;
+	const kind = element.tagName.toLowerCase() as HeadingKind;
 
-  element.setAttribute(INDEX_ATTRIBUTE, index.toString());
+	element.setAttribute(INDEX_ATTRIBUTE, index.toString());
 
-  return {
-    index,
-    ref: element,
-    kind,
-    id: element.id,
-    level: parseInt(kind[1]),
-    label: element.innerText ?? "",
-    active: false,
-    children: [],
-  };
+	return {
+		index,
+		ref: element,
+		kind,
+		id: element.id,
+		level: parseInt(kind[1]),
+		label: element.innerText ?? "",
+		active: false,
+		children: [],
+	};
 };
 
 /** Gets all of the headings contained in the provided element and create a table of contents.
@@ -141,69 +140,63 @@ const createHeading = (element: HTMLHeadingElement, index: number): Heading => {
  * @returns
  */
 const getToc = (el: HTMLElement): Heading[] => {
-  const allHeadings = Array.from(
-    el.querySelectorAll("h1, h2, h3, h4, h5, h6")
-  );
+	const allHeadings = Array.from(el.querySelectorAll("h1, h2, h3, h4, h5, h6"));
 
-  // Filter out headings that should be excluded from TOC
-  const filteredHeadings = allHeadings.filter((heading) => {
-    // Check if the heading itself has data-toc-index="false"
-    if (heading.getAttribute('data-toc-index') === 'false') {
-      return false;
-    }
+	// Filter out headings that should be excluded from TOC
+	const filteredHeadings = allHeadings.filter((heading) => {
+		// Check if the heading itself has data-toc-index="false"
+		if (heading.getAttribute("data-toc-index") === "false") {
+			return false;
+		}
 
-    // Check if any parent element has data-toc-index="false"
-    let parent = heading.parentElement;
-    while (parent && parent !== el) {
-      if (parent.getAttribute('data-toc-index') === 'false') {
-        return false;
-      }
-      parent = parent.parentElement;
-    }
+		// Check if any parent element has data-toc-index="false"
+		let parent = heading.parentElement;
+		while (parent && parent !== el) {
+			if (parent.getAttribute("data-toc-index") === "false") {
+				return false;
+			}
+			parent = parent.parentElement;
+		}
 
-    return true;
-  });
+		return true;
+	});
 
-  const headings = filteredHeadings.map((h, i) => createHeading(h as HTMLHeadingElement, i));
+	const headings = filteredHeadings.map((h, i) => createHeading(h as HTMLHeadingElement, i));
 
-  if (headings.length === 0) return [];
+	if (headings.length === 0) return [];
 
-  const toc: Heading[] = [];
+	const toc: Heading[] = [];
 
-  let i = 0;
+	let i = 0;
 
-  while (i < headings.length) {
-    const heading = headings[i];
+	while (i < headings.length) {
+		const heading = headings[i];
 
-    const nextIndex = addChildren(headings, heading, i + 1);
+		const nextIndex = addChildren(headings, heading, i + 1);
 
-    toc.push(heading);
+		toc.push(heading);
 
-    i = nextIndex;
-  }
+		i = nextIndex;
+	}
 
-  return toc;
+	return toc;
 };
 
-const addChildren = (
-  headings: Heading[],
-  base: Heading,
-  index: number
-): number => {
-  let i = index;
+const addChildren = (headings: Heading[], base: Heading, index: number): number => {
+	let i = index;
 
-  while (i < headings.length) {
-    const sub = headings[i];
+	while (i < headings.length) {
+		const sub = headings[i];
 
-    // example: h1 < h2 or h1 = h1
-    if (sub.level <= base.level) break;
+		// example: h1 < h2 or h1 = h1
+		if (sub.level <= base.level) break;
 
-    const nextIndex = addChildren(headings, sub, i + 1);
+		const nextIndex = addChildren(headings, sub, i + 1);
 
-    base.children.push(sub);
+		base.children.push(sub);
 
-    i = nextIndex;
-  }
+		i = nextIndex;
+	}
 
-  return i;
+	return i;
 };

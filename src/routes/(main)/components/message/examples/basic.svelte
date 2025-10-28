@@ -1,5 +1,9 @@
 <script lang="ts">
-	import { Message, MessageAvatar, MessageContent } from "$lib/components/ai-elements/message/index.js";
+	import {
+		Message,
+		MessageAvatar,
+		MessageContent,
+	} from "$lib/components/ai-elements/message/index.js";
 
 	type MessageData = {
 		key: string;
@@ -34,7 +38,8 @@
 		{
 			key: crypto.randomUUID(),
 			from: "assistant",
-			content: "Absolutely! Svelte 5 introduces runes like $state, $derived, and $props which provide a more powerful and flexible reactivity system. Would you like me to explain any specific rune?",
+			content:
+				"Absolutely! Svelte 5 introduces runes like $state, $derived, and $props which provide a more powerful and flexible reactivity system. Would you like me to explain any specific rune?",
 			avatar: "https://github.com/copilot.png",
 			name: "Assistant",
 		},

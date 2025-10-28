@@ -1,10 +1,5 @@
 <script lang="ts">
-	import {
-		Steps,
-		StepsContent,
-		StepsItem,
-		StepsTrigger
-	} from '$lib/components/prompt-kit/steps';
+	import { Steps, StepsContent, StepsItem, StepsTrigger } from "$lib/components/prompt-kit/steps";
 </script>
 
 <div class="space-y-4">

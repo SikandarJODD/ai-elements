@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { ChevronDown } from '@lucide/svelte';
-	import { getReasoningContext } from './reasoning-context.svelte.js';
-	import { cn } from '$lib/utils/utils';
-	import type { Snippet } from 'svelte';
-	import type { HTMLButtonAttributes } from 'svelte/elements';
+	import { ChevronDown } from "@lucide/svelte";
+	import { getReasoningContext } from "./reasoning-context.svelte.js";
+	import { cn } from "$lib/utils/utils";
+	import type { Snippet } from "svelte";
+	import type { HTMLButtonAttributes } from "svelte/elements";
 
 	interface Props extends HTMLButtonAttributes {
 		children: Snippet;
@@ -20,16 +20,14 @@
 </script>
 
 <button
-	class={cn('flex cursor-pointer items-center gap-2', className)}
+	class={cn("flex cursor-pointer items-center gap-2", className)}
 	onclick={handleClick}
 	{...rest}
 >
 	<span class="text-primary">
 		{@render children()}
 	</span>
-	<div
-		class={cn('transform transition-transform', context.isOpen ? 'rotate-180' : '')}
-	>
+	<div class={cn("transform transition-transform", context.isOpen ? "rotate-180" : "")}>
 		<ChevronDown class="size-4" />
 	</div>
 </button>

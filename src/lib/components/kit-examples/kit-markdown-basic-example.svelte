@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Markdown } from '$lib/components/prompt-kit/markdown';
+	import { Markdown } from "$lib/components/prompt-kit/markdown";
 
 	const markdownContent = `# Markdown Example
 

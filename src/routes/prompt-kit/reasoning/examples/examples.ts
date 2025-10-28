@@ -5,14 +5,14 @@ import KitReasoningMarkdownExample from "$lib/components/kit-examples/kit-reason
 import kitReasoningMarkdownExampleRaw from "$lib/components/kit-examples/kit-reasoning-markdown-example.svelte?raw";
 
 const examples = {
-  basic: {
-    code: kitReasoningBasicExampleRaw,
-    Component: KitReasoningBasicExample,
-  },
-  markdown: {
-    code: kitReasoningMarkdownExampleRaw,
-    Component: KitReasoningMarkdownExample,
-  },
+	basic: {
+		code: kitReasoningBasicExampleRaw,
+		Component: KitReasoningBasicExample,
+	},
+	markdown: {
+		code: kitReasoningMarkdownExampleRaw,
+		Component: KitReasoningMarkdownExample,
+	},
 };
 
 export { examples };

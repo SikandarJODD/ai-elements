@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils';
-	import { setBranchContext, type BranchContextType } from './branch-context.js';
-	import type { Snippet } from 'svelte';
+	import { cn } from "$lib/utils/utils";
+	import { setBranchContext, type BranchContextType } from "./branch-context.js";
+	import type { Snippet } from "svelte";
 
 	interface Props {
 		defaultBranch?: number;
@@ -53,12 +53,12 @@
 		get branches() {
 			return branches;
 		},
-		setBranches
+		setBranches,
 	};
 
 	setBranchContext(contextValue);
 </script>
 
-<div class={cn('grid w-full gap-2 [&>div]:pb-0', className)} {...restProps}>
+<div class={cn("grid w-full gap-2 [&>div]:pb-0", className)} {...restProps}>
 	{@render children()}
 </div>

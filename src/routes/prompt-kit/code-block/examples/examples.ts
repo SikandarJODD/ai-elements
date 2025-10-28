@@ -14,26 +14,26 @@ import KitCodeBlockThemeExample from "$lib/components/kit-examples/kit-code-bloc
 import kitCodeBlockThemeExampleRaw from "$lib/components/kit-examples/kit-code-block-theme-example.svelte?raw";
 
 const examples = {
-  basic: {
-    code: kitCodeBlockBasicExampleRaw,
-    Component: KitCodeBlockBasicExample,
-  },
-  withHeader: {
-    code: kitCodeBlockWithHeaderExampleRaw,
-    Component: KitCodeBlockWithHeaderExample,
-  },
-  python: {
-    code: kitCodeBlockPythonExampleRaw,
-    Component: KitCodeBlockPythonExample,
-  },
-  css: {
-    code: kitCodeBlockCssExampleRaw,
-    Component: KitCodeBlockCssExample,
-  },
-  theme: {
-    code: kitCodeBlockThemeExampleRaw,
-    Component: KitCodeBlockThemeExample,
-  },
+	basic: {
+		code: kitCodeBlockBasicExampleRaw,
+		Component: KitCodeBlockBasicExample,
+	},
+	withHeader: {
+		code: kitCodeBlockWithHeaderExampleRaw,
+		Component: KitCodeBlockWithHeaderExample,
+	},
+	python: {
+		code: kitCodeBlockPythonExampleRaw,
+		Component: KitCodeBlockPythonExample,
+	},
+	css: {
+		code: kitCodeBlockCssExampleRaw,
+		Component: KitCodeBlockCssExample,
+	},
+	theme: {
+		code: kitCodeBlockThemeExampleRaw,
+		Component: KitCodeBlockThemeExample,
+	},
 };
 
 export { examples };

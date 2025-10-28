@@ -1,12 +1,9 @@
 <script lang="ts">
-  import {
-    CodeBlock,
-    CodeBlockCode,
-  } from "$lib/components/prompt-kit/code-block";
-  import { mode } from "mode-watcher";
-  import type { bundledThemes } from "shiki";
+	import { CodeBlock, CodeBlockCode } from "$lib/components/prompt-kit/code-block";
+	import { mode } from "mode-watcher";
+	import type { bundledThemes } from "shiki";
 
-  const code = `<script lang="ts">
+	const code = `<script lang="ts">
   import { writable } from 'svelte/store';
 
   const todos = writable([
@@ -50,14 +47,14 @@
   }
 <\/style>`;
 
-  // Derive the theme reactively
-  let currentTheme: keyof typeof bundledThemes = $derived.by(() => {
-    return mode.current === "dark" ? "github-dark" : "github-light";
-  });
+	// Derive the theme reactively
+	let currentTheme: keyof typeof bundledThemes = $derived.by(() => {
+		return mode.current === "dark" ? "github-dark" : "github-light";
+	});
 </script>
 
 <div class="w-full max-w-4xl">
-  <CodeBlock>
-    <CodeBlockCode {code} language="svelte" theme={currentTheme} />
-  </CodeBlock>
+	<CodeBlock>
+		<CodeBlockCode {code} language="svelte" theme={currentTheme} />
+	</CodeBlock>
 </div>

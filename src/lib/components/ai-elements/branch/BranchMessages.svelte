@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/utils';
-	import { getBranchContext } from './branch-context.js';
-	import type { Snippet } from 'svelte';
+	import { cn } from "$lib/utils/utils";
+	import { getBranchContext } from "./branch-context.js";
+	import type { Snippet } from "svelte";
 
 	interface Props {
 		children: Snippet[];
@@ -24,8 +24,8 @@
 {#each children as branch, index (globalThis.crypto.randomUUID())}
 	<div
 		class={cn(
-			'grid gap-2 overflow-hidden [&>div]:pb-0',
-			index === currentBranch ? 'block' : 'hidden'
+			"grid gap-2 overflow-hidden [&>div]:pb-0",
+			index === currentBranch ? "block" : "hidden"
 		)}
 		{...restProps}
 	>

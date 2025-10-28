@@ -5,12 +5,7 @@
 
 	type Props = WithElementRef<HTMLAttributes<HTMLParagraphElement>>;
 
-	let {
-		ref = $bindable(null),
-		class: className,
-		children,
-		...restProps
-	}: Props = $props();
+	let { ref = $bindable(null), class: className, children, ...restProps }: Props = $props();
 </script>
 
 <CardDescription bind:ref class={className} {...restProps}>

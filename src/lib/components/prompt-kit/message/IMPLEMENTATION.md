@@ -95,24 +95,25 @@ import {
   MessageAvatar,
   MessageContent,
   MessageActions,
-  MessageAction
-} from '$lib/components/prompt-kit/message';
+  MessageAction,
+} from "$lib/components/prompt-kit/message";
 ```
 
 ## Differences from Original React Code
 
-| Feature | React | Svelte |
-|---------|-------|--------|
-| Children | `React.ReactNode` | `Snippet` |
-| Props | `React.HTMLProps<HTMLDivElement>` | `HTMLAttributes<HTMLDivElement>` |
-| Tooltip | `asChild` prop | Direct wrapping |
-| Avatar fallback delay | `delayMs` prop | Not supported |
-| Markdown | `Markdown` component | Placeholder (to be implemented) |
-| Context | Not used | Class-based context pattern |
+| Feature               | React                             | Svelte                           |
+| --------------------- | --------------------------------- | -------------------------------- |
+| Children              | `React.ReactNode`                 | `Snippet`                        |
+| Props                 | `React.HTMLProps<HTMLDivElement>` | `HTMLAttributes<HTMLDivElement>` |
+| Tooltip               | `asChild` prop                    | Direct wrapping                  |
+| Avatar fallback delay | `delayMs` prop                    | Not supported                    |
+| Markdown              | `Markdown` component              | Placeholder (to be implemented)  |
+| Context               | Not used                          | Class-based context pattern      |
 
 ## Integration Notes
 
 The component integrates seamlessly with:
+
 - ✅ UI components from `$lib/components/ui/`
 - ✅ Utility functions from `$lib/utils/utils.ts`
 - ✅ `@lucide/svelte` icons
