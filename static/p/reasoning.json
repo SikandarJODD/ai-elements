@@ -1,6 +1,6 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
-	"name": "prompt-kit-reasoning",
+	"name": "reasoning",
 	"type": "registry:block",
 	"description": "The Reasoning component displays AI reasoning and thinking process with collapsible content. Features trigger, content, and context management for showing step-by-step AI reasoning in responses.",
 	"dependencies": [

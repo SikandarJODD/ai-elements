@@ -1,6 +1,6 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
-	"name": "prompt-kit-steps",
+	"name": "steps",
 	"type": "registry:block",
 	"description": "The Steps component provides a visual step-by-step progress indicator for AI processes. Features step items, trigger, content, and progress bar with context-based state management.",
 	"devDependencies": [

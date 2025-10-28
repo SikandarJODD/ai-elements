@@ -1,6 +1,6 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
-	"name": "prompt-kit-prompt-suggestion",
+	"name": "prompt-suggestion",
 	"type": "registry:block",
 	"description": "The PromptSuggestion component displays clickable prompt suggestions to help users get started with AI conversations. Features customizable suggestions with icons and descriptions.",
 	"registryDependencies": [

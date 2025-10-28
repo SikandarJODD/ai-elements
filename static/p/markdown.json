@@ -1,6 +1,6 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
-	"name": "prompt-kit-markdown",
+	"name": "markdown",
 	"type": "registry:block",
 	"description": "The Markdown component renders markdown content with proper styling and support for code blocks, lists, links, and other markdown elements. Perfect for displaying AI-generated markdown responses.",
 	"dependencies": [

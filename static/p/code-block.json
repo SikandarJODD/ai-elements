@@ -1,6 +1,6 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
-	"name": "prompt-kit-code-block",
+	"name": "code-block",
 	"type": "registry:block",
 	"description": "The CodeBlock component displays formatted code snippets with syntax highlighting, copy functionality, and language detection. Supports multiple code blocks with group context management for consistent styling.",
 	"dependencies": [

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
 	import { Subheading, AiInstallCommand, ComponentAPITable } from "$lib/components/docs";
 	import Playground from "$lib/components/docs/playground.svelte";
@@ -56,6 +57,25 @@
 				visual feedback to users during wait times.
 			</p>
 
+			<!-- Installation Section -->
+			<Subheading>Installation</Subheading>
+
+			<p class="mb-4 text-sm leading-relaxed sm:text-base">
+				Copy and paste the following code into your project.
+			</p>
+
+			<div class="mb-6">
+				<AiInstallCommand
+					command="execute"
+					args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/loader.json`]}
+				/>
+			</div>
+
+			<p class="text-muted-foreground mb-6 text-sm leading-relaxed sm:text-base">
+				<strong>Note:</strong> If you are using Tailwind CSS v4, you may have to grab the keyframes
+				and add them to your global.css file manually. Check manual installation for more details.
+			</p>
+
 			<!-- Examples Section -->
 			<Subheading>Examples</Subheading>
 
@@ -80,29 +100,6 @@
 					<examples.sizes.Component />
 				</div>
 			</Playground>
-
-			<!-- Installation Section -->
-			<Subheading>Installation</Subheading>
-
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Copy and paste the following code into your project.
-			</p>
-
-			<div class="mb-6">
-				<AiInstallCommand
-					command="execute"
-					args={[
-						"shadcn-svelte@latest",
-						"add",
-						"https://ai-elements.vercel.app/r/prompt-kit-loader.json",
-					]}
-				/>
-			</div>
-
-			<p class="text-muted-foreground mb-6 text-sm leading-relaxed sm:text-base">
-				<strong>Note:</strong> If you are using Tailwind CSS v4, you may have to grab the keyframes
-				and add them to your global.css file manually. Check manual installation for more details.
-			</p>
 
 			<!-- Component API Section -->
 			<Subheading>Component API</Subheading>
