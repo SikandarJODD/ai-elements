@@ -185,6 +185,11 @@
 					label: "Prompt Input",
 				},
 				{
+					description: "Step-by-step AI reasoning display",
+					href: "/prompt-kit/chain-of-thought",
+					label: "Chain of Thought",
+				},
+				{
 					description: "Chat container with message handling",
 					href: "/prompt-kit/chat-container",
 					label: "Chat Container",
