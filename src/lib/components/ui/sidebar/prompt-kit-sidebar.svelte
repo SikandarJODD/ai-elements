@@ -27,6 +27,10 @@
 				url: "/prompt-kit",
 				items: [
 					{
+						title: "Chain of Thought",
+						url: "/prompt-kit/chain-of-thought",
+					},
+					{
 						title: "Chat Container",
 						url: "/prompt-kit/chat-container",
 						isActive: true,

@@ -239,6 +239,13 @@ export const navigationData: NavigationItem[] = [
 
 	// Prompt Kit Components
 	{
+		title: "Prompt Kit - Chain of Thought",
+		href: "/prompt-kit/chain-of-thought",
+		description: "Display AI's step-by-step reasoning process with collapsible steps",
+		category: "component",
+		keywords: ["prompt kit", "chain of thought", "reasoning", "thinking", "steps", "process"],
+	},
+	{
 		title: "Prompt Kit - Chat Container",
 		href: "/prompt-kit/chat-container",
 		description: "Complete chat container with message handling and scrolling",

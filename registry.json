@@ -1445,6 +1445,63 @@
 			}
 		},
 		{
+			"name": "prompt-kit-chain-of-thought",
+			"type": "registry:block",
+			"description": "The Chain of Thought component displays AI's step-by-step reasoning process with collapsible steps, custom icons, and visual connectors. Features composable architecture with ChainOfThought, ChainOfThoughtStep, ChainOfThoughtTrigger, ChainOfThoughtContent, and ChainOfThoughtItem components.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/chain-of-thought/ChainOfThought.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/chain-of-thought/ChainOfThought.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/chain-of-thought/ChainOfThoughtStep.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/chain-of-thought/ChainOfThoughtStep.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/chain-of-thought/ChainOfThoughtTrigger.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/chain-of-thought/ChainOfThoughtTrigger.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/chain-of-thought/ChainOfThoughtContent.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/chain-of-thought/ChainOfThoughtContent.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/chain-of-thought/ChainOfThoughtItem.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/chain-of-thought/ChainOfThoughtItem.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/chain-of-thought/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/chain-of-thought/index.ts"
+				}
+			],
+			"registryDependencies": ["collapsible"],
+			"dependencies": ["@lucide/svelte"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": [
+					"prompt-kit",
+					"chain-of-thought",
+					"reasoning",
+					"thinking",
+					"ai-process",
+					"collapsible"
+				],
+				"category": "Prompt Kit",
+				"documentation": "https://ai-elements.vercel.app/prompt-kit/chain-of-thought",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-10-30",
+				"featured": true
+			}
+		},
+		{
 			"name": "prompt-kit-code-block",
 			"type": "registry:block",
 			"description": "The CodeBlock component displays formatted code snippets with syntax highlighting, copy functionality, and language detection. Supports multiple code blocks with group context management for consistent styling.",

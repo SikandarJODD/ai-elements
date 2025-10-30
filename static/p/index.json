@@ -28,6 +28,36 @@
 		"relativeUrl": "chat-container.json"
 	},
 	{
+		"name": "chain-of-thought",
+		"type": "registry:block",
+		"description": "The Chain of Thought component displays AI's step-by-step reasoning process with collapsible steps, custom icons, and visual connectors. Features composable architecture with ChainOfThought, ChainOfThoughtStep, ChainOfThoughtTrigger, ChainOfThoughtContent, and ChainOfThoughtItem components.",
+		"dependencies": [
+			"@lucide/svelte"
+		],
+		"registryDependencies": [
+			"collapsible"
+		],
+		"meta": {
+			"author": "SikandarJODD",
+			"version": "1.0.0",
+			"tags": [
+				"prompt-kit",
+				"chain-of-thought",
+				"reasoning",
+				"thinking",
+				"ai-process",
+				"collapsible"
+			],
+			"category": "Prompt Kit",
+			"documentation": "https://ai-elements.vercel.app/prompt-kit/chain-of-thought",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "intermediate",
+			"updated": "2025-10-30",
+			"featured": true
+		},
+		"relativeUrl": "chain-of-thought.json"
+	},
+	{
 		"name": "code-block",
 		"type": "registry:block",
 		"description": "The CodeBlock component displays formatted code snippets with syntax highlighting, copy functionality, and language detection. Supports multiple code blocks with group context management for consistent styling.",
