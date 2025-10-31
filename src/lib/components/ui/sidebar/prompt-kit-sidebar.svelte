@@ -23,6 +23,17 @@
 				],
 			},
 			{
+				title: "Blocks",
+				url: "/prompt-kit/blocks",
+				items: [
+					{
+						title: "Blocks",
+						url: "/prompt-kit/blocks",
+						badge: "new",
+					},
+				],
+			},
+			{
 				title: "Components",
 				url: "/prompt-kit",
 				items: [
@@ -98,7 +109,7 @@
 
 	let updateIsActive = (url: string) => {
 		data.navMain.forEach((item) => {
-			item.items?.forEach((subItem) => {
+			item.items?.forEach((subItem: any) => {
 				subItem.isActive = subItem.url === url;
 			});
 		});
@@ -134,18 +145,26 @@
 						<Sidebar.GroupContent>
 							<Sidebar.Menu class="gap-0.5">
 								{#each item.items as subItem (subItem.title)}
+									{@const itemWithBadge = subItem as any}
 									<Sidebar.MenuItem>
 										<Sidebar.MenuButton
-											isActive={subItem.isActive}
+											isActive={itemWithBadge.isActive}
 											class="hover:text-primary text-muted-foreground  active:text-primary hover:bg-transparent active:bg-transparent data-[active=true]:bg-transparent data-[active=true]:font-normal data-[active=true]:text-blue-500"
 											onclick={() => {
-												updateIsActive(subItem.url);
+												updateIsActive(itemWithBadge.url);
 											}}
 										>
 											{#snippet child({ props })}
-												<a href={subItem.url} {...props}>{subItem.title}</a>
+												<a href={itemWithBadge.url} {...props}
+													>{itemWithBadge.title}</a
+												>
 											{/snippet}
 										</Sidebar.MenuButton>
+										{#if itemWithBadge.badge}
+											<Sidebar.MenuBadge class="bg-blue-500 text-white">
+												{itemWithBadge.badge}
+											</Sidebar.MenuBadge>
+										{/if}
 									</Sidebar.MenuItem>
 								{/each}
 							</Sidebar.Menu>

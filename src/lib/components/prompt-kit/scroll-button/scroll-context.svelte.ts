@@ -1,5 +1,6 @@
 import { watch } from "runed";
 import { setContext, getContext } from "svelte";
+import { browser } from "$app/environment";
 
 const SCROLL_CONTEXT_KEY = Symbol("scroll-context");
 
@@ -10,23 +11,28 @@ class ScrollContext {
 	isAtBottom = $derived(this.#isAtBottom);
 
 	constructor() {
-		watch(
-			() => this.#element,
-			() => {
-				if (this.#element) {
-					this.#setupScrollListener();
-					return () => this.#cleanup();
+		// Only set up watchers in browser environment
+		if (browser) {
+			watch(
+				() => this.#element,
+				() => {
+					if (this.#element) {
+						this.#setupScrollListener();
+						return () => this.#cleanup();
+					}
 				}
-			}
-		);
+			);
+		}
 	}
 
-	setElement(element: HTMLElement) {
-		this.#element = element;
+	setElement(element: HTMLElement | null) {
+		if (browser) {
+			this.#element = element;
+		}
 	}
 
 	scrollToBottom = (behavior: ScrollBehavior = "smooth") => {
-		if (!this.#element) return;
+		if (!browser || !this.#element) return;
 
 		this.#element.scrollTo({
 			top: this.#element.scrollHeight,
