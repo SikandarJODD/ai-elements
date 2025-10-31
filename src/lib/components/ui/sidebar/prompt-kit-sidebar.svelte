@@ -82,10 +82,10 @@
 						title: "Reasoning",
 						url: "/prompt-kit/reasoning",
 					},
-					// {
-					//   title: "Scroll Button",
-					//   url: "/prompt-kit/scroll-button",
-					// },
+					{
+						title: "Scroll Button",
+						url: "/prompt-kit/scroll-button",
+					},
 					{
 						title: "Source",
 						url: "/prompt-kit/source",
