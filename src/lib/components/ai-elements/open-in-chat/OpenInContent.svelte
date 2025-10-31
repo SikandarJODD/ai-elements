@@ -6,11 +6,18 @@
 		class?: string;
 		children?: import("svelte").Snippet;
 		align?: "start" | "center" | "end";
+		preventScroll?: boolean;
 	}
 
-	let { class: className = "", align = "start", children, ...restProps }: Props = $props();
+	let {
+		class: className = "",
+		align = "start",
+		preventScroll = true,
+		children,
+		...restProps
+	}: Props = $props();
 </script>
 
-<DropdownMenu.Content {align} class={cn("w-[240px]", className)} {...restProps}>
+<DropdownMenu.Content {align} {preventScroll} class={cn("w-[240px]", className)} {...restProps}>
 	{@render children?.()}
 </DropdownMenu.Content>

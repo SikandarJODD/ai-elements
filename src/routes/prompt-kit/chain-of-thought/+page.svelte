@@ -1,7 +1,13 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading, AiInstallCommand, ComponentAPITable } from "$lib/components/docs";
+	import {
+		Subheading,
+		AiInstallCommand,
+		ComponentAPITable,
+		CopyMarkdownButton,
+		OpenInMenu,
+	} from "$lib/components/docs";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import { examples } from "./examples/examples";
 	import { seo } from "./examples/seo";
@@ -11,6 +17,9 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+
+	// URL for llm.txt
+	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/prompt-kit/chain-of-thought/llms.txt`;
 
 	// Component API Props Data
 	const chainOfThoughtProps = [
@@ -136,14 +145,20 @@
 		<!-- Main Content Area -->
 		<main class="min-w-0" bind:this={toc.ref}>
 			<!-- Title -->
-			<Subheading class="md:text-3xl">Chain of Thought</Subheading>
+			<Subheading class="mb-4 md:text-3xl">Chain of Thought</Subheading>
 
 			<!-- Description -->
-			<p class="text-muted-foreground my-4 text-base leading-relaxed sm:text-lg">
+			<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
 				A composable component for displaying AI's step-by-step reasoning process. Features
-				collapsible steps with custom icons, content items, and visual connectors to show the
-				thinking flow.
+				collapsible steps with custom icons, content items, and visual connectors to show
+				the thinking flow.
 			</p>
+
+			<!-- Actions -->
+			<div class="mb-8 flex items-center gap-2">
+				<CopyMarkdownButton {llmsTxtUrl} />
+				<OpenInMenu componentName="Chain of Thought" {llmsTxtUrl} />
+			</div>
 
 			<!-- Installation Section -->
 			<Subheading>Installation</Subheading>
@@ -184,8 +199,8 @@
 			</h3>
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
 				A more complex example showing database optimization reasoning with custom icons for
-				each step and embedded code blocks. Demonstrates the full power of the component with
-				rich content.
+				each step and embedded code blocks. Demonstrates the full power of the component
+				with rich content.
 			</p>
 			<Playground code={examples.advanced.code}>
 				<div class="flex w-full justify-center">
@@ -239,7 +254,8 @@
 				<div>
 					<h4 class="text-foreground mb-2 font-semibold">Component Structure</h4>
 					<p>
-						The Chain of Thought component follows a composable pattern. Wrap your steps in
+						The Chain of Thought component follows a composable pattern. Wrap your steps
+						in
 						<code class="bg-muted rounded px-1.5 py-0.5">ChainOfThought</code>, then use
 						<code class="bg-muted rounded px-1.5 py-0.5">ChainOfThoughtStep</code>
 						for each reasoning step. Each step contains a
@@ -252,11 +268,14 @@
 				<div>
 					<h4 class="text-foreground mb-2 font-semibold">Custom Icons</h4>
 					<p>
-						Use the <code class="bg-muted rounded px-1.5 py-0.5">leftIcon</code> snippet prop
-						on the trigger to add custom icons from
-						<code class="bg-muted rounded px-1.5 py-0.5">@lucide/svelte</code>. By default,
-						the icon swaps with a chevron on hover, but you can disable this with
-						<code class="bg-muted rounded px-1.5 py-0.5">swapIconOnHover={"{false}"}</code>.
+						Use the <code class="bg-muted rounded px-1.5 py-0.5">leftIcon</code> snippet
+						prop on the trigger to add custom icons from
+						<code class="bg-muted rounded px-1.5 py-0.5">@lucide/svelte</code>. By
+						default, the icon swaps with a chevron on hover, but you can disable this
+						with
+						<code class="bg-muted rounded px-1.5 py-0.5"
+							>swapIconOnHover={"{false}"}</code
+						>.
 					</p>
 				</div>
 
@@ -273,9 +292,9 @@
 					<h4 class="text-foreground mb-2 font-semibold">Rich Content</h4>
 					<p>
 						You can embed any content inside
-						<code class="bg-muted rounded px-1.5 py-0.5">ChainOfThoughtItem</code>, including
-						code blocks, images, or other components. This makes it perfect for showing
-						complex reasoning with examples.
+						<code class="bg-muted rounded px-1.5 py-0.5">ChainOfThoughtItem</code>,
+						including code blocks, images, or other components. This makes it perfect
+						for showing complex reasoning with examples.
 					</p>
 				</div>
 			</div>
@@ -290,4 +309,3 @@
 		</aside>
 	</div>
 </Sidebar.Inset>
-

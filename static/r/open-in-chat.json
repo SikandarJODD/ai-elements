@@ -26,7 +26,7 @@
 			"target": "ai-elements/open-in-chat/OpenIn.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport * as DropdownMenu from \"$COMPONENTS$/ui/dropdown-menu\";\n\timport { cn } from \"$UTILS$\";\n\n\tinterface Props {\n\t\tclass?: string;\n\t\tchildren?: import(\"svelte\").Snippet;\n\t\talign?: \"start\" | \"center\" | \"end\";\n\t}\n\n\tlet { class: className = \"\", align = \"start\", children, ...restProps }: Props = $props();\n</script>\n\n<DropdownMenu.Content {align} class={cn(\"w-[240px]\", className)} {...restProps}>\n\t{@render children?.()}\n</DropdownMenu.Content>\n",
+			"content": "<script lang=\"ts\">\n\timport * as DropdownMenu from \"$COMPONENTS$/ui/dropdown-menu\";\n\timport { cn } from \"$UTILS$\";\n\n\tinterface Props {\n\t\tclass?: string;\n\t\tchildren?: import(\"svelte\").Snippet;\n\t\talign?: \"start\" | \"center\" | \"end\";\n\t\tpreventScroll?: boolean;\n\t}\n\n\tlet {\n\t\tclass: className = \"\",\n\t\talign = \"start\",\n\t\tpreventScroll = true,\n\t\tchildren,\n\t\t...restProps\n\t}: Props = $props();\n</script>\n\n<DropdownMenu.Content {align} {preventScroll} class={cn(\"w-[240px]\", className)} {...restProps}>\n\t{@render children?.()}\n</DropdownMenu.Content>\n",
 			"type": "registry:component",
 			"target": "ai-elements/open-in-chat/OpenInContent.svelte"
 		},

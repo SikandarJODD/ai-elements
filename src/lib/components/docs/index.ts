@@ -8,6 +8,8 @@ import Code from "./code.svelte";
 import CodeNameBlock from "./code-name/code-name-block.svelte";
 import BasicSetupPrereq from "./basic-setup-prereq.svelte";
 import ComponentAPITable from "./component-api-table.svelte";
+import CopyMarkdownButton from "./copy-markdown-button.svelte";
+import OpenInMenu from "./open-in-menu.svelte";
 
 export {
 	Subheading,
@@ -20,5 +22,7 @@ export {
 	CodeNameBlock,
 	BasicSetupPrereq,
 	ComponentAPITable,
+	CopyMarkdownButton,
+	OpenInMenu,
 };
 export type { PropDefinition, ComponentAPITableProps } from "./component-api-table.types";
