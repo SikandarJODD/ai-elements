@@ -1,7 +1,13 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading, AiInstallCommand, ComponentAPITable } from "$lib/components/docs";
+	import {
+		Subheading,
+		AiInstallCommand,
+		ComponentAPITable,
+		CopyMarkdownButton,
+		OpenInMenu,
+	} from "$lib/components/docs";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import { examples } from "./examples/examples";
 	import { seo } from "./examples/seo";
@@ -11,6 +17,9 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+
+	// URL for llm.txt
+	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/prompt-kit/steps/llms.txt`;
 
 	// Component API Props Data
 	const stepsProps = [
@@ -107,14 +116,20 @@
 		<!-- Main Content Area -->
 		<main class="min-w-0" bind:this={toc.ref}>
 			<!-- Title -->
-			<Subheading class="md:text-3xl">Steps</Subheading>
+			<Subheading class="mb-4 md:text-3xl">Steps</Subheading>
 
 			<!-- Description -->
-			<p class="text-muted-foreground my-4 text-base leading-relaxed sm:text-lg">
+			<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
 				Displays a sequence of operations in a collapsible layout. Each step can include
 				details and an optional vertical bar. Useful for showing AI steps like reasoning
 				traces, tool calls, or process logs.
 			</p>
+
+			<!-- Actions -->
+			<div class="mb-8 flex items-center gap-2">
+				<CopyMarkdownButton {llmsTxtUrl} />
+				<OpenInMenu componentName="Steps" {llmsTxtUrl} />
+			</div>
 
 			<!-- Installation Section -->
 			<Subheading>Installation</Subheading>
