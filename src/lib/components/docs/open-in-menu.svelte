@@ -14,6 +14,7 @@
 	} from "$lib/components/ai-elements/open-in-chat";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 	import { ChevronDown, ExternalLink } from "@lucide/svelte";
+	import { getPromptKitGithubUrl } from "$lib/config/github-paths";
 
 	interface Props {
 		componentName: string;
@@ -24,7 +25,10 @@
 
 	// Create the query for AI assistants
 	const query = `Read ${llmsTxtUrl} and help me understand the ${componentName} component`;
-	const githubUrl = `https://github.com/search?type=code&q=${encodeURIComponent(componentName)}`;
+
+	// Get the exact GitHub file URL for the component
+	const githubUrl = getPromptKitGithubUrl(componentName) ||
+		`https://github.com/search?type=code&q=${encodeURIComponent(componentName)}`;
 </script>
 
 <OpenIn {query}>
