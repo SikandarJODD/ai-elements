@@ -15,6 +15,7 @@
 	import { Button } from "$lib/components/ui/button/index.js";
 	import ChevronDown from "@lucide/svelte/icons/chevron-down";
 	import { getScrollContext } from "./scroll-context.svelte.js";
+	import { browser } from "$app/environment";
 
 	let {
 		class: className,
@@ -22,14 +23,20 @@
 		size = "sm",
 		ref = $bindable(null),
 		onclick,
-		...restProps
 	}: ScrollButtonProps = $props();
 
-	const scrollContext = getScrollContext();
-	const isAtBottom = $derived(scrollContext.isAtBottom);
+	// Lazy context retrieval to avoid SSR issues
+	let scrollContext: ReturnType<typeof getScrollContext> | null = null;
+
+	// Only get context in browser
+	if (browser) {
+		scrollContext = getScrollContext();
+	}
+
+	const isAtBottom = $derived(scrollContext?.isAtBottom ?? true);
 
 	const handleClick = (event: MouseEvent) => {
-		scrollContext.scrollToBottom();
+		scrollContext?.scrollToBottom();
 		onclick?.(event);
 	};
 </script>

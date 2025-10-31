@@ -22,7 +22,7 @@
 	} & TooltipPrimitive.RootProps = $props();
 </script>
 
-<TooltipProvider>
+<TooltipProvider delayDuration={60}>
 	<Tooltip {...restProps}>
 		<TooltipTrigger>
 			{@render children()}
