@@ -1,6 +1,12 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading, CodeNameBlock } from "$lib/components/docs";
+	import {
+		Subheading,
+		CodeNameBlock,
+		ComponentAPITable,
+		CopyMarkdownButton,
+		OpenInMenu,
+	} from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
@@ -14,6 +20,79 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+
+	// URL for llm.txt
+	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/message/llms.txt`;
+	// Component API Props Data
+	const messageProps = [
+		{
+			name: "from",
+			type: "'user' | 'assistant'",
+			description: "The role of the message sender (user or assistant)",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Child components to render (typically MessageContent and MessageAvatar)",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the message container",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const messageAvatarProps = [
+		{
+			name: "src",
+			type: "string",
+			description: "URL of the avatar image",
+		},
+		{
+			name: "name",
+			type: "string",
+			description: "Name of the user (used for fallback text)",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the avatar",
+		},
+		{
+			name: "...restProps",
+			type: "ComponentProps<typeof Avatar>",
+			description: "All other Avatar component props are supported",
+		},
+	];
+
+	const messageContentProps = [
+		{
+			name: "variant",
+			type: "'contained' | 'flat'",
+			default: "'contained'",
+			description: "Visual style variant of the message content",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Content to render inside the message",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the content container",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -29,8 +108,14 @@
 
 			<p class="!text-muted-foreground my-2 text-lg">
 				The <CodeSpan>Message</CodeSpan> component displays a chat interface message from either
-				a user or an AI. It includes an avatar, a name, and a message content.
+				a user or an AI. <br /> It includes an avatar, a name, and a message content.
 			</p>
+
+			<!-- Actions -->
+			<div class="mb-8 flex items-center gap-2">
+				<CopyMarkdownButton {llmsTxtUrl} />
+				<OpenInMenu componentName="Message" {llmsTxtUrl} type="ai-elements" />
+			</div>
 
 			<Playground code={examples.basic.code}>
 				<examples.basic.Component />
@@ -134,6 +219,31 @@ export const POST: RequestHandler = async ({ request }) => {
 };`}
 				/>
 			</div>
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- Message -->
+			<ComponentAPITable
+				componentName="Message"
+				props={messageProps}
+				class="mt-6"
+				id="message-props"
+			/>
+
+			<!-- MessageAvatar -->
+			<ComponentAPITable
+				componentName="MessageAvatar"
+				props={messageAvatarProps}
+				id="message-avatar-props"
+			/>
+
+			<!-- MessageContent -->
+			<ComponentAPITable
+				componentName="MessageContent"
+				props={messageContentProps}
+				id="message-content-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

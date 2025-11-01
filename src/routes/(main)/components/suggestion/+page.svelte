@@ -1,12 +1,16 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading } from "$lib/components/docs";
+	import {
+		Subheading,
+		ComponentAPITable,
+		CopyMarkdownButton,
+		OpenInMenu,
+	} from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
 	import { examples } from "./examples/examples";
 	import { seo } from "./examples/seo";
-	import Heading from "$lib/components/docs/heading.svelte";
 	import CodeSpan from "$lib/components/docs/code-span.svelte";
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
@@ -15,6 +19,85 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+
+	// URL for llm.txt
+	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/suggestion/llms.txt`;
+	// Component API Props Data
+	const suggestionProps = [
+		{
+			name: "suggestion",
+			type: "string",
+			description: "The suggestion text to display and pass to the onclick handler",
+		},
+		{
+			name: "onclick",
+			type: "(suggestion: string) => void",
+			description:
+				"Callback fired when the suggestion is clicked, receives the suggestion text",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom content to render instead of the suggestion text",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the suggestion button",
+		},
+		{
+			name: "variant",
+			type: "ButtonProps['variant']",
+			default: "'outline'",
+			description: "Button variant style",
+		},
+		{
+			name: "size",
+			type: "ButtonProps['size']",
+			default: "'sm'",
+			description: "Button size",
+		},
+		{
+			name: "...restProps",
+			type: "ButtonProps",
+			description: "All other Button component props are supported",
+		},
+	];
+
+	const suggestionsProps = [
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Suggestion components to render in the scrollable container",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the suggestions container",
+		},
+		{
+			name: "orientation",
+			type: "'vertical' | 'horizontal' | 'both'",
+			default: "'horizontal'",
+			description: "Scroll direction for the suggestions container",
+		},
+		{
+			name: "scrollbarXClasses",
+			type: "string",
+			description: "Custom CSS classes for the horizontal scrollbar",
+		},
+		{
+			name: "scrollbarYClasses",
+			type: "string",
+			description: "Custom CSS classes for the vertical scrollbar",
+		},
+		{
+			name: "...restProps",
+			type: "ScrollAreaProps",
+			description: "All other ScrollArea component props are supported",
+		},
+	];
+
 	import { CodeNameBlock } from "$lib/components/docs";
 </script>
 
@@ -33,6 +116,12 @@
 				The <CodeSpan>Suggestion</CodeSpan> component displays a horizontal row of clickable
 				suggestions for user interaction.
 			</p>
+
+			<!-- Actions -->
+			<div class="mb-8 flex items-center gap-2">
+				<CopyMarkdownButton {llmsTxtUrl} />
+				<OpenInMenu componentName="Suggestion" {llmsTxtUrl} type="ai-elements" />
+			</div>
 
 			<Playground code={examples.basic.code}>
 				<examples.basic.Component />
@@ -165,6 +254,24 @@ export const POST: RequestHandler = async ({ request }) => {
 };`}
 				/>
 			</div>
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- Suggestion -->
+			<ComponentAPITable
+				componentName="Suggestion"
+				props={suggestionProps}
+				class="mt-6"
+				id="suggestion-props"
+			/>
+
+			<!-- Suggestions -->
+			<ComponentAPITable
+				componentName="Suggestions"
+				props={suggestionsProps}
+				id="suggestions-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

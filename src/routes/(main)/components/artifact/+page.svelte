@@ -1,12 +1,16 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading } from "$lib/components/docs";
+	import {
+		Subheading,
+		ComponentAPITable,
+		CopyMarkdownButton,
+		OpenInMenu,
+	} from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
 	import { examples } from "./examples/examples";
 	import { seo } from "./examples/seo";
-	import Heading from "$lib/components/docs/heading.svelte";
 	import CodeSpan from "$lib/components/docs/code-span.svelte";
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
@@ -15,6 +19,194 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+
+	// URL for llm.txt
+	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/artifact/llms.txt`;
+
+	// Component API Props Data
+	const artifactProps = [
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Child components to render",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the container",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const artifactHeaderProps = [
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Child components to render (typically title, description, and actions)",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the header",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const artifactTitleProps = [
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Title text content",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the title",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLParagraphElement>",
+			description: "All other paragraph props are supported",
+		},
+	];
+
+	const artifactDescriptionProps = [
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Description text content",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the description",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLParagraphElement>",
+			description: "All other paragraph props are supported",
+		},
+	];
+
+	const artifactActionsProps = [
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Child ArtifactAction components to render",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the actions container",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const artifactActionProps = [
+		{
+			name: "tooltip",
+			type: "string",
+			description: "Tooltip text to display on hover",
+		},
+		{
+			name: "label",
+			type: "string",
+			description:
+				"Accessible label for screen readers (falls back to tooltip if not provided)",
+		},
+		{
+			name: "icon",
+			type: "typeof Icon",
+			description: "Lucide icon component to render",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom content to render (used if icon is not provided)",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the button",
+		},
+		{
+			name: "variant",
+			type: "'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'",
+			default: "'ghost'",
+			description: "Visual style variant of the button",
+		},
+		{
+			name: "size",
+			type: "'default' | 'sm' | 'lg' | 'icon'",
+			default: "'sm'",
+			description: "Size of the button",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLButtonAttributes | HTMLAnchorAttributes",
+			description: "All other button/anchor props are supported",
+		},
+	];
+
+	const artifactCloseProps = [
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom close icon (defaults to X icon if not provided)",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the button",
+		},
+		{
+			name: "variant",
+			type: "'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'",
+			default: "'ghost'",
+			description: "Visual style variant of the button",
+		},
+		{
+			name: "size",
+			type: "'default' | 'sm' | 'lg' | 'icon'",
+			default: "'sm'",
+			description: "Size of the button",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLButtonAttributes | HTMLAnchorAttributes",
+			description: "All other button/anchor props are supported",
+		},
+	];
+
+	const artifactContentProps = [
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Content to render inside the artifact",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the content container",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -32,6 +224,12 @@
 				The <CodeSpan>Artifact</CodeSpan> component provides a structured container for displaying
 				generated content like code, documents, or other outputs with built-in header actions.
 			</p>
+
+			<!-- Actions -->
+			<div class="mb-8 flex items-center gap-2">
+				<CopyMarkdownButton {llmsTxtUrl} />
+				<OpenInMenu componentName="Artifact" {llmsTxtUrl} type="ai-elements" />
+			</div>
 
 			<Playground code={examples.basic.code}>
 				<div class="mx-auto w-full">
@@ -87,6 +285,66 @@
       <Playground code={examples.messageAction.code}>
         <examples.messageAction.Component />
       </Playground> -->
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- Artifact -->
+			<ComponentAPITable
+				componentName="Artifact"
+				props={artifactProps}
+				class="mt-6"
+				id="artifact-props"
+			/>
+
+			<!-- ArtifactHeader -->
+			<ComponentAPITable
+				componentName="ArtifactHeader"
+				props={artifactHeaderProps}
+				id="artifact-header-props"
+			/>
+
+			<!-- ArtifactTitle -->
+			<ComponentAPITable
+				componentName="ArtifactTitle"
+				props={artifactTitleProps}
+				id="artifact-title-props"
+			/>
+
+			<!-- ArtifactDescription -->
+			<ComponentAPITable
+				componentName="ArtifactDescription"
+				props={artifactDescriptionProps}
+				id="artifact-description-props"
+			/>
+
+			<!-- ArtifactActions -->
+			<ComponentAPITable
+				componentName="ArtifactActions"
+				props={artifactActionsProps}
+				id="artifact-actions-props"
+			/>
+
+			<!-- ArtifactAction -->
+			<ComponentAPITable
+				componentName="ArtifactAction"
+				props={artifactActionProps}
+				id="artifact-action-props"
+			/>
+
+			<!-- ArtifactClose -->
+			<ComponentAPITable
+				componentName="ArtifactClose"
+				props={artifactCloseProps}
+				id="artifact-close-props"
+			/>
+
+			<!-- ArtifactContent -->
+			<ComponentAPITable
+				componentName="ArtifactContent"
+				props={artifactContentProps}
+				id="artifact-content-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

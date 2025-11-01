@@ -1,12 +1,17 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading, CodeNameBlock } from "$lib/components/docs";
+	import {
+		Subheading,
+		CodeNameBlock,
+		ComponentAPITable,
+		CopyMarkdownButton,
+		OpenInMenu,
+	} from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
 	import { examples } from "./examples/examples";
 	import { seo } from "./examples/seo";
-	import Heading from "$lib/components/docs/heading.svelte";
 	import CodeSpan from "$lib/components/docs/code-span.svelte";
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
@@ -15,6 +20,37 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+
+	// URL for llm.txt
+	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/loader/llms.txt`;
+	// Component API Props Data
+	const loaderProps = [
+		{
+			name: "size",
+			type: "number",
+			default: "16",
+			description: "Size of the loader icon in pixels",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the loader container",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const loaderIconProps = [
+		{
+			name: "size",
+			type: "number",
+			default: "16",
+			description: "Size of the loader icon in pixels",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -33,6 +69,12 @@
 				states in your AI applications. It includes both a customizable wrapper component and
 				the underlying icon for flexible usage.
 			</p>
+
+			<!-- Actions -->
+			<div class="mb-8 flex items-center gap-2">
+				<CopyMarkdownButton {llmsTxtUrl} />
+				<OpenInMenu componentName="Loader" {llmsTxtUrl} type="ai-elements" />
+			</div>
 
 			<Playground code={examples.basic.code}>
 				<examples.basic.Component />
@@ -167,6 +209,24 @@ export const POST: RequestHandler = async ({ request }) => {
 };`}
 				/>
 			</div>
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- Loader -->
+			<ComponentAPITable
+				componentName="Loader"
+				props={loaderProps}
+				class="mt-6"
+				id="loader-props"
+			/>
+
+			<!-- LoaderIcon -->
+			<ComponentAPITable
+				componentName="LoaderIcon"
+				props={loaderIconProps}
+				id="loader-icon-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

@@ -5,22 +5,12 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Node component provides a comprehensive set of sub-components for building workflow nodes. Includes Node container with handle management, Header, Title, Description, Action buttons, Content area, and Footer for displaying workflow step information with full customization.",
-	"dependencies": [
-		"@xyflow/svelte"
-	],
-	"registryDependencies": [
-		"card"
-	],
+	"dependencies": ["@xyflow/svelte"],
+	"registryDependencies": ["card"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"workflow",
-			"node",
-			"step",
-			"card",
-			"process"
-		],
+		"tags": ["workflow", "node", "step", "card", "process"],
 		"category": "AI Workflow",
 		"documentation": "https://ai-elements.vercel.app/components/workflow",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

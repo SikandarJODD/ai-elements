@@ -14,9 +14,12 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/p/code-block.json
 
 ```svelte
 <script lang="ts">
-	import { CodeBlock, CodeBlockCode } from "$lib/components/prompt-kit/code-block";
+  import {
+    CodeBlock,
+    CodeBlockCode,
+  } from "$lib/components/prompt-kit/code-block";
 
-	const code = `function greet(name: string) {
+  const code = `function greet(name: string) {
   return \`Hello, \${name}!\`;
 }
 
@@ -26,7 +29,7 @@ console.log(greeting);`;
 </script>
 
 <CodeBlock>
-	<CodeBlockCode {code} language="javascript" />
+  <CodeBlockCode {code} language="javascript" />
 </CodeBlock>
 ```
 
@@ -34,29 +37,29 @@ console.log(greeting);`;
 
 ### CodeBlock
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | Snippet | - | Child components to render |
-| class | string | - | Additional CSS classes |
-| ...props | HTMLAttributes<HTMLDivElement> | - | All other div props are supported |
+| Prop     | Type                           | Default | Description                       |
+| -------- | ------------------------------ | ------- | --------------------------------- |
+| children | Snippet                        | -       | Child components to render        |
+| class    | string                         | -       | Additional CSS classes            |
+| ...props | HTMLAttributes<HTMLDivElement> | -       | All other div props are supported |
 
 ### CodeBlockCode
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| code | string | - | The code to display and highlight |
-| language | string | "tsx" | The language for syntax highlighting |
-| theme | string | "github-light" | The theme for syntax highlighting |
-| class | string | - | Additional CSS classes |
-| ...props | HTMLAttributes<HTMLDivElement> | - | All other div props are supported |
+| Prop     | Type                           | Default        | Description                          |
+| -------- | ------------------------------ | -------------- | ------------------------------------ |
+| code     | string                         | -              | The code to display and highlight    |
+| language | string                         | "tsx"          | The language for syntax highlighting |
+| theme    | string                         | "github-light" | The theme for syntax highlighting    |
+| class    | string                         | -              | Additional CSS classes               |
+| ...props | HTMLAttributes<HTMLDivElement> | -              | All other div props are supported    |
 
 ### CodeBlockGroup
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | Snippet | - | Child components to render |
-| class | string | - | Additional CSS classes |
-| ...props | HTMLAttributes<HTMLDivElement> | - | All other div props are supported |
+| Prop     | Type                           | Default | Description                       |
+| -------- | ------------------------------ | ------- | --------------------------------- |
+| children | Snippet                        | -       | Child components to render        |
+| class    | string                         | -       | Additional CSS classes            |
+| ...props | HTMLAttributes<HTMLDivElement> | -       | All other div props are supported |
 
 ## Usage with Markdown
 
@@ -85,4 +88,3 @@ For a complete list of supported themes, refer to the [Shiki documentation](http
 ---
 
 For more information, visit: https://ai-elements.vercel.app/prompt-kit/code-block
-

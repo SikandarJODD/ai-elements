@@ -1,12 +1,17 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading, CodeNameBlock } from "$lib/components/docs";
+	import {
+		Subheading,
+		CodeNameBlock,
+		ComponentAPITable,
+		CopyMarkdownButton,
+		OpenInMenu,
+	} from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
 	import { examples } from "./examples/examples";
 	import { seo } from "./examples/seo";
-	import Heading from "$lib/components/docs/heading.svelte";
 	import CodeSpan from "$lib/components/docs/code-span.svelte";
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
@@ -15,6 +20,110 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+
+	// URL for llm.txt
+	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/task/llms.txt`;
+	// Component API Props Data
+	const taskProps = [
+		{
+			name: "open",
+			type: "boolean",
+			default: "true",
+			description: "Controls whether the task is expanded or collapsed (bindable)",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the task container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Child components (typically TaskTrigger and TaskContent)",
+		},
+		{
+			name: "...restProps",
+			type: "CollapsibleProps",
+			description: "All other Collapsible component props are supported",
+		},
+	];
+
+	const taskTriggerProps = [
+		{
+			name: "title",
+			type: "string",
+			description: "The title text to display in the trigger",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the trigger",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom content to render instead of the default trigger layout",
+		},
+		{
+			name: "...restProps",
+			type: "CollapsibleTriggerProps",
+			description: "All other CollapsibleTrigger component props are supported",
+		},
+	];
+
+	const taskContentProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the content container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Task items to display when expanded",
+		},
+		{
+			name: "...restProps",
+			type: "CollapsibleContentProps",
+			description: "All other CollapsibleContent component props are supported",
+		},
+	];
+
+	const taskItemProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the task item",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Content of the task item",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const taskItemFileProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the file badge",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "File name or content to display",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -34,6 +143,12 @@
 				It consists of a main Task container with TaskTrigger for the clickable header and TaskContent
 				for the collapsible content area.
 			</p>
+
+			<!-- Actions -->
+			<div class="mb-8 flex items-center gap-2">
+				<CopyMarkdownButton {llmsTxtUrl} />
+				<OpenInMenu componentName="Task" {llmsTxtUrl} type="ai-elements" />
+			</div>
 
 			<Playground code={examples.basic.code}>
 				<div class="min-w-lg">
@@ -300,6 +415,45 @@ export const POST: RequestHandler = async ({ request }) => {
       <Playground code={examples.messageAction.code}>
         <examples.messageAction.Component />
       </Playground> -->
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- Task -->
+			<ComponentAPITable
+				componentName="Task"
+				props={taskProps}
+				class="mt-6"
+				id="task-props"
+			/>
+
+			<!-- TaskTrigger -->
+			<ComponentAPITable
+				componentName="TaskTrigger"
+				props={taskTriggerProps}
+				id="task-trigger-props"
+			/>
+
+			<!-- TaskContent -->
+			<ComponentAPITable
+				componentName="TaskContent"
+				props={taskContentProps}
+				id="task-content-props"
+			/>
+
+			<!-- TaskItem -->
+			<ComponentAPITable
+				componentName="TaskItem"
+				props={taskItemProps}
+				id="task-item-props"
+			/>
+
+			<!-- TaskItemFile -->
+			<ComponentAPITable
+				componentName="TaskItemFile"
+				props={taskItemFileProps}
+				id="task-item-file-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

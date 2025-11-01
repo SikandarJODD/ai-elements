@@ -1,12 +1,17 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading, CodeNameBlock } from "$lib/components/docs";
+	import {
+		Subheading,
+		CodeNameBlock,
+		ComponentAPITable,
+		CopyMarkdownButton,
+		OpenInMenu,
+	} from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
 	import { examples } from "./examples/examples";
 	import { seo } from "./examples/seo";
-	import Heading from "$lib/components/docs/heading.svelte";
 	import CodeSpan from "$lib/components/docs/code-span.svelte";
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
@@ -15,6 +20,129 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+
+	// URL for llm.txt
+	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/web-preview/llms.txt`;
+	// Component API Props Data
+	const webPreviewProps = [
+		{
+			name: "defaultUrl",
+			type: "string",
+			default: '""',
+			description: "Default URL to display in the preview",
+		},
+		{
+			name: "onUrlChange",
+			type: "(url: string) => void",
+			description: "Callback function called when the URL changes",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Child components (typically WebPreviewNavigation and WebPreviewBody)",
+		},
+	];
+
+	const webPreviewNavigationProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the navigation bar",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description:
+				"Navigation content (typically WebPreviewUrl and WebPreviewNavigationButton)",
+		},
+	];
+
+	const webPreviewNavigationButtonProps = [
+		{
+			name: "onclick",
+			type: "(event: MouseEvent) => void",
+			description: "Click handler for the button",
+		},
+		{
+			name: "disabled",
+			type: "boolean",
+			description: "Whether the button is disabled",
+		},
+		{
+			name: "tooltip",
+			type: "string",
+			description: "Tooltip text to display on hover",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Button content (typically an icon)",
+		},
+	];
+
+	const webPreviewUrlProps = [
+		{
+			name: "value",
+			type: "string",
+			description: "Current URL value (bindable)",
+		},
+		{
+			name: "onchange",
+			type: "(event: Event) => void",
+			description: "Change event handler",
+		},
+		{
+			name: "onkeydown",
+			type: "(event: KeyboardEvent) => void",
+			description: "Keydown event handler (Enter key updates the preview URL)",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the input",
+		},
+	];
+
+	const webPreviewBodyProps = [
+		{
+			name: "src",
+			type: "string",
+			description: "URL to display in the iframe (overrides context URL)",
+		},
+		{
+			name: "loading",
+			type: "Snippet",
+			description: "Loading state content to display",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the iframe",
+		},
+	];
+
+	const webPreviewConsoleProps = [
+		{
+			name: "logs",
+			type: "LogEntry[]",
+			description: "Array of console log entries to display",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the console container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Additional console content",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -34,6 +162,12 @@
 				and demo purposes, allowing users to interact with live examples and view the underlying
 				implementation.
 			</p>
+
+			<!-- Actions -->
+			<div class="mb-8 flex items-center gap-2">
+				<CopyMarkdownButton {llmsTxtUrl} />
+				<OpenInMenu componentName="Web Preview" {llmsTxtUrl} type="ai-elements" />
+			</div>
 
 			<Playground code={examples.basic.code}>
 				<div class="w-full">
@@ -247,6 +381,52 @@ export const POST: RequestHandler = async ({ request }) => {
 				<li>Consistent styling with the design system</li>
 				<li>Easy integration into documentation pages</li>
 			</ul>
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- WebPreview -->
+			<ComponentAPITable
+				componentName="WebPreview"
+				props={webPreviewProps}
+				class="mt-6"
+				id="web-preview-props"
+			/>
+
+			<!-- WebPreviewNavigation -->
+			<ComponentAPITable
+				componentName="WebPreviewNavigation"
+				props={webPreviewNavigationProps}
+				id="web-preview-navigation-props"
+			/>
+
+			<!-- WebPreviewNavigationButton -->
+			<ComponentAPITable
+				componentName="WebPreviewNavigationButton"
+				props={webPreviewNavigationButtonProps}
+				id="web-preview-navigation-button-props"
+			/>
+
+			<!-- WebPreviewUrl -->
+			<ComponentAPITable
+				componentName="WebPreviewUrl"
+				props={webPreviewUrlProps}
+				id="web-preview-url-props"
+			/>
+
+			<!-- WebPreviewBody -->
+			<ComponentAPITable
+				componentName="WebPreviewBody"
+				props={webPreviewBodyProps}
+				id="web-preview-body-props"
+			/>
+
+			<!-- WebPreviewConsole -->
+			<ComponentAPITable
+				componentName="WebPreviewConsole"
+				props={webPreviewConsoleProps}
+				id="web-preview-console-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

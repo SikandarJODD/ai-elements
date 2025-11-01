@@ -51,4 +51,3 @@
 		<ChevronDown class="size-4 transition-transform group-data-[state=open]:rotate-180" />
 	{/if}
 </CollapsibleTrigger>
-

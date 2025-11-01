@@ -1,12 +1,17 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading, CodeNameBlock } from "$lib/components/docs";
+	import {
+		Subheading,
+		CodeNameBlock,
+		ComponentAPITable,
+		CopyMarkdownButton,
+		OpenInMenu,
+	} from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
 	import { examples } from "./examples/examples";
 	import { seo } from "./examples/seo";
-	import Heading from "$lib/components/docs/heading.svelte";
 	import CodeSpan from "$lib/components/docs/code-span.svelte";
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
@@ -15,6 +20,126 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+
+	// URL for llm.txt
+	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/conversation/llms.txt`;
+	// Component API Props Data
+	const conversationProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the conversation container",
+		},
+		{
+			name: "initial",
+			type: "ScrollBehavior",
+			default: "'smooth'",
+			description: "Scroll behavior for initial scroll to bottom ('auto' | 'smooth')",
+		},
+		{
+			name: "resize",
+			type: "ScrollBehavior",
+			default: "'smooth'",
+			description: "Scroll behavior when container resizes ('auto' | 'smooth')",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description:
+				"Child components (typically ConversationContent and ConversationScrollButton)",
+		},
+		{
+			name: "ref",
+			type: "HTMLDivElement",
+			description: "Bindable reference to the conversation container element",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const conversationContentProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the content container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Message components to render in the conversation",
+		},
+		{
+			name: "ref",
+			type: "HTMLDivElement",
+			description: "Bindable reference to the content container element",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const conversationEmptyStateProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the empty state container",
+		},
+		{
+			name: "title",
+			type: "string",
+			default: "'No messages yet'",
+			description: "Title text to display in the empty state",
+		},
+		{
+			name: "description",
+			type: "string",
+			default: "'Start a conversation to see messages here'",
+			description: "Description text to display in the empty state",
+		},
+		{
+			name: "icon",
+			type: "Snippet",
+			description: "Custom icon snippet to display above the title",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom content to replace the default empty state layout",
+		},
+		{
+			name: "ref",
+			type: "HTMLDivElement",
+			description: "Bindable reference to the empty state container element",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const conversationScrollButtonProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the scroll button",
+		},
+		{
+			name: "onclick",
+			type: "MouseEventHandler<HTMLButtonElement>",
+			description: "Click handler for the scroll button",
+		},
+		{
+			name: "...restProps",
+			type: "ButtonProps",
+			description: "All other Button component props are supported",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -32,6 +157,12 @@
 				The <CodeSpan>Conversation</CodeSpan> component wraps messages and automatically scrolls
 				to the bottom. Also includes a scroll button that appears when not at the bottom.
 			</p>
+
+			<!-- Actions -->
+			<div class="mb-8 flex items-center gap-2">
+				<CopyMarkdownButton {llmsTxtUrl} />
+				<OpenInMenu componentName="Conversation" {llmsTxtUrl} type="ai-elements" />
+			</div>
 
 			<Playground code={examples.basic.code}>
 				<div class="dark-scrollbar h-96 w-full overflow-y-auto rounded-xl border">
@@ -217,6 +348,38 @@ export const POST: RequestHandler = async ({ request }) => {
 				<li>Customizable styling through class prop</li>
 				<li>Support for any number of child message components</li>
 			</ul>
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- Conversation -->
+			<ComponentAPITable
+				componentName="Conversation"
+				props={conversationProps}
+				class="mt-6"
+				id="conversation-props"
+			/>
+
+			<!-- ConversationContent -->
+			<ComponentAPITable
+				componentName="ConversationContent"
+				props={conversationContentProps}
+				id="conversation-content-props"
+			/>
+
+			<!-- ConversationEmptyState -->
+			<ComponentAPITable
+				componentName="ConversationEmptyState"
+				props={conversationEmptyStateProps}
+				id="conversation-empty-state-props"
+			/>
+
+			<!-- ConversationScrollButton -->
+			<ComponentAPITable
+				componentName="ConversationScrollButton"
+				props={conversationScrollButtonProps}
+				id="conversation-scroll-button-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

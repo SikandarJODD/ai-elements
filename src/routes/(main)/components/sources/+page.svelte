@@ -1,12 +1,17 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading, CodeNameBlock } from "$lib/components/docs";
+	import {
+		Subheading,
+		CodeNameBlock,
+		ComponentAPITable,
+		CopyMarkdownButton,
+		OpenInMenu,
+	} from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
 	import { examples } from "./examples/examples";
 	import { seo } from "./examples/seo";
-	import Heading from "$lib/components/docs/heading.svelte";
 	import CodeSpan from "$lib/components/docs/code-span.svelte";
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
@@ -15,6 +20,96 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+
+	// URL for llm.txt
+	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/sources/llms.txt`;
+	// Component API Props Data
+	const sourceProps = [
+		{
+			name: "href",
+			type: "string",
+			description: "URL of the source (opens in new tab)",
+		},
+		{
+			name: "title",
+			type: "string",
+			description: "Title/name of the source to display",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the source link",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom content to render instead of the default icon and title",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAnchorAttributes",
+			description: "All other anchor element props are supported",
+		},
+	];
+
+	const sourcesProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the sources container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Child components (typically SourcesTrigger and SourcesContent)",
+		},
+		{
+			name: "...restProps",
+			type: "CollapsibleProps",
+			description: "All other Collapsible component props are supported",
+		},
+	];
+
+	const sourcesContentProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the content container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Source components to display when expanded",
+		},
+		{
+			name: "...restProps",
+			type: "CollapsibleContentProps",
+			description: "All other CollapsibleContent component props are supported",
+		},
+	];
+
+	const sourcesTriggerProps = [
+		{
+			name: "count",
+			type: "number",
+			description: "Number of sources to display in the trigger text",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the trigger button",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom content to render instead of the default trigger text",
+		},
+		{
+			name: "...restProps",
+			type: "CollapsibleTriggerProps",
+			description: "All other CollapsibleTrigger component props are supported",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -32,6 +127,12 @@
 				The <CodeSpan>Sources</CodeSpan> component allows a user to view the sources or citations
 				used to generate a response.
 			</p>
+
+			<!-- Actions -->
+			<div class="mb-8 flex items-center gap-2">
+				<CopyMarkdownButton {llmsTxtUrl} />
+				<OpenInMenu componentName="Sources" {llmsTxtUrl} type="ai-elements" />
+			</div>
 
 			<Playground code={examples.basic.code}>
 				<div class="min-w-xs">
@@ -217,6 +318,34 @@ export const POST: RequestHandler = async ({ request }) => {
 					<li>Clean, modern styling with customizable themes</li>
 				</ul>
 			</div>
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- Sources -->
+			<ComponentAPITable
+				componentName="Sources"
+				props={sourcesProps}
+				class="mt-6"
+				id="sources-props"
+			/>
+
+			<!-- SourcesTrigger -->
+			<ComponentAPITable
+				componentName="SourcesTrigger"
+				props={sourcesTriggerProps}
+				id="sources-trigger-props"
+			/>
+
+			<!-- SourcesContent -->
+			<ComponentAPITable
+				componentName="SourcesContent"
+				props={sourcesContentProps}
+				id="sources-content-props"
+			/>
+
+			<!-- Source -->
+			<ComponentAPITable componentName="Source" props={sourceProps} id="source-props" />
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

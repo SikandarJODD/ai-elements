@@ -14,9 +14,9 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/p/markdown.json
 
 ```svelte
 <script lang="ts">
-	import { Markdown } from "$lib/components/prompt-kit/markdown";
+  import { Markdown } from "$lib/components/prompt-kit/markdown";
 
-	const markdownContent = `# Markdown Example
+  const markdownContent = `# Markdown Example
 
 This is a **bold text** and this is an *italic text*.
 
@@ -49,23 +49,19 @@ function greet(name) {
 `;
 </script>
 
-<Markdown
-	content={markdownContent}
-	class="prose dark:prose-invert"
-/>
+<Markdown content={markdownContent} class="prose dark:prose-invert" />
 ```
 
 ## Component API
 
 ### Markdown
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| content | string | - | Markdown content to render |
-| className | string | - | Additional CSS classes |
-| ...props | HTMLAttributes<HTMLDivElement> | - | All other div props are supported |
+| Prop      | Type                           | Default | Description                       |
+| --------- | ------------------------------ | ------- | --------------------------------- |
+| content   | string                         | -       | Markdown content to render        |
+| className | string                         | -       | Additional CSS classes            |
+| ...props  | HTMLAttributes<HTMLDivElement> | -       | All other div props are supported |
 
 ---
 
 For more information, visit: https://ai-elements.vercel.app/prompt-kit/markdown
-

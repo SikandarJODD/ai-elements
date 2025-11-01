@@ -14,21 +14,26 @@
 	} from "$lib/components/ai-elements/open-in-chat";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 	import { ChevronDown, ExternalLink } from "@lucide/svelte";
-	import { getPromptKitGithubUrl } from "$lib/config/github-paths";
+	import { getPromptKitGithubUrl, getAiElementsGithubUrl } from "$lib/config/github-paths";
 
 	interface Props {
 		componentName: string;
 		llmsTxtUrl: string;
+		type?: "prompt-kit" | "ai-elements";
 	}
 
-	let { componentName, llmsTxtUrl }: Props = $props();
+	let { componentName, llmsTxtUrl, type = "prompt-kit" }: Props = $props();
 
 	// Create the query for AI assistants
 	const query = `Read ${llmsTxtUrl} and help me understand the ${componentName} component`;
 
-	// Get the exact GitHub file URL for the component
-	const githubUrl = getPromptKitGithubUrl(componentName) ||
-		`https://github.com/search?type=code&q=${encodeURIComponent(componentName)}`;
+	// Get the exact GitHub file URL for the component based on type
+	const githubUrl =
+		type === "ai-elements"
+			? getAiElementsGithubUrl(componentName) ||
+				`https://github.com/search?type=code&q=${encodeURIComponent(componentName)}`
+			: getPromptKitGithubUrl(componentName) ||
+				`https://github.com/search?type=code&q=${encodeURIComponent(componentName)}`;
 </script>
 
 <OpenIn {query}>

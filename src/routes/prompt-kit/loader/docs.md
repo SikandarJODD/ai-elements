@@ -16,7 +16,7 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/p/loader.json
 
 ```svelte
 <script lang="ts">
-	import { Loader } from "$lib/components/prompt-kit/loader";
+  import { Loader } from "$lib/components/prompt-kit/loader";
 </script>
 
 <Loader variant="circular" />
@@ -37,14 +37,13 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/p/loader.json
 
 ### Loader
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| variant | "circular" \| "classic" \| "pulse" \| "pulse-dot" \| "dots" \| "typing" \| "wave" \| "bars" \| "terminal" \| "text-blink" \| "text-shimmer" \| "loading-dots" | "circular" | The visual style of the loader |
-| size | "sm" \| "md" \| "lg" | "md" | The size of the loader |
-| text | string | - | Text to display (for supported variants) |
-| className | string | - | Additional CSS classes |
+| Prop      | Type                                                                                                                                                          | Default    | Description                              |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ---------------------------------------- |
+| variant   | "circular" \| "classic" \| "pulse" \| "pulse-dot" \| "dots" \| "typing" \| "wave" \| "bars" \| "terminal" \| "text-blink" \| "text-shimmer" \| "loading-dots" | "circular" | The visual style of the loader           |
+| size      | "sm" \| "md" \| "lg"                                                                                                                                          | "md"       | The size of the loader                   |
+| text      | string                                                                                                                                                        | -          | Text to display (for supported variants) |
+| className | string                                                                                                                                                        | -          | Additional CSS classes                   |
 
 ---
 
 For more information, visit: https://ai-elements.vercel.app/prompt-kit/loader
-

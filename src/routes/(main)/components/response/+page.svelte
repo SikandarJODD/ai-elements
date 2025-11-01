@@ -1,6 +1,12 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading, CodeNameBlock } from "$lib/components/docs";
+	import {
+		Subheading,
+		CodeNameBlock,
+		ComponentAPITable,
+		CopyMarkdownButton,
+		OpenInMenu,
+	} from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
@@ -14,6 +20,39 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+
+	// URL for llm.txt
+	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/response/llms.txt`;
+	// Component API Props Data
+	const responseProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the response container",
+		},
+		{
+			name: "content",
+			type: "string",
+			description: "Markdown content to render",
+		},
+		{
+			name: "shikiTheme",
+			type: "string",
+			description:
+				"Shiki theme for code syntax highlighting (auto-set based on dark/light mode)",
+		},
+		{
+			name: "baseTheme",
+			type: "string",
+			default: "'shadcn'",
+			description: "Base theme for markdown styling",
+		},
+		{
+			name: "...restProps",
+			type: "StreamdownProps",
+			description: "All other Streamdown component props are supported",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -32,6 +71,12 @@
 					The Response component renders a Markdown response from a large language model.
 					It uses Streamdown under the hood to render the markdown.
 				</p>
+
+				<!-- Actions -->
+				<div class="mb-8 flex items-center gap-2">
+					<CopyMarkdownButton {llmsTxtUrl} />
+					<OpenInMenu componentName="Response" {llmsTxtUrl} type="ai-elements" />
+				</div>
 
 				<div data-toc-index={false} class="mt-6">
 					<Playground code={examples.basic.code} replay>
@@ -199,6 +244,17 @@ export const POST: RequestHandler = async ({ request }) => {
 					<li>Built with accessibility in mind for all users</li>
 				</ul>
 			</div>
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- Response -->
+			<ComponentAPITable
+				componentName="Response"
+				props={responseProps}
+				class="mt-6"
+				id="response-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->
