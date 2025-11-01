@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/chat-container.json
+npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app//p/chat-container.json
 ```
 
 ## Usage
@@ -117,4 +117,4 @@ The ChatContainer pairs perfectly with the `ScrollButton` component. The ScrollB
 
 ---
 
-For more information, visit: https://ai-elements.vercel.app/prompt-kit/chat-container
+For more information, visit: https://svelte-ai-elements.vercel.app//prompt-kit/chat-container

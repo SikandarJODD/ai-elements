@@ -11,10 +11,10 @@
 		description:
 			"Prompt Kit is a set of customizable, high-quality Svelte components built for AI applications.",
 		type: "website",
-		url: "https://ai-elements.vercel.app/prompt-kit",
+		url: "https://svelte-ai-elements.vercel.app//prompt-kit",
 		images: [
 			{
-				url: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+				url: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 				width: 1200,
 				height: 630,
 				alt: "Svelte AI Elements - Prompt Kit",

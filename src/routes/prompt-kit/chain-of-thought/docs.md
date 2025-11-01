@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/chain-of-thought.json
+npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app//p/chain-of-thought.json
 ```
 
 ## Usage
@@ -134,4 +134,4 @@ You can embed any content inside `ChainOfThoughtItem`, including code blocks, im
 
 ---
 
-For more information, visit: https://ai-elements.vercel.app/prompt-kit/chain-of-thought
+For more information, visit: https://svelte-ai-elements.vercel.app//prompt-kit/chain-of-thought

@@ -9,12 +9,12 @@ export let seo: MetaTagsProps = {
 		title: "Loader - Svelte AI Elements",
 		description:
 			"The Loader component provides a spinning animation to indicate loading states in your AI applications. It includes both a customizable wrapper component and the underlying icon for flexible usage.",
-		url: "https://ai-elements.vercel.app/components/loader",
+		url: "https://svelte-ai-elements.vercel.app//components/loader",
 		type: "website",
 		siteName: "Svelte AI Elements",
 		images: [
 			{
-				url: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+				url: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 				width: 1200,
 				height: 630,
 				alt: "Svelte AI Elements",
@@ -23,12 +23,12 @@ export let seo: MetaTagsProps = {
 	},
 	twitter: {
 		creator: "@Sikandar_Bhide",
-		site: "https://ai-elements.vercel.app",
+		site: "https://svelte-ai-elements.vercel.app/",
 		cardType: "summary_large_image",
 		title: "Loader - Svelte AI Elements",
 		description:
 			"The Loader component provides a spinning animation to indicate loading states in your AI applications. It includes both a customizable wrapper component and the underlying icon for flexible usage.",
-		image: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+		image: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 		imageAlt: "Twitter image alt",
 	},
 };

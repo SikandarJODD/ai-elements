@@ -10,7 +10,7 @@
 		"version": "1.0.0",
 		"tags": ["prompt-kit", "tool", "execution", "ai-tools", "function-calling"],
 		"category": "Prompt Kit",
-		"documentation": "https://ai-elements.vercel.app/prompt-kit/tool",
+		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/tool",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
 		"complexity": "intermediate",
 		"updated": "2025-10-19",

@@ -10,7 +10,7 @@
 		"version": "1.0.0",
 		"tags": ["workflow", "toolbar", "actions", "node-actions", "hover"],
 		"category": "AI Workflow",
-		"documentation": "https://ai-elements.vercel.app/components/workflow",
+		"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
 		"complexity": "beginner",
 		"updated": "2025-10-10",

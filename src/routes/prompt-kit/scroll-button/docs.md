@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/scroll-button.json
+npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app//p/scroll-button.json
 ```
 
 ## Usage
@@ -89,4 +89,4 @@ A function that creates and returns a scroll context for managing scroll behavio
 
 ---
 
-For more information, visit: https://ai-elements.vercel.app/prompt-kit/scroll-button
+For more information, visit: https://svelte-ai-elements.vercel.app//prompt-kit/scroll-button

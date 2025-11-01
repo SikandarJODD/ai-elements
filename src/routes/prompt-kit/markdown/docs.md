@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/markdown.json
+npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app//p/markdown.json
 ```
 
 ## Usage
@@ -64,4 +64,4 @@ function greet(name) {
 
 ---
 
-For more information, visit: https://ai-elements.vercel.app/prompt-kit/markdown
+For more information, visit: https://svelte-ai-elements.vercel.app//prompt-kit/markdown

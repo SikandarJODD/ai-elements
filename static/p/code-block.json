@@ -10,7 +10,7 @@
 		"version": "1.0.0",
 		"tags": ["prompt-kit", "code", "syntax-highlighting", "copy", "code-block"],
 		"category": "Prompt Kit",
-		"documentation": "https://ai-elements.vercel.app/prompt-kit/code-block",
+		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/code-block",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
 		"complexity": "intermediate",
 		"updated": "2025-10-19",

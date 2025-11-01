@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/system-message.json
+npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app//p/system-message.json
 ```
 
 ## Usage
@@ -43,4 +43,4 @@ npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/system-message.jso
 
 ---
 
-For more information, visit: https://ai-elements.vercel.app/prompt-kit/system-message
+For more information, visit: https://svelte-ai-elements.vercel.app//prompt-kit/system-message

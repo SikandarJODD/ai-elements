@@ -9,12 +9,12 @@ export let seo: MetaTagsProps = {
 		title: "Reasoning - Prompt Kit",
 		description:
 			"A collapsible component for showing AI reasoning, explanations, or logic. You can control it manually or let it auto-close when the stream ends. Markdown is supported.",
-		url: "https://ai-elements.vercel.app/prompt-kit/reasoning",
+		url: "https://svelte-ai-elements.vercel.app//prompt-kit/reasoning",
 		type: "website",
 		siteName: "Prompt Kit - Svelte AI Elements",
 		images: [
 			{
-				url: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+				url: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 				width: 1200,
 				height: 630,
 				alt: "Prompt Kit - Svelte AI Elements",
@@ -23,12 +23,12 @@ export let seo: MetaTagsProps = {
 	},
 	twitter: {
 		creator: "@Sikandar_Bhide",
-		site: "https://ai-elements.vercel.app",
+		site: "https://svelte-ai-elements.vercel.app/",
 		cardType: "summary_large_image",
 		title: "Reasoning - Prompt Kit",
 		description:
 			"A collapsible component for showing AI reasoning, explanations, or logic. You can control it manually or let it auto-close when the stream ends. Markdown is supported.",
-		image: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+		image: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 		imageAlt: "Prompt Kit - Reasoning Component",
 	},
 };

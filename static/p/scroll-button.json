@@ -11,7 +11,7 @@
 		"version": "1.0.0",
 		"tags": ["prompt-kit", "scroll", "button", "navigation", "chat"],
 		"category": "Prompt Kit",
-		"documentation": "https://ai-elements.vercel.app/prompt-kit/scroll-button",
+		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/scroll-button",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
 		"complexity": "beginner",
 		"updated": "2025-10-19",

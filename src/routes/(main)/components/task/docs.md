@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add https://ai-elements.vercel.app/r/task.json
+npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app//r/task.json
 ```
 
 ## Usage
