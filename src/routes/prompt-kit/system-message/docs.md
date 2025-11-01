@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/p/system-message.json
+npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/system-message.json
 ```
 
 ## Usage
