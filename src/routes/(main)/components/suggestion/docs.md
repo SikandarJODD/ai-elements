@@ -14,25 +14,28 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/suggestion.json
 
 ```svelte
 <script lang="ts">
-	import { Suggestion, SuggestionItem } from "$lib/components/ai-elements/suggestion";
+  import {
+    Suggestion,
+    SuggestionItem,
+  } from "$lib/components/ai-elements/suggestion";
 
-	const suggestions = [
-		"What is quantum computing?",
-		"Explain machine learning",
-		"How does blockchain work?"
-	];
+  const suggestions = [
+    "What is quantum computing?",
+    "Explain machine learning",
+    "How does blockchain work?",
+  ];
 
-	function handleClick(suggestion: string) {
-		console.log("Clicked:", suggestion);
-	}
+  function handleClick(suggestion: string) {
+    console.log("Clicked:", suggestion);
+  }
 </script>
 
 <Suggestion>
-	{#each suggestions as suggestion}
-		<SuggestionItem onclick={() => handleClick(suggestion)}>
-			{suggestion}
-		</SuggestionItem>
-	{/each}
+  {#each suggestions as suggestion}
+    <SuggestionItem onclick={() => handleClick(suggestion)}>
+      {suggestion}
+    </SuggestionItem>
+  {/each}
 </Suggestion>
 ```
 
@@ -40,34 +43,37 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/suggestion.json
 
 ```svelte
 <script lang="ts">
-	import { Chat } from "@ai-sdk/svelte";
-	import { Suggestion, SuggestionItem } from "$lib/components/ai-elements/suggestion";
+  import { Chat } from "@ai-sdk/svelte";
+  import {
+    Suggestion,
+    SuggestionItem,
+  } from "$lib/components/ai-elements/suggestion";
 
-	const chat = new Chat();
+  const chat = new Chat();
 
-	const suggestions = [
-		"Explain quantum computing",
-		"What is machine learning?",
-		"How does AI work?"
-	];
+  const suggestions = [
+    "Explain quantum computing",
+    "What is machine learning?",
+    "How does AI work?",
+  ];
 
-	function handleSuggestion(text: string) {
-		chat.setInput(text);
-		chat.submit();
-	}
+  function handleSuggestion(text: string) {
+    chat.setInput(text);
+    chat.submit();
+  }
 </script>
 
 <Suggestion>
-	{#each suggestions as suggestion}
-		<SuggestionItem onclick={() => handleSuggestion(suggestion)}>
-			{suggestion}
-		</SuggestionItem>
-	{/each}
+  {#each suggestions as suggestion}
+    <SuggestionItem onclick={() => handleSuggestion(suggestion)}>
+      {suggestion}
+    </SuggestionItem>
+  {/each}
 </Suggestion>
 
 <form onsubmit={chat.submit}>
-	<input bind:value={chat.input} placeholder="Ask a question..." />
-	<button type="submit">Send</button>
+  <input bind:value={chat.input} placeholder="Ask a question..." />
+  <button type="submit">Send</button>
 </form>
 ```
 
@@ -75,23 +81,26 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/suggestion.json
 
 ```svelte
 <script lang="ts">
-	import { Suggestion, SuggestionItem } from "$lib/components/ai-elements/suggestion";
-	import { Lightbulb, Code, Book } from "lucide-svelte";
+  import {
+    Suggestion,
+    SuggestionItem,
+  } from "$lib/components/ai-elements/suggestion";
+  import { Lightbulb, Code, Book } from "lucide-svelte";
 
-	const suggestions = [
-		{ icon: Lightbulb, text: "Get ideas" },
-		{ icon: Code, text: "Write code" },
-		{ icon: Book, text: "Learn something" }
-	];
+  const suggestions = [
+    { icon: Lightbulb, text: "Get ideas" },
+    { icon: Code, text: "Write code" },
+    { icon: Book, text: "Learn something" },
+  ];
 </script>
 
 <Suggestion>
-	{#each suggestions as { icon: Icon, text }}
-		<SuggestionItem>
-			<Icon class="size-4" />
-			{text}
-		</SuggestionItem>
-	{/each}
+  {#each suggestions as { icon: Icon, text }}
+    <SuggestionItem>
+      <Icon class="size-4" />
+      {text}
+    </SuggestionItem>
+  {/each}
 </Suggestion>
 ```
 
@@ -99,25 +108,24 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/suggestion.json
 
 ```svelte
 <script lang="ts">
-	import { Suggestion, SuggestionItem } from "$lib/components/ai-elements/suggestion";
+  import {
+    Suggestion,
+    SuggestionItem,
+  } from "$lib/components/ai-elements/suggestion";
 
-	let messages = $state([]);
-	
-	const suggestions = [
-		"Tell me a joke",
-		"Explain AI",
-		"Write a poem"
-	];
+  let messages = $state([]);
+
+  const suggestions = ["Tell me a joke", "Explain AI", "Write a poem"];
 </script>
 
 {#if messages.length === 0}
-	<Suggestion>
-		{#each suggestions as suggestion}
-			<SuggestionItem onclick={() => handleSuggestion(suggestion)}>
-				{suggestion}
-			</SuggestionItem>
-		{/each}
-	</Suggestion>
+  <Suggestion>
+    {#each suggestions as suggestion}
+      <SuggestionItem onclick={() => handleSuggestion(suggestion)}>
+        {suggestion}
+      </SuggestionItem>
+    {/each}
+  </Suggestion>
 {/if}
 ```
 
@@ -125,20 +133,20 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/suggestion.json
 
 ### Suggestion
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | Snippet | - | Suggestion items to display |
-| class | string | - | Additional CSS classes to apply to the container |
-| ...restProps | HTMLAttributes<HTMLDivElement> | - | All other div props are supported |
+| Prop         | Type                           | Default | Description                                      |
+| ------------ | ------------------------------ | ------- | ------------------------------------------------ |
+| children     | Snippet                        | -       | Suggestion items to display                      |
+| class        | string                         | -       | Additional CSS classes to apply to the container |
+| ...restProps | HTMLAttributes<HTMLDivElement> | -       | All other div props are supported                |
 
 ### SuggestionItem
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | Snippet | - | Content of the suggestion |
-| onclick | () => void | - | Click handler for the suggestion |
-| class | string | - | Additional CSS classes to apply to the item |
-| ...restProps | ButtonProps | - | All other Button component props are supported |
+| Prop         | Type        | Default | Description                                    |
+| ------------ | ----------- | ------- | ---------------------------------------------- |
+| children     | Snippet     | -       | Content of the suggestion                      |
+| onclick      | () => void  | -       | Click handler for the suggestion               |
+| class        | string      | -       | Additional CSS classes to apply to the item    |
+| ...restProps | ButtonProps | -       | All other Button component props are supported |
 
 ## Features
 
@@ -161,4 +169,3 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/suggestion.json
 ---
 
 For more information, visit: https://svelte-ai-elements.vercel.app/components/suggestion
-

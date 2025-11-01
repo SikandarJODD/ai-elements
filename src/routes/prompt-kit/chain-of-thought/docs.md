@@ -14,54 +14,57 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/p/chain-of-thought.json
 
 ```svelte
 <script lang="ts">
-	import {
-		ChainOfThought,
-		ChainOfThoughtContent,
-		ChainOfThoughtItem,
-		ChainOfThoughtStep,
-		ChainOfThoughtTrigger,
-	} from "$lib/components/prompt-kit/chain-of-thought";
+  import {
+    ChainOfThought,
+    ChainOfThoughtContent,
+    ChainOfThoughtItem,
+    ChainOfThoughtStep,
+    ChainOfThoughtTrigger,
+  } from "$lib/components/prompt-kit/chain-of-thought";
 </script>
 
 <ChainOfThought>
-	<ChainOfThoughtStep>
-		<ChainOfThoughtTrigger>Analyzing the user's request</ChainOfThoughtTrigger>
-		<ChainOfThoughtContent>
-			<ChainOfThoughtItem>
-				The user asked about implementing a sorting algorithm
-			</ChainOfThoughtItem>
-			<ChainOfThoughtItem>
-				This appears to be a technical question requiring code examples
-			</ChainOfThoughtItem>
-		</ChainOfThoughtContent>
-	</ChainOfThoughtStep>
+  <ChainOfThoughtStep>
+    <ChainOfThoughtTrigger>Analyzing the user's request</ChainOfThoughtTrigger>
+    <ChainOfThoughtContent>
+      <ChainOfThoughtItem>
+        The user asked about implementing a sorting algorithm
+      </ChainOfThoughtItem>
+      <ChainOfThoughtItem>
+        This appears to be a technical question requiring code examples
+      </ChainOfThoughtItem>
+    </ChainOfThoughtContent>
+  </ChainOfThoughtStep>
 
-	<ChainOfThoughtStep>
-		<ChainOfThoughtTrigger>Considering implementation options</ChainOfThoughtTrigger>
-		<ChainOfThoughtContent>
-			<ChainOfThoughtItem>
-				Quick sort: O(n log n) average case, good for general purpose
-			</ChainOfThoughtItem>
-			<ChainOfThoughtItem>
-				Merge sort: O(n log n) worst case, stable and predictable
-			</ChainOfThoughtItem>
-			<ChainOfThoughtItem>
-				Bubble sort: O(n²), simple but inefficient for large datasets
-			</ChainOfThoughtItem>
-		</ChainOfThoughtContent>
-	</ChainOfThoughtStep>
+  <ChainOfThoughtStep>
+    <ChainOfThoughtTrigger
+      >Considering implementation options</ChainOfThoughtTrigger
+    >
+    <ChainOfThoughtContent>
+      <ChainOfThoughtItem>
+        Quick sort: O(n log n) average case, good for general purpose
+      </ChainOfThoughtItem>
+      <ChainOfThoughtItem>
+        Merge sort: O(n log n) worst case, stable and predictable
+      </ChainOfThoughtItem>
+      <ChainOfThoughtItem>
+        Bubble sort: O(n²), simple but inefficient for large datasets
+      </ChainOfThoughtItem>
+    </ChainOfThoughtContent>
+  </ChainOfThoughtStep>
 
-	<ChainOfThoughtStep isLast>
-		<ChainOfThoughtTrigger>Selecting the best approach</ChainOfThoughtTrigger>
-		<ChainOfThoughtContent>
-			<ChainOfThoughtItem>
-				Given the educational context, I'll demonstrate merge sort for its clarity
-			</ChainOfThoughtItem>
-			<ChainOfThoughtItem>
-				It shows the divide-and-conquer principle effectively
-			</ChainOfThoughtItem>
-		</ChainOfThoughtContent>
-	</ChainOfThoughtStep>
+  <ChainOfThoughtStep isLast>
+    <ChainOfThoughtTrigger>Selecting the best approach</ChainOfThoughtTrigger>
+    <ChainOfThoughtContent>
+      <ChainOfThoughtItem>
+        Given the educational context, I'll demonstrate merge sort for its
+        clarity
+      </ChainOfThoughtItem>
+      <ChainOfThoughtItem>
+        It shows the divide-and-conquer principle effectively
+      </ChainOfThoughtItem>
+    </ChainOfThoughtContent>
+  </ChainOfThoughtStep>
 </ChainOfThought>
 ```
 
@@ -69,47 +72,47 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/p/chain-of-thought.json
 
 ### ChainOfThought
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | Snippet | - | The ChainOfThoughtStep components to display |
-| class | string | - | Additional CSS classes |
+| Prop     | Type    | Default | Description                                  |
+| -------- | ------- | ------- | -------------------------------------------- |
+| children | Snippet | -       | The ChainOfThoughtStep components to display |
+| class    | string  | -       | Additional CSS classes                       |
 
 ### ChainOfThoughtStep
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | Snippet | - | The trigger and content components |
-| class | string | - | Additional CSS classes |
-| isLast | boolean | false | Whether this is the last step (hides connector line) |
-| open | boolean | - | Control the open state (makes component controlled) |
-| onOpenChange | (open: boolean) => void | - | Callback when open state changes |
-| ...props | CollapsibleRootProps | - | Additional Collapsible component props from bits-ui |
+| Prop         | Type                    | Default | Description                                          |
+| ------------ | ----------------------- | ------- | ---------------------------------------------------- |
+| children     | Snippet                 | -       | The trigger and content components                   |
+| class        | string                  | -       | Additional CSS classes                               |
+| isLast       | boolean                 | false   | Whether this is the last step (hides connector line) |
+| open         | boolean                 | -       | Control the open state (makes component controlled)  |
+| onOpenChange | (open: boolean) => void | -       | Callback when open state changes                     |
+| ...props     | CollapsibleRootProps    | -       | Additional Collapsible component props from bits-ui  |
 
 ### ChainOfThoughtTrigger
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | Snippet | - | The trigger text content |
-| class | string | - | Additional CSS classes |
-| leftIcon | Snippet | - | Optional icon to display on the left side |
-| swapIconOnHover | boolean | true | Whether to swap the left icon with chevron on hover |
-| ...props | CollapsibleTriggerProps | - | Additional Collapsible trigger props from bits-ui |
+| Prop            | Type                    | Default | Description                                         |
+| --------------- | ----------------------- | ------- | --------------------------------------------------- |
+| children        | Snippet                 | -       | The trigger text content                            |
+| class           | string                  | -       | Additional CSS classes                              |
+| leftIcon        | Snippet                 | -       | Optional icon to display on the left side           |
+| swapIconOnHover | boolean                 | true    | Whether to swap the left icon with chevron on hover |
+| ...props        | CollapsibleTriggerProps | -       | Additional Collapsible trigger props from bits-ui   |
 
 ### ChainOfThoughtContent
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | Snippet | - | The content items to display |
-| class | string | - | Additional CSS classes |
-| ...props | CollapsibleContentProps | - | Additional Collapsible content props from bits-ui |
+| Prop     | Type                    | Default | Description                                       |
+| -------- | ----------------------- | ------- | ------------------------------------------------- |
+| children | Snippet                 | -       | The content items to display                      |
+| class    | string                  | -       | Additional CSS classes                            |
+| ...props | CollapsibleContentProps | -       | Additional Collapsible content props from bits-ui |
 
 ### ChainOfThoughtItem
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | Snippet | - | The item content |
-| class | string | - | Additional CSS classes |
-| ...props | HTMLAttributes<HTMLDivElement> | - | Additional HTML div props |
+| Prop     | Type                           | Default | Description               |
+| -------- | ------------------------------ | ------- | ------------------------- |
+| children | Snippet                        | -       | The item content          |
+| class    | string                         | -       | Additional CSS classes    |
+| ...props | HTMLAttributes<HTMLDivElement> | -       | Additional HTML div props |
 
 ## Usage Notes
 
@@ -132,4 +135,3 @@ You can embed any content inside `ChainOfThoughtItem`, including code blocks, im
 ---
 
 For more information, visit: https://ai-elements.vercel.app/prompt-kit/chain-of-thought
-

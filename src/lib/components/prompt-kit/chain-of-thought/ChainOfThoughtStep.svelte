@@ -24,4 +24,3 @@
 		<div class="bg-primary/20 ml-1.75 h-4 w-px" />
 	</div>
 </Collapsible>
-

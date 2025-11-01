@@ -3,21 +3,12 @@
 		"name": "chat-container",
 		"type": "registry:block",
 		"description": "The ChatContainer component provides a comprehensive chat interface with scroll management, auto-scrolling, and scroll anchoring. Features context-based state management for handling message scrolling and sticky-to-bottom behavior.",
-		"dependencies": [
-			"runed"
-		],
+		"dependencies": ["runed"],
 		"registryDependencies": [],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
-			"tags": [
-				"prompt-kit",
-				"chat",
-				"container",
-				"scroll",
-				"auto-scroll",
-				"messages"
-			],
+			"tags": ["prompt-kit", "chat", "container", "scroll", "auto-scroll", "messages"],
 			"category": "Prompt Kit",
 			"documentation": "https://ai-elements.vercel.app/prompt-kit/chat-container",
 			"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -31,12 +22,8 @@
 		"name": "chain-of-thought",
 		"type": "registry:block",
 		"description": "The Chain of Thought component displays AI's step-by-step reasoning process with collapsible steps, custom icons, and visual connectors. Features composable architecture with ChainOfThought, ChainOfThoughtStep, ChainOfThoughtTrigger, ChainOfThoughtContent, and ChainOfThoughtItem components.",
-		"dependencies": [
-			"@lucide/svelte"
-		],
-		"registryDependencies": [
-			"collapsible"
-		],
+		"dependencies": ["@lucide/svelte"],
+		"registryDependencies": ["collapsible"],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
@@ -61,25 +48,12 @@
 		"name": "code-block",
 		"type": "registry:block",
 		"description": "The CodeBlock component displays formatted code snippets with syntax highlighting, copy functionality, and language detection. Supports multiple code blocks with group context management for consistent styling.",
-		"dependencies": [
-			"shiki",
-			"@shikijs/langs",
-			"@shikijs/themes"
-		],
-		"registryDependencies": [
-			"button",
-			"local:prompt-kit-copy-button"
-		],
+		"dependencies": ["shiki", "@shikijs/langs", "@shikijs/themes"],
+		"registryDependencies": ["button", "local:prompt-kit-copy-button"],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
-			"tags": [
-				"prompt-kit",
-				"code",
-				"syntax-highlighting",
-				"copy",
-				"code-block"
-			],
+			"tags": ["prompt-kit", "code", "syntax-highlighting", "copy", "code-block"],
 			"category": "Prompt Kit",
 			"documentation": "https://ai-elements.vercel.app/prompt-kit/code-block",
 			"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -95,13 +69,8 @@
 		"type": "registry:block",
 		"author": "SikandarJODD",
 		"description": "The CopyButton component provides a button that allows users to copy text to their clipboard with visual feedback indicating success or failure.",
-		"dependencies": [
-			"@lucide/svelte"
-		],
-		"registryDependencies": [
-			"button",
-			"tooltip"
-		],
+		"dependencies": ["@lucide/svelte"],
+		"registryDependencies": ["button", "tooltip"],
 		"meta": {
 			"author": "SikandarJODD"
 		},
@@ -111,22 +80,12 @@
 		"name": "file-upload",
 		"type": "registry:block",
 		"description": "The FileUpload component provides drag-and-drop file upload functionality with preview, validation, and context-based state management. Features trigger and content components for flexible upload UI.",
-		"dependencies": [
-			"runed"
-		],
-		"registryDependencies": [
-			"button"
-		],
+		"dependencies": ["runed"],
+		"registryDependencies": ["button"],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
-			"tags": [
-				"prompt-kit",
-				"file-upload",
-				"drag-drop",
-				"attachments",
-				"validation"
-			],
+			"tags": ["prompt-kit", "file-upload", "drag-drop", "attachments", "validation"],
 			"category": "Prompt Kit",
 			"documentation": "https://ai-elements.vercel.app/prompt-kit/file-upload",
 			"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -144,13 +103,7 @@
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
-			"tags": [
-				"prompt-kit",
-				"image",
-				"media",
-				"display",
-				"loading"
-			],
+			"tags": ["prompt-kit", "image", "media", "display", "loading"],
 			"category": "Prompt Kit",
 			"documentation": "https://ai-elements.vercel.app/prompt-kit/image",
 			"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -168,14 +121,7 @@
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
-			"tags": [
-				"prompt-kit",
-				"loader",
-				"loading",
-				"spinner",
-				"animation",
-				"ai-response"
-			],
+			"tags": ["prompt-kit", "loader", "loading", "spinner", "animation", "ai-response"],
 			"category": "Prompt Kit",
 			"documentation": "https://ai-elements.vercel.app/prompt-kit/loader",
 			"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -189,21 +135,12 @@
 		"name": "markdown",
 		"type": "registry:block",
 		"description": "The Markdown component renders markdown content with proper styling and support for code blocks, lists, links, and other markdown elements. Perfect for displaying AI-generated markdown responses.",
-		"dependencies": [
-			"marked",
-			"isomorphic-dompurify"
-		],
+		"dependencies": ["marked", "isomorphic-dompurify"],
 		"registryDependencies": [],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
-			"tags": [
-				"prompt-kit",
-				"markdown",
-				"rendering",
-				"content",
-				"formatting"
-			],
+			"tags": ["prompt-kit", "markdown", "rendering", "content", "formatting"],
 			"category": "Prompt Kit",
 			"documentation": "https://ai-elements.vercel.app/prompt-kit/markdown",
 			"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -217,22 +154,11 @@
 		"name": "message",
 		"type": "registry:block",
 		"description": "The Message component displays chat messages with avatar, content, and action buttons. Features context-based state management for flexible message layouts in AI chat interfaces. Includes Message, MessageAvatar, MessageContent, MessageAction, and MessageActions components.",
-		"registryDependencies": [
-			"avatar",
-			"button",
-			"tooltip"
-		],
+		"registryDependencies": ["avatar", "button", "tooltip"],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
-			"tags": [
-				"prompt-kit",
-				"message",
-				"chat",
-				"avatar",
-				"actions",
-				"conversation"
-			],
+			"tags": ["prompt-kit", "message", "chat", "avatar", "actions", "conversation"],
 			"category": "Prompt Kit",
 			"documentation": "https://ai-elements.vercel.app/prompt-kit/message",
 			"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -246,25 +172,12 @@
 		"name": "prompt-input",
 		"type": "registry:block",
 		"description": "The PromptInput component provides a comprehensive text input interface for AI chat with actions, textarea, and state management. Features context-based control for building flexible prompt input experiences.",
-		"dependencies": [
-			"runed"
-		],
-		"registryDependencies": [
-			"textarea",
-			"button",
-			"tooltip"
-		],
+		"dependencies": ["runed"],
+		"registryDependencies": ["textarea", "button", "tooltip"],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
-			"tags": [
-				"prompt-kit",
-				"input",
-				"prompt",
-				"textarea",
-				"chat-input",
-				"actions"
-			],
+			"tags": ["prompt-kit", "input", "prompt", "textarea", "chat-input", "actions"],
 			"category": "Prompt Kit",
 			"documentation": "https://ai-elements.vercel.app/prompt-kit/prompt-input",
 			"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -278,19 +191,11 @@
 		"name": "prompt-suggestion",
 		"type": "registry:block",
 		"description": "The PromptSuggestion component displays clickable prompt suggestions to help users get started with AI conversations. Features customizable suggestions with icons and descriptions.",
-		"registryDependencies": [
-			"button"
-		],
+		"registryDependencies": ["button"],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
-			"tags": [
-				"prompt-kit",
-				"suggestion",
-				"prompts",
-				"quick-start",
-				"examples"
-			],
+			"tags": ["prompt-kit", "suggestion", "prompts", "quick-start", "examples"],
 			"category": "Prompt Kit",
 			"documentation": "https://ai-elements.vercel.app/prompt-kit/prompt-suggestion",
 			"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -304,20 +209,11 @@
 		"name": "reasoning",
 		"type": "registry:block",
 		"description": "The Reasoning component displays AI reasoning and thinking process with collapsible content. Features trigger, content, and context management for showing step-by-step AI reasoning in responses.",
-		"registryDependencies": [
-			"collapsible",
-			"button"
-		],
+		"registryDependencies": ["collapsible", "button"],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
-			"tags": [
-				"prompt-kit",
-				"reasoning",
-				"thinking",
-				"ai-process",
-				"collapsible"
-			],
+			"tags": ["prompt-kit", "reasoning", "thinking", "ai-process", "collapsible"],
 			"category": "Prompt Kit",
 			"documentation": "https://ai-elements.vercel.app/prompt-kit/reasoning",
 			"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -331,22 +227,12 @@
 		"name": "scroll-button",
 		"type": "registry:block",
 		"description": "The ScrollButton component provides a floating button to scroll to the bottom of chat containers. Features context-based visibility management and smooth scrolling behavior.",
-		"dependencies": [
-			"runed"
-		],
-		"registryDependencies": [
-			"button"
-		],
+		"dependencies": ["runed"],
+		"registryDependencies": ["button"],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
-			"tags": [
-				"prompt-kit",
-				"scroll",
-				"button",
-				"navigation",
-				"chat"
-			],
+			"tags": ["prompt-kit", "scroll", "button", "navigation", "chat"],
 			"category": "Prompt Kit",
 			"documentation": "https://ai-elements.vercel.app/prompt-kit/scroll-button",
 			"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -360,21 +246,11 @@
 		"name": "source",
 		"type": "registry:block",
 		"description": "The Source component displays collapsible source information and references in AI responses. Features trigger and content components with context management for showing citations and sources.",
-		"registryDependencies": [
-			"collapsible",
-			"button",
-			"hover-card"
-		],
+		"registryDependencies": ["collapsible", "button", "hover-card"],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
-			"tags": [
-				"prompt-kit",
-				"source",
-				"citation",
-				"reference",
-				"collapsible"
-			],
+			"tags": ["prompt-kit", "source", "citation", "reference", "collapsible"],
 			"category": "Prompt Kit",
 			"documentation": "https://ai-elements.vercel.app/prompt-kit/source",
 			"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -388,21 +264,11 @@
 		"name": "steps",
 		"type": "registry:block",
 		"description": "The Steps component provides a visual step-by-step progress indicator for AI processes. Features step items, trigger, content, and progress bar with context-based state management.",
-		"registryDependencies": [
-			"collapsible",
-			"button"
-		],
+		"registryDependencies": ["collapsible", "button"],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
-			"tags": [
-				"prompt-kit",
-				"steps",
-				"progress",
-				"workflow",
-				"process",
-				"stepper"
-			],
+			"tags": ["prompt-kit", "steps", "progress", "workflow", "process", "stepper"],
 			"category": "Prompt Kit",
 			"documentation": "https://ai-elements.vercel.app/prompt-kit/steps",
 			"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -416,19 +282,11 @@
 		"name": "system-message",
 		"type": "registry:block",
 		"description": "The SystemMessage component displays system-level messages or notifications in chat interfaces. Features consistent styling for system announcements, errors, or status updates.",
-		"registryDependencies": [
-			"button"
-		],
+		"registryDependencies": ["button"],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
-			"tags": [
-				"prompt-kit",
-				"system",
-				"message",
-				"notification",
-				"status"
-			],
+			"tags": ["prompt-kit", "system", "message", "notification", "status"],
 			"category": "Prompt Kit",
 			"documentation": "https://ai-elements.vercel.app/prompt-kit/system-message",
 			"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -442,21 +300,11 @@
 		"name": "tool",
 		"type": "registry:block",
 		"description": "The Tool component displays AI tool execution information with header, content, and details sections. Features composed tool layouts with context management for showing tool usage, parameters, and results in AI responses.",
-		"registryDependencies": [
-			"collapsible",
-			"badge",
-			"button"
-		],
+		"registryDependencies": ["collapsible", "badge", "button"],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
-			"tags": [
-				"prompt-kit",
-				"tool",
-				"execution",
-				"ai-tools",
-				"function-calling"
-			],
+			"tags": ["prompt-kit", "tool", "execution", "ai-tools", "function-calling"],
 			"category": "Prompt Kit",
 			"documentation": "https://ai-elements.vercel.app/prompt-kit/tool",
 			"repository": "https://github.com/SikandarJODD/ai-elements",

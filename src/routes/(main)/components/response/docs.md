@@ -13,7 +13,7 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/response.json
 Add the following imports to your `app.css` file to include Tailwind CSS and Streamdown styles:
 
 ```css
-@import 'tailwindcss';
+@import "tailwindcss";
 /* Add Streamdown styles to your Tailwind build */
 @source "../node_modules/svelte-streamdown/**/*";
 ```
@@ -24,9 +24,9 @@ Add the following imports to your `app.css` file to include Tailwind CSS and Str
 
 ```svelte
 <script lang="ts">
-	import { Response } from "$lib/components/ai-elements/response";
+  import { Response } from "$lib/components/ai-elements/response";
 
-	const content = `# Hello World
+  const content = `# Hello World
 
 This is a **markdown** response with:
 - Lists
@@ -46,18 +46,18 @@ console.log("Hello, world!");
 
 ```svelte
 <script lang="ts">
-	import { Response } from "$lib/components/ai-elements/response";
-	import { Chat } from "@ai-sdk/svelte";
+  import { Response } from "$lib/components/ai-elements/response";
+  import { Chat } from "@ai-sdk/svelte";
 
-	const chat = new Chat();
+  const chat = new Chat();
 </script>
 
 <div>
-	{#each chat.messages as message}
-		{#if message.role === "assistant"}
-			<Response content={message.content} />
-		{/if}
-	{/each}
+  {#each chat.messages as message}
+    {#if message.role === "assistant"}
+      <Response content={message.content} />
+    {/if}
+  {/each}
 </div>
 ```
 
@@ -65,9 +65,9 @@ console.log("Hello, world!");
 
 ```svelte
 <script lang="ts">
-	import { Response } from "$lib/components/ai-elements/response";
+  import { Response } from "$lib/components/ai-elements/response";
 
-	const content = "# Custom Theme\n\nThis uses a custom base theme.";
+  const content = "# Custom Theme\n\nThis uses a custom base theme.";
 </script>
 
 <Response {content} baseTheme="github" />
@@ -77,9 +77,9 @@ console.log("Hello, world!");
 
 ```svelte
 <script lang="ts">
-	import { Response } from "$lib/components/ai-elements/response";
+  import { Response } from "$lib/components/ai-elements/response";
 
-	const content = "# Styled Response\n\nThis has custom styling applied.";
+  const content = "# Styled Response\n\nThis has custom styling applied.";
 </script>
 
 <Response {content} class="rounded-lg border p-4" />
@@ -89,13 +89,13 @@ console.log("Hello, world!");
 
 ### Response
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| content | string | - | Markdown content to render |
-| class | string | - | Additional CSS classes to apply to the response container |
-| shikiTheme | string | - | Shiki theme for code syntax highlighting (auto-set based on dark/light mode) |
-| baseTheme | string | 'shadcn' | Base theme for markdown styling |
-| ...restProps | StreamdownProps | - | All other Streamdown component props are supported |
+| Prop         | Type            | Default  | Description                                                                  |
+| ------------ | --------------- | -------- | ---------------------------------------------------------------------------- |
+| content      | string          | -        | Markdown content to render                                                   |
+| class        | string          | -        | Additional CSS classes to apply to the response container                    |
+| shikiTheme   | string          | -        | Shiki theme for code syntax highlighting (auto-set based on dark/light mode) |
+| baseTheme    | string          | 'shadcn' | Base theme for markdown styling                                              |
+| ...restProps | StreamdownProps | -        | All other Streamdown component props are supported                           |
 
 ## Features
 
@@ -109,10 +109,10 @@ console.log("Hello, world!");
 ## Dependencies
 
 This component requires:
+
 - `svelte-streamdown` - For markdown rendering and streaming support
 - `shiki` - For syntax highlighting in code blocks
 
 ---
 
 For more information, visit: https://svelte-ai-elements.vercel.app/components/response
-

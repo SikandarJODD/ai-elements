@@ -14,19 +14,19 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/p/image.json
 
 ```svelte
 <script lang="ts">
-	import { Image } from "$lib/components/prompt-kit/image";
+  import { Image } from "$lib/components/prompt-kit/image";
 
-	// Example base64 (compact SVG chat typing icon)
-	const base64 =
-		"PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij48cmVjdCB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHJ4PSIxMCIgZmlsbD0iIzdjM2FlZCIvPjxjaXJjbGUgY3g9IjE2IiBjeT0iMjQiIHI9IjQiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIyNCIgY3k9IjI0IiByPSI0IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iNCIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==";
+  // Example base64 (compact SVG chat typing icon)
+  const base64 =
+    "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij48cmVjdCB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHJ4PSIxMCIgZmlsbD0iIzdjM2FlZCIvPjxjaXJjbGUgY3g9IjE2IiBjeT0iMjQiIHI9IjQiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIyNCIgY3k9IjI0IiByPSI0IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMzIiIGN5PSIyNCIgcj0iNCIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==";
 </script>
 
 <Image
-	{base64}
-	uint8Array={new Uint8Array()}
-	mediaType="image/svg+xml"
-	alt="Compact gradient chat icon"
-	class="h-24 w-24 rounded-md"
+  {base64}
+  uint8Array={new Uint8Array()}
+  mediaType="image/svg+xml"
+  alt="Compact gradient chat icon"
+  class="h-24 w-24 rounded-md"
 />
 ```
 
@@ -34,14 +34,14 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/p/image.json
 
 ### Image
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| base64 | string | - | Base64-encoded image data |
-| uint8Array | Uint8Array | - | Raw image data as Uint8Array |
-| mediaType | string | 'image/png' | MIME type of the image (e.g., 'image/jpeg') |
-| alt | string | - | Alternative text for accessibility (required) |
-| className | string | - | Additional CSS classes |
-| ...props | ImgHTMLAttributes<HTMLImageElement> | - | All standard HTML <img> attributes |
+| Prop       | Type                                | Default     | Description                                   |
+| ---------- | ----------------------------------- | ----------- | --------------------------------------------- |
+| base64     | string                              | -           | Base64-encoded image data                     |
+| uint8Array | Uint8Array                          | -           | Raw image data as Uint8Array                  |
+| mediaType  | string                              | 'image/png' | MIME type of the image (e.g., 'image/jpeg')   |
+| alt        | string                              | -           | Alternative text for accessibility (required) |
+| className  | string                              | -           | Additional CSS classes                        |
+| ...props   | ImgHTMLAttributes<HTMLImageElement> | -           | All standard HTML <img> attributes            |
 
 ## Features
 
@@ -54,4 +54,3 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/p/image.json
 ---
 
 For more information, visit: https://ai-elements.vercel.app/prompt-kit/image
-

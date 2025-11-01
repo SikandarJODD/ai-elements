@@ -3,24 +3,12 @@
 	"name": "tool",
 	"type": "registry:block",
 	"description": "The Tool component displays AI tool execution information with header, content, and details sections. Features composed tool layouts with context management for showing tool usage, parameters, and results in AI responses.",
-	"devDependencies": [
-		"@lucide/svelte@^0.544.0"
-	],
-	"registryDependencies": [
-		"collapsible",
-		"badge",
-		"button"
-	],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"registryDependencies": ["collapsible", "badge", "button"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"prompt-kit",
-			"tool",
-			"execution",
-			"ai-tools",
-			"function-calling"
-		],
+		"tags": ["prompt-kit", "tool", "execution", "ai-tools", "function-calling"],
 		"category": "Prompt Kit",
 		"documentation": "https://ai-elements.vercel.app/prompt-kit/tool",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

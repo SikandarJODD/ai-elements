@@ -7,4 +7,3 @@ export { default as ConversationWithActions } from "./conversation-with-actions.
 export { default as ConversationWithScroll } from "./conversation-with-scroll.svelte";
 export { default as ConversationWithPromptInput } from "./conversation-with-prompt-input.svelte";
 export { default as FullChatApp } from "./full-chat-app.svelte";
-

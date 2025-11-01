@@ -25,4 +25,3 @@
 		<div class="mt-2 space-y-2">{@render children?.()}</div>
 	</div>
 </CollapsibleContent>
-

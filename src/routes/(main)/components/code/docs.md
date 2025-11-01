@@ -14,9 +14,9 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/code.json
 
 ```svelte
 <script lang="ts">
-	import { Code } from "$lib/components/ai-elements/code";
+  import { Code } from "$lib/components/ai-elements/code";
 
-	const code = `function hello() {
+  const code = `function hello() {
   console.log("Hello, world!");
 }`;
 </script>
@@ -28,9 +28,9 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/code.json
 
 ```svelte
 <script lang="ts">
-	import { Code } from "$lib/components/ai-elements/code";
+  import { Code } from "$lib/components/ai-elements/code";
 
-	const code = `const greeting = "Hello";
+  const code = `const greeting = "Hello";
 const name = "World";
 console.log(\`\${greeting}, \${name}!\`);`;
 </script>
@@ -42,9 +42,9 @@ console.log(\`\${greeting}, \${name}!\`);`;
 
 ```svelte
 <script lang="ts">
-	import { Code } from "$lib/components/ai-elements/code";
+  import { Code } from "$lib/components/ai-elements/code";
 
-	const code = `function calculate(a, b) {
+  const code = `function calculate(a, b) {
   const sum = a + b;
   return sum;
 }`;
@@ -57,14 +57,14 @@ console.log(\`\${greeting}, \${name}!\`);`;
 
 ```svelte
 <script lang="ts">
-	import { Code, CodeCopyButton } from "$lib/components/ai-elements/code";
+  import { Code, CodeCopyButton } from "$lib/components/ai-elements/code";
 
-	const code = `npm install svelte-ai-elements`;
+  const code = `npm install svelte-ai-elements`;
 </script>
 
 <div class="relative">
-	<Code lang="bash" {code} />
-	<CodeCopyButton {code} />
+  <Code lang="bash" {code} />
+  <CodeCopyButton {code} />
 </div>
 ```
 
@@ -72,26 +72,26 @@ console.log(\`\${greeting}, \${name}!\`);`;
 
 ```svelte
 <script lang="ts">
-	import { streamObject } from "@ai-sdk/svelte";
-	import { Code } from "$lib/components/ai-elements/code";
-	import { z } from "zod";
+  import { streamObject } from "@ai-sdk/svelte";
+  import { Code } from "$lib/components/ai-elements/code";
+  import { z } from "zod";
 
-	const { object, submit } = streamObject({
-		schema: z.object({
-			code: z.string(),
-			language: z.string()
-		})
-	});
+  const { object, submit } = streamObject({
+    schema: z.object({
+      code: z.string(),
+      language: z.string(),
+    }),
+  });
 
-	function generateCode() {
-		submit("Generate a hello world function in JavaScript");
-	}
+  function generateCode() {
+    submit("Generate a hello world function in JavaScript");
+  }
 </script>
 
 <button onclick={generateCode}>Generate Code</button>
 
 {#if $object?.code}
-	<Code lang={$object.language || "javascript"} code={$object.code} />
+  <Code lang={$object.language || "javascript"} code={$object.code} />
 {/if}
 ```
 
@@ -99,14 +99,14 @@ console.log(\`\${greeting}, \${name}!\`);`;
 
 ```svelte
 <script lang="ts">
-	import { Code, CodeOverflow } from "$lib/components/ai-elements/code";
+  import { Code, CodeOverflow } from "$lib/components/ai-elements/code";
 
-	const longCode = `// Very long code here...
+  const longCode = `// Very long code here...
 `.repeat(50);
 </script>
 
 <CodeOverflow>
-	<Code lang="javascript" code={longCode} />
+  <Code lang="javascript" code={longCode} />
 </CodeOverflow>
 ```
 
@@ -114,32 +114,32 @@ console.log(\`\${greeting}, \${name}!\`);`;
 
 ### Code
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| code | string | - | The code string to display |
-| lang | string | 'plaintext' | Programming language for syntax highlighting |
-| lineNumbers | boolean | false | Whether to show line numbers |
-| highlightedLines | number[] | [] | Array of line numbers to highlight |
-| theme | string | 'github-dark' | Shiki theme for syntax highlighting |
-| class | string | - | Additional CSS classes to apply to the container |
-| ...restProps | HTMLAttributes<HTMLDivElement> | - | All other div props are supported |
+| Prop             | Type                           | Default       | Description                                      |
+| ---------------- | ------------------------------ | ------------- | ------------------------------------------------ |
+| code             | string                         | -             | The code string to display                       |
+| lang             | string                         | 'plaintext'   | Programming language for syntax highlighting     |
+| lineNumbers      | boolean                        | false         | Whether to show line numbers                     |
+| highlightedLines | number[]                       | []            | Array of line numbers to highlight               |
+| theme            | string                         | 'github-dark' | Shiki theme for syntax highlighting              |
+| class            | string                         | -             | Additional CSS classes to apply to the container |
+| ...restProps     | HTMLAttributes<HTMLDivElement> | -             | All other div props are supported                |
 
 ### CodeCopyButton
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| code | string | - | The code string to copy to clipboard |
-| class | string | - | Additional CSS classes to apply to the button |
-| ...restProps | ButtonProps | - | All other Button component props are supported |
+| Prop         | Type        | Default | Description                                    |
+| ------------ | ----------- | ------- | ---------------------------------------------- |
+| code         | string      | -       | The code string to copy to clipboard           |
+| class        | string      | -       | Additional CSS classes to apply to the button  |
+| ...restProps | ButtonProps | -       | All other Button component props are supported |
 
 ### CodeOverflow
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | Snippet | - | Code component to wrap |
-| maxHeight | string | '400px' | Maximum height before scrolling |
-| class | string | - | Additional CSS classes to apply to the container |
-| ...restProps | HTMLAttributes<HTMLDivElement> | - | All other div props are supported |
+| Prop         | Type                           | Default | Description                                      |
+| ------------ | ------------------------------ | ------- | ------------------------------------------------ |
+| children     | Snippet                        | -       | Code component to wrap                           |
+| maxHeight    | string                         | '400px' | Maximum height before scrolling                  |
+| class        | string                         | -       | Additional CSS classes to apply to the container |
+| ...restProps | HTMLAttributes<HTMLDivElement> | -       | All other div props are supported                |
 
 ## Features
 
@@ -155,6 +155,7 @@ console.log(\`\${greeting}, \${name}!\`);`;
 ## Supported Languages
 
 The Code component supports all languages supported by Shiki, including:
+
 - JavaScript/TypeScript
 - Python
 - Rust
@@ -168,4 +169,3 @@ The Code component supports all languages supported by Shiki, including:
 ---
 
 For more information, visit: https://svelte-ai-elements.vercel.app/components/code
-

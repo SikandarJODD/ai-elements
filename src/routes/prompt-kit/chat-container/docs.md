@@ -14,41 +14,51 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/p/chat-container.json
 
 ```svelte
 <script lang="ts">
-	import {
-		ChatContainerContent,
-		ChatContainerRoot,
-	} from "$lib/components/prompt-kit/chat-container";
-	import { Message, MessageAvatar, MessageContent } from "$lib/components/prompt-kit/message";
+  import {
+    ChatContainerContent,
+    ChatContainerRoot,
+  } from "$lib/components/prompt-kit/chat-container";
+  import {
+    Message,
+    MessageAvatar,
+    MessageContent,
+  } from "$lib/components/prompt-kit/message";
 
-	let messages = $state([
-		{
-			id: 1,
-			role: "user",
-			content: "Hello! Can you help me with a coding question?",
-		},
-		{
-			id: 2,
-			role: "assistant",
-			content:
-				"Of course! I'd be happy to help with your coding question. What would you like to know?",
-		},
-	]);
+  let messages = $state([
+    {
+      id: 1,
+      role: "user",
+      content: "Hello! Can you help me with a coding question?",
+    },
+    {
+      id: 2,
+      role: "assistant",
+      content:
+        "Of course! I'd be happy to help with your coding question. What would you like to know?",
+    },
+  ]);
 </script>
 
 <ChatContainerRoot class="h-[400px]">
-	<ChatContainerContent class="space-y-4 p-4">
-		{#each messages as message (message.id)}
-			{@const isAssistant = message.role === "assistant"}
-			<Message class={message.role === "user" ? "justify-end" : "justify-start"}>
-				{#if isAssistant}
-					<MessageAvatar src="/avatars/ai.png" alt="AI Assistant" fallback="AI" />
-				{/if}
-				<MessageContent>
-					{message.content}
-				</MessageContent>
-			</Message>
-		{/each}
-	</ChatContainerContent>
+  <ChatContainerContent class="space-y-4 p-4">
+    {#each messages as message (message.id)}
+      {@const isAssistant = message.role === "assistant"}
+      <Message
+        class={message.role === "user" ? "justify-end" : "justify-start"}
+      >
+        {#if isAssistant}
+          <MessageAvatar
+            src="/avatars/ai.png"
+            alt="AI Assistant"
+            fallback="AI"
+          />
+        {/if}
+        <MessageContent>
+          {message.content}
+        </MessageContent>
+      </Message>
+    {/each}
+  </ChatContainerContent>
 </ChatContainerRoot>
 ```
 
@@ -58,30 +68,30 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/p/chat-container.json
 
 The main container that provides auto-scrolling functionality using the `use-stick-to-bottom` library.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | Snippet | - | Child components to render inside the container |
-| className | string | - | Additional CSS classes |
-| ...props | HTMLAttributes<HTMLDivElement> | - | All other div props |
+| Prop      | Type                           | Default | Description                                     |
+| --------- | ------------------------------ | ------- | ----------------------------------------------- |
+| children  | Snippet                        | -       | Child components to render inside the container |
+| className | string                         | -       | Additional CSS classes                          |
+| ...props  | HTMLAttributes<HTMLDivElement> | -       | All other div props                             |
 
 ### ChatContainerContent
 
 The content wrapper that should contain your messages.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | Snippet | - | Child components to render inside the content container |
-| className | string | - | Additional CSS classes |
-| ...props | HTMLAttributes<HTMLDivElement> | - | All other div props |
+| Prop      | Type                           | Default | Description                                             |
+| --------- | ------------------------------ | ------- | ------------------------------------------------------- |
+| children  | Snippet                        | -       | Child components to render inside the content container |
+| className | string                         | -       | Additional CSS classes                                  |
+| ...props  | HTMLAttributes<HTMLDivElement> | -       | All other div props                                     |
 
 ### ChatContainerScrollAnchor
 
 An optional scroll anchor element that can be used for scroll targeting.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| className | string | - | Additional CSS classes |
-| ...props | HTMLAttributes<HTMLDivElement> | - | All other div props |
+| Prop      | Type                           | Default | Description            |
+| --------- | ------------------------------ | ------- | ---------------------- |
+| className | string                         | -       | Additional CSS classes |
+| ...props  | HTMLAttributes<HTMLDivElement> | -       | All other div props    |
 
 ## Auto-Scroll Behavior
 
@@ -108,4 +118,3 @@ The ChatContainer pairs perfectly with the `ScrollButton` component. The ScrollB
 ---
 
 For more information, visit: https://ai-elements.vercel.app/prompt-kit/chat-container
-

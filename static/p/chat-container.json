@@ -3,20 +3,11 @@
 	"name": "chat-container",
 	"type": "registry:block",
 	"description": "The ChatContainer component provides a comprehensive chat interface with scroll management, auto-scrolling, and scroll anchoring. Features context-based state management for handling message scrolling and sticky-to-bottom behavior.",
-	"dependencies": [
-		"runed"
-	],
+	"dependencies": ["runed"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"prompt-kit",
-			"chat",
-			"container",
-			"scroll",
-			"auto-scroll",
-			"messages"
-		],
+		"tags": ["prompt-kit", "chat", "container", "scroll", "auto-scroll", "messages"],
 		"category": "Prompt Kit",
 		"documentation": "https://ai-elements.vercel.app/prompt-kit/chat-container",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

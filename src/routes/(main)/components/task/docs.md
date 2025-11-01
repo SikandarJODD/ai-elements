@@ -14,23 +14,23 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/task.json
 
 ```svelte
 <script lang="ts">
-	import {
-		Task,
-		TaskTrigger,
-		TaskContent,
-		TaskStatus,
-		TaskProgress
-	} from "$lib/components/ai-elements/task";
+  import {
+    Task,
+    TaskTrigger,
+    TaskContent,
+    TaskStatus,
+    TaskProgress,
+  } from "$lib/components/ai-elements/task";
 </script>
 
 <Task>
-	<TaskTrigger>
-		<TaskStatus status="complete" />
-		Setup Project
-	</TaskTrigger>
-	<TaskContent>
-		<p>Initialize the project with necessary dependencies</p>
-	</TaskContent>
+  <TaskTrigger>
+    <TaskStatus status="complete" />
+    Setup Project
+  </TaskTrigger>
+  <TaskContent>
+    <p>Initialize the project with necessary dependencies</p>
+  </TaskContent>
 </Task>
 ```
 
@@ -38,32 +38,47 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/task.json
 
 ```svelte
 <script lang="ts">
-	import {
-		Task,
-		TaskTrigger,
-		TaskContent,
-		TaskStatus,
-		TaskProgress
-	} from "$lib/components/ai-elements/task";
+  import {
+    Task,
+    TaskTrigger,
+    TaskContent,
+    TaskStatus,
+    TaskProgress,
+  } from "$lib/components/ai-elements/task";
 
-	const tasks = [
-		{ title: "Setup", status: "complete", progress: 100, details: "Project initialized" },
-		{ title: "Development", status: "in-progress", progress: 60, details: "Building features" },
-		{ title: "Testing", status: "pending", progress: 0, details: "Not started yet" }
-	];
+  const tasks = [
+    {
+      title: "Setup",
+      status: "complete",
+      progress: 100,
+      details: "Project initialized",
+    },
+    {
+      title: "Development",
+      status: "in-progress",
+      progress: 60,
+      details: "Building features",
+    },
+    {
+      title: "Testing",
+      status: "pending",
+      progress: 0,
+      details: "Not started yet",
+    },
+  ];
 </script>
 
 {#each tasks as task}
-	<Task>
-		<TaskTrigger>
-			<TaskStatus status={task.status} />
-			{task.title}
-			<TaskProgress value={task.progress} />
-		</TaskTrigger>
-		<TaskContent>
-			<p>{task.details}</p>
-		</TaskContent>
-	</Task>
+  <Task>
+    <TaskTrigger>
+      <TaskStatus status={task.status} />
+      {task.title}
+      <TaskProgress value={task.progress} />
+    </TaskTrigger>
+    <TaskContent>
+      <p>{task.details}</p>
+    </TaskContent>
+  </Task>
 {/each}
 ```
 
@@ -71,50 +86,50 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/task.json
 
 ```svelte
 <script lang="ts">
-	import { experimental_useObject as useObject } from "@ai-sdk/svelte";
-	import {
-		Task,
-		TaskTrigger,
-		TaskContent,
-		TaskStatus,
-		TaskProgress
-	} from "$lib/components/ai-elements/task";
-	import { z } from "zod";
+  import { experimental_useObject as useObject } from "@ai-sdk/svelte";
+  import {
+    Task,
+    TaskTrigger,
+    TaskContent,
+    TaskStatus,
+    TaskProgress,
+  } from "$lib/components/ai-elements/task";
+  import { z } from "zod";
 
-	const { object, submit } = useObject({
-		api: "/api/tasks",
-		schema: z.object({
-			tasks: z.array(
-				z.object({
-					title: z.string(),
-					status: z.enum(["pending", "in-progress", "complete", "error"]),
-					progress: z.number(),
-					details: z.string()
-				})
-			)
-		})
-	});
+  const { object, submit } = useObject({
+    api: "/api/tasks",
+    schema: z.object({
+      tasks: z.array(
+        z.object({
+          title: z.string(),
+          status: z.enum(["pending", "in-progress", "complete", "error"]),
+          progress: z.number(),
+          details: z.string(),
+        })
+      ),
+    }),
+  });
 
-	function generateTasks() {
-		submit("Create a plan to build a web app");
-	}
+  function generateTasks() {
+    submit("Create a plan to build a web app");
+  }
 </script>
 
 <button onclick={generateTasks}>Generate Tasks</button>
 
 {#if $object?.tasks}
-	{#each $object.tasks as task}
-		<Task>
-			<TaskTrigger>
-				<TaskStatus status={task.status} />
-				{task.title}
-				<TaskProgress value={task.progress} />
-			</TaskTrigger>
-			<TaskContent>
-				<p>{task.details}</p>
-			</TaskContent>
-		</Task>
-	{/each}
+  {#each $object.tasks as task}
+    <Task>
+      <TaskTrigger>
+        <TaskStatus status={task.status} />
+        {task.title}
+        <TaskProgress value={task.progress} />
+      </TaskTrigger>
+      <TaskContent>
+        <p>{task.details}</p>
+      </TaskContent>
+    </Task>
+  {/each}
 {/if}
 ```
 
@@ -122,22 +137,22 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/task.json
 
 ```svelte
 <script lang="ts">
-	import {
-		Task,
-		TaskTrigger,
-		TaskContent,
-		TaskStatus
-	} from "$lib/components/ai-elements/task";
+  import {
+    Task,
+    TaskTrigger,
+    TaskContent,
+    TaskStatus,
+  } from "$lib/components/ai-elements/task";
 </script>
 
 <Task class="border-2 border-blue-500">
-	<TaskTrigger class="bg-blue-50 dark:bg-blue-950">
-		<TaskStatus status="in-progress" />
-		Custom Styled Task
-	</TaskTrigger>
-	<TaskContent class="bg-blue-50/50 dark:bg-blue-950/50">
-		<p>This task has custom styling</p>
-	</TaskContent>
+  <TaskTrigger class="bg-blue-50 dark:bg-blue-950">
+    <TaskStatus status="in-progress" />
+    Custom Styled Task
+  </TaskTrigger>
+  <TaskContent class="bg-blue-50/50 dark:bg-blue-950/50">
+    <p>This task has custom styling</p>
+  </TaskContent>
 </Task>
 ```
 
@@ -145,44 +160,44 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/task.json
 
 ### Task
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | Snippet | - | Child components to render |
-| open | boolean | false | Whether the task is expanded |
-| class | string | - | Additional CSS classes to apply to the container |
-| ...restProps | CollapsibleProps | - | All other Collapsible component props are supported |
+| Prop         | Type             | Default | Description                                         |
+| ------------ | ---------------- | ------- | --------------------------------------------------- |
+| children     | Snippet          | -       | Child components to render                          |
+| open         | boolean          | false   | Whether the task is expanded                        |
+| class        | string           | -       | Additional CSS classes to apply to the container    |
+| ...restProps | CollapsibleProps | -       | All other Collapsible component props are supported |
 
 ### TaskTrigger
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | Snippet | - | Trigger content (typically status, title, progress) |
-| class | string | - | Additional CSS classes to apply to the trigger |
-| ...restProps | CollapsibleTriggerProps | - | All other CollapsibleTrigger props are supported |
+| Prop         | Type                    | Default | Description                                         |
+| ------------ | ----------------------- | ------- | --------------------------------------------------- |
+| children     | Snippet                 | -       | Trigger content (typically status, title, progress) |
+| class        | string                  | -       | Additional CSS classes to apply to the trigger      |
+| ...restProps | CollapsibleTriggerProps | -       | All other CollapsibleTrigger props are supported    |
 
 ### TaskContent
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | Snippet | - | Task details to display |
-| class | string | - | Additional CSS classes to apply to the content |
-| ...restProps | CollapsibleContentProps | - | All other CollapsibleContent props are supported |
+| Prop         | Type                    | Default | Description                                      |
+| ------------ | ----------------------- | ------- | ------------------------------------------------ |
+| children     | Snippet                 | -       | Task details to display                          |
+| class        | string                  | -       | Additional CSS classes to apply to the content   |
+| ...restProps | CollapsibleContentProps | -       | All other CollapsibleContent props are supported |
 
 ### TaskStatus
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| status | "pending" \| "in-progress" \| "complete" \| "error" | "pending" | Current status of the task |
-| class | string | - | Additional CSS classes to apply to the status indicator |
-| ...restProps | HTMLAttributes<HTMLDivElement> | - | All other div props are supported |
+| Prop         | Type                                                | Default   | Description                                             |
+| ------------ | --------------------------------------------------- | --------- | ------------------------------------------------------- |
+| status       | "pending" \| "in-progress" \| "complete" \| "error" | "pending" | Current status of the task                              |
+| class        | string                                              | -         | Additional CSS classes to apply to the status indicator |
+| ...restProps | HTMLAttributes<HTMLDivElement>                      | -         | All other div props are supported                       |
 
 ### TaskProgress
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| value | number | 0 | Progress percentage (0-100) |
-| class | string | - | Additional CSS classes to apply to the progress bar |
-| ...restProps | ProgressProps | - | All other Progress component props are supported |
+| Prop         | Type          | Default | Description                                         |
+| ------------ | ------------- | ------- | --------------------------------------------------- |
+| value        | number        | 0       | Progress percentage (0-100)                         |
+| class        | string        | -       | Additional CSS classes to apply to the progress bar |
+| ...restProps | ProgressProps | -       | All other Progress component props are supported    |
 
 ## Features
 
@@ -203,4 +218,3 @@ npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/task.json
 ---
 
 For more information, visit: https://svelte-ai-elements.vercel.app/components/task
-

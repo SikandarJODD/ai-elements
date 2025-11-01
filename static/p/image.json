@@ -6,13 +6,7 @@
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"prompt-kit",
-			"image",
-			"media",
-			"display",
-			"loading"
-		],
+		"tags": ["prompt-kit", "image", "media", "display", "loading"],
 		"category": "Prompt Kit",
 		"documentation": "https://ai-elements.vercel.app/prompt-kit/image",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

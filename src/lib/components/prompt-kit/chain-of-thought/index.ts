@@ -17,4 +17,3 @@ export {
 	Content as ChainOfThoughtContent,
 	Step as ChainOfThoughtStep,
 };
-
