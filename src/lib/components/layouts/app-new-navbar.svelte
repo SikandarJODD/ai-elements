@@ -276,6 +276,7 @@
 			active: false,
 		},
 		{ href: "/guides", label: "Guides", active: false },
+		{ href: "/playground", label: "Playground", active: false },
 	]);
 </script>
 
