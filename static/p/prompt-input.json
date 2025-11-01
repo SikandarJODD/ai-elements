@@ -11,7 +11,7 @@
 		"version": "1.0.0",
 		"tags": ["prompt-kit", "input", "prompt", "textarea", "chat-input", "actions"],
 		"category": "Prompt Kit",
-		"documentation": "https://ai-elements.vercel.app/prompt-kit/prompt-input",
+		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/prompt-input",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
 		"complexity": "intermediate",
 		"updated": "2025-10-19",

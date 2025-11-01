@@ -15,6 +15,7 @@
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 	import { ChevronDown, ExternalLink } from "@lucide/svelte";
 	import { getPromptKitGithubUrl, getAiElementsGithubUrl } from "$lib/config/github-paths";
+	import { Markdown } from "$lib/components/icons";
 
 	interface Props {
 		componentName: string;
@@ -44,8 +45,22 @@
 		</Button>
 	</OpenInTrigger>
 	<OpenInContent align="end" preventScroll={false}>
-		<OpenInLabel>Open in</OpenInLabel>
-		<OpenInSeparator />
+		<!-- <OpenInLabel>Open in</OpenInLabel> -->
+		<!-- <OpenInSeparator /> -->
+		<DropdownMenu.Item class="w-full">
+			<a
+				href={llmsTxtUrl}
+				rel="noopener"
+				target="_blank"
+				class="flex w-full items-center gap-2"
+			>
+				<span class="shrink-0">
+					<Markdown />
+				</span>
+				<span class="flex-1">Open in Markdown</span>
+				<ExternalLink class="size-4 shrink-0" />
+			</a>
+		</DropdownMenu.Item>
 		<DropdownMenu.Item class="w-full">
 			<a
 				href={githubUrl}

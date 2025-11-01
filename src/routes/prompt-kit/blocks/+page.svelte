@@ -38,10 +38,10 @@
 		description:
 			"UI blocks for AI applications, built with prompt-kit components. Ready-to-use examples for chat interfaces, conversations, and AI interactions.",
 		type: "website",
-		url: "https://ai-elements.vercel.app/prompt-kit/blocks",
+		url: "https://svelte-ai-elements.vercel.app//prompt-kit/blocks",
 		images: [
 			{
-				url: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+				url: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 				width: 1200,
 				height: 630,
 				alt: "Svelte AI Elements - Prompt Kit Blocks",

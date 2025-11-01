@@ -8,7 +8,7 @@
 		"version": "1.0.0",
 		"tags": ["prompt-kit", "loader", "loading", "spinner", "animation", "ai-response"],
 		"category": "Prompt Kit",
-		"documentation": "https://ai-elements.vercel.app/prompt-kit/loader",
+		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/loader",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
 		"complexity": "beginner",
 		"updated": "2025-10-19",

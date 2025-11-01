@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/prompt-suggestion.json
+npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app//p/prompt-suggestion.json
 ```
 
 ## Usage
@@ -84,4 +84,4 @@ npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/prompt-suggestion.
 
 ---
 
-For more information, visit: https://ai-elements.vercel.app/prompt-kit/prompt-suggestion
+For more information, visit: https://svelte-ai-elements.vercel.app//prompt-kit/prompt-suggestion

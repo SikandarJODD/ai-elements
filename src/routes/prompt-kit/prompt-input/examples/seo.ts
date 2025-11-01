@@ -7,12 +7,12 @@ export let seo: MetaTagsProps = {
 	openGraph: {
 		title: "Prompt Input - Prompt Kit",
 		description: "An input field that allows users to enter and submit text to an AI model.",
-		url: "https://ai-elements.vercel.app/prompt-kit/prompt-input",
+		url: "https://svelte-ai-elements.vercel.app//prompt-kit/prompt-input",
 		type: "website",
 		siteName: "Prompt Kit - Svelte AI Elements",
 		images: [
 			{
-				url: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+				url: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 				width: 1200,
 				height: 630,
 				alt: "Prompt Kit - Svelte AI Elements",
@@ -21,11 +21,11 @@ export let seo: MetaTagsProps = {
 	},
 	twitter: {
 		creator: "@Sikandar_Bhide",
-		site: "https://ai-elements.vercel.app",
+		site: "https://svelte-ai-elements.vercel.app/",
 		cardType: "summary_large_image",
 		title: "Prompt Input - Prompt Kit",
 		description: "An input field that allows users to enter and submit text to an AI model.",
-		image: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+		image: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 		imageAlt: "Prompt Kit Component",
 	},
 };

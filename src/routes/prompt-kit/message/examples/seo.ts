@@ -9,12 +9,12 @@ export let seo: MetaTagsProps = {
 		title: "Message - Prompt Kit",
 		description:
 			"A component for displaying messages in a conversation interface, with support for avatars, markdown content, and interactive actions.",
-		url: "https://ai-elements.vercel.app/prompt-kit/message",
+		url: "https://svelte-ai-elements.vercel.app//prompt-kit/message",
 		type: "website",
 		siteName: "Prompt Kit - Svelte AI Elements",
 		images: [
 			{
-				url: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+				url: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 				width: 1200,
 				height: 630,
 				alt: "Prompt Kit - Svelte AI Elements",
@@ -23,12 +23,12 @@ export let seo: MetaTagsProps = {
 	},
 	twitter: {
 		creator: "@Sikandar_Bhide",
-		site: "https://ai-elements.vercel.app",
+		site: "https://svelte-ai-elements.vercel.app/",
 		cardType: "summary_large_image",
 		title: "Message - Prompt Kit",
 		description:
 			"A component for displaying messages in a conversation interface, with support for avatars, markdown content, and interactive actions.",
-		image: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+		image: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 		imageAlt: "Prompt Kit - Message Component",
 	},
 };

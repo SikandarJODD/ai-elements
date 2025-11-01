@@ -9,12 +9,12 @@ export let seo: MetaTagsProps = {
 		title: "Loader - Prompt Kit",
 		description:
 			"A loading component with multiple variants to indicate processing states and provide visual feedback to users during wait times.",
-		url: "https://ai-elements.vercel.app/prompt-kit/loader",
+		url: "https://svelte-ai-elements.vercel.app//prompt-kit/loader",
 		type: "website",
 		siteName: "Prompt Kit - Svelte AI Elements",
 		images: [
 			{
-				url: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+				url: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 				width: 1200,
 				height: 630,
 				alt: "Prompt Kit - Svelte AI Elements",
@@ -23,12 +23,12 @@ export let seo: MetaTagsProps = {
 	},
 	twitter: {
 		creator: "@Sikandar_Bhide",
-		site: "https://ai-elements.vercel.app",
+		site: "https://svelte-ai-elements.vercel.app/",
 		cardType: "summary_large_image",
 		title: "Loader - Prompt Kit",
 		description:
 			"A loading component with multiple variants to indicate processing states and provide visual feedback to users during wait times.",
-		image: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+		image: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 		imageAlt: "Prompt Kit - Loader Component",
 	},
 };

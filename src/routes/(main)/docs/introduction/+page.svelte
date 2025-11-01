@@ -11,10 +11,10 @@
 		description:
 			"Svelte AI Elements is a curated set of Svelte components for building polished AI interfaces, from prompt inputs to streaming responses.",
 		type: "website",
-		url: "https://ai-elements.vercel.app/docs/introduction",
+		url: "https://svelte-ai-elements.vercel.app//docs/introduction",
 		images: [
 			{
-				url: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+				url: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 				width: 1200,
 				height: 630,
 				alt: "Svelte AI Elements",

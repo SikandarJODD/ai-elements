@@ -11,7 +11,7 @@
 		"version": "1.0.0",
 		"tags": ["actions", "buttons", "ai-response", "interactive", "feedback"],
 		"category": "AI Response",
-		"documentation": "https://ai-elements.vercel.app/components/actions",
+		"documentation": "https://svelte-ai-elements.vercel.app//components/actions",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
 		"complexity": "beginner",
 		"updated": "2025-09-24",

@@ -14,10 +14,10 @@
 		description:
 			"Learn how to install and set up Prompt Kit components in your SvelteKit project.",
 		type: "website",
-		url: "https://ai-elements.vercel.app/prompt-kit/installation",
+		url: "https://svelte-ai-elements.vercel.app//prompt-kit/installation",
 		images: [
 			{
-				url: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+				url: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 				width: 1200,
 				height: 630,
 				alt: "Svelte AI Elements - Prompt Kit",

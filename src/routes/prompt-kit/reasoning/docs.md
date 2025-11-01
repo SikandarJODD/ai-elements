@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/reasoning.json
+npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app//p/reasoning.json
 ```
 
 ## Usage
@@ -99,4 +99,4 @@ npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/reasoning.json
 
 ---
 
-For more information, visit: https://ai-elements.vercel.app/prompt-kit/reasoning
+For more information, visit: https://svelte-ai-elements.vercel.app//prompt-kit/reasoning

@@ -21,10 +21,10 @@
 		description:
 			"Learn how to install and set up AI Elements in your SvelteKit project with shadcn-svelte.",
 		type: "website",
-		url: "https://ai-elements.vercel.app/docs/installation",
+		url: "https://svelte-ai-elements.vercel.app//docs/installation",
 		images: [
 			{
-				url: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+				url: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 				width: 1200,
 				height: 630,
 				alt: "Svelte AI Elements",

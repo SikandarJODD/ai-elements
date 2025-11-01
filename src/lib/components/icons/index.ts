@@ -6,6 +6,7 @@ import Svelte from "./svelte.svelte";
 import Terminal from "./terminal.svelte";
 import Code from "./code.svelte";
 import MCP from "./mcp.svelte";
+import Markdown from "./markdown.svelte";
 
 export interface Props extends HTMLAttributes<SVGElement> {
 	class?: string;
@@ -13,4 +14,4 @@ export interface Props extends HTMLAttributes<SVGElement> {
 	height?: number;
 }
 
-export { GitHub, TypeScript, Twitter, Svelte, Terminal, Code as CodeIcon, MCP };
+export { GitHub, TypeScript, Twitter, Svelte, Terminal, Code as CodeIcon, MCP, Markdown };

@@ -9,12 +9,12 @@ export let seo: MetaTagsProps = {
 		title: "System Message - Prompt Kit",
 		description:
 			"Display contextual information, warnings, or instructions in AI interfaces with customizable variants and call-to-action buttons.",
-		url: "https://ai-elements.vercel.app/prompt-kit/system-message",
+		url: "https://svelte-ai-elements.vercel.app//prompt-kit/system-message",
 		type: "website",
 		siteName: "Prompt Kit - Svelte AI Elements",
 		images: [
 			{
-				url: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+				url: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 				width: 1200,
 				height: 630,
 				alt: "Prompt Kit - Svelte AI Elements",
@@ -23,12 +23,12 @@ export let seo: MetaTagsProps = {
 	},
 	twitter: {
 		creator: "@Sikandar_Bhide",
-		site: "https://ai-elements.vercel.app",
+		site: "https://svelte-ai-elements.vercel.app/",
 		cardType: "summary_large_image",
 		title: "System Message - Prompt Kit",
 		description:
 			"Display contextual information, warnings, or instructions in AI interfaces with customizable variants and call-to-action buttons.",
-		image: "https://ai-elements.vercel.app/assets/svelte-ai-elements.png",
+		image: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
 		imageAlt: "Prompt Kit - System Message Component",
 	},
 };

@@ -9,7 +9,7 @@
 		"version": "1.0.0",
 		"tags": ["prompt-kit", "markdown", "rendering", "content", "formatting"],
 		"category": "Prompt Kit",
-		"documentation": "https://ai-elements.vercel.app/prompt-kit/markdown",
+		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/markdown",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
 		"complexity": "intermediate",
 		"updated": "2025-10-19",

@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/prompt-input.json
+npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app//p/prompt-input.json
 ```
 
 ## Usage
@@ -114,4 +114,4 @@ npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/prompt-input.json
 
 ---
 
-For more information, visit: https://ai-elements.vercel.app/prompt-kit/prompt-input
+For more information, visit: https://svelte-ai-elements.vercel.app//prompt-kit/prompt-input

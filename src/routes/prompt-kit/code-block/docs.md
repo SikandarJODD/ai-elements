@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/code-block.json
+npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app//p/code-block.json
 ```
 
 ## Usage
@@ -87,4 +87,4 @@ For a complete list of supported themes, refer to the [Shiki documentation](http
 
 ---
 
-For more information, visit: https://ai-elements.vercel.app/prompt-kit/code-block
+For more information, visit: https://svelte-ai-elements.vercel.app//prompt-kit/code-block
