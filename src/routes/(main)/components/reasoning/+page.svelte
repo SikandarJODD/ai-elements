@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading } from "$lib/components/docs";
+	import { Subheading, ComponentAPITable } from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
@@ -16,6 +16,106 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+	// Component API Props Data
+	const reasoningProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the reasoning container",
+		},
+		{
+			name: "isStreaming",
+			type: "boolean",
+			default: "false",
+			description: "Whether the AI is currently streaming reasoning content",
+		},
+		{
+			name: "open",
+			type: "boolean",
+			description:
+				"Controlled state for whether the reasoning content is expanded (bindable)",
+		},
+		{
+			name: "defaultOpen",
+			type: "boolean",
+			default: "true",
+			description: "Default open state when not controlled",
+		},
+		{
+			name: "onOpenChange",
+			type: "(open: boolean) => void",
+			description: "Callback fired when the open state changes",
+		},
+		{
+			name: "duration",
+			type: "number",
+			description: "Duration in seconds that the AI spent reasoning (bindable)",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Child components (typically ReasoningTrigger and ReasoningContent)",
+		},
+		{
+			name: "...props",
+			type: "CollapsibleProps",
+			description: "All other Collapsible component props are supported",
+		},
+	];
+
+	const reasoningContentProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the content container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "The reasoning content to display when expanded",
+		},
+		{
+			name: "...props",
+			type: "CollapsibleContentProps",
+			description: "All other CollapsibleContent component props are supported",
+		},
+	];
+
+	const reasoningTriggerProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the trigger button",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom trigger content (defaults to brain icon with thinking message)",
+		},
+		{
+			name: "...props",
+			type: "CollapsibleTriggerProps",
+			description: "All other CollapsibleTrigger component props are supported",
+		},
+	];
+
+	const responseProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the response container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Response content to render",
+		},
+		{
+			name: "...props",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -205,6 +305,34 @@ export const POST: RequestHandler = async ({ request }) => {
 				<li>Built on top of shadcn-svelte Collapsible primitives</li>
 				<li>TypeScript support with proper type definitions</li>
 			</ul>
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- Reasoning -->
+			<ComponentAPITable
+				componentName="Reasoning"
+				props={reasoningProps}
+				class="mt-6"
+				id="reasoning-props"
+			/>
+
+			<!-- ReasoningTrigger -->
+			<ComponentAPITable
+				componentName="ReasoningTrigger"
+				props={reasoningTriggerProps}
+				id="reasoning-trigger-props"
+			/>
+
+			<!-- ReasoningContent -->
+			<ComponentAPITable
+				componentName="ReasoningContent"
+				props={reasoningContentProps}
+				id="reasoning-content-props"
+			/>
+
+			<!-- Response -->
+			<ComponentAPITable componentName="Response" props={responseProps} id="response-props" />
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

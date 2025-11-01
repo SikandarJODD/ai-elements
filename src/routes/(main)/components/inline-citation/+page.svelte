@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading, CodeNameBlock } from "$lib/components/docs";
+	import { Subheading, CodeNameBlock, ComponentAPITable } from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
@@ -14,6 +14,186 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+	// Component API Props Data
+	const inlineCitationProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the inline citation container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Citation content (typically InlineCitationText and InlineCitationCard)",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLSpanElement>",
+			description: "All other span props are supported",
+		},
+	];
+
+	const inlineCitationCardProps = [
+		{
+			name: "closeDelay",
+			type: "number",
+			default: "0",
+			description: "Delay in milliseconds before closing the hover card",
+		},
+		{
+			name: "openDelay",
+			type: "number",
+			default: "0",
+			description: "Delay in milliseconds before opening the hover card",
+		},
+		{
+			name: "open",
+			type: "boolean",
+			description: "Controls whether the card is open (bindable)",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description:
+				"Card content (typically InlineCitationCardTrigger and InlineCitationCardBody)",
+		},
+	];
+
+	const inlineCitationCardTriggerProps = [
+		{
+			name: "sources",
+			type: "string[]",
+			description: "Array of source URLs to display in the badge",
+		},
+		{
+			name: "variant",
+			type: "'default' | 'secondary' | 'destructive' | 'outline'",
+			default: "'secondary'",
+			description: "Badge variant style",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the badge",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom badge content (defaults to hostname with count)",
+		},
+	];
+
+	const inlineCitationCardBodyProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the card body",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Card body content (typically InlineCitationCarousel)",
+		},
+	];
+
+	const inlineCitationCarouselProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the carousel",
+		},
+		{
+			name: "opts",
+			type: "object",
+			description: "Embla carousel options",
+		},
+		{
+			name: "plugins",
+			type: "any[]",
+			description: "Embla carousel plugins",
+		},
+		{
+			name: "orientation",
+			type: "'horizontal' | 'vertical'",
+			default: "'horizontal'",
+			description: "Carousel orientation",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Carousel content (typically header, content, and navigation)",
+		},
+	];
+
+	const inlineCitationCarouselHeaderProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the carousel header",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Header content (typically index and navigation buttons)",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const inlineCitationCarouselContentProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the carousel content",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Carousel items (InlineCitationCarouselItem components)",
+		},
+	];
+
+	const inlineCitationCarouselItemProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the carousel item",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Item content (typically InlineCitationSource)",
+		},
+	];
+
+	const inlineCitationCarouselNextProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the next button",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLButtonAttributes",
+			description: "All other button props are supported",
+		},
+	];
+
+	const inlineCitationCarouselPrevProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the previous button",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLButtonAttributes",
+			description: "All other button props are supported",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -303,6 +483,80 @@ export const POST: RequestHandler = async ({ request }) => {
       <Playground code={examples.messageAction.code}>
         <examples.messageAction.Component />
       </Playground> -->
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- InlineCitation -->
+			<ComponentAPITable
+				componentName="InlineCitation"
+				props={inlineCitationProps}
+				class="mt-6"
+				id="inline-citation-props"
+			/>
+
+			<!-- InlineCitationCard -->
+			<ComponentAPITable
+				componentName="InlineCitationCard"
+				props={inlineCitationCardProps}
+				id="inline-citation-card-props"
+			/>
+
+			<!-- InlineCitationCardTrigger -->
+			<ComponentAPITable
+				componentName="InlineCitationCardTrigger"
+				props={inlineCitationCardTriggerProps}
+				id="inline-citation-card-trigger-props"
+			/>
+
+			<!-- InlineCitationCardBody -->
+			<ComponentAPITable
+				componentName="InlineCitationCardBody"
+				props={inlineCitationCardBodyProps}
+				id="inline-citation-card-body-props"
+			/>
+
+			<!-- InlineCitationCarousel -->
+			<ComponentAPITable
+				componentName="InlineCitationCarousel"
+				props={inlineCitationCarouselProps}
+				id="inline-citation-carousel-props"
+			/>
+
+			<!-- InlineCitationCarouselHeader -->
+			<ComponentAPITable
+				componentName="InlineCitationCarouselHeader"
+				props={inlineCitationCarouselHeaderProps}
+				id="inline-citation-carousel-header-props"
+			/>
+
+			<!-- InlineCitationCarouselContent -->
+			<ComponentAPITable
+				componentName="InlineCitationCarouselContent"
+				props={inlineCitationCarouselContentProps}
+				id="inline-citation-carousel-content-props"
+			/>
+
+			<!-- InlineCitationCarouselItem -->
+			<ComponentAPITable
+				componentName="InlineCitationCarouselItem"
+				props={inlineCitationCarouselItemProps}
+				id="inline-citation-carousel-item-props"
+			/>
+
+			<!-- InlineCitationCarouselNext -->
+			<ComponentAPITable
+				componentName="InlineCitationCarouselNext"
+				props={inlineCitationCarouselNextProps}
+				id="inline-citation-carousel-next-props"
+			/>
+
+			<!-- InlineCitationCarouselPrev -->
+			<ComponentAPITable
+				componentName="InlineCitationCarouselPrev"
+				props={inlineCitationCarouselPrevProps}
+				id="inline-citation-carousel-prev-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

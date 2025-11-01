@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading } from "$lib/components/docs";
+	import { Subheading, ComponentAPITable } from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
@@ -15,6 +15,125 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+	// Component API Props Data
+	const branchProps = [
+		{
+			name: "defaultBranch",
+			type: "number",
+			default: "0",
+			description: "The index of the branch to display by default",
+		},
+		{
+			name: "onBranchChange",
+			type: "(branchIndex: number) => void",
+			description: "Callback function called when the branch changes",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the branch container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Child components (typically BranchMessages and BranchSelector)",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const branchMessagesProps = [
+		{
+			name: "children",
+			type: "Snippet[]",
+			description: "Array of message snippets representing different branches",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the messages container",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const branchSelectorProps = [
+		{
+			name: "from",
+			type: "'user' | 'assistant' | 'system' | 'function' | 'data' | 'tool'",
+			description: "The message sender type (determines alignment of the selector)",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the selector container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Child components (typically BranchPrevious, BranchPage, BranchNext)",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const branchPreviousProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the previous button",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom content to render instead of the default chevron icon",
+		},
+		{
+			name: "...restProps",
+			type: "ButtonProps",
+			description: "All other Button component props are supported",
+		},
+	];
+
+	const branchNextProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the next button",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom content to render instead of the default chevron icon",
+		},
+		{
+			name: "...restProps",
+			type: "ButtonProps",
+			description: "All other Button component props are supported",
+		},
+	];
+
+	const branchPageProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the page indicator",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLSpanElement>",
+			description: "All other span props are supported",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -86,6 +205,52 @@
       <Playground code={examples.messageAction.code}>
         <examples.messageAction.Component />
       </Playground> -->
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- Branch -->
+			<ComponentAPITable
+				componentName="Branch"
+				props={branchProps}
+				class="mt-6"
+				id="branch-props"
+			/>
+
+			<!-- BranchMessages -->
+			<ComponentAPITable
+				componentName="BranchMessages"
+				props={branchMessagesProps}
+				id="branch-messages-props"
+			/>
+
+			<!-- BranchSelector -->
+			<ComponentAPITable
+				componentName="BranchSelector"
+				props={branchSelectorProps}
+				id="branch-selector-props"
+			/>
+
+			<!-- BranchPrevious -->
+			<ComponentAPITable
+				componentName="BranchPrevious"
+				props={branchPreviousProps}
+				id="branch-previous-props"
+			/>
+
+			<!-- BranchNext -->
+			<ComponentAPITable
+				componentName="BranchNext"
+				props={branchNextProps}
+				id="branch-next-props"
+			/>
+
+			<!-- BranchPage -->
+			<ComponentAPITable
+				componentName="BranchPage"
+				props={branchPageProps}
+				id="branch-page-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

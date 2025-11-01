@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading, CodeNameBlock } from "$lib/components/docs";
+	import { Subheading, CodeNameBlock, ComponentAPITable } from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
@@ -14,6 +14,36 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+	// Component API Props Data
+	const responseProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the response container",
+		},
+		{
+			name: "content",
+			type: "string",
+			description: "Markdown content to render",
+		},
+		{
+			name: "shikiTheme",
+			type: "string",
+			description:
+				"Shiki theme for code syntax highlighting (auto-set based on dark/light mode)",
+		},
+		{
+			name: "baseTheme",
+			type: "string",
+			default: "'shadcn'",
+			description: "Base theme for markdown styling",
+		},
+		{
+			name: "...restProps",
+			type: "StreamdownProps",
+			description: "All other Streamdown component props are supported",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -199,6 +229,17 @@ export const POST: RequestHandler = async ({ request }) => {
 					<li>Built with accessibility in mind for all users</li>
 				</ul>
 			</div>
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- Response -->
+			<ComponentAPITable
+				componentName="Response"
+				props={responseProps}
+				class="mt-6"
+				id="response-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

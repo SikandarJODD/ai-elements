@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading } from "$lib/components/docs";
+	import { Subheading, ComponentAPITable } from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
@@ -15,6 +15,113 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+	// Component API Props Data
+	const codeProps = [
+		{
+			name: "code",
+			type: "string",
+			description: "The code string to syntax highlight and display (required)",
+		},
+		{
+			name: "lang",
+			type: "SupportedLanguage",
+			default: "'typescript'",
+			description: "Programming language for syntax highlighting",
+		},
+		{
+			name: "variant",
+			type: "'default' | 'ghost'",
+			default: "'default'",
+			description: "Visual style variant of the code block",
+		},
+		{
+			name: "hideLines",
+			type: "boolean",
+			default: "false",
+			description: "Whether to hide line numbers",
+		},
+		{
+			name: "highlight",
+			type: "(number | [number, number])[]",
+			default: "[]",
+			description: "Array of line numbers or ranges to highlight (e.g., [1, [3, 5], 7])",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the code container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Child components (typically CodeCopyButton or CodeOverflow)",
+		},
+		{
+			name: "ref",
+			type: "HTMLDivElement",
+			description: "Bindable reference to the code container element",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const codeCopyButtonProps = [
+		{
+			name: "variant",
+			type: "ButtonProps['variant']",
+			default: "'ghost'",
+			description: "Button variant style",
+		},
+		{
+			name: "size",
+			type: "ButtonProps['size']",
+			default: "'icon'",
+			description: "Button size",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the copy button",
+		},
+		{
+			name: "ref",
+			type: "HTMLButtonElement",
+			description: "Bindable reference to the button element",
+		},
+		{
+			name: "...restProps",
+			type: "CopyButtonProps",
+			description: "All other CopyButton component props are supported",
+		},
+	];
+
+	const codeOverflowProps = [
+		{
+			name: "collapsed",
+			type: "boolean",
+			default: "true",
+			description: "Whether the code block is collapsed (bindable)",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the overflow container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Code content to render with overflow control",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
 	import CodeNameBlock from "$lib/components/docs/code-name/code-name-block.svelte";
 </script>
 
@@ -226,6 +333,31 @@ export const POST: RequestHandler = async ({ request }) => {
       <Playground code={examples.messageAction.code}>
         <examples.messageAction.Component />
       </Playground> -->
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- Code -->
+			<ComponentAPITable
+				componentName="Code"
+				props={codeProps}
+				class="mt-6"
+				id="code-props"
+			/>
+
+			<!-- CodeCopyButton -->
+			<ComponentAPITable
+				componentName="CodeCopyButton"
+				props={codeCopyButtonProps}
+				id="code-copy-button-props"
+			/>
+
+			<!-- CodeOverflow -->
+			<ComponentAPITable
+				componentName="CodeOverflow"
+				props={codeOverflowProps}
+				id="code-overflow-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

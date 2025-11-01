@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading } from "$lib/components/docs";
+	import { Subheading, ComponentAPITable } from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
@@ -15,6 +15,170 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+	// Component API Props Data
+	const chainOfThoughtProps = [
+		{
+			name: "open",
+			type: "boolean",
+			description: "Controls whether the chain of thought is expanded (bindable)",
+		},
+		{
+			name: "defaultOpen",
+			type: "boolean",
+			default: "false",
+			description: "Whether the chain of thought is expanded by default",
+		},
+		{
+			name: "onOpenChange",
+			type: "(open: boolean) => void",
+			description: "Callback function called when the open state changes",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description:
+				"Child components (typically ChainOfThoughtHeader and ChainOfThoughtContent)",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const chainOfThoughtHeaderProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the header trigger",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom content to render instead of the default 'Chain of Thought' text",
+		},
+	];
+
+	const chainOfThoughtContentProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the content container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Chain of thought steps and content to display when expanded",
+		},
+	];
+
+	const chainOfThoughtStepProps = [
+		{
+			name: "label",
+			type: "string",
+			description: "The main label/title for the step",
+		},
+		{
+			name: "icon",
+			type: "typeof Icon",
+			description: "Lucide icon component to display for the step",
+		},
+		{
+			name: "description",
+			type: "string",
+			description: "Optional description text for the step",
+		},
+		{
+			name: "status",
+			type: "'complete' | 'active' | 'pending'",
+			default: "'complete'",
+			description: "Visual status of the step",
+		},
+		{
+			name: "delay",
+			type: "number",
+			description: "Custom animation delay in milliseconds (defaults to 150ms * step index)",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the step",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Additional content to display within the step",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const chainOfThoughtImageProps = [
+		{
+			name: "caption",
+			type: "string",
+			description: "Caption text to display below the image",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the image container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Image element or content to display",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const chainOfThoughtSearchResultsProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the search results container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "ChainOfThoughtSearchResult components to display",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const chainOfThoughtSearchResultProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the search result badge",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Content to display in the search result badge",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLElement>",
+			description: "All other Badge component props are supported",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -90,6 +254,59 @@
       <Playground code={examples.messageAction.code}>
         <examples.messageAction.Component />
       </Playground> -->
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- ChainOfThought -->
+			<ComponentAPITable
+				componentName="ChainOfThought"
+				props={chainOfThoughtProps}
+				class="mt-6"
+				id="chain-of-thought-props"
+			/>
+
+			<!-- ChainOfThoughtHeader -->
+			<ComponentAPITable
+				componentName="ChainOfThoughtHeader"
+				props={chainOfThoughtHeaderProps}
+				id="chain-of-thought-header-props"
+			/>
+
+			<!-- ChainOfThoughtContent -->
+			<ComponentAPITable
+				componentName="ChainOfThoughtContent"
+				props={chainOfThoughtContentProps}
+				id="chain-of-thought-content-props"
+			/>
+
+			<!-- ChainOfThoughtStep -->
+			<ComponentAPITable
+				componentName="ChainOfThoughtStep"
+				props={chainOfThoughtStepProps}
+				id="chain-of-thought-step-props"
+			/>
+
+			<!-- ChainOfThoughtImage -->
+			<ComponentAPITable
+				componentName="ChainOfThoughtImage"
+				props={chainOfThoughtImageProps}
+				id="chain-of-thought-image-props"
+			/>
+
+			<!-- ChainOfThoughtSearchResults -->
+			<ComponentAPITable
+				componentName="ChainOfThoughtSearchResults"
+				props={chainOfThoughtSearchResultsProps}
+				id="chain-of-thought-search-results-props"
+			/>
+
+			<!-- ChainOfThoughtSearchResult -->
+			<ComponentAPITable
+				componentName="ChainOfThoughtSearchResult"
+				props={chainOfThoughtSearchResultProps}
+				id="chain-of-thought-search-result-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

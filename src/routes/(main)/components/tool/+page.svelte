@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading, CodeNameBlock } from "$lib/components/docs";
+	import { Subheading, CodeNameBlock, ComponentAPITable } from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
@@ -15,6 +15,112 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+	// Component API Props Data
+	const toolProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the tool container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description:
+				"Child components (typically ToolHeader, ToolInput, ToolOutput, ToolContent)",
+		},
+		{
+			name: "...restProps",
+			type: "CollapsibleProps",
+			description: "All other Collapsible component props are supported",
+		},
+	];
+
+	const toolContentProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the content container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom content to display in the collapsible area",
+		},
+		{
+			name: "...restProps",
+			type: "CollapsibleContentProps",
+			description: "All other CollapsibleContent component props are supported",
+		},
+	];
+
+	const toolHeaderProps = [
+		{
+			name: "type",
+			type: "string",
+			description: "The name/type of the tool being executed",
+		},
+		{
+			name: "state",
+			type: "'input-streaming' | 'input-available' | 'output-available' | 'output-error'",
+			description: "Current state of the tool execution",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the header",
+		},
+		{
+			name: "...restProps",
+			type: "CollapsibleTriggerProps",
+			description: "All other CollapsibleTrigger component props are supported",
+		},
+	];
+
+	const toolInputProps = [
+		{
+			name: "input",
+			type: "any",
+			description: "The input parameters passed to the tool (will be JSON stringified)",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the input container",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const toolOutputProps = [
+		{
+			name: "output",
+			type: "any",
+			description: "The output result from the tool execution",
+		},
+		{
+			name: "errorText",
+			type: "string",
+			description: "Error message to display if the tool execution failed",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the output container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom content to render instead of the default output display",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -288,6 +394,45 @@ export const POST: RequestHandler = async ({ request }) => {
       <Playground code={examples.messageAction.code}>
         <examples.messageAction.Component />
       </Playground> -->
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- Tool -->
+			<ComponentAPITable
+				componentName="Tool"
+				props={toolProps}
+				class="mt-6"
+				id="tool-props"
+			/>
+
+			<!-- ToolHeader -->
+			<ComponentAPITable
+				componentName="ToolHeader"
+				props={toolHeaderProps}
+				id="tool-header-props"
+			/>
+
+			<!-- ToolInput -->
+			<ComponentAPITable
+				componentName="ToolInput"
+				props={toolInputProps}
+				id="tool-input-props"
+			/>
+
+			<!-- ToolOutput -->
+			<ComponentAPITable
+				componentName="ToolOutput"
+				props={toolOutputProps}
+				id="tool-output-props"
+			/>
+
+			<!-- ToolContent -->
+			<ComponentAPITable
+				componentName="ToolContent"
+				props={toolContentProps}
+				id="tool-content-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

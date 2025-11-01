@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading, CodeNameBlock } from "$lib/components/docs";
+	import { Subheading, CodeNameBlock, ComponentAPITable } from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
@@ -15,6 +15,34 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+	// Component API Props Data
+	const loaderProps = [
+		{
+			name: "size",
+			type: "number",
+			default: "16",
+			description: "Size of the loader icon in pixels",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the loader container",
+		},
+		{
+			name: "...restProps",
+			type: "HTMLAttributes<HTMLDivElement>",
+			description: "All other div props are supported",
+		},
+	];
+
+	const loaderIconProps = [
+		{
+			name: "size",
+			type: "number",
+			default: "16",
+			description: "Size of the loader icon in pixels",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -167,6 +195,24 @@ export const POST: RequestHandler = async ({ request }) => {
 };`}
 				/>
 			</div>
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- Loader -->
+			<ComponentAPITable
+				componentName="Loader"
+				props={loaderProps}
+				class="mt-6"
+				id="loader-props"
+			/>
+
+			<!-- LoaderIcon -->
+			<ComponentAPITable
+				componentName="LoaderIcon"
+				props={loaderIconProps}
+				id="loader-icon-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading } from "$lib/components/docs";
+	import { Subheading, ComponentAPITable } from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Playground from "$lib/components/docs/playground.svelte";
 	import Code from "$lib/components/docs/code.svelte";
@@ -14,6 +14,169 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	let toc = new UseToc();
+	// Component API Props Data
+	const contextProps = [
+		{
+			name: "usedTokens",
+			type: "number",
+			description: "Number of tokens currently used",
+		},
+		{
+			name: "maxTokens",
+			type: "number",
+			description: "Maximum number of tokens allowed",
+		},
+		{
+			name: "usage",
+			type: "LanguageModelUsage",
+			description: "Detailed token usage breakdown (input, output, reasoning, cached)",
+		},
+		{
+			name: "modelId",
+			type: "string",
+			description: "Model identifier for cost estimation",
+		},
+		{
+			name: "closeDelay",
+			type: "number",
+			default: "0",
+			description: "Delay in milliseconds before closing the hover card",
+		},
+		{
+			name: "openDelay",
+			type: "number",
+			default: "0",
+			description: "Delay in milliseconds before opening the hover card",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Child components (typically ContextTrigger and ContextContent)",
+		},
+	];
+
+	const contextTriggerProps = [
+		{
+			name: "variant",
+			type: "'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'",
+			default: "'ghost'",
+			description: "Button variant style",
+		},
+		{
+			name: "size",
+			type: "'default' | 'sm' | 'lg' | 'icon'",
+			description: "Button size",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom trigger content (defaults to percentage display with icon)",
+		},
+	];
+
+	const contextContentProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the content container",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Content to display in the hover card (typically header, body, footer)",
+		},
+	];
+
+	const contextContentHeaderProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the header",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom header content (defaults to percentage and token count display)",
+		},
+	];
+
+	const contextContentBodyProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the body",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Body content (typically usage breakdown components)",
+		},
+	];
+
+	const contextContentFooterProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the footer",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom footer content (defaults to total cost display)",
+		},
+	];
+
+	const contextInputUsageProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the input usage display",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom content for input token usage display",
+		},
+	];
+
+	const contextOutputUsageProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the output usage display",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom content for output token usage display",
+		},
+	];
+
+	const contextReasoningUsageProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the reasoning usage display",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom content for reasoning token usage display",
+		},
+	];
+
+	const contextCacheUsageProps = [
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes to apply to the cache usage display",
+		},
+		{
+			name: "children",
+			type: "Snippet",
+			description: "Custom content for cache token usage display",
+		},
+	];
 </script>
 
 <!-- SEO Meta Tags -->
@@ -98,6 +261,80 @@
       <Playground code={examples.messageAction.code}>
         <examples.messageAction.Component />
       </Playground> -->
+
+			<!-- Component API Section -->
+			<Subheading>Props</Subheading>
+
+			<!-- Context -->
+			<ComponentAPITable
+				componentName="Context"
+				props={contextProps}
+				class="mt-6"
+				id="context-props"
+			/>
+
+			<!-- ContextTrigger -->
+			<ComponentAPITable
+				componentName="ContextTrigger"
+				props={contextTriggerProps}
+				id="context-trigger-props"
+			/>
+
+			<!-- ContextContent -->
+			<ComponentAPITable
+				componentName="ContextContent"
+				props={contextContentProps}
+				id="context-content-props"
+			/>
+
+			<!-- ContextContentHeader -->
+			<ComponentAPITable
+				componentName="ContextContentHeader"
+				props={contextContentHeaderProps}
+				id="context-content-header-props"
+			/>
+
+			<!-- ContextContentBody -->
+			<ComponentAPITable
+				componentName="ContextContentBody"
+				props={contextContentBodyProps}
+				id="context-content-body-props"
+			/>
+
+			<!-- ContextContentFooter -->
+			<ComponentAPITable
+				componentName="ContextContentFooter"
+				props={contextContentFooterProps}
+				id="context-content-footer-props"
+			/>
+
+			<!-- ContextInputUsage -->
+			<ComponentAPITable
+				componentName="ContextInputUsage"
+				props={contextInputUsageProps}
+				id="context-input-usage-props"
+			/>
+
+			<!-- ContextOutputUsage -->
+			<ComponentAPITable
+				componentName="ContextOutputUsage"
+				props={contextOutputUsageProps}
+				id="context-output-usage-props"
+			/>
+
+			<!-- ContextReasoningUsage -->
+			<ComponentAPITable
+				componentName="ContextReasoningUsage"
+				props={contextReasoningUsageProps}
+				id="context-reasoning-usage-props"
+			/>
+
+			<!-- ContextCacheUsage -->
+			<ComponentAPITable
+				componentName="ContextCacheUsage"
+				props={contextCacheUsageProps}
+				id="context-cache-usage-props"
+			/>
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->
