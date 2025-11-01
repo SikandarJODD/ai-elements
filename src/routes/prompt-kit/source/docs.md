@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/p/source.json
+npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/source.json
 ```
 
 ## Usage

@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/p/chain-of-thought.json
+npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/chain-of-thought.json
 ```
 
 ## Usage

@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/p/loader.json
+npx shadcn-svelte@latest add https://ai-elements.vercel.app/p/loader.json
 ```
 
 **Note:** If you are using Tailwind CSS v4, you may have to grab the keyframes and add them to your global.css file manually. Check manual installation for more details.
