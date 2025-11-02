@@ -446,5 +446,59 @@
 			"featured": false
 		},
 		"relativeUrl": "toolbar.json"
+	},
+	{
+		"name": "playground",
+		"title": "AI Chat Playground",
+		"type": "registry:block",
+		"author": "SikandarJODD",
+		"description": "A complete AI chat playground with OpenRouter integration, featuring prompt suggestions with icons, code viewer dialog, reasoning support, and FREE AI model. Perfect for testing and learning AI chat interfaces.",
+		"dependencies": [
+			"ai",
+			"@ai-sdk/svelte",
+			"@openrouter/ai-sdk-provider",
+			"runed",
+			"marked",
+			"svelte-sonner",
+			"@lucide/svelte"
+		],
+		"registryDependencies": [
+			"button",
+			"badge",
+			"input",
+			"label",
+			"hover-card",
+			"dialog",
+			"tabs",
+			"tooltip",
+			"local:message",
+			"local:conversation",
+			"local:action",
+			"local:response",
+			"local:reasoning",
+			"local:code",
+			"local:prompt-input",
+			"local:prompt-suggestion"
+		],
+		"meta": {
+			"author": "SikandarJODD",
+			"version": "1.0.0",
+			"tags": [
+				"playground",
+				"chat",
+				"ai",
+				"openrouter",
+				"example",
+				"free-model",
+				"suggestions"
+			],
+			"category": "Examples",
+			"documentation": "https://svelte-ai-elements.vercel.app/playground",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "advanced",
+			"updated": "2025-11-02",
+			"featured": true
+		},
+		"relativeUrl": "playground.json"
 	}
 ]

@@ -1,0 +1,46 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "reasoning",
+	"title": "Reasoning",
+	"type": "registry:block",
+	"author": "SikandarJODD",
+	"description": "The Reasoning component displays AI reasoning content, automatically opening during streaming and closing when finished.",
+	"dependencies": ["runed", "@lucide/svelte"],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"registryDependencies": ["collapsible"],
+	"meta": {
+		"author": "SikandarJODD"
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { watch } from \"runed\";\n\timport { Collapsible } from \"$COMPONENTS$/ui/collapsible/index.js\";\n\timport { ReasoningContext, setReasoningContext } from \"./reasoning-context.svelte\";\n\n\tinterface Props {\n\t\tclass?: string;\n\t\tisStreaming?: boolean;\n\t\topen?: boolean;\n\t\tdefaultOpen?: boolean;\n\t\tonOpenChange?: (open: boolean) => void;\n\t\tduration?: number;\n\t\tchildren?: import(\"svelte\").Snippet;\n\t}\n\n\tlet {\n\t\tclass: className = \"\",\n\t\tisStreaming = false,\n\t\topen = $bindable(),\n\t\tdefaultOpen = true,\n\t\tonOpenChange,\n\t\tduration = $bindable(),\n\t\tchildren,\n\t\t...props\n\t}: Props = $props();\n\n\tlet AUTO_CLOSE_DELAY = 1000;\n\tlet MS_IN_S = 1000;\n\n\t// Create the reasoning context\n\tlet reasoningContext = new ReasoningContext({\n\t\tisStreaming,\n\t\tisOpen: open ?? defaultOpen,\n\t\tduration: duration ?? 0,\n\t});\n\n\t// Set up controllable state for open\n\tlet isOpen = $state(open ?? defaultOpen);\n\tlet currentDuration = $state(duration ?? 0);\n\tlet hasAutoClosed = $state(false);\n\tlet startTime = $state<number | null>(null);\n\n\t// Sync external props to context and local state\n\t$effect(() => {\n\t\treasoningContext.isStreaming = isStreaming;\n\t});\n\n\t$effect(() => {\n\t\tif (open !== undefined) {\n\t\t\tisOpen = open;\n\t\t\treasoningContext.isOpen = open;\n\t\t}\n\t});\n\n\t$effect(() => {\n\t\tif (duration !== undefined) {\n\t\t\tcurrentDuration = duration;\n\t\t\treasoningContext.duration = duration;\n\t\t}\n\t});\n\n\t// Track duration when streaming starts and ends\n\twatch(\n\t\t() => isStreaming,\n\t\t(isStreamingValue) => {\n\t\t\tif (isStreamingValue) {\n\t\t\t\tif (startTime === null) {\n\t\t\t\t\tstartTime = Date.now();\n\t\t\t\t}\n\t\t\t} else if (startTime !== null) {\n\t\t\t\tlet newDuration = Math.ceil((Date.now() - startTime) / MS_IN_S);\n\t\t\t\tcurrentDuration = newDuration;\n\t\t\t\treasoningContext.duration = newDuration;\n\t\t\t\tif (duration !== undefined) {\n\t\t\t\t\tduration = newDuration;\n\t\t\t\t}\n\t\t\t\tstartTime = null;\n\t\t\t}\n\t\t}\n\t);\n\n\t// Auto-open when streaming starts, auto-close when streaming ends (once only)\n\twatch(\n\t\t() => [isStreaming, isOpen, defaultOpen, hasAutoClosed] as const,\n\t\t([isStreamingValue, isOpenValue, defaultOpenValue, hasAutoClosedValue]) => {\n\t\t\tif (defaultOpenValue && !isStreamingValue && isOpenValue && !hasAutoClosedValue) {\n\t\t\t\t// Add a small delay before closing to allow user to see the content\n\t\t\t\tlet timer = setTimeout(() => {\n\t\t\t\t\thandleOpenChange(false);\n\t\t\t\t\thasAutoClosed = true;\n\t\t\t\t}, AUTO_CLOSE_DELAY);\n\n\t\t\t\treturn () => clearTimeout(timer);\n\t\t\t}\n\t\t}\n\t);\n\n\tlet handleOpenChange = (newOpen: boolean) => {\n\t\tisOpen = newOpen;\n\t\treasoningContext.setIsOpen(newOpen);\n\n\t\tif (open !== undefined) {\n\t\t\topen = newOpen;\n\t\t}\n\n\t\tonOpenChange?.(newOpen);\n\t};\n\n\t// Set the context for child components\n\tsetReasoningContext(reasoningContext);\n</script>\n\n<Collapsible\n\tclass={cn(\"not-prose mb-4\", className)}\n\tbind:open={isOpen}\n\tonOpenChange={handleOpenChange}\n\t{...props}\n>\n\t{@render children?.()}\n</Collapsible>\n",
+			"type": "registry:component",
+			"target": "ai-elements/reasoning/Reasoning.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { CollapsibleTrigger } from \"$COMPONENTS$/ui/collapsible/index.js\";\n\timport { getReasoningContext } from \"./reasoning-context.svelte.js\";\n\timport BrainIcon from \"@lucide/svelte/icons/brain\";\n\timport ChevronDownIcon from \"@lucide/svelte/icons/chevron-down\";\n\n\tinterface Props {\n\t\tclass?: string;\n\t\tchildren?: import(\"svelte\").Snippet;\n\t}\n\n\tlet { class: className = \"\", children, ...props }: Props = $props();\n\n\tlet reasoningContext = getReasoningContext();\n\n\tlet getThinkingMessage = $derived.by(() => {\n\t\tlet { isStreaming, duration } = reasoningContext;\n\n\t\tif (isStreaming || duration === 0) {\n\t\t\treturn \"Thinking...\";\n\t\t}\n\t\tif (duration === undefined) {\n\t\t\treturn \"Thought for a few seconds\";\n\t\t}\n\t\treturn `Thought for ${duration} seconds`;\n\t});\n</script>\n\n<CollapsibleTrigger\n\tclass={cn(\n\t\t\"text-muted-foreground hover:text-foreground flex w-full items-center gap-2 text-sm transition-colors\",\n\t\tclassName\n\t)}\n\t{...props}\n>\n\t{#if children}\n\t\t{@render children()}\n\t{:else}\n\t\t<BrainIcon class=\"size-4\" />\n\t\t<p>{getThinkingMessage}</p>\n\t\t<ChevronDownIcon\n\t\t\tclass={cn(\n\t\t\t\t\"size-4 transition-transform\",\n\t\t\t\treasoningContext.isOpen ? \"rotate-180\" : \"rotate-0\"\n\t\t\t)}\n\t\t/>\n\t{/if}\n</CollapsibleTrigger>\n",
+			"type": "registry:component",
+			"target": "ai-elements/reasoning/ReasoningTrigger.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { CollapsibleContent } from \"$COMPONENTS$/ui/collapsible/index.js\";\n\timport Response from \"./Response.svelte\";\n\n\tinterface Props {\n\t\tclass?: string;\n\t\tchildren?: import(\"svelte\").Snippet;\n\t}\n\n\tlet { class: className = \"\", children, ...props }: Props = $props();\n</script>\n\n<CollapsibleContent\n\tclass={cn(\n\t\t\"mt-4 text-sm\",\n\t\t\"data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2 data-[state=open]:slide-in-from-top-2 text-muted-foreground data-[state=closed]:animate-out data-[state=open]:animate-in outline-none\",\n\t\tclassName\n\t)}\n\t{...props}\n>\n\t<Response class=\"grid gap-2\">\n\t\t{@render children?.()}\n\t</Response>\n</CollapsibleContent>\n",
+			"type": "registry:component",
+			"target": "ai-elements/reasoning/ReasoningContent.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\n\tinterface Props {\n\t\tclass?: string;\n\t\tchildren?: import(\"svelte\").Snippet;\n\t}\n\n\tlet { class: className = \"\", children, ...props }: Props = $props();\n</script>\n\n<div class={cn(\"prose prose-sm max-w-none\", className)} {...props}>\n\t{@render children?.()}\n</div>\n",
+			"type": "registry:component",
+			"target": "ai-elements/reasoning/Response.svelte"
+		},
+		{
+			"content": "import { getContext, setContext } from \"svelte\";\n\nconst REASONING_CONTEXT_KEY = Symbol(\"reasoning-context\");\n\nexport class ReasoningContext {\n\t#isStreaming = $state(false);\n\t#isOpen = $state(true);\n\t#duration = $state(0);\n\n\tconstructor(\n\t\toptions: {\n\t\t\tisStreaming?: boolean;\n\t\t\tisOpen?: boolean;\n\t\t\tduration?: number;\n\t\t} = {}\n\t) {\n\t\tthis.#isStreaming = options.isStreaming ?? false;\n\t\tthis.#isOpen = options.isOpen ?? true;\n\t\tthis.#duration = options.duration ?? 0;\n\t}\n\n\tget isStreaming() {\n\t\treturn this.#isStreaming;\n\t}\n\n\tset isStreaming(value: boolean) {\n\t\tthis.#isStreaming = value;\n\t}\n\n\tget isOpen() {\n\t\treturn this.#isOpen;\n\t}\n\n\tset isOpen(value: boolean) {\n\t\tthis.#isOpen = value;\n\t}\n\n\tget duration() {\n\t\treturn this.#duration;\n\t}\n\n\tset duration(value: number) {\n\t\tthis.#duration = value;\n\t}\n\n\tsetIsOpen(open: boolean) {\n\t\tthis.#isOpen = open;\n\t}\n}\n\nexport function setReasoningContext(context: ReasoningContext) {\n\tsetContext(REASONING_CONTEXT_KEY, context);\n}\n\nexport function getReasoningContext(): ReasoningContext {\n\tlet context = getContext<ReasoningContext | undefined>(REASONING_CONTEXT_KEY);\n\tif (!context) {\n\t\tthrow new Error(\"Reasoning components must be used within Reasoning\");\n\t}\n\treturn context;\n}\n",
+			"type": "registry:file",
+			"target": "ai-elements/reasoning/reasoning-context.svelte.ts"
+		},
+		{
+			"content": "export { default as Reasoning } from \"./Reasoning.svelte\";\nexport { default as ReasoningTrigger } from \"./ReasoningTrigger.svelte\";\nexport { default as ReasoningContent } from \"./ReasoningContent.svelte\";\nexport { default as Response } from \"./Response.svelte\";\nexport * from \"./reasoning-context.svelte.js\";\n",
+			"type": "registry:file",
+			"target": "ai-elements/reasoning/index.ts"
+		}
+	]
+}

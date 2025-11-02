@@ -1,0 +1,40 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "copy-button",
+	"title": "Copy Button",
+	"type": "registry:block",
+	"author": "SikandarJODD",
+	"description": "The CopyButton component provides a button that allows users to copy text to their clipboard with visual feedback indicating success or failure.",
+	"dependencies": ["@lucide/svelte"],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0",
+		"bits-ui@^2.14.1",
+		"@internationalized/date@^3.8.1"
+	],
+	"registryDependencies": ["button", "tooltip"],
+	"meta": {
+		"author": "SikandarJODD"
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { Button } from \"$COMPONENTS$/ui/button/index.js\";\n\timport { UseClipboard } from \"$HOOKS$/use-clipboard.svelte\";\n\timport { cn } from \"$UTILS$\";\n\timport CheckIcon from \"@lucide/svelte/icons/check\";\n\timport CopyIcon from \"@lucide/svelte/icons/copy\";\n\timport XIcon from \"@lucide/svelte/icons/x\";\n\timport { scale } from \"svelte/transition\";\n\timport type { CopyButtonProps } from \"./types\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\ttext,\n\t\ticon,\n\t\tanimationDuration = 500,\n\t\tvariant = \"ghost\",\n\t\tsize = \"icon\",\n\t\tonCopy,\n\t\tclass: className,\n\t\ttabindex = -1,\n\t\tchildren,\n\t\t...rest\n\t}: CopyButtonProps = $props();\n\n\t// this way if the user passes text then the button will be the default size\n\tif (size === \"icon\" && children) {\n\t\tsize = \"default\";\n\t}\n\n\tlet clipboard = new UseClipboard();\n</script>\n\n<Button\n\tbind:ref\n\t{variant}\n\t{size}\n\t{tabindex}\n\tclass={cn(\"flex items-center gap-2\", className)}\n\ttype=\"button\"\n\tname=\"copy\"\n\tonclick={async () => {\n\t\tconst status = await clipboard.copy(text);\n\n\t\tonCopy?.(status);\n\t}}\n>\n\t{#if clipboard.status === \"success\"}\n\t\t<div in:scale={{ duration: animationDuration, start: 0.85 }}>\n\t\t\t<CheckIcon tabindex={-1} strokeWidth={1.8} />\n\t\t\t<span class=\"sr-only\">Copied</span>\n\t\t</div>\n\t{:else if clipboard.status === \"failure\"}\n\t\t<div in:scale={{ duration: animationDuration, start: 0.85 }}>\n\t\t\t<XIcon tabindex={-1} strokeWidth={1.8} />\n\t\t\t<span class=\"sr-only\">Failed to copy</span>\n\t\t</div>\n\t{:else}\n\t\t<div in:scale={{ duration: animationDuration, start: 0.85 }}>\n\t\t\t{#if icon}\n\t\t\t\t{@render icon()}\n\t\t\t{:else}\n\t\t\t\t<CopyIcon tabindex={-1} strokeWidth={1.8} />\n\t\t\t{/if}\n\t\t\t<span class=\"sr-only\">Copy</span>\n\t\t</div>\n\t{/if}\n\t{@render children?.()}\n</Button>\n",
+			"type": "registry:component",
+			"target": "ai-elements/copy-button/CopyButton.svelte"
+		},
+		{
+			"content": "import type { Snippet } from \"svelte\";\nimport type { UseClipboard } from \"$HOOKS$/use-clipboard.svelte\";\nimport type { HTMLAttributes } from \"svelte/elements\";\nimport type { WithChildren, WithoutChildren } from \"bits-ui\";\n\nimport type { ButtonSize, ButtonVariant } from \"$COMPONENTS$/ui/button/index.js\";\n\nexport type ButtonPropsWithoutHTML = WithChildren<{\n\tref?: HTMLElement | null;\n\tvariant?: ButtonVariant;\n\tsize?: ButtonSize;\n\tloading?: boolean;\n\tonClickPromise?: (\n\t\te: MouseEvent & {\n\t\t\tcurrentTarget: EventTarget & HTMLButtonElement;\n\t\t}\n\t) => Promise<void>;\n}>;\n\nexport type CopyButtonPropsWithoutHTML = WithChildren<\n\tPick<ButtonPropsWithoutHTML, \"size\" | \"variant\"> & {\n\t\tref?: HTMLButtonElement | null;\n\t\ttext: string;\n\t\ticon?: Snippet<[]>;\n\t\tanimationDuration?: number;\n\t\tdisbled?: boolean;\n\t\tonCopy?: (status: UseClipboard[\"status\"]) => void;\n\t}\n>;\n\nexport type CopyButtonProps = CopyButtonPropsWithoutHTML &\n\tWithoutChildren<HTMLAttributes<HTMLButtonElement>>;\n",
+			"type": "registry:file",
+			"target": "ai-elements/copy-button/types.ts"
+		},
+		{
+			"content": "import CopyButton from \"./CopyButton.svelte\";\n\nexport { CopyButton };\n",
+			"type": "registry:file",
+			"target": "ai-elements/copy-button/index.ts"
+		},
+		{
+			"content": "type Options = {\n\t/** The time before the copied status is reset. */\n\tdelay: number;\n};\n\n/** Use this hook to copy text to the clipboard and show a copied state.\n *\n * ## Usage\n * ```svelte\n * <script lang=\"ts\">\n * \t\timport { UseClipboard } from \"$HOOKS$/use-clipboard.svelte\";\n *\n * \t\tconst clipboard = new UseClipboard();\n * </script>\n *\n * <button onclick={clipboard.copy('Hello, World!')}>\n *     {#if clipboard.copied === 'success'}\n *         Copied!\n *     {:else if clipboard.copied === 'failure'}\n *         Failed to copy!\n *     {:else}\n *         Copy\n *     {/if}\n * </button>\n * ```\n *\n */\nexport class UseClipboard {\n\t#copiedStatus = $state<\"success\" | \"failure\">();\n\tprivate delay: number;\n\tprivate timeout: ReturnType<typeof setTimeout> | undefined = undefined;\n\n\tconstructor({ delay = 800 }: Partial<Options> = {}) {\n\t\tthis.delay = delay;\n\t}\n\n\t/** Copies the given text to the users clipboard.\n\t *\n\t * ## Usage\n\t * ```ts\n\t * clipboard.copy('Hello, World!');\n\t * ```\n\t *\n\t * @param text\n\t * @returns\n\t */\n\tasync copy(text: string) {\n\t\tif (this.timeout) {\n\t\t\tthis.#copiedStatus = undefined;\n\t\t\tclearTimeout(this.timeout);\n\t\t}\n\n\t\ttry {\n\t\t\tawait navigator.clipboard.writeText(text);\n\n\t\t\tthis.#copiedStatus = \"success\";\n\n\t\t\tthis.timeout = setTimeout(() => {\n\t\t\t\tthis.#copiedStatus = undefined;\n\t\t\t}, this.delay);\n\t\t} catch {\n\t\t\t// an error can occur when not in the browser or if the user hasn't given clipboard access\n\t\t\tthis.#copiedStatus = \"failure\";\n\n\t\t\tthis.timeout = setTimeout(() => {\n\t\t\t\tthis.#copiedStatus = undefined;\n\t\t\t}, this.delay);\n\t\t}\n\n\t\treturn this.#copiedStatus;\n\t}\n\n\t/** true when the user has just copied to the clipboard. */\n\tget copied() {\n\t\treturn this.#copiedStatus === \"success\";\n\t}\n\n\t/**\tIndicates whether a copy has occurred\n\t * and gives a status of either `success` or `failure`. */\n\tget status() {\n\t\treturn this.#copiedStatus;\n\t}\n}\n",
+			"type": "registry:hook",
+			"target": "use-clipboard.svelte.ts"
+		}
+	]
+}
