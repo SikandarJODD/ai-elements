@@ -15,6 +15,9 @@
 		ArrowUp as ArrowUpIcon,
 		Key as KeyIcon,
 		Trash2 as Trash2Icon,
+		FileText,
+		Palette,
+		Search,
 	} from "@lucide/svelte";
 
 	// UI Components
@@ -90,6 +93,7 @@
 		{
 			label: "Summary",
 			highlight: "Summarize",
+			icon: FileText,
 			items: [
 				"Summarize a document",
 				"Summarize a video",
@@ -101,6 +105,7 @@
 		{
 			label: "Code",
 			highlight: "Help me",
+			icon: Code,
 			items: [
 				"Help me write React components",
 				"Help me debug code",
@@ -112,6 +117,7 @@
 		{
 			label: "Design",
 			highlight: "Design",
+			icon: Palette,
 			items: [
 				"Design a small logo",
 				"Design a hero section",
@@ -123,6 +129,7 @@
 		{
 			label: "Research",
 			highlight: "Research",
+			icon: Search,
 			items: [
 				"Research the best practices for SEO",
 				"Research the best running shoes",
@@ -281,6 +288,7 @@
 											<PromptSuggestion
 												highlight={activeCategoryData?.highlight ?? ""}
 												onclick={() => handleSuggestionClick(suggestion)}
+												class="transition-all hover:scale-[1.02] hover:shadow-sm"
 											>
 												{suggestion}
 											</PromptSuggestion>
@@ -293,9 +301,10 @@
 										{#each suggestionGroups as group}
 											<PromptSuggestion
 												onclick={() => handleCategoryClick(group.label)}
-												class="capitalize"
+												class="capitalize transition-all hover:scale-105 hover:shadow-md"
 											>
-												<Brain class="mr-2 h-4 w-4" />
+												{@const Icon = group.icon}
+												<Icon class="mr-2 h-4 w-4" />
 												{group.label}
 											</PromptSuggestion>
 										{/each}

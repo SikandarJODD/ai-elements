@@ -6,7 +6,7 @@
 	import AiInstallCommand from "$lib/components/docs/ai-install-command.svelte";
 	import SvelteLogo from "$lib/components/icons/svelte.svelte";
 	import TypeScriptLogo from "$lib/components/icons/typescript.svelte";
-	import { FileText, FileJson } from "@lucide/svelte";
+	import { FileText, FileJson, Settings } from "@lucide/svelte";
 
 	type Props = {
 		open: boolean;
@@ -32,6 +32,9 @@
 		ArrowUp as ArrowUpIcon,
 		Key as KeyIcon,
 		Trash2 as Trash2Icon,
+		FileText,
+		Palette,
+		Search,
 	} from "@lucide/svelte";
 
 	// UI Components
@@ -102,11 +105,12 @@
 		}
 	});
 
-	// Suggestion groups
+	// Suggestion groups with icons
 	const suggestionGroups = [
 		{
 			label: "Summary",
 			highlight: "Summarize",
+			icon: FileText,
 			items: [
 				"Summarize a document",
 				"Summarize a video",
@@ -118,6 +122,7 @@
 		{
 			label: "Code",
 			highlight: "Help me",
+			icon: Code,
 			items: [
 				"Help me write React components",
 				"Help me debug code",
@@ -129,6 +134,7 @@
 		{
 			label: "Design",
 			highlight: "Design",
+			icon: Palette,
 			items: [
 				"Design a small logo",
 				"Design a hero section",
@@ -140,6 +146,7 @@
 		{
 			label: "Research",
 			highlight: "Research",
+			icon: Search,
 			items: [
 				"Research the best practices for SEO",
 				"Research the best running shoes",
@@ -269,7 +276,11 @@
 					{#if showCategorySuggestions}
 						<div class="flex w-full flex-col space-y-1">
 							{#each activeCategoryData?.items ?? [] as suggestion}
-								<PromptSuggestion highlight={activeCategoryData?.highlight ?? ""} onclick={() => handleSuggestionClick(suggestion)}>
+								<PromptSuggestion
+									highlight={activeCategoryData?.highlight ?? ""}
+									onclick={() => handleSuggestionClick(suggestion)}
+									class="transition-all hover:scale-[1.02] hover:shadow-sm"
+								>
 									{suggestion}
 								</PromptSuggestion>
 							{/each}
@@ -277,8 +288,9 @@
 					{:else}
 						<div class="relative flex w-full flex-wrap items-stretch justify-start gap-2">
 							{#each suggestionGroups as group}
-								<PromptSuggestion onclick={() => handleCategoryClick(group.label)} class="capitalize">
-									<Brain class="mr-2 h-4 w-4" />
+								<PromptSuggestion onclick={() => handleCategoryClick(group.label)} class="capitalize transition-all hover:scale-105 hover:shadow-md">
+									{@const Icon = group.icon}
+									<Icon class="mr-2 h-4 w-4" />
 									{group.label}
 								</PromptSuggestion>
 							{/each}
@@ -432,7 +444,24 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	const envCode = `# OpenRouter API Key
 # Get your free API key at: https://openrouter.ai/keys
+#
+# NOTE: We're using a FREE AI model (z-ai/glm-4.5-air:free) in this playground
+# so you won't be charged for API usage. Perfect for testing and development!
 OPENROUTER_API_KEY=your_openrouter_api_key_here`;
+
+	const aiConfigCode = `// AI Configuration
+// This file manages your AI provider settings and model selection
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { OPENROUTER_API_KEY } from "$env/static/private";
+
+export const openrouter = createOpenRouter({
+	apiKey: OPENROUTER_API_KEY,
+});
+
+// Using a FREE AI model - no charges will be incurred!
+// The z-ai/glm-4.5-air:free model is completely free to use
+// Perfect for development, testing, and learning
+export const defaultModel = "z-ai/glm-4.5-air:free";`;
 
 	const packageJsonCode = `{
   "dependencies": {
@@ -455,7 +484,7 @@ OPENROUTER_API_KEY=your_openrouter_api_key_here`;
 
 		<Tooltip.Provider>
 			<Tabs.Root value="page" class="flex flex-1 flex-col overflow-hidden">
-				<Tabs.List class="grid w-full grid-cols-4">
+				<Tabs.List class="grid w-full grid-cols-5">
 					<Tabs.Trigger value="page" class="gap-2">
 						<SvelteLogo class="size-4" />
 						+page.svelte
@@ -463,6 +492,10 @@ OPENROUTER_API_KEY=your_openrouter_api_key_here`;
 					<Tabs.Trigger value="server" class="gap-2">
 						<TypeScriptLogo class="size-4" />
 						+server.ts
+					</Tabs.Trigger>
+					<Tabs.Trigger value="ai-config" class="gap-2">
+						<Settings class="size-4" />
+						ai-config.ts
 					</Tabs.Trigger>
 					<Tabs.Trigger value="env" class="gap-2">
 						<FileText class="size-4" />
@@ -487,6 +520,12 @@ OPENROUTER_API_KEY=your_openrouter_api_key_here`;
 
 					<Tabs.Content value="server" class="mt-0">
 						<Code.Root lang="typescript" code={serverCode}>
+							<Code.CopyButton />
+						</Code.Root>
+					</Tabs.Content>
+
+					<Tabs.Content value="ai-config" class="mt-0">
+						<Code.Root lang="typescript" code={aiConfigCode}>
 							<Code.CopyButton />
 						</Code.Root>
 					</Tabs.Content>
