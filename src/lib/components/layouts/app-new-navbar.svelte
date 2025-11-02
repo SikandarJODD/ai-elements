@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Button } from "$lib/components/ui/button";
+	import { Badge } from "$lib/components/ui/badge";
 	import * as Icons from "$lib/components/icons";
 
 	import BookOpenIcon from "@lucide/svelte/icons/book-open";
@@ -47,6 +48,7 @@
 			icon: BookOpenIcon,
 		},
 		{ href: "/guides", label: "Guides", icon: FileTextIcon },
+		{ href: "/playground", label: "Playground", icon: SparklesIcon },
 		{
 			label: "AI Elements",
 			submenu: true,
@@ -375,7 +377,17 @@
 														strokeWidth={1.4}
 													/>
 												{/if}
-												<span>{link.label}</span>
+												<span class="flex items-center gap-1.5">
+													{link.label}
+													{#if link.label === "Playground"}
+														<Badge
+															variant="secondary"
+															class="bg-primary/10 text-primary hover:bg-primary/20 border-primary/20 h-4 border px-1 py-0 text-[10px] font-semibold"
+														>
+															New
+														</Badge>
+													{/if}
+												</span>
 											</a>
 										{/if}
 
@@ -407,7 +419,17 @@
 									href={link.href}
 									class="text-muted-foreground hover:text-primary bg-none py-1.5 font-medium hover:bg-transparent active:bg-transparent"
 								>
-									{link.label}
+									<span class="flex items-center gap-1.5">
+										{link.label}
+										{#if link.label === "Playground"}
+											<Badge
+												variant="secondary"
+												class="bg-primary/10 text-primary hover:bg-primary/20 border-primary/20 h-4 border px-1 py-0 text-[10px] font-semibold"
+											>
+												New
+											</Badge>
+										{/if}
+									</span>
 								</NavigationMenuLink>
 							</NavigationMenuItem>
 						{/each}

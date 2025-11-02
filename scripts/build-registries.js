@@ -109,6 +109,30 @@ try {
 // Build Prompt Kit registry to static/p
 console.log("\n📦 Building Prompt Kit registry to static/p...");
 try {
+	const staticRDir = path.join(rootDir, "static", "r");
+	const staticPDir = path.join(rootDir, "static", "p");
+
+	// Get list of shared component names (exist in both AI Elements and Prompt Kit)
+	const promptKitComponentNames = promptKitItems.map((item) => item.name);
+	const aiElementsComponentNames = aiElementsItems.map((item) => item.name);
+	const sharedComponentNames = promptKitComponentNames.filter((name) =>
+		aiElementsComponentNames.includes(name)
+	);
+
+	// Backup AI Elements files that will be overwritten
+	const backupDir = path.join(rootDir, "ai-elements-backup");
+	if (!fs.existsSync(backupDir)) {
+		fs.mkdirSync(backupDir, { recursive: true });
+	}
+
+	sharedComponentNames.forEach((name) => {
+		const sourcePath = path.join(staticRDir, `${name}.json`);
+		const backupPath = path.join(backupDir, `${name}.json`);
+		if (fs.existsSync(sourcePath)) {
+			fs.copyFileSync(sourcePath, backupPath);
+		}
+	});
+
 	// Backup original registry.json
 	const registryBackupPath = path.join(rootDir, "registry-backup.json");
 	fs.copyFileSync(registryPath, registryBackupPath);
@@ -122,18 +146,13 @@ try {
 		stdio: "inherit",
 	});
 
-	// Move built files from static/r to static/p
-	const staticRDir = path.join(rootDir, "static", "r");
-	const staticPDir = path.join(rootDir, "static", "p");
-
 	// Create static/p directory if it doesn't exist
 	if (!fs.existsSync(staticPDir)) {
 		fs.mkdirSync(staticPDir, { recursive: true });
 	}
 
-	// Move only Prompt Kit files from static/r to static/p
+	// Move Prompt Kit files from static/r to static/p
 	const files = fs.readdirSync(staticRDir);
-	const promptKitComponentNames = promptKitItems.map((item) => item.name);
 
 	files.forEach((file) => {
 		const sourcePath = path.join(staticRDir, file);
@@ -146,11 +165,23 @@ try {
 		}
 	});
 
+	// Restore AI Elements files that were overwritten
+	sharedComponentNames.forEach((name) => {
+		const backupPath = path.join(backupDir, `${name}.json`);
+		const restorePath = path.join(staticRDir, `${name}.json`);
+		if (fs.existsSync(backupPath)) {
+			fs.copyFileSync(backupPath, restorePath);
+		}
+	});
+
 	// Restore AI Elements index.json
 	const aiElementsIndexBackupPath = path.join(rootDir, "ai-elements-index-backup.json");
 	const aiElementsIndexPath = path.join(staticRDir, "index.json");
 	fs.copyFileSync(aiElementsIndexBackupPath, aiElementsIndexPath);
 	fs.unlinkSync(aiElementsIndexBackupPath);
+
+	// Clean up backup directory
+	fs.rmSync(backupDir, { recursive: true, force: true });
 
 	// Restore original registry
 	fs.copyFileSync(registryBackupPath, registryPath);
