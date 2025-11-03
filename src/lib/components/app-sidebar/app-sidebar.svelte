@@ -3,6 +3,7 @@
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import * as Collapsible from "$lib/components/ui/collapsible/index.js";
 	import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
+	import ExternalLinkIcon from "@lucide/svelte/icons/external-link";
 	import { onMount, type ComponentProps } from "svelte";
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 
@@ -219,10 +220,19 @@
 			</Collapsible.Root>
 		{/each}
 	</Sidebar.Content>
-	<!-- <Sidebar.Footer>
-    <div class="p-1">
-      <SidebarOptInForm />
-    </div>
-  </Sidebar.Footer> -->
+	<Sidebar.Footer class="border-border mt-0 border-t pt-0">
+		<div class="flex flex-col gap-1 py-3">
+			<a
+				href="/ai-elements/llm.txt"
+				target="_blank"
+				class="text-muted-foreground hover:text-foreground group hover:bg-accent flex items-center justify-between rounded-md px-2 py-1.5 text-sm transition-colors"
+			>
+				<span>llm.txt</span>
+				<ExternalLinkIcon
+					class="size-3.5 opacity-0 transition-opacity group-hover:opacity-100"
+				/>
+			</a>
+		</div>
+	</Sidebar.Footer>
 	<!-- <Sidebar.Rail /> -->
 </Sidebar.Root>

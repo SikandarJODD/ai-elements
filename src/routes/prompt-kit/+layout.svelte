@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-	import PromptKitSidebar from "$lib/components/ui/sidebar/prompt-kit-sidebar.svelte";
+	import PromptKitSidebar from "$lib/components/app-sidebar/prompt-kit-sidebar.svelte";
 
 	let { children } = $props();
 </script>
