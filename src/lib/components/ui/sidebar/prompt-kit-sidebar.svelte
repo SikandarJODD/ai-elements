@@ -174,10 +174,16 @@
 			</Collapsible.Root>
 		{/each}
 	</Sidebar.Content>
-	<!-- <Sidebar.Footer>
-    <div class="p-1">
-      <SidebarOptInForm />
-    </div>
-  </Sidebar.Footer> -->
+	<Sidebar.Footer>
+		<div class="flex flex-col gap-1 p-2">
+			<a
+				href="/prompt-kit/llm.txt"
+				target="_blank"
+				class="text-muted-foreground hover:text-primary text-xs transition-colors"
+			>
+				llm.txt
+			</a>
+		</div>
+	</Sidebar.Footer>
 	<!-- <Sidebar.Rail /> -->
 </Sidebar.Root>

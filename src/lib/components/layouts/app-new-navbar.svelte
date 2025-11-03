@@ -8,6 +8,8 @@
 	import SparklesIcon from "@lucide/svelte/icons/sparkles";
 	import FileTextIcon from "@lucide/svelte/icons/file-text";
 	import HomeIcon from "@lucide/svelte/icons/home";
+	import ZapIcon from "@lucide/svelte/icons/zap";
+	import BoxesIcon from "@lucide/svelte/icons/boxes";
 	import type { Component } from "svelte";
 	// import { Logo } from '$lib/components/_extras/navbars';
 	import {
@@ -267,19 +269,37 @@
 		href: string;
 		label: string;
 	};
-	// Navigation links array to be used in both desktop and mobile menus
-	let desktopLinks: NavigationLink[] = $state([
-		{ href: "/", label: "Home", active: true },
-		// { href: "/docs/introduction", label: "Docs", active: false },
-		{ href: "/components/actions", label: "AI Elements", active: false },
+
+	type ComponentDropdownItem = {
+		href: string;
+		title: string;
+		description: string;
+		icon?: Component;
+		badge?: string;
+	};
+
+	// Component dropdown items
+	const componentItems: ComponentDropdownItem[] = [
 		{
-			href: "/prompt-kit/prompt-input",
-			label: "Prompt Kit",
-			active: false,
+			href: "/components",
+			title: "Svelte AI Elements",
+			description: "27 full-featured components for production AI apps",
+			icon: SparklesIcon,
 		},
-		{ href: "/guides", label: "Guides", active: false },
-		{ href: "/playground", label: "Playground", active: false },
-	]);
+		{
+			href: "/prompt-kit",
+			title: "Svelte Prompt Kit",
+			description: "17 Core building blocks for AI apps",
+			icon: ZapIcon,
+		},
+		{
+			href: "/prompt-kit/blocks",
+			title: "8 New UI Blocks",
+			description: "Pre-built conversation layouts ready to use",
+			icon: BoxesIcon,
+			badge: "New",
+		},
+	];
 </script>
 
 <header
@@ -410,29 +430,105 @@
 			<div class="flex items-center gap-6">
 				<a href="/" class="text-primary hover:text-primary/90"> Svelte AI Elements </a>
 				<!-- Navigation menu  -->
-				<NavigationMenuRoot class="max-md:hidden">
-					<NavigationMenuList class="gap-2">
-						{#each desktopLinks as link (link.label)}
-							<NavigationMenuItem>
-								<NavigationMenuLink
-									active={link.active}
-									href={link.href}
-									class="text-muted-foreground hover:text-primary bg-none py-1.5 font-medium hover:bg-transparent active:bg-transparent"
-								>
-									<span class="flex items-center gap-1.5">
-										{link.label}
-										{#if link.label === "Playground"}
-											<Badge
-												variant="secondary"
-												class="bg-primary/10 text-primary hover:bg-primary/20 border-primary/20 h-4 border px-1 py-0 text-[10px] font-semibold"
-											>
-												New
-											</Badge>
-										{/if}
-									</span>
-								</NavigationMenuLink>
-							</NavigationMenuItem>
-						{/each}
+				<NavigationMenuRoot class="max-md:hidden" delayDuration={0}>
+					<NavigationMenuList class="gap-1">
+						<!-- Home Link -->
+						<NavigationMenuItem>
+							<NavigationMenuLink
+								href="/"
+								class="text-muted-foreground hover:text-primary focus:text-primary data-[active]:bg-accent/50 data-[active]:text-accent-foreground bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-transparent focus:bg-transparent"
+							>
+								Home
+							</NavigationMenuLink>
+						</NavigationMenuItem>
+
+						<!-- Components Menu -->
+						<NavigationMenuItem>
+							<NavigationMenuTrigger
+								class="text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary bg-transparent px-4 py-2 text-sm font-medium hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent"
+							>
+								Components
+							</NavigationMenuTrigger>
+							<NavigationMenuContent>
+								<ul class="grid w-[400px] gap-2 p-3">
+									{#each componentItems as item (item.href)}
+										<li>
+											<NavigationMenuLink href={item.href}>
+												{#snippet child({ props })}
+													<a
+														{...props}
+														class="hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground group block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none"
+													>
+														<div class="flex items-start gap-3">
+															{#if item.icon}
+																{@const Icon = item.icon}
+																<div
+																	class="bg-muted text-muted-foreground group-hover:bg-accent-foreground/10 group-hover:text-accent-foreground mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-md transition-colors"
+																>
+																	<Icon class="size-4" />
+																</div>
+															{/if}
+															<div class="flex-1 space-y-1">
+																<div
+																	class="flex items-center gap-2"
+																>
+																	<div
+																		class="text-sm leading-none font-medium"
+																	>
+																		{item.title}
+																	</div>
+																	{#if item.badge}
+																		<Badge
+																			variant="secondary"
+																			class="bg-primary/10 text-primary hover:bg-primary/20 h-5 px-1.5 text-xs font-medium"
+																		>
+																			{item.badge}
+																		</Badge>
+																	{/if}
+																</div>
+																<p
+																	class="text-muted-foreground group-hover:text-accent-foreground/80 line-clamp-2 text-xs leading-snug"
+																>
+																	{item.description}
+																</p>
+															</div>
+														</div>
+													</a>
+												{/snippet}
+											</NavigationMenuLink>
+										</li>
+									{/each}
+								</ul>
+							</NavigationMenuContent>
+						</NavigationMenuItem>
+
+						<!-- Guides Link -->
+						<NavigationMenuItem>
+							<NavigationMenuLink
+								href="/guides"
+								class="text-muted-foreground hover:text-primary focus:text-primary data-[active]:bg-accent/50 data-[active]:text-accent-foreground bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-transparent focus:bg-transparent"
+							>
+								Guides
+							</NavigationMenuLink>
+						</NavigationMenuItem>
+
+						<!-- Playground Link -->
+						<NavigationMenuItem>
+							<NavigationMenuLink
+								href="/playground"
+								class="text-muted-foreground hover:text-primary focus:text-primary data-[active]:bg-accent/50 data-[active]:text-accent-foreground bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-transparent focus:bg-transparent"
+							>
+								<span class="flex items-center gap-1.5">
+									Playground
+									<Badge
+										variant="secondary"
+										class="bg-primary/10 text-primary hover:bg-primary/20 border-primary/20 h-4 border px-1 py-0 text-[10px] font-semibold"
+									>
+										New
+									</Badge>
+								</span>
+							</NavigationMenuLink>
+						</NavigationMenuItem>
 					</NavigationMenuList>
 				</NavigationMenuRoot>
 			</div>
