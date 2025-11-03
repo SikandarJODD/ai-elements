@@ -1,5 +1,5 @@
 import type { RequestHandler } from "./$types";
-import llmTxt from "./ai-elements-llm.txt?raw";
+import llmTxt from "./ai-elements-llm.md?raw";
 
 export const GET: RequestHandler = async () => {
 	return new Response(llmTxt, {
@@ -9,4 +9,3 @@ export const GET: RequestHandler = async () => {
 		},
 	});
 };
-

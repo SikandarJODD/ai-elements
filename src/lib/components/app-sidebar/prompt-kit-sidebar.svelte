@@ -3,6 +3,7 @@
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import * as Collapsible from "$lib/components/ui/collapsible/index.js";
 	import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
+	import ExternalLinkIcon from "@lucide/svelte/icons/external-link";
 	import { onMount, type ComponentProps } from "svelte";
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 
@@ -124,7 +125,7 @@
 </script>
 
 <Sidebar.Root class="mt-16 h-[calc(100vh-4rem)] pr-2 pl-6" {...restProps} bind:ref>
-	<Sidebar.Content class="no-scrollbar bg-background mb-4 gap-0 pt-6">
+	<Sidebar.Content class="no-scrollbar bg-background gap-0 pt-6">
 		<!-- We create a collapsible SidebarGroup for each parent. -->
 		{#each data.navMain as item (item.title)}
 			<Collapsible.Root title={item.title} open class="group/collapsible">
@@ -174,14 +175,17 @@
 			</Collapsible.Root>
 		{/each}
 	</Sidebar.Content>
-	<Sidebar.Footer>
-		<div class="flex flex-col gap-1 p-2">
+	<Sidebar.Footer class="border-border mt-0 border-t pt-0">
+		<div class="flex flex-col gap-1 py-3">
 			<a
 				href="/prompt-kit/llm.txt"
 				target="_blank"
-				class="text-muted-foreground hover:text-primary text-xs transition-colors"
+				class="text-muted-foreground hover:text-foreground group hover:bg-accent flex items-center justify-between rounded-md px-2 py-1.5 text-sm transition-colors"
 			>
-				llm.txt
+				<span>llm-full.txt</span>
+				<ExternalLinkIcon
+					class="size-3.5 opacity-0 transition-opacity group-hover:opacity-100"
+				/>
 			</a>
 		</div>
 	</Sidebar.Footer>

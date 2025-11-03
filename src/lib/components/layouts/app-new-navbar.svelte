@@ -281,7 +281,7 @@
 	// Component dropdown items
 	const componentItems: ComponentDropdownItem[] = [
 		{
-			href: "/components",
+			href: "/components/actions",
 			title: "Svelte AI Elements",
 			description: "27 full-featured components for production AI apps",
 			icon: SparklesIcon,
