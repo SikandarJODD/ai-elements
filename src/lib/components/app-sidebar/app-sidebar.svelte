@@ -223,11 +223,11 @@
 	<Sidebar.Footer class="border-border mt-0 border-t pt-0">
 		<div class="flex flex-col gap-1 py-3">
 			<a
-				href="/ai-elements/llm.txt"
+				href="/ai-elements/llms.txt"
 				target="_blank"
 				class="text-muted-foreground hover:text-foreground group hover:bg-accent flex items-center justify-between rounded-md px-2 py-1.5 text-sm transition-colors"
 			>
-				<span>llm.txt</span>
+				<span>llms.txt</span>
 				<ExternalLinkIcon
 					class="size-3.5 opacity-0 transition-opacity group-hover:opacity-100"
 				/>
