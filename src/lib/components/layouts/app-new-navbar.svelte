@@ -50,6 +50,7 @@
 			icon: BookOpenIcon,
 		},
 		{ href: "/guides", label: "Guides", icon: FileTextIcon },
+		{ href: "/cookbook", label: "Cookbook", icon: BookOpenIcon },
 		{ href: "/playground", label: "Playground", icon: SparklesIcon },
 		{
 			label: "AI Elements",
@@ -509,6 +510,16 @@
 								class="text-muted-foreground hover:text-primary focus:text-primary data-[active]:bg-accent/50 data-[active]:text-accent-foreground bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-transparent focus:bg-transparent"
 							>
 								Guides
+							</NavigationMenuLink>
+						</NavigationMenuItem>
+
+						<!-- Cookbook Link -->
+						<NavigationMenuItem>
+							<NavigationMenuLink
+								href="/cookbook"
+								class="text-muted-foreground hover:text-primary focus:text-primary data-[active]:bg-accent/50 data-[active]:text-accent-foreground bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-transparent focus:bg-transparent"
+							>
+								Cookbook
 							</NavigationMenuLink>
 						</NavigationMenuItem>
 
