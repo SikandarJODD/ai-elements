@@ -4,57 +4,79 @@
 	import { CopyMarkdownButton, OpenInMenu, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
+	import Demo from "./demo/demo.svelte";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/generate-text/llms.txt`;
 
-	const clientCode = `<script lang="ts">
-  let generation = $state('');
-  let isLoading = $state(false);
+	let clientCode = `<script lang="ts">
+	import { Card, CardContent } from "$lib/components/ui/card";
+	import { Button } from "$lib/components/ui/button";
+	import { fly } from "svelte/transition";
 
-  async function handleGenerate() {
-    isLoading = true;
+	let isLoading = $state(false);
+	let response = $state("");
 
-    const response = await fetch('/api/completion', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        prompt: 'Why is the sky blue?',
-      }),
-    });
+	async function handleGenerate() {
+		isLoading = true;
+		response = "";
 
-    const data = await response.json();
-    generation = data.text;
-    isLoading = false;
-  }
+		try {
+			const res = await fetch("/api/cookbook/generate-text", {
+				method: "POST",
+			});
+
+			let text = await res.text();
+			response = text;
+		} catch (error) {
+			response = "Error generating text. Please try again.";
+		} finally {
+			isLoading = false;
+		}
+	}
 <\/script>
 
-<div>
-  <button onclick={handleGenerate}>
-    Generate
-  </button>
+<Card>
+	<CardContent>
+		<div class="space-y-4">
+			<div>
+				<p class="text-muted-foreground text-sm font-medium">Prompt:</p>
+				<p class="mt-1 text-sm">What is Svelte JS? in 100 words</p>
+			</div>
 
-  {#if isLoading}
-    <p>Loading...</p>
-  {:else if generation}
-    <p>{generation}</p>
-  {/if}
-</div>`;
+			<Button onclick={handleGenerate} disabled={isLoading} class="w-full">
+				{isLoading ? "Thinking..." : "Generate Text"}
+			</Button>
 
-	const serverCode = `import { openai } from '@ai-sdk/openai';
-import { generateText } from 'ai';
-import { json } from '@sveltejs/kit';
-import type { RequestHandler } from './$types';
+			{#if response}
+				<div in:fly={{ y: -20, delay: 50 }} class="rounded-lg border p-4">
+					<p class="text-muted-foreground mb-2 text-xs font-medium">Response:</p>
+					<p class="text-sm leading-relaxed whitespace-pre-wrap">{response}</p>
+				</div>
+			{/if}
+		</div>
+	</CardContent>
+</Card>`;
+
+	let aiConfigCode = `import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { OPENROUTER_API_KEY } from "$env/static/private";
+
+export const openrouter = createOpenRouter({
+	apiKey: OPENROUTER_API_KEY,
+});
+
+export const defaultModel = "z-ai/glm-4.5-air:free";`;
+
+	let serverCode = `import { generateText } from "ai";
+import { openrouter, defaultModel } from "$lib/config/ai-config";
+import type { RequestHandler } from "./$types";
 
 export const POST: RequestHandler = async ({ request }) => {
-  const { prompt } = await request.json();
+	const { text } = await generateText({
+		model: openrouter(defaultModel),
+		prompt: "What is Svelte JS? in 100 words",
+	});
 
-  const { text } = await generateText({
-    model: openai('gpt-4o'),
-    system: 'You are a helpful assistant.',
-    prompt,
-  });
-
-  return json({ text });
+	return new Response(text);
 };`;
 </script>
 
@@ -74,7 +96,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	<!-- Header -->
 	<header class="mb-12">
 		<div class="mb-6 flex items-start justify-between gap-4">
-			<h1 class="text-4xl font-bold tracking-tight md:text-5xl">Generate Text</h1>
+			<h1 class="text-4xl font-semibold tracking-tight md:text-4xl">Generate Text</h1>
 			<div class="flex shrink-0 items-center gap-2">
 				<CopyMarkdownButton {llmsTxtUrl} />
 				<OpenInMenu componentName="Generate Text" {llmsTxtUrl} type="ai-elements" />
@@ -108,13 +130,23 @@ export const POST: RequestHandler = async ({ request }) => {
 		</p>
 	</section>
 
+	<!-- Demo Section -->
+	<section class="mb-12">
+		<h2 class="mb-6 text-3xl font-semibold">Demo</h2>
+		<div class="overflow-hidden">
+			<div class="w-full overflow-auto">
+				<Demo />
+			</div>
+		</div>
+	</section>
+
 	<!-- Client Section -->
 	<section class="mb-16">
 		<h2 class="mb-6 text-3xl font-semibold">Client Component</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
-			First, let's create a Svelte component that handles user interaction. This component
-			uses Svelte 5's <code class="text-foreground">$state</code> rune for reactivity and makes
-			a POST request to our API endpoint.
+			Now let's create a Svelte component that handles user interaction. This component uses
+			Svelte 5's <code class="text-foreground">$state</code> rune for reactivity and makes a POST
+			request to our API endpoint.
 		</p>
 
 		<div class="mb-4">
@@ -122,13 +154,47 @@ export const POST: RequestHandler = async ({ request }) => {
 				filename="+page.svelte"
 				lang="svelte"
 				code={clientCode}
-				highlight={[17, 18, 19, 20, 21, 22, 23, 24, 25, 26]}
+				highlight={[[9, 25]]}
 			/>
 		</div>
 	</section>
 
-	<!-- Server Section -->
+	<!-- AI Config Setup Section -->
 	<section class="mb-16">
+		<h2 class="mb-6 text-3xl font-semibold">AI Config Setup</h2>
+		<p class="text-muted-foreground mb-6 leading-relaxed">
+			Before we start, let's set up the AI configuration. Create a centralized config file to
+			manage your AI provider and model settings. This makes it easy to switch models or
+			providers across your application.
+		</p>
+
+		<div class="mb-4">
+			<CodeNameBlock
+				filename="src/lib/config/ai-config.ts"
+				lang="typescript"
+				code={aiConfigCode}
+			/>
+		</div>
+
+		<div class="bg-muted/50 mt-6 rounded-lg border p-4">
+			<p class="text-muted-foreground text-sm leading-relaxed">
+				<strong class="text-foreground">Note:</strong> Make sure to add your
+				<code class="text-foreground">OPENROUTER_API_KEY</code>
+				to your <code class="text-foreground">.env</code> file. You can get a free API key
+				from
+				<a
+					href="https://openrouter.ai"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-foreground underline underline-offset-2 hover:no-underline"
+					>OpenRouter</a
+				>.
+			</p>
+		</div>
+	</section>
+
+	<!-- Server Section -->
+	<section class="mb-10">
 		<h2 class="mb-6 text-3xl font-semibold">Server Endpoint</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
 			Now let's create the server-side route handler that processes the request and generates
@@ -141,13 +207,12 @@ export const POST: RequestHandler = async ({ request }) => {
 				filename="src/routes/api/completion/+server.ts"
 				lang="typescript"
 				code={serverCode}
-				highlight={[8, 9, 10, 11, 12, 13, 14]}
 			/>
 		</div>
 	</section>
 
 	<!-- Recommendations -->
-	<section class="mb-12">
+	<!-- <section class="mb-12">
 		<h2 class="mb-6 text-3xl font-semibold">Recommendations</h2>
 		<div class="overflow-hidden rounded-lg border">
 			<table class="w-full">
@@ -190,33 +255,15 @@ export const POST: RequestHandler = async ({ request }) => {
 							</div>
 						</td>
 					</tr>
-					<tr class="hover:bg-muted/30 transition-colors">
-						<td class="px-4 py-3">
-							<a
-								href="https://ai-sdk.dev/docs/ai-sdk-core/generating-text"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="text-foreground font-medium hover:underline"
-							>
-								AI SDK Documentation
-							</a>
-						</td>
-						<td class="px-4 py-3">
-							<div class="flex flex-wrap gap-1.5">
-								<Badge variant="secondary" class="text-xs">Docs</Badge>
-								<Badge variant="secondary" class="text-xs">Reference</Badge>
-							</div>
-						</td>
-					</tr>
 				</tbody>
 			</table>
 		</div>
-	</section>
+	</section> -->
 
 	<!-- GitHub Link -->
-	<footer class="border-t pt-8">
+	<footer class="">
 		<Button
-			href="https://github.com/vercel/ai/blob/main/examples/next-openai-pages/pages/basics/generate-text/index.tsx"
+			href="https://github.com/SikandarJODD/ai-elements/tree/master/src/routes/cookbook/generate-text"
 			target="_blank"
 			rel="noopener noreferrer"
 			variant="outline"
