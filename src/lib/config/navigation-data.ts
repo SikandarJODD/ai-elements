@@ -1,6 +1,6 @@
 import type { Component } from "svelte";
 
-export type NavigationCategory = "component" | "guide" | "docs";
+export type NavigationCategory = "component" | "guide" | "docs" | "cookbook";
 
 export interface NavigationItem {
 	title: string;
@@ -26,6 +26,15 @@ export const navigationData: NavigationItem[] = [
 		description: "How to install and set up Svelte AI Elements",
 		category: "docs",
 		keywords: ["install", "setup", "npm", "pnpm", "package"],
+	},
+
+	// Cookbook
+	{
+		title: "Cookbook",
+		href: "/cookbook",
+		description: "Recipes, guides, and templates for building AI applications with Svelte",
+		category: "cookbook",
+		keywords: ["cookbook", "recipes", "examples", "templates", "guides", "tutorials"],
 	},
 
 	// Components
@@ -393,5 +402,6 @@ export function getNavigationGroups() {
 		components: getNavigationByCategory("component"),
 		guides: getNavigationByCategory("guide"),
 		docs: getNavigationByCategory("docs"),
+		cookbook: getNavigationByCategory("cookbook"),
 	};
 }
