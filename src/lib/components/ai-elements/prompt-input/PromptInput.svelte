@@ -11,15 +11,11 @@
 
 	interface Props {
 		class?: string;
-		accept?: string; // e.g., "image/*" or leave undefined for any
+		accept?: string;
 		multiple?: boolean;
-		// When true, accepts drops anywhere on document. Default false (opt-in).
 		globalDrop?: boolean;
-		// Render a hidden input with given name and keep it in sync for native form posts. Default false.
 		syncHiddenInput?: boolean;
-		// When true, automatically clears attachments after successful submission. Default true.
 		clearOnSubmit?: boolean;
-		// Minimal constraints
 		maxFiles?: number;
 		maxFileSize?: number; // bytes
 		onError?: (err: {

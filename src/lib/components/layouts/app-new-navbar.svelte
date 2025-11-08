@@ -78,6 +78,16 @@
 					label: "Code",
 				},
 				{
+					description: "Mark conversation history points",
+					href: "/components/checkpoint",
+					label: "Checkpoint",
+				},
+				{
+					description: "Request user approval for AI actions",
+					href: "/components/confirmation",
+					label: "Confirmation",
+				},
+				{
 					description: "Complete conversation interfaces",
 					href: "/components/conversation",
 					label: "Conversation",
@@ -126,6 +136,16 @@
 					description: "Open in chat button",
 					href: "/components/open-in-chat",
 					label: "Open In Chat",
+				},
+				{
+					description: "AI-generated execution plans",
+					href: "/components/plan",
+					label: "Plan",
+				},
+				{
+					description: "Lists of pending and completed tasks",
+					href: "/components/queue",
+					label: "Queue",
 				},
 				{
 					description: "Toolbar for actions",
@@ -284,7 +304,7 @@
 		{
 			href: "/components/actions",
 			title: "Svelte AI Elements",
-			description: "27 full-featured components for production AI apps",
+			description: "29 full-featured components for production AI apps",
 			icon: SparklesIcon,
 		},
 		{

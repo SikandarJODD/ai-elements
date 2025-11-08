@@ -1,0 +1,58 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "checkpoint",
+	"title": "Checkpoint",
+	"type": "registry:block",
+	"author": "SikandarJODD",
+	"description": "A simple component for marking conversation history points and restoring the chat to a previous state. Inspired by VSCode's Copilot checkpoint feature.",
+	"dependencies": [
+		"@lucide-svelte/icons"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
+	],
+	"registryDependencies": [
+		"button",
+		"separator",
+		"tooltip"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"checkpoint",
+			"conversation",
+			"history",
+			"restore",
+			"undo"
+		],
+		"category": "Conversation",
+		"documentation": "https://svelte-ai-elements.vercel.app/components/checkpoint",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "beginner",
+		"updated": "2025-11-08",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\" module>\n\timport { cn, type WithElementRef } from \"$UTILS$\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface CheckpointProps extends WithElementRef<HTMLAttributes<HTMLDivElement>> {\n\t\tchildren?: Snippet;\n\t}\n</script>\n\n<script lang=\"ts\">\n\timport { Separator } from \"$COMPONENTS$/ui/separator\";\n\n\tlet {\n\t\tclass: className,\n\t\tchildren,\n\t\tref = $bindable(null),\n\t\t...restProps\n\t}: CheckpointProps = $props();\n</script>\n\n<div\n\tbind:this={ref}\n\tclass={cn(\"text-muted-foreground flex items-center gap-0.5\", className)}\n\t{...restProps}\n>\n\t{@render children?.()}\n\t<Separator />\n</div>\n",
+			"type": "registry:component",
+			"target": "ai-elements/checkpoint/Checkpoint.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\" module>\n\timport { cn } from \"$UTILS$\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface CheckpointIconProps {\n\t\tclass?: string;\n\t\tchildren?: Snippet;\n\t\tsize?: number;\n\t}\n</script>\n\n<script lang=\"ts\">\n\timport { Bookmark } from \"@lucide/svelte\";\n\n\tlet { class: className, children, size = 16, ...restProps }: CheckpointIconProps = $props();\n</script>\n\n{#if children}\n\t{@render children()}\n{:else}\n\t<Bookmark class={cn(\"size-4 shrink-0\", className)} {size} {...restProps} />\n{/if}\n",
+			"type": "registry:component",
+			"target": "ai-elements/checkpoint/CheckpointIcon.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\" module>\n\timport type { Snippet } from \"svelte\";\n\n\texport interface CheckpointTriggerProps {\n\t\tchildren?: Snippet;\n\t\tclass?: string;\n\t\tvariant?: \"default\" | \"destructive\" | \"outline\" | \"secondary\" | \"ghost\" | \"link\";\n\t\tsize?: \"default\" | \"sm\" | \"lg\" | \"icon\";\n\t\ttooltip?: string;\n\t\tonclick?: (e: MouseEvent) => void;\n\t\tdisabled?: boolean;\n\t}\n</script>\n\n<script lang=\"ts\">\n\timport { Button } from \"$COMPONENTS$/ui/button\";\n\timport {\n\t\tTooltip,\n\t\tTooltipContent,\n\t\tTooltipProvider,\n\t\tTooltipTrigger,\n\t} from \"$COMPONENTS$/ui/tooltip\";\n\n\tlet {\n\t\tchildren,\n\t\tclass: className,\n\t\tvariant = \"ghost\",\n\t\tsize = \"sm\",\n\t\ttooltip,\n\t\tonclick,\n\t\tdisabled = false,\n\t\t...restProps\n\t}: CheckpointTriggerProps = $props();\n</script>\n\n{#if tooltip}\n\t<TooltipProvider>\n\t\t<Tooltip delayDuration={150}>\n\t\t\t<TooltipTrigger>\n\t\t\t\t<Button\n\t\t\t\t\t{size}\n\t\t\t\t\ttype=\"button\"\n\t\t\t\t\t{variant}\n\t\t\t\t\t{onclick}\n\t\t\t\t\t{disabled}\n\t\t\t\t\tclass={className}\n\t\t\t\t\t{...restProps}\n\t\t\t\t>\n\t\t\t\t\t{@render children?.()}\n\t\t\t\t</Button>\n\t\t\t</TooltipTrigger>\n\t\t\t<TooltipContent side=\"bottom\" align=\"start\">\n\t\t\t\t<p>{tooltip}</p>\n\t\t\t</TooltipContent>\n\t\t</Tooltip>\n\t</TooltipProvider>\n{:else}\n\t<Button {size} type=\"button\" {variant} {onclick} {disabled} class={className} {...restProps}>\n\t\t{@render children?.()}\n\t</Button>\n{/if}\n",
+			"type": "registry:component",
+			"target": "ai-elements/checkpoint/CheckpointTrigger.svelte"
+		},
+		{
+			"content": "export { default as Checkpoint } from \"./Checkpoint.svelte\";\nexport { default as CheckpointIcon } from \"./CheckpointIcon.svelte\";\nexport { default as CheckpointTrigger } from \"./CheckpointTrigger.svelte\";\n\nexport type { CheckpointProps } from \"./Checkpoint.svelte\";\nexport type { CheckpointIconProps } from \"./CheckpointIcon.svelte\";\nexport type { CheckpointTriggerProps } from \"./CheckpointTrigger.svelte\";\n",
+			"type": "registry:file",
+			"target": "ai-elements/checkpoint/index.ts"
+		}
+	]
+}

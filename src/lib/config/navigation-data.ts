@@ -67,11 +67,25 @@ export const navigationData: NavigationItem[] = [
 		keywords: ["reasoning", "thinking", "steps", "process", "logic"],
 	},
 	{
+		title: "Checkpoint",
+		href: "/components/checkpoint",
+		description: "Mark conversation history points and restore chat state",
+		category: "component",
+		keywords: ["checkpoint", "history", "restore", "undo", "conversation", "branching"],
+	},
+	{
 		title: "Code",
 		href: "/components/code",
 		description: "Display code blocks with syntax highlighting",
 		category: "component",
 		keywords: ["syntax", "highlight", "code block", "programming"],
+	},
+	{
+		title: "Confirmation",
+		href: "/components/confirmation",
+		description: "Request user approval before executing sensitive AI actions",
+		category: "component",
+		keywords: ["confirmation", "approval", "permission", "security", "ai-actions", "consent"],
 	},
 	{
 		title: "Context",
@@ -135,6 +149,20 @@ export const navigationData: NavigationItem[] = [
 		description: "Input component for AI prompts",
 		category: "component",
 		keywords: ["input", "textarea", "prompt", "query", "ask"],
+	},
+	{
+		title: "Plan",
+		href: "/components/plan",
+		description: "Display AI-generated execution plans with streaming support",
+		category: "component",
+		keywords: ["plan", "execution", "steps", "collapsible", "streaming", "shimmer"],
+	},
+	{
+		title: "Queue",
+		href: "/components/queue",
+		description: "Display lists of pending and completed tasks, messages, or items",
+		category: "component",
+		keywords: ["queue", "tasks", "todo", "list", "pending", "completed", "attachments"],
 	},
 	{
 		title: "Reasoning",

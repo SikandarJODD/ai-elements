@@ -1,0 +1,100 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "model-selector",
+	"title": "Model Selector",
+	"type": "registry:block",
+	"author": "SikandarJODD",
+	"description": "A searchable command palette for selecting AI models with provider logos and multi-provider support.",
+	"dependencies": [
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"bits-ui@^2.14.1",
+		"@internationalized/date@^3.8.1"
+	],
+	"registryDependencies": [
+		"dialog",
+		"command",
+		"button"
+	],
+	"meta": {
+		"author": "SikandarJODD"
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport * as Dialog from \"$COMPONENTS$/ui/dialog/index.js\";\n\timport type { Dialog as DialogPrimitive } from \"bits-ui\";\n\timport type { WithoutChildrenOrChild } from \"$UTILS$.js\";\n\timport type { Snippet } from \"svelte\";\n\n\tlet {\n\t\topen = $bindable(false),\n\t\tchildren,\n\t\t...restProps\n\t}: WithoutChildrenOrChild<DialogPrimitive.RootProps> & {\n\t\tchildren: Snippet;\n\t} = $props();\n</script>\n\n<Dialog.Root bind:open {...restProps}>\n\t{@render children()}\n</Dialog.Root>\n",
+			"type": "registry:component",
+			"target": "ai-elements/model-selector/ModelSelector.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport * as Dialog from \"$COMPONENTS$/ui/dialog/index.js\";\n\timport type { Dialog as DialogPrimitive } from \"bits-ui\";\n\timport type { WithoutChildrenOrChild } from \"$UTILS$.js\";\n\timport type { Snippet } from \"svelte\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tchildren,\n\t\t...restProps\n\t}: WithoutChildrenOrChild<DialogPrimitive.TriggerProps> & {\n\t\tchildren: Snippet;\n\t} = $props();\n</script>\n\n<Dialog.Trigger bind:ref {...restProps}>\n\t{@render children()}\n</Dialog.Trigger>\n",
+			"type": "registry:component",
+			"target": "ai-elements/model-selector/ModelSelectorTrigger.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport * as Dialog from \"$COMPONENTS$/ui/dialog/index.js\";\n\timport * as Command from \"$COMPONENTS$/ui/command/index.js\";\n\timport type { Dialog as DialogPrimitive } from \"bits-ui\";\n\timport type { WithoutChildrenOrChild } from \"$UTILS$.js\";\n\timport type { Snippet } from \"svelte\";\n\timport { cn } from \"$UTILS$.js\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\tchildren,\n\t\tportalProps,\n\t\t...restProps\n\t}: WithoutChildrenOrChild<DialogPrimitive.ContentProps> & {\n\t\tchildren: Snippet;\n\t\tportalProps?: DialogPrimitive.PortalProps;\n\t} = $props();\n</script>\n\n<Dialog.Content bind:ref class={cn(\"p-0\", className)} {portalProps} {...restProps}>\n\t<Command.Root class=\"**:data-[slot=command-input-wrapper]:h-auto\">\n\t\t{@render children()}\n\t</Command.Root>\n</Dialog.Content>\n",
+			"type": "registry:component",
+			"target": "ai-elements/model-selector/ModelSelectorContent.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport * as Command from \"$COMPONENTS$/ui/command/index.js\";\n\timport type { Command as CommandPrimitive, Dialog as DialogPrimitive } from \"bits-ui\";\n\timport type { WithoutChildrenOrChild } from \"$UTILS$.js\";\n\timport type { Snippet } from \"svelte\";\n\n\tlet {\n\t\topen = $bindable(false),\n\t\tref = $bindable(null),\n\t\tvalue = $bindable(\"\"),\n\t\ttitle = \"Model Selector\",\n\t\tdescription = \"Search for a model\",\n\t\tportalProps,\n\t\tchildren,\n\t\t...restProps\n\t}: WithoutChildrenOrChild<DialogPrimitive.RootProps> &\n\t\tWithoutChildrenOrChild<CommandPrimitive.RootProps> & {\n\t\t\tportalProps?: DialogPrimitive.PortalProps;\n\t\t\tchildren: Snippet;\n\t\t\ttitle?: string;\n\t\t\tdescription?: string;\n\t\t} = $props();\n</script>\n\n<Command.Dialog bind:open bind:ref bind:value {title} {description} {portalProps} {...restProps}>\n\t{@render children()}\n</Command.Dialog>\n",
+			"type": "registry:component",
+			"target": "ai-elements/model-selector/ModelSelectorDialog.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport * as Command from \"$COMPONENTS$/ui/command/index.js\";\n\timport type { Command as CommandPrimitive } from \"bits-ui\";\n\timport type { WithoutChildrenOrChild } from \"$UTILS$.js\";\n\timport { cn } from \"$UTILS$.js\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\tvalue = $bindable(\"\"),\n\t\t...restProps\n\t}: WithoutChildrenOrChild<CommandPrimitive.InputProps> = $props();\n</script>\n\n<Command.Input bind:ref bind:value class={cn(\"h-auto py-3.5\", className)} {...restProps} />\n",
+			"type": "registry:component",
+			"target": "ai-elements/model-selector/ModelSelectorInput.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport * as Command from \"$COMPONENTS$/ui/command/index.js\";\n\timport type { Command as CommandPrimitive } from \"bits-ui\";\n\timport type { WithoutChildrenOrChild } from \"$UTILS$.js\";\n\timport type { Snippet } from \"svelte\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tchildren,\n\t\t...restProps\n\t}: WithoutChildrenOrChild<CommandPrimitive.ListProps> & {\n\t\tchildren: Snippet;\n\t} = $props();\n</script>\n\n<Command.List bind:ref {...restProps}>\n\t{@render children()}\n</Command.List>\n",
+			"type": "registry:component",
+			"target": "ai-elements/model-selector/ModelSelectorList.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport * as Command from \"$COMPONENTS$/ui/command/index.js\";\n\timport type { Command as CommandPrimitive } from \"bits-ui\";\n\timport type { WithoutChildrenOrChild } from \"$UTILS$.js\";\n\timport type { Snippet } from \"svelte\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tchildren,\n\t\t...restProps\n\t}: WithoutChildrenOrChild<CommandPrimitive.EmptyProps> & {\n\t\tchildren?: Snippet;\n\t} = $props();\n</script>\n\n<Command.Empty bind:ref {...restProps}>\n\t{#if children}\n\t\t{@render children()}\n\t{/if}\n</Command.Empty>\n",
+			"type": "registry:component",
+			"target": "ai-elements/model-selector/ModelSelectorEmpty.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport * as Command from \"$COMPONENTS$/ui/command/index.js\";\n\timport type { Command as CommandPrimitive } from \"bits-ui\";\n\timport type { WithoutChildrenOrChild } from \"$UTILS$.js\";\n\timport type { Snippet } from \"svelte\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\theading,\n\t\tchildren,\n\t\t...restProps\n\t}: WithoutChildrenOrChild<CommandPrimitive.GroupProps> & {\n\t\tchildren: Snippet;\n\t\theading?: string;\n\t} = $props();\n</script>\n\n<Command.Group bind:ref {heading} {...restProps}>\n\t{@render children()}\n</Command.Group>\n",
+			"type": "registry:component",
+			"target": "ai-elements/model-selector/ModelSelectorGroup.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport * as Command from \"$COMPONENTS$/ui/command/index.js\";\n\timport type { Command as CommandPrimitive } from \"bits-ui\";\n\timport type { WithoutChildrenOrChild } from \"$UTILS$.js\";\n\timport type { Snippet } from \"svelte\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tchildren,\n\t\t...restProps\n\t}: WithoutChildrenOrChild<CommandPrimitive.ItemProps> & {\n\t\tchildren: Snippet;\n\t} = $props();\n</script>\n\n<Command.Item bind:ref {...restProps}>\n\t{@render children()}\n</Command.Item>\n",
+			"type": "registry:component",
+			"target": "ai-elements/model-selector/ModelSelectorItem.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport * as Command from \"$COMPONENTS$/ui/command/index.js\";\n\timport type { WithElementRef } from \"$UTILS$.js\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tchildren,\n\t\t...restProps\n\t}: WithElementRef<HTMLAttributes<HTMLSpanElement>> = $props();\n</script>\n\n<Command.Shortcut bind:ref {...restProps}>\n\t{#if children}\n\t\t{@render children()}\n\t{/if}\n</Command.Shortcut>\n",
+			"type": "registry:component",
+			"target": "ai-elements/model-selector/ModelSelectorShortcut.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport * as Command from \"$COMPONENTS$/ui/command/index.js\";\n\timport type { Command as CommandPrimitive } from \"bits-ui\";\n\timport type { WithoutChildrenOrChild } from \"$UTILS$.js\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\t...restProps\n\t}: WithoutChildrenOrChild<CommandPrimitive.SeparatorProps> = $props();\n</script>\n\n<Command.Separator bind:ref {...restProps} />\n",
+			"type": "registry:component",
+			"target": "ai-elements/model-selector/ModelSelectorSeparator.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$.js\";\n\timport type { HTMLImgAttributes } from \"svelte/elements\";\n\n\ttype Provider =\n\t\t| \"moonshotai-cn\"\n\t\t| \"lucidquery\"\n\t\t| \"moonshotai\"\n\t\t| \"zai-coding-plan\"\n\t\t| \"alibaba\"\n\t\t| \"xai\"\n\t\t| \"vultr\"\n\t\t| \"nvidia\"\n\t\t| \"upstage\"\n\t\t| \"groq\"\n\t\t| \"github-copilot\"\n\t\t| \"mistral\"\n\t\t| \"vercel\"\n\t\t| \"nebius\"\n\t\t| \"deepseek\"\n\t\t| \"alibaba-cn\"\n\t\t| \"google-vertex-anthropic\"\n\t\t| \"venice\"\n\t\t| \"chutes\"\n\t\t| \"cortecs\"\n\t\t| \"github-models\"\n\t\t| \"togetherai\"\n\t\t| \"azure\"\n\t\t| \"baseten\"\n\t\t| \"huggingface\"\n\t\t| \"opencode\"\n\t\t| \"fastrouter\"\n\t\t| \"google\"\n\t\t| \"google-vertex\"\n\t\t| \"cloudflare-workers-ai\"\n\t\t| \"inception\"\n\t\t| \"wandb\"\n\t\t| \"openai\"\n\t\t| \"zhipuai-coding-plan\"\n\t\t| \"perplexity\"\n\t\t| \"openrouter\"\n\t\t| \"zenmux\"\n\t\t| \"v0\"\n\t\t| \"iflowcn\"\n\t\t| \"synthetic\"\n\t\t| \"deepinfra\"\n\t\t| \"zhipuai\"\n\t\t| \"submodel\"\n\t\t| \"zai\"\n\t\t| \"inference\"\n\t\t| \"requesty\"\n\t\t| \"morph\"\n\t\t| \"lmstudio\"\n\t\t| \"anthropic\"\n\t\t| \"aihubmix\"\n\t\t| \"fireworks-ai\"\n\t\t| \"modelscope\"\n\t\t| \"llama\"\n\t\t| \"scaleway\"\n\t\t| \"amazon-bedrock\"\n\t\t| \"cerebras\"\n\t\t| (string & {});\n\n\ttype Props = Omit<HTMLImgAttributes, \"src\" | \"alt\"> & {\n\t\tprovider: Provider;\n\t};\n\n\tlet { provider, class: className, ...restProps }: Props = $props();\n</script>\n\n<img\n\t{...restProps}\n\talt={`${provider} logo`}\n\tclass={cn(\"size-3\", className)}\n\theight={12}\n\tsrc={`https://models.dev/logos/${provider}.svg`}\n\twidth={12}\n/>\n",
+			"type": "registry:component",
+			"target": "ai-elements/model-selector/ModelSelectorLogo.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$.js\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\ttype Props = HTMLAttributes<HTMLDivElement> & {\n\t\tchildren: Snippet;\n\t};\n\n\tlet { class: className, children, ...restProps }: Props = $props();\n</script>\n\n<div\n\tclass={cn(\n\t\t\"[&>img]:bg-background [&>img]:ring-border flex shrink-0 items-center -space-x-1 [&>img]:rounded-full [&>img]:p-px [&>img]:ring-1\",\n\t\tclassName\n\t)}\n\t{...restProps}\n>\n\t{@render children()}\n</div>\n",
+			"type": "registry:component",
+			"target": "ai-elements/model-selector/ModelSelectorLogoGroup.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$.js\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\ttype Props = HTMLAttributes<HTMLSpanElement> & {\n\t\tchildren: Snippet;\n\t};\n\n\tlet { class: className, children, ...restProps }: Props = $props();\n</script>\n\n<span class={cn(\"flex-1 truncate text-left\", className)} {...restProps}>\n\t{@render children()}\n</span>\n",
+			"type": "registry:component",
+			"target": "ai-elements/model-selector/ModelSelectorName.svelte"
+		},
+		{
+			"content": "import Root from \"./ModelSelector.svelte\";\nimport Trigger from \"./ModelSelectorTrigger.svelte\";\nimport Content from \"./ModelSelectorContent.svelte\";\nimport Dialog from \"./ModelSelectorDialog.svelte\";\nimport Input from \"./ModelSelectorInput.svelte\";\nimport List from \"./ModelSelectorList.svelte\";\nimport Empty from \"./ModelSelectorEmpty.svelte\";\nimport Group from \"./ModelSelectorGroup.svelte\";\nimport Item from \"./ModelSelectorItem.svelte\";\nimport Shortcut from \"./ModelSelectorShortcut.svelte\";\nimport Separator from \"./ModelSelectorSeparator.svelte\";\nimport Logo from \"./ModelSelectorLogo.svelte\";\nimport LogoGroup from \"./ModelSelectorLogoGroup.svelte\";\nimport Name from \"./ModelSelectorName.svelte\";\n\nexport {\n\tRoot,\n\tTrigger,\n\tContent,\n\tDialog,\n\tInput,\n\tList,\n\tEmpty,\n\tGroup,\n\tItem,\n\tShortcut,\n\tSeparator,\n\tLogo,\n\tLogoGroup,\n\tName,\n\t//\n\tRoot as ModelSelector,\n\tTrigger as ModelSelectorTrigger,\n\tContent as ModelSelectorContent,\n\tDialog as ModelSelectorDialog,\n\tInput as ModelSelectorInput,\n\tList as ModelSelectorList,\n\tEmpty as ModelSelectorEmpty,\n\tGroup as ModelSelectorGroup,\n\tItem as ModelSelectorItem,\n\tShortcut as ModelSelectorShortcut,\n\tSeparator as ModelSelectorSeparator,\n\tLogo as ModelSelectorLogo,\n\tLogoGroup as ModelSelectorLogoGroup,\n\tName as ModelSelectorName,\n};\n",
+			"type": "registry:file",
+			"target": "ai-elements/model-selector/index.ts"
+		}
+	]
+}

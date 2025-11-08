@@ -19,17 +19,17 @@ This recipe shows you how to create a basic text generation feature in SvelteKit
 
 ```svelte
 <script lang="ts">
-  let generation = $state('');
+  let generation = $state("");
   let isLoading = $state(false);
 
   async function handleGenerate() {
     isLoading = true;
 
-    const response = await fetch('/api/completion', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const response = await fetch("/api/completion", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        prompt: 'Why is the sky blue?',
+        prompt: "Why is the sky blue?",
       }),
     });
 
@@ -40,9 +40,7 @@ This recipe shows you how to create a basic text generation feature in SvelteKit
 </script>
 
 <div>
-  <button onclick={handleGenerate}>
-    Generate
-  </button>
+  <button onclick={handleGenerate}> Generate </button>
 
   {#if isLoading}
     Loading...
@@ -56,17 +54,17 @@ This recipe shows you how to create a basic text generation feature in SvelteKit
 
 ```typescript
 // src/routes/api/completion/+server.ts
-import { openai } from '@ai-sdk/openai';
-import { generateText } from 'ai';
-import { json } from '@sveltejs/kit';
-import type { RequestHandler } from './$types';
+import { openai } from "@ai-sdk/openai";
+import { generateText } from "ai";
+import { json } from "@sveltejs/kit";
+import type { RequestHandler } from "./$types";
 
 export const POST: RequestHandler = async ({ request }) => {
   const { prompt } = await request.json();
 
   const { text } = await generateText({
-    model: openai('gpt-4o'),
-    system: 'You are a helpful assistant.',
+    model: openai("gpt-4o"),
+    system: "You are a helpful assistant.",
     prompt,
   });
 
@@ -100,4 +98,3 @@ text, generation, basics, ai-sdk, openai, sveltekit
 ## Example
 
 View the complete example on GitHub: https://github.com/vercel/ai/blob/main/examples/next-openai-pages/pages/basics/generate-text/index.tsx
-

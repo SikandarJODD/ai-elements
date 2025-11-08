@@ -5,9 +5,15 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Conversation component provides a structured layout for displaying a series of chat messages between a user and an AI. It supports features like message grouping, typing indicators, and customizable avatars.",
-	"dependencies": ["runed@^0.31.1"],
-	"devDependencies": ["@lucide/svelte@^0.544.0"],
-	"registryDependencies": ["button"],
+	"dependencies": [
+		"runed@^0.31.1"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
+	],
+	"registryDependencies": [
+		"button"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},

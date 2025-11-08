@@ -16,9 +16,13 @@
 	"devDependencies": [
 		"bits-ui@^2.14.1",
 		"@internationalized/date@^3.8.1",
-		"tailwind-variants@^1.0.0"
+		"tailwind-variants@^3.1.1"
 	],
-	"registryDependencies": ["./copy-button.json", "button", "tooltip"],
+	"registryDependencies": [
+		"./copy-button.json",
+		"button",
+		"tooltip"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},

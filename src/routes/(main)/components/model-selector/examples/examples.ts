@@ -1,0 +1,160 @@
+import basic from "./basic.svelte";
+import withDialog from "./with-dialog.svelte";
+
+export const examples = {
+	basic: {
+		Component: basic,
+		code: `<script lang="ts">
+  import {
+    ModelSelector,
+    ModelSelectorContent,
+    ModelSelectorEmpty,
+    ModelSelectorGroup,
+    ModelSelectorInput,
+    ModelSelectorItem,
+    ModelSelectorList,
+    ModelSelectorLogo,
+    ModelSelectorLogoGroup,
+    ModelSelectorName,
+    ModelSelectorTrigger,
+  } from "$lib/components/ai-elements/model-selector/index.js";
+  import { Button } from "$lib/components/ui/button/index.js";
+  import CheckIcon from "@lucide/svelte/icons/check";
+
+  const models = [
+    {
+      id: "gpt-4o",
+      name: "GPT-4o",
+      chef: "OpenAI",
+      chefSlug: "openai",
+      providers: ["openai", "azure"],
+    },
+    {
+      id: "claude-3.5-sonnet",
+      name: "Claude 3.5 Sonnet",
+      chef: "Anthropic",
+      chefSlug: "anthropic",
+      providers: ["anthropic", "azure"],
+    },
+  ];
+
+  let open = $state(false);
+  let selectedModel = $state("gpt-4o");
+
+  const selectedModelData = $derived(models.find((model) => model.id === selectedModel));
+  const chefs = $derived(Array.from(new Set(models.map((model) => model.chef))));
+</script>
+
+<ModelSelector bind:open>
+  <ModelSelectorTrigger>
+    <Button class="w-[200px] justify-between" variant="outline">
+      {#if selectedModelData?.chefSlug}
+        <ModelSelectorLogo provider={selectedModelData.chefSlug} />
+      {/if}
+      {#if selectedModelData?.name}
+        <ModelSelectorName>{selectedModelData.name}</ModelSelectorName>
+      {/if}
+      <CheckIcon class="ml-2 size-4 shrink-0 opacity-50" />
+    </Button>
+  </ModelSelectorTrigger>
+  <ModelSelectorContent>
+    <ModelSelectorInput placeholder="Search models..." />
+    <ModelSelectorList>
+      <ModelSelectorEmpty>No models found.</ModelSelectorEmpty>
+      {#each chefs as chef}
+        <ModelSelectorGroup heading={chef}>
+          {#each models.filter((model) => model.chef === chef) as model}
+            <ModelSelectorItem
+              value={model.id}
+              onSelect={() => {
+                selectedModel = model.id;
+                open = false;
+              }}
+            >
+              <ModelSelectorLogo provider={model.chefSlug} />
+              <ModelSelectorName>{model.name}</ModelSelectorName>
+              <ModelSelectorLogoGroup>
+                {#each model.providers as provider}
+                  <ModelSelectorLogo {provider} />
+                {/each}
+              </ModelSelectorLogoGroup>
+              {#if selectedModel === model.id}
+                <CheckIcon class="ml-auto size-4" />
+              {/if}
+            </ModelSelectorItem>
+          {/each}
+        </ModelSelectorGroup>
+      {/each}
+    </ModelSelectorList>
+  </ModelSelectorContent>
+</ModelSelector>`,
+	},
+	withDialog: {
+		Component: withDialog,
+		code: `<script lang="ts">
+  import {
+    ModelSelectorDialog,
+    ModelSelectorEmpty,
+    ModelSelectorGroup,
+    ModelSelectorInput,
+    ModelSelectorItem,
+    ModelSelectorList,
+    ModelSelectorLogo,
+    ModelSelectorLogoGroup,
+    ModelSelectorName,
+  } from "$lib/components/ai-elements/model-selector/index.js";
+  import { Button } from "$lib/components/ui/button/index.js";
+  import CheckIcon from "@lucide/svelte/icons/check";
+
+  const models = [
+    {
+      id: "gpt-4o",
+      name: "GPT-4o",
+      chef: "OpenAI",
+      chefSlug: "openai",
+      providers: ["openai", "azure"],
+    },
+  ];
+
+  let open = $state(false);
+  let selectedModel = $state("gpt-4o");
+
+  const chefs = $derived(Array.from(new Set(models.map((model) => model.chef))));
+</script>
+
+<div class="space-y-4">
+  <Button onclick={() => (open = true)}>Open Model Selector</Button>
+
+  <ModelSelectorDialog bind:open title="Select AI Model" description="Choose a model to use">
+    <ModelSelectorInput placeholder="Search models..." />
+    <ModelSelectorList>
+      <ModelSelectorEmpty>No models found.</ModelSelectorEmpty>
+      {#each chefs as chef}
+        <ModelSelectorGroup heading={chef}>
+          {#each models.filter((model) => model.chef === chef) as model}
+            <ModelSelectorItem
+              value={model.id}
+              onSelect={() => {
+                selectedModel = model.id;
+                open = false;
+              }}
+            >
+              <ModelSelectorLogo provider={model.chefSlug} />
+              <ModelSelectorName>{model.name}</ModelSelectorName>
+              <ModelSelectorLogoGroup>
+                {#each model.providers as provider}
+                  <ModelSelectorLogo {provider} />
+                {/each}
+              </ModelSelectorLogoGroup>
+              {#if selectedModel === model.id}
+                <CheckIcon class="ml-auto size-4" />
+              {/if}
+            </ModelSelectorItem>
+          {/each}
+        </ModelSelectorGroup>
+      {/each}
+    </ModelSelectorList>
+  </ModelSelectorDialog>
+</div>`,
+	},
+};

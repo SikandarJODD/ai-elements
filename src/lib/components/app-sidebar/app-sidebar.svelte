@@ -45,8 +45,16 @@
 						url: "/components/chain-of-thought",
 					},
 					{
+						title: "Checkpoint",
+						url: "/components/checkpoint",
+					},
+					{
 						title: "Code Block",
 						url: "/components/code",
+					},
+					{
+						title: "Confirmation",
+						url: "/components/confirmation",
 					},
 					{
 						title: "Context",
@@ -77,8 +85,16 @@
 						url: "/components/open-in-chat",
 					},
 					{
+						title: "Plan",
+						url: "/components/plan",
+					},
+					{
 						title: "Prompt Input",
 						url: "/components/prompt-input",
+					},
+					{
+						title: "Queue",
+						url: "/components/queue",
 					},
 					{
 						title: "Reasoning",

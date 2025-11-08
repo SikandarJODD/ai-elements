@@ -54,18 +54,19 @@ jsrepo add prompt-input
 
 Different AI Elements require different shadcn components:
 
-| AI Element     | Required shadcn Components     | Additional npm Packages                       |
-| -------------- | ------------------------------ | --------------------------------------------- |
-| `message`      | `avatar`, `button`             | `ai`, `@ai-sdk/svelte`                        |
-| `code`         | `button`                       | `@shikijs/langs`, `@shikijs/themes`, `marked` |
-| `conversation` | `scroll-area`, `button`        | `ai`                                          |
-| `prompt-input` | `button`, `tooltip`, `popover` | `ai`                                          |
-| `workflow`     | `card`, `button`               | `@xyflow/svelte`                              |
-| `tool`         | `button`, `badge`              | `ai`                                          |
-| `artifact`     | `card`                         | `ai`                                          |
-| `response`     | -                              | `ai`                                          |
-| `sources`      | `card`, `badge`                | -                                             |
-| `copy-button`  | `button`, `tooltip`            | -                                             |
+| AI Element       | Required shadcn Components     | Additional npm Packages                       |
+| ---------------- | ------------------------------ | --------------------------------------------- |
+| `message`        | `avatar`, `button`             | `ai`, `@ai-sdk/svelte`                        |
+| `model-selector` | `dialog`, `command`, `button`  | -                                             |
+| `code`           | `button`                       | `@shikijs/langs`, `@shikijs/themes`, `marked` |
+| `conversation`   | `scroll-area`, `button`        | `ai`                                          |
+| `prompt-input`   | `button`, `tooltip`, `popover` | `ai`                                          |
+| `workflow`       | `card`, `button`               | `@xyflow/svelte`                              |
+| `tool`           | `button`, `badge`              | `ai`                                          |
+| `artifact`       | `card`                         | `ai`                                          |
+| `response`       | -                              | `ai`                                          |
+| `sources`        | `card`, `badge`                | -                                             |
+| `copy-button`    | `button`, `tooltip`            | -                                             |
 
 **Pro Tip**: Install all commonly used shadcn components at once:
 

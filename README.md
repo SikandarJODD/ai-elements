@@ -110,7 +110,7 @@ jsrepo add @ai/elements/ai-elements/prompt-input
 
 ## Component Catalog
 
-### AI Elements Components (27)
+### AI Elements Components (29)
 
 #### Core Chat Components
 
@@ -128,6 +128,8 @@ jsrepo add @ai/elements/ai-elements/prompt-input
 - **Task** - Structured task display with progress indicators
 - **Sources** - Collapsible source citations and references
 - **Inline Citation** - In-text citations with tooltips
+- **Checkpoint** - Mark conversation history points for restoration
+- **Confirmation** - Request user approval before executing sensitive AI actions
 
 #### Content Display
 

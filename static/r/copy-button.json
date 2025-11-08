@@ -5,13 +5,18 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The CopyButton component provides a button that allows users to copy text to their clipboard with visual feedback indicating success or failure.",
-	"dependencies": ["@lucide/svelte"],
+	"dependencies": [
+		"@lucide/svelte"
+	],
 	"devDependencies": [
 		"@lucide/svelte@^0.544.0",
 		"bits-ui@^2.14.1",
 		"@internationalized/date@^3.8.1"
 	],
-	"registryDependencies": ["button", "tooltip"],
+	"registryDependencies": [
+		"button",
+		"tooltip"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},
@@ -34,7 +39,7 @@
 		{
 			"content": "type Options = {\n\t/** The time before the copied status is reset. */\n\tdelay: number;\n};\n\n/** Use this hook to copy text to the clipboard and show a copied state.\n *\n * ## Usage\n * ```svelte\n * <script lang=\"ts\">\n * \t\timport { UseClipboard } from \"$HOOKS$/use-clipboard.svelte\";\n *\n * \t\tconst clipboard = new UseClipboard();\n * </script>\n *\n * <button onclick={clipboard.copy('Hello, World!')}>\n *     {#if clipboard.copied === 'success'}\n *         Copied!\n *     {:else if clipboard.copied === 'failure'}\n *         Failed to copy!\n *     {:else}\n *         Copy\n *     {/if}\n * </button>\n * ```\n *\n */\nexport class UseClipboard {\n\t#copiedStatus = $state<\"success\" | \"failure\">();\n\tprivate delay: number;\n\tprivate timeout: ReturnType<typeof setTimeout> | undefined = undefined;\n\n\tconstructor({ delay = 800 }: Partial<Options> = {}) {\n\t\tthis.delay = delay;\n\t}\n\n\t/** Copies the given text to the users clipboard.\n\t *\n\t * ## Usage\n\t * ```ts\n\t * clipboard.copy('Hello, World!');\n\t * ```\n\t *\n\t * @param text\n\t * @returns\n\t */\n\tasync copy(text: string) {\n\t\tif (this.timeout) {\n\t\t\tthis.#copiedStatus = undefined;\n\t\t\tclearTimeout(this.timeout);\n\t\t}\n\n\t\ttry {\n\t\t\tawait navigator.clipboard.writeText(text);\n\n\t\t\tthis.#copiedStatus = \"success\";\n\n\t\t\tthis.timeout = setTimeout(() => {\n\t\t\t\tthis.#copiedStatus = undefined;\n\t\t\t}, this.delay);\n\t\t} catch {\n\t\t\t// an error can occur when not in the browser or if the user hasn't given clipboard access\n\t\t\tthis.#copiedStatus = \"failure\";\n\n\t\t\tthis.timeout = setTimeout(() => {\n\t\t\t\tthis.#copiedStatus = undefined;\n\t\t\t}, this.delay);\n\t\t}\n\n\t\treturn this.#copiedStatus;\n\t}\n\n\t/** true when the user has just copied to the clipboard. */\n\tget copied() {\n\t\treturn this.#copiedStatus === \"success\";\n\t}\n\n\t/**\tIndicates whether a copy has occurred\n\t * and gives a status of either `success` or `failure`. */\n\tget status() {\n\t\treturn this.#copiedStatus;\n\t}\n}\n",
 			"type": "registry:hook",
-			"target": "use-clipboard.svelte.ts"
+			"target": "hooks/use-clipboard.svelte.ts"
 		}
 	]
 }

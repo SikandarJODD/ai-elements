@@ -5,9 +5,19 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The InlineCitation component displays a citation or reference within text, typically used to attribute sources in AI-generated content. It includes a tooltip for additional information.",
-	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^0.544.0"],
-	"registryDependencies": ["tooltip", "hover-card", "badge", "button", "carousel"],
+	"dependencies": [
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
+	],
+	"registryDependencies": [
+		"tooltip",
+		"hover-card",
+		"badge",
+		"button",
+		"carousel"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},
