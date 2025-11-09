@@ -182,7 +182,7 @@
 			<p class="text-muted-foreground mb-4 text-sm">
 				Additional components for plan structure:
 			</p>
-			<ul class="text-muted-foreground mb-4 list-inside list-disc space-y-1 text-sm">
+			<ul class="text-muted-foreground mb-4 list-inside list-disc space-y-2.5 text-sm">
 				<li>
 					<CodeSpan>PlanHeader</CodeSpan> - Header section containing title, description, and
 					trigger
@@ -218,21 +218,6 @@
 				<li>
 					Perfect for displaying AI-generated execution plans, task breakdowns, and
 					multi-step processes.
-				</li>
-			</ul>
-
-			<!-- Related Components -->
-			<Subheading>Related Components</Subheading>
-			<ul class="text-muted-foreground mb-4 list-inside list-disc space-y-1 text-sm">
-				<li>
-					<a href="/components/shimmer" class="hover:underline">Shimmer</a> - Animated shimmer
-					effect
-				</li>
-				<li>
-					<a href="/components/task" class="hover:underline">Task</a> - Individual task component
-				</li>
-				<li>
-					<a href="/components/tool" class="hover:underline">Tool</a> - Tool invocation component
 				</li>
 			</ul>
 		</main>

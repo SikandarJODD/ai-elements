@@ -13,6 +13,7 @@
 </script>
 
 <script lang="ts">
+	import CollapsibleContent from "$lib/components/ui/collapsible/collapsible-content.svelte";
 	import ChevronDown from "@lucide/svelte/icons/chevron-down";
 
 	let {
@@ -27,12 +28,14 @@
 </script>
 
 <span bind:this={ref} class={cn("flex items-center gap-2", className)} {...restProps}>
-	<ChevronDown class="size-4 transition-transform group-data-[state=closed]:-rotate-90" />
+	<ChevronDown class="size-4 transition-transform group-data-[state=open]:-rotate-90" />
 	{#if icon}
 		{@render icon()}
 	{/if}
 	<span>
-		{#if count !== undefined}{count}{/if}
+		{#if count !== undefined}
+			{count}
+		{/if}
 		{label}
 	</span>
 	{@render children?.()}

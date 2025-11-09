@@ -19,11 +19,11 @@
 	}: QueueSectionTriggerProps = $props();
 </script>
 
-<CollapsibleTrigger>
+<CollapsibleTrigger class="group w-full">
 	<button
 		bind:this={ref}
 		class={cn(
-			"group bg-muted/40 text-muted-foreground hover:bg-muted flex w-full items-center justify-between rounded-md px-3 py-2 text-left text-sm font-medium transition-colors",
+			"bg-muted/40 text-muted-foreground hover:bg-muted  flex w-full items-center justify-between rounded-md px-3 py-2 text-left text-sm font-medium transition-colors",
 			className
 		)}
 		type="button"

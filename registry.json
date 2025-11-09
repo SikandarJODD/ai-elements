@@ -1542,7 +1542,7 @@
 					"target": "ai-elements/plan/index.ts"
 				}
 			],
-			"registryDependencies": ["collapsible", "card", "button"],
+			"registryDependencies": ["collapsible", "card", "button", "local:shimmer"],
 			"dependencies": ["@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD"
@@ -1724,8 +1724,8 @@
 					"target": "ai-elements/checkpoint/index.ts"
 				}
 			],
-			"registryDependencies": ["separator"],
-			"dependencies": [],
+			"registryDependencies": ["separator", "button", "tooltip"],
+			"dependencies": ["@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
@@ -1908,6 +1908,767 @@
 					"target": "ai-elements/queue/types.ts"
 				}
 			]
+		},
+		{
+			"name": "prompt-kit-chat-container",
+			"type": "registry:block",
+			"description": "The ChatContainer component provides a comprehensive chat interface with scroll management, auto-scrolling, and scroll anchoring. Features context-based state management for handling message scrolling and sticky-to-bottom behavior.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/chat-container/chat-container-root.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/chat-container/chat-container-root.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/chat-container/chat-container-content.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/chat-container/chat-container-content.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/chat-container/chat-container-scroll-anchor.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/chat-container/chat-container-scroll-anchor.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/chat-container/chat-container-context.svelte.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/chat-container/chat-container-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/chat-container/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/chat-container/index.ts"
+				}
+			],
+			"registryDependencies": [],
+			"dependencies": ["runed"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "chat", "container", "scroll", "auto-scroll", "messages"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/chat-container",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-10-19",
+				"featured": true
+			}
+		},
+		{
+			"name": "prompt-kit-chain-of-thought",
+			"type": "registry:block",
+			"description": "The Chain of Thought component displays AI's step-by-step reasoning process with collapsible steps, custom icons, and visual connectors. Features composable architecture with ChainOfThought, ChainOfThoughtStep, ChainOfThoughtTrigger, ChainOfThoughtContent, and ChainOfThoughtItem components.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/chain-of-thought/ChainOfThought.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/chain-of-thought/ChainOfThought.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/chain-of-thought/ChainOfThoughtStep.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/chain-of-thought/ChainOfThoughtStep.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/chain-of-thought/ChainOfThoughtTrigger.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/chain-of-thought/ChainOfThoughtTrigger.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/chain-of-thought/ChainOfThoughtContent.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/chain-of-thought/ChainOfThoughtContent.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/chain-of-thought/ChainOfThoughtItem.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/chain-of-thought/ChainOfThoughtItem.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/chain-of-thought/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/chain-of-thought/index.ts"
+				}
+			],
+			"registryDependencies": ["collapsible"],
+			"dependencies": ["@lucide/svelte"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": [
+					"prompt-kit",
+					"chain-of-thought",
+					"reasoning",
+					"thinking",
+					"ai-process",
+					"collapsible"
+				],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/chain-of-thought",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-10-30",
+				"featured": true
+			}
+		},
+		{
+			"name": "prompt-kit-code-block",
+			"type": "registry:block",
+			"description": "The CodeBlock component displays formatted code snippets with syntax highlighting, copy functionality, and language detection. Supports multiple code blocks with group context management for consistent styling.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/code-block/CodeBlock.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/code-block/CodeBlock.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/code-block/CodeBlockCode.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/code-block/CodeBlockCode.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/code-block/CodeBlockGroup.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/code-block/CodeBlockGroup.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/code-block/code-block-context.svelte.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/code-block/code-block-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/code-block/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/code-block/index.ts"
+				}
+			],
+			"registryDependencies": ["button", "local:prompt-kit-copy-button"],
+			"dependencies": ["shiki", "@shikijs/langs", "@shikijs/themes"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "code", "syntax-highlighting", "copy", "code-block"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/code-block",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-10-19",
+				"featured": true
+			}
+		},
+		{
+			"name": "prompt-kit-copy-button",
+			"title": "Copy Button",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "The CopyButton component provides a button that allows users to copy text to their clipboard with visual feedback indicating success or failure.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/copy-button/CopyButton.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/copy-button/CopyButton.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/copy-button/types.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/copy-button/types.ts"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/copy-button/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/copy-button/index.ts"
+				},
+				{
+					"path": "src/lib/hooks/use-clipboard.svelte.ts",
+					"type": "registry:hook"
+				}
+			],
+			"registryDependencies": ["button", "tooltip"],
+			"dependencies": ["@lucide/svelte"],
+			"meta": {
+				"author": "SikandarJODD"
+			}
+		},
+		{
+			"name": "prompt-kit-file-upload",
+			"type": "registry:block",
+			"description": "The FileUpload component provides drag-and-drop file upload functionality with preview, validation, and context-based state management. Features trigger and content components for flexible upload UI.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/file-upload/file-upload.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/file-upload/file-upload.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/file-upload/file-upload-trigger.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/file-upload/file-upload-trigger.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/file-upload/file-upload-content.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/file-upload/file-upload-content.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/file-upload/file-upload-context.svelte.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/file-upload/file-upload-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/file-upload/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/file-upload/index.ts"
+				}
+			],
+			"registryDependencies": ["button"],
+			"dependencies": ["runed"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "file-upload", "drag-drop", "attachments", "validation"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/file-upload",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-10-19",
+				"featured": true
+			}
+		},
+		{
+			"name": "prompt-kit-image",
+			"type": "registry:block",
+			"description": "The Image component displays images with proper styling, loading states, and accessibility features. Optimized for AI-generated or user-uploaded images in chat interfaces.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/image/Image.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/image/Image.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/image/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/image/index.ts"
+				}
+			],
+			"registryDependencies": [],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "image", "media", "display", "loading"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/image",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "beginner",
+				"updated": "2025-10-19",
+				"featured": false
+			}
+		},
+		{
+			"name": "prompt-kit-loader",
+			"type": "registry:block",
+			"description": "The Loader component provides multiple animated loading indicators for AI responses. Includes 13 different loader styles: bars, circular, classic, dots, pulse-dot, pulse, terminal, text-blink, text-dots, text-shimmer, typing, wave, and a base loader with customizable animations and colors.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/loader/loader.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/loader/loader.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/loader/bars-loader.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/loader/bars-loader.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/loader/circular-loader.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/loader/circular-loader.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/loader/classic-loader.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/loader/classic-loader.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/loader/dots-loader.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/loader/dots-loader.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/loader/pulse-dot-loader.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/loader/pulse-dot-loader.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/loader/pulse-loader.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/loader/pulse-loader.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/loader/terminal-loader.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/loader/terminal-loader.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/loader/text-blink-loader.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/loader/text-blink-loader.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/loader/text-dots-loader.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/loader/text-dots-loader.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/loader/text-shimmer-loader.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/loader/text-shimmer-loader.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/loader/typing-loader.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/loader/typing-loader.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/loader/wave-loader.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/loader/wave-loader.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/loader/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/loader/index.ts"
+				}
+			],
+			"registryDependencies": [],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "loader", "loading", "spinner", "animation", "ai-response"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/loader",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "beginner",
+				"updated": "2025-10-19",
+				"featured": true
+			}
+		},
+		{
+			"name": "prompt-kit-markdown",
+			"type": "registry:block",
+			"description": "The Markdown component renders markdown content with proper styling and support for code blocks, lists, links, and other markdown elements. Perfect for displaying AI-generated markdown responses.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/markdown/Markdown.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/markdown/Markdown.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/markdown/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/markdown/index.ts"
+				}
+			],
+			"registryDependencies": [],
+			"dependencies": ["marked", "isomorphic-dompurify"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "markdown", "rendering", "content", "formatting"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/markdown",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-10-19",
+				"featured": true
+			}
+		},
+		{
+			"name": "prompt-kit-message",
+			"type": "registry:block",
+			"description": "The Message component displays chat messages with avatar, content, and action buttons. Features context-based state management for flexible message layouts in AI chat interfaces. Includes Message, MessageAvatar, MessageContent, MessageAction, and MessageActions components.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/message/Message.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/message/Message.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/message/MessageAvatar.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/message/MessageAvatar.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/message/MessageContent.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/message/MessageContent.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/message/MessageAction.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/message/MessageAction.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/message/MessageActions.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/message/MessageActions.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/message/message-context.svelte.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/message/message-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/message/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/message/index.ts"
+				}
+			],
+			"registryDependencies": ["avatar", "button", "tooltip"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "message", "chat", "avatar", "actions", "conversation"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/message",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-10-19",
+				"featured": true
+			}
+		},
+		{
+			"name": "prompt-kit-prompt-input",
+			"type": "registry:block",
+			"description": "The PromptInput component provides a comprehensive text input interface for AI chat with actions, textarea, and state management. Features context-based control for building flexible prompt input experiences.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/prompt-input/PromptInput.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/prompt-input/PromptInput.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/prompt-input/PromptInputTextarea.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/prompt-input/PromptInputTextarea.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/prompt-input/PromptInputAction.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/prompt-input/PromptInputAction.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/prompt-input/PromptInputActions.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/prompt-input/PromptInputActions.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/prompt-input/prompt-input-context.svelte.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/prompt-input/prompt-input-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/prompt-input/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/prompt-input/index.ts"
+				}
+			],
+			"registryDependencies": ["textarea", "button", "tooltip"],
+			"dependencies": ["runed"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "input", "prompt", "textarea", "chat-input", "actions"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/prompt-input",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-10-19",
+				"featured": true
+			}
+		},
+		{
+			"name": "prompt-kit-prompt-suggestion",
+			"type": "registry:block",
+			"description": "The PromptSuggestion component displays clickable prompt suggestions to help users get started with AI conversations. Features customizable suggestions with icons and descriptions.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/prompt-suggestion/prompt-suggestion.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/prompt-suggestion/prompt-suggestion.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/prompt-suggestion/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/prompt-suggestion/index.ts"
+				}
+			],
+			"registryDependencies": ["button"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "suggestion", "prompts", "quick-start", "examples"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/prompt-suggestion",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "beginner",
+				"updated": "2025-10-19",
+				"featured": false
+			}
+		},
+		{
+			"name": "prompt-kit-reasoning",
+			"type": "registry:block",
+			"description": "The Reasoning component displays AI reasoning and thinking process with collapsible content. Features trigger, content, and context management for showing step-by-step AI reasoning in responses.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/reasoning/reasoning.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/reasoning/reasoning.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/reasoning/reasoning-trigger.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/reasoning/reasoning-trigger.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/reasoning/reasoning-content.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/reasoning/reasoning-content.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/reasoning/reasoning-context.svelte.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/reasoning/reasoning-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/reasoning/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/reasoning/index.ts"
+				}
+			],
+			"registryDependencies": ["collapsible", "button"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "reasoning", "thinking", "ai-process", "collapsible"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/reasoning",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-10-19",
+				"featured": true
+			}
+		},
+		{
+			"name": "prompt-kit-scroll-button",
+			"type": "registry:block",
+			"description": "The ScrollButton component provides a floating button to scroll to the bottom of chat containers. Features context-based visibility management and smooth scrolling behavior.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/scroll-button/ScrollButton.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/scroll-button/ScrollButton.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/scroll-button/scroll-context.svelte.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/scroll-button/scroll-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/scroll-button/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/scroll-button/index.ts"
+				}
+			],
+			"registryDependencies": ["button"],
+			"dependencies": ["runed"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "scroll", "button", "navigation", "chat"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/scroll-button",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "beginner",
+				"updated": "2025-10-19",
+				"featured": false
+			}
+		},
+		{
+			"name": "prompt-kit-source",
+			"type": "registry:block",
+			"description": "The Source component displays collapsible source information and references in AI responses. Features trigger and content components with context management for showing citations and sources.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/source/Source.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/source/Source.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/source/SourceTrigger.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/source/SourceTrigger.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/source/SourceContent.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/source/SourceContent.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/source/source-context.svelte.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/source/source-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/source/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/source/index.ts"
+				}
+			],
+			"registryDependencies": ["collapsible", "button", "hover-card"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "source", "citation", "reference", "collapsible"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/source",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-10-19",
+				"featured": false
+			}
+		},
+		{
+			"name": "prompt-kit-steps",
+			"type": "registry:block",
+			"description": "The Steps component provides a visual step-by-step progress indicator for AI processes. Features step items, trigger, content, and progress bar with context-based state management.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/steps/steps.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/steps/steps.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/steps/steps-item.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/steps/steps-item.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/steps/steps-trigger.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/steps/steps-trigger.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/steps/steps-content.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/steps/steps-content.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/steps/steps-bar.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/steps/steps-bar.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/steps/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/steps/index.ts"
+				}
+			],
+			"registryDependencies": ["collapsible", "button"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "steps", "progress", "workflow", "process", "stepper"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/steps",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-10-19",
+				"featured": true
+			}
+		},
+		{
+			"name": "prompt-kit-system-message",
+			"type": "registry:block",
+			"description": "The SystemMessage component displays system-level messages or notifications in chat interfaces. Features consistent styling for system announcements, errors, or status updates.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/system-message/system-message.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/system-message/system-message.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/system-message/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/system-message/index.ts"
+				}
+			],
+			"registryDependencies": ["button"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "system", "message", "notification", "status"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/system-message",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "beginner",
+				"updated": "2025-10-19",
+				"featured": false
+			}
+		},
+		{
+			"name": "prompt-kit-tool",
+			"type": "registry:block",
+			"description": "The Tool component displays AI tool execution information with header, content, and details sections. Features composed tool layouts with context management for showing tool usage, parameters, and results in AI responses.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/tool/Tool.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/tool/Tool.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/tool/ToolComposed.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/tool/ToolComposed.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/tool/ToolHeader.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/tool/ToolHeader.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/tool/ToolContent.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/tool/ToolContent.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/tool/ToolDetails.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/tool/ToolDetails.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/tool/tool-context.svelte.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/tool/tool-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/tool/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/tool/index.ts"
+				}
+			],
+			"registryDependencies": ["collapsible", "badge", "button"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "tool", "execution", "ai-tools", "function-calling"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/tool",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-10-19",
+				"featured": true
+			}
 		}
 	]
 }

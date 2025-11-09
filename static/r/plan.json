@@ -16,7 +16,8 @@
 	"registryDependencies": [
 		"collapsible",
 		"card",
-		"button"
+		"button",
+		"./shimmer.json"
 	],
 	"meta": {
 		"author": "SikandarJODD"

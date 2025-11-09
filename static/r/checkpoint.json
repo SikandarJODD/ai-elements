@@ -5,11 +5,16 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Checkpoint component provides a visual marker or milestone indicator in AI workflows or conversations. Features a trigger and icon for displaying progress points, decision markers, or important stages in AI processes.",
+	"dependencies": [
+		"@lucide/svelte"
+	],
 	"devDependencies": [
 		"@lucide/svelte@^0.544.0"
 	],
 	"registryDependencies": [
-		"separator"
+		"separator",
+		"button",
+		"tooltip"
 	],
 	"meta": {
 		"author": "SikandarJODD",
