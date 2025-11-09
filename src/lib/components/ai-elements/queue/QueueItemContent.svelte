@@ -22,7 +22,7 @@
 <span
 	bind:this={ref}
 	class={cn(
-		"line-clamp-1 grow break-words",
+		"line-clamp-1 grow wrap-break-word",
 		completed ? "text-muted-foreground/50 line-through" : "text-muted-foreground",
 		className
 	)}

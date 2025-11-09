@@ -2498,6 +2498,81 @@
 				"updated": "2025-11-09",
 				"featured": false
 			}
+		},
+		{
+			"name": "confirmation",
+			"title": "Confirmation",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "The Confirmation component provides an interactive approval interface for AI actions requiring user consent. Features request display, accepted/rejected states, action buttons, and context-based state management for handling tool confirmations and user approvals in AI workflows.",
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/confirmation/Confirmation.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/confirmation/Confirmation.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/ConfirmationAccepted.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/confirmation/ConfirmationAccepted.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/ConfirmationAction.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/confirmation/ConfirmationAction.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/ConfirmationActions.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/confirmation/ConfirmationActions.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/ConfirmationRejected.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/confirmation/ConfirmationRejected.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/ConfirmationRequest.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/confirmation/ConfirmationRequest.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/ConfirmationTitle.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/confirmation/ConfirmationTitle.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/confirmation-context.svelte.ts",
+					"type": "registry:file",
+					"target": "ai-elements/confirmation/confirmation-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/confirmation/index.ts"
+				}
+			],
+			"registryDependencies": ["alert", "button"],
+			"dependencies": ["runed", "@lucide/svelte"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": [
+					"confirmation",
+					"approval",
+					"consent",
+					"actions",
+					"tool-ui",
+					"user-interaction",
+					"state-management"
+				],
+				"category": "AI Response",
+				"documentation": "https://svelte-ai-elements.vercel.app//components/confirmation",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-11-09",
+				"featured": true
+			}
 		}
 	]
 }

@@ -769,5 +769,40 @@
 			"featured": false
 		},
 		"relativeUrl": "checkpoint.json"
+	},
+	{
+		"name": "confirmation",
+		"title": "Confirmation",
+		"type": "registry:block",
+		"author": "SikandarJODD",
+		"description": "The Confirmation component provides an interactive approval interface for AI actions requiring user consent. Features request display, accepted/rejected states, action buttons, and context-based state management for handling tool confirmations and user approvals in AI workflows.",
+		"dependencies": [
+			"runed",
+			"@lucide/svelte"
+		],
+		"registryDependencies": [
+			"alert",
+			"button"
+		],
+		"meta": {
+			"author": "SikandarJODD",
+			"version": "1.0.0",
+			"tags": [
+				"confirmation",
+				"approval",
+				"consent",
+				"actions",
+				"tool-ui",
+				"user-interaction",
+				"state-management"
+			],
+			"category": "AI Response",
+			"documentation": "https://svelte-ai-elements.vercel.app//components/confirmation",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "intermediate",
+			"updated": "2025-11-09",
+			"featured": true
+		},
+		"relativeUrl": "confirmation.json"
 	}
 ]
