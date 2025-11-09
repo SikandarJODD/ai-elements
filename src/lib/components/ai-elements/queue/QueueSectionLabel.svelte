@@ -13,6 +13,7 @@
 </script>
 
 <script lang="ts">
+	import CollapsibleContent from "$lib/components/ui/collapsible/collapsible-content.svelte";
 	import ChevronDown from "@lucide/svelte/icons/chevron-down";
 
 	let {
@@ -32,7 +33,9 @@
 		{@render icon()}
 	{/if}
 	<span>
-		{#if count !== undefined}{count}{/if}
+		{#if count !== undefined}
+			{count}
+		{/if}
 		{label}
 	</span>
 	{@render children?.()}

@@ -137,7 +137,7 @@
 			</div>
 
 			<!-- Preview -->
-			<Playground code={examples.basic.code}>
+			<Playground code={examples.basic.code} class="flex items-start justify-start">
 				<examples.basic.Component />
 			</Playground>
 
@@ -150,9 +150,10 @@
 			<!-- Usage -->
 			<Subheading>Usage</Subheading>
 
-			<Code
-				lang="svelte"
-				code={`\<script lang="ts"\>
+			<div>
+				<Code
+					lang="svelte"
+					code={`\<script lang="ts"\>
   import {
     Queue,
     QueueSection,
@@ -188,15 +189,17 @@
     </QueueSectionContent>
   </QueueSection>
 </Queue>`}
-			/>
+				/>
+			</div>
 
 			<!-- Examples -->
 			<Subheading>Examples</Subheading>
 
 			<h3 class="mb-4 text-lg font-semibold">With Descriptions</h3>
-			<Code
-				lang="svelte"
-				code={`\<script lang="ts"\>
+			<div>
+				<Code
+					lang="svelte"
+					code={`\<script lang="ts"\>
   import {
     Queue,
     QueueList,
@@ -218,12 +221,14 @@
     </QueueItem>
   </QueueList>
 </Queue>`}
-			/>
+				/>
+			</div>
 
 			<h3 class="mt-6 mb-4 text-lg font-semibold">With Actions</h3>
-			<Code
-				lang="svelte"
-				code={`\<script lang="ts"\>
+			<div>
+				<Code
+					lang="svelte"
+					code={`\<script lang="ts"\>
   import { Trash2, Edit } from "@lucide/svelte/icons";
   import {
     Queue,
@@ -252,12 +257,14 @@
     </QueueItem>
   </QueueList>
 </Queue>`}
-			/>
+				/>
+			</div>
 
 			<h3 class="mt-6 mb-4 text-lg font-semibold">With Attachments</h3>
-			<Code
-				lang="svelte"
-				code={`\<script lang="ts"\>
+			<div>
+				<Code
+					lang="svelte"
+					code={`\<script lang="ts"\>
   import {
     Queue,
     QueueList,
@@ -283,7 +290,8 @@
     </QueueItem>
   </QueueList>
 </Queue>`}
-			/>
+				/>
+			</div>
 
 			<!-- Component API -->
 			<Subheading>Component API</Subheading>
@@ -313,7 +321,7 @@
 			</ul>
 
 			<!-- Use Cases -->
-			<Subheading>Use Cases</Subheading>
+			<!-- <Subheading>Use Cases</Subheading>
 			<ul class="text-muted-foreground ml-6 list-disc space-y-2">
 				<li>Task management with pending and completed states</li>
 				<li>Message queues with attachments</li>
@@ -321,7 +329,7 @@
 				<li>Multi-step workflow displays</li>
 				<li>File upload queues with progress</li>
 				<li>AI agent task tracking</li>
-			</ul>
+			</ul> -->
 		</main>
 
 		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">

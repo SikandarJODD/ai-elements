@@ -667,7 +667,8 @@
 		"registryDependencies": [
 			"collapsible",
 			"card",
-			"button"
+			"button",
+			"local:shimmer"
 		],
 		"meta": {
 			"author": "SikandarJODD"
@@ -746,9 +747,13 @@
 		"type": "registry:block",
 		"author": "SikandarJODD",
 		"description": "The Checkpoint component provides a visual marker or milestone indicator in AI workflows or conversations. Features a trigger and icon for displaying progress points, decision markers, or important stages in AI processes.",
-		"dependencies": [],
+		"dependencies": [
+			"@lucide/svelte"
+		],
 		"registryDependencies": [
-			"separator"
+			"separator",
+			"button",
+			"tooltip"
 		],
 		"meta": {
 			"author": "SikandarJODD",
