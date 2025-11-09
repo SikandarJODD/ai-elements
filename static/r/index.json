@@ -63,72 +63,6 @@
 		"relativeUrl": "chain-of-thought.json"
 	},
 	{
-		"name": "checkpoint",
-		"title": "Checkpoint",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "A simple component for marking conversation history points and restoring the chat to a previous state. Inspired by VSCode's Copilot checkpoint feature.",
-		"dependencies": [
-			"@lucide-svelte/icons"
-		],
-		"registryDependencies": [
-			"button",
-			"separator",
-			"tooltip"
-		],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"checkpoint",
-				"conversation",
-				"history",
-				"restore",
-				"undo"
-			],
-			"category": "Conversation",
-			"documentation": "https://svelte-ai-elements.vercel.app/components/checkpoint",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "beginner",
-			"updated": "2025-11-08",
-			"featured": false
-		},
-		"relativeUrl": "checkpoint.json"
-	},
-	{
-		"name": "confirmation",
-		"title": "Confirmation",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "A component for requesting user approval before executing sensitive AI actions. Displays different states for approval requests, accepted, and rejected actions.",
-		"dependencies": [
-			"@lucide-svelte/icons",
-			"runed"
-		],
-		"registryDependencies": [
-			"button",
-			"alert"
-		],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"confirmation",
-				"approval",
-				"ai-actions",
-				"permissions",
-				"security"
-			],
-			"category": "AI Response",
-			"documentation": "https://ai-elements.vercel.app/components/confirmation",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "intermediate",
-			"updated": "2025-11-08",
-			"featured": false
-		},
-		"relativeUrl": "confirmation.json"
-	},
-	{
 		"name": "code",
 		"title": "Code Block",
 		"type": "registry:block",
@@ -267,25 +201,6 @@
 		"relativeUrl": "message.json"
 	},
 	{
-		"name": "model-selector",
-		"title": "Model Selector",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "A searchable command palette for selecting AI models with provider logos and multi-provider support.",
-		"dependencies": [
-			"@lucide/svelte"
-		],
-		"registryDependencies": [
-			"dialog",
-			"command",
-			"button"
-		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
-		"relativeUrl": "model-selector.json"
-	},
-	{
 		"name": "open-in-chat",
 		"title": "Open in Chat",
 		"type": "registry:block",
@@ -364,40 +279,6 @@
 		"relativeUrl": "prompt-input.json"
 	},
 	{
-		"name": "queue",
-		"title": "Queue",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "A flexible component for displaying lists of pending and completed tasks, messages, or items with collapsible sections and attachment support.",
-		"dependencies": [
-			"@lucide/svelte"
-		],
-		"registryDependencies": [
-			"button",
-			"collapsible",
-			"scroll-area"
-		],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"queue",
-				"tasks",
-				"todo",
-				"list",
-				"collapsible",
-				"attachments"
-			],
-			"category": "Task Management",
-			"documentation": "https://svelte-ai-elements.vercel.app/components/queue",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "intermediate",
-			"updated": "2025-11-08",
-			"featured": false
-		},
-		"relativeUrl": "queue.json"
-	},
-	{
 		"name": "reasoning",
 		"title": "Reasoning",
 		"type": "registry:block",
@@ -428,41 +309,6 @@
 			"author": "SikandarJODD"
 		},
 		"relativeUrl": "response.json"
-	},
-	{
-		"name": "shimmer",
-		"title": "Shimmer",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Shimmer component provides an animated shimmer effect for text, perfect for loading states and highlighting content in your AI applications.",
-		"dependencies": [
-			"runed"
-		],
-		"registryDependencies": [],
-		"meta": {
-			"author": "SikandarJODD"
-		},
-		"relativeUrl": "shimmer.json"
-	},
-	{
-		"name": "plan",
-		"title": "Plan",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "A collapsible plan component for displaying AI-generated execution plans with streaming support and shimmer animations.",
-		"dependencies": [
-			"@lucide/svelte"
-		],
-		"registryDependencies": [
-			"card",
-			"button",
-			"collapsible",
-			"shimmer"
-		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
-		"relativeUrl": "plan.json"
 	},
 	{
 		"name": "sources",
@@ -808,5 +654,90 @@
 			"featured": true
 		},
 		"relativeUrl": "playground.json"
+	},
+	{
+		"name": "plan",
+		"title": "Plan",
+		"type": "registry:block",
+		"author": "SikandarJODD",
+		"description": "The Plan component provides a collapsible container for displaying AI-generated plans with structured sections including header, title, description, actions, content, and footer.",
+		"dependencies": [
+			"@lucide/svelte"
+		],
+		"registryDependencies": [
+			"collapsible",
+			"card",
+			"button"
+		],
+		"meta": {
+			"author": "SikandarJODD"
+		},
+		"relativeUrl": "plan.json"
+	},
+	{
+		"name": "model-selector",
+		"title": "Model Selector",
+		"type": "registry:block",
+		"author": "SikandarJODD",
+		"description": "The ModelSelector component provides a searchable dialog interface for selecting AI models. Features model grouping, search functionality, keyboard shortcuts, and customizable model logos for a seamless model selection experience.",
+		"dependencies": [
+			"@lucide/svelte",
+			"runed"
+		],
+		"registryDependencies": [
+			"dialog",
+			"button",
+			"input",
+			"command"
+		],
+		"meta": {
+			"author": "SikandarJODD",
+			"version": "1.0.0",
+			"tags": [
+				"model-selector",
+				"ai-models",
+				"search",
+				"dialog",
+				"keyboard-shortcuts",
+				"selection"
+			],
+			"category": "AI Input",
+			"documentation": "https://svelte-ai-elements.vercel.app//components/model-selector",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "intermediate",
+			"updated": "2025-11-09",
+			"featured": true
+		},
+		"relativeUrl": "model-selector.json"
+	},
+	{
+		"name": "shimmer",
+		"title": "Shimmer",
+		"type": "registry:block",
+		"author": "SikandarJODD",
+		"description": "The Shimmer component provides an animated shimmer effect for text content, creating a smooth gradient animation that moves across the text. Perfect for loading states, highlighting important text, or adding visual interest to AI-generated content.",
+		"dependencies": [
+			"runed"
+		],
+		"registryDependencies": [],
+		"meta": {
+			"author": "SikandarJODD",
+			"version": "1.0.0",
+			"tags": [
+				"shimmer",
+				"animation",
+				"loading",
+				"text-effect",
+				"gradient",
+				"visual-effect"
+			],
+			"category": "AI Response",
+			"documentation": "https://svelte-ai-elements.vercel.app//components/shimmer",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "beginner",
+			"updated": "2025-11-09",
+			"featured": false
+		},
+		"relativeUrl": "shimmer.json"
 	}
 ]

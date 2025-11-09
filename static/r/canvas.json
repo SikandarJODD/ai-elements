@@ -1,0 +1,38 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "canvas",
+	"title": "Workflow Canvas",
+	"type": "registry:block",
+	"author": "SikandarJODD",
+	"description": "The Canvas component provides the main container for rendering workflow diagrams with nodes and edges. It wraps @xyflow/svelte's SvelteFlow component with custom styling and configuration for AI workflow visualization.",
+	"dependencies": [
+		"@xyflow/svelte"
+	],
+	"registryDependencies": [
+		"controls"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"workflow",
+			"canvas",
+			"flow",
+			"diagram",
+			"visualization"
+		],
+		"category": "AI Workflow",
+		"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "intermediate",
+		"updated": "2025-10-10",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { Background, SvelteFlow, type SvelteFlowProps } from \"@xyflow/svelte\";\n\n\timport \"@xyflow/svelte/dist/style.css\";\n\n\timport { mode } from \"mode-watcher\";\n\timport Controls from \"../controls/Controls.svelte\";\n\timport type { Snippet } from \"svelte\";\n\n\ttype CanvasProps = SvelteFlowProps & {\n\t\tchildren?: Snippet;\n\t};\n\tlet {\n\t\tchildren,\n\t\tnodes = $bindable([]),\n\t\tedges = $bindable([]),\n\t\t...restProps\n\t}: CanvasProps = $props();\n</script>\n\n<SvelteFlow colorMode={mode.current} bind:nodes bind:edges fitView zoomOnDoubleClick {...restProps}>\n\t<!-- panOnDrag={false} panOnScroll -->\n\t<Controls />\n\t<Background bgColor=\"var(--sidebar)\" />\n\t{@render children?.()}\n</SvelteFlow>\n",
+			"type": "registry:component",
+			"target": "ai-elements/workflow/canvas/Canvas.svelte"
+		}
+	]
+}

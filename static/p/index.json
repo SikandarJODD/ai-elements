@@ -68,7 +68,7 @@
 		],
 		"registryDependencies": [
 			"button",
-			"local:copy-button"
+			"local:prompt-kit-copy-button"
 		],
 		"meta": {
 			"author": "SikandarJODD",

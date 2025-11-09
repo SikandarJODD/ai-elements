@@ -1,0 +1,43 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "panel",
+	"title": "Workflow Panel",
+	"type": "registry:block",
+	"author": "SikandarJODD",
+	"description": "The Panel component provides an overlay panel for displaying additional workflow information, settings, or controls. It can be positioned at various locations on the canvas for contextual information display.",
+	"dependencies": [
+		"@xyflow/svelte"
+	],
+	"registryDependencies": [
+		"card"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"workflow",
+			"panel",
+			"overlay",
+			"information",
+			"settings"
+		],
+		"category": "AI Workflow",
+		"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "beginner",
+		"updated": "2025-10-10",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { Panel as PanelPrimitive, type PanelProps } from \"@xyflow/svelte\";\n\timport { cn } from \"$UTILS$\";\n\n\ttype PanelComponentProps = PanelProps & {\n\t\tclass?: string;\n\t};\n\n\tlet { class: className, ...restProps }: PanelComponentProps = $props();\n</script>\n\n<PanelPrimitive\n\tclass={cn(\"bg-card m-4 overflow-hidden rounded-md border p-1\", className)}\n\t{...restProps}\n/>\n",
+			"type": "registry:component",
+			"target": "ai-elements/workflow/panel/panel.svelte"
+		},
+		{
+			"content": "export { default as Panel } from \"./panel.svelte\";\n",
+			"type": "registry:file",
+			"target": "ai-elements/workflow/panel/index.ts"
+		}
+	]
+}

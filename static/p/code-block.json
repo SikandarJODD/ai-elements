@@ -10,7 +10,7 @@
 	],
 	"registryDependencies": [
 		"button",
-		"./copy-button.json"
+		"./prompt-kit-copy-button.json"
 	],
 	"meta": {
 		"author": "SikandarJODD",

@@ -1,0 +1,46 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "shimmer",
+	"title": "Shimmer",
+	"type": "registry:block",
+	"author": "SikandarJODD",
+	"description": "The Shimmer component provides an animated shimmer effect for text content, creating a smooth gradient animation that moves across the text. Perfect for loading states, highlighting important text, or adding visual interest to AI-generated content.",
+	"dependencies": [
+		"runed"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"shimmer",
+			"animation",
+			"loading",
+			"text-effect",
+			"gradient",
+			"visual-effect"
+		],
+		"category": "AI Response",
+		"documentation": "https://svelte-ai-elements.vercel.app//components/shimmer",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "beginner",
+		"updated": "2025-11-09",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { watch } from \"runed\";\n\timport type { ShimmerProps } from \"./types\";\n\n\tlet {\n\t\tchildren,\n\t\tas = \"p\",\n\t\tclass: className,\n\t\tduration = 2,\n\t\tspread = 2,\n\t\tcontent_length = 30,\n\t\t...rest\n\t}: ShimmerProps = $props();\n\n\t// Calculate dynamic spread based on text length\n\tlet dynamicSpread = $derived(content_length * spread);\n</script>\n\n<svelte:element\n\tthis={as}\n\tclass={cn(\n\t\t\"relative inline-block bg-[length:250%_100%,auto] bg-clip-text text-transparent\",\n\t\t\"[background-repeat:no-repeat,padding-box] [--bg:linear-gradient(90deg,#0000_calc(50%-var(--spread)),var(--color-background),#0000_calc(50%+var(--spread)))]\",\n\t\t\"animate-shimmer\",\n\t\tclassName\n\t)}\n\tstyle=\"--spread: {dynamicSpread}px; --shimmer-duration: {duration}s; background-image: var(--bg), linear-gradient(var(--color-muted-foreground), var(--color-muted-foreground)); background-position: 100% center;\"\n\t{...rest}\n>\n\t{@render children()}\n</svelte:element>\n\n<style>\n\t@keyframes shimmer {\n\t\tfrom {\n\t\t\tbackground-position: 100% center;\n\t\t}\n\t\tto {\n\t\t\tbackground-position: 0% center;\n\t\t}\n\t}\n\n\t:global(.animate-shimmer) {\n\t\tanimation: shimmer var(--shimmer-duration, 2s) linear infinite;\n\t}\n</style>\n",
+			"type": "registry:component",
+			"target": "ai-elements/shimmer/Shimmer.svelte"
+		},
+		{
+			"content": "import type { HTMLAttributes } from \"svelte/elements\";\nimport type { Snippet } from \"svelte\";\n\nexport type ShimmerProps = HTMLAttributes<HTMLElement> & {\n\tchildren: Snippet;\n\tas?: keyof HTMLElementTagNameMap;\n\tduration?: number;\n\tspread?: number;\n\tcontent_length?: number;\n};\n",
+			"type": "registry:file",
+			"target": "ai-elements/shimmer/types.ts"
+		},
+		{
+			"content": "export { default as Shimmer } from \"./Shimmer.svelte\";\nexport type { ShimmerProps } from \"./types\";\n",
+			"type": "registry:file",
+			"target": "ai-elements/shimmer/index.ts"
+		}
+	]
+}

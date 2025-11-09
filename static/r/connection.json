@@ -1,0 +1,35 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "connection",
+	"title": "Workflow Connection",
+	"type": "registry:block",
+	"author": "SikandarJODD",
+	"description": "The Connection component displays the connection line preview when dragging to create new edges between nodes in the workflow. It provides visual feedback during node connection operations.",
+	"dependencies": [
+		"@xyflow/svelte"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"workflow",
+			"connection",
+			"edge",
+			"drag",
+			"preview"
+		],
+		"category": "AI Workflow",
+		"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "intermediate",
+		"updated": "2025-10-10",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { useConnection } from \"@xyflow/svelte\";\n\n\tlet connection = useConnection();\n\tconst HALF = 0.5;\n\n\tlet pathD: string | null = $derived.by(() => {\n\t\tif (connection.current.inProgress) {\n\t\t\tconst { from, to } = connection.current;\n\t\t\treturn `M${from.x},${from.y} C ${from.x + (to.x - from.x) * HALF},${from.y} ${from.x + (to.x - from.x) * HALF},${to.y} ${to.x},${to.y}`;\n\t\t}\n\t\treturn null;\n\t});\n</script>\n\n{#if connection.current.inProgress}\n\t<g>\n\t\t<path class=\"animated\" d={pathD} fill=\"none\" stroke=\"var(--color-ring)\" stroke-width={1} />\n\t\t<circle\n\t\t\tcx={connection.current.to.x}\n\t\t\tcy={connection.current.to.y}\n\t\t\tfill=\"#fff\"\n\t\t\tr={3}\n\t\t\tstroke=\"var(--color-ring)\"\n\t\t\tstroke-width={1}\n\t\t/>\n\t</g>\n{/if}\n",
+			"type": "registry:component",
+			"target": "ai-elements/workflow/connection/Connection.svelte"
+		}
+	]
+}
