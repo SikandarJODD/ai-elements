@@ -137,6 +137,13 @@ export const navigationData: NavigationItem[] = [
 		keywords: ["chat", "message", "bubble", "text"],
 	},
 	{
+		title: "Model Selector",
+		href: "/components/model-selector",
+		description: "A searchable command palette for selecting AI models",
+		category: "component",
+		keywords: ["model", "selector", "ai", "command", "palette", "search", "dialog"],
+	},
+	{
 		title: "Open in Chat",
 		href: "/components/open-in-chat",
 		description: "Link to open content in chat interface",
@@ -177,6 +184,13 @@ export const navigationData: NavigationItem[] = [
 		description: "Display AI responses",
 		category: "component",
 		keywords: ["answer", "reply", "output", "response"],
+	},
+	{
+		title: "Shimmer",
+		href: "/components/shimmer",
+		description: "An animated shimmer effect for text, perfect for loading states",
+		category: "component",
+		keywords: ["shimmer", "animation", "loading", "text-effect", "gradient", "visual-effect"],
 	},
 	{
 		title: "Sources",

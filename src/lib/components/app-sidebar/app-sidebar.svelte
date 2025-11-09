@@ -252,7 +252,9 @@
 											}}
 										>
 											{#snippet child({ props })}
-												<a href={subItem.url} {...props}>{subItem.title}</a>
+												<a href={subItem.url} {...props}
+													>{subItem.title}
+												</a>
 											{/snippet}
 										</Sidebar.MenuButton>
 									</Sidebar.MenuItem>

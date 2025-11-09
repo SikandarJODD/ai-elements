@@ -128,7 +128,7 @@
 				<OpenInMenu componentName="Plan" {llmsTxtUrl} type="ai-elements" />
 			</div>
 
-			<Playground code={examples.basic.code}>
+			<Playground code={examples.basic.code} class="flex items-start justify-start">
 				<examples.basic.Component />
 			</Playground>
 
@@ -139,17 +139,17 @@
 			/>
 
 			<!-- Examples Section -->
-			<Subheading>Examples</Subheading>
+			<!-- <Subheading>Examples</Subheading> -->
 
 			<!-- Basic Example -->
-			<H3>Basic Plan</H3>
+			<!-- <H3>Basic Plan</H3>
 			<p class="text-muted-foreground mb-4 text-sm">
 				A simple collapsible plan with title, description, and content. This example is from
 				the official Vercel AI Elements documentation.
 			</p>
 			<Playground code={examples.basic.code}>
 				<examples.basic.Component />
-			</Playground>
+			</Playground> -->
 
 			<!-- Component API Section -->
 			<Subheading>Props</Subheading>
