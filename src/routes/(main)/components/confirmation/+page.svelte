@@ -22,121 +22,15 @@
 	// URL for llm.txt
 	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/confirmation/llms.txt`;
 
-	// Component API Props Data
-	const confirmationProps = [
-		{
-			name: "approval",
-			type: "ToolUIPartApproval",
-			description: "Approval object containing id, approved status, and optional reason",
-		},
-		{
-			name: "state",
-			type: "ToolUIPartState",
-			description:
-				"Current state: 'approval-requested' | 'approval-responded' | 'output-denied' | 'output-available'",
-		},
-		{
-			name: "class",
-			type: "string",
-			description: "Additional CSS classes to apply to the alert container",
-		},
-		{
-			name: "children",
-			type: "Snippet",
-			description: "Child components (ConfirmationTitle, ConfirmationRequest, etc.)",
-		},
-		{
-			name: "...restProps",
-			type: "HTMLAttributes<HTMLDivElement>",
-			description: "All other div props are supported",
-		},
-	];
-
-	const confirmationTitleProps = [
-		{
-			name: "class",
-			type: "string",
-			description: "Additional CSS classes to apply to the title",
-		},
-		{
-			name: "children",
-			type: "Snippet",
-			description: "Title content",
-		},
-	];
-
-	const confirmationRequestProps = [
-		{
-			name: "children",
-			type: "Snippet",
-			description:
-				"Content to show when approval is requested (typically ConfirmationActions)",
-		},
-	];
-
-	const confirmationAcceptedProps = [
-		{
-			name: "children",
-			type: "Snippet",
-			description: "Content to show when action is approved",
-		},
-	];
-
-	const confirmationRejectedProps = [
-		{
-			name: "children",
-			type: "Snippet",
-			description: "Content to show when action is rejected",
-		},
-	];
-
-	const confirmationActionsProps = [
-		{
-			name: "class",
-			type: "string",
-			description: "Additional CSS classes to apply to the actions container",
-		},
-		{
-			name: "children",
-			type: "Snippet",
-			description: "Action buttons (ConfirmationAction components)",
-		},
-	];
-
-	const confirmationActionProps = [
-		{
-			name: "variant",
-			type: "'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'",
-			default: "'default'",
-			description: "Button variant style",
-		},
-		{
-			name: "size",
-			type: "'default' | 'sm' | 'lg' | 'icon'",
-			default: "'sm'",
-			description: "Button size",
-		},
-		{
-			name: "class",
-			type: "string",
-			description: "Additional CSS classes to apply to the button",
-		},
-		{
-			name: "children",
-			type: "Snippet",
-			description: "Button content",
-		},
-		{
-			name: "onclick",
-			type: "(e: MouseEvent) => void",
-			description: "Click handler function",
-		},
-		{
-			name: "...restProps",
-			type: "HTMLButtonAttributes",
-			description: "All other button props are supported",
-		},
-	];
+	import {
+		confirmationProps,
+		confirmationTitleProps,
+		confirmationRequestProps,
+		confirmationAcceptedProps,
+		confirmationRejectedProps,
+		confirmationActionsProps,
+		confirmationActionProps,
+	} from "./props";
 </script>
 
 <!-- SEO Meta Tags -->
@@ -172,9 +66,10 @@
 			<!-- Usage -->
 			<Subheading>Usage</Subheading>
 
-			<Code
-				lang="svelte"
-				code={`\<script lang="ts"\>
+			<div>
+				<Code
+					lang="svelte"
+					code={`\<script lang="ts"\>
   import {
     Confirmation,
     ConfirmationTitle,
@@ -223,15 +118,32 @@
     Action was rejected. Files were not deleted.
   </ConfirmationRejected>
 </Confirmation>`}
-			/>
+				/>
+			</div>
 
 			<!-- Examples -->
 			<Subheading>Examples</Subheading>
 
-			<h3 class="mb-4 text-lg font-semibold">With AI SDK</h3>
-			<Code
-				lang="svelte"
-				code={`\<script lang="ts"\>
+			<h3 class="mb-4 text-lg font-semibold">Approval Request State</h3>
+			<Playground code={examples.approvalRequest.code}>
+				<examples.approvalRequest.Component />
+			</Playground>
+
+			<h3 class="mt-8 mb-4 text-lg font-semibold">Approved State</h3>
+			<Playground code={examples.approved.code}>
+				<examples.approved.Component />
+			</Playground>
+
+			<h3 class="mt-8 mb-4 text-lg font-semibold">Rejected State</h3>
+			<Playground code={examples.rejected.code}>
+				<examples.rejected.Component />
+			</Playground>
+
+			<h3 class="mt-8 mb-4 text-lg font-semibold">With AI SDK</h3>
+			<div>
+				<Code
+					lang="svelte"
+					code={`\<script lang="ts"\>
   import { Chat } from "@ai-sdk/svelte";
   import {
     Confirmation,
@@ -301,7 +213,23 @@
     {/each}
   {/if}
 {/each}`}
-			/>
+				/>
+			</div>
+
+			<!-- Features -->
+			<div>
+				<Subheading>Features</Subheading>
+				<ul class="text-muted-foreground ml-6 list-disc space-y-2">
+					<li>State-based rendering for different approval stages</li>
+					<li>Built on shadcn-svelte Alert component for consistent styling</li>
+					<li>Flexible action buttons with customizable variants</li>
+					<li>Context-based component composition</li>
+					<li>TypeScript support with proper type definitions</li>
+					<li>Accessible with proper ARIA attributes</li>
+					<li>Seamless integration with Vercel AI SDK</li>
+					<li>Responsive design with mobile support</li>
+				</ul>
+			</div>
 
 			<!-- Component API -->
 			<Subheading>Component API</Subheading>
@@ -332,21 +260,8 @@
 
 			<ComponentAPITable componentName="ConfirmationAction" props={confirmationActionProps} />
 
-			<!-- Features -->
-			<Subheading>Features</Subheading>
-			<ul class="text-muted-foreground ml-6 list-disc space-y-2">
-				<li>State-based rendering for different approval stages</li>
-				<li>Built on shadcn-svelte Alert component for consistent styling</li>
-				<li>Flexible action buttons with customizable variants</li>
-				<li>Context-based component composition</li>
-				<li>TypeScript support with proper type definitions</li>
-				<li>Accessible with proper ARIA attributes</li>
-				<li>Seamless integration with Vercel AI SDK</li>
-				<li>Responsive design with mobile support</li>
-			</ul>
-
 			<!-- Use Cases -->
-			<Subheading>Use Cases</Subheading>
+			<!-- <Subheading>Use Cases</Subheading>
 			<ul class="text-muted-foreground ml-6 list-disc space-y-2">
 				<li>File deletion or modification confirmations</li>
 				<li>Database operation approvals</li>
@@ -354,7 +269,7 @@
 				<li>Code execution permissions</li>
 				<li>Payment or transaction approvals</li>
 				<li>System configuration changes</li>
-			</ul>
+			</ul> -->
 		</main>
 
 		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">

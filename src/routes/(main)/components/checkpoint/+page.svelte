@@ -137,9 +137,10 @@
 			<!-- Usage -->
 			<Subheading>Usage</Subheading>
 
-			<Code
-				lang="svelte"
-				code={`\<script lang="ts"\>
+			<div>
+				<Code
+					lang="svelte"
+					code={`\<script lang="ts"\>
   import {
     Checkpoint,
     CheckpointIcon,
@@ -153,15 +154,17 @@
     Restore checkpoint
   </CheckpointTrigger>
 </Checkpoint>`}
-			/>
+				/>
+			</div>
 
 			<!-- Examples -->
 			<Subheading>Examples</Subheading>
 
 			<h3 class="mb-4 text-lg font-semibold">With Tooltip</h3>
-			<Code
-				lang="svelte"
-				code={`<Checkpoint>
+			<div>
+				<Code
+					lang="svelte"
+					code={`<Checkpoint>
   <CheckpointIcon />
   <CheckpointTrigger
     tooltip="Restores workspace and chat to this point"
@@ -170,12 +173,14 @@
     Restore checkpoint
   </CheckpointTrigger>
 </Checkpoint>`}
-			/>
+				/>
+			</div>
 
 			<h3 class="mt-6 mb-4 text-lg font-semibold">With Conversation</h3>
-			<Code
-				lang="svelte"
-				code={`\<script lang="ts"\>
+			<div>
+				<Code
+					lang="svelte"
+					code={`\<script lang="ts"\>
   import {
     Checkpoint,
     CheckpointIcon,
@@ -212,12 +217,14 @@
     {/each}
   </ConversationContent>
 </Conversation>`}
-			/>
+				/>
+			</div>
 
 			<h3 class="mt-6 mb-4 text-lg font-semibold">Custom Icon</h3>
-			<Code
-				lang="svelte"
-				code={`\<script lang="ts"\>
+			<div>
+				<Code
+					lang="svelte"
+					code={`\<script lang="ts"\>
   import { Flag } from "@lucide-svelte/icons";
 <\/script\>
 
@@ -229,7 +236,8 @@
     Restore checkpoint
   </CheckpointTrigger>
 </Checkpoint>`}
-			/>
+				/>
+			</div>
 
 			<!-- Component API -->
 			<Subheading>Component API</Subheading>

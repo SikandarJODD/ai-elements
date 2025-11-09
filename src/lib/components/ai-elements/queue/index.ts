@@ -14,8 +14,6 @@ export { default as QueueSectionTrigger } from "./QueueSectionTrigger.svelte";
 export { default as QueueSectionLabel } from "./QueueSectionLabel.svelte";
 export { default as QueueSectionContent } from "./QueueSectionContent.svelte";
 
-// export type * from "./types.js";
-
 export type { QueueProps } from "./Queue.svelte";
 export type { QueueItemProps } from "./QueueItem.svelte";
 export type { QueueItemIndicatorProps } from "./QueueItemIndicator.svelte";
@@ -31,3 +29,5 @@ export type { QueueSectionProps } from "./QueueSection.svelte";
 export type { QueueSectionTriggerProps } from "./QueueSectionTrigger.svelte";
 export type { QueueSectionLabelProps } from "./QueueSectionLabel.svelte";
 export type { QueueSectionContentProps } from "./QueueSectionContent.svelte";
+
+export type { QueueMessagePart, QueueMessage, QueueTodo } from "./types.js";

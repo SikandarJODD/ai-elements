@@ -19,11 +19,10 @@
 	<Confirmation approval={{ id: approvalId }} state="approval-requested">
 		<ConfirmationTitle>
 			<ConfirmationRequest>
-				This tool wants to delete the file
-				<code class="bg-muted inline rounded px-1.5 py-0.5 text-sm">
-					/tmp/example.txt
+				This tool wants to execute a query on the production database:
+				<code class="mt-2 block rounded bg-muted p-2 text-sm">
+					SELECT * FROM users WHERE role = 'admin'
 				</code>
-				. Do you approve this action?
 			</ConfirmationRequest>
 			<ConfirmationAccepted>
 				<CheckIcon class="size-4 text-green-600 dark:text-green-400" />
@@ -56,3 +55,4 @@
 		</ConfirmationActions>
 	</Confirmation>
 </div>
+

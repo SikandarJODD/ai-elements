@@ -138,25 +138,6 @@
 				blockname="plan"
 			/>
 
-			<!-- Usage Section -->
-			<Subheading>Usage</Subheading>
-
-			<Code
-				code={`\<script lang="ts"\>
-  import {
-    Plan,
-    PlanHeader,
-    PlanTitle,
-    PlanDescription,
-    PlanAction,
-    PlanContent,
-    PlanFooter,
-    PlanTrigger,
-  } from "$lib/components/ai-elements/plan";
-\<\/script\>`}
-				lang="svelte"
-			/>
-
 			<!-- Examples Section -->
 			<Subheading>Examples</Subheading>
 
@@ -170,35 +151,8 @@
 				<examples.basic.Component />
 			</Playground>
 
-			<!-- With Footer Example -->
-			<H3>With Footer</H3>
-			<p class="text-muted-foreground mb-4 text-sm">
-				Add a footer with action buttons and keyboard shortcuts.
-			</p>
-			<Playground code={examples.withFooter.code}>
-				<examples.withFooter.Component />
-			</Playground>
-
-			<!-- Streaming State Example -->
-			<H3>Streaming State</H3>
-			<p class="text-muted-foreground mb-4 text-sm">
-				Show shimmer effect on title and description during AI streaming.
-			</p>
-			<Playground code={examples.streaming.code}>
-				<examples.streaming.Component />
-			</Playground>
-
-			<!-- Multiple Plans Example -->
-			<H3>Multiple Plans</H3>
-			<p class="text-muted-foreground mb-4 text-sm">
-				Display multiple plans in sequence for multi-step processes.
-			</p>
-			<Playground code={examples.multiplePlans.code}>
-				<examples.multiplePlans.Component />
-			</Playground>
-
 			<!-- Component API Section -->
-			<Subheading>Component API</Subheading>
+			<Subheading>Props</Subheading>
 
 			<H3>Plan</H3>
 			<p class="text-muted-foreground mb-4 text-sm">

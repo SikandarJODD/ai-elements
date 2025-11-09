@@ -1,19 +1,21 @@
 <script lang="ts">
 	import {
 		Plan,
-		PlanHeader,
-		PlanTitle,
-		PlanDescription,
 		PlanAction,
 		PlanContent,
+		PlanDescription,
+		PlanFooter,
+		PlanHeader,
+		PlanTitle,
 		PlanTrigger,
 	} from "$lib/components/ai-elements/plan/index.js";
+	import { Button } from "$lib/components/ui/button/index.js";
 	import FileTextIcon from "@lucide/svelte/icons/file-text";
 </script>
 
 <Plan open={false}>
 	<PlanHeader>
-		<div class="flex-1">
+		<div>
 			<div class="mb-4 flex items-center gap-2">
 				<FileTextIcon class="size-4" />
 				<PlanTitle>
@@ -30,9 +32,7 @@
 				{/snippet}
 			</PlanDescription>
 		</div>
-		<PlanAction>
-			<PlanTrigger />
-		</PlanAction>
+		<PlanTrigger />
 	</PlanHeader>
 	<PlanContent>
 		<div class="space-y-4 text-sm">
@@ -56,4 +56,11 @@
 			</div>
 		</div>
 	</PlanContent>
+	<PlanFooter class="justify-end">
+		<PlanAction>
+			<Button size="sm">
+				Build <kbd class="font-mono">⌘↩</kbd>
+			</Button>
+		</PlanAction>
+	</PlanFooter>
 </Plan>

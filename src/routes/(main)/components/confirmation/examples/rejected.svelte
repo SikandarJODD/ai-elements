@@ -2,8 +2,6 @@
 	import {
 		Confirmation,
 		ConfirmationAccepted,
-		ConfirmationAction,
-		ConfirmationActions,
 		ConfirmationRejected,
 		ConfirmationRequest,
 		ConfirmationTitle,
@@ -16,11 +14,11 @@
 </script>
 
 <div class="w-full max-w-2xl">
-	<Confirmation approval={{ id: approvalId }} state="approval-requested">
+	<Confirmation approval={{ id: approvalId, approved: false }} state="output-denied">
 		<ConfirmationTitle>
 			<ConfirmationRequest>
 				This tool wants to delete the file
-				<code class="bg-muted inline rounded px-1.5 py-0.5 text-sm">
+				<code class="rounded bg-muted px-1.5 py-0.5 text-sm">
 					/tmp/example.txt
 				</code>
 				. Do you approve this action?
@@ -34,25 +32,6 @@
 				<span>You rejected this tool execution</span>
 			</ConfirmationRejected>
 		</ConfirmationTitle>
-		<ConfirmationActions>
-			<ConfirmationAction
-				onclick={() => {
-					// In production, call respondToConfirmationRequest with approved: false
-					console.log("Rejected");
-				}}
-				variant="outline"
-			>
-				Reject
-			</ConfirmationAction>
-			<ConfirmationAction
-				onclick={() => {
-					// In production, call respondToConfirmationRequest with approved: true
-					console.log("Approved");
-				}}
-				variant="default"
-			>
-				Approve
-			</ConfirmationAction>
-		</ConfirmationActions>
 	</Confirmation>
 </div>
+
