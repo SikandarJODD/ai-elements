@@ -252,21 +252,7 @@
 											}}
 										>
 											{#snippet child({ props })}
-												<a
-													href={subItem.url}
-													{...props}
-													class="flex w-full items-center justify-between"
-												>
-													<span>{subItem.title}</span>
-													{#if subItem.badge}
-														<Badge
-															variant="secondary"
-															class="bg-primary/10 text-primary hover:bg-primary/20 border-primary/20 h-4 border px-1 py-0 text-[10px] font-semibold uppercase"
-														>
-															{subItem.badge}
-														</Badge>
-													{/if}
-												</a>
+												<a href={subItem.url} {...props}>{subItem.title}</a>
 											{/snippet}
 										</Sidebar.MenuButton>
 									</Sidebar.MenuItem>
