@@ -110,7 +110,7 @@ jsrepo add @ai/elements/ai-elements/prompt-input
 
 ## Component Catalog
 
-### AI Elements Components (29)
+### AI Elements Components (35)
 
 #### Core Chat Components
 
@@ -130,6 +130,8 @@ jsrepo add @ai/elements/ai-elements/prompt-input
 - **Inline Citation** - In-text citations with tooltips
 - **Checkpoint** - Mark conversation history points for restoration
 - **Confirmation** - Request user approval before executing sensitive AI actions
+- **Plan** - Display AI planning steps with structured task breakdown
+- **Queue** - Manage and display queued AI tasks with status indicators
 
 #### Content Display
 
@@ -145,6 +147,8 @@ jsrepo add @ai/elements/ai-elements/prompt-input
 - **Copy Button** - Copy-to-clipboard with visual feedback
 - **Open In Chat** - Share to ChatGPT, Claude, V0, etc.
 - **Context** - Display token usage and model metrics
+- **Shimmer** - Skeleton loading animation for content placeholders
+- **Model Selector** - Dropdown selector for choosing AI models
 
 #### Workflow Components (8)
 
