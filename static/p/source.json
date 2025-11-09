@@ -1,0 +1,55 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "source",
+	"type": "registry:block",
+	"description": "The Source component displays collapsible source information and references in AI responses. Features trigger and content components with context management for showing citations and sources.",
+	"registryDependencies": [
+		"collapsible",
+		"button",
+		"hover-card"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"prompt-kit",
+			"source",
+			"citation",
+			"reference",
+			"collapsible"
+		],
+		"category": "Prompt Kit",
+		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/source",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "intermediate",
+		"updated": "2025-10-19",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { HoverCard } from \"$COMPONENTS$/ui/hover-card/index.js\";\n\timport { SourceClass, setSourceContext } from \"./source-context.svelte.js\";\n\timport type { Snippet } from \"svelte\";\n\n\tlet {\n\t\thref,\n\t\tchildren,\n\t}: {\n\t\thref: string;\n\t\tchildren: Snippet;\n\t} = $props();\n\n\tconst contextInstance = new SourceClass({ href });\n\tsetSourceContext(contextInstance);\n</script>\n\n<HoverCard openDelay={150} closeDelay={0}>\n\t{@render children()}\n</HoverCard>\n",
+			"type": "registry:component",
+			"target": "prompt-kit/source/Source.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport HoverCardTrigger from \"$COMPONENTS$/ui/hover-card/hover-card-trigger.svelte\";\n\timport { getSourceContext } from \"./source-context.svelte.js\";\n\n\tinterface Props {\n\t\tlabel?: string | number;\n\t\tshowFavicon?: boolean;\n\t\tclass?: string;\n\t\t[key: string]: any;\n\t}\n\n\tlet { label, showFavicon = false, class: className, ...restProps }: Props = $props();\n\n\tconst { href, domain } = getSourceContext();\n\n\tlet labelToShow = $derived(label ?? domain.replace(\"www.\", \"\"));\n\tlet faviconUrl = $derived(\n\t\t`https://www.google.com/s2/favicons?sz=64&domain_url=${encodeURIComponent(href)}`\n\t);\n</script>\n\n<HoverCardTrigger>\n\t<a\n\t\t{...restProps}\n\t\t{href}\n\t\ttarget=\"_blank\"\n\t\trel=\"noopener noreferrer\"\n\t\tclass={cn(\n\t\t\t\"bg-muted text-muted-foreground hover:bg-muted-foreground/30 hover:text-primary inline-flex h-5 max-w-32 items-center gap-1 overflow-hidden rounded-full py-0 text-xs leading-none no-underline transition-colors duration-150\",\n\t\t\tshowFavicon ? \"pr-2 pl-1\" : \"px-1\",\n\t\t\tclassName\n\t\t)}\n\t>\n\t\t{#if showFavicon}\n\t\t\t<img\n\t\t\t\tsrc={faviconUrl}\n\t\t\t\talt=\"favicon\"\n\t\t\t\twidth=\"14\"\n\t\t\t\theight=\"14\"\n\t\t\t\tclass=\"size-3.5 rounded-full\"\n\t\t\t/>\n\t\t{/if}\n\t\t<span class=\"truncate text-center font-normal\">{labelToShow}</span>\n\t</a>\n</HoverCardTrigger>\n",
+			"type": "registry:component",
+			"target": "prompt-kit/source/SourceTrigger.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport HoverCardContent from \"$COMPONENTS$/ui/hover-card/hover-card-content.svelte\";\n\timport { getSourceContext } from \"./source-context.svelte.js\";\n\n\tinterface Props {\n\t\ttitle: string;\n\t\tdescription: string;\n\t\tclass?: string;\n\t\t[key: string]: any;\n\t}\n\n\tlet { title, description, class: className, ...restProps }: Props = $props();\n\n\tconst { href, domain } = getSourceContext();\n\n\tlet displayDomain = $derived(domain.replace(\"www.\", \"\"));\n\tlet faviconUrl = $derived(\n\t\t`https://www.google.com/s2/favicons?sz=64&domain_url=${encodeURIComponent(href)}`\n\t);\n</script>\n\n<HoverCardContent class={cn(\"w-80 p-0 shadow-xs\", className)} {...restProps}>\n\t<a {href} target=\"_blank\" rel=\"noopener noreferrer\" class=\"flex flex-col gap-2 p-3\">\n\t\t<div class=\"flex items-center gap-1.5\">\n\t\t\t<img\n\t\t\t\tsrc={faviconUrl}\n\t\t\t\talt=\"favicon\"\n\t\t\t\tclass=\"size-4 rounded-full\"\n\t\t\t\twidth=\"16\"\n\t\t\t\theight=\"16\"\n\t\t\t/>\n\t\t\t<div class=\"text-primary truncate text-sm\">\n\t\t\t\t{displayDomain}\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"line-clamp-2 text-sm font-medium\">{title}</div>\n\t\t<div class=\"text-muted-foreground line-clamp-2 text-sm\">\n\t\t\t{description}\n\t\t</div>\n\t</a>\n</HoverCardContent>\n",
+			"type": "registry:component",
+			"target": "prompt-kit/source/SourceContent.svelte"
+		},
+		{
+			"content": "import { getContext, setContext } from \"svelte\";\n\nexport type SourceSchema = {\n\thref: string;\n\tdomain: string;\n};\n\nexport class SourceClass {\n\thref = $state<string>(\"\");\n\tdomain = $state<string>(\"\");\n\n\tconstructor(props: { href: string }) {\n\t\tthis.href = props.href;\n\n\t\t// Extract domain from href\n\t\ttry {\n\t\t\tthis.domain = new URL(props.href).hostname;\n\t\t} catch {\n\t\t\tthis.domain = props.href.split(\"/\").pop() || props.href;\n\t\t}\n\t}\n}\n\nconst SOURCE_KEY = Symbol(\"source\");\n\nexport function setSourceContext(contextInstance: SourceClass) {\n\tsetContext(SOURCE_KEY, contextInstance);\n}\n\nexport function getSourceContext(): SourceClass {\n\tconst context = getContext<SourceClass>(SOURCE_KEY);\n\n\tif (!context) {\n\t\tthrow new Error(\"Source.* must be used inside <Source>\");\n\t}\n\n\treturn context;\n}\n",
+			"type": "registry:file",
+			"target": "prompt-kit/source/source-context.svelte.ts"
+		},
+		{
+			"content": "import Root from \"./Source.svelte\";\nimport Trigger from \"./SourceTrigger.svelte\";\nimport Content from \"./SourceContent.svelte\";\n\nexport {\n\tRoot,\n\tTrigger,\n\tContent,\n\t//\n\tRoot as Source,\n\tTrigger as SourceTrigger,\n\tContent as SourceContent,\n};\n\nexport * from \"./source-context.svelte.js\";\n",
+			"type": "registry:file",
+			"target": "prompt-kit/source/index.ts"
+		}
+	]
+}

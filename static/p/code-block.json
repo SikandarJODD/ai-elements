@@ -1,0 +1,59 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "code-block",
+	"type": "registry:block",
+	"description": "The CodeBlock component displays formatted code snippets with syntax highlighting, copy functionality, and language detection. Supports multiple code blocks with group context management for consistent styling.",
+	"dependencies": [
+		"shiki",
+		"@shikijs/langs",
+		"@shikijs/themes"
+	],
+	"registryDependencies": [
+		"button",
+		"./copy-button.json"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"prompt-kit",
+			"code",
+			"syntax-highlighting",
+			"copy",
+			"code-block"
+		],
+		"category": "Prompt Kit",
+		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/code-block",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "intermediate",
+		"updated": "2025-10-19",
+		"featured": true
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport {\n\t\tCodeBlockClass,\n\t\tsetCodeBlockContext,\n\t\ttype CodeBlockSchema,\n\t} from \"./code-block-context.svelte.js\";\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\tlet {\n\t\tclass: className,\n\t\tchildren,\n\t\t...restProps\n\t}: CodeBlockSchema & {\n\t\tclass?: string;\n\t\tchildren: Snippet;\n\t} & HTMLAttributes<HTMLDivElement> = $props();\n\n\tlet contextInstance = new CodeBlockClass();\n\tsetCodeBlockContext(contextInstance);\n</script>\n\n<div\n\tclass={cn(\n\t\t\"not-prose flex w-full flex-col overflow-clip border\",\n\t\t\"border-border bg-card text-card-foreground rounded-xl\",\n\t\tclassName\n\t)}\n\t{...restProps}\n>\n\t{@render children()}\n</div>\n",
+			"type": "registry:component",
+			"target": "prompt-kit/code-block/CodeBlock.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { codeToHtml, type bundledThemes } from \"shiki\";\n\timport { watch } from \"runed\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\t// import '../../../../app.css'\n\n\tlet {\n\t\tcode,\n\t\tlanguage = \"tsx\",\n\t\ttheme = \"github-light\",\n\t\tclass: className,\n\t\t...restProps\n\t}: {\n\t\tcode: string;\n\t\tlanguage?: string;\n\t\ttheme?: keyof typeof bundledThemes;\n\t\tclass?: string;\n\t} & HTMLAttributes<HTMLDivElement> = $props();\n\n\tlet highlightedHtml = $state<string | null>(null);\n\n\tasync function highlight() {\n\t\tif (!code) {\n\t\t\thighlightedHtml = \"<pre><code></code></pre>\";\n\t\t\treturn;\n\t\t}\n\n\t\tlet html = await codeToHtml(code, {\n\t\t\tlang: language,\n\t\t\ttheme: theme,\n\t\t});\n\t\thighlightedHtml = html;\n\t}\n\n\t// Watch for changes in code, language, or theme\n\twatch([() => code, () => language, () => theme], () => {\n\t\thighlight();\n\t});\n\n\tlet classNames = cn(\"w-full overflow-x-auto text-[13px] [&>pre]:px-4 [&>pre]:py-4\", className);\n</script>\n\n<!-- SSR fallback: render plain code if not hydrated yet -->\n{#if highlightedHtml}\n\t<div class={classNames} {...restProps}>\n\t\t{@html highlightedHtml}\n\t</div>\n{:else}\n\t<div class={classNames} {...restProps}>\n\t\t<pre><code>{code}</code></pre>\n\t</div>\n{/if}\n",
+			"type": "registry:component",
+			"target": "prompt-kit/code-block/CodeBlockCode.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\tlet {\n\t\tclass: className,\n\t\tchildren,\n\t\t...restProps\n\t}: {\n\t\tclass?: string;\n\t\tchildren: Snippet;\n\t} & HTMLAttributes<HTMLDivElement> = $props();\n</script>\n\n<div class={cn(\"flex items-center justify-between\", className)} {...restProps}>\n\t{@render children()}\n</div>\n",
+			"type": "registry:component",
+			"target": "prompt-kit/code-block/CodeBlockGroup.svelte"
+		},
+		{
+			"content": "import { getContext, setContext } from \"svelte\";\n\nexport type CodeBlockSchema = {\n\t// Add any shared state if needed in the future\n};\n\nexport class CodeBlockClass {\n\t// Placeholder for shared state management\n\t// Currently the CodeBlock component is mostly presentational\n\t// but this allows for future extensibility\n\n\tconstructor(props?: CodeBlockSchema) {\n\t\t// Initialize any shared state here if needed\n\t}\n}\n\nconst CODE_BLOCK_KEY = Symbol(\"code-block\");\n\nexport function setCodeBlockContext(contextInstance: CodeBlockClass) {\n\tsetContext(CODE_BLOCK_KEY, contextInstance);\n}\n\nexport function getCodeBlockContext(): CodeBlockClass {\n\tconst context = getContext<CodeBlockClass>(CODE_BLOCK_KEY);\n\n\tif (!context) {\n\t\tthrow new Error(\"CodeBlock subcomponents must be used within CodeBlock\");\n\t}\n\n\treturn context;\n}\n",
+			"type": "registry:file",
+			"target": "prompt-kit/code-block/code-block-context.svelte.ts"
+		},
+		{
+			"content": "export { default as CodeBlock } from \"./CodeBlock.svelte\";\nexport { default as CodeBlockCode } from \"./CodeBlockCode.svelte\";\nexport { default as CodeBlockGroup } from \"./CodeBlockGroup.svelte\";\nexport * from \"./code-block-context.svelte.js\";\n",
+			"type": "registry:file",
+			"target": "prompt-kit/code-block/index.ts"
+		}
+	]
+}

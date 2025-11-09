@@ -1,0 +1,42 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "system-message",
+	"type": "registry:block",
+	"description": "The SystemMessage component displays system-level messages or notifications in chat interfaces. Features consistent styling for system announcements, errors, or status updates.",
+	"devDependencies": [
+		"tailwind-variants@^1.0.0",
+		"@lucide/svelte@^0.544.0"
+	],
+	"registryDependencies": [
+		"button"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"prompt-kit",
+			"system",
+			"message",
+			"notification",
+			"status"
+		],
+		"category": "Prompt Kit",
+		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/system-message",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "beginner",
+		"updated": "2025-10-19",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { tv, type VariantProps } from \"tailwind-variants\";\n\timport { AlertCircle, AlertTriangle, Info } from \"@lucide/svelte\";\n\timport { Button } from \"$COMPONENTS$/ui/button\";\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport { cn } from \"$UTILS$\";\n\timport type { Component } from \"svelte\";\n\n\tconst systemMessageVariants = tv({\n\t\tbase: \"flex flex-row items-center gap-3 rounded-[12px] border py-2 pr-2 pl-3\",\n\t\tvariants: {\n\t\t\tvariant: {\n\t\t\t\taction: \"text-zinc-700 dark:text-zinc-300\",\n\t\t\t\terror: \"text-red-700 dark:text-red-800\",\n\t\t\t\twarning: \"text-amber-700 dark:text-amber-700\",\n\t\t\t},\n\t\t\tfill: {\n\t\t\t\ttrue: \"bg-background\",\n\t\t\t\tfalse: \"\",\n\t\t\t},\n\t\t},\n\t\tcompoundVariants: [\n\t\t\t{\n\t\t\t\tvariant: \"action\",\n\t\t\t\tfill: true,\n\t\t\t\tclass: \"border-transparent bg-zinc-100 dark:bg-zinc-900\",\n\t\t\t},\n\t\t\t{\n\t\t\t\tvariant: \"error\",\n\t\t\t\tfill: true,\n\t\t\t\tclass: \"border-transparent bg-red-100 dark:bg-red-900/20\",\n\t\t\t},\n\t\t\t{\n\t\t\t\tvariant: \"warning\",\n\t\t\t\tfill: true,\n\t\t\t\tclass: \"border-transparent bg-amber-100 dark:bg-amber-900/20\",\n\t\t\t},\n\t\t\t{\n\t\t\t\tvariant: \"action\",\n\t\t\t\tfill: false,\n\t\t\t\tclass: \"border-zinc-200 dark:border-zinc-800\",\n\t\t\t},\n\t\t\t{\n\t\t\t\tvariant: \"error\",\n\t\t\t\tfill: false,\n\t\t\t\tclass: \"border-red-600 dark:border-red-900\",\n\t\t\t},\n\t\t\t{\n\t\t\t\tvariant: \"warning\",\n\t\t\t\tfill: false,\n\t\t\t\tclass: \"border-amber-600 dark:border-amber-900\",\n\t\t\t},\n\t\t],\n\t\tdefaultVariants: {\n\t\t\tvariant: \"action\",\n\t\t\tfill: false,\n\t\t},\n\t});\n\n\ttype Props = HTMLAttributes<HTMLDivElement> &\n\t\tVariantProps<typeof systemMessageVariants> & {\n\t\t\ticon?: Snippet;\n\t\t\tisIconHidden?: boolean;\n\t\t\tcta?: {\n\t\t\t\tlabel: string;\n\t\t\t\tonClick?: () => void;\n\t\t\t\tvariant?: \"default\" | \"destructive\" | \"outline\" | \"secondary\" | \"ghost\" | \"link\";\n\t\t\t};\n\t\t\tchildren: Snippet;\n\t\t};\n\n\tlet {\n\t\tchildren,\n\t\tvariant = \"action\",\n\t\tfill = false,\n\t\ticon,\n\t\tisIconHidden = false,\n\t\tcta,\n\t\tclass: className,\n\t\t...props\n\t}: Props = $props();\n\n\tlet getDefaultIcon = (): Component | null => {\n\t\tif (isIconHidden) return null;\n\n\t\tswitch (variant) {\n\t\t\tcase \"error\":\n\t\t\t\treturn AlertCircle;\n\t\t\tcase \"warning\":\n\t\t\t\treturn AlertTriangle;\n\t\t\tdefault:\n\t\t\t\treturn Info;\n\t\t}\n\t};\n\n\tlet IconComponent = $derived(icon ? null : getDefaultIcon());\n\tlet shouldShowIcon = $derived(!isIconHidden && (icon !== undefined || IconComponent !== null));\n</script>\n\n<div class={cn(systemMessageVariants({ variant, fill }), className)} {...props}>\n\t<div class=\"flex flex-1 flex-row items-center gap-3 leading-normal\">\n\t\t{#if shouldShowIcon}\n\t\t\t<div class=\"flex h-[1lh] shrink-0 items-center justify-center self-start\">\n\t\t\t\t{#if icon}\n\t\t\t\t\t{@render icon()}\n\t\t\t\t{:else if IconComponent}\n\t\t\t\t\t<IconComponent class=\"size-4\" />\n\t\t\t\t{/if}\n\t\t\t</div>\n\t\t{/if}\n\n\t\t<div class=\"flex min-w-0 flex-1 items-center {shouldShowIcon ? 'gap-3' : 'gap-0'}\">\n\t\t\t<div class=\"text-sm\">\n\t\t\t\t{@render children()}\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\n\t{#if cta}\n\t\t<Button variant={cta.variant || \"default\"} size=\"sm\" onclick={cta.onClick}>\n\t\t\t{cta.label}\n\t\t</Button>\n\t{/if}\n</div>\n",
+			"type": "registry:component",
+			"target": "prompt-kit/system-message/system-message.svelte"
+		},
+		{
+			"content": "export { default as SystemMessage } from \"./system-message.svelte\";\n",
+			"type": "registry:file",
+			"target": "prompt-kit/system-message/index.ts"
+		}
+	]
+}

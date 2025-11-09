@@ -42,20 +42,11 @@
 				}
 			],
 			"registryDependencies": [],
-			"dependencies": [
-				"runed"
-			],
+			"dependencies": ["runed"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"prompt-kit",
-					"chat",
-					"container",
-					"scroll",
-					"auto-scroll",
-					"messages"
-				],
+				"tags": ["prompt-kit", "chat", "container", "scroll", "auto-scroll", "messages"],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/chat-container",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -100,12 +91,8 @@
 					"target": "prompt-kit/chain-of-thought/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"collapsible"
-			],
-			"dependencies": [
-				"@lucide/svelte"
-			],
+			"registryDependencies": ["collapsible"],
+			"dependencies": ["@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
@@ -156,25 +143,12 @@
 					"target": "prompt-kit/code-block/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button",
-				"local:copy-button"
-			],
-			"dependencies": [
-				"shiki",
-				"@shikijs/langs",
-				"@shikijs/themes"
-			],
+			"registryDependencies": ["button", "local:copy-button"],
+			"dependencies": ["shiki", "@shikijs/langs", "@shikijs/themes"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"prompt-kit",
-					"code",
-					"syntax-highlighting",
-					"copy",
-					"code-block"
-				],
+				"tags": ["prompt-kit", "code", "syntax-highlighting", "copy", "code-block"],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/code-block",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -210,13 +184,8 @@
 					"type": "registry:hook"
 				}
 			],
-			"registryDependencies": [
-				"button",
-				"tooltip"
-			],
-			"dependencies": [
-				"@lucide/svelte"
-			],
+			"registryDependencies": ["button", "tooltip"],
+			"dependencies": ["@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -252,22 +221,12 @@
 					"target": "prompt-kit/file-upload/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button"
-			],
-			"dependencies": [
-				"runed"
-			],
+			"registryDependencies": ["button"],
+			"dependencies": ["runed"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"prompt-kit",
-					"file-upload",
-					"drag-drop",
-					"attachments",
-					"validation"
-				],
+				"tags": ["prompt-kit", "file-upload", "drag-drop", "attachments", "validation"],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/file-upload",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -296,13 +255,7 @@
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"prompt-kit",
-					"image",
-					"media",
-					"display",
-					"loading"
-				],
+				"tags": ["prompt-kit", "image", "media", "display", "loading"],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/image",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -391,14 +344,7 @@
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"prompt-kit",
-					"loader",
-					"loading",
-					"spinner",
-					"animation",
-					"ai-response"
-				],
+				"tags": ["prompt-kit", "loader", "loading", "spinner", "animation", "ai-response"],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/loader",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -424,20 +370,11 @@
 				}
 			],
 			"registryDependencies": [],
-			"dependencies": [
-				"marked",
-				"isomorphic-dompurify"
-			],
+			"dependencies": ["marked", "isomorphic-dompurify"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"prompt-kit",
-					"markdown",
-					"rendering",
-					"content",
-					"formatting"
-				],
+				"tags": ["prompt-kit", "markdown", "rendering", "content", "formatting"],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/markdown",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -487,22 +424,11 @@
 					"target": "prompt-kit/message/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"avatar",
-				"button",
-				"tooltip"
-			],
+			"registryDependencies": ["avatar", "button", "tooltip"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"prompt-kit",
-					"message",
-					"chat",
-					"avatar",
-					"actions",
-					"conversation"
-				],
+				"tags": ["prompt-kit", "message", "chat", "avatar", "actions", "conversation"],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/message",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -547,25 +473,12 @@
 					"target": "prompt-kit/prompt-input/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"textarea",
-				"button",
-				"tooltip"
-			],
-			"dependencies": [
-				"runed"
-			],
+			"registryDependencies": ["textarea", "button", "tooltip"],
+			"dependencies": ["runed"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"prompt-kit",
-					"input",
-					"prompt",
-					"textarea",
-					"chat-input",
-					"actions"
-				],
+				"tags": ["prompt-kit", "input", "prompt", "textarea", "chat-input", "actions"],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/prompt-input",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -590,19 +503,11 @@
 					"target": "prompt-kit/prompt-suggestion/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button"
-			],
+			"registryDependencies": ["button"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"prompt-kit",
-					"suggestion",
-					"prompts",
-					"quick-start",
-					"examples"
-				],
+				"tags": ["prompt-kit", "suggestion", "prompts", "quick-start", "examples"],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/prompt-suggestion",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -642,20 +547,11 @@
 					"target": "prompt-kit/reasoning/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"collapsible",
-				"button"
-			],
+			"registryDependencies": ["collapsible", "button"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"prompt-kit",
-					"reasoning",
-					"thinking",
-					"ai-process",
-					"collapsible"
-				],
+				"tags": ["prompt-kit", "reasoning", "thinking", "ai-process", "collapsible"],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/reasoning",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -685,22 +581,12 @@
 					"target": "prompt-kit/scroll-button/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button"
-			],
-			"dependencies": [
-				"runed"
-			],
+			"registryDependencies": ["button"],
+			"dependencies": ["runed"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"prompt-kit",
-					"scroll",
-					"button",
-					"navigation",
-					"chat"
-				],
+				"tags": ["prompt-kit", "scroll", "button", "navigation", "chat"],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/scroll-button",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -740,21 +626,11 @@
 					"target": "prompt-kit/source/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"collapsible",
-				"button",
-				"hover-card"
-			],
+			"registryDependencies": ["collapsible", "button", "hover-card"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"prompt-kit",
-					"source",
-					"citation",
-					"reference",
-					"collapsible"
-				],
+				"tags": ["prompt-kit", "source", "citation", "reference", "collapsible"],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/source",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -799,21 +675,11 @@
 					"target": "prompt-kit/steps/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"collapsible",
-				"button"
-			],
+			"registryDependencies": ["collapsible", "button"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"prompt-kit",
-					"steps",
-					"progress",
-					"workflow",
-					"process",
-					"stepper"
-				],
+				"tags": ["prompt-kit", "steps", "progress", "workflow", "process", "stepper"],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/steps",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -838,19 +704,11 @@
 					"target": "prompt-kit/system-message/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button"
-			],
+			"registryDependencies": ["button"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"prompt-kit",
-					"system",
-					"message",
-					"notification",
-					"status"
-				],
+				"tags": ["prompt-kit", "system", "message", "notification", "status"],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/system-message",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -900,21 +758,11 @@
 					"target": "prompt-kit/tool/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"collapsible",
-				"badge",
-				"button"
-			],
+			"registryDependencies": ["collapsible", "badge", "button"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"prompt-kit",
-					"tool",
-					"execution",
-					"ai-tools",
-					"function-calling"
-				],
+				"tags": ["prompt-kit", "tool", "execution", "ai-tools", "function-calling"],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/tool",
 				"repository": "https://github.com/SikandarJODD/ai-elements",

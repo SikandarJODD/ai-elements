@@ -1,0 +1,68 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "tool",
+	"type": "registry:block",
+	"description": "The Tool component displays AI tool execution information with header, content, and details sections. Features composed tool layouts with context management for showing tool usage, parameters, and results in AI responses.",
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
+	],
+	"registryDependencies": [
+		"collapsible",
+		"badge",
+		"button"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"prompt-kit",
+			"tool",
+			"execution",
+			"ai-tools",
+			"function-calling"
+		],
+		"category": "Prompt Kit",
+		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/tool",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "intermediate",
+		"updated": "2025-10-19",
+		"featured": true
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { ToolClass, setToolContext, type ToolSchema } from \"./tool-context.svelte.js\";\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\tlet {\n\t\tclass: className,\n\t\tchildren,\n\t\t...restProps\n\t}: ToolSchema & {\n\t\tclass?: string;\n\t\tchildren: Snippet;\n\t} & HTMLAttributes<HTMLDivElement> = $props();\n\n\tconst contextInstance = new ToolClass(restProps as ToolSchema);\n\tsetToolContext(contextInstance);\n</script>\n\n<div class={cn(\"border-border mt-3 overflow-hidden rounded-lg border\", className)}>\n\t{@render children()}\n</div>\n",
+			"type": "registry:component",
+			"target": "prompt-kit/tool/Tool.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport type { ToolPart } from \"./tool-context.svelte.js\";\n\timport { Tool, ToolHeader, ToolContent, ToolDetails } from \"./index.js\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\tlet {\n\t\ttoolPart,\n\t\tdefaultOpen = false,\n\t\tclass: className,\n\t\t...restProps\n\t}: {\n\t\ttoolPart: ToolPart;\n\t\tdefaultOpen?: boolean;\n\t\tclass?: string;\n\t} & HTMLAttributes<HTMLDivElement> = $props();\n</script>\n\n<Tool {toolPart} {defaultOpen} class={className} {...restProps}>\n\t<ToolHeader />\n\t<ToolContent>\n\t\t<ToolDetails />\n\t</ToolContent>\n</Tool>\n",
+			"type": "registry:component",
+			"target": "prompt-kit/tool/ToolComposed.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { getToolContext } from \"./tool-context.svelte.js\";\n\timport { cn } from \"$UTILS$\";\n\timport { CheckCircle, Loader2, Settings, XCircle, ChevronDown } from \"@lucide/svelte\";\n\timport { Button } from \"$COMPONENTS$/ui/button/index.js\";\n\timport type { Component } from \"svelte\";\n\n\tlet { class: className }: { class?: string } = $props();\n\n\tconst context = getToolContext();\n\n\tfunction getStateIcon() {\n\t\tswitch (context.toolPart.state) {\n\t\t\tcase \"input-streaming\":\n\t\t\t\treturn Loader2;\n\t\t\tcase \"input-available\":\n\t\t\t\treturn Settings;\n\t\t\tcase \"output-available\":\n\t\t\t\treturn CheckCircle;\n\t\t\tcase \"output-error\":\n\t\t\t\treturn XCircle;\n\t\t\tdefault:\n\t\t\t\treturn Settings;\n\t\t}\n\t}\n\n\tfunction getStateIconClass() {\n\t\tswitch (context.toolPart.state) {\n\t\t\tcase \"input-streaming\":\n\t\t\t\treturn \"h-4 w-4 animate-spin text-blue-500\";\n\t\t\tcase \"input-available\":\n\t\t\t\treturn \"h-4 w-4 text-orange-500\";\n\t\t\tcase \"output-available\":\n\t\t\t\treturn \"h-4 w-4 text-green-500\";\n\t\t\tcase \"output-error\":\n\t\t\t\treturn \"h-4 w-4 text-red-500\";\n\t\t\tdefault:\n\t\t\t\treturn \"text-muted-foreground h-4 w-4\";\n\t\t}\n\t}\n\n\tfunction getStateBadge(): { text: string; class: string } {\n\t\tconst baseClasses = \"px-2 py-1 rounded-full text-xs font-medium\";\n\t\tswitch (context.toolPart.state) {\n\t\t\tcase \"input-streaming\":\n\t\t\t\treturn {\n\t\t\t\t\ttext: \"Processing\",\n\t\t\t\t\tclass: cn(\n\t\t\t\t\t\tbaseClasses,\n\t\t\t\t\t\t\"bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400\"\n\t\t\t\t\t),\n\t\t\t\t};\n\t\t\tcase \"input-available\":\n\t\t\t\treturn {\n\t\t\t\t\ttext: \"Ready\",\n\t\t\t\t\tclass: cn(\n\t\t\t\t\t\tbaseClasses,\n\t\t\t\t\t\t\"bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400\"\n\t\t\t\t\t),\n\t\t\t\t};\n\t\t\tcase \"output-available\":\n\t\t\t\treturn {\n\t\t\t\t\ttext: \"Completed\",\n\t\t\t\t\tclass: cn(\n\t\t\t\t\t\tbaseClasses,\n\t\t\t\t\t\t\"bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400\"\n\t\t\t\t\t),\n\t\t\t\t};\n\t\t\tcase \"output-error\":\n\t\t\t\treturn {\n\t\t\t\t\ttext: \"Error\",\n\t\t\t\t\tclass: cn(\n\t\t\t\t\t\tbaseClasses,\n\t\t\t\t\t\t\"bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400\"\n\t\t\t\t\t),\n\t\t\t\t};\n\t\t\tdefault:\n\t\t\t\treturn {\n\t\t\t\t\ttext: \"Pending\",\n\t\t\t\t\tclass: cn(\n\t\t\t\t\t\tbaseClasses,\n\t\t\t\t\t\t\"bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400\"\n\t\t\t\t\t),\n\t\t\t\t};\n\t\t}\n\t}\n\n\tconst StateIcon = $derived(getStateIcon());\n\tconst stateIconClass = $derived(getStateIconClass());\n\tconst stateBadge = $derived(getStateBadge());\n</script>\n\n<Button\n\tvariant=\"ghost\"\n\tclass={cn(\n\t\t\"bg-background h-auto w-full justify-between rounded-b-none px-3 py-2 font-normal\",\n\t\tclassName\n\t)}\n\tonclick={() => context.toggleOpen()}\n>\n\t<div class=\"flex items-center gap-2\">\n\t\t<StateIcon class={stateIconClass} />\n\t\t<span class=\"font-mono text-sm font-medium\">\n\t\t\t{context.toolPart.type}\n\t\t</span>\n\t\t<span class={stateBadge.class}>\n\t\t\t{stateBadge.text}\n\t\t</span>\n\t</div>\n\t<ChevronDown class={cn(\"h-4 w-4 transition-transform\", context.isOpen && \"rotate-180\")} />\n</Button>\n",
+			"type": "registry:component",
+			"target": "prompt-kit/tool/ToolHeader.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { getToolContext } from \"./tool-context.svelte.js\";\n\timport { cn } from \"$UTILS$\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\tlet {\n\t\tclass: className,\n\t\tchildren,\n\t\t...restProps\n\t}: {\n\t\tclass?: string;\n\t\tchildren: Snippet;\n\t} & HTMLAttributes<HTMLDivElement> = $props();\n\n\tconst context = getToolContext();\n</script>\n\n{#if context.isOpen}\n\t<div\n\t\tclass={cn(\n\t\t\t\"border-border border-t\",\n\t\t\t\"data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down overflow-hidden\",\n\t\t\tclassName\n\t\t)}\n\t\t{...restProps}\n\t>\n\t\t{@render children()}\n\t</div>\n{/if}\n",
+			"type": "registry:component",
+			"target": "prompt-kit/tool/ToolContent.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { getToolContext } from \"./tool-context.svelte.js\";\n\timport { cn } from \"$UTILS$\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\tlet {\n\t\tclass: className,\n\t\t...restProps\n\t}: {\n\t\tclass?: string;\n\t} & HTMLAttributes<HTMLDivElement> = $props();\n\n\tconst context = getToolContext();\n\n\tfunction formatValue(value: unknown): string {\n\t\tif (value === null) return \"null\";\n\t\tif (value === undefined) return \"undefined\";\n\t\tif (typeof value === \"string\") return value;\n\t\tif (typeof value === \"object\") {\n\t\t\treturn JSON.stringify(value, null, 2);\n\t\t}\n\t\treturn String(value);\n\t}\n\n\tconst { input, output, state, toolCallId, errorText } = $derived(context.toolPart);\n</script>\n\n<div class={cn(\"bg-background space-y-3 p-3\", className)} {...restProps}>\n\t{#if input && Object.keys(input).length > 0}\n\t\t<div>\n\t\t\t<h4 class=\"text-muted-foreground mb-2 text-sm font-medium\">Input</h4>\n\t\t\t<div class=\"bg-background rounded border p-2 font-mono text-sm\">\n\t\t\t\t{#each Object.entries(input) as [key, value]}\n\t\t\t\t\t<div class=\"mb-1\">\n\t\t\t\t\t\t<span class=\"text-muted-foreground\">{key}:</span>\n\t\t\t\t\t\t<span>{formatValue(value)}</span>\n\t\t\t\t\t</div>\n\t\t\t\t{/each}\n\t\t\t</div>\n\t\t</div>\n\t{/if}\n\n\t{#if output}\n\t\t<div>\n\t\t\t<h4 class=\"text-muted-foreground mb-2 text-sm font-medium\">Output</h4>\n\t\t\t<div class=\"bg-background max-h-60 overflow-auto rounded border p-2 font-mono text-sm\">\n\t\t\t\t<pre class=\"whitespace-pre-wrap\">{formatValue(output)}</pre>\n\t\t\t</div>\n\t\t</div>\n\t{/if}\n\n\t{#if state === \"output-error\" && errorText}\n\t\t<div>\n\t\t\t<h4 class=\"mb-2 text-sm font-medium text-red-500\">Error</h4>\n\t\t\t<div\n\t\t\t\tclass=\"bg-background rounded border border-red-200 p-2 text-sm dark:border-red-950 dark:bg-red-900/20\"\n\t\t\t>\n\t\t\t\t{errorText}\n\t\t\t</div>\n\t\t</div>\n\t{/if}\n\n\t{#if state === \"input-streaming\"}\n\t\t<div class=\"text-muted-foreground text-sm\">Processing tool call...</div>\n\t{/if}\n\n\t{#if toolCallId}\n\t\t<div class=\"text-muted-foreground border-t border-blue-200 pt-2 text-xs\">\n\t\t\t<span class=\"font-mono\">Call ID: {toolCallId}</span>\n\t\t</div>\n\t{/if}\n</div>\n",
+			"type": "registry:component",
+			"target": "prompt-kit/tool/ToolDetails.svelte"
+		},
+		{
+			"content": "import { getContext, setContext } from \"svelte\";\n\nexport type ToolState = \"input-streaming\" | \"input-available\" | \"output-available\" | \"output-error\";\n\nexport type ToolPart = {\n\ttype: string;\n\tstate: ToolState;\n\tinput?: Record<string, unknown>;\n\toutput?: Record<string, unknown>;\n\ttoolCallId?: string;\n\terrorText?: string;\n};\n\nexport type ToolSchema = {\n\ttoolPart: ToolPart;\n\tdefaultOpen?: boolean;\n};\n\nexport class ToolClass {\n\ttoolPart = $state<ToolPart>() as ToolPart;\n\tisOpen = $state<boolean>(false);\n\n\tconstructor(props: ToolSchema) {\n\t\tthis.toolPart = props.toolPart;\n\t\tthis.isOpen = props.defaultOpen ?? false;\n\t}\n\n\ttoggleOpen() {\n\t\tthis.isOpen = !this.isOpen;\n\t}\n\n\tsetOpen(open: boolean) {\n\t\tthis.isOpen = open;\n\t}\n}\n\nconst TOOL_KEY = Symbol(\"tool\");\n\nexport function setToolContext(contextInstance: ToolClass) {\n\tsetContext(TOOL_KEY, contextInstance);\n}\n\nexport function getToolContext(): ToolClass {\n\tconst context = getContext<ToolClass>(TOOL_KEY);\n\n\tif (!context) {\n\t\tthrow new Error(\"Tool subcomponents must be used within Tool\");\n\t}\n\n\treturn context;\n}\n",
+			"type": "registry:file",
+			"target": "prompt-kit/tool/tool-context.svelte.ts"
+		},
+		{
+			"content": "import Root from \"./Tool.svelte\";\nimport Header from \"./ToolHeader.svelte\";\nimport Content from \"./ToolContent.svelte\";\nimport Details from \"./ToolDetails.svelte\";\nimport Composed from \"./ToolComposed.svelte\";\n\nexport {\n\tRoot,\n\tHeader,\n\tContent,\n\tDetails,\n\tComposed,\n\t//\n\tRoot as Tool,\n\tHeader as ToolHeader,\n\tContent as ToolContent,\n\tDetails as ToolDetails,\n\tComposed as ToolComposed,\n};\n\nexport * from \"./tool-context.svelte.js\";\n",
+			"type": "registry:file",
+			"target": "prompt-kit/tool/index.ts"
+		}
+	]
+}
