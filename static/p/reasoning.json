@@ -3,13 +3,26 @@
 	"name": "reasoning",
 	"type": "registry:block",
 	"description": "The Reasoning component displays AI reasoning and thinking process with collapsible content. Features trigger, content, and context management for showing step-by-step AI reasoning in responses.",
-	"dependencies": ["runed@^0.31.1"],
-	"devDependencies": ["@lucide/svelte@^0.544.0"],
-	"registryDependencies": ["collapsible", "button"],
+	"dependencies": [
+		"runed@^0.31.1"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
+	],
+	"registryDependencies": [
+		"collapsible",
+		"button"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["prompt-kit", "reasoning", "thinking", "ai-process", "collapsible"],
+		"tags": [
+			"prompt-kit",
+			"reasoning",
+			"thinking",
+			"ai-process",
+			"collapsible"
+		],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/reasoning",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

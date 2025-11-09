@@ -3,13 +3,29 @@
 	"name": "prompt-input",
 	"type": "registry:block",
 	"description": "The PromptInput component provides a comprehensive text input interface for AI chat with actions, textarea, and state management. Features context-based control for building flexible prompt input experiences.",
-	"dependencies": ["runed"],
-	"devDependencies": ["bits-ui@^2.14.1", "@internationalized/date@^3.8.1"],
-	"registryDependencies": ["textarea", "button", "tooltip"],
+	"dependencies": [
+		"runed"
+	],
+	"devDependencies": [
+		"bits-ui@^2.14.1",
+		"@internationalized/date@^3.8.1"
+	],
+	"registryDependencies": [
+		"textarea",
+		"button",
+		"tooltip"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["prompt-kit", "input", "prompt", "textarea", "chat-input", "actions"],
+		"tags": [
+			"prompt-kit",
+			"input",
+			"prompt",
+			"textarea",
+			"chat-input",
+			"actions"
+		],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/prompt-input",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

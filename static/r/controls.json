@@ -5,12 +5,22 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Controls component provides interactive controls for manipulating the workflow canvas, including zoom in, zoom out, fit view, and other navigation controls for better workflow visualization.",
-	"dependencies": ["@xyflow/svelte"],
-	"registryDependencies": ["button"],
+	"dependencies": [
+		"@xyflow/svelte"
+	],
+	"registryDependencies": [
+		"button"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["workflow", "controls", "zoom", "navigation", "viewport"],
+		"tags": [
+			"workflow",
+			"controls",
+			"zoom",
+			"navigation",
+			"viewport"
+		],
 		"category": "AI Workflow",
 		"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

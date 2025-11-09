@@ -2,12 +2,26 @@
 	import { page } from "$app/state";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import * as Collapsible from "$lib/components/ui/collapsible/index.js";
+	import Badge from "$lib/components/ui/badge/badge.svelte";
 	import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
 	import ExternalLinkIcon from "@lucide/svelte/icons/external-link";
 	import { onMount, type ComponentProps } from "svelte";
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 
-	let data = $state({
+	type SidebarItem = {
+		title: string;
+		url: string;
+		isActive?: boolean;
+		badge?: string;
+	};
+
+	type SidebarSection = {
+		title: string;
+		url: string;
+		items: SidebarItem[];
+	};
+
+	let data = $state<{ navMain: SidebarSection[] }>({
 		navMain: [
 			{
 				title: "Getting Started",
@@ -45,8 +59,18 @@
 						url: "/components/chain-of-thought",
 					},
 					{
+						title: "Checkpoint",
+						url: "/components/checkpoint",
+						badge: "new",
+					},
+					{
 						title: "Code Block",
 						url: "/components/code",
+					},
+					{
+						title: "Confirmation",
+						url: "/components/confirmation",
+						badge: "new",
 					},
 					{
 						title: "Context",
@@ -73,12 +97,27 @@
 						url: "/components/message",
 					},
 					{
+						title: "Model Selector",
+						url: "/components/model-selector",
+						badge: "new",
+					},
+					{
 						title: "Open in Chat",
 						url: "/components/open-in-chat",
 					},
 					{
+						title: "Plan",
+						url: "/components/plan",
+						badge: "new",
+					},
+					{
 						title: "Prompt Input",
 						url: "/components/prompt-input",
+					},
+					{
+						title: "Queue",
+						url: "/components/queue",
+						badge: "new",
 					},
 					{
 						title: "Reasoning",
@@ -87,6 +126,11 @@
 					{
 						title: "Response",
 						url: "/components/response",
+					},
+					{
+						title: "Shimmer",
+						url: "/components/shimmer",
+						badge: "new",
 					},
 					{
 						title: "Sources",
@@ -163,7 +207,7 @@
 
 	let updateIsActive = (url: string) => {
 		data.navMain.forEach((item) => {
-			item.items?.forEach((subItem) => {
+			item.items.forEach((subItem) => {
 				subItem.isActive = subItem.url === url;
 			});
 		});
@@ -208,7 +252,9 @@
 											}}
 										>
 											{#snippet child({ props })}
-												<a href={subItem.url} {...props}>{subItem.title}</a>
+												<a href={subItem.url} {...props}
+													>{subItem.title}
+												</a>
 											{/snippet}
 										</Sidebar.MenuButton>
 									</Sidebar.MenuItem>

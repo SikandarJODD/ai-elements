@@ -38,6 +38,9 @@ importers:
       mode-watcher:
         specifier: ^1.1.0
         version: 1.1.0(svelte@5.39.6)
+      nanoid:
+        specifier: ^5.1.6
+        version: 5.1.6
       package-manager-detector:
         specifier: ^1.3.0
         version: 1.3.0
@@ -45,8 +48,8 @@ importers:
         specifier: ^0.31.1
         version: 0.31.1(svelte@5.39.6)
       shadcn-svelte:
-        specifier: ^1.0.7
-        version: 1.0.8
+        specifier: ^1.0.11
+        version: 1.0.11
       shiki:
         specifier: ^3.13.0
         version: 3.13.0
@@ -1879,6 +1882,11 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  nanoid@5.1.6:
+    resolution: {integrity: sha512-c7+7RQ+dMB5dPwwCp4ee1/iV/q2P6aK1mTZcfr1BTuVlyW9hJYiMPybJCcnBlQtuSmTIWNeazm/zqNoZSSElBg==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+
   negotiator@1.0.0:
     resolution: {integrity: sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==}
     engines: {node: '>= 0.6'}
@@ -2152,8 +2160,8 @@ packages:
   set-cookie-parser@2.7.1:
     resolution: {integrity: sha512-IOc8uWeOZgnb3ptbCURJWNjWUPcO3ZnTTdzsurqERrP6nPyv+paC55vJM0LpOlT2ne+Ix+9+CRG1MNLlyZ4GjQ==}
 
-  shadcn-svelte@1.0.8:
-    resolution: {integrity: sha512-nsCbuYUmIz74zSkhDQKAXg44ByOecRQEURZPXH5J2kEuIAfxBIz1Zv3OVTy9A5E6YyX0/9I14HXGlDZwEfTRpw==}
+  shadcn-svelte@1.0.11:
+    resolution: {integrity: sha512-PzY8Ssnn63SIerYC2+WECsho6QhYbao5NKNXzRrau5AU2mpQdpa4wYc5soi0sqN9W7Af4btaH9+6yANxEtU1YA==}
     hasBin: true
 
   shebang-command@2.0.0:
@@ -4351,6 +4359,8 @@ snapshots:
 
   nanoid@3.3.11: {}
 
+  nanoid@5.1.6: {}
+
   negotiator@1.0.0: {}
 
   node-fetch-native@1.6.7: {}
@@ -4587,7 +4597,7 @@ snapshots:
 
   set-cookie-parser@2.7.1: {}
 
-  shadcn-svelte@1.0.8:
+  shadcn-svelte@1.0.11:
     dependencies:
       commander: 14.0.1
       node-fetch-native: 1.6.7

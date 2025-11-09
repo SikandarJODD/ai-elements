@@ -5,9 +5,17 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The ChainOfThought component provides a visual representation of an AI's reasoning process, showing step-by-step thinking with support for search results, images, and progress indicators. It helps users understand how AI arrives at conclusions.",
-	"dependencies": ["ai", "@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^0.544.0"],
-	"registryDependencies": ["badge", "collapsible"],
+	"dependencies": [
+		"ai",
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
+	],
+	"registryDependencies": [
+		"badge",
+		"collapsible"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},

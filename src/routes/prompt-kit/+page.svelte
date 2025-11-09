@@ -94,5 +94,23 @@
 				rel="noreferrer noopener">GitHub</a
 			>.
 		</p>
+
+		<div class="bg-muted/30 border-border mt-6 rounded-lg border px-4 py-3">
+			<p class="text-muted-foreground text-sm leading-relaxed">
+				Inspired from Official Prompt Kit: <a
+					class="hover:text-primary text-primary underline underline-offset-2"
+					href="https://www.prompt-kit.com"
+					target="_blank"
+					rel="noreferrer noopener">https://www.prompt-kit.com</a
+				><br />
+				Built by Ibelick:
+				<a
+					class="hover:text-primary text-primary underline underline-offset-2"
+					href="https://x.com/ibelick"
+					target="_blank"
+					rel="noreferrer noopener">https://x.com/ibelick</a
+				>
+			</p>
+		</div>
 	</div>
 </Sidebar.Inset>

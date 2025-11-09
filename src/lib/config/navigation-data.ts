@@ -67,11 +67,25 @@ export const navigationData: NavigationItem[] = [
 		keywords: ["reasoning", "thinking", "steps", "process", "logic"],
 	},
 	{
+		title: "Checkpoint",
+		href: "/components/checkpoint",
+		description: "Mark conversation history points and restore chat state",
+		category: "component",
+		keywords: ["checkpoint", "history", "restore", "undo", "conversation", "branching"],
+	},
+	{
 		title: "Code",
 		href: "/components/code",
 		description: "Display code blocks with syntax highlighting",
 		category: "component",
 		keywords: ["syntax", "highlight", "code block", "programming"],
+	},
+	{
+		title: "Confirmation",
+		href: "/components/confirmation",
+		description: "Request user approval before executing sensitive AI actions",
+		category: "component",
+		keywords: ["confirmation", "approval", "permission", "security", "ai-actions", "consent"],
 	},
 	{
 		title: "Context",
@@ -123,6 +137,13 @@ export const navigationData: NavigationItem[] = [
 		keywords: ["chat", "message", "bubble", "text"],
 	},
 	{
+		title: "Model Selector",
+		href: "/components/model-selector",
+		description: "A searchable command palette for selecting AI models",
+		category: "component",
+		keywords: ["model", "selector", "ai", "command", "palette", "search", "dialog"],
+	},
+	{
 		title: "Open in Chat",
 		href: "/components/open-in-chat",
 		description: "Link to open content in chat interface",
@@ -137,6 +158,20 @@ export const navigationData: NavigationItem[] = [
 		keywords: ["input", "textarea", "prompt", "query", "ask"],
 	},
 	{
+		title: "Plan",
+		href: "/components/plan",
+		description: "Display AI-generated execution plans with streaming support",
+		category: "component",
+		keywords: ["plan", "execution", "steps", "collapsible", "streaming", "shimmer"],
+	},
+	{
+		title: "Queue",
+		href: "/components/queue",
+		description: "Display lists of pending and completed tasks, messages, or items",
+		category: "component",
+		keywords: ["queue", "tasks", "todo", "list", "pending", "completed", "attachments"],
+	},
+	{
 		title: "Reasoning",
 		href: "/components/reasoning",
 		description: "Show AI reasoning and thought process",
@@ -149,6 +184,13 @@ export const navigationData: NavigationItem[] = [
 		description: "Display AI responses",
 		category: "component",
 		keywords: ["answer", "reply", "output", "response"],
+	},
+	{
+		title: "Shimmer",
+		href: "/components/shimmer",
+		description: "An animated shimmer effect for text, perfect for loading states",
+		category: "component",
+		keywords: ["shimmer", "animation", "loading", "text-effect", "gradient", "visual-effect"],
 	},
 	{
 		title: "Sources",
