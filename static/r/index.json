@@ -804,5 +804,23 @@
 			"featured": true
 		},
 		"relativeUrl": "confirmation.json"
+	},
+	{
+		"name": "queue",
+		"title": "Queue",
+		"type": "registry:block",
+		"author": "SikandarJODD",
+		"description": "A flexible component for displaying lists of pending and completed tasks, messages, or items with collapsible sections and attachment support.",
+		"dependencies": [
+			"bits-ui",
+			"runed",
+			"@lucide/svelte"
+		],
+		"registryDependencies": [
+			"collapsible",
+			"scroll-area",
+			"button"
+		],
+		"relativeUrl": "queue.json"
 	}
 ]

@@ -26,6 +26,14 @@
 	import LightSwitch from "../ui/light-switch/light-switch.svelte";
 	import McpDialog from "./mcp-dialog.svelte";
 
+	type MobileNavigationSubItem = {
+		href: string;
+		label: string;
+		icon?: Component;
+		description?: string;
+		badge?: string;
+	};
+
 	type MobileNavigationItem = {
 		label: string;
 		href?: string;
@@ -33,12 +41,7 @@
 		description?: string;
 		submenu?: boolean;
 		type?: "simple" | "description" | "icon";
-		items?: {
-			href: string;
-			label: string;
-			icon?: Component;
-			description?: string;
-		}[];
+		items?: MobileNavigationSubItem[];
 	};
 
 	// Mobile navigation with organized sections
@@ -81,11 +84,13 @@
 					description: "Mark conversation history points",
 					href: "/components/checkpoint",
 					label: "Checkpoint",
+					badge: "new",
 				},
 				{
 					description: "Request user approval for AI actions",
 					href: "/components/confirmation",
 					label: "Confirmation",
+					badge: "new",
 				},
 				{
 					description: "Complete conversation interfaces",
@@ -101,6 +106,12 @@
 					description: "Individual chat messages",
 					href: "/components/message",
 					label: "Message",
+				},
+				{
+					description: "Searchable AI model selection dialog",
+					href: "/components/model-selector",
+					label: "Model Selector",
+					badge: "new",
 				},
 				{
 					description: "AI reasoning and thought process",
@@ -141,11 +152,19 @@
 					description: "AI-generated execution plans",
 					href: "/components/plan",
 					label: "Plan",
+					badge: "new",
 				},
 				{
 					description: "Lists of pending and completed tasks",
 					href: "/components/queue",
 					label: "Queue",
+					badge: "new",
+				},
+				{
+					description: "Animated shimmer effect for text",
+					href: "/components/shimmer",
+					label: "Shimmer",
+					badge: "new",
 				},
 				{
 					description: "Toolbar for actions",
@@ -390,9 +409,21 @@
 																href={item.href}
 																class="hover:bg-accent hover:text-accent-foreground flex flex-col gap-0.5 rounded-md px-3 py-2 text-sm transition-colors"
 															>
-																<span class="font-medium"
-																	>{item.label}</span
+																<div
+																	class="flex w-full items-center justify-between"
 																>
+																	<span class="font-medium"
+																		>{item.label}</span
+																	>
+																	{#if item.badge}
+																		<Badge
+																			variant="secondary"
+																			class="bg-primary/10 text-primary hover:bg-primary/20 border-primary/20 h-4 border px-1 py-0 text-[10px] font-semibold uppercase"
+																		>
+																			{item.badge}
+																		</Badge>
+																	{/if}
+																</div>
 																{#if item.description}
 																	<span
 																		class="text-muted-foreground line-clamp-1 text-xs"

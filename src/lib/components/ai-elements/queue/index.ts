@@ -14,7 +14,7 @@ export { default as QueueSectionTrigger } from "./QueueSectionTrigger.svelte";
 export { default as QueueSectionLabel } from "./QueueSectionLabel.svelte";
 export { default as QueueSectionContent } from "./QueueSectionContent.svelte";
 
-export type * from "./types.js";
+// export type * from "./types.js";
 
 export type { QueueProps } from "./Queue.svelte";
 export type { QueueItemProps } from "./QueueItem.svelte";

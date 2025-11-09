@@ -2,12 +2,26 @@
 	import { page } from "$app/state";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import * as Collapsible from "$lib/components/ui/collapsible/index.js";
+	import Badge from "$lib/components/ui/badge/badge.svelte";
 	import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
 	import ExternalLinkIcon from "@lucide/svelte/icons/external-link";
 	import { onMount, type ComponentProps } from "svelte";
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 
-	let data = $state({
+	type SidebarItem = {
+		title: string;
+		url: string;
+		isActive?: boolean;
+		badge?: string;
+	};
+
+	type SidebarSection = {
+		title: string;
+		url: string;
+		items: SidebarItem[];
+	};
+
+	let data = $state<{ navMain: SidebarSection[] }>({
 		navMain: [
 			{
 				title: "Getting Started",
@@ -47,6 +61,7 @@
 					{
 						title: "Checkpoint",
 						url: "/components/checkpoint",
+						badge: "new",
 					},
 					{
 						title: "Code Block",
@@ -55,6 +70,7 @@
 					{
 						title: "Confirmation",
 						url: "/components/confirmation",
+						badge: "new",
 					},
 					{
 						title: "Context",
@@ -81,12 +97,18 @@
 						url: "/components/message",
 					},
 					{
+						title: "Model Selector",
+						url: "/components/model-selector",
+						badge: "new",
+					},
+					{
 						title: "Open in Chat",
 						url: "/components/open-in-chat",
 					},
 					{
 						title: "Plan",
 						url: "/components/plan",
+						badge: "new",
 					},
 					{
 						title: "Prompt Input",
@@ -95,6 +117,7 @@
 					{
 						title: "Queue",
 						url: "/components/queue",
+						badge: "new",
 					},
 					{
 						title: "Reasoning",
@@ -103,6 +126,11 @@
 					{
 						title: "Response",
 						url: "/components/response",
+					},
+					{
+						title: "Shimmer",
+						url: "/components/shimmer",
+						badge: "new",
 					},
 					{
 						title: "Sources",
@@ -179,7 +207,7 @@
 
 	let updateIsActive = (url: string) => {
 		data.navMain.forEach((item) => {
-			item.items?.forEach((subItem) => {
+			item.items.forEach((subItem) => {
 				subItem.isActive = subItem.url === url;
 			});
 		});
@@ -224,7 +252,21 @@
 											}}
 										>
 											{#snippet child({ props })}
-												<a href={subItem.url} {...props}>{subItem.title}</a>
+												<a
+													href={subItem.url}
+													{...props}
+													class="flex w-full items-center justify-between"
+												>
+													<span>{subItem.title}</span>
+													{#if subItem.badge}
+														<Badge
+															variant="secondary"
+															class="bg-primary/10 text-primary hover:bg-primary/20 border-primary/20 h-4 border px-1 py-0 text-[10px] font-semibold uppercase"
+														>
+															{subItem.badge}
+														</Badge>
+													{/if}
+												</a>
 											{/snippet}
 										</Sidebar.MenuButton>
 									</Sidebar.MenuItem>
