@@ -28,7 +28,7 @@
 </script>
 
 <span bind:this={ref} class={cn("flex items-center gap-2", className)} {...restProps}>
-	<ChevronDown class="size-4 transition-transform group-data-[state=open]:-rotate-90" />
+	<ChevronDown class="size-4 transition-transform group-data-[state=closed]:-rotate-90" />
 	{#if icon}
 		{@render icon()}
 	{/if}
