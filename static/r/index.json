@@ -739,5 +739,35 @@
 			"featured": false
 		},
 		"relativeUrl": "shimmer.json"
+	},
+	{
+		"name": "checkpoint",
+		"title": "Checkpoint",
+		"type": "registry:block",
+		"author": "SikandarJODD",
+		"description": "The Checkpoint component provides a visual marker or milestone indicator in AI workflows or conversations. Features a trigger and icon for displaying progress points, decision markers, or important stages in AI processes.",
+		"dependencies": [],
+		"registryDependencies": [
+			"separator"
+		],
+		"meta": {
+			"author": "SikandarJODD",
+			"version": "1.0.0",
+			"tags": [
+				"checkpoint",
+				"milestone",
+				"marker",
+				"progress",
+				"workflow",
+				"indicator"
+			],
+			"category": "AI Response",
+			"documentation": "https://svelte-ai-elements.vercel.app//components/checkpoint",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "beginner",
+			"updated": "2025-11-09",
+			"featured": false
+		},
+		"relativeUrl": "checkpoint.json"
 	}
 ]
