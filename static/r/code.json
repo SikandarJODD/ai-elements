@@ -18,11 +18,7 @@
 		"@internationalized/date@^3.8.1",
 		"tailwind-variants@^1.0.0"
 	],
-	"registryDependencies": [
-		"./copy-button.json",
-		"button",
-		"tooltip"
-	],
+	"registryDependencies": ["./copy-button.json", "button", "tooltip"],
 	"meta": {
 		"author": "SikandarJODD"
 	},

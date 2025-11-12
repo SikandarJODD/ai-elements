@@ -49,7 +49,7 @@
 		"type": "registry:block",
 		"description": "The CodeBlock component displays formatted code snippets with syntax highlighting, copy functionality, and language detection. Supports multiple code blocks with group context management for consistent styling.",
 		"dependencies": ["shiki", "@shikijs/langs", "@shikijs/themes"],
-		"registryDependencies": ["button", "./code-block.json"],
+		"registryDependencies": ["button", "local:prompt-kit-copy-button"],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "1.0.0",
@@ -299,17 +299,25 @@
 	{
 		"name": "tool",
 		"type": "registry:block",
-		"description": "The Tool component displays AI tool execution information with header, content, and details sections. Features composed tool layouts with context management for showing tool usage, parameters, and results in AI responses.",
-		"registryDependencies": ["collapsible", "badge", "button"],
+		"description": "The Tool component displays AI tool execution information with collapsible header, content, and details sections. Features state-based badges and shadcn-svelte Collapsible integration for showing tool usage, parameters, and results in AI responses.",
+		"dependencies": ["@lucide/svelte"],
+		"registryDependencies": ["collapsible", "button"],
 		"meta": {
 			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": ["prompt-kit", "tool", "execution", "ai-tools", "function-calling"],
+			"version": "2.0.0",
+			"tags": [
+				"prompt-kit",
+				"tool",
+				"execution",
+				"ai-tools",
+				"function-calling",
+				"collapsible"
+			],
 			"category": "Prompt Kit",
 			"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/tool",
 			"repository": "https://github.com/SikandarJODD/ai-elements",
 			"complexity": "intermediate",
-			"updated": "2025-10-19",
+			"updated": "2025-11-12",
 			"featured": true
 		},
 		"relativeUrl": "tool.json"

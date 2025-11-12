@@ -3,24 +3,12 @@
 	"name": "steps",
 	"type": "registry:block",
 	"description": "The Steps component provides a visual step-by-step progress indicator for AI processes. Features step items, trigger, content, and progress bar with context-based state management.",
-	"devDependencies": [
-		"@lucide/svelte@^0.544.0"
-	],
-	"registryDependencies": [
-		"collapsible",
-		"button"
-	],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"registryDependencies": ["collapsible", "button"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"prompt-kit",
-			"steps",
-			"progress",
-			"workflow",
-			"process",
-			"stepper"
-		],
+		"tags": ["prompt-kit", "steps", "progress", "workflow", "process", "stepper"],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/steps",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

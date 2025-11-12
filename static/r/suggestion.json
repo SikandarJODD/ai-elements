@@ -5,10 +5,7 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Suggestion component provides interactive suggestions for user input, offering quick actions and prompts to enhance the conversation experience.",
-	"registryDependencies": [
-		"button",
-		"scroll-area"
-	],
+	"registryDependencies": ["button", "scroll-area"],
 	"meta": {
 		"author": "SikandarJODD"
 	},

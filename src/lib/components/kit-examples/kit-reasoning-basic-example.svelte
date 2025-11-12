@@ -45,7 +45,7 @@
 	<Reasoning {isStreaming}>
 		<ReasoningTrigger>Show reasoning</ReasoningTrigger>
 		<ReasoningContent
-			class="ml-2 border-l-2 border-l-slate-200 px-2 pb-1 dark:border-l-slate-700"
+			class="ml-2 border-l-2 border-l-slate-200 px-2 pb-0 dark:border-l-slate-700"
 		>
 			{reasoningText}
 		</ReasoningContent>

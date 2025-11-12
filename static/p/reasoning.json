@@ -3,26 +3,13 @@
 	"name": "reasoning",
 	"type": "registry:block",
 	"description": "The Reasoning component displays AI reasoning and thinking process with collapsible content. Features trigger, content, and context management for showing step-by-step AI reasoning in responses.",
-	"dependencies": [
-		"runed@^0.31.1"
-	],
-	"devDependencies": [
-		"@lucide/svelte@^0.544.0"
-	],
-	"registryDependencies": [
-		"collapsible",
-		"button"
-	],
+	"dependencies": ["runed@^0.31.1", "svelte-streamdown@^2.6.1", "mode-watcher@^1.1.0"],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"registryDependencies": ["collapsible", "button"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"prompt-kit",
-			"reasoning",
-			"thinking",
-			"ai-process",
-			"collapsible"
-		],
+		"tags": ["prompt-kit", "reasoning", "thinking", "ai-process", "collapsible"],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/reasoning",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -42,7 +29,7 @@
 			"target": "prompt-kit/reasoning/reasoning-trigger.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { getReasoningContext } from \"./reasoning-context.svelte.js\";\n\timport { cn } from \"$UTILS$\";\n\timport { watch } from \"runed\";\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\tinterface Props {\n\t\tchildren: Snippet | string;\n\t\tclass?: string;\n\t\tcontentClassName?: string;\n\t\tmarkdown?: boolean;\n\t\t[key: string]: any;\n\t}\n\n\tlet {\n\t\tchildren,\n\t\tclass: className,\n\t\tcontentClassName,\n\t\tmarkdown = false,\n\t\t...rest\n\t}: Props = $props();\n\n\tconst context = getReasoningContext();\n\n\tlet contentRef: HTMLDivElement | undefined = $state();\n\tlet innerRef: HTMLDivElement | undefined = $state();\n\n\t// Watch for isOpen changes and resize observer\n\twatch(\n\t\t() => [context.isOpen, innerRef] as const,\n\t\t([isOpen, inner]) => {\n\t\t\tif (!contentRef || !inner) return;\n\n\t\t\tconst observer = new ResizeObserver(() => {\n\t\t\t\tif (contentRef && inner && isOpen) {\n\t\t\t\t\tcontentRef.style.maxHeight = `${inner.scrollHeight}px`;\n\t\t\t\t}\n\t\t\t});\n\n\t\t\tobserver.observe(inner);\n\n\t\t\tif (isOpen) {\n\t\t\t\tcontentRef.style.maxHeight = `${inner.scrollHeight}px`;\n\t\t\t}\n\n\t\t\treturn () => observer.disconnect();\n\t\t}\n\t);\n\n\t// Compute max height reactively\n\tlet maxHeight = $derived(context.isOpen && contentRef ? `${contentRef.scrollHeight}px` : \"0px\");\n</script>\n\n<div\n\tbind:this={contentRef}\n\tclass={cn(\"overflow-hidden transition-[max-height] duration-150 ease-out\", className)}\n\tstyle:max-height={maxHeight}\n\t{...rest}\n>\n\t<div\n\t\tbind:this={innerRef}\n\t\tclass={cn(\"text-muted-foreground prose prose-sm dark:prose-invert\", contentClassName)}\n\t>\n\t\t{#if markdown && typeof children === \"string\"}\n\t\t\t<!-- TODO: Add Markdown component if available -->\n\t\t\t{@html children}\n\t\t{:else if typeof children === \"function\"}\n\t\t\t{@render children()}\n\t\t{:else}\n\t\t\t{children}\n\t\t{/if}\n\t</div>\n</div>\n",
+			"content": "<script lang=\"ts\">\n\timport { getReasoningContext } from \"./reasoning-context.svelte.js\";\n\timport { cn } from \"$UTILS$\";\n\timport { watch } from \"runed\";\n\timport type { Snippet } from \"svelte\";\n\timport { Streamdown } from \"svelte-streamdown\";\n\timport { mode } from \"mode-watcher\";\n\n\tinterface Props {\n\t\tchildren?: Snippet;\n\t\tcontent?: string;\n\t\tclass?: string;\n\t\tcontentClassName?: string;\n\t\tmarkdown?: boolean;\n\t\t[key: string]: any;\n\t}\n\n\tlet {\n\t\tchildren,\n\t\tcontent, // for streamdown purpose only\n\t\tclass: className,\n\t\tcontentClassName,\n\t\tmarkdown = false,\n\t\t...rest\n\t}: Props = $props();\n\n\tconst context = getReasoningContext();\n\n\tlet contentRef: HTMLDivElement | undefined = $state();\n\tlet innerRef: HTMLDivElement | undefined = $state();\n\n\t// Watch for isOpen changes and resize observer\n\twatch(\n\t\t() => [context.isOpen, innerRef] as const,\n\t\t([isOpen, inner]) => {\n\t\t\tif (!contentRef || !inner) return;\n\n\t\t\tconst observer = new ResizeObserver(() => {\n\t\t\t\tif (contentRef && inner && isOpen) {\n\t\t\t\t\tcontentRef.style.maxHeight = `${inner.scrollHeight}px`;\n\t\t\t\t}\n\t\t\t});\n\n\t\t\tobserver.observe(inner);\n\n\t\t\tif (isOpen) {\n\t\t\t\tcontentRef.style.maxHeight = `${inner.scrollHeight}px`;\n\t\t\t}\n\n\t\t\treturn () => observer.disconnect();\n\t\t}\n\t);\n\n\t// Compute max height reactively\n\tlet maxHeight = $derived(context.isOpen && contentRef ? `${contentRef.scrollHeight}px` : \"0px\");\n</script>\n\n<div\n\tbind:this={contentRef}\n\tclass={cn(\"overflow-hidden transition-[max-height] duration-150 ease-out\", className)}\n\tstyle:max-height={maxHeight}\n\t{...rest}\n>\n\t<div\n\t\tbind:this={innerRef}\n\t\tclass={cn(\"text-muted-foreground prose prose-sm dark:prose-invert\", contentClassName)}\n\t>\n\t\t{#if content}\n\t\t\t<!-- Basic -->\n\t\t\t<!-- <Streamdown {content} /> -->\n\t\t\t<!-- Advance with light and dark theme  -->\n\t\t\t<Streamdown\n\t\t\t\t{content}\n\t\t\t\tclass=\"pb-4 [&>*:first-child]:mt-2 [&>*:last-child]:mb-0\"\n\t\t\t\tshikiTheme={mode.current === \"dark\"\n\t\t\t\t\t? \"github-dark-default\"\n\t\t\t\t\t: \"github-light-default\"}\n\t\t\t\tshikiPreloadThemes={[\"github-dark-default\", \"github-light-default\"]}\n\t\t\t\tbaseTheme=\"shadcn\"\n\t\t\t/>\n\t\t{:else}\n\t\t\t{@render children?.()}\n\t\t{/if}\n\t</div>\n</div>\n",
 			"type": "registry:component",
 			"target": "prompt-kit/reasoning/reasoning-content.svelte"
 		},

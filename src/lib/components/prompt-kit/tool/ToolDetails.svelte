@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { getToolContext } from "./tool-context.svelte.js";
 	import { cn } from "$lib/utils/utils";
+	import type { ToolPart } from "./types.js";
 	import type { HTMLAttributes } from "svelte/elements";
+	import { getContext } from "svelte";
 
 	let {
 		class: className,
@@ -10,7 +11,7 @@
 		class?: string;
 	} & HTMLAttributes<HTMLDivElement> = $props();
 
-	const context = getToolContext();
+	const toolPart = getContext<ToolPart>("toolPart");
 
 	function formatValue(value: unknown): string {
 		if (value === null) return "null";
@@ -22,7 +23,7 @@
 		return String(value);
 	}
 
-	const { input, output, state, toolCallId, errorText } = $derived(context.toolPart);
+	const { input, output, state, toolCallId, errorText } = $derived(toolPart);
 </script>
 
 <div class={cn("bg-background space-y-3 p-3", className)} {...restProps}>

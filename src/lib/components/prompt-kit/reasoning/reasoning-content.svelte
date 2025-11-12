@@ -3,10 +3,12 @@
 	import { cn } from "$lib/utils/utils";
 	import { watch } from "runed";
 	import type { Snippet } from "svelte";
-	import type { HTMLAttributes } from "svelte/elements";
+	import { Streamdown } from "svelte-streamdown";
+	import { mode } from "mode-watcher";
 
 	interface Props {
-		children: Snippet | string;
+		children?: Snippet;
+		content?: string;
 		class?: string;
 		contentClassName?: string;
 		markdown?: boolean;
@@ -15,6 +17,7 @@
 
 	let {
 		children,
+		content, // for streamdown purpose only
 		class: className,
 		contentClassName,
 		markdown = false,
@@ -62,13 +65,21 @@
 		bind:this={innerRef}
 		class={cn("text-muted-foreground prose prose-sm dark:prose-invert", contentClassName)}
 	>
-		{#if markdown && typeof children === "string"}
-			<!-- TODO: Add Markdown component if available -->
-			{@html children}
-		{:else if typeof children === "function"}
-			{@render children()}
+		{#if content}
+			<!-- Basic -->
+			<!-- <Streamdown {content} /> -->
+			<!-- Advance with light and dark theme  -->
+			<Streamdown
+				{content}
+				class="pb-4 [&>*:first-child]:mt-2 [&>*:last-child]:mb-0"
+				shikiTheme={mode.current === "dark"
+					? "github-dark-default"
+					: "github-light-default"}
+				shikiPreloadThemes={["github-dark-default", "github-light-default"]}
+				baseTheme="shadcn"
+			/>
 		{:else}
-			{children}
+			{@render children?.()}
 		{/if}
 	</div>
 </div>
