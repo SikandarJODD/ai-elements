@@ -2619,7 +2619,7 @@
 		{
 			"name": "prompt-kit-tool",
 			"type": "registry:block",
-			"description": "The Tool component displays AI tool execution information with header, content, and details sections. Features composed tool layouts with context management for showing tool usage, parameters, and results in AI responses.",
+			"description": "The Tool component displays AI tool execution information with collapsible header, content, and details sections. Features state-based badges and shadcn-svelte Collapsible integration for showing tool usage, parameters, and results in AI responses.",
 			"files": [
 				{
 					"path": "src/lib/components/prompt-kit/tool/Tool.svelte",
@@ -2647,9 +2647,14 @@
 					"target": "prompt-kit/tool/ToolDetails.svelte"
 				},
 				{
-					"path": "src/lib/components/prompt-kit/tool/tool-context.svelte.ts",
+					"path": "src/lib/components/prompt-kit/tool/ToolBadge.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/tool/ToolBadge.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/tool/types.ts",
 					"type": "registry:file",
-					"target": "prompt-kit/tool/tool-context.svelte.ts"
+					"target": "prompt-kit/tool/types.ts"
 				},
 				{
 					"path": "src/lib/components/prompt-kit/tool/index.ts",
@@ -2657,16 +2662,24 @@
 					"target": "prompt-kit/tool/index.ts"
 				}
 			],
-			"registryDependencies": ["collapsible", "badge", "button"],
+			"dependencies": ["@lucide/svelte"],
+			"registryDependencies": ["collapsible", "button"],
 			"meta": {
 				"author": "SikandarJODD",
-				"version": "1.0.0",
-				"tags": ["prompt-kit", "tool", "execution", "ai-tools", "function-calling"],
+				"version": "2.0.0",
+				"tags": [
+					"prompt-kit",
+					"tool",
+					"execution",
+					"ai-tools",
+					"function-calling",
+					"collapsible"
+				],
 				"category": "Prompt Kit",
 				"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/tool",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
 				"complexity": "intermediate",
-				"updated": "2025-10-19",
+				"updated": "2025-11-12",
 				"featured": true
 			}
 		}

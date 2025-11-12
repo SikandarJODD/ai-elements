@@ -3,22 +3,12 @@
 	"name": "file-upload",
 	"type": "registry:block",
 	"description": "The FileUpload component provides drag-and-drop file upload functionality with preview, validation, and context-based state management. Features trigger and content components for flexible upload UI.",
-	"dependencies": [
-		"runed"
-	],
-	"registryDependencies": [
-		"button"
-	],
+	"dependencies": ["runed"],
+	"registryDependencies": ["button"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"prompt-kit",
-			"file-upload",
-			"drag-drop",
-			"attachments",
-			"validation"
-		],
+		"tags": ["prompt-kit", "file-upload", "drag-drop", "attachments", "validation"],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/file-upload",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

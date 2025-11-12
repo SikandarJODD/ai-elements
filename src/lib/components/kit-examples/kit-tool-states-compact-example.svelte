@@ -2,54 +2,54 @@
 	import { ToolComposed } from "$lib/components/prompt-kit/tool";
 	import type { ToolPart } from "$lib/components/prompt-kit/tool";
 
-	const toolInputStreaming: ToolPart = {
-		type: "file_search",
+	const toolProcessing: ToolPart = {
+		type: "search_documents",
 		state: "input-streaming",
 		input: {
-			pattern: "*.tsx",
-			directory: "/components",
+			query: "AI best practices",
+			max_results: 10,
 		},
+		toolCallId: "call_001",
 	};
 
-	const toolInputAvailable: ToolPart = {
-		type: "api_call",
+	const toolReady: ToolPart = {
+		type: "translate_text",
 		state: "input-available",
 		input: {
-			endpoint: "/api/users",
-			method: "GET",
+			text: "Hello, world!",
+			target_language: "es",
 		},
+		toolCallId: "call_002",
 	};
 
-	const toolOutputAvailable: ToolPart = {
-		type: "database_query",
+	const toolCompleted: ToolPart = {
+		type: "calculate_sum",
 		state: "output-available",
 		input: {
-			table: "users",
-			limit: 10,
+			numbers: [10, 20, 30, 40],
 		},
 		output: {
-			count: 42,
-			data: [
-				{ id: 1, name: "John Doe" },
-				{ id: 2, name: "Jane Smith" },
-			],
+			result: 100,
+			operation: "sum",
 		},
+		toolCallId: "call_003",
 	};
 
-	const toolOutputError: ToolPart = {
-		type: "email_send",
+	const toolError: ToolPart = {
+		type: "fetch_api_data",
 		state: "output-error",
-		output: {
-			to: "user@example.com",
-			subject: "Welcome!",
+		input: {
+			url: "https://api.example.com/data",
+			method: "GET",
 		},
-		errorText: "Failed to connect to SMTP server",
+		errorText: "Network timeout: Request exceeded 30 second limit",
+		toolCallId: "call_004",
 	};
 </script>
 
 <div class="flex w-full flex-col items-center justify-center space-y-2">
-	<ToolComposed toolPart={toolInputStreaming} class="w-full max-w-md" />
-	<ToolComposed toolPart={toolInputAvailable} class="w-full max-w-md" />
-	<ToolComposed toolPart={toolOutputAvailable} class="w-full max-w-md" />
-	<ToolComposed toolPart={toolOutputError} class="w-full max-w-md" />
+	<ToolComposed toolPart={toolProcessing} class="w-full max-w-md" />
+	<ToolComposed toolPart={toolReady} class="w-full max-w-md" />
+	<ToolComposed toolPart={toolCompleted} class="w-full max-w-md" />
+	<ToolComposed toolPart={toolError} class="w-full max-w-md" />
 </div>

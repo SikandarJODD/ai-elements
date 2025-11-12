@@ -9,7 +9,7 @@
 	import { Hammer } from "@lucide/svelte";
 </script>
 
-<div class="space-y-4">
+<div class="min-w-sm space-y-4">
 	<Steps defaultOpen>
 		{#snippet children()}
 			<StepsTrigger>

@@ -18,9 +18,7 @@
 		<ConfirmationTitle>
 			<ConfirmationRequest>
 				This tool wants to delete the file
-				<code class="rounded bg-muted px-1.5 py-0.5 text-sm">
-					/tmp/example.txt
-				</code>
+				<code class="bg-muted rounded px-1.5 py-0.5 text-sm"> /tmp/example.txt </code>
 				. Do you approve this action?
 			</ConfirmationRequest>
 			<ConfirmationAccepted>
@@ -34,4 +32,3 @@
 		</ConfirmationTitle>
 	</Confirmation>
 </div>
-

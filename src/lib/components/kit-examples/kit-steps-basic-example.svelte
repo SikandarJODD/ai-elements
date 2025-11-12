@@ -2,7 +2,7 @@
 	import { Steps, StepsContent, StepsItem, StepsTrigger } from "$lib/components/prompt-kit/steps";
 </script>
 
-<div class="space-y-4">
+<div class="min-w-sm space-y-4">
 	<Steps defaultOpen>
 		{#snippet children()}
 			<StepsTrigger>

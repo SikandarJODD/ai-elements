@@ -1,22 +1,31 @@
 <script lang="ts">
 	import { cn } from "$lib/utils/utils";
-	import { ToolClass, setToolContext, type ToolSchema } from "./tool-context.svelte.js";
+	import { Collapsible } from "$lib/components/ui/collapsible/index.js";
+	import type { ToolPart } from "./types.js";
 	import type { Snippet } from "svelte";
-	import type { HTMLAttributes } from "svelte/elements";
+	import { setContext } from "svelte";
 
 	let {
+		toolPart,
+		defaultOpen = false,
+		open = $bindable(defaultOpen),
 		class: className,
 		children,
-		...restProps
-	}: ToolSchema & {
+	}: {
+		toolPart: ToolPart;
+		defaultOpen?: boolean;
+		open?: boolean;
 		class?: string;
 		children: Snippet;
-	} & HTMLAttributes<HTMLDivElement> = $props();
+	} = $props();
 
-	const contextInstance = new ToolClass(restProps as ToolSchema);
-	setToolContext(contextInstance);
+	// Provide toolPart to child components via context
+	setContext("toolPart", toolPart);
 </script>
 
-<div class={cn("border-border mt-3 overflow-hidden rounded-lg border", className)}>
+<Collapsible
+	bind:open
+	class={cn("border-border mt-3 overflow-hidden rounded-lg border", className)}
+>
 	{@render children()}
-</div>
+</Collapsible>

@@ -5,16 +5,9 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Reasoning component displays AI reasoning content, automatically opening during streaming and closing when finished.",
-	"dependencies": [
-		"runed",
-		"@lucide/svelte"
-	],
-	"devDependencies": [
-		"@lucide/svelte@^0.544.0"
-	],
-	"registryDependencies": [
-		"collapsible"
-	],
+	"dependencies": ["runed", "@lucide/svelte"],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"registryDependencies": ["collapsible"],
 	"meta": {
 		"author": "SikandarJODD"
 	},

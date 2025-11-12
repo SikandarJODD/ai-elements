@@ -47,7 +47,7 @@
 		onValueChange={handleValueChange}
 		{isLoading}
 		onSubmit={handleSubmit}
-		class="w-full max-w-sm"
+		class="w-full max-w-xl"
 	>
 		{#if files.length > 0}
 			<div class="grid grid-cols-2 gap-2 pb-2">

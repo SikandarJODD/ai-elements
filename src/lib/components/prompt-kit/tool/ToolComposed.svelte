@@ -1,22 +1,19 @@
 <script lang="ts">
-	import { cn } from "$lib/utils/utils";
-	import type { ToolPart } from "./tool-context.svelte.js";
+	import type { ToolPart } from "./types.js";
 	import { Tool, ToolHeader, ToolContent, ToolDetails } from "./index.js";
-	import type { HTMLAttributes } from "svelte/elements";
 
 	let {
 		toolPart,
 		defaultOpen = false,
 		class: className,
-		...restProps
 	}: {
 		toolPart: ToolPart;
 		defaultOpen?: boolean;
 		class?: string;
-	} & HTMLAttributes<HTMLDivElement> = $props();
+	} = $props();
 </script>
 
-<Tool {toolPart} {defaultOpen} class={className} {...restProps}>
+<Tool {toolPart} {defaultOpen} class={className}>
 	<ToolHeader />
 	<ToolContent>
 		<ToolDetails />

@@ -3,19 +3,11 @@
 	"name": "prompt-suggestion",
 	"type": "registry:block",
 	"description": "The PromptSuggestion component displays clickable prompt suggestions to help users get started with AI conversations. Features customizable suggestions with icons and descriptions.",
-	"registryDependencies": [
-		"button"
-	],
+	"registryDependencies": ["button"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"prompt-kit",
-			"suggestion",
-			"prompts",
-			"quick-start",
-			"examples"
-		],
+		"tags": ["prompt-kit", "suggestion", "prompts", "quick-start", "examples"],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/prompt-suggestion",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

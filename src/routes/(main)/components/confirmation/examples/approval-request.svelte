@@ -20,7 +20,7 @@
 		<ConfirmationTitle>
 			<ConfirmationRequest>
 				This tool wants to execute a query on the production database:
-				<code class="mt-2 block rounded bg-muted p-2 text-sm">
+				<code class="bg-muted mt-2 block rounded p-2 text-sm">
 					SELECT * FROM users WHERE role = 'admin'
 				</code>
 			</ConfirmationRequest>
@@ -55,4 +55,3 @@
 		</ConfirmationActions>
 	</Confirmation>
 </div>
-
