@@ -85,8 +85,8 @@
 			</p>
 
 			<p class="text-muted-foreground text-base leading-7">
-				Once shadcn-svelte is set up, you can install prompt-kit components using the shadcn
-				CLI.
+				Once shadcn-svelte is set up, you can install svelte prompt-kit components using the
+				shadcn CLI.
 			</p>
 		</section>
 
