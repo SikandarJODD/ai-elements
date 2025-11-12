@@ -13,10 +13,10 @@
 				title: "Getting Started",
 				url: "#",
 				items: [
-					// {
-					//   title: "Introduction",
-					//   url: "/prompt-kit",
-					// },
+					{
+						title: "Introduction",
+						url: "/prompt-kit",
+					},
 					{
 						title: "Installation",
 						url: "/prompt-kit/installation",
