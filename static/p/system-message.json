@@ -3,7 +3,7 @@
 	"name": "system-message",
 	"type": "registry:block",
 	"description": "The SystemMessage component displays system-level messages or notifications in chat interfaces. Features consistent styling for system announcements, errors, or status updates.",
-	"devDependencies": ["tailwind-variants@^1.0.0", "@lucide/svelte@^0.544.0"],
+	"devDependencies": ["tailwind-variants@^3.1.1", "@lucide/svelte@^0.544.0"],
 	"registryDependencies": ["button"],
 	"meta": {
 		"author": "SikandarJODD",

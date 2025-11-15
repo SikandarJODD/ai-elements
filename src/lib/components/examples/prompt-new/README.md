@@ -5,7 +5,9 @@ This directory contains 6 comprehensive examples demonstrating the new Prompt In
 ## Examples Overview
 
 ### 1. **Cursor-Style with Tools & Model Selector** (`PromptInputExample1CursorStyle.svelte`)
+
 **Full-featured example** showcasing:
+
 - ✅ Action menu with dropdown
 - ✅ Model selector with multiple models
 - ✅ Speech-to-text button
@@ -18,7 +20,9 @@ This directory contains 6 comprehensive examples demonstrating the new Prompt In
 ---
 
 ### 2. **Web Speech API Focus** (`PromptInputExample2SpeechAPI.svelte`)
+
 **Minimal example** highlighting:
+
 - ✅ Speech-to-text functionality
 - ✅ Voice input demonstration
 - ✅ Real-time transcription
@@ -29,7 +33,9 @@ This directory contains 6 comprehensive examples demonstrating the new Prompt In
 ---
 
 ### 3. **File Upload & Control** (`PromptInputExample3FileUpload.svelte`)
+
 **File-focused example** demonstrating:
+
 - ✅ File validation (accept, maxFiles, maxFileSize)
 - ✅ Image-only uploads
 - ✅ Error handling with user feedback
@@ -41,7 +47,9 @@ This directory contains 6 comprehensive examples demonstrating the new Prompt In
 ---
 
 ### 4. **Command Palette Integration** (`PromptInputExample4CommandPalette.svelte`)
+
 **Advanced example** featuring:
+
 - ✅ Command palette in header
 - ✅ File/folder search
 - ✅ Context selection
@@ -53,7 +61,9 @@ This directory contains 6 comprehensive examples demonstrating the new Prompt In
 ---
 
 ### 5. **Tabs & Hover Cards** (`PromptInputExample5TabsHoverCards.svelte`)
+
 **UI-rich example** showcasing:
+
 - ✅ Tabs for file organization (Active/Recent)
 - ✅ Multiple hover cards
 - ✅ File metadata display
@@ -65,7 +75,9 @@ This directory contains 6 comprehensive examples demonstrating the new Prompt In
 ---
 
 ### 6. **Provider Mode with External Controls** (`PromptInputExample6ProviderMode.svelte`)
+
 **Provider pattern example** demonstrating:
+
 - ✅ PromptInputProvider usage
 - ✅ External control buttons
 - ✅ Programmatic input manipulation
@@ -88,18 +100,18 @@ This directory contains 6 comprehensive examples demonstrating the new Prompt In
 
 ## Features Demonstrated Across Examples
 
-| Feature | Ex1 | Ex2 | Ex3 | Ex4 | Ex5 | Ex6 |
-|---------|-----|-----|-----|-----|-----|-----|
-| File Attachments | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ |
-| Speech-to-Text | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| Model Selector | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Action Menu | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ |
-| Command Palette | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ |
-| Tabs | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ |
-| Hover Cards | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ |
-| Provider Mode | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ |
-| Header Section | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ |
-| File Validation | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ |
+| Feature          | Ex1 | Ex2 | Ex3 | Ex4 | Ex5 | Ex6 |
+| ---------------- | --- | --- | --- | --- | --- | --- |
+| File Attachments | ✅  | ❌  | ✅  | ❌  | ❌  | ✅  |
+| Speech-to-Text   | ✅  | ✅  | ❌  | ❌  | ❌  | ❌  |
+| Model Selector   | ✅  | ❌  | ❌  | ❌  | ❌  | ❌  |
+| Action Menu      | ✅  | ❌  | ✅  | ❌  | ❌  | ❌  |
+| Command Palette  | ❌  | ❌  | ❌  | ✅  | ❌  | ❌  |
+| Tabs             | ❌  | ❌  | ❌  | ❌  | ✅  | ❌  |
+| Hover Cards      | ❌  | ❌  | ❌  | ✅  | ✅  | ❌  |
+| Provider Mode    | ❌  | ❌  | ❌  | ❌  | ❌  | ✅  |
+| Header Section   | ❌  | ❌  | ❌  | ✅  | ✅  | ❌  |
+| File Validation  | ❌  | ❌  | ✅  | ❌  | ❌  | ❌  |
 
 ## Component Architecture
 
@@ -131,20 +143,26 @@ All examples follow the same basic structure:
 ## Key Patterns
 
 ### 1. **Svelte 5 Runes**
+
 All examples use modern Svelte 5 syntax:
+
 - `$state` for reactive state
 - `$derived` for computed values
 - `{#snippet}` for render props
 
 ### 2. **bind:value Pattern**
+
 Components use Svelte's `bind:value` instead of React's controlled pattern:
+
 ```svelte
 <PromptInputModelSelect bind:value={model} />
 <PromptInputTabs bind:value={activeTab} />
 ```
 
 ### 3. **Type Safety**
+
 All examples are fully typed with TypeScript:
+
 ```typescript
 import type { ChatStatus, PromptInputMessage } from "ai";
 ```
@@ -152,8 +170,8 @@ import type { ChatStatus, PromptInputMessage } from "ai";
 ## Testing
 
 Each example can be tested independently. They all:
+
 - ✅ Have no TypeScript errors
 - ✅ Use proper Svelte 5 syntax
 - ✅ Follow the codebase patterns
 - ✅ Include user feedback (status, messages, errors)
-

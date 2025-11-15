@@ -27,11 +27,11 @@
 </script>
 
 <div class="mx-auto w-full max-w-2xl space-y-4">
-	<div class="rounded-lg border bg-card p-4">
+	<div class="bg-card rounded-lg border p-4">
 		<h3 class="mb-2 font-semibold">Web Speech API Demo</h3>
-		<p class="text-sm text-muted-foreground">
-			Click the microphone button to start voice input. Speak clearly and your words will appear
-			in the textarea.
+		<p class="text-muted-foreground text-sm">
+			Click the microphone button to start voice input. Speak clearly and your words will
+			appear in the textarea.
 		</p>
 	</div>
 
@@ -53,10 +53,9 @@
 	</PromptInput>
 
 	{#if lastMessage}
-		<div class="rounded-lg border bg-muted p-4">
+		<div class="bg-muted rounded-lg border p-4">
 			<p class="text-sm font-medium">Last submitted message:</p>
 			<p class="mt-2 text-sm">{lastMessage}</p>
 		</div>
 	{/if}
 </div>
-

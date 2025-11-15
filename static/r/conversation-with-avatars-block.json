@@ -1,0 +1,27 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "conversation-with-avatars-block",
+	"title": "Conversation with Avatars Block",
+	"type": "registry:block",
+	"author": "SikandarJODD",
+	"description": "A conversation block with avatar images for each message. Enhances the chat experience with visual user representation.",
+	"registryDependencies": ["../p/chat-container.json", "../p/message.json"],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": ["prompt-kit", "block", "conversation", "avatars", "chat", "users"],
+		"category": "Prompt Kit Blocks",
+		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "beginner",
+		"updated": "2025-11-16",
+		"featured": true
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport {\n\t\tChatContainerContent,\n\t\tChatContainerRoot,\n\t} from \"$COMPONENTS$/prompt-kit/chat-container\";\n\timport { Message, MessageAvatar, MessageContent } from \"$COMPONENTS$/prompt-kit/message\";\n\timport { cn } from \"$UTILS$\";\n\n\tconst messages = [\n\t\t{\n\t\t\tid: 1,\n\t\t\trole: \"user\",\n\t\t\tcontent: \"Hello! Can you help me with a coding question?\",\n\t\t\tavatar: \"https://api.dicebear.com/7.x/avataaars/svg?seed=user1\",\n\t\t\tfallback: \"U\",\n\t\t},\n\t\t{\n\t\t\tid: 2,\n\t\t\trole: \"assistant\",\n\t\t\tcontent:\n\t\t\t\t\"Of course! I'd be happy to help with your coding question. What would you like to know?\",\n\t\t\tavatar: \"https://api.dicebear.com/7.x/bottts/svg?seed=assistant\",\n\t\t\tfallback: \"AI\",\n\t\t},\n\t\t{\n\t\t\tid: 3,\n\t\t\trole: \"user\",\n\t\t\tcontent: \"How do I create a responsive layout with CSS Grid?\",\n\t\t\tavatar: \"https://api.dicebear.com/7.x/avataaars/svg?seed=user1\",\n\t\t\tfallback: \"U\",\n\t\t},\n\t\t{\n\t\t\tid: 4,\n\t\t\trole: \"assistant\",\n\t\t\tcontent:\n\t\t\t\t\"Creating a responsive layout with CSS Grid is straightforward. Here's a basic example:\\n\\n```css\\n.container {\\n  display: grid;\\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\\n  gap: 1rem;\\n}\\n```\\n\\nThis creates a grid where:\\n- Columns automatically fit as many as possible\\n- Each column is at least 250px wide\\n- Columns expand to fill available space\\n- There's a 1rem gap between items\\n\\nWould you like me to explain more about how this works?\",\n\t\t\tavatar: \"https://api.dicebear.com/7.x/bottts/svg?seed=assistant\",\n\t\t\tfallback: \"AI\",\n\t\t},\n\t];\n</script>\n\n<ChatContainerRoot class=\"h-[400px] w-full\">\n\t<ChatContainerContent class=\"h-full min-w-full space-y-4 overflow-y-auto px-4 py-6\">\n\t\t{#each messages as message (message.id)}\n\t\t\t{@const isAssistant = message.role === \"assistant\"}\n\t\t\t<Message\n\t\t\t\tclass={cn(\n\t\t\t\t\t\"mx-auto flex w-full max-w-3xl flex-col gap-2 px-0 md:px-6\",\n\t\t\t\t\tisAssistant ? \"items-start\" : \"items-end\"\n\t\t\t\t)}\n\t\t\t>\n\t\t\t\t{#if message.role === \"assistant\"}\n\t\t\t\t\t<MessageAvatar\n\t\t\t\t\t\tsrc={message.avatar}\n\t\t\t\t\t\talt={message.role}\n\t\t\t\t\t\tfallback={message.fallback}\n\t\t\t\t\t\tclass=\"mb-0.5 h-6 w-6\"\n\t\t\t\t\t/>\n\t\t\t\t{:else}\n\t\t\t\t\t<MessageAvatar\n\t\t\t\t\t\tclass=\"h-6 w-6\"\n\t\t\t\t\t\tsrc={message.avatar}\n\t\t\t\t\t\talt={message.role}\n\t\t\t\t\t\tfallback={message.fallback}\n\t\t\t\t\t/>\n\t\t\t\t{/if}\n\t\t\t\t{#if isAssistant}\n\t\t\t\t\t<MessageContent\n\t\t\t\t\t\tclass=\"prose text-primary w-full max-w-[85%] flex-1 overflow-x-auto rounded-lg bg-transparent p-0 py-0 sm:max-w-[75%]\"\n\t\t\t\t\t\tmarkdown={true}\n\t\t\t\t\t\tcontent={message.content}\n\t\t\t\t\t></MessageContent>\n\t\t\t\t{:else}\n\t\t\t\t\t<MessageContent class=\"bg-secondary text-primary max-w-[85%] sm:max-w-[75%]\">\n\t\t\t\t\t\t{message.content}\n\t\t\t\t\t</MessageContent>\n\t\t\t\t{/if}\n\t\t\t</Message>\n\t\t{/each}\n\t</ChatContainerContent>\n</ChatContainerRoot>\n",
+			"type": "registry:component",
+			"target": "prompt-kit-blocks/conversation-with-avatars.svelte"
+		}
+	]
+}

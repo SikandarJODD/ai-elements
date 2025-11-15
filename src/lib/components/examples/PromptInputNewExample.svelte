@@ -43,7 +43,7 @@
 		<div class="space-y-2 rounded-lg border p-4">
 			<h2 class="font-semibold">Messages:</h2>
 			{#each messages as msg, i}
-				<div class="rounded border-l-4 border-blue-500 bg-muted p-3">
+				<div class="bg-muted rounded border-l-4 border-blue-500 p-3">
 					<p class="text-sm"><strong>Message {i + 1}:</strong> {msg.text}</p>
 					{#if msg.files.length > 0}
 						<p class="text-muted-foreground text-xs">
@@ -71,7 +71,9 @@
 					<PromptInputAttachment data={file} />
 				{/snippet}
 			</PromptInputAttachments>
-			<PromptInputTextarea placeholder="Type your message... (Drag & drop images, paste, or use the + menu)" />
+			<PromptInputTextarea
+				placeholder="Type your message... (Drag & drop images, paste, or use the + menu)"
+			/>
 		</PromptInputBody>
 		<PromptInputFooter>
 			<PromptInputTools>
@@ -104,4 +106,3 @@
 		</ul>
 	</div>
 </div>
-

@@ -4,7 +4,7 @@
 	"type": "registry:block",
 	"description": "The CodeBlock component displays formatted code snippets with syntax highlighting, copy functionality, and language detection. Supports multiple code blocks with group context management for consistent styling.",
 	"dependencies": ["shiki", "@shikijs/langs", "@shikijs/themes"],
-	"registryDependencies": ["button", "./prompt-kit-copy-button.json"],
+	"registryDependencies": ["button", "./copy-button.json"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",

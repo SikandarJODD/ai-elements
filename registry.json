@@ -2682,6 +2682,306 @@
 				"updated": "2025-11-12",
 				"featured": true
 			}
+		},
+		{
+			"name": "prompt-input-with-actions-block",
+			"title": "Prompt Input with Actions Block",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "A complete prompt input block with multiple action buttons for search, voice input, and more. This is a ready-to-use block that includes all functionality for advanced prompt input interactions.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit-blocks/prompt-input-with-actions.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit-blocks/prompt-input-with-actions.svelte"
+				}
+			],
+			"registryDependencies": ["local:prompt-kit-prompt-input", "button"],
+			"dependencies": ["@lucide/svelte"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "block", "input", "actions", "voice", "search"],
+				"category": "Prompt Kit Blocks",
+				"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "beginner",
+				"updated": "2025-11-16",
+				"featured": true
+			}
+		},
+		{
+			"name": "prompt-input-with-suggestions-block",
+			"title": "Prompt Input with Suggestions Block",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "A prompt input block with categorized suggestions that expand on click. Perfect for helping users get started with AI conversations.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit-blocks/prompt-input-with-suggestions.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit-blocks/prompt-input-with-suggestions.svelte"
+				}
+			],
+			"registryDependencies": [
+				"local:prompt-kit-prompt-input",
+				"local:prompt-kit-prompt-suggestion",
+				"button"
+			],
+			"dependencies": ["@lucide/svelte"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "block", "input", "suggestions", "prompts", "categories"],
+				"category": "Prompt Kit Blocks",
+				"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "beginner",
+				"updated": "2025-11-16",
+				"featured": true
+			}
+		},
+		{
+			"name": "prompt-input-with-autocomplete-block",
+			"title": "Prompt Input with Autocomplete Block",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "A prompt input block with autocomplete suggestions that filter as you type. Provides smart auto-completion for enhanced user experience.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit-blocks/prompt-input-with-autocomplete.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit-blocks/prompt-input-with-autocomplete.svelte"
+				}
+			],
+			"registryDependencies": [
+				"local:prompt-kit-prompt-input",
+				"local:prompt-kit-prompt-suggestion",
+				"button"
+			],
+			"dependencies": ["@lucide/svelte"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": [
+					"prompt-kit",
+					"block",
+					"input",
+					"autocomplete",
+					"suggestions",
+					"filtering"
+				],
+				"category": "Prompt Kit Blocks",
+				"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-11-16",
+				"featured": true
+			}
+		},
+		{
+			"name": "basic-full-conversation-block",
+			"title": "Basic Full Conversation Block",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "A simple conversation layout block with user and assistant messages. Perfect for basic chat interfaces with clean message display.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit-blocks/basic-full-conversation.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit-blocks/basic-full-conversation.svelte"
+				}
+			],
+			"registryDependencies": ["local:prompt-kit-chat-container", "local:prompt-kit-message"],
+			"dependencies": [],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "block", "conversation", "chat", "messages", "basic"],
+				"category": "Prompt Kit Blocks",
+				"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "beginner",
+				"updated": "2025-11-16",
+				"featured": true
+			}
+		},
+		{
+			"name": "conversation-with-avatars-block",
+			"title": "Conversation with Avatars Block",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "A conversation block with avatar images for each message. Enhances the chat experience with visual user representation.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit-blocks/conversation-with-avatars.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit-blocks/conversation-with-avatars.svelte"
+				}
+			],
+			"registryDependencies": ["local:prompt-kit-chat-container", "local:prompt-kit-message"],
+			"dependencies": [],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "block", "conversation", "avatars", "chat", "users"],
+				"category": "Prompt Kit Blocks",
+				"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "beginner",
+				"updated": "2025-11-16",
+				"featured": true
+			}
+		},
+		{
+			"name": "conversation-with-actions-block",
+			"title": "Conversation with Actions Block",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "A conversation block with action buttons like copy, like, dislike, and regenerate. Perfect for interactive chat experiences with user feedback.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit-blocks/conversation-with-actions.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit-blocks/conversation-with-actions.svelte"
+				}
+			],
+			"registryDependencies": [
+				"local:prompt-kit-chat-container",
+				"local:prompt-kit-message",
+				"button"
+			],
+			"dependencies": ["@lucide/svelte"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": [
+					"prompt-kit",
+					"block",
+					"conversation",
+					"actions",
+					"interactive",
+					"feedback"
+				],
+				"category": "Prompt Kit Blocks",
+				"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-11-16",
+				"featured": true
+			}
+		},
+		{
+			"name": "conversation-with-scroll-block",
+			"title": "Conversation with Scroll Button Block",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "A conversation block with a scroll-to-bottom button for easy navigation. Ideal for long conversations with smooth scrolling functionality.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit-blocks/conversation-with-scroll.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit-blocks/conversation-with-scroll.svelte"
+				}
+			],
+			"registryDependencies": [
+				"local:prompt-kit-chat-container",
+				"local:prompt-kit-message",
+				"local:prompt-kit-scroll-button"
+			],
+			"dependencies": [],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": [
+					"prompt-kit",
+					"block",
+					"conversation",
+					"scroll",
+					"navigation",
+					"long-chat"
+				],
+				"category": "Prompt Kit Blocks",
+				"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-11-16",
+				"featured": true
+			}
+		},
+		{
+			"name": "conversation-with-prompt-input-block",
+			"title": "Conversation with Prompt Input Block",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "A complete chat interface block with conversation history and prompt input. The ultimate all-in-one block for full chat experiences.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit-blocks/conversation-with-prompt-input.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit-blocks/conversation-with-prompt-input.svelte"
+				}
+			],
+			"registryDependencies": [
+				"local:prompt-kit-chat-container",
+				"local:prompt-kit-message",
+				"local:prompt-kit-prompt-input",
+				"local:prompt-kit-scroll-button",
+				"button"
+			],
+			"dependencies": ["@lucide/svelte"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": [
+					"prompt-kit",
+					"block",
+					"conversation",
+					"chat",
+					"complete",
+					"full-interface"
+				],
+				"category": "Prompt Kit Blocks",
+				"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "advanced",
+				"updated": "2025-11-16",
+				"featured": true
+			}
+		},
+		{
+			"name": "full-chat-app-block",
+			"title": "Full Chat App Block",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "A complete chat application block with sidebar, chat history, and all features combined. The most comprehensive chat interface block available.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit-blocks/full-chat-app.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit-blocks/full-chat-app.svelte"
+				}
+			],
+			"registryDependencies": [
+				"local:prompt-kit-chat-container",
+				"local:prompt-kit-message",
+				"local:prompt-kit-prompt-input",
+				"local:prompt-kit-scroll-button",
+				"button",
+				"sidebar"
+			],
+			"dependencies": ["@lucide/svelte"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "block", "chat-app", "sidebar", "complete", "application"],
+				"category": "Prompt Kit Blocks",
+				"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "advanced",
+				"updated": "2025-11-16",
+				"featured": true
+			}
 		}
 	]
 }

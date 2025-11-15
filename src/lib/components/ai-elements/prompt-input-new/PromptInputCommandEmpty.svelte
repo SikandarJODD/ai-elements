@@ -17,4 +17,3 @@
 		No results found.
 	{/if}
 </Command.Empty>
-
