@@ -130,9 +130,13 @@ watch(
 				visibility management.
 			</p>
 
-			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="scroll-button"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="Scroll Button" {llmsTxtUrl} />
 			</div>
 
@@ -151,6 +155,8 @@ watch(
 						"add",
 						`${PUBLIC_WEBSITE_URL}/p/scroll-button.json`,
 					]}
+					component="scroll-button"
+					registry="prompt-kit"
 				/>
 			</div>
 
@@ -167,7 +173,12 @@ watch(
 				appears when scrolling up and hides when at the bottom.
 			</p>
 			<div data-toc-index={false}>
-				<Playground code={examples.basic.code}>
+				<Playground
+					code={examples.basic.code}
+					component="scroll-button"
+					registry="prompt-kit"
+					source="example"
+				>
 					<examples.basic.Component />
 				</Playground>
 			</div>
@@ -181,7 +192,12 @@ watch(
 				supports all standard button variants.
 			</p>
 			<div data-toc-index={false}>
-				<Playground code={examples.custom.code}>
+				<Playground
+					code={examples.custom.code}
+					component="scroll-button"
+					registry="prompt-kit"
+					source="example"
+				>
 					<examples.custom.Component />
 				</Playground>
 			</div>

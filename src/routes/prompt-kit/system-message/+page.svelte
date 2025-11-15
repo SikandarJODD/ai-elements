@@ -108,7 +108,12 @@
 
 			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="system-message"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="System Message" {llmsTxtUrl} />
 			</div>
 
@@ -127,6 +132,8 @@
 						"add",
 						`${PUBLIC_WEBSITE_URL}/p/system-message.json`,
 					]}
+					component="system-message"
+					registry="prompt-kit"
 				/>
 			</div>
 
@@ -135,7 +142,12 @@
 
 			<!-- Example 1: Basic system message -->
 			<H3>Basic system message</H3>
-			<Playground code={examples.basic.code}>
+			<Playground
+				code={examples.basic.code}
+				component="system-message"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.basic.Component />
 				</div>
@@ -148,7 +160,12 @@
 				semantic background colors based on the variant. Different variants (action, warning,
 				error) provide visual context for the message severity.
 			</p>
-			<Playground code={examples.filledVariants.code}>
+			<Playground
+				code={examples.filledVariants.code}
+				component="system-message"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.filledVariants.Component />
 				</div>
@@ -163,7 +180,12 @@
 				prop. You can also provide a custom icon using the
 				<code class="bg-muted rounded px-1.5 py-0.5 text-sm">icon</code> snippet.
 			</p>
-			<Playground code={examples.withCta.code}>
+			<Playground
+				code={examples.withCta.code}
+				component="system-message"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.withCta.Component />
 				</div>

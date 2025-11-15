@@ -5,9 +5,12 @@
 
 	interface Props {
 		llmsTxtUrl: string;
+		component?: string;
+		registry?: string;
+		source?: string;
 	}
 
-	let { llmsTxtUrl }: Props = $props();
+	let { llmsTxtUrl, component, registry, source = "documentation" }: Props = $props();
 
 	let copied = $state(false);
 
@@ -38,6 +41,11 @@
 	onclick={copyMarkdown}
 	class="gap-2"
 	aria-label="Copy as Markdown"
+	data-s-event={"copy_markdown"}
+	data-s-event-path={`/${registry}/${component}`}
+	data-s-event-props={component && registry && source
+		? `component=${component};registry=${registry};source=${source}`
+		: undefined}
 >
 	{#if copied}
 		<Check class="size-4" />

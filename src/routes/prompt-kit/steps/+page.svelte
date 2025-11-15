@@ -127,7 +127,12 @@
 
 			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="steps"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="Steps" {llmsTxtUrl} />
 			</div>
 
@@ -142,6 +147,8 @@
 				<AiInstallCommand
 					command="execute"
 					args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/steps.json`]}
+					component="steps"
+					registry="prompt-kit"
 				/>
 			</div>
 
@@ -150,7 +157,12 @@
 
 			<!-- Example 1: Steps basic -->
 			<h3 class="mt-6 mb-3 text-lg font-semibold" id="steps-basic">Steps basic</h3>
-			<Playground code={examples.basic.code}>
+			<Playground
+				code={examples.basic.code}
+				component="steps"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.basic.Component />
 				</div>
@@ -164,7 +176,12 @@
 				You can use the <code class="bg-muted rounded px-1.5 py-0.5 text-sm">Source</code> component
 				to display sources in the Steps block.
 			</p>
-			<Playground code={examples.withSource.code}>
+			<Playground
+				code={examples.withSource.code}
+				component="steps"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.withSource.Component />
 				</div>
@@ -174,7 +191,12 @@
 			<h3 class="mt-8 mb-3 text-lg font-semibold" id="steps-with-custom-icons">
 				Steps with custom icons swap and bar
 			</h3>
-			<Playground code={examples.iconSwap.code}>
+			<Playground
+				code={examples.iconSwap.code}
+				component="steps"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.iconSwap.Component />
 				</div>
@@ -188,7 +210,12 @@
 				You can use the <code class="bg-muted rounded px-1.5 py-0.5 text-sm">Loader</code> component
 				to display a text shimmer loader in the Steps block.
 			</p>
-			<Playground code={examples.withLoader.code}>
+			<Playground
+				code={examples.withLoader.code}
+				component="steps"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.withLoader.Component />
 				</div>

@@ -155,7 +155,12 @@
 
 			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="message"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="Message" {llmsTxtUrl} />
 			</div>
 
@@ -170,20 +175,25 @@
 				<AiInstallCommand
 					command="execute"
 					args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/message.json`]}
+					component="message"
+					registry="prompt-kit"
 				/>
 			</div>
-
 			<!-- Examples Section -->
 			<Subheading>Examples</Subheading>
 
 			<!-- Example 1: Basic Message -->
 			<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-message">Basic Message</h3>
-			<Playground code={examples.basic.code}>
+			<Playground
+				code={examples.basic.code}
+				component="message"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.basic.Component />
 				</div>
 			</Playground>
-
 			<!-- Example 2: Message with Markdown -->
 			<h3 class="mt-8 mb-3 text-lg font-semibold" id="message-with-markdown">
 				Message with Markdown
@@ -192,7 +202,12 @@
 				The <code class="bg-muted rounded px-1.5 py-0.5 text-sm">markdown</code> prop enables
 				rendering content as Markdown, perfect for rich text formatting in messages.
 			</p>
-			<Playground code={examples.markdown.code}>
+			<Playground
+				code={examples.markdown.code}
+				component="message"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.markdown.Component />
 				</div>
@@ -209,7 +224,12 @@
 				and <code class="bg-muted rounded px-1.5 py-0.5 text-sm">MessageAction</code> to add
 				interactive elements to your messages.
 			</p>
-			<Playground code={examples.withActions.code}>
+			<Playground
+				code={examples.withActions.code}
+				component="message"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.withActions.Component />
 				</div>

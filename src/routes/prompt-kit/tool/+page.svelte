@@ -52,7 +52,12 @@
 
 			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="tool"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="Tool" {llmsTxtUrl} />
 			</div>
 
@@ -67,6 +72,8 @@
 				<AiInstallCommand
 					command="execute"
 					args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/tool.json`]}
+					component="tool"
+					registry="prompt-kit"
 				/>
 			</div>
 
@@ -76,7 +83,12 @@
 			<!-- Example 1: Basic Tool -->
 			<h3 class="mt-6 mb-3 scroll-m-20 text-lg font-semibold" id="basic-tool">Basic Tool</h3>
 			<div data-toc-index={false}>
-				<Playground code={examples.basic.code}>
+				<Playground
+					code={examples.basic.code}
+					component="tool"
+					registry="prompt-kit"
+					source="example"
+				>
 					<div class="flex w-full justify-center">
 						<examples.basic.Component />
 					</div>
@@ -91,7 +103,12 @@
 				Show different states of tool execution: pending, running, completed, and error.
 			</p>
 			<div data-toc-index={false}>
-				<Playground code={examples.states.code}>
+				<Playground
+					code={examples.states.code}
+					component="tool"
+					registry="prompt-kit"
+					source="example"
+				>
 					<div class="flex w-full justify-center">
 						<examples.states.Component />
 					</div>
@@ -106,7 +123,12 @@
 				A more compact view showing different tool states in a streamlined layout.
 			</p>
 			<div data-toc-index={false}>
-				<Playground code={examples.statesCompact.code}>
+				<Playground
+					code={examples.statesCompact.code}
+					component="tool"
+					registry="prompt-kit"
+					source="example"
+				>
 					<div class="flex w-full justify-center">
 						<examples.statesCompact.Component />
 					</div>

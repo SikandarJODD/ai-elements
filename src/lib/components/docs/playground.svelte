@@ -1,9 +1,10 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
 	import * as Tabs from "$lib/components/ui/tabs/index.js";
-	import * as Code from "$lib/components/ai-elements/code/index.js";
+	import * as Code from "$lib/components/docs/code/code-block/index.js";
 	import { Button } from "$lib/components/ui/button";
 	import { cn } from "$lib/utils/utils";
+	import type { AnalyticsRegistry } from "$lib/utils/analytics.js";
 
 	import RefreshCwIcon from "@lucide/svelte/icons/refresh-cw";
 
@@ -13,6 +14,10 @@
 		class?: string;
 		children: Snippet<[]>;
 		highlight?: (number | [number, number])[];
+		// Analytics props
+		component?: string;
+		registry?: AnalyticsRegistry;
+		source?: string;
 	};
 
 	let {
@@ -21,6 +26,9 @@
 		class: className = undefined,
 		replay = false,
 		highlight = [],
+		component,
+		registry,
+		source = "copy_example",
 	}: Props = $props();
 
 	let remountCount = $state(0);
@@ -71,7 +79,13 @@
 					{code}
 					class="no-scrollbar w-full border-none bg-transparent"
 				>
-					<Code.CopyButton class="z-30" />
+					<Code.CopyButton
+						class="z-30"
+						aria-label={`Copy ${component}`}
+						{component}
+						{registry}
+						{source}
+					/>
 				</Code.Root>
 			</Code.Overflow>
 		</div>

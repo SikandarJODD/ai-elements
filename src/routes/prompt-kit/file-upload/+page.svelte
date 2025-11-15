@@ -105,7 +105,12 @@
 
 			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="file-upload"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="File Upload" {llmsTxtUrl} />
 			</div>
 
@@ -124,6 +129,8 @@
 						"add",
 						`${PUBLIC_WEBSITE_URL}/p/file-upload.json`,
 					]}
+					component="file-upload"
+					registry="prompt-kit"
 				/>
 			</div>
 
@@ -140,7 +147,12 @@
 				> component to create a full-featured input component with file upload support. You can
 				try to drop a file to see the visual feedback.
 			</p>
-			<Playground code={examples.withPromptInput.code}>
+			<Playground
+				code={examples.withPromptInput.code}
+				component="file-upload"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.withPromptInput.Component />
 				</div>
