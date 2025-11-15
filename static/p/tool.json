@@ -49,7 +49,7 @@
 			"target": "prompt-kit/tool/ToolBadge.svelte"
 		},
 		{
-			"content": "export type ToolState =\n\t| \"input-streaming\"\n\t| \"input-available\"\n\t| \"output-available\"\n\t| \"output-error\";\n\nexport type ToolPart = {\n\ttype: string;\n\tstate: ToolState;\n\tinput?: Record<string, unknown>;\n\toutput?: Record<string, unknown>;\n\ttoolCallId?: string;\n\terrorText?: string;\n};\n\n",
+			"content": "export type ToolState = \"input-streaming\" | \"input-available\" | \"output-available\" | \"output-error\";\n\nexport type ToolPart = {\n\ttype: string;\n\tstate: ToolState;\n\tinput?: Record<string, unknown>;\n\toutput?: Record<string, unknown>;\n\ttoolCallId?: string;\n\terrorText?: string;\n};\n",
 			"type": "registry:file",
 			"target": "prompt-kit/tool/types.ts"
 		},

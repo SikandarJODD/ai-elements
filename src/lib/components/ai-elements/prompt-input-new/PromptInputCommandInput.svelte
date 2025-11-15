@@ -17,4 +17,3 @@
 </script>
 
 <Command.Input bind:value {placeholder} class={cn(className)} {...props} />
-

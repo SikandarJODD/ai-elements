@@ -16,4 +16,3 @@
 		{@render children()}
 	{/if}
 </Tabs.Trigger>
-

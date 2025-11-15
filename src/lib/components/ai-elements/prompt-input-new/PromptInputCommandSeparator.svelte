@@ -10,4 +10,3 @@
 </script>
 
 <Command.Separator class={cn(className)} {...props} />
-

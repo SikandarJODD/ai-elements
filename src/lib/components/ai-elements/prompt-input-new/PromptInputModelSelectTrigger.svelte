@@ -22,4 +22,3 @@
 		{@render children()}
 	{/if}
 </Select.Trigger>
-

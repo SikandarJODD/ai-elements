@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from "$lib/utils/utils.js";
-	import type { HTMLAttributes} from "svelte/elements";
+	import type { HTMLAttributes } from "svelte/elements";
 
 	let { class: className, children, ...props }: HTMLAttributes<HTMLDivElement> = $props();
 </script>
@@ -10,4 +10,3 @@
 		{@render children()}
 	{/if}
 </div>
-

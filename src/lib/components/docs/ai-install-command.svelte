@@ -24,6 +24,7 @@
 		// Analytics metadata
 		component?: string;
 		registry?: string;
+		source?: string;
 	};
 </script>
 
@@ -45,6 +46,7 @@
 		args,
 		component,
 		registry,
+		source = "install_command",
 	}: PMCommandProps = $props();
 
 	let agents = ["pnpm", "npm", "bun", "yarn"] as const;
@@ -82,7 +84,7 @@
 						text={commandText}
 						class="size-6 [&_svg]:size-3"
 						{component}
-						source="install_command"
+						{source}
 						{registry}
 					>
 						{#snippet icon()}

@@ -6,7 +6,7 @@
 	"author": "SikandarJODD",
 	"description": "The Message component displays a chat interface message from either a user or an AI. It includes an avatar, a name, and a message content.",
 	"dependencies": ["ai", "tailwind-variants"],
-	"devDependencies": ["tailwind-variants@^1.0.0"],
+	"devDependencies": ["tailwind-variants@^3.1.1"],
 	"registryDependencies": ["avatar"],
 	"meta": {
 		"author": "SikandarJODD"

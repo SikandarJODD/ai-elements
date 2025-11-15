@@ -3,6 +3,8 @@
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import { Subheading } from "$lib/components/docs";
 	import Playground from "$lib/components/docs/playground.svelte";
+	import AiInstallCommand from "$lib/components/docs/ai-install-command.svelte";
+	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
 	import PromptInputWithActions from "$lib/components/prompt-kit-blocks/prompt-input-with-actions.svelte";
 	import PromptInputWithSuggestions from "$lib/components/prompt-kit-blocks/prompt-input-with-suggestions.svelte";
@@ -31,10 +33,10 @@
 </script>
 
 <MetaTags
-	title="Blocks - Prompt Kit"
+	title="Blocks - Svelte Prompt Kit"
 	description="UI blocks for AI applications, built with prompt-kit components. Ready-to-use examples for chat interfaces, conversations, and AI interactions."
 	openGraph={{
-		title: "Blocks - Prompt Kit",
+		title: "Blocks - Svelte Prompt Kit",
 		description:
 			"UI blocks for AI applications, built with prompt-kit components. Ready-to-use examples for chat interfaces, conversations, and AI interactions.",
 		type: "website",
@@ -77,9 +79,29 @@
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
 				A prompt input with multiple action buttons for search, voice input, and more.
 			</p>
-			<Playground code={promptInputWithActionsRaw} class="aspect-video h-[500px]">
+			<Playground
+				code={promptInputWithActionsRaw}
+				class="aspect-video h-[500px]"
+				component="prompt-input-with-actions"
+				registry="prompt-kit"
+				source="blocks"
+			>
 				<PromptInputWithActions />
 			</Playground>
+
+			<div class="mt-4">
+				<AiInstallCommand
+					command="execute"
+					args={[
+						"shadcn-svelte@latest",
+						"add",
+						`${PUBLIC_WEBSITE_URL}/r/prompt-input-with-actions-block.json`,
+					]}
+					component="prompt-input-with-actions-block"
+					registry="prompt-kit"
+					source="install_blocks"
+				/>
+			</div>
 
 			<!-- Prompt Input with Suggestions -->
 			<h3 class="mt-8 mb-3 text-lg font-semibold" id="prompt-input-with-suggestions">
@@ -88,9 +110,29 @@
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
 				A prompt input with categorized suggestions that expand on click.
 			</p>
-			<Playground code={promptInputWithSuggestionsRaw} class="aspect-video h-[500px]">
+			<Playground
+				code={promptInputWithSuggestionsRaw}
+				class="aspect-video h-[500px]"
+				component="prompt-input-with-suggestions"
+				registry="prompt-kit"
+				source="blocks"
+			>
 				<PromptInputWithSuggestions />
 			</Playground>
+
+			<div class="mt-4">
+				<AiInstallCommand
+					command="execute"
+					args={[
+						"shadcn-svelte@latest",
+						"add",
+						`${PUBLIC_WEBSITE_URL}/r/prompt-input-with-suggestions-block.json`,
+					]}
+					component="prompt-input-with-suggestions-block"
+					registry="prompt-kit"
+					source="install_blocks"
+				/>
+			</div>
 
 			<!-- Prompt Input with Autocomplete -->
 			<h3 class="mt-8 mb-3 text-lg font-semibold" id="prompt-input-with-autocomplete">
@@ -99,9 +141,29 @@
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
 				A prompt input with autocomplete suggestions that filter as you type.
 			</p>
-			<Playground code={promptInputWithAutocompleteRaw} class="aspect-video h-[500px]">
+			<Playground
+				code={promptInputWithAutocompleteRaw}
+				class="aspect-video h-[500px]"
+				component="prompt-input-with-autocomplete"
+				registry="prompt-kit"
+				source="blocks"
+			>
 				<PromptInputWithAutocomplete />
 			</Playground>
+
+			<div class="mt-4">
+				<AiInstallCommand
+					command="execute"
+					args={[
+						"shadcn-svelte@latest",
+						"add",
+						`${PUBLIC_WEBSITE_URL}/r/prompt-input-with-autocomplete-block.json`,
+					]}
+					component="prompt-input-with-autocomplete-block"
+					registry="prompt-kit"
+					source="install_blocks"
+				/>
+			</div>
 
 			<!-- Conversation Blocks -->
 			<Subheading>Conversation Blocks</Subheading>
@@ -113,9 +175,29 @@
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
 				A simple conversation layout with user and assistant messages.
 			</p>
-			<Playground code={basicFullConversationRaw} class="aspect-video h-[500px]">
+			<Playground
+				code={basicFullConversationRaw}
+				class="aspect-video h-[500px]"
+				component="basic-full-conversation"
+				registry="prompt-kit"
+				source="blocks"
+			>
 				<BasicFullConversation />
 			</Playground>
+
+			<div class="mt-4">
+				<AiInstallCommand
+					command="execute"
+					args={[
+						"shadcn-svelte@latest",
+						"add",
+						`${PUBLIC_WEBSITE_URL}/r/basic-full-conversation-block.json`,
+					]}
+					component="basic-full-conversation-block"
+					registry="prompt-kit"
+					source="install_blocks"
+				/>
+			</div>
 
 			<!-- Conversation with Avatars -->
 			<h3 class="mt-8 mb-3 text-lg font-semibold" id="conversation-with-avatars">
@@ -124,9 +206,29 @@
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
 				A conversation with avatar images for each message.
 			</p>
-			<Playground code={conversationWithAvatarsRaw} class="aspect-video h-[500px]">
+			<Playground
+				code={conversationWithAvatarsRaw}
+				class="aspect-video h-[500px]"
+				component="conversation-with-avatars"
+				registry="prompt-kit"
+				source="blocks"
+			>
 				<ConversationWithAvatars />
 			</Playground>
+
+			<div class="mt-4">
+				<AiInstallCommand
+					command="execute"
+					args={[
+						"shadcn-svelte@latest",
+						"add",
+						`${PUBLIC_WEBSITE_URL}/r/conversation-with-avatars-block.json`,
+					]}
+					component="conversation-with-avatars-block"
+					registry="prompt-kit"
+					source="install_blocks"
+				/>
+			</div>
 
 			<!-- Conversation with Actions -->
 			<h3 class="mt-8 mb-3 text-lg font-semibold" id="conversation-with-actions">
@@ -135,9 +237,29 @@
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
 				A conversation with action buttons like copy, like, dislike, and regenerate.
 			</p>
-			<Playground code={conversationWithActionsRaw} class="aspect-video h-[500px]">
+			<Playground
+				code={conversationWithActionsRaw}
+				class="aspect-video h-[500px]"
+				component="conversation-with-actions"
+				registry="prompt-kit"
+				source="blocks"
+			>
 				<ConversationWithActions />
 			</Playground>
+
+			<div class="mt-4">
+				<AiInstallCommand
+					command="execute"
+					args={[
+						"shadcn-svelte@latest",
+						"add",
+						`${PUBLIC_WEBSITE_URL}/r/conversation-with-actions-block.json`,
+					]}
+					component="conversation-with-actions-block"
+					registry="prompt-kit"
+					source="install_blocks"
+				/>
+			</div>
 
 			<!-- Conversation with Scroll to Bottom -->
 			<h3 class="mt-8 mb-3 text-lg font-semibold" id="conversation-with-scroll">
@@ -146,9 +268,29 @@
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
 				A conversation with a scroll-to-bottom button for easy navigation.
 			</p>
-			<Playground code={conversationWithScrollRaw} class="aspect-video h-[500px]">
+			<Playground
+				code={conversationWithScrollRaw}
+				class="aspect-video h-[500px]"
+				component="conversation-with-scroll"
+				registry="prompt-kit"
+				source="blocks"
+			>
 				<ConversationWithScroll />
 			</Playground>
+
+			<div class="mt-4">
+				<AiInstallCommand
+					command="execute"
+					args={[
+						"shadcn-svelte@latest",
+						"add",
+						`${PUBLIC_WEBSITE_URL}/r/conversation-with-scroll-block.json`,
+					]}
+					component="conversation-with-scroll-block"
+					registry="prompt-kit"
+					source="install_blocks"
+				/>
+			</div>
 
 			<!-- Conversation with Prompt Input -->
 			<h3 class="mt-8 mb-3 text-lg font-semibold" id="conversation-with-prompt-input">
@@ -157,10 +299,29 @@
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
 				A complete chat interface with conversation history and prompt input.
 			</p>
-			<Playground code={conversationWithPromptInputRaw} class="aspect-video h-[600px]">
+			<Playground
+				code={conversationWithPromptInputRaw}
+				class="aspect-video h-[600px]"
+				component="conversation-with-prompt-input"
+				registry="prompt-kit"
+				source="blocks"
+			>
 				<ConversationWithPromptInput />
 			</Playground>
 
+			<div class="mt-4">
+				<AiInstallCommand
+					command="execute"
+					args={[
+						"shadcn-svelte@latest",
+						"add",
+						`${PUBLIC_WEBSITE_URL}/r/conversation-with-prompt-input-block.json`,
+					]}
+					component="conversation-with-prompt-input-block"
+					registry="prompt-kit"
+					source="install_blocks"
+				/>
+			</div>
 			<!-- Full Chat App -->
 			<!-- <Subheading>Complete Applications</Subheading>
 

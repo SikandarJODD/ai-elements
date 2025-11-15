@@ -15,4 +15,3 @@
 		{@render children()}
 	{/if}
 </HoverCard.Trigger>
-

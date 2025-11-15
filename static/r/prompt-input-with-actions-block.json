@@ -1,0 +1,29 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "prompt-input-with-actions-block",
+	"title": "Prompt Input with Actions Block",
+	"type": "registry:block",
+	"author": "SikandarJODD",
+	"description": "A complete prompt input block with multiple action buttons for search, voice input, and more. This is a ready-to-use block that includes all functionality for advanced prompt input interactions.",
+	"dependencies": ["@lucide/svelte"],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"registryDependencies": ["../p/prompt-input.json", "button"],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": ["prompt-kit", "block", "input", "actions", "voice", "search"],
+		"category": "Prompt Kit Blocks",
+		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "beginner",
+		"updated": "2025-11-16",
+		"featured": true
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport {\n\t\tPromptInput,\n\t\tPromptInputAction,\n\t\tPromptInputActions,\n\t\tPromptInputTextarea,\n\t} from \"$COMPONENTS$/prompt-kit/prompt-input\";\n\timport { Button } from \"$COMPONENTS$/ui/button/index.js\";\n\timport ArrowUpIcon from \"@lucide/svelte/icons/arrow-up\";\n\timport GlobeIcon from \"@lucide/svelte/icons/globe\";\n\timport MicIcon from \"@lucide/svelte/icons/mic\";\n\timport MoreHorizontalIcon from \"@lucide/svelte/icons/more-horizontal\";\n\timport PlusIcon from \"@lucide/svelte/icons/plus\";\n\n\tlet prompt = $state(\"\");\n\tlet isLoading = $state(false);\n\n\tfunction handleSubmit() {\n\t\tif (!prompt.trim()) return;\n\n\t\tisLoading = true;\n\n\t\t// Simulate API call\n\t\tconsole.log(\"Processing:\", prompt);\n\t\tsetTimeout(() => {\n\t\t\tprompt = \"\";\n\t\t\tisLoading = false;\n\t\t}, 1500);\n\t}\n</script>\n\n<div class=\"absolute inset-x-0 bottom-0 mx-auto max-w-3xl px-3 pb-3 md:px-5 md:pb-5\">\n\t<PromptInput\n\t\t{isLoading}\n\t\tvalue={prompt}\n\t\tonValueChange={(v) => (prompt = v)}\n\t\tonSubmit={handleSubmit}\n\t\tclass=\"border-input bg-popover relative z-10 w-full rounded-3xl border p-0 pt-1 shadow-xs\"\n\t>\n\t\t<div class=\"flex flex-col\">\n\t\t\t<PromptInputTextarea\n\t\t\t\tplaceholder=\"Ask anything\"\n\t\t\t\tclass=\"min-h-[44px] pt-3 pl-4 text-base leading-[1.3] sm:text-base md:text-base\"\n\t\t\t/>\n\n\t\t\t<PromptInputActions\n\t\t\t\tclass=\"mt-5 flex w-full items-center justify-between gap-2 px-3 pb-3\"\n\t\t\t>\n\t\t\t\t<div class=\"flex items-center gap-2\">\n\t\t\t\t\t<PromptInputAction>\n\t\t\t\t\t\t{#snippet tooltip()}\n\t\t\t\t\t\t\t<p>Add a new action</p>\n\t\t\t\t\t\t{/snippet}\n\t\t\t\t\t\t<Button variant=\"outline\" size=\"icon\" class=\"size-9 rounded-full\">\n\t\t\t\t\t\t\t<PlusIcon class=\"h-[18px] w-[18px]\" />\n\t\t\t\t\t\t</Button>\n\t\t\t\t\t</PromptInputAction>\n\n\t\t\t\t\t<PromptInputAction>\n\t\t\t\t\t\t{#snippet tooltip()}\n\t\t\t\t\t\t\t<p>Search</p>\n\t\t\t\t\t\t{/snippet}\n\t\t\t\t\t\t<Button variant=\"outline\" class=\"rounded-full\">\n\t\t\t\t\t\t\t<GlobeIcon class=\"h-[18px] w-[18px]\" />\n\t\t\t\t\t\t\tSearch\n\t\t\t\t\t\t</Button>\n\t\t\t\t\t</PromptInputAction>\n\n\t\t\t\t\t<PromptInputAction>\n\t\t\t\t\t\t{#snippet tooltip()}\n\t\t\t\t\t\t\t<p>More actions</p>\n\t\t\t\t\t\t{/snippet}\n\t\t\t\t\t\t<Button variant=\"outline\" size=\"icon\" class=\"size-9 rounded-full\">\n\t\t\t\t\t\t\t<MoreHorizontalIcon class=\"h-[18px] w-[18px]\" />\n\t\t\t\t\t\t</Button>\n\t\t\t\t\t</PromptInputAction>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"flex items-center gap-2\">\n\t\t\t\t\t<PromptInputAction>\n\t\t\t\t\t\t{#snippet tooltip()}\n\t\t\t\t\t\t\t<p>Voice input</p>\n\t\t\t\t\t\t{/snippet}\n\t\t\t\t\t\t<Button variant=\"outline\" size=\"icon\" class=\"size-9 rounded-full\">\n\t\t\t\t\t\t\t<MicIcon class=\"h-[18px] w-[18px]\" />\n\t\t\t\t\t\t</Button>\n\t\t\t\t\t</PromptInputAction>\n\n\t\t\t\t\t<Button\n\t\t\t\t\t\tsize=\"icon\"\n\t\t\t\t\t\tdisabled={!prompt.trim() || isLoading}\n\t\t\t\t\t\tonclick={handleSubmit}\n\t\t\t\t\t\tclass=\"size-9 rounded-full\"\n\t\t\t\t\t>\n\t\t\t\t\t\t{#if !isLoading}\n\t\t\t\t\t\t\t<ArrowUpIcon class=\"h-[18px] w-[18px]\" />\n\t\t\t\t\t\t{:else}\n\t\t\t\t\t\t\t<span class=\"size-3 rounded-xs bg-white\"></span>\n\t\t\t\t\t\t{/if}\n\t\t\t\t\t</Button>\n\t\t\t\t</div>\n\t\t\t</PromptInputActions>\n\t\t</div>\n\t</PromptInput>\n</div>\n",
+			"type": "registry:component",
+			"target": "prompt-kit-blocks/prompt-input-with-actions.svelte"
+		}
+	]
+}

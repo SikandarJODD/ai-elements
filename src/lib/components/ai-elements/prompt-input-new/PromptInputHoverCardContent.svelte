@@ -25,4 +25,3 @@
 		{@render children()}
 	{/if}
 </HoverCard.Content>
-
