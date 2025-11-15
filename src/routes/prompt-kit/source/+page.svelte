@@ -93,7 +93,12 @@
 
 			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="source"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="Source" {llmsTxtUrl} />
 			</div>
 
@@ -108,6 +113,8 @@
 				<AiInstallCommand
 					command="execute"
 					args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/source.json`]}
+					component="source"
+					registry="prompt-kit"
 				/>
 			</div>
 
@@ -116,7 +123,12 @@
 
 			<!-- Example 1: Basic Source -->
 			<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-source">Basic Source</h3>
-			<Playground code={examples.basic.code}>
+			<Playground
+				code={examples.basic.code}
+				component="source"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.basic.Component />
 				</div>
@@ -128,7 +140,12 @@
 				Customize the appearance and labels of the source components. You can use custom
 				labels, numbers, or combine them with favicons.
 			</p>
-			<Playground code={examples.custom.code}>
+			<Playground
+				code={examples.custom.code}
+				component="source"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.custom.Component />
 				</div>

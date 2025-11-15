@@ -68,7 +68,12 @@
 
 			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="loader"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="Loader" {llmsTxtUrl} />
 			</div>
 
@@ -83,6 +88,8 @@
 				<AiInstallCommand
 					command="execute"
 					args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/loader.json`]}
+					component="loader"
+					registry="prompt-kit"
 				/>
 			</div>
 
@@ -99,7 +106,12 @@
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
 				Showcasing all available loader variants with default settings.
 			</p>
-			<Playground code={examples.basic.code}>
+			<Playground
+				code={examples.basic.code}
+				component="loader"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.basic.Component />
 				</div>
@@ -110,7 +122,12 @@
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
 				Customize the size of any loader variant with predefined size options.
 			</p>
-			<Playground code={examples.sizes.code}>
+			<Playground
+				code={examples.sizes.code}
+				component="loader"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.sizes.Component />
 				</div>

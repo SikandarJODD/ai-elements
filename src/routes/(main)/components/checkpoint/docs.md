@@ -124,7 +124,7 @@ npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app/r/checkpoint.
     CheckpointIcon,
     CheckpointTrigger,
   } from "$lib/components/ai-elements/checkpoint";
-  import { Flag } from "@lucide-svelte/icons";
+  import { Flag } from "@lucide/svelte/icons";
 </script>
 
 <Checkpoint>

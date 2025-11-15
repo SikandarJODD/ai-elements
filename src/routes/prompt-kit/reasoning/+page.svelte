@@ -119,7 +119,12 @@
 
 			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="reasoning"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="Reasoning" {llmsTxtUrl} />
 			</div>
 
@@ -134,6 +139,8 @@
 				<AiInstallCommand
 					command="execute"
 					args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/reasoning.json`]}
+					component="reasoning"
+					registry="prompt-kit"
 				/>
 			</div>
 
@@ -146,7 +153,12 @@
 				The most basic implementation of the Reasoning component with auto-close
 				functionality when streaming ends.
 			</p>
-			<Playground code={examples.basic.code}>
+			<Playground
+				code={examples.basic.code}
+				component="reasoning"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.basic.Component />
 				</div>
@@ -157,7 +169,12 @@
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
 				Show rich formatting with markdown support for better structured reasoning content.
 			</p>
-			<Playground code={examples.markdown.code}>
+			<Playground
+				code={examples.markdown.code}
+				component="reasoning"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.markdown.Component />
 				</div>

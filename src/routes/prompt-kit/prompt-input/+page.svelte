@@ -167,7 +167,12 @@
 
 			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="prompt-input"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="Prompt Input" {llmsTxtUrl} />
 			</div>
 
@@ -186,20 +191,25 @@
 						"add",
 						`${PUBLIC_WEBSITE_URL}/p/prompt-input.json`,
 					]}
+					component="prompt-input"
+					registry="prompt-kit"
 				/>
 			</div>
-
 			<!-- Examples Section -->
 			<Subheading>Examples</Subheading>
 
 			<!-- Example 1: Prompt Input basic -->
 			<H3>Prompt Input basic</H3>
-			<Playground code={examples.basic.code}>
+			<Playground
+				code={examples.basic.code}
+				component="prompt-input"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.basic.Component />
 				</div>
 			</Playground>
-
 			<!-- Example 2: Prompt Input with actions -->
 			<H3 class="mt-8">Prompt Input with actions</H3>
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
@@ -209,12 +219,16 @@
 				to add actions with tooltips to the
 				<code class="bg-muted rounded px-1.5 py-0.5 text-sm">PromptInput</code>.
 			</p>
-			<Playground code={examples.withActions.code}>
+			<Playground
+				code={examples.withActions.code}
+				component="prompt-input"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.withActions.Component />
 				</div>
 			</Playground>
-
 			<!-- Component API Section -->
 			<Subheading>Component API</Subheading>
 

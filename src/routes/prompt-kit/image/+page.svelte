@@ -79,7 +79,12 @@
 
 			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="image"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="Image" {llmsTxtUrl} />
 			</div>
 
@@ -94,6 +99,8 @@
 				<AiInstallCommand
 					command="execute"
 					args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/image.json`]}
+					component="image"
+					registry="prompt-kit"
 				/>
 			</div>
 
@@ -118,7 +125,12 @@
 
 			<!-- Example 1: Basic Usage -->
 			<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-usage">Basic Usage</h3>
-			<Playground code={examples.basic.code}>
+			<Playground
+				code={examples.basic.code}
+				component="image"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.basic.Component />
 				</div>

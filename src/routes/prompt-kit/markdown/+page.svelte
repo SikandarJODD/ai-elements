@@ -61,7 +61,12 @@
 
 			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="markdown"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="Markdown" {llmsTxtUrl} />
 			</div>
 
@@ -76,6 +81,8 @@
 				<AiInstallCommand
 					command="execute"
 					args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/markdown.json`]}
+					component="markdown"
+					registry="prompt-kit"
 				/>
 			</div>
 
@@ -87,7 +94,12 @@
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
 				Render basic Markdown with support for bold, italics, lists, code blocks and more.
 			</p>
-			<Playground code={examples.basic.code}>
+			<Playground
+				code={examples.basic.code}
+				component="markdown"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.basic.Component />
 				</div>
@@ -101,7 +113,12 @@
 				You can customize how different Markdown elements are rendered by providing custom
 				components.
 			</p>
-			<Playground code={examples.customComponents.code}>
+			<Playground
+				code={examples.customComponents.code}
+				component="markdown"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.customComponents.Component />
 				</div>

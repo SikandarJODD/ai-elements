@@ -225,7 +225,7 @@
 				<Code
 					lang="svelte"
 					code={`\<script lang="ts"\>
-  import { Flag } from "@lucide-svelte/icons";
+  import { Flag } from "@lucide/svelte/icons";
 <\/script\>
 
 <Checkpoint>

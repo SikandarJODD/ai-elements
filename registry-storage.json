@@ -192,7 +192,7 @@
 				}
 			],
 			"registryDependencies": ["button", "separator", "tooltip"],
-			"dependencies": ["@lucide-svelte/icons"],
+			"dependencies": ["@lucide/svelte/icons"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
@@ -259,7 +259,7 @@
 				}
 			],
 			"registryDependencies": ["button", "alert"],
-			"dependencies": ["@lucide-svelte/icons", "runed"],
+			"dependencies": ["@lucide/svelte/icons", "runed"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",

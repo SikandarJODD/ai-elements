@@ -20,6 +20,10 @@
 		agent?: Agent;
 		command: Command;
 		args: string[];
+
+		// Analytics metadata
+		component?: string;
+		registry?: string;
 	};
 </script>
 
@@ -32,9 +36,16 @@
 	import * as Tooltip from "$lib/components/ui/tooltip/index.js";
 	import { PersistedState } from "runed";
 	import * as Tabs from "$lib/components/ui/tabs/index.js";
-	import { CopyButton } from "$lib/components/ai-elements/copy-button/index.js";
+	import { CopyButton } from "$lib/components/docs/code/copy-button";
 
-	let { variant = "default", class: className, command, args }: PMCommandProps = $props();
+	let {
+		variant = "default",
+		class: className,
+		command,
+		args,
+		component,
+		registry,
+	}: PMCommandProps = $props();
 
 	let agents = ["pnpm", "npm", "bun", "yarn"] as const;
 
@@ -66,7 +77,14 @@
 		<Tooltip.Root>
 			<Tooltip.Trigger>
 				{#snippet child({ props })}
-					<CopyButton {...props} text={commandText} class="size-6 [&_svg]:size-3">
+					<CopyButton
+						{...props}
+						text={commandText}
+						class="size-6 [&_svg]:size-3"
+						{component}
+						source="install_command"
+						{registry}
+					>
 						{#snippet icon()}
 							<ClipboardIcon />
 						{/snippet}

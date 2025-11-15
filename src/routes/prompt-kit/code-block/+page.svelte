@@ -109,7 +109,12 @@
 
 			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="code-block"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="Code Block" {llmsTxtUrl} />
 			</div>
 
@@ -128,6 +133,8 @@
 						"add",
 						`${PUBLIC_WEBSITE_URL}/p/code-block.json`,
 					]}
+					component="code-block"
+					registry="prompt-kit"
 				/>
 			</div>
 
@@ -145,7 +152,12 @@
 
 			<!-- Example 1: Basic Code Block -->
 			<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-code-block">Basic Code Block</h3>
-			<Playground code={examples.basic.code}>
+			<Playground
+				code={examples.basic.code}
+				component="code-block"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.basic.Component />
 				</div>

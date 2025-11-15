@@ -93,7 +93,12 @@
 
 			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="prompt-suggestion"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="Prompt Suggestion" {llmsTxtUrl} />
 			</div>
 
@@ -112,6 +117,8 @@
 						"add",
 						`${PUBLIC_WEBSITE_URL}/p/prompt-suggestion.json`,
 					]}
+					component="prompt-suggestion"
+					registry="prompt-kit"
 				/>
 			</div>
 
@@ -126,7 +133,12 @@
 					class="bg-muted rounded px-1.5 py-0.5 text-sm">PromptInput</code
 				> component.
 			</p>
-			<Playground code={examples.basic.code}>
+			<Playground
+				code={examples.basic.code}
+				component="prompt-suggestion"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.basic.Component />
 				</div>
@@ -140,7 +152,12 @@
 				Implement prompt suggestions with search term highlighting. It's perfect to showcase
 				a list of related prompts.
 			</p>
-			<Playground code={examples.highlight.code}>
+			<Playground
+				code={examples.highlight.code}
+				component="prompt-suggestion"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.highlight.Component />
 				</div>
@@ -154,7 +171,12 @@
 				Build a full-featured chat interface with dynamic prompt suggestions that switch
 				between both modes.
 			</p>
-			<Playground code={examples.chatComplete.code}>
+			<Playground
+				code={examples.chatComplete.code}
+				component="prompt-suggestion"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.chatComplete.Component />
 				</div>

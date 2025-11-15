@@ -156,7 +156,12 @@
 
 			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="chain-of-thought"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="Chain of Thought" {llmsTxtUrl} />
 			</div>
 
@@ -175,6 +180,8 @@
 						"add",
 						`${PUBLIC_WEBSITE_URL}/p/chain-of-thought.json`,
 					]}
+					component="chain-of-thought"
+					registry="prompt-kit"
 				/>
 			</div>
 

@@ -92,7 +92,12 @@
 
 			<!-- Actions -->
 			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
+				<CopyMarkdownButton
+					{llmsTxtUrl}
+					component="chat-container"
+					registry="prompt-kit"
+					source="documentation"
+				/>
 				<OpenInMenu componentName="Chat Container" {llmsTxtUrl} />
 			</div>
 
@@ -111,9 +116,10 @@
 						"add",
 						`${PUBLIC_WEBSITE_URL}/p/chat-container.json`,
 					]}
+					component="chat-container"
+					registry="prompt-kit"
 				/>
 			</div>
-
 			<!-- Examples Section -->
 			<Subheading>Examples</Subheading>
 
@@ -121,12 +127,16 @@
 			<h3 class="mt-6 mb-3 text-lg font-semibold" id="chat-container-basic">
 				Chat Container Basic
 			</h3>
-			<Playground code={examples.basic.code}>
+			<Playground
+				code={examples.basic.code}
+				component="chat-container"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.basic.Component />
 				</div>
 			</Playground>
-
 			<!-- Example 2: Streaming Text Example -->
 			<h3 class="mt-8 mb-3 text-lg font-semibold" id="streaming-text-example">
 				Streaming Text Example
