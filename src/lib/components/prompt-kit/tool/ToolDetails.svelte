@@ -2,16 +2,15 @@
 	import { cn } from "$lib/utils/utils";
 	import type { ToolPart } from "./types.js";
 	import type { HTMLAttributes } from "svelte/elements";
-	import { getContext } from "svelte";
 
 	let {
+		toolPart,
 		class: className,
 		...restProps
 	}: {
+		toolPart: ToolPart;
 		class?: string;
 	} & HTMLAttributes<HTMLDivElement> = $props();
-
-	const toolPart = getContext<ToolPart>("toolPart");
 
 	function formatValue(value: unknown): string {
 		if (value === null) return "null";

@@ -1140,6 +1140,59 @@
 		"relativeUrl": "full-chat-app.json"
 	},
 	{
+		"name": "tool-calling",
+		"title": "Tool Calling Chatbot Primitive",
+		"type": "registry:block",
+		"author": "SikandarJODD",
+		"description": "A fullstack chatbot primitive with AI tool/function calling and reasoning capabilities. Demonstrates tool execution with timezone and date/time tools, plus tool state progression tracking. Includes both UI components and API route implementation with the Vercel AI SDK, OpenRouter, and z-ai/glm-4.5-air:free model.",
+		"dependencies": [
+			"ai",
+			"@ai-sdk/svelte",
+			"@openrouter/ai-sdk-provider",
+			"zod",
+			"@lucide/svelte"
+		],
+		"registryDependencies": [
+			"button",
+			"local:prompt-kit-chat-container",
+			"local:prompt-kit-prompt-input",
+			"local:prompt-kit-message",
+			"local:prompt-kit-loader",
+			"local:prompt-kit-tool",
+			"local:prompt-kit-reasoning"
+		],
+		"meta": {
+			"author": "SikandarJODD",
+			"version": "1.1.0",
+			"tags": [
+				"primitive",
+				"fullstack",
+				"tool-calling",
+				"function-calling",
+				"reasoning",
+				"chat",
+				"openrouter",
+				"streaming",
+				"timezone",
+				"date-time",
+				"tool-state-tracking",
+				"free-model",
+				"api-route"
+			],
+			"category": "Primitives",
+			"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/primitives",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "advanced",
+			"updated": "2025-11-17",
+			"featured": true,
+			"isPrimitive": true,
+			"requiresApiKey": true,
+			"model": "z-ai/glm-4.5-air:free",
+			"provider": "OpenRouter"
+		},
+		"relativeUrl": "tool-calling.json"
+	},
+	{
 		"name": "full-chat-app-block",
 		"title": "Full Chat App Block",
 		"type": "registry:block",

@@ -1,0 +1,86 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "tool-calling",
+	"title": "Tool Calling Chatbot Primitive",
+	"type": "registry:block",
+	"author": "SikandarJODD",
+	"description": "A fullstack chatbot primitive with AI tool/function calling and reasoning capabilities. Demonstrates tool execution with timezone and date/time tools, plus tool state progression tracking. Includes both UI components and API route implementation with the Vercel AI SDK, OpenRouter, and z-ai/glm-4.5-air:free model.",
+	"dependencies": [
+		"ai",
+		"@ai-sdk/svelte",
+		"@openrouter/ai-sdk-provider",
+		"zod",
+		"@lucide/svelte"
+	],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"registryDependencies": [
+		"button",
+		"../p/chat-container.json",
+		"../p/prompt-input.json",
+		"../p/prompt-message.json",
+		"../p/prompt-loader.json",
+		"../p/prompt-tool.json",
+		"../p/prompt-reasoning.json"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.1.0",
+		"tags": [
+			"primitive",
+			"fullstack",
+			"tool-calling",
+			"function-calling",
+			"reasoning",
+			"chat",
+			"openrouter",
+			"streaming",
+			"timezone",
+			"date-time",
+			"tool-state-tracking",
+			"free-model",
+			"api-route"
+		],
+		"category": "Primitives",
+		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/primitives",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "advanced",
+		"updated": "2025-11-17",
+		"featured": true,
+		"isPrimitive": true,
+		"requiresApiKey": true,
+		"model": "z-ai/glm-4.5-air:free",
+		"provider": "OpenRouter"
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { Chat } from \"@ai-sdk/svelte\";\n\timport { DefaultChatTransport } from \"ai\";\n\timport { Button } from \"$COMPONENTS$/ui/button\";\n\timport { ArrowUp } from \"@lucide/svelte\";\n\timport {\n\t\tChatContainerRoot,\n\t\tChatContainerContent,\n\t} from \"$COMPONENTS$/prompt-kit/chat-container\";\n\timport {\n\t\tPromptInput,\n\t\tPromptInputTextarea,\n\t\tPromptInputActions,\n\t} from \"$COMPONENTS$/prompt-kit/prompt-input\";\n\timport MessageComponent from \"./MessageComponent.svelte\";\n\timport LoadingMessage from \"./LoadingMessage.svelte\";\n\timport ErrorMessage from \"./ErrorMessage.svelte\";\n\n\tlet inputValue = $state(\"\");\n\tlet apiKey = $state(\"\");\n\n\tlet chat = $derived(\n\t\tnew Chat({\n\t\t\ttransport: new DefaultChatTransport({\n\t\t\t\tapi: \"/api/primitives/tool-call\",\n\t\t\t\tfetch: async (input: RequestInfo | URL, init?: RequestInit) => {\n\t\t\t\t\tconst body = JSON.parse(init?.body as string);\n\t\t\t\t\tconst updatedBody = {\n\t\t\t\t\t\t...body,\n\t\t\t\t\t\tapiKey: apiKey || undefined,\n\t\t\t\t\t};\n\t\t\t\t\treturn fetch(input, {\n\t\t\t\t\t\t...init,\n\t\t\t\t\t\tbody: JSON.stringify(updatedBody),\n\t\t\t\t\t});\n\t\t\t\t},\n\t\t\t}),\n\t\t})\n\t);\n\n\tconst handleSubmit = () => {\n\t\tif (!inputValue.trim()) return;\n\n\t\tchat.sendMessage({ text: inputValue });\n\t\tinputValue = \"\";\n\t};\n\n\tconst isLoading = $derived(chat.status !== \"ready\");\n</script>\n\n<div class=\"flex h-[calc(100vh-4rem)] w-full flex-col overflow-hidden\">\n\t<ChatContainerRoot\n\t\tclass=\"relative mx-auto h-full w-full max-w-3xl flex-1 space-y-0 overflow-y-auto\"\n\t>\n\t\t<ChatContainerContent class=\"min-w-full space-y-12 px-4 py-12\">\n\t\t\t{#if chat.messages.length === 0}\n\t\t\t\t<div class=\"mx-auto w-full max-w-3xl shrink-0 px-3 pb-3 md:px-5 md:pb-5\">\n\t\t\t\t\t<div class=\"text-foreground mb-2 font-medium\">Try asking:</div>\n\t\t\t\t\t<ul class=\"list-inside list-disc space-y-1\">\n\t\t\t\t\t\t<li>what's the current date?</li>\n\t\t\t\t\t\t<li>what time is it in Tokyo?</li>\n\t\t\t\t\t\t<li>give me the current time in Europe/Paris</li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\t\t\t{/if}\n\n\t\t\t{#each chat.messages as message, index}\n\t\t\t\t{@const isLastMessage = index === chat.messages.length - 1}\n\t\t\t\t<MessageComponent {message} {isLastMessage} />\n\t\t\t{/each}\n\n\t\t\t{#if chat.status === \"submitted\"}\n\t\t\t\t<LoadingMessage />\n\t\t\t{/if}\n\n\t\t\t{#if chat.status === \"error\" && chat.error}\n\t\t\t\t<ErrorMessage error={chat.error} />\n\t\t\t{/if}\n\t\t</ChatContainerContent>\n\t</ChatContainerRoot>\n\n\t<div class=\"inset-x-0 bottom-0 mx-auto w-full max-w-3xl shrink-0 px-3 pb-3 md:px-5 md:pb-5\">\n\t\t<PromptInput\n\t\t\t{isLoading}\n\t\t\tvalue={inputValue}\n\t\t\tonValueChange={(value) => (inputValue = value)}\n\t\t\tonSubmit={handleSubmit}\n\t\t\tclass=\"border-input bg-popover relative z-10 w-full rounded-3xl border p-0 pt-1 shadow-xs\"\n\t\t>\n\t\t\t<div class=\"flex flex-col\">\n\t\t\t\t<PromptInputTextarea\n\t\t\t\t\tplaceholder=\"Ask anything\"\n\t\t\t\t\tclass=\"min-h-[44px] pt-3 pl-4 text-base leading-[1.3] sm:text-base md:text-base\"\n\t\t\t\t/>\n\n\t\t\t\t<PromptInputActions class=\"mt-3 flex w-full items-center justify-between gap-2 p-2\">\n\t\t\t\t\t<div></div>\n\t\t\t\t\t<div class=\"flex items-center gap-2\">\n\t\t\t\t\t\t<Button\n\t\t\t\t\t\t\tsize=\"icon\"\n\t\t\t\t\t\t\tdisabled={!inputValue.trim() ||\n\t\t\t\t\t\t\t\t(chat.status !== \"ready\" && chat.status !== \"error\")}\n\t\t\t\t\t\t\tonclick={handleSubmit}\n\t\t\t\t\t\t\tclass=\"size-9 rounded-full\"\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t{#if chat.status === \"ready\" || chat.status === \"error\"}\n\t\t\t\t\t\t\t\t<ArrowUp size={18} />\n\t\t\t\t\t\t\t{:else}\n\t\t\t\t\t\t\t\t<span class=\"size-3 rounded-xs bg-white\"></span>\n\t\t\t\t\t\t\t{/if}\n\t\t\t\t\t\t</Button>\n\t\t\t\t\t</div>\n\t\t\t\t</PromptInputActions>\n\t\t\t</div>\n\t\t</PromptInput>\n\t</div>\n</div>\n",
+			"type": "registry:component",
+			"target": "prompt-kit-primitives/tool-calling/ToolCallingApp.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport Message from \"$COMPONENTS$/prompt-kit/message/Message.svelte\";\n\timport MessageContent from \"$COMPONENTS$/prompt-kit/message/MessageContent.svelte\";\n\timport MessageActions from \"$COMPONENTS$/prompt-kit/message/MessageActions.svelte\";\n\timport MessageAction from \"$COMPONENTS$/prompt-kit/message/MessageAction.svelte\";\n\timport { ToolComposed } from \"$COMPONENTS$/prompt-kit/tool\";\n\timport type { ToolPart } from \"$COMPONENTS$/prompt-kit/tool\";\n\timport {\n\t\tReasoning,\n\t\tReasoningTrigger,\n\t\tReasoningContent,\n\t} from \"$COMPONENTS$/prompt-kit/reasoning\";\n\timport { Button } from \"$COMPONENTS$/ui/button\";\n\timport { Copy, ThumbsUp, ThumbsDown } from \"@lucide/svelte\";\n\timport type { UIMessage } from \"ai\";\n\n\tlet {\n\t\tmessage,\n\t\tisLastMessage = false,\n\t}: {\n\t\tmessage: UIMessage;\n\t\tisLastMessage?: boolean;\n\t} = $props();\n\n\tconst isAssistant = $derived(message.role === \"assistant\");\n\n\tconst messageText = $derived(\n\t\tmessage.parts.map((part) => (part.type === \"text\" ? part.text : \"\")).join(\"\")\n\t);\n\n\t// ============================================================================\n\t// TOOL PARTS RENDERING STRATEGY\n\t// ============================================================================\n\t// Choose one of the two approaches below:\n\n\t// APPROACH 1: Show ONLY the latest tool state (Default)\n\t// This shows only the current/final state of the tool\n\tlet toolParts = $derived(\n\t\tmessage.parts.filter((part) => part.type && part.type.startsWith(\"tool-\"))\n\t);\n\n\t// APPROACH 2: Show ALL tool state progressions\n\t// Uncomment the code below to show tool execution history: Processing → Ready → Completed\n\t// Useful for showing tool state transitions like reasoning traces\n\t// Comment out APPROACH 1 above and uncomment the code below:\n\n\t// let toolPartsHistory = $state<any[]>([]);\n\n\t// $effect(() => {\n\t// \tconst currentToolParts = message.parts.filter(\n\t// \t\t(part) => part.type && part.type.startsWith(\"tool-\")\n\t// \t);\n\n\t// \tif (currentToolParts.length > 0) {\n\t// \t\tcurrentToolParts.forEach((currentPart: any) => {\n\t// \t\t\tconst tp = currentPart as ToolPart;\n\t// \t\t\tconst key = `${tp.toolCallId}-${tp.state}`;\n\n\t// \t\t\t// Only add new states we haven't seen before\n\t// \t\t\tconst existsInHistory = toolPartsHistory.some((historicalPart: any) => {\n\t// \t\t\t\tconst htp = historicalPart as ToolPart;\n\t// \t\t\t\treturn `${htp.toolCallId}-${htp.state}` === key;\n\t// \t\t\t});\n\n\t// \t\t\tif (!existsInHistory) {\n\t// \t\t\t\ttoolPartsHistory = [...toolPartsHistory, { ...currentPart }];\n\t// \t\t\t}\n\t// \t\t});\n\t// \t}\n\t// });\n\n\t// let toolParts = $derived(toolPartsHistory);\n\t// ============================================================================\n\n\t// Extract reasoning parts from the message\n\tlet reasoningParts = $derived(message.parts.filter((part) => part.type === \"reasoning\"));\n\n\t// Check if currently streaming reasoning (last part of last message)\n\tlet isStreamingReasoning = $derived((index: number) => {\n\t\treturn index === reasoningParts.length - 1 && isLastMessage;\n\t});\n\n\t// just for debugging\n\t// $inspect(toolParts, \"Tool Parts\");\n</script>\n\n<Message\n\tclass={cn(\n\t\t\"mx-auto flex w-full max-w-3xl flex-col gap-2 px-2 md:px-10\",\n\t\tisAssistant ? \"items-start\" : \"items-end\"\n\t)}\n>\n\t{#if isAssistant}\n\t\t<div class=\"group flex w-full flex-col gap-0 space-y-2\">\n\t\t\t{#if reasoningParts.length > 0}\n\t\t\t\t<div class=\"w-full space-y-2\">\n\t\t\t\t\t{#each reasoningParts as part, index (index)}\n\t\t\t\t\t\t<Reasoning class=\"w-full\" isStreaming={isStreamingReasoning(index)}>\n\t\t\t\t\t\t\t<ReasoningTrigger>Reasoning</ReasoningTrigger>\n\t\t\t\t\t\t\t<ReasoningContent markdown content={part.text}></ReasoningContent>\n\t\t\t\t\t\t</Reasoning>\n\t\t\t\t\t{/each}\n\t\t\t\t</div>\n\t\t\t{/if}\n\n\t\t\t{#if toolParts.length > 0}\n\t\t\t\t<div class=\"w-full space-y-2\">\n\t\t\t\t\t{#each toolParts as part, index (`${(part as ToolPart).toolCallId}-${(part as ToolPart).state || part.type}-${index}`)}\n\t\t\t\t\t\t{@const toolPart = part as ToolPart}\n\t\t\t\t\t\t<ToolComposed\n\t\t\t\t\t\t\t{toolPart}\n\t\t\t\t\t\t\tdefaultOpen={toolPart.state === \"output-available\" ||\n\t\t\t\t\t\t\t\ttoolPart.state === \"output-error\"}\n\t\t\t\t\t\t/>\n\t\t\t\t\t{/each}\n\t\t\t\t</div>\n\t\t\t{/if}\n\n\t\t\t<MessageContent\n\t\t\t\tclass=\"text-foreground prose w-full min-w-0 flex-1 rounded-lg bg-transparent p-0\"\n\t\t\t\tmarkdown={true}\n\t\t\t\tcontent={messageText}\n\t\t\t/>\n\n\t\t\t<MessageActions\n\t\t\t\tclass={cn(\n\t\t\t\t\t\"-ml-2.5 flex gap-0 opacity-0 transition-opacity duration-150 group-hover:opacity-100\",\n\t\t\t\t\tisLastMessage && \"opacity-100\"\n\t\t\t\t)}\n\t\t\t>\n\t\t\t\t<MessageAction delayDuration={100}>\n\t\t\t\t\t{#snippet tooltip()}\n\t\t\t\t\t\tCopy\n\t\t\t\t\t{/snippet}\n\t\t\t\t\t<Button variant=\"ghost\" size=\"icon\" class=\"rounded-full\">\n\t\t\t\t\t\t<Copy class=\"h-4 w-4\" />\n\t\t\t\t\t</Button>\n\t\t\t\t</MessageAction>\n\t\t\t\t<MessageAction delayDuration={100}>\n\t\t\t\t\t{#snippet tooltip()}\n\t\t\t\t\t\tUpvote\n\t\t\t\t\t{/snippet}\n\t\t\t\t\t<Button variant=\"ghost\" size=\"icon\" class=\"rounded-full\">\n\t\t\t\t\t\t<ThumbsUp class=\"h-4 w-4\" />\n\t\t\t\t\t</Button>\n\t\t\t\t</MessageAction>\n\t\t\t\t<MessageAction delayDuration={100}>\n\t\t\t\t\t{#snippet tooltip()}\n\t\t\t\t\t\tDownvote\n\t\t\t\t\t{/snippet}\n\t\t\t\t\t<Button variant=\"ghost\" size=\"icon\" class=\"rounded-full\">\n\t\t\t\t\t\t<ThumbsDown class=\"h-4 w-4\" />\n\t\t\t\t\t</Button>\n\t\t\t\t</MessageAction>\n\t\t\t</MessageActions>\n\t\t</div>\n\t{:else}\n\t\t<div class=\"group flex w-full flex-col items-end gap-1\">\n\t\t\t<MessageContent\n\t\t\t\tclass=\"bg-muted text-primary max-w-[85%] rounded-3xl px-5 py-2.5 whitespace-pre-wrap sm:max-w-[75%]\"\n\t\t\t>\n\t\t\t\t{messageText}\n\t\t\t</MessageContent>\n\t\t\t<MessageActions\n\t\t\t\tclass={cn(\n\t\t\t\t\t\"flex gap-0 opacity-0 transition-opacity duration-150 group-hover:opacity-100\"\n\t\t\t\t)}\n\t\t\t>\n\t\t\t\t<MessageAction delayDuration={100}>\n\t\t\t\t\t{#snippet tooltip()}\n\t\t\t\t\t\tCopy\n\t\t\t\t\t{/snippet}\n\t\t\t\t\t<Button variant=\"ghost\" size=\"icon\" class=\"rounded-full\">\n\t\t\t\t\t\t<Copy class=\"h-4 w-4\" />\n\t\t\t\t\t</Button>\n\t\t\t\t</MessageAction>\n\t\t\t</MessageActions>\n\t\t</div>\n\t{/if}\n</Message>\n",
+			"type": "registry:component",
+			"target": "prompt-kit-primitives/tool-calling/MessageComponent.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport Message from \"$COMPONENTS$/prompt-kit/message/Message.svelte\";\n\timport { DotsLoader } from \"$COMPONENTS$/prompt-kit/loader\";\n</script>\n\n<Message class=\"mx-auto flex w-full max-w-3xl flex-col items-start gap-2 px-2 md:px-10\">\n\t<div class=\"group flex w-full flex-col gap-0\">\n\t\t<div class=\"text-foreground prose w-full min-w-0 flex-1 rounded-lg bg-transparent p-0\">\n\t\t\t<DotsLoader />\n\t\t</div>\n\t</div>\n</Message>\n",
+			"type": "registry:component",
+			"target": "prompt-kit-primitives/tool-calling/LoadingMessage.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport Message from \"$COMPONENTS$/prompt-kit/message/Message.svelte\";\n\timport { AlertTriangle } from \"@lucide/svelte\";\n\n\tlet { error }: { error: Error } = $props();\n</script>\n\n<Message class=\"not-prose mx-auto flex w-full max-w-3xl flex-col items-start gap-2 px-2 md:px-10\">\n\t<div class=\"group flex w-full flex-col items-start gap-0\">\n\t\t<div\n\t\t\tclass=\"text-primary flex min-w-0 flex-1 flex-row items-center gap-2 rounded-lg border-2 border-red-300 bg-red-300/20 px-2 py-1\"\n\t\t>\n\t\t\t<AlertTriangle size={16} class=\"text-red-500\" />\n\t\t\t<p class=\"text-red-500\">{error.message}</p>\n\t\t</div>\n\t</div>\n</Message>\n",
+			"type": "registry:component",
+			"target": "prompt-kit-primitives/tool-calling/ErrorMessage.svelte"
+		},
+		{
+			"content": "export { default as ToolCallingApp } from \"./ToolCallingApp.svelte\";\nexport { default as MessageComponent } from \"./MessageComponent.svelte\";\nexport { default as LoadingMessage } from \"./LoadingMessage.svelte\";\nexport { default as ErrorMessage } from \"./ErrorMessage.svelte\";\n",
+			"type": "registry:file",
+			"target": "prompt-kit-primitives/tool-calling/index.ts"
+		},
+		{
+			"content": "import { streamText, type UIMessage, convertToModelMessages, tool } from \"ai\";\nimport type { RequestHandler } from \"./$types\";\nimport { createOpenRouter } from \"@openrouter/ai-sdk-provider\";\nimport { OPENROUTER_API_KEY } from \"$env/static/private\";\nimport { z } from \"zod\";\n\nlet defaultModel = \"z-ai/glm-4.5-air:free\";\n\nexport const POST: RequestHandler = async ({ request }) => {\n\tconst { messages, apiKey }: { messages: UIMessage[]; apiKey?: string } = await request.json();\n\n\t// Create OpenRouter instance\n\tlet openrouter = createOpenRouter({\n\t\tapiKey: OPENROUTER_API_KEY,\n\t});\n\n\t// Override with user-provided API key if available\n\tif (apiKey) {\n\t\topenrouter = createOpenRouter({\n\t\t\tapiKey,\n\t\t});\n\t}\n\n\tconst result = streamText({\n\t\tmodel: openrouter(defaultModel),\n\t\tsystem: \"You are a helpful assistant with access to tools. Use the getCurrentDate tool when users ask about dates, time, or current information. You are also able to use the getTime tool to get the current time in a specific timezone. Think through your responses step by step.\",\n\t\tmessages: convertToModelMessages(messages),\n\t\ttools: {\n\t\t\tgetTime: tool({\n\t\t\t\tdescription: \"Get the current time in a specific timezone\",\n\t\t\t\tinputSchema: z.object({\n\t\t\t\t\ttimezone: z.string().describe(\"A valid IANA timezone, e.g. 'Europe/Paris'\"),\n\t\t\t\t}),\n\t\t\t\texecute: async ({ timezone }) => {\n\t\t\t\t\ttry {\n\t\t\t\t\t\tconst now = new Date();\n\t\t\t\t\t\tconst time = now.toLocaleString(\"en-US\", {\n\t\t\t\t\t\t\ttimeZone: timezone,\n\t\t\t\t\t\t\thour: \"2-digit\",\n\t\t\t\t\t\t\tminute: \"2-digit\",\n\t\t\t\t\t\t\tsecond: \"2-digit\",\n\t\t\t\t\t\t\thour12: false,\n\t\t\t\t\t\t});\n\n\t\t\t\t\t\treturn { time, timezone };\n\t\t\t\t\t} catch {\n\t\t\t\t\t\treturn { error: \"Invalid timezone format.\" };\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t}),\n\t\t\tgetCurrentDate: tool({\n\t\t\t\tdescription: \"Get the current date and time with timezone information\",\n\t\t\t\tinputSchema: z.object({}),\n\t\t\t\texecute: async () => {\n\t\t\t\t\tconst now = new Date();\n\t\t\t\t\treturn {\n\t\t\t\t\t\ttimestamp: now.getTime(),\n\t\t\t\t\t\tiso: now.toISOString(),\n\t\t\t\t\t\tlocal: now.toLocaleString(\"en-US\", {\n\t\t\t\t\t\t\tweekday: \"long\",\n\t\t\t\t\t\t\tyear: \"numeric\",\n\t\t\t\t\t\t\tmonth: \"long\",\n\t\t\t\t\t\t\tday: \"numeric\",\n\t\t\t\t\t\t\thour: \"2-digit\",\n\t\t\t\t\t\t\tminute: \"2-digit\",\n\t\t\t\t\t\t\tsecond: \"2-digit\",\n\t\t\t\t\t\t\ttimeZoneName: \"short\",\n\t\t\t\t\t\t}),\n\t\t\t\t\t\ttimezone: Intl.DateTimeFormat().resolvedOptions().timeZone,\n\t\t\t\t\t\tutc: now.toUTCString(),\n\t\t\t\t\t};\n\t\t\t\t},\n\t\t\t}),\n\t\t},\n\t});\n\n\treturn result.toUIMessageStreamResponse({\n\t\tsendReasoning: true,\n\t});\n};\n",
+			"type": "registry:file",
+			"target": "routes/api/primitives/tool-call/+server.ts"
+		}
+	]
+}

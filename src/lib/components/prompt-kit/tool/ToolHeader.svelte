@@ -10,11 +10,14 @@
 	import ToolBadge from "./ToolBadge.svelte";
 	import type { ToolPart } from "./types.js";
 	import type { Component } from "svelte";
-	import { getContext } from "svelte";
 
-	let { class: className }: { class?: string } = $props();
-
-	const toolPart = getContext<ToolPart>("toolPart");
+	let {
+		toolPart,
+		class: className,
+	}: {
+		toolPart: ToolPart;
+		class?: string;
+	} = $props();
 
 	function getStateIcon(): Component {
 		switch (toolPart.state) {

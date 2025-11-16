@@ -14,8 +14,10 @@
 </script>
 
 <Tool {toolPart} {defaultOpen} class={className}>
-	<ToolHeader />
-	<ToolContent>
-		<ToolDetails />
-	</ToolContent>
+	{#snippet children(toolPart)}
+		<ToolHeader {toolPart} />
+		<ToolContent>
+			<ToolDetails {toolPart} />
+		</ToolContent>
+	{/snippet}
 </Tool>

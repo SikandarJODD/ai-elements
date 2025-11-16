@@ -3,7 +3,6 @@
 	import { Collapsible } from "$lib/components/ui/collapsible/index.js";
 	import type { ToolPart } from "./types.js";
 	import type { Snippet } from "svelte";
-	import { setContext } from "svelte";
 
 	let {
 		toolPart,
@@ -16,16 +15,13 @@
 		defaultOpen?: boolean;
 		open?: boolean;
 		class?: string;
-		children: Snippet;
+		children: Snippet<[ToolPart]>;
 	} = $props();
-
-	// Provide toolPart to child components via context
-	setContext("toolPart", toolPart);
 </script>
 
 <Collapsible
 	bind:open
 	class={cn("border-border mt-3 overflow-hidden rounded-lg border", className)}
 >
-	{@render children()}
+	{@render children(toolPart)}
 </Collapsible>
