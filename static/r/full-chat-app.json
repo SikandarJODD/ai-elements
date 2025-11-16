@@ -1,0 +1,79 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "full-chat-app",
+	"title": "Full Chat App Primitive",
+	"type": "registry:block",
+	"author": "SikandarJODD",
+	"description": "A fullstack chat application primitive with streaming responses, tool calling, and OpenRouter integration. Includes both UI components and API route implementation. Built with the Vercel AI SDK and z-ai/glm-4.5-air:free model.",
+	"dependencies": [
+		"ai",
+		"@ai-sdk/svelte",
+		"@openrouter/ai-sdk-provider",
+		"zod",
+		"@lucide/svelte"
+	],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"registryDependencies": [
+		"button",
+		"../p/chat-container.json",
+		"../p/prompt-input.json",
+		"../p/message.json",
+		"../p/loader.json"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"primitive",
+			"fullstack",
+			"chat",
+			"openrouter",
+			"streaming",
+			"tool-calling",
+			"free-model",
+			"api-route"
+		],
+		"category": "Primitives",
+		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/primitives",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "advanced",
+		"updated": "2025-11-16",
+		"featured": true,
+		"isPrimitive": true,
+		"requiresApiKey": true,
+		"model": "z-ai/glm-4.5-air:free",
+		"provider": "OpenRouter"
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { Chat } from \"@ai-sdk/svelte\";\r\n\timport { DefaultChatTransport } from \"ai\";\r\n\timport { Button } from \"$COMPONENTS$/ui/button\";\r\n\timport { ArrowUp } from \"@lucide/svelte\";\r\n\timport {\r\n\t\tChatContainerRoot,\r\n\t\tChatContainerContent,\r\n\t} from \"$COMPONENTS$/prompt-kit/chat-container\";\r\n\timport {\r\n\t\tPromptInput,\r\n\t\tPromptInputTextarea,\r\n\t\tPromptInputActions,\r\n\t} from \"$COMPONENTS$/prompt-kit/prompt-input\";\r\n\timport MessageComponent from \"./MessageComponent.svelte\";\r\n\timport LoadingMessage from \"./LoadingMessage.svelte\";\r\n\timport ErrorMessage from \"./ErrorMessage.svelte\";\r\n\r\n\tlet inputValue = $state(\"\");\r\n\r\n\tlet chat = $derived(\r\n\t\tnew Chat({\r\n\t\t\ttransport: new DefaultChatTransport({\r\n\t\t\t\tapi: \"/api/primitives/full-chat-app\",\r\n\t\t\t}),\r\n\t\t})\r\n\t);\r\n\r\n\tconst handleSubmit = () => {\r\n\t\tif (!inputValue.trim()) return;\r\n\r\n\t\tchat.sendMessage({ text: inputValue });\r\n\t\tinputValue = \"\";\r\n\t};\r\n\r\n\tconst isLoading = $derived(chat.status !== \"ready\");\r\n</script>\r\n\r\n<div class=\"flex h-[calc(100vh-4rem)] w-full flex-col overflow-hidden\">\r\n\t<ChatContainerRoot\r\n\t\tclass=\"relative mx-auto h-full w-full max-w-3xl flex-1 space-y-0 overflow-y-auto\"\r\n\t>\r\n\t\t<ChatContainerContent class=\"min-w-full space-y-2 py-12\">\r\n\t\t\t{#each chat.messages as message, index}\r\n\t\t\t\t{@const isLastMessage = index === chat.messages.length - 1}\r\n\t\t\t\t<MessageComponent {message} {isLastMessage} />\r\n\t\t\t{/each}\r\n\r\n\t\t\t{#if chat.status === \"submitted\"}\r\n\t\t\t\t<LoadingMessage />\r\n\t\t\t{/if}\r\n\r\n\t\t\t{#if chat.status === \"error\" && chat.error}\r\n\t\t\t\t<ErrorMessage error={chat.error} />\r\n\t\t\t{/if}\r\n\t\t</ChatContainerContent>\r\n\t</ChatContainerRoot>\r\n\r\n\t<div class=\"inset-x-0 bottom-0 mx-auto w-full max-w-3xl shrink-0 px-3 pb-3 md:px-5 md:pb-5\">\r\n\t\t<PromptInput\r\n\t\t\t{isLoading}\r\n\t\t\tvalue={inputValue}\r\n\t\t\tonValueChange={(value) => (inputValue = value)}\r\n\t\t\tonSubmit={handleSubmit}\r\n\t\t\tclass=\"border-input bg-popover relative z-10 w-full rounded-3xl border p-0 pt-1 shadow-xs\"\r\n\t\t>\r\n\t\t\t<div class=\"flex flex-col\">\r\n\t\t\t\t<PromptInputTextarea\r\n\t\t\t\t\tplaceholder=\"Ask anything\"\r\n\t\t\t\t\tclass=\"min-h-[44px] pt-3 pl-4 text-base leading-[1.3] sm:text-base md:text-base\"\r\n\t\t\t\t/>\r\n\r\n\t\t\t\t<PromptInputActions class=\"mt-3 flex w-full items-center justify-between gap-2 p-2\">\r\n\t\t\t\t\t<div></div>\r\n\t\t\t\t\t<div class=\"flex items-center gap-2\">\r\n\t\t\t\t\t\t<Button\r\n\t\t\t\t\t\t\tsize=\"icon\"\r\n\t\t\t\t\t\t\tdisabled={!inputValue.trim() ||\r\n\t\t\t\t\t\t\t\t(chat.status !== \"ready\" && chat.status !== \"error\")}\r\n\t\t\t\t\t\t\tonclick={handleSubmit}\r\n\t\t\t\t\t\t\tclass=\"size-9 rounded-full\"\r\n\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t{#if chat.status === \"ready\" || chat.status === \"error\"}\r\n\t\t\t\t\t\t\t\t<ArrowUp size={18} />\r\n\t\t\t\t\t\t\t{:else}\r\n\t\t\t\t\t\t\t\t<span class=\"size-3 rounded-xs bg-white\"></span>\r\n\t\t\t\t\t\t\t{/if}\r\n\t\t\t\t\t\t</Button>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</PromptInputActions>\r\n\t\t\t</div>\r\n\t\t</PromptInput>\r\n\t</div>\r\n</div>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit-primitives/full-chat-app/FullChatApp.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport { cn } from \"$UTILS$\";\r\n\timport Message from \"$COMPONENTS$/prompt-kit/message/Message.svelte\";\r\n\timport MessageContent from \"$COMPONENTS$/prompt-kit/message/MessageContent.svelte\";\r\n\timport MessageActions from \"$COMPONENTS$/prompt-kit/message/MessageActions.svelte\";\r\n\timport MessageAction from \"$COMPONENTS$/prompt-kit/message/MessageAction.svelte\";\r\n\timport { Button } from \"$COMPONENTS$/ui/button\";\r\n\timport { Copy, ThumbsUp, ThumbsDown } from \"@lucide/svelte\";\r\n\timport type { UIMessage } from \"ai\";\r\n\r\n\tlet {\r\n\t\tmessage,\r\n\t\tisLastMessage = false,\r\n\t}: {\r\n\t\tmessage: UIMessage;\r\n\t\tisLastMessage?: boolean;\r\n\t} = $props();\r\n\r\n\tconst isAssistant = $derived(message.role === \"assistant\");\r\n\r\n\tconst messageText = $derived(\r\n\t\tmessage.parts.map((part) => (part.type === \"text\" ? part.text : \"\")).join(\"\")\r\n\t);\r\n</script>\r\n\r\n<Message\r\n\tclass={cn(\r\n\t\t\"mx-auto flex w-full max-w-3xl flex-col gap-2 px-2 md:px-10\",\r\n\t\tisAssistant ? \"items-start\" : \"items-end\"\r\n\t)}\r\n>\r\n\t{#if isAssistant}\r\n\t\t<div class=\"group flex w-full flex-col gap-0\">\r\n\t\t\t<MessageContent\r\n\t\t\t\tclass=\"text-foreground prose w-full min-w-0 flex-1 rounded-lg bg-transparent p-0\"\r\n\t\t\t\tmarkdown={true}\r\n\t\t\t\tcontent={messageText}\r\n\t\t\t/>\r\n\t\t\t<MessageActions\r\n\t\t\t\tclass={cn(\r\n\t\t\t\t\t\"-ml-2.5 flex gap-0 opacity-0 transition-opacity duration-150 group-hover:opacity-100\",\r\n\t\t\t\t\tisLastMessage && \"opacity-100\"\r\n\t\t\t\t)}\r\n\t\t\t>\r\n\t\t\t\t<MessageAction delayDuration={100}>\r\n\t\t\t\t\t{#snippet tooltip()}\r\n\t\t\t\t\t\tCopy\r\n\t\t\t\t\t{/snippet}\r\n\t\t\t\t\t<Button variant=\"ghost\" size=\"icon\" class=\"rounded-full\">\r\n\t\t\t\t\t\t<Copy class=\"h-4 w-4\" />\r\n\t\t\t\t\t</Button>\r\n\t\t\t\t</MessageAction>\r\n\t\t\t\t<MessageAction delayDuration={100}>\r\n\t\t\t\t\t{#snippet tooltip()}\r\n\t\t\t\t\t\tUpvote\r\n\t\t\t\t\t{/snippet}\r\n\t\t\t\t\t<Button variant=\"ghost\" size=\"icon\" class=\"rounded-full\">\r\n\t\t\t\t\t\t<ThumbsUp class=\"h-4 w-4\" />\r\n\t\t\t\t\t</Button>\r\n\t\t\t\t</MessageAction>\r\n\t\t\t\t<MessageAction delayDuration={100}>\r\n\t\t\t\t\t{#snippet tooltip()}\r\n\t\t\t\t\t\tDownvote\r\n\t\t\t\t\t{/snippet}\r\n\t\t\t\t\t<Button variant=\"ghost\" size=\"icon\" class=\"rounded-full\">\r\n\t\t\t\t\t\t<ThumbsDown class=\"h-4 w-4\" />\r\n\t\t\t\t\t</Button>\r\n\t\t\t\t</MessageAction>\r\n\t\t\t</MessageActions>\r\n\t\t</div>\r\n\t{:else}\r\n\t\t<div class=\"group flex w-full flex-col items-end gap-1\">\r\n\t\t\t<MessageContent\r\n\t\t\t\tclass=\"bg-muted text-primary max-w-[85%] rounded-3xl px-5 py-2.5 whitespace-pre-wrap sm:max-w-[75%]\"\r\n\t\t\t>\r\n\t\t\t\t{messageText}\r\n\t\t\t</MessageContent>\r\n\t\t\t<MessageActions\r\n\t\t\t\tclass={cn(\r\n\t\t\t\t\t\"flex gap-0 opacity-0 transition-opacity duration-150 group-hover:opacity-100\"\r\n\t\t\t\t)}\r\n\t\t\t>\r\n\t\t\t\t<MessageAction delayDuration={100}>\r\n\t\t\t\t\t{#snippet tooltip()}\r\n\t\t\t\t\t\tCopy\r\n\t\t\t\t\t{/snippet}\r\n\t\t\t\t\t<Button variant=\"ghost\" size=\"icon\" class=\"rounded-full\">\r\n\t\t\t\t\t\t<Copy class=\"h-4 w-4\" />\r\n\t\t\t\t\t</Button>\r\n\t\t\t\t</MessageAction>\r\n\t\t\t</MessageActions>\r\n\t\t</div>\r\n\t{/if}\r\n</Message>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit-primitives/full-chat-app/MessageComponent.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport Message from \"$COMPONENTS$/prompt-kit/message/Message.svelte\";\r\n\timport { DotsLoader } from \"$COMPONENTS$/prompt-kit/loader\";\r\n</script>\r\n\r\n<Message class=\"mx-auto flex w-full max-w-3xl flex-col items-start gap-2 px-0 md:px-10\">\r\n\t<div class=\"group flex w-full flex-col gap-0\">\r\n\t\t<div class=\"text-foreground prose w-full min-w-0 flex-1 rounded-lg bg-transparent p-0\">\r\n\t\t\t<DotsLoader />\r\n\t\t</div>\r\n\t</div>\r\n</Message>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit-primitives/full-chat-app/LoadingMessage.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\r\n\timport Message from \"$COMPONENTS$/prompt-kit/message/Message.svelte\";\r\n\timport { AlertTriangle } from \"@lucide/svelte\";\r\n\r\n\tlet { error }: { error: Error } = $props();\r\n</script>\r\n\r\n<Message class=\"not-prose mx-auto flex w-full max-w-3xl flex-col items-start gap-2 px-0 md:px-10\">\r\n\t<div class=\"group flex w-full flex-col items-start gap-0\">\r\n\t\t<div\r\n\t\t\tclass=\"text-primary flex min-w-0 flex-1 flex-row items-center gap-2 rounded-lg border-2 border-red-300 bg-red-300/20 px-2 py-1\"\r\n\t\t>\r\n\t\t\t<AlertTriangle size={16} class=\"text-red-500\" />\r\n\t\t\t<p class=\"text-red-500\">{error.message}</p>\r\n\t\t</div>\r\n\t</div>\r\n</Message>\r\n",
+			"type": "registry:component",
+			"target": "prompt-kit-primitives/full-chat-app/ErrorMessage.svelte"
+		},
+		{
+			"content": "export { default as FullChatApp } from \"./FullChatApp.svelte\";\r\nexport { default as MessageComponent } from \"./MessageComponent.svelte\";\r\nexport { default as LoadingMessage } from \"./LoadingMessage.svelte\";\r\nexport { default as ErrorMessage } from \"./ErrorMessage.svelte\";\r\n",
+			"type": "registry:file",
+			"target": "prompt-kit-primitives/full-chat-app/index.ts"
+		},
+		{
+			"content": "import { streamText, type UIMessage, convertToModelMessages, tool } from \"ai\";\r\nimport type { RequestHandler } from \"./$types\";\r\nimport { createOpenRouter } from \"@openrouter/ai-sdk-provider\";\r\nimport { OPENROUTER_API_KEY } from \"$env/static/private\";\r\nimport { z } from \"zod\";\r\n\r\nlet defaultModel = \"z-ai/glm-4.5-air:free\";\r\n\r\nexport const POST: RequestHandler = async ({ request }) => {\r\n\tconst { messages, apiKey }: { messages: UIMessage[]; apiKey?: string } = await request.json();\r\n\r\n\t// Create OpenRouter instance\r\n\tlet openrouter = createOpenRouter({\r\n\t\tapiKey: OPENROUTER_API_KEY,\r\n\t});\r\n\r\n\t// Override with user-provided API key if available\r\n\tif (apiKey) {\r\n\t\topenrouter = createOpenRouter({\r\n\t\t\tapiKey,\r\n\t\t});\r\n\t}\r\n\r\n\tconst result = streamText({\r\n\t\tmodel: openrouter(defaultModel),\r\n\t\tsystem: \"You are a helpful assistant with access to tools. Use the getCurrentDate tool when users ask about dates, time, or current information. You are also able to use the getTime tool to get the current time in a specific timezone.\",\r\n\t\tmessages: convertToModelMessages(messages),\r\n\t\ttools: {\r\n\t\t\tgetTime: tool({\r\n\t\t\t\tdescription: \"Get the current time in a specific timezone\",\r\n\t\t\t\tinputSchema: z.object({\r\n\t\t\t\t\ttimezone: z.string().describe(\"A valid IANA timezone, e.g. 'Europe/Paris'\"),\r\n\t\t\t\t}),\r\n\t\t\t\texecute: async ({ timezone }) => {\r\n\t\t\t\t\ttry {\r\n\t\t\t\t\t\tconst now = new Date();\r\n\t\t\t\t\t\tconst time = now.toLocaleString(\"en-US\", {\r\n\t\t\t\t\t\t\ttimeZone: timezone,\r\n\t\t\t\t\t\t\thour: \"2-digit\",\r\n\t\t\t\t\t\t\tminute: \"2-digit\",\r\n\t\t\t\t\t\t\tsecond: \"2-digit\",\r\n\t\t\t\t\t\t\thour12: false,\r\n\t\t\t\t\t\t});\r\n\r\n\t\t\t\t\t\treturn { time, timezone };\r\n\t\t\t\t\t} catch {\r\n\t\t\t\t\t\treturn { error: \"Invalid timezone format.\" };\r\n\t\t\t\t\t}\r\n\t\t\t\t},\r\n\t\t\t}),\r\n\t\t\tgetCurrentDate: tool({\r\n\t\t\t\tdescription: \"Get the current date and time with timezone information\",\r\n\t\t\t\tinputSchema: z.object({}),\r\n\t\t\t\texecute: async () => {\r\n\t\t\t\t\tconst now = new Date();\r\n\t\t\t\t\treturn {\r\n\t\t\t\t\t\ttimestamp: now.getTime(),\r\n\t\t\t\t\t\tiso: now.toISOString(),\r\n\t\t\t\t\t\tlocal: now.toLocaleString(\"en-US\", {\r\n\t\t\t\t\t\t\tweekday: \"long\",\r\n\t\t\t\t\t\t\tyear: \"numeric\",\r\n\t\t\t\t\t\t\tmonth: \"long\",\r\n\t\t\t\t\t\t\tday: \"numeric\",\r\n\t\t\t\t\t\t\thour: \"2-digit\",\r\n\t\t\t\t\t\t\tminute: \"2-digit\",\r\n\t\t\t\t\t\t\tsecond: \"2-digit\",\r\n\t\t\t\t\t\t\ttimeZoneName: \"short\",\r\n\t\t\t\t\t\t}),\r\n\t\t\t\t\t\ttimezone: Intl.DateTimeFormat().resolvedOptions().timeZone,\r\n\t\t\t\t\t\tutc: now.toUTCString(),\r\n\t\t\t\t\t};\r\n\t\t\t\t},\r\n\t\t\t}),\r\n\t\t},\r\n\t});\r\n\r\n\treturn result.toUIMessageStreamResponse();\r\n};\r\n",
+			"type": "registry:file",
+			"target": "routes/api/primitives/full-chat-app/+server.ts"
+		}
+	]
+}

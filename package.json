@@ -50,6 +50,7 @@
 		]
 	},
 	"dependencies": {
+		"@ai-sdk/openai": "^2.0.67",
 		"@ai-sdk/svelte": "^3.0.56",
 		"@openrouter/ai-sdk-provider": "^1.2.0",
 		"@shikijs/langs": "^3.13.0",
@@ -67,6 +68,7 @@
 		"shiki": "^3.13.0",
 		"svelte-sonner": "^1.0.5",
 		"svelte-streamdown": "^2.6.1",
-		"svelte-toolbelt": "^0.10.5"
+		"svelte-toolbelt": "^0.10.5",
+		"zod": "^4.1.12"
 	}
 }

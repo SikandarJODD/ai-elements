@@ -24,6 +24,17 @@
 				],
 			},
 			{
+				title: "Primitives",
+				url: "/prompt-kit/primitives",
+				items: [
+					{
+						title: "Primitives",
+						url: "/prompt-kit/primitives",
+						badge: "new",
+					},
+				],
+			},
+			{
 				title: "Blocks",
 				url: "/prompt-kit/blocks",
 				items: [

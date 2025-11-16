@@ -5,13 +5,20 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Plan component provides a collapsible container for displaying AI-generated plans with structured sections including header, title, description, actions, content, and footer.",
-	"dependencies": ["@lucide/svelte"],
+	"dependencies": [
+		"@lucide/svelte"
+	],
 	"devDependencies": [
 		"@lucide/svelte@^0.544.0",
 		"bits-ui@^2.14.1",
 		"@internationalized/date@^3.8.1"
 	],
-	"registryDependencies": ["collapsible", "card", "button", "./shimmer.json"],
+	"registryDependencies": [
+		"collapsible",
+		"card",
+		"button",
+		"./shimmer.json"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},

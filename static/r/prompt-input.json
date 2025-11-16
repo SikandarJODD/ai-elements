@@ -3,8 +3,16 @@
 	"name": "prompt-input",
 	"type": "registry:block",
 	"description": "A comprehensive prompt input component for AI chat interfaces with file attachments, drag-and-drop support, model selection, and advanced state management. Features include PromptInputProvider for external state control, async error handling, automatic blob-to-data URL conversion, grouped attachment rendering, and paste image support. Perfect for building ChatGPT-like interfaces.",
-	"dependencies": ["runed"],
-	"registryDependencies": ["button", "textarea", "select", "dropdown-menu", "tooltip"],
+	"dependencies": [
+		"runed"
+	],
+	"registryDependencies": [
+		"button",
+		"textarea",
+		"select",
+		"dropdown-menu",
+		"tooltip"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "2.0.0",

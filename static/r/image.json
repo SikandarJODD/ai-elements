@@ -5,7 +5,9 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Image component displays AI-generated images from base64 encoded data with proper styling and accessibility features.",
-	"dependencies": ["ai"],
+	"dependencies": [
+		"ai"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},
