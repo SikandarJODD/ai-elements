@@ -25,8 +25,15 @@ import LoadingMessageRaw from "$lib/components/prompt-kit-primitives/full-chat-a
 import ErrorMessageRaw from "$lib/components/prompt-kit-primitives/full-chat-app/ErrorMessage.svelte?raw";
 import FullChatAppApiRaw from "$lib/../routes/api/primitives/full-chat-app/+server.ts?raw";
 
+import ToolCallingAppRaw from "$lib/components/prompt-kit-primitives/tool-calling/ToolCallingApp.svelte?raw";
+import ToolCallingMessageComponentRaw from "$lib/components/prompt-kit-primitives/tool-calling/MessageComponent.svelte?raw";
+import ToolCallingLoadingMessageRaw from "$lib/components/prompt-kit-primitives/tool-calling/LoadingMessage.svelte?raw";
+import ToolCallingErrorMessageRaw from "$lib/components/prompt-kit-primitives/tool-calling/ErrorMessage.svelte?raw";
+import ToolCallingApiRaw from "$lib/../routes/api/primitives/tool-call/+server.ts?raw";
+
 // Import components for preview
 import FullChatApp from "$lib/components/prompt-kit-primitives/full-chat-app/FullChatApp.svelte";
+import ToolCallingApp from "$lib/components/prompt-kit-primitives/tool-calling/ToolCallingApp.svelte";
 
 export const primitives: PrimitiveConfig[] = [
 	{
@@ -64,9 +71,45 @@ export const primitives: PrimitiveConfig[] = [
 			content: FullChatAppApiRaw,
 		},
 	},
+	{
+		id: "tool-calling",
+		title: "Tool calling chatbot",
+		description:
+			"A chatbot with tool execution capabilities. Demonstrates how to integrate AI function calling with timezone and date/time tools using the Vercel AI SDK and OpenRouter.",
+		demoUrl: "/demo-tool-call",
+		registryName: "tool-calling",
+		componentFiles: [
+			{
+				name: "ToolCallingApp.svelte",
+				path: "components/ToolCallingApp.svelte",
+				content: ToolCallingAppRaw,
+			},
+			{
+				name: "MessageComponent.svelte",
+				path: "components/MessageComponent.svelte",
+				content: ToolCallingMessageComponentRaw,
+			},
+			{
+				name: "LoadingMessage.svelte",
+				path: "components/LoadingMessage.svelte",
+				content: ToolCallingLoadingMessageRaw,
+			},
+			{
+				name: "ErrorMessage.svelte",
+				path: "components/ErrorMessage.svelte",
+				content: ToolCallingErrorMessageRaw,
+			},
+		],
+		apiFile: {
+			name: "+server.ts",
+			path: "routes/api/primitives/tool-call/+server.ts",
+			content: ToolCallingApiRaw,
+		},
+	},
 ];
 
 // Export components for preview
 export const primitiveComponents = {
 	"full-chat-app": FullChatApp,
+	"tool-calling": ToolCallingApp,
 };
