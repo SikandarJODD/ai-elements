@@ -2950,6 +2950,83 @@
 			}
 		},
 		{
+			"name": "full-chat-app",
+			"title": "Full Chat App Primitive",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "A fullstack chat application primitive with streaming responses, tool calling, and OpenRouter integration. Includes both UI components and API route implementation. Built with the Vercel AI SDK and z-ai/glm-4.5-air:free model.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit-primitives/full-chat-app/FullChatApp.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit-primitives/full-chat-app/FullChatApp.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit-primitives/full-chat-app/MessageComponent.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit-primitives/full-chat-app/MessageComponent.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit-primitives/full-chat-app/LoadingMessage.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit-primitives/full-chat-app/LoadingMessage.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit-primitives/full-chat-app/ErrorMessage.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit-primitives/full-chat-app/ErrorMessage.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit-primitives/full-chat-app/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit-primitives/full-chat-app/index.ts"
+				},
+				{
+					"path": "src/routes/api/primitives/full-chat-app/+server.ts",
+					"type": "registry:file",
+					"target": "routes/api/primitives/full-chat-app/+server.ts"
+				}
+			],
+			"registryDependencies": [
+				"button",
+				"local:prompt-kit-chat-container",
+				"local:prompt-kit-prompt-input",
+				"local:prompt-kit-message",
+				"local:prompt-kit-loader"
+			],
+			"dependencies": [
+				"ai",
+				"@ai-sdk/svelte",
+				"@openrouter/ai-sdk-provider",
+				"zod",
+				"@lucide/svelte"
+			],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": [
+					"primitive",
+					"fullstack",
+					"chat",
+					"openrouter",
+					"streaming",
+					"tool-calling",
+					"free-model",
+					"api-route"
+				],
+				"category": "Primitives",
+				"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/primitives",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "advanced",
+				"updated": "2025-11-16",
+				"featured": true,
+				"isPrimitive": true,
+				"requiresApiKey": true,
+				"model": "z-ai/glm-4.5-air:free",
+				"provider": "OpenRouter"
+			}
+		},
+		{
 			"name": "full-chat-app-block",
 			"title": "Full Chat App Block",
 			"type": "registry:block",

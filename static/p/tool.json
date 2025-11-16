@@ -3,13 +3,27 @@
 	"name": "tool",
 	"type": "registry:block",
 	"description": "The Tool component displays AI tool execution information with collapsible header, content, and details sections. Features state-based badges and shadcn-svelte Collapsible integration for showing tool usage, parameters, and results in AI responses.",
-	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^0.544.0"],
-	"registryDependencies": ["collapsible", "button"],
+	"dependencies": [
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
+	],
+	"registryDependencies": [
+		"collapsible",
+		"button"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "2.0.0",
-		"tags": ["prompt-kit", "tool", "execution", "ai-tools", "function-calling", "collapsible"],
+		"tags": [
+			"prompt-kit",
+			"tool",
+			"execution",
+			"ai-tools",
+			"function-calling",
+			"collapsible"
+		],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/tool",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

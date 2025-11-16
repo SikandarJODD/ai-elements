@@ -3,11 +3,20 @@
 	"name": "markdown",
 	"type": "registry:block",
 	"description": "The Markdown component renders markdown content with proper styling and support for code blocks, lists, links, and other markdown elements. Perfect for displaying AI-generated markdown responses.",
-	"dependencies": ["marked", "isomorphic-dompurify"],
+	"dependencies": [
+		"marked",
+		"isomorphic-dompurify"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["prompt-kit", "markdown", "rendering", "content", "formatting"],
+		"tags": [
+			"prompt-kit",
+			"markdown",
+			"rendering",
+			"content",
+			"formatting"
+		],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/markdown",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

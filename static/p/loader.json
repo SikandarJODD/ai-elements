@@ -6,7 +6,14 @@
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["prompt-kit", "loader", "loading", "spinner", "animation", "ai-response"],
+		"tags": [
+			"prompt-kit",
+			"loader",
+			"loading",
+			"spinner",
+			"animation",
+			"ai-response"
+		],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/loader",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

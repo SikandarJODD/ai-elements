@@ -3,13 +3,25 @@
 	"name": "scroll-button",
 	"type": "registry:block",
 	"description": "The ScrollButton component provides a floating button to scroll to the bottom of chat containers. Features context-based visibility management and smooth scrolling behavior.",
-	"dependencies": ["runed"],
-	"devDependencies": ["@lucide/svelte@^0.544.0"],
-	"registryDependencies": ["button"],
+	"dependencies": [
+		"runed"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
+	],
+	"registryDependencies": [
+		"button"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["prompt-kit", "scroll", "button", "navigation", "chat"],
+		"tags": [
+			"prompt-kit",
+			"scroll",
+			"button",
+			"navigation",
+			"chat"
+		],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/scroll-button",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

@@ -5,12 +5,22 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Canvas component provides the main container for rendering workflow diagrams with nodes and edges. It wraps @xyflow/svelte's SvelteFlow component with custom styling and configuration for AI workflow visualization.",
-	"dependencies": ["@xyflow/svelte"],
-	"registryDependencies": ["controls"],
+	"dependencies": [
+		"@xyflow/svelte"
+	],
+	"registryDependencies": [
+		"controls"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["workflow", "canvas", "flow", "diagram", "visualization"],
+		"tags": [
+			"workflow",
+			"canvas",
+			"flow",
+			"diagram",
+			"visualization"
+		],
 		"category": "AI Workflow",
 		"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

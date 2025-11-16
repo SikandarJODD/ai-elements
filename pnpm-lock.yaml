@@ -8,12 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@ai-sdk/openai':
+        specifier: ^2.0.67
+        version: 2.0.67(zod@4.1.12)
       '@ai-sdk/svelte':
         specifier: ^3.0.56
-        version: 3.0.56(svelte@5.39.6)(zod@4.1.11)
+        version: 3.0.56(svelte@5.39.6)(zod@4.1.12)
       '@openrouter/ai-sdk-provider':
         specifier: ^1.2.0
-        version: 1.2.0(ai@5.0.55(zod@4.1.11))(zod@4.1.11)
+        version: 1.2.0(ai@5.0.55(zod@4.1.12))(zod@4.1.12)
       '@shikijs/langs':
         specifier: ^3.13.0
         version: 3.13.0
@@ -25,13 +28,13 @@ importers:
         version: 1.3.1(svelte@5.39.6)
       ai:
         specifier: ^5.0.55
-        version: 5.0.55(zod@4.1.11)
+        version: 5.0.55(zod@4.1.12)
       isomorphic-dompurify:
         specifier: 2.28.0
         version: 2.28.0(postcss@8.5.6)
       jsrepo:
         specifier: ^2.5.0
-        version: 2.5.0(typescript@5.9.2)(ws@8.18.3)(zod@4.1.11)
+        version: 2.5.0(typescript@5.9.2)(ws@8.18.3)(zod@4.1.12)
       marked:
         specifier: ^16.3.0
         version: 16.3.0
@@ -62,6 +65,9 @@ importers:
       svelte-toolbelt:
         specifier: ^0.10.5
         version: 0.10.5(svelte@5.39.6)
+      zod:
+        specifier: ^4.1.12
+        version: 4.1.12
     devDependencies:
       '@internationalized/date':
         specifier: ^3.8.1
@@ -138,8 +144,20 @@ packages:
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
+  '@ai-sdk/openai@2.0.67':
+    resolution: {integrity: sha512-JhB3fUpY+IxAocyJt2PHuhfNwH+e+rDbZ8Q+d0hgSyNycuPRrV0xutLaf7mgDTvjr5FCrVEkXmM73tJprzZMiA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.25.76 || ^4.1.8
+
   '@ai-sdk/provider-utils@3.0.10':
     resolution: {integrity: sha512-T1gZ76gEIwffep6MWI0QNy9jgoybUHE7TRaHB5k54K8mF91ciGFlbtCGxDYhMH3nCRergKwYFIDeFF0hJSIQHQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.25.76 || ^4.1.8
+
+  '@ai-sdk/provider-utils@3.0.17':
+    resolution: {integrity: sha512-TR3Gs4I3Tym4Ll+EPdzRdvo/rc8Js6c4nVhFLuvGLX/Y4V9ZcQMa/HTiYsHEgmYrf1zVi6Q145UEZUfleOwOjw==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -2580,38 +2598,51 @@ packages:
   zimmerframe@1.1.4:
     resolution: {integrity: sha512-B58NGBEoc8Y9MWWCQGl/gq9xBCe4IiKM0a2x7GZdQKOW5Exr8S1W24J6OgM1njK8xCRGvAJIL/MxXHf6SkmQKQ==}
 
-  zod@4.1.11:
-    resolution: {integrity: sha512-WPsqwxITS2tzx1bzhIKsEs19ABD5vmCVa4xBo2tq/SrV4RNZtfws1EnCWQXM6yh8bD08a1idvkB5MZSBiZsjwg==}
+  zod@4.1.12:
+    resolution: {integrity: sha512-JInaHOamG8pt5+Ey8kGmdcAcg3OL9reK8ltczgHTAwNhMys/6ThXHityHxVV2p3fkw/c+MAvBHFVYHFZDmjMCQ==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
 snapshots:
 
-  '@ai-sdk/gateway@1.0.30(zod@4.1.11)':
+  '@ai-sdk/gateway@1.0.30(zod@4.1.12)':
     dependencies:
       '@ai-sdk/provider': 2.0.0
-      '@ai-sdk/provider-utils': 3.0.10(zod@4.1.11)
-      zod: 4.1.11
+      '@ai-sdk/provider-utils': 3.0.10(zod@4.1.12)
+      zod: 4.1.12
 
-  '@ai-sdk/provider-utils@3.0.10(zod@4.1.11)':
+  '@ai-sdk/openai@2.0.67(zod@4.1.12)':
+    dependencies:
+      '@ai-sdk/provider': 2.0.0
+      '@ai-sdk/provider-utils': 3.0.17(zod@4.1.12)
+      zod: 4.1.12
+
+  '@ai-sdk/provider-utils@3.0.10(zod@4.1.12)':
     dependencies:
       '@ai-sdk/provider': 2.0.0
       '@standard-schema/spec': 1.0.0
       eventsource-parser: 3.0.6
-      zod: 4.1.11
+      zod: 4.1.12
+
+  '@ai-sdk/provider-utils@3.0.17(zod@4.1.12)':
+    dependencies:
+      '@ai-sdk/provider': 2.0.0
+      '@standard-schema/spec': 1.0.0
+      eventsource-parser: 3.0.6
+      zod: 4.1.12
 
   '@ai-sdk/provider@2.0.0':
     dependencies:
       json-schema: 0.4.0
 
-  '@ai-sdk/svelte@3.0.56(svelte@5.39.6)(zod@4.1.11)':
+  '@ai-sdk/svelte@3.0.56(svelte@5.39.6)(zod@4.1.12)':
     dependencies:
-      '@ai-sdk/provider-utils': 3.0.10(zod@4.1.11)
-      ai: 5.0.56(zod@4.1.11)
+      '@ai-sdk/provider-utils': 3.0.10(zod@4.1.12)
+      ai: 5.0.56(zod@4.1.12)
       svelte: 5.39.6
     optionalDependencies:
-      zod: 4.1.11
+      zod: 4.1.12
 
   '@antfu/install-pkg@1.1.0':
     dependencies:
@@ -2904,10 +2935,10 @@ snapshots:
     dependencies:
       semver: 7.7.3
 
-  '@openrouter/ai-sdk-provider@1.2.0(ai@5.0.55(zod@4.1.11))(zod@4.1.11)':
+  '@openrouter/ai-sdk-provider@1.2.0(ai@5.0.55(zod@4.1.12))(zod@4.1.12)':
     dependencies:
-      ai: 5.0.55(zod@4.1.11)
-      zod: 4.1.11
+      ai: 5.0.55(zod@4.1.12)
+      zod: 4.1.12
 
   '@opentelemetry/api@1.9.0': {}
 
@@ -3428,21 +3459,21 @@ snapshots:
 
   agent-base@7.1.4: {}
 
-  ai@5.0.55(zod@4.1.11):
+  ai@5.0.55(zod@4.1.12):
     dependencies:
-      '@ai-sdk/gateway': 1.0.30(zod@4.1.11)
+      '@ai-sdk/gateway': 1.0.30(zod@4.1.12)
       '@ai-sdk/provider': 2.0.0
-      '@ai-sdk/provider-utils': 3.0.10(zod@4.1.11)
+      '@ai-sdk/provider-utils': 3.0.10(zod@4.1.12)
       '@opentelemetry/api': 1.9.0
-      zod: 4.1.11
+      zod: 4.1.12
 
-  ai@5.0.56(zod@4.1.11):
+  ai@5.0.56(zod@4.1.12):
     dependencies:
-      '@ai-sdk/gateway': 1.0.30(zod@4.1.11)
+      '@ai-sdk/gateway': 1.0.30(zod@4.1.12)
       '@ai-sdk/provider': 2.0.0
-      '@ai-sdk/provider-utils': 3.0.10(zod@4.1.11)
+      '@ai-sdk/provider-utils': 3.0.10(zod@4.1.12)
       '@opentelemetry/api': 1.9.0
-      zod: 4.1.11
+      zod: 4.1.12
 
   ajv-formats@3.0.1(ajv@8.17.1):
     optionalDependencies:
@@ -4095,7 +4126,7 @@ snapshots:
 
   json-schema@0.4.0: {}
 
-  jsrepo@2.5.0(typescript@5.9.2)(ws@8.18.3)(zod@4.1.11):
+  jsrepo@2.5.0(typescript@5.9.2)(ws@8.18.3)(zod@4.1.12):
     dependencies:
       '@anthropic-ai/sdk': 0.62.0
       '@biomejs/js-api': 3.0.0(@biomejs/wasm-nodejs@2.2.6)
@@ -4117,7 +4148,7 @@ snapshots:
       make-fetch-happen: 15.0.2
       node-machine-id: 1.1.12
       ollama: 0.5.18
-      openai: 5.23.2(ws@8.18.3)(zod@4.1.11)
+      openai: 5.23.2(ws@8.18.3)(zod@4.1.12)
       oxc-parser: 0.72.3
       package-manager-detector: 1.3.0
       parse5: 8.0.0
@@ -4380,10 +4411,10 @@ snapshots:
       regex: 6.0.1
       regex-recursion: 6.0.2
 
-  openai@5.23.2(ws@8.18.3)(zod@4.1.11):
+  openai@5.23.2(ws@8.18.3)(zod@4.1.12):
     optionalDependencies:
       ws: 8.18.3
-      zod: 4.1.11
+      zod: 4.1.12
 
   oxc-parser@0.72.3:
     dependencies:
@@ -4999,6 +5030,6 @@ snapshots:
 
   zimmerframe@1.1.4: {}
 
-  zod@4.1.11: {}
+  zod@4.1.12: {}
 
   zwitch@2.0.4: {}
