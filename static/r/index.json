@@ -1175,9 +1175,7 @@
 				"streaming",
 				"timezone",
 				"date-time",
-				"tool-state-tracking",
-				"free-model",
-				"api-route"
+				"tool-state-tracking"
 			],
 			"category": "Primitives",
 			"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/primitives",
@@ -1193,7 +1191,7 @@
 		"relativeUrl": "tool-calling.json"
 	},
 	{
-		"name": "full-chat-app-block",
+		"name": "full-block",
 		"title": "Full Chat App Block",
 		"type": "registry:block",
 		"author": "SikandarJODD",
@@ -1227,6 +1225,6 @@
 			"updated": "2025-11-16",
 			"featured": true
 		},
-		"relativeUrl": "full-chat-app-block.json"
+		"relativeUrl": "full-block.json"
 	}
 ]

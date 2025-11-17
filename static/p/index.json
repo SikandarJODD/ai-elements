@@ -220,7 +220,8 @@
 		"registryDependencies": [
 			"avatar",
 			"button",
-			"tooltip"
+			"tooltip",
+			"local:prompt-kit-markdown"
 		],
 		"meta": {
 			"author": "SikandarJODD",

@@ -36,9 +36,7 @@
 			"streaming",
 			"timezone",
 			"date-time",
-			"tool-state-tracking",
-			"free-model",
-			"api-route"
+			"tool-state-tracking"
 		],
 		"category": "Primitives",
 		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/primitives",
