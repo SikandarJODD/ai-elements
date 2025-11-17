@@ -1,6 +1,6 @@
 {
 	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
-	"name": "full-chat-app-block",
+	"name": "full-block",
 	"title": "Full Chat App Block",
 	"type": "registry:block",
 	"author": "SikandarJODD",

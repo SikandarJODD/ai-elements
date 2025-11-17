@@ -238,8 +238,10 @@
 						<div class="mt-10 space-y-3">
 							<div>
 								<AiInstallCommand
-									command="add"
+									command="execute"
 									args={[
+										"shadcn-svelte@latest",
+										"add",
 										`https://svelte-ai-elements.vercel.app/r/${primitive.registryName}.json`,
 									]}
 									component={primitive.id}

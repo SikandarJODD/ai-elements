@@ -10,7 +10,8 @@
 	"registryDependencies": [
 		"avatar",
 		"button",
-		"tooltip"
+		"tooltip",
+		"./prompt-kit-markdown.json"
 	],
 	"meta": {
 		"author": "SikandarJODD",
@@ -42,7 +43,7 @@
 			"target": "prompt-kit/message/MessageAvatar.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport Markdown from \"../markdown/Markdown.svelte\";\n\n\tlet {\n\t\tmarkdown = false,\n\t\tclass: className,\n\t\tcontent,\n\t\tchildren,\n\t\t...restProps\n\t}: {\n\t\tcontent?: string;\n\t\tmarkdown?: boolean;\n\t\tclass?: string;\n\t\tchildren?: Snippet;\n\t} & HTMLAttributes<HTMLDivElement> = $props();\n\n\tconst classNames = cn(\n\t\t\"text-foreground bg-secondary prose rounded-lg p-2 break-words whitespace-normal\",\n\t\tclassName\n\t);\n</script>\n\n{#if markdown && content}\n\t<!-- Markdown rendering can be added here when needed -->\n\t<!-- For now, we'll render as plain div -->\n\t<!-- <div class={classNames} {...restProps}>\n\t\t{@render children()}\n\t</div> -->\n\t<Markdown class={classNames} {content}></Markdown>\n{:else}\n\t<div class={classNames} {...restProps}>\n\t\t{@render children?.()}\n\t</div>\n{/if}\n",
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport Markdown from \"$COMPONENTS$/prompt-kit/markdown/Markdown.svelte\";\n\n\tlet {\n\t\tmarkdown = false,\n\t\tclass: className,\n\t\tcontent,\n\t\tchildren,\n\t\t...restProps\n\t}: {\n\t\tcontent?: string;\n\t\tmarkdown?: boolean;\n\t\tclass?: string;\n\t\tchildren?: Snippet;\n\t} & HTMLAttributes<HTMLDivElement> = $props();\n\n\tconst classNames = cn(\n\t\t\"text-foreground bg-secondary prose rounded-lg p-2 break-words whitespace-normal\",\n\t\tclassName\n\t);\n</script>\n\n{#if markdown && content}\n\t<!-- Markdown rendering can be added here when needed -->\n\t<!-- For now, we'll render as plain div -->\n\t<!-- <div class={classNames} {...restProps}>\n\t\t{@render children()}\n\t</div> -->\n\t<Markdown class={classNames} {content}></Markdown>\n{:else}\n\t<div class={classNames} {...restProps}>\n\t\t{@render children?.()}\n\t</div>\n{/if}\n",
 			"type": "registry:component",
 			"target": "prompt-kit/message/MessageContent.svelte"
 		},
