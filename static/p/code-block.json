@@ -3,25 +3,12 @@
 	"name": "code-block",
 	"type": "registry:block",
 	"description": "The CodeBlock component displays formatted code snippets with syntax highlighting, copy functionality, and language detection. Supports multiple code blocks with group context management for consistent styling.",
-	"dependencies": [
-		"shiki",
-		"@shikijs/langs",
-		"@shikijs/themes"
-	],
-	"registryDependencies": [
-		"button",
-		"./prompt-kit-copy-button.json"
-	],
+	"dependencies": ["shiki", "@shikijs/langs", "@shikijs/themes"],
+	"registryDependencies": ["button", "./copy-button.json"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"prompt-kit",
-			"code",
-			"syntax-highlighting",
-			"copy",
-			"code-block"
-		],
+		"tags": ["prompt-kit", "code", "syntax-highlighting", "copy", "code-block"],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/code-block",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
