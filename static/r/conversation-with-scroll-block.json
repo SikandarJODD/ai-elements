@@ -13,7 +13,14 @@
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["prompt-kit", "block", "conversation", "scroll", "navigation", "long-chat"],
+		"tags": [
+			"prompt-kit",
+			"block",
+			"conversation",
+			"scroll",
+			"navigation",
+			"long-chat"
+		],
 		"category": "Prompt Kit Blocks",
 		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

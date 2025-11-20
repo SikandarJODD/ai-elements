@@ -2042,7 +2042,7 @@
 					"target": "prompt-kit/code-block/index.ts"
 				}
 			],
-			"registryDependencies": ["button", "local:prompt-kit-copy-button"],
+			"registryDependencies": ["button", "../p/copy-button.json"],
 			"dependencies": ["shiki", "@shikijs/langs", "@shikijs/themes"],
 			"meta": {
 				"author": "SikandarJODD",
@@ -2323,7 +2323,7 @@
 					"target": "prompt-kit/message/index.ts"
 				}
 			],
-			"registryDependencies": ["avatar", "button", "tooltip", "local:prompt-kit-markdown"],
+			"registryDependencies": ["avatar", "button", "tooltip", "../p/markdown.json"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
@@ -2696,7 +2696,7 @@
 					"target": "prompt-kit-blocks/prompt-input-with-actions.svelte"
 				}
 			],
-			"registryDependencies": ["local:prompt-kit-prompt-input", "button"],
+			"registryDependencies": ["../p/prompt-input.json", "button"],
 			"dependencies": ["@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD",
@@ -2724,8 +2724,8 @@
 				}
 			],
 			"registryDependencies": [
-				"local:prompt-kit-prompt-input",
-				"local:prompt-kit-prompt-suggestion",
+				"../p/prompt-input.json",
+				"../p/prompt-suggestion.json",
 				"button"
 			],
 			"dependencies": ["@lucide/svelte"],
@@ -2755,8 +2755,8 @@
 				}
 			],
 			"registryDependencies": [
-				"local:prompt-kit-prompt-input",
-				"local:prompt-kit-prompt-suggestion",
+				"../p/prompt-input.json",
+				"../p/prompt-suggestion.json",
 				"button"
 			],
 			"dependencies": ["@lucide/svelte"],
@@ -2792,7 +2792,7 @@
 					"target": "prompt-kit-blocks/basic-full-conversation.svelte"
 				}
 			],
-			"registryDependencies": ["local:prompt-kit-chat-container", "local:prompt-kit-message"],
+			"registryDependencies": ["../p/chat-container.json", "../p/message.json"],
 			"dependencies": [],
 			"meta": {
 				"author": "SikandarJODD",
@@ -2819,7 +2819,7 @@
 					"target": "prompt-kit-blocks/conversation-with-avatars.svelte"
 				}
 			],
-			"registryDependencies": ["local:prompt-kit-chat-container", "local:prompt-kit-message"],
+			"registryDependencies": ["../p/chat-container.json", "../p/message.json"],
 			"dependencies": [],
 			"meta": {
 				"author": "SikandarJODD",
@@ -2846,11 +2846,7 @@
 					"target": "prompt-kit-blocks/conversation-with-actions.svelte"
 				}
 			],
-			"registryDependencies": [
-				"local:prompt-kit-chat-container",
-				"local:prompt-kit-message",
-				"button"
-			],
+			"registryDependencies": ["../p/chat-container.json", "../p/message.json", "button"],
 			"dependencies": ["@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD",
@@ -2885,9 +2881,9 @@
 				}
 			],
 			"registryDependencies": [
-				"local:prompt-kit-chat-container",
-				"local:prompt-kit-message",
-				"local:prompt-kit-scroll-button"
+				"../p/chat-container.json",
+				"../p/message.json",
+				"../p/scroll-button.json"
 			],
 			"dependencies": [],
 			"meta": {
@@ -2923,10 +2919,10 @@
 				}
 			],
 			"registryDependencies": [
-				"local:prompt-kit-chat-container",
-				"local:prompt-kit-message",
-				"local:prompt-kit-prompt-input",
-				"local:prompt-kit-scroll-button",
+				"../p/chat-container.json",
+				"../p/message.json",
+				"../p/prompt-input.json",
+				"../p/scroll-button.json",
 				"button"
 			],
 			"dependencies": ["@lucide/svelte"],
@@ -2984,15 +2980,15 @@
 				{
 					"path": "src/routes/api/primitives/full-chat-app/+server.ts",
 					"type": "registry:file",
-					"target": "routes/api/primitives/full-chat-app/+server.ts"
+					"target": "~/src/routes/api/primitives/full-chat-app/+server.ts"
 				}
 			],
 			"registryDependencies": [
 				"button",
-				"local:prompt-kit-chat-container",
-				"local:prompt-kit-prompt-input",
-				"local:prompt-kit-message",
-				"local:prompt-kit-loader"
+				"../p/chat-container.json",
+				"../p/prompt-input.json",
+				"../p/message.json",
+				"../p/loader.json"
 			],
 			"dependencies": [
 				"ai",
@@ -3061,17 +3057,17 @@
 				{
 					"path": "src/routes/api/primitives/tool-call/+server.ts",
 					"type": "registry:file",
-					"target": "routes/api/primitives/tool-call/+server.ts"
+					"target": "~/src/routes/api/primitives/tool-call/+server.ts"
 				}
 			],
 			"registryDependencies": [
 				"button",
-				"local:prompt-kit-chat-container",
-				"local:prompt-kit-prompt-input",
-				"local:prompt-kit-message",
-				"local:prompt-kit-loader",
-				"local:prompt-kit-tool",
-				"local:prompt-kit-reasoning"
+				"../p/chat-container.json",
+				"../p/prompt-input.json",
+				"../p/message.json",
+				"../p/loader.json",
+				"../p/tool.json",
+				"../p/reasoning.json"
 			],
 			"dependencies": [
 				"ai",
@@ -3122,10 +3118,10 @@
 				}
 			],
 			"registryDependencies": [
-				"local:prompt-kit-chat-container",
-				"local:prompt-kit-message",
-				"local:prompt-kit-prompt-input",
-				"local:prompt-kit-scroll-button",
+				"../p/chat-container.json",
+				"../p/message.json",
+				"../p/prompt-input.json",
+				"../p/scroll-button.json",
 				"button",
 				"sidebar"
 			],

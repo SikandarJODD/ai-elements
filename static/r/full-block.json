@@ -5,8 +5,12 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A complete chat application block with sidebar, chat history, and all features combined. The most comprehensive chat interface block available.",
-	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"dependencies": [
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
+	],
 	"registryDependencies": [
 		"../p/chat-container.json",
 		"../p/message.json",
@@ -18,7 +22,14 @@
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["prompt-kit", "block", "chat-app", "sidebar", "complete", "application"],
+		"tags": [
+			"prompt-kit",
+			"block",
+			"chat-app",
+			"sidebar",
+			"complete",
+			"application"
+		],
 		"category": "Prompt Kit Blocks",
 		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

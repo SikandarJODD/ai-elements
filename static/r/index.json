@@ -838,7 +838,7 @@
 			"@lucide/svelte"
 		],
 		"registryDependencies": [
-			"local:prompt-kit-prompt-input",
+			"../p/prompt-input.json",
 			"button"
 		],
 		"meta": {
@@ -871,8 +871,8 @@
 			"@lucide/svelte"
 		],
 		"registryDependencies": [
-			"local:prompt-kit-prompt-input",
-			"local:prompt-kit-prompt-suggestion",
+			"../p/prompt-input.json",
+			"../p/prompt-suggestion.json",
 			"button"
 		],
 		"meta": {
@@ -905,8 +905,8 @@
 			"@lucide/svelte"
 		],
 		"registryDependencies": [
-			"local:prompt-kit-prompt-input",
-			"local:prompt-kit-prompt-suggestion",
+			"../p/prompt-input.json",
+			"../p/prompt-suggestion.json",
 			"button"
 		],
 		"meta": {
@@ -937,8 +937,8 @@
 		"description": "A simple conversation layout block with user and assistant messages. Perfect for basic chat interfaces with clean message display.",
 		"dependencies": [],
 		"registryDependencies": [
-			"local:prompt-kit-chat-container",
-			"local:prompt-kit-message"
+			"../p/chat-container.json",
+			"../p/message.json"
 		],
 		"meta": {
 			"author": "SikandarJODD",
@@ -968,8 +968,8 @@
 		"description": "A conversation block with avatar images for each message. Enhances the chat experience with visual user representation.",
 		"dependencies": [],
 		"registryDependencies": [
-			"local:prompt-kit-chat-container",
-			"local:prompt-kit-message"
+			"../p/chat-container.json",
+			"../p/message.json"
 		],
 		"meta": {
 			"author": "SikandarJODD",
@@ -1001,8 +1001,8 @@
 			"@lucide/svelte"
 		],
 		"registryDependencies": [
-			"local:prompt-kit-chat-container",
-			"local:prompt-kit-message",
+			"../p/chat-container.json",
+			"../p/message.json",
 			"button"
 		],
 		"meta": {
@@ -1033,9 +1033,9 @@
 		"description": "A conversation block with a scroll-to-bottom button for easy navigation. Ideal for long conversations with smooth scrolling functionality.",
 		"dependencies": [],
 		"registryDependencies": [
-			"local:prompt-kit-chat-container",
-			"local:prompt-kit-message",
-			"local:prompt-kit-scroll-button"
+			"../p/chat-container.json",
+			"../p/message.json",
+			"../p/scroll-button.json"
 		],
 		"meta": {
 			"author": "SikandarJODD",
@@ -1067,10 +1067,10 @@
 			"@lucide/svelte"
 		],
 		"registryDependencies": [
-			"local:prompt-kit-chat-container",
-			"local:prompt-kit-message",
-			"local:prompt-kit-prompt-input",
-			"local:prompt-kit-scroll-button",
+			"../p/chat-container.json",
+			"../p/message.json",
+			"../p/prompt-input.json",
+			"../p/scroll-button.json",
 			"button"
 		],
 		"meta": {
@@ -1108,10 +1108,10 @@
 		],
 		"registryDependencies": [
 			"button",
-			"local:prompt-kit-chat-container",
-			"local:prompt-kit-prompt-input",
-			"local:prompt-kit-message",
-			"local:prompt-kit-loader"
+			"../p/chat-container.json",
+			"../p/prompt-input.json",
+			"../p/message.json",
+			"../p/loader.json"
 		],
 		"meta": {
 			"author": "SikandarJODD",
@@ -1154,12 +1154,12 @@
 		],
 		"registryDependencies": [
 			"button",
-			"local:prompt-kit-chat-container",
-			"local:prompt-kit-prompt-input",
-			"local:prompt-kit-message",
-			"local:prompt-kit-loader",
-			"local:prompt-kit-tool",
-			"local:prompt-kit-reasoning"
+			"../p/chat-container.json",
+			"../p/prompt-input.json",
+			"../p/message.json",
+			"../p/loader.json",
+			"../p/tool.json",
+			"../p/reasoning.json"
 		],
 		"meta": {
 			"author": "SikandarJODD",
@@ -1200,10 +1200,10 @@
 			"@lucide/svelte"
 		],
 		"registryDependencies": [
-			"local:prompt-kit-chat-container",
-			"local:prompt-kit-message",
-			"local:prompt-kit-prompt-input",
-			"local:prompt-kit-scroll-button",
+			"../p/chat-container.json",
+			"../p/message.json",
+			"../p/prompt-input.json",
+			"../p/scroll-button.json",
 			"button",
 			"sidebar"
 		],
