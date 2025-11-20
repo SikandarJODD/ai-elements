@@ -5,13 +5,28 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A conversation block with action buttons like copy, like, dislike, and regenerate. Perfect for interactive chat experiences with user feedback.",
-	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^0.544.0"],
-	"registryDependencies": ["../p/chat-container.json", "../p/message.json", "button"],
+	"dependencies": [
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
+	],
+	"registryDependencies": [
+		"../p/chat-container.json",
+		"../p/message.json",
+		"button"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["prompt-kit", "block", "conversation", "actions", "interactive", "feedback"],
+		"tags": [
+			"prompt-kit",
+			"block",
+			"conversation",
+			"actions",
+			"interactive",
+			"feedback"
+		],
 		"category": "Prompt Kit Blocks",
 		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

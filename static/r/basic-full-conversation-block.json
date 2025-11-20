@@ -5,11 +5,21 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A simple conversation layout block with user and assistant messages. Perfect for basic chat interfaces with clean message display.",
-	"registryDependencies": ["../p/chat-container.json", "../p/message.json"],
+	"registryDependencies": [
+		"../p/chat-container.json",
+		"../p/message.json"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["prompt-kit", "block", "conversation", "chat", "messages", "basic"],
+		"tags": [
+			"prompt-kit",
+			"block",
+			"conversation",
+			"chat",
+			"messages",
+			"basic"
+		],
 		"category": "Prompt Kit Blocks",
 		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

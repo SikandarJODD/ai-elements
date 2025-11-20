@@ -68,7 +68,7 @@
 		],
 		"registryDependencies": [
 			"button",
-			"local:prompt-kit-copy-button"
+			"../p/copy-button.json"
 		],
 		"meta": {
 			"author": "SikandarJODD",
@@ -221,7 +221,7 @@
 			"avatar",
 			"button",
 			"tooltip",
-			"local:prompt-kit-markdown"
+			"../p/markdown.json"
 		],
 		"meta": {
 			"author": "SikandarJODD",
