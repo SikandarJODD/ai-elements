@@ -5,6 +5,7 @@
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
+	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/generate-text/llms.txt`;
 
@@ -283,5 +284,8 @@ export const POST: RequestHandler = async ({ request }) => {
 			</svg>
 			View Example on GitHub
 		</Button>
+
+		<!-- Previous / Next Navigation -->
+		<CookbookPrevNext currentSlug="generate-text" />
 	</footer>
 </article>
