@@ -93,28 +93,28 @@ export const recipes: Recipe[] = [
 		tags: ["ui-components", "interactive", "tools"],
 		status: "available",
 	},
-	// Coming soon
+	// Chat Prompts
 	{
 		name: "Generate Text with Chat Prompt",
 		slug: "generate-text-with-chat-prompt",
 		description:
 			"Generate text using conversational chat prompts for more natural interactions",
 		tags: ["text", "generation", "chat"],
-		status: "coming-soon",
+		status: "available",
 	},
 	{
 		name: "Stream Text with Chat Prompt",
 		slug: "stream-text-with-chat-prompt",
 		description: "Combine streaming with chat prompts for responsive conversational AI",
 		tags: ["text", "streaming", "chat"],
-		status: "coming-soon",
+		status: "available",
 	},
 	{
 		name: "Markdown Chatbot",
 		slug: "markdown-chatbot",
 		description: "Create a chatbot that renders responses in beautiful markdown format",
 		tags: ["markdown", "chat", "formatting"],
-		status: "coming-soon",
+		status: "available",
 	},
 ];
 

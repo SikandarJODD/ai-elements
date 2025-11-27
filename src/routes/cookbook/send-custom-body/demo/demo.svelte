@@ -34,12 +34,12 @@
 	<CardContent class="space-y-4">
 		<div class="grid grid-cols-2 gap-4">
 			<div>
-				<label class="text-muted-foreground mb-1 block text-xs">Name</label>
-				<Input bind:value={userName} placeholder="Your name" />
+				<label for="name" class="text-muted-foreground mb-1 block text-xs">Name</label>
+				<Input id="name" bind:value={userName} placeholder="Your name" />
 			</div>
 			<div>
-				<label class="text-muted-foreground mb-1 block text-xs">Age</label>
-				<Input type="number" bind:value={userAge} placeholder="Age" />
+				<label for="age" class="text-muted-foreground mb-1 block text-xs">Age</label>
+				<Input id="age" type="number" bind:value={userAge} placeholder="Age" />
 			</div>
 		</div>
 
@@ -59,7 +59,9 @@
 			<div class="space-y-3">
 				{#each chat.messages as message}
 					<div class="text-sm">
-						<span class="font-medium">{message.role === "user" ? "User" : "Assistant"}:</span>
+						<span class="font-medium"
+							>{message.role === "user" ? "User" : "Assistant"}:</span
+						>
 						{#each message.parts as part}
 							{#if part.type === "text"}
 								<span class="whitespace-pre-wrap">{part.text}</span>
@@ -71,4 +73,3 @@
 		{/if}
 	</CardContent>
 </Card>
-

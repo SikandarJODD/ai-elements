@@ -1,15 +1,11 @@
 import type { RequestHandler } from "./$types";
-import { readFileSync } from "fs";
-import { resolve } from "path";
+import docs from "../docs.md?raw";
 
 export const GET: RequestHandler = async () => {
-	const docsPath = resolve("src/routes/cookbook/render-visual-interface/docs.md");
-	const content = readFileSync(docsPath, "utf-8");
-
-	return new Response(content, {
+	return new Response(docs, {
 		headers: {
 			"Content-Type": "text/plain; charset=utf-8",
+			"Cache-Control": "public, max-age=3600",
 		},
 	});
 };
-
