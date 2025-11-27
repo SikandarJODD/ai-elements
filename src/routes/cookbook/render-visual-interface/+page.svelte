@@ -1,0 +1,146 @@
+<script lang="ts">
+	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
+	import { MetaTags } from "svelte-meta-tags";
+	import { CopyMarkdownButton, OpenInMenu, CodeNameBlock } from "$lib/components/docs";
+	import { Button } from "$lib/components/ui/button";
+	import { Badge } from "$lib/components/ui/badge";
+	import Demo from "./demo/demo.svelte";
+	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+
+	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/render-visual-interface/llms.txt`;
+
+	let clientCode = `let chat = new Chat<ChatMessage>({
+  transport: new DefaultChatTransport({
+    api: "/api/cookbook/render-visual-interface"
+  }),
+  
+  // Auto-send when all tools have outputs
+  sendAutomaticallyWhen: lastAssistantMessageIsCompleteWithToolCalls,
+  
+  // Handle client-side tools
+  async onToolCall({ toolCall }) {
+    if (toolCall.toolName === "getLocation") {
+      chat.addToolOutput({
+        tool: "getLocation",
+        toolCallId: toolCall.toolCallId,
+        output: "San Francisco"
+      });
+    }
+  }
+});`;
+
+	let renderCode = `{#each message.parts as part}
+  {#if part.type === "text"}
+    <span>{part.text}</span>
+    
+  {:else if part.type === "tool-getWeatherInformation"}
+    <!-- Render a weather card -->
+    {#if part.state === "output-available"}
+      <div class="weather-card">
+        <div class="temp">{part.output.value}°</div>
+        <div class="forecast">
+          {#each part.output.weeklyForecast as day}
+            <span>{day.day}: {day.value}°</span>
+          {/each}
+        </div>
+      </div>
+    {/if}
+    
+  {:else if part.type === "tool-askForConfirmation"}
+    <!-- Interactive confirmation buttons -->
+    {#if part.state === "output-available"}
+      <span class="confirmed">{part.output}</span>
+    {:else}
+      <button onclick={() => chat.addToolOutput({
+        tool: "askForConfirmation",
+        toolCallId: part.toolCallId,
+        output: "Confirmed"
+      })}>Yes</button>
+      <button onclick={() => chat.addToolOutput({...})}>No</button>
+    {/if}
+  {/if}
+{/each}`;
+</script>
+
+<MetaTags
+	title="Render Visual Interface - Svelte Cookbook"
+	description="Render custom UI components for different tool outputs, including interactive elements."
+	openGraph={{
+		title: "Render Visual Interface - Svelte Cookbook",
+		description: "Render custom UI components for different tool outputs.",
+		type: "article",
+		url: "https://ai-elements.vercel.app/cookbook/render-visual-interface",
+	}}
+/>
+
+<article class="mx-auto max-w-3xl px-4 py-12 md:px-6 md:py-16">
+	<header class="mb-12">
+		<div class="mb-6 flex items-start justify-between gap-4">
+			<h1 class="text-4xl font-semibold tracking-tight">Render Visual Interface</h1>
+			<div class="flex shrink-0 items-center gap-2">
+				<CopyMarkdownButton {llmsTxtUrl} />
+				<OpenInMenu componentName="Render Visual Interface" {llmsTxtUrl} type="ai-elements" />
+			</div>
+		</div>
+
+		<div class="mb-6 flex flex-wrap items-center gap-2">
+			<Badge variant="secondary">UI Components</Badge>
+			<Badge variant="secondary">Interactive</Badge>
+			<Badge variant="secondary">Tools</Badge>
+		</div>
+
+		<p class="text-muted-foreground text-lg leading-relaxed">
+			Render rich UI components based on tool results. Create weather cards, confirmation
+			dialogs, charts, or any custom interface elements—not just text.
+		</p>
+	</header>
+
+	<section class="prose prose-neutral dark:prose-invert mb-12 max-w-none">
+		<h2 class="mb-4 text-2xl font-semibold">Beyond Text Responses</h2>
+		<p class="text-muted-foreground leading-relaxed">
+			When the AI calls a weather tool, instead of showing raw JSON, render a beautiful
+			weather card. For confirmations, show interactive buttons. Each tool can have its own
+			custom UI.
+		</p>
+	</section>
+
+	<section class="mb-12">
+		<h2 class="mb-6 text-3xl font-semibold">Demo</h2>
+		<p class="text-muted-foreground mb-4 text-sm">Ask about weather to see the visual card!</p>
+		<Demo />
+	</section>
+
+	<section class="mb-16">
+		<h2 class="mb-6 text-3xl font-semibold">Client-Side Tool Handling</h2>
+		<p class="text-muted-foreground mb-6 leading-relaxed">
+			Use <code class="text-foreground">onToolCall</code> to handle tools that run on the client.
+			<code class="text-foreground">sendAutomaticallyWhen</code> continues the conversation after tools complete.
+		</p>
+		<CodeNameBlock filename="+page.svelte" lang="typescript" code={clientCode} highlight={[[7, 8], [10, 17]]} />
+	</section>
+
+	<section class="mb-10">
+		<h2 class="mb-6 text-3xl font-semibold">Rendering Tool Parts</h2>
+		<p class="text-muted-foreground mb-6 leading-relaxed">
+			Check <code class="text-foreground">part.type</code> to render different UI for each tool.
+			Use <code class="text-foreground">part.state</code> to show loading or completed states.
+		</p>
+		<CodeNameBlock filename="+page.svelte" lang="svelte" code={renderCode} highlight={[[6, 14], [18, 28]]} />
+	</section>
+
+	<footer>
+		<Button
+			href="https://github.com/SikandarJODD/ai-elements/tree/master/src/routes/cookbook/render-visual-interface"
+			target="_blank"
+			variant="outline"
+			class="gap-2"
+		>
+			<svg class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
+				<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+			</svg>
+			View on GitHub
+		</Button>
+		<CookbookPrevNext currentSlug="render-visual-interface" />
+	</footer>
+</article>
+
