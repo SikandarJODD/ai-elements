@@ -12,9 +12,7 @@
 		"zod",
 		"@lucide/svelte"
 	],
-	"devDependencies": [
-		"@lucide/svelte@^0.544.0"
-	],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
 	"registryDependencies": [
 		"button",
 		"../p/chat-container.json",

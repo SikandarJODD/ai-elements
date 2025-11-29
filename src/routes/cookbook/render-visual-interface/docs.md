@@ -13,10 +13,10 @@ let chat = new Chat<ChatMessage>({
   transport: new DefaultChatTransport({
     api: "/api/cookbook/render-visual-interface",
   }),
-  
+
   // Auto-send when tools complete
   sendAutomaticallyWhen: lastAssistantMessageIsCompleteWithToolCalls,
-  
+
   // Handle client-side tools
   async onToolCall({ toolCall }) {
     if (toolCall.toolName === "getLocation") {
@@ -52,4 +52,3 @@ let chat = new Chat<ChatMessage>({
 2. **State Handling** - Check `part.state` for "output-available" or pending
 3. **Interactive Tools** - Some tools require user input before completion
 4. **addToolOutput** - Programmatically provide tool results
-

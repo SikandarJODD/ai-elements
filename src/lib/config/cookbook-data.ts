@@ -69,7 +69,7 @@ export const recipes: Recipe[] = [
 		slug: "generate-image",
 		description: "Generate images from text prompts using AI image generation models",
 		tags: ["images", "generation", "tools"],
-		status: "available",
+		status: "coming-soon",
 	},
 	{
 		name: "Chat with PDFs",

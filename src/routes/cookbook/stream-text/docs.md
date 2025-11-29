@@ -33,7 +33,7 @@ This recipe shows you how to implement real-time text streaming in SvelteKit usi
   function handleSubmit(e: SubmitEvent) {
     e.preventDefault();
     if (!input.trim()) return;
-    
+
     chat.sendMessage({ text: input });
     input = "";
   }
@@ -105,4 +105,3 @@ export const POST: RequestHandler = async ({ request }) => {
 ## Tags
 
 streaming, text, real-time, chat, ai-sdk, sveltekit
-

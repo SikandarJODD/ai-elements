@@ -46,7 +46,10 @@
 				messages = [...messages, { role: "assistant", content: assistantContent }];
 			}
 		} catch {
-			messages = [...messages, { role: "assistant", content: "Error: Failed to get response" }];
+			messages = [
+				...messages,
+				{ role: "assistant", content: "Error: Failed to get response" },
+			];
 		} finally {
 			isLoading = false;
 		}
@@ -97,4 +100,3 @@
 		</form>
 	</CardContent>
 </Card>
-

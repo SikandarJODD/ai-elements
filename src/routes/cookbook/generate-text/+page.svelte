@@ -12,22 +12,30 @@
 	let clientCode = `<script lang="ts">
 	import { Card, CardContent } from "$lib/components/ui/card";
 	import { Button } from "$lib/components/ui/button";
+	import { Input } from "$lib/components/ui/input";
 	import { fly } from "svelte/transition";
+	import LoaderIcon from "@lucide/svelte/icons/loader";
+	import SendIcon from "@lucide/svelte/icons/send";
+	import SparklesIcon from "@lucide/svelte/icons/sparkles";
 
+	let prompt = $state("What is Svelte JS?");
 	let isLoading = $state(false);
 	let response = $state("");
 
-	async function handleGenerate() {
+	async function handleSubmit(e: SubmitEvent) {
+		e.preventDefault();
+		if (!prompt.trim() || isLoading) return;
+
 		isLoading = true;
 		response = "";
 
 		try {
-			const res = await fetch("/api/cookbook/generate-text", {
+			const res = await fetch("/api/generate-text", {
 				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ prompt: prompt.trim() }),
 			});
-
-			let text = await res.text();
-			response = text;
+			response = await res.text();
 		} catch (error) {
 			response = "Error generating text. Please try again.";
 		} finally {
@@ -39,16 +47,32 @@
 <Card>
 	<CardContent>
 		<div class="space-y-4">
-			<div>
-				<p class="text-muted-foreground text-sm font-medium">Prompt:</p>
-				<p class="mt-1 text-sm">What is Svelte JS? in 100 words</p>
-			</div>
+			<form onsubmit={handleSubmit} class="flex gap-2">
+				<Input bind:value={prompt} placeholder="Enter your prompt..." disabled={isLoading} />
+				<Button type="submit" disabled={isLoading || !prompt.trim()}>
+					{#if isLoading}
+						<LoaderIcon class="size-4 animate-spin" />
+					{:else}
+						<SendIcon class="size-4" />
+					{/if}
+				</Button>
+			</form>
 
-			<Button onclick={handleGenerate} disabled={isLoading} class="w-full">
-				{isLoading ? "Thinking..." : "Generate Text"}
-			</Button>
+			{#if isLoading}
+				<div class="rounded-lg border p-4">
+					<div class="mb-3 flex items-center gap-2">
+						<SparklesIcon class="text-primary size-4 animate-pulse" />
+						<span class="text-muted-foreground text-xs">Generating response...</span>
+					</div>
+					<div class="space-y-2">
+						<div class="bg-muted h-3 w-full animate-pulse rounded"></div>
+						<div class="bg-muted h-3 w-11/12 animate-pulse rounded"></div>
+						<div class="bg-muted h-3 w-3/4 animate-pulse rounded"></div>
+					</div>
+				</div>
+			{/if}
 
-			{#if response}
+			{#if response && !isLoading}
 				<div in:fly={{ y: -20, delay: 50 }} class="rounded-lg border p-4">
 					<p class="text-muted-foreground mb-2 text-xs font-medium">Response:</p>
 					<p class="text-sm leading-relaxed whitespace-pre-wrap">{response}</p>
@@ -72,12 +96,16 @@ import { openrouter, defaultModel } from "$lib/config/ai-config";
 import type { RequestHandler } from "./$types";
 
 export const POST: RequestHandler = async ({ request }) => {
-	const { text } = await generateText({
+	const { prompt } = await request.json().catch(() => ({}));
+
+	const result = await generateText({
 		model: openrouter(defaultModel),
-		prompt: "What is Svelte JS? in 100 words",
+		prompt: prompt || "What is Svelte JS? in 100 words",
 	});
 
-	return new Response(text);
+	return new Response(result.text, {
+		headers: { "Content-Type": "text/plain" },
+	});
 };`;
 </script>
 
@@ -100,7 +128,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			<h1 class="text-4xl font-semibold tracking-tight md:text-4xl">Generate Text</h1>
 			<div class="flex shrink-0 items-center gap-2">
 				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Generate Text" {llmsTxtUrl} type="ai-elements" />
+				<OpenInMenu componentName="Generate Text" {llmsTxtUrl} type="cookbook" />
 			</div>
 		</div>
 
@@ -146,8 +174,8 @@ export const POST: RequestHandler = async ({ request }) => {
 		<h2 class="mb-6 text-3xl font-semibold">Client Component</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
 			Now let's create a Svelte component that handles user interaction. This component uses
-			Svelte 5's <code class="text-foreground">$state</code> rune for reactivity and makes a POST
-			request to our API endpoint.
+			Svelte 5's <code class="text-foreground">$state</code> rune for reactivity, includes a loading
+			state with skeleton animation, and makes a POST request to our API endpoint.
 		</p>
 
 		<div class="mb-4">
@@ -155,7 +183,7 @@ export const POST: RequestHandler = async ({ request }) => {
 				filename="+page.svelte"
 				lang="svelte"
 				code={clientCode}
-				highlight={[[9, 25]]}
+				highlight={[[14, 33]]}
 			/>
 		</div>
 	</section>

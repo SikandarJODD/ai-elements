@@ -10,11 +10,11 @@ This recipe combines two powerful patterns: **streaming** for real-time response
 
 The combination gives you the best of both worlds:
 
-| Feature | Benefit |
-|---------|---------|
-| **Streaming** | Immediate feedback, better perceived performance |
-| **Chat prompts** | Context awareness, multi-turn conversations |
-| **Together** | Responsive conversational AI that "remembers" |
+| Feature          | Benefit                                          |
+| ---------------- | ------------------------------------------------ |
+| **Streaming**    | Immediate feedback, better perceived performance |
+| **Chat prompts** | Context awareness, multi-turn conversations      |
+| **Together**     | Responsive conversational AI that "remembers"    |
 
 ## Server Implementation
 
@@ -86,4 +86,3 @@ Each message contains `parts` that can be different types:
 - [Stream Text](/cookbook/stream-text) - Basic streaming without chat history
 - [Generate Text with Chat Prompt](/cookbook/generate-text-with-chat-prompt) - Non-streaming chat
 - [Markdown Chatbot](/cookbook/markdown-chatbot) - Render streamed markdown beautifully
-

@@ -12,27 +12,46 @@
 	let clientCode = `<script lang="ts">
 	import { Chat } from "@ai-sdk/svelte";
 	import { DefaultChatTransport } from "ai";
+	import LoaderIcon from "@lucide/svelte/icons/loader";
+	import SendIcon from "@lucide/svelte/icons/send";
 
-	let chat = new Chat({
-		transport: new DefaultChatTransport({
-			api: "/api/cookbook/stream-text",
-		}),
-	});
+	let chat = $derived(
+		new Chat({
+			transport: new DefaultChatTransport({
+				api: "/api/stream-text",
+			}),
+		})
+	);
 
 	let input = $state("");
+	let isStreaming = $derived(chat.status === "streaming");
+
+	// Check if last message is assistant with no text yet
+	let showTypingIndicator = $derived(() => {
+		if (!isStreaming) return false;
+		const lastMsg = chat.messages[chat.messages.length - 1];
+		if (!lastMsg || lastMsg.role !== "assistant") return false;
+		const textPart = lastMsg.parts.find((p) => p.type === "text");
+		return !textPart || !(textPart as { text?: string }).text;
+	});
 
 	function handleSubmit(e: SubmitEvent) {
 		e.preventDefault();
-		if (!input.trim()) return;
-
+		if (!input.trim() || isStreaming) return;
 		chat.sendMessage({ text: input });
 		input = "";
 	}
 <\/script>
 
 <form onsubmit={handleSubmit}>
-	<input bind:value={input} placeholder="Type your message..." />
-	<button type="submit">Send</button>
+	<input bind:value={input} placeholder="Type your message..." disabled={isStreaming} />
+	<button type="submit" disabled={!input.trim() || isStreaming}>
+		{#if isStreaming}
+			<LoaderIcon class="size-4 animate-spin" />
+		{:else}
+			<SendIcon class="size-4" />
+		{/if}
+	</button>
 </form>
 
 {#each chat.messages as message}
@@ -44,7 +63,16 @@
 			{/if}
 		{/each}
 	</div>
-{/each}`;
+{/each}
+
+<!-- Skeleton loading indicator -->
+{#if showTypingIndicator()}
+	<div class="space-y-1.5">
+		<div class="bg-muted h-3 w-full animate-pulse rounded"></div>
+		<div class="bg-muted h-3 w-11/12 animate-pulse rounded"></div>
+		<div class="bg-muted h-3 w-3/4 animate-pulse rounded"></div>
+	</div>
+{/if}`;
 
 	let serverCode = `import { type UIMessage, convertToModelMessages, streamText } from "ai";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
@@ -87,7 +115,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			<h1 class="text-4xl font-semibold tracking-tight">Stream Text</h1>
 			<div class="flex shrink-0 items-center gap-2">
 				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Stream Text" {llmsTxtUrl} type="ai-elements" />
+				<OpenInMenu componentName="Stream Text" {llmsTxtUrl} type="cookbook" />
 			</div>
 		</div>
 
@@ -129,11 +157,16 @@ export const POST: RequestHandler = async ({ request }) => {
 	<section class="mb-12">
 		<h2 class="mb-6 text-2xl font-semibold">Client Component</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
-			The client component uses the <code class="text-foreground">Chat</code> class to manage
-			messages and handle streaming. The
-			<code class="text-foreground">chat.messages</code> array updates reactively as new text arrives.
+			The client component uses the <code class="text-foreground">Chat</code> class to manage messages
+			and handle streaming. It includes a loading indicator that shows skeleton placeholders while
+			waiting for the assistant's response.
 		</p>
-		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} />
+		<CodeNameBlock
+			filename="+page.svelte"
+			lang="svelte"
+			code={clientCode}
+			highlight={[[7, 13], 30]}
+		/>
 	</section>
 
 	<!-- Server Section -->

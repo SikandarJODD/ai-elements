@@ -16,29 +16,69 @@
   let userName = $state("Alice");
   let userAge = $state(25);
 
-  // The body object is sent with every request
   let chat = $derived(
     new Chat({
       transport: new DefaultChatTransport({
-        api: "/api/cookbook/send-custom-body",
+        api: "/api/send-custom-body"
+      })
+    })
+  );
+
+  let input = $state("Tell me about myself.");
+  let isStreaming = $derived(chat.status === "streaming");
+
+  function handleSubmit(e: SubmitEvent) {
+    e.preventDefault();
+    if (!input.trim() || isStreaming) return;
+
+    // Pass custom body as second argument to sendMessage
+    chat.sendMessage(
+      { text: input },
+      {
         body: {
           name: userName,
           age: userAge
         }
-      })
-    })
-  );
+      }
+    );
+    input = "";
+  }
 <\/script>
 
-<input bind:value={userName} placeholder="Name" />
-<input type="number" bind:value={userAge} placeholder="Age" />`;
+<input bind:value={userName} placeholder="Name" disabled={isStreaming} />
+<input type="number" bind:value={userAge} placeholder="Age" disabled={isStreaming} />
+
+<form onsubmit={handleSubmit} class="flex gap-2">
+  <input bind:value={input} placeholder="Say something..." />
+  <button type="submit" disabled={isStreaming}>
+    {isStreaming ? "..." : "Send"}
+  </button>
+</form>
+
+<!-- Render messages -->
+{#if chat.messages.length > 0}
+  <div class="space-y-3">
+    {#each chat.messages as message}
+      <div class="text-sm">
+        <span class="font-medium">
+          {message.role === "user" ? "User" : "Assistant"}:
+        </span>
+        {#each message.parts as part}
+          {#if part.type === "text"}
+            <span class="whitespace-pre-wrap">{part.text}</span>
+          {/if}
+        {/each}
+      </div>
+    {/each}
+  </div>
+{/if}`;
 
 	let serverCode = `import { streamText, convertToModelMessages } from "ai";
 
 export const POST = async ({ request }) => {
   // Destructure custom fields alongside messages
   const { messages, name, age } = await request.json();
-  
+
   console.log("Custom data:", name, age);
 
   const result = streamText({
@@ -69,7 +109,7 @@ export const POST = async ({ request }) => {
 			<h1 class="text-4xl font-semibold tracking-tight">Send Custom Body</h1>
 			<div class="flex shrink-0 items-center gap-2">
 				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Send Custom Body" {llmsTxtUrl} type="ai-elements" />
+				<OpenInMenu componentName="Send Custom Body" {llmsTxtUrl} type="cookbook" />
 			</div>
 		</div>
 
@@ -96,26 +136,33 @@ export const POST = async ({ request }) => {
 
 	<section class="mb-12">
 		<h2 class="mb-6 text-3xl font-semibold">Demo</h2>
-		<p class="text-muted-foreground mb-4 text-sm">Change the name and age, then send a message!</p>
+		<p class="text-muted-foreground mb-4 text-sm">
+			Change the name and age, then send a message!
+		</p>
 		<Demo />
 	</section>
 
 	<section class="mb-16">
 		<h2 class="mb-6 text-3xl font-semibold">Client Component</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
-			The <code class="text-foreground">body</code> option accepts any object. When using
-			<code class="text-foreground">$derived</code>, the chat transport updates reactively with new values.
+			The <code class="text-foreground">body</code> option accepts any object. The loading state
+			shows a personalized message with the user's name and age while the AI curates a response.
 		</p>
-		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} highlight={[[12, 16]]} />
+		<CodeNameBlock
+			filename="+page.svelte"
+			lang="svelte"
+			code={clientCode}
+			highlight={[[23, 34]]}
+		/>
 	</section>
 
 	<section class="mb-10">
 		<h2 class="mb-6 text-3xl font-semibold">Server Endpoint</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Destructure your custom fields from the request body. Use them to personalize the
-			system prompt or for any server-side logic.
+			Destructure your custom fields from the request body. Use them to personalize the system
+			prompt or for any server-side logic.
 		</p>
-		<CodeNameBlock filename="+server.ts" lang="typescript" code={serverCode} highlight={[[4, 5], [11, 12]]} />
+		<CodeNameBlock filename="+server.ts" lang="typescript" code={serverCode} />
 	</section>
 
 	<footer>
@@ -126,11 +173,12 @@ export const POST = async ({ request }) => {
 			class="gap-2"
 		>
 			<svg class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
-				<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+				<path
+					d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+				/>
 			</svg>
 			View on GitHub
 		</Button>
 		<CookbookPrevNext currentSlug="send-custom-body" />
 	</footer>
 </article>
-

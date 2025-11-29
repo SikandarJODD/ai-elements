@@ -28,21 +28,23 @@ We use `svelte-streamdown` for optimal streaming markdown:
   import { mode } from "mode-watcher";
 </script>
 
-<Streamdown 
+<Streamdown
   content={text}
-  shikiTheme={mode.current === "dark" ? "github-dark-default" : "github-light-default"}
+  shikiTheme={mode.current === "dark"
+    ? "github-dark-default"
+    : "github-light-default"}
   baseTheme="shadcn"
 />
 ```
 
 ## Key Features
 
-| Feature | Description |
-|---------|-------------|
-| **Streaming Support** | Renders markdown as it arrives, not after completion |
-| **Syntax Highlighting** | Shiki-powered code highlighting for 100+ languages |
-| **Theme Aware** | Automatically adapts to light/dark mode |
-| **Safe HTML** | DOMPurify prevents XSS attacks |
+| Feature                 | Description                                          |
+| ----------------------- | ---------------------------------------------------- |
+| **Streaming Support**   | Renders markdown as it arrives, not after completion |
+| **Syntax Highlighting** | Shiki-powered code highlighting for 100+ languages   |
+| **Theme Aware**         | Automatically adapts to light/dark mode              |
+| **Safe HTML**           | DOMPurify prevents XSS attacks                       |
 
 ## System Prompt for Better Formatting
 
@@ -87,4 +89,3 @@ npm install svelte-streamdown mode-watcher
 - [Stream Text](/cookbook/stream-text) - Basic streaming
 - [Stream Text with Chat Prompt](/cookbook/stream-text-with-chat-prompt) - Streaming with history
 - [Generate Text](/cookbook/generate-text) - Non-streaming markdown
-

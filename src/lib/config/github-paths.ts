@@ -1,9 +1,29 @@
 /**
- * GitHub repository configuration and file paths for prompt-kit and ai-elements components
+ * GitHub repository configuration and file paths for prompt-kit, ai-elements, and cookbook components
  * This centralizes all GitHub URLs so they can be easily updated in one place
  */
 
 const GITHUB_REPO_BASE = "https://github.com/SikandarJODD/ai-elements/blob/master";
+
+/**
+ * Maps cookbook recipe names to their folder paths in the GitHub repository
+ */
+export const COOKBOOK_GITHUB_PATHS: Record<string, string> = {
+	"Getting Started": `${GITHUB_REPO_BASE}/src/routes/cookbook/getting-started`,
+	"Generate Text": `${GITHUB_REPO_BASE}/src/routes/cookbook/generate-text`,
+	"Generate Text with Chat Prompt": `${GITHUB_REPO_BASE}/src/routes/cookbook/generate-text-with-chat-prompt`,
+	"Stream Text": `${GITHUB_REPO_BASE}/src/routes/cookbook/stream-text`,
+	"Stream Text with Chat Prompt": `${GITHUB_REPO_BASE}/src/routes/cookbook/stream-text-with-chat-prompt`,
+	"Generate Object": `${GITHUB_REPO_BASE}/src/routes/cookbook/generate-object`,
+	"Stream Object": `${GITHUB_REPO_BASE}/src/routes/cookbook/stream-object`,
+	"Call Tool": `${GITHUB_REPO_BASE}/src/routes/cookbook/call-tool`,
+	"Call Tool Multiple Steps": `${GITHUB_REPO_BASE}/src/routes/cookbook/call-tool-multiple-steps`,
+	"Generate Image": `${GITHUB_REPO_BASE}/src/routes/cookbook/generate-image`,
+	"Render Visual Interface": `${GITHUB_REPO_BASE}/src/routes/cookbook/render-visual-interface`,
+	"Chat with PDFs": `${GITHUB_REPO_BASE}/src/routes/cookbook/chat-with-pdfs`,
+	"Markdown Chatbot": `${GITHUB_REPO_BASE}/src/routes/cookbook/markdown-chatbot`,
+	"Send Custom Body": `${GITHUB_REPO_BASE}/src/routes/cookbook/send-custom-body`,
+};
 
 /**
  * Maps component names to their main implementation file paths in the GitHub repository
@@ -73,4 +93,13 @@ export function getPromptKitGithubUrl(componentName: string): string | undefined
  */
 export function getAiElementsGithubUrl(componentName: string): string | undefined {
 	return AI_ELEMENTS_GITHUB_PATHS[componentName];
+}
+
+/**
+ * Get the GitHub URL for a cookbook recipe
+ * @param recipeName - The name of the recipe (e.g., "Generate Text")
+ * @returns The GitHub URL for the recipe, or undefined if not found
+ */
+export function getCookbookGithubUrl(recipeName: string): string | undefined {
+	return COOKBOOK_GITHUB_PATHS[recipeName];
 }

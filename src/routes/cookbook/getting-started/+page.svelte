@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyMarkdownButton, OpenInMenu, CodeNameBlock } from "$lib/components/docs";
+	import {
+		CopyMarkdownButton,
+		OpenInMenu,
+		CodeNameBlock,
+		AiInstallCommand,
+	} from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
@@ -10,10 +15,7 @@
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/getting-started/llms.txt`;
 
-	let installCode = `npm install ai @ai-sdk/svelte @openrouter/ai-sdk-provider zod`;
-
-	let envCode = `# .env
-OPENROUTER_API_KEY=sk-or-v1-your-api-key-here`;
+	let envCode = `OPENROUTER_API_KEY=sk-or-v1-your-api-key-here`;
 
 	let configCode = `// src/lib/config/ai-config.ts
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
@@ -101,7 +103,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			<h1 class="text-4xl font-semibold tracking-tight">Getting Started</h1>
 			<div class="flex shrink-0 items-center gap-2">
 				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Getting Started" {llmsTxtUrl} type="ai-elements" />
+				<OpenInMenu componentName="Getting Started" {llmsTxtUrl} type="cookbook" />
 			</div>
 		</div>
 
@@ -127,7 +129,14 @@ export const POST: RequestHandler = async ({ request }) => {
 			</div>
 			<div class="flex items-center gap-3">
 				<CheckIcon class="size-5 text-green-500" />
-				<span>A SvelteKit project</span>
+				<span
+					>A SvelteKit project with <a
+						href="https://next.shadcn-svelte.com/docs/installation"
+						target="_blank"
+						class="text-primary inline-flex items-center gap-1 underline underline-offset-2"
+						>shadcn-svelte <ExternalLinkIcon class="size-3" /></a
+					></span
+				>
 			</div>
 			<div class="flex items-center gap-3">
 				<CheckIcon class="size-5 text-green-500" />
@@ -152,7 +161,10 @@ export const POST: RequestHandler = async ({ request }) => {
 			Install the AI SDK core, Svelte bindings, OpenRouter provider, and Zod for schema
 			validation.
 		</p>
-		<CodeNameBlock filename="terminal" lang="bash" code={installCode} />
+		<AiInstallCommand
+			command="add"
+			args={["ai", "@ai-sdk/svelte", "@openrouter/ai-sdk-provider", "zod"]}
+		/>
 	</section>
 
 	<!-- Step 2: Environment -->
@@ -162,7 +174,17 @@ export const POST: RequestHandler = async ({ request }) => {
 			Create a <code class="text-foreground">.env</code> file in your project root with your OpenRouter
 			API key.
 		</p>
-		<CodeNameBlock filename=".env" lang="bash" code={envCode} />
+		<CodeNameBlock filename=".env" lang="bash" code={envCode} hideLines />
+		<p class="text-muted-foreground mt-3 text-sm">
+			Get your free API key from
+			<a
+				href="https://openrouter.ai/keys"
+				target="_blank"
+				class="text-primary inline-flex items-center gap-1 underline underline-offset-2"
+			>
+				openrouter.ai/keys <ExternalLinkIcon class="size-3" />
+			</a>
+		</p>
 	</section>
 
 	<!-- Step 3: AI Config -->
@@ -172,15 +194,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			Create a shared configuration file. This keeps your AI setup DRY and makes it easy to
 			switch models.
 		</p>
-		<CodeNameBlock
-			filename="src/lib/config/ai-config.ts"
-			lang="typescript"
-			code={configCode}
-			highlight={[
-				[4, 6],
-				[9, 9],
-			]}
-		/>
+		<CodeNameBlock filename="src/lib/config/ai-config.ts" lang="typescript" code={configCode} />
 	</section>
 
 	<!-- Step 4: Server Endpoint -->
@@ -194,7 +208,6 @@ export const POST: RequestHandler = async ({ request }) => {
 			filename="src/routes/api/chat/+server.ts"
 			lang="typescript"
 			code={serverCode}
-			highlight={[[9, 13]]}
 		/>
 	</section>
 
@@ -211,7 +224,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			filename="src/routes/+page.svelte"
 			lang="svelte"
 			code={clientCode}
-			highlight={[[4, 8]]}
+			highlight={[[5, 9], 16]}
 		/>
 	</section>
 
@@ -224,28 +237,28 @@ export const POST: RequestHandler = async ({ request }) => {
 		<div class="grid gap-4 sm:grid-cols-2">
 			<a
 				href="/cookbook/stream-text"
-				class="hover:border-primary rounded-lg border p-4 transition-colors"
+				class="hover:bg-secondary rounded-lg border p-4 transition-colors"
 			>
 				<h3 class="font-medium">Stream Text</h3>
 				<p class="text-muted-foreground text-sm">Real-time streaming responses</p>
 			</a>
 			<a
 				href="/cookbook/generate-object"
-				class="hover:border-primary rounded-lg border p-4 transition-colors"
+				class="hover:bg-secondary rounded-lg border p-4 transition-colors"
 			>
 				<h3 class="font-medium">Generate Object</h3>
 				<p class="text-muted-foreground text-sm">Type-safe structured data</p>
 			</a>
 			<a
 				href="/cookbook/call-tool"
-				class="hover:border-primary rounded-lg border p-4 transition-colors"
+				class="hover:bg-secondary rounded-lg border p-4 transition-colors"
 			>
 				<h3 class="font-medium">Call Tool</h3>
 				<p class="text-muted-foreground text-sm">AI-powered function calling</p>
 			</a>
 			<a
 				href="/cookbook/generate-image"
-				class="hover:border-primary rounded-lg border p-4 transition-colors"
+				class="hover:bg-secondary rounded-lg border p-4 transition-colors"
 			>
 				<h3 class="font-medium">Generate Image</h3>
 				<p class="text-muted-foreground text-sm">Create images from text</p>

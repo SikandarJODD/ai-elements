@@ -102,7 +102,7 @@ export const POST: RequestHandler = async ({ request }) => {
 				<OpenInMenu
 					componentName="Generate Text with Chat Prompt"
 					{llmsTxtUrl}
-					type="ai-elements"
+					type="cookbook"
 				/>
 			</div>
 		</div>

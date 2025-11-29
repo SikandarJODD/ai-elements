@@ -35,36 +35,70 @@ export const POST = async ({ request }) => {
 };`;
 
 	let clientCode = `<script lang="ts">
-  import { experimental_useObject as useObject } from "@ai-sdk/svelte";
-  import { z } from "zod";
+  import LoaderIcon from "@lucide/svelte/icons/loader";
+  import SparklesIcon from "@lucide/svelte/icons/sparkles";
+  import SendIcon from "@lucide/svelte/icons/send";
 
-  const schema = z.object({
-    notifications: z.array(
-      z.object({
-        name: z.string(),
-        message: z.string()
-      })
-    )
-  });
+  type PartialNotification = { name?: string; message?: string };
+  type PartialNotificationObject = { notifications?: PartialNotification[] };
 
-  const { object, submit, isLoading } = useObject({
-    api: "/api/cookbook/stream-object",
-    schema
-  });
+  let prompt = $state("Weekend plans");
+  let loading = $state(false);
+  let object = $state<PartialNotificationObject | null>(null);
+  let partialJson = $state("");
+
+  async function handleSubmit(e: SubmitEvent) {
+    e.preventDefault();
+    if (!prompt.trim() || loading) return;
+
+    loading = true;
+    object = null;
+    partialJson = "";
+
+    const response = await fetch("/api/stream-object", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt: prompt.trim() }),
+    });
+
+    const reader = response.body?.getReader();
+    const decoder = new TextDecoder();
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      partialJson += decoder.decode(value, { stream: true });
+      object = tryParsePartial(partialJson);
+    }
+
+    loading = false;
+  }
 <\/script>
 
-<button onclick={() => submit({ prompt: "Weekend plans" })}>
-  {$isLoading ? "Streaming..." : "Generate"}
-</button>
+<!-- Streaming JSON display -->
+{#if partialJson}
+  <div class="streaming-json">
+    <span class="label">Streaming JSON</span>
+    {#if loading}<span class="live">Live</span>{/if}
+    <pre>{partialJson}</pre>
+  </div>
+{/if}
 
-{#if $object?.notifications}
-  {#each $object.notifications as notification}
-    {#if notification}
-      <div>
-        <strong>{notification.name ?? "..."}</strong>
-        <p>{notification.message ?? "Loading..."}</p>
-      </div>
-    {/if}
+<!-- Loading skeleton -->
+{#if loading && !object?.notifications?.length}
+  <div class="flex items-center gap-2">
+    <SparklesIcon class="size-4 animate-pulse" />
+    <span>Generating notifications...</span>
+  </div>
+{/if}
+
+<!-- Parsed notifications -->
+{#if object?.notifications?.length}
+  {#each object.notifications as notification}
+    <div class="notification">
+      <strong>{notification.name ?? "..."}</strong>
+      <p>{notification.message ?? "Loading..."}</p>
+    </div>
   {/each}
 {/if}`;
 </script>
@@ -86,7 +120,7 @@ export const POST = async ({ request }) => {
 			<h1 class="text-4xl font-semibold tracking-tight">Stream Object</h1>
 			<div class="flex shrink-0 items-center gap-2">
 				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Stream Object" {llmsTxtUrl} type="ai-elements" />
+				<OpenInMenu componentName="Stream Object" {llmsTxtUrl} type="cookbook" />
 			</div>
 		</div>
 
@@ -105,9 +139,10 @@ export const POST = async ({ request }) => {
 	<section class="prose prose-neutral dark:prose-invert mb-12 max-w-none">
 		<h2 class="mb-4 text-2xl font-semibold">Streaming vs. Waiting</h2>
 		<p class="text-muted-foreground leading-relaxed">
-			With <code class="text-foreground">generateObject</code>, users wait for the complete response.
-			With <code class="text-foreground">streamObject</code>, they see data appearing progressively—names
-			first, then messages, creating a much more responsive experience.
+			With <code class="text-foreground">generateObject</code>, users wait for the complete
+			response. With <code class="text-foreground">streamObject</code>, they see data
+			appearing progressively—names first, then messages, creating a much more responsive
+			experience.
 		</p>
 	</section>
 
@@ -123,21 +158,16 @@ export const POST = async ({ request }) => {
 			<code class="text-foreground">generateObject</code>. The key difference is
 			<code class="text-foreground">toTextStreamResponse()</code> which streams chunks to the client.
 		</p>
-		<CodeNameBlock
-			filename="+server.ts"
-			lang="typescript"
-			code={serverCode}
-			highlight={[[16, 21]]}
-		/>
+		<CodeNameBlock filename="+server.ts" lang="typescript" code={serverCode} />
 	</section>
 
 	<section class="mb-10">
 		<h2 class="mb-6 text-3xl font-semibold">Client Component</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
-			The <code class="text-foreground">useObject</code> hook handles streaming automatically. Note how
-			we check for partial data with optional chaining since fields arrive progressively.
+			Use the <code class="text-foreground">ReadableStream</code> API to manually read chunks and
+			parse partial JSON as it arrives. This gives you full control over the streaming experience.
 		</p>
-		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} highlight={[[14, 17]]} />
+		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} />
 	</section>
 
 	<footer>
@@ -157,4 +187,3 @@ export const POST = async ({ request }) => {
 		<CookbookPrevNext currentSlug="stream-object" />
 	</footer>
 </article>
-

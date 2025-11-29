@@ -75,7 +75,7 @@ Use code blocks with language identifiers, bullet lists, and headers.\`,
 			<h1 class="text-4xl font-semibold tracking-tight">Markdown Chatbot</h1>
 			<div class="flex shrink-0 items-center gap-2">
 				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Markdown Chatbot" {llmsTxtUrl} type="ai-elements" />
+				<OpenInMenu componentName="Markdown Chatbot" {llmsTxtUrl} type="cookbook" />
 			</div>
 		</div>
 

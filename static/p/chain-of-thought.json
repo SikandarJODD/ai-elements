@@ -3,17 +3,13 @@
 	"name": "chain-of-thought",
 	"type": "registry:block",
 	"description": "The Chain of Thought component displays AI's step-by-step reasoning process with collapsible steps, custom icons, and visual connectors. Features composable architecture with ChainOfThought, ChainOfThoughtStep, ChainOfThoughtTrigger, ChainOfThoughtContent, and ChainOfThoughtItem components.",
-	"dependencies": [
-		"@lucide/svelte"
-	],
+	"dependencies": ["@lucide/svelte"],
 	"devDependencies": [
 		"bits-ui@^2.14.1",
 		"@internationalized/date@^3.8.1",
 		"@lucide/svelte@^0.544.0"
 	],
-	"registryDependencies": [
-		"collapsible"
-	],
+	"registryDependencies": ["collapsible"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",

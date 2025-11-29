@@ -5,14 +5,8 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Confirmation component provides an interactive approval interface for AI actions requiring user consent. Features request display, accepted/rejected states, action buttons, and context-based state management for handling tool confirmations and user approvals in AI workflows.",
-	"dependencies": [
-		"runed",
-		"@lucide/svelte"
-	],
-	"registryDependencies": [
-		"alert",
-		"button"
-	],
+	"dependencies": ["runed", "@lucide/svelte"],
+	"registryDependencies": ["alert", "button"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",

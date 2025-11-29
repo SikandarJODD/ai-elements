@@ -66,4 +66,3 @@ export const POST = async ({ request }) => {
 1. **experimental_generateImage** - AI SDK's image generation function
 2. **Base64 Images** - Images returned as base64 for immediate display
 3. **Tool Integration** - Image generation wrapped as a callable tool
-

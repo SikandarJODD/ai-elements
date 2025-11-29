@@ -5,28 +5,13 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A prompt input block with categorized suggestions that expand on click. Perfect for helping users get started with AI conversations.",
-	"dependencies": [
-		"@lucide/svelte"
-	],
-	"devDependencies": [
-		"@lucide/svelte@^0.544.0"
-	],
-	"registryDependencies": [
-		"../p/prompt-input.json",
-		"../p/prompt-suggestion.json",
-		"button"
-	],
+	"dependencies": ["@lucide/svelte"],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"registryDependencies": ["../p/prompt-input.json", "../p/prompt-suggestion.json", "button"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"prompt-kit",
-			"block",
-			"input",
-			"suggestions",
-			"prompts",
-			"categories"
-		],
+		"tags": ["prompt-kit", "block", "input", "suggestions", "prompts", "categories"],
 		"category": "Prompt Kit Blocks",
 		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

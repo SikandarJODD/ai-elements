@@ -5,17 +5,9 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Tool component provides a comprehensive interface for displaying AI tool usage, including input parameters, execution status, and output results with collapsible sections.",
-	"dependencies": [
-		"runed@^0.31.1"
-	],
-	"devDependencies": [
-		"@lucide/svelte@^0.544.0"
-	],
-	"registryDependencies": [
-		"./code.json",
-		"collapsible",
-		"badge"
-	],
+	"dependencies": ["runed@^0.31.1"],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"registryDependencies": ["./code.json", "collapsible", "badge"],
 	"meta": {
 		"author": "SikandarJODD"
 	},

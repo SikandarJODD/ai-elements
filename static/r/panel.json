@@ -5,22 +5,12 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Panel component provides an overlay panel for displaying additional workflow information, settings, or controls. It can be positioned at various locations on the canvas for contextual information display.",
-	"dependencies": [
-		"@xyflow/svelte"
-	],
-	"registryDependencies": [
-		"card"
-	],
+	"dependencies": ["@xyflow/svelte"],
+	"registryDependencies": ["card"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"workflow",
-			"panel",
-			"overlay",
-			"information",
-			"settings"
-		],
+		"tags": ["workflow", "panel", "overlay", "information", "settings"],
 		"category": "AI Workflow",
 		"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

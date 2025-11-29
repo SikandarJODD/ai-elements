@@ -23,9 +23,7 @@ The key is using the `messages` parameter with `ModelMessage` types:
 import { type ModelMessage, generateText } from "ai";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 
-const messages: ModelMessage[] = [
-  { role: "user", content: "What's 2 + 2?" },
-];
+const messages: ModelMessage[] = [{ role: "user", content: "What's 2 + 2?" }];
 
 const result = await generateText({
   model: openrouter("z-ai/glm-4.5-air:free"),
@@ -36,12 +34,12 @@ const result = await generateText({
 
 ## Key Differences from Simple Prompts
 
-| Simple Prompt | Chat Prompt |
-|--------------|-------------|
+| Simple Prompt     | Chat Prompt                                    |
+| ----------------- | ---------------------------------------------- |
 | `prompt: "Hello"` | `messages: [{role: "user", content: "Hello"}]` |
-| Single input | Full conversation history |
-| No system message | System message support |
-| Stateless | Stateful conversation |
+| Single input      | Full conversation history                      |
+| No system message | System message support                         |
+| Stateless         | Stateful conversation                          |
 
 ## Multi-Turn Conversations
 
@@ -69,4 +67,3 @@ const messages: ModelMessage[] = [
 - [Generate Text](/cookbook/generate-text) - Basic text generation
 - [Stream Text with Chat Prompt](/cookbook/stream-text-with-chat-prompt) - Streaming with chat prompts
 - [Markdown Chatbot](/cookbook/markdown-chatbot) - Rich markdown responses
-
