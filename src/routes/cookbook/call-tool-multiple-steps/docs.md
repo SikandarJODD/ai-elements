@@ -12,8 +12,8 @@ Sometimes the AI needs to call multiple tools in sequence. For example: first ge
 import { getLocation, getWeather } from "$lib/components/cookbook/tools";
 
 const tools = {
-  getLocation,  // Step 1: Get location
-  getWeather,   // Step 2: Use location for weather
+  getLocation, // Step 1: Get location
+  getWeather, // Step 2: Use location for weather
 };
 ```
 
@@ -51,4 +51,3 @@ export const POST = async ({ request }) => {
 1. **Tool Chaining** - AI automatically uses output from one tool as input for another
 2. **Step Limit** - `stepCountIs(5)` prevents runaway tool chains
 3. **Autonomous Decisions** - AI decides the order and when to stop
-

@@ -63,4 +63,3 @@ export const POST = async ({ request }) => {
 2. **Type Safety** - Get fully typed responses that match your schema
 3. **Descriptions** - Add `.describe()` to help the AI understand field purposes
 4. **toJsonResponse()** - Returns structured JSON to the client
-

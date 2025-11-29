@@ -37,7 +37,9 @@
 				<div class="space-y-4">
 					{#each chat.messages as message}
 						<div class="text-sm">
-							<span class="text-muted-foreground mb-1 block text-xs font-medium uppercase">
+							<span
+								class="text-muted-foreground mb-1 block text-xs font-medium uppercase"
+							>
 								{message.role === "user" ? "You" : "Assistant"}
 							</span>
 							{#if message.role === "user"}
@@ -51,7 +53,7 @@
 									{#if part.type === "text"}
 										<Markdown
 											content={part.text}
-											class="prose prose-sm prose-neutral dark:prose-invert max-w-none prose-pre:bg-muted prose-pre:border prose-pre:rounded-lg prose-code:before:content-none prose-code:after:content-none"
+											class="prose prose-sm prose-neutral dark:prose-invert prose-pre:bg-muted prose-pre:border prose-pre:rounded-lg prose-code:before:content-none prose-code:after:content-none max-w-none"
 										/>
 									{/if}
 								{/each}
@@ -78,4 +80,3 @@
 		</form>
 	</CardContent>
 </Card>
-

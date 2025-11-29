@@ -53,4 +53,3 @@ export const POST = async ({ request }) => {
 2. **inputSchema** - Zod schema for type-safe tool parameters
 3. **stopWhen** - Prevent infinite tool loops
 4. **Tool Invocation Parts** - Access tool calls in message parts
-

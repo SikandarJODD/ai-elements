@@ -61,4 +61,3 @@ export const POST = async ({ request }) => {
 2. **Progressive Updates** - UI updates as each field arrives
 3. **Partial Objects** - Handle incomplete data during streaming
 4. **toTextStreamResponse()** - Streams object as text chunks
-

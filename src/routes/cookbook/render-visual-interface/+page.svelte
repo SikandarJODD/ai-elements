@@ -9,57 +9,166 @@
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/render-visual-interface/llms.txt`;
 
-	let clientCode = `let chat = new Chat<ChatMessage>({
-  transport: new DefaultChatTransport({
-    api: "/api/cookbook/render-visual-interface"
+	let toolsCode = `import { tool } from "ai";
+import { z } from "zod";
+
+// Server-side tool: fetches weather data
+export const getWeatherInformation = tool({
+  description: "show the weather in a given city to the user",
+  inputSchema: z.object({
+    city: z.string().describe("The city to get weather information for")
   }),
-  
-  // Auto-send when all tools have outputs
-  sendAutomaticallyWhen: lastAssistantMessageIsCompleteWithToolCalls,
-  
-  // Handle client-side tools
-  async onToolCall({ toolCall }) {
-    if (toolCall.toolName === "getLocation") {
-      chat.addToolOutput({
-        tool: "getLocation",
-        toolCallId: toolCall.toolCallId,
-        output: "San Francisco"
-      });
-    }
+  execute: async ({ city }) => {
+    // In production, call a real weather API
+    return {
+      city,
+      value: 24,
+      unit: "celsius",
+      weeklyForecast: [
+        { day: "Mon", value: 24 },
+        { day: "Tue", value: 25 },
+        { day: "Wed", value: 26 },
+        { day: "Thu", value: 27 },
+        { day: "Fri", value: 28 }
+      ]
+    };
   }
+});
+
+// Client-side tool: shows confirmation UI (no execute function)
+export const askForConfirmation = tool({
+  description: "Ask the user for confirmation.",
+  inputSchema: z.object({
+    message: z.string().describe("The message to ask for confirmation.")
+  }),
+  outputSchema: z.string().describe("The user confirmation response.")
+});
+
+// Client-side tool: gets user location (no execute function)
+export const getLocationClient = tool({
+  description: "Get the user location.",
+  inputSchema: z.object({}),
+  outputSchema: z.string()
 });`;
 
-	let renderCode = `{#each message.parts as part}
-  {#if part.type === "text"}
-    <span>{part.text}</span>
-    
-  {:else if part.type === "tool-getWeatherInformation"}
-    <!-- Render a weather card -->
-    {#if part.state === "output-available"}
-      <div class="weather-card">
-        <div class="temp">{part.output.value}°</div>
-        <div class="forecast">
-          {#each part.output.weeklyForecast as day}
-            <span>{day.day}: {day.value}°</span>
-          {/each}
-        </div>
+	let serverCode = `import { streamText, convertToModelMessages, stepCountIs } from "ai";
+import type { InferUITools, ToolSet, UIDataTypes, UIMessage } from "ai";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { getWeatherInformation, askForConfirmation, getLocationClient } from "$lib/tools";
+
+const tools = {
+  getWeatherInformation,   // Server-side: fetches weather data
+  askForConfirmation,      // Client-side: shows confirmation UI
+  getLocation: getLocationClient  // Client-side: gets user location
+} satisfies ToolSet;
+
+// Export types for client-side type safety
+export type ChatTools = InferUITools<typeof tools>;
+export type ChatMessage = UIMessage<never, UIDataTypes, ChatTools>;
+
+export const POST = async ({ request }) => {
+  const { messages } = await request.json();
+
+  const result = streamText({
+    model: openrouter("z-ai/glm-4.5-air:free"),
+    messages: convertToModelMessages(messages),
+    tools,
+    stopWhen: stepCountIs(5)  // Limit tool call loops
+  });
+
+  return result.toUIMessageStreamResponse();
+};`;
+
+	let clientCode = `<script lang="ts">
+  import { Chat } from "@ai-sdk/svelte";
+  import { DefaultChatTransport, lastAssistantMessageIsCompleteWithToolCalls } from "ai";
+  import type { ChatMessage } from "./+server";
+
+  let chat = $derived(
+    new Chat<ChatMessage>({
+      transport: new DefaultChatTransport({
+        api: "/api/render-visual-interface"
+      }),
+      sendAutomaticallyWhen: lastAssistantMessageIsCompleteWithToolCalls,
+      async onToolCall({ toolCall }) {
+        if (toolCall.toolName === "getLocation") {
+          chat.addToolOutput({
+            tool: "getLocation",
+            toolCallId: toolCall.toolCallId,
+            output: "San Francisco"
+          });
+        }
+      }
+    })
+  );
+
+  let input = $state("");
+  let isStreaming = $derived(chat.status === "streaming");
+
+  function handleSubmit(e: SubmitEvent) {
+    e.preventDefault();
+    if (!input.trim() || isStreaming) return;
+    chat.sendMessage({ text: input });
+    input = "";
+  }
+<\/script>
+
+<form onsubmit={handleSubmit} class="flex gap-2">
+  <input bind:value={input} placeholder="Ask about weather..." />
+  <button type="submit" disabled={isStreaming}>
+    {isStreaming ? "..." : "Send"}
+  </button>
+</form>
+
+{#if chat.messages.length > 0}
+  <div class="space-y-3">
+    {#each chat.messages as message}
+      <div class="text-sm">
+        <span class="font-medium">
+          {message.role === "user" ? "User" : "Assistant"}:
+        </span>
+        {#each message.parts as part}
+          {#if part.type === "text"}
+            <span>{part.text}</span>
+
+          {:else if part.type === "tool-getWeatherInformation"}
+            {#if part.state === "output-available"}
+              <div class="weather-card">
+                <div class="temp">{part.output.value}°</div>
+                <div class="forecast">
+                  {#each part.output.weeklyForecast as day}
+                    <span>{day.day}: {day.value}°</span>
+                  {/each}
+                </div>
+              </div>
+            {/if}
+
+          {:else if part.type === "tool-askForConfirmation"}
+            {#if part.state === "output-available"}
+              <span class="confirmed">{part.output}</span>
+            {:else}
+              <button onclick={() => chat.addToolOutput({
+                tool: "askForConfirmation",
+                toolCallId: part.toolCallId,
+                output: "Confirmed"
+              })}>Yes</button>
+              <button onclick={() => chat.addToolOutput({
+                tool: "askForConfirmation",
+                toolCallId: part.toolCallId,
+                output: "Denied"
+              })}>No</button>
+            {/if}
+
+          {:else if part.type === "tool-getLocation"}
+            <span class="text-muted-foreground text-xs">
+              {part.state === "output-available" ? \`📍 \${part.output}\` : "Getting location..."}
+            </span>
+          {/if}
+        {/each}
       </div>
-    {/if}
-    
-  {:else if part.type === "tool-askForConfirmation"}
-    <!-- Interactive confirmation buttons -->
-    {#if part.state === "output-available"}
-      <span class="confirmed">{part.output}</span>
-    {:else}
-      <button onclick={() => chat.addToolOutput({
-        tool: "askForConfirmation",
-        toolCallId: part.toolCallId,
-        output: "Confirmed"
-      })}>Yes</button>
-      <button onclick={() => chat.addToolOutput({...})}>No</button>
-    {/if}
-  {/if}
-{/each}`;
+    {/each}
+  </div>
+{/if}`;
 </script>
 
 <MetaTags
@@ -111,21 +220,35 @@
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Client-Side Tool Handling</h2>
+		<h2 class="mb-6 text-3xl font-semibold">Define Tools</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Use <code class="text-foreground">onToolCall</code> to handle tools that run on the client.
-			<code class="text-foreground">sendAutomaticallyWhen</code> continues the conversation after tools complete.
+			Create tools using <code class="text-foreground">tool()</code> from AI SDK. Server-side
+			tools have an <code class="text-foreground">execute</code> function, while client-side tools
+			only define schemas—the client handles the execution.
 		</p>
-		<CodeNameBlock filename="+page.svelte" lang="typescript" code={clientCode} highlight={[[7, 8], [10, 17]]} />
+		<CodeNameBlock filename="tools.ts" lang="typescript" code={toolsCode} />
+	</section>
+
+	<section class="mb-16">
+		<h2 class="mb-6 text-3xl font-semibold">Server Endpoint</h2>
+		<p class="text-muted-foreground mb-6 leading-relaxed">
+			Import tools and pass them to <code class="text-foreground">streamText</code>. Export
+			types for client-side type safety using
+			<code class="text-foreground">InferUITools</code>.
+		</p>
+		<CodeNameBlock filename="+server.ts" lang="typescript" code={serverCode} />
 	</section>
 
 	<section class="mb-10">
-		<h2 class="mb-6 text-3xl font-semibold">Rendering Tool Parts</h2>
+		<h2 class="mb-6 text-3xl font-semibold">Client Component</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Check <code class="text-foreground">part.type</code> to render different UI for each tool.
-			Use <code class="text-foreground">part.state</code> to show loading or completed states.
+			Use <code class="text-foreground">onToolCall</code> to handle client-side tools, and
+			render different UI for each tool type based on
+			<code class="text-foreground">part.type</code>
+			and
+			<code class="text-foreground">part.state</code>.
 		</p>
-		<CodeNameBlock filename="+page.svelte" lang="svelte" code={renderCode} highlight={[[6, 14], [18, 28]]} />
+		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} />
 	</section>
 
 	<footer>
@@ -136,11 +259,12 @@
 			class="gap-2"
 		>
 			<svg class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
-				<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+				<path
+					d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+				/>
 			</svg>
 			View on GitHub
 		</Button>
 		<CookbookPrevNext currentSlug="render-visual-interface" />
 	</footer>
 </article>
-

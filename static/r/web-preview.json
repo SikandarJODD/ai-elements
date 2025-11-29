@@ -5,15 +5,8 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The WebPreview component provides an interactive web browser interface for displaying and navigating web content with console logging capabilities.",
-	"devDependencies": [
-		"@lucide/svelte@^0.544.0"
-	],
-	"registryDependencies": [
-		"button",
-		"input",
-		"tooltip",
-		"collapsible"
-	],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"registryDependencies": ["button", "input", "tooltip", "collapsible"],
 	"meta": {
 		"author": "SikandarJODD"
 	},

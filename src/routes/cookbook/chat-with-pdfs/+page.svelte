@@ -47,8 +47,8 @@ async function convertFilesToDataURLs(files: FileList) {
     e.preventDefault();
 
     // Convert files to data URLs
-    const fileParts = files?.length 
-      ? await convertFilesToDataURLs(files) 
+    const fileParts = files?.length
+      ? await convertFilesToDataURLs(files)
       : [];
 
     // Send message with text AND file parts
@@ -65,7 +65,43 @@ async function convertFilesToDataURLs(files: FileList) {
   }
 <\/script>
 
-<input type="file" accept=".pdf" />`;
+<!-- File upload input -->
+<input
+  type="file"
+  accept=".pdf"
+  onchange={(e) => files = e.currentTarget.files}
+/>
+
+{#if files?.length}
+  <div class="text-green-600">📄 {files[0].name} ready</div>
+{/if}
+
+<form onsubmit={handleSubmit} class="flex gap-2">
+  <input bind:value={input} placeholder="Ask about the PDF..." />
+  <button type="submit" disabled={chat.status === "streaming"}>
+    {chat.status === "streaming" ? "..." : "Send"}
+  </button>
+</form>
+
+<!-- Render messages -->
+{#if chat.messages.length > 0}
+  <div class="space-y-3">
+    {#each chat.messages as message}
+      <div class="text-sm">
+        <span class="font-medium">
+          {message.role === "user" ? "User" : "Assistant"}:
+        </span>
+        {#each message.parts as part}
+          {#if part.type === "text"}
+            <span class="whitespace-pre-wrap">{part.text}</span>
+          {:else if part.type === "file"}
+            <span class="text-muted-foreground">[PDF: {part.filename}]</span>
+          {/if}
+        {/each}
+      </div>
+    {/each}
+  </div>
+{/if}`;
 
 	let serverCode = `import { streamText, convertToModelMessages } from "ai";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
@@ -128,10 +164,10 @@ export const POST = async ({ request }) => {
 	<section class="mb-16">
 		<h2 class="mb-6 text-3xl font-semibold">Convert Files to Data URLs</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
-			The <code class="text-foreground">FileReader</code> API converts uploaded files into base64 data
-			URLs that can be sent to the AI model.
+			The <code class="text-foreground">FileReader</code> API converts uploaded files into base64
+			data URLs that can be sent to the AI model.
 		</p>
-		<CodeNameBlock filename="utils.ts" lang="typescript" code={convertCode} highlight={[[4, 16]]} />
+		<CodeNameBlock filename="utils.ts" lang="typescript" code={convertCode} />
 	</section>
 
 	<section class="mb-16">
@@ -140,7 +176,7 @@ export const POST = async ({ request }) => {
 			Send both text and file parts in a single message. The
 			<code class="text-foreground">parts</code> array can contain multiple content types.
 		</p>
-		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} highlight={[[22, 28]]} />
+		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} />
 	</section>
 
 	<section class="mb-10">
@@ -149,7 +185,7 @@ export const POST = async ({ request }) => {
 			Uses a model that supports document understanding. The
 			<code class="text-foreground">convertToModelMessages</code> handles the multi-part format.
 		</p>
-		<CodeNameBlock filename="+server.ts" lang="typescript" code={serverCode} highlight={[[4, 4]]} />
+		<CodeNameBlock filename="+server.ts" lang="typescript" code={serverCode} />
 	</section>
 
 	<footer>
@@ -160,11 +196,12 @@ export const POST = async ({ request }) => {
 			class="gap-2"
 		>
 			<svg class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
-				<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+				<path
+					d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+				/>
 			</svg>
 			View on GitHub
 		</Button>
 		<CookbookPrevNext currentSlug="chat-with-pdfs" />
 	</footer>
 </article>
-

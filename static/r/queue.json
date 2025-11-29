@@ -5,21 +5,13 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A flexible component for displaying lists of pending and completed tasks, messages, or items with collapsible sections and attachment support.",
-	"dependencies": [
-		"bits-ui",
-		"runed",
-		"@lucide/svelte"
-	],
+	"dependencies": ["bits-ui", "runed", "@lucide/svelte"],
 	"devDependencies": [
 		"@lucide/svelte@^0.544.0",
 		"bits-ui@^2.14.1",
 		"@internationalized/date@^3.8.1"
 	],
-	"registryDependencies": [
-		"collapsible",
-		"scroll-area",
-		"button"
-	],
+	"registryDependencies": ["collapsible", "scroll-area", "button"],
 	"files": [
 		{
 			"content": "<script lang=\"ts\" module>\n\timport { cn, type WithElementRef } from \"$UTILS$\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface QueueProps extends WithElementRef<HTMLAttributes<HTMLDivElement>> {\n\t\tchildren?: Snippet;\n\t}\n</script>\n\n<script lang=\"ts\">\n\tlet { class: className, children, ref = $bindable(null), ...restProps }: QueueProps = $props();\n</script>\n\n<div\n\tbind:this={ref}\n\tclass={cn(\n\t\t\"border-border bg-background flex flex-col gap-2 rounded-xl border px-3 pt-2 pb-2 shadow-xs\",\n\t\tclassName\n\t)}\n\t{...restProps}\n>\n\t{@render children?.()}\n</div>\n",

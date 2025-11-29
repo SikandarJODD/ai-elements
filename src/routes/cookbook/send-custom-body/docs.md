@@ -48,4 +48,3 @@ export const POST = async ({ request }) => {
 1. **body option** - Add any custom fields to every request
 2. **Type Safety** - Destructure expected fields on the server
 3. **Dynamic Context** - Use custom data to personalize AI responses
-

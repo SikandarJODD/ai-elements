@@ -110,4 +110,3 @@ export const POST = async ({ request }) => {
 - [Stream Text](/cookbook/stream-text) - Real-time streaming responses
 - [Generate Object](/cookbook/generate-object) - Type-safe structured data
 - [Call Tool](/cookbook/call-tool) - Enable AI to call functions
-

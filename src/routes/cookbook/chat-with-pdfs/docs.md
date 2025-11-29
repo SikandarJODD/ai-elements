@@ -38,10 +38,7 @@ const fileParts = await convertFilesToDataURLs(files);
 
 chat.sendMessage({
   role: "user",
-  parts: [
-    { type: "text", text: input },
-    ...fileParts,
-  ],
+  parts: [{ type: "text", text: input }, ...fileParts],
 });
 ```
 
@@ -67,4 +64,3 @@ export const POST = async ({ request }) => {
 1. **FileReader API** - Convert files to base64 data URLs
 2. **Multi-part Messages** - Send text and files together
 3. **Vision Models** - Use models that support document understanding
-
