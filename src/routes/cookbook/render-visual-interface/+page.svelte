@@ -79,7 +79,7 @@
 			<h1 class="text-4xl font-semibold tracking-tight">Render Visual Interface</h1>
 			<div class="flex shrink-0 items-center gap-2">
 				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Render Visual Interface" {llmsTxtUrl} type="ai-elements" />
+				<OpenInMenu componentName="Render Visual Interface" {llmsTxtUrl} type="cookbook" />
 			</div>
 		</div>
 

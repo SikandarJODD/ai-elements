@@ -4,8 +4,6 @@
 		OpenIn,
 		OpenInTrigger,
 		OpenInContent,
-		OpenInLabel,
-		OpenInSeparator,
 		OpenInChatGPT,
 		OpenInClaude,
 		OpenInT3,
@@ -14,13 +12,17 @@
 	} from "$lib/components/ai-elements/open-in-chat";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 	import { ChevronDown, ExternalLink } from "@lucide/svelte";
-	import { getPromptKitGithubUrl, getAiElementsGithubUrl } from "$lib/config/github-paths";
+	import {
+		getPromptKitGithubUrl,
+		getAiElementsGithubUrl,
+		getCookbookGithubUrl,
+	} from "$lib/config/github-paths";
 	import { Markdown } from "$lib/components/icons";
 
 	interface Props {
 		componentName: string;
 		llmsTxtUrl: string;
-		type?: "prompt-kit" | "ai-elements";
+		type?: "prompt-kit" | "ai-elements" | "cookbook";
 	}
 
 	let { componentName, llmsTxtUrl, type = "prompt-kit" }: Props = $props();
@@ -29,12 +31,18 @@
 	const query = `Read ${llmsTxtUrl} and help me understand the ${componentName} component`;
 
 	// Get the exact GitHub file URL for the component based on type
-	const githubUrl =
-		type === "ai-elements"
-			? getAiElementsGithubUrl(componentName) ||
-				`https://github.com/search?type=code&q=${encodeURIComponent(componentName)}`
-			: getPromptKitGithubUrl(componentName) ||
-				`https://github.com/search?type=code&q=${encodeURIComponent(componentName)}`;
+	function getGithubUrl(): string {
+		const fallback = `https://github.com/search?type=code&q=${encodeURIComponent(componentName)}`;
+		if (type === "cookbook") {
+			return getCookbookGithubUrl(componentName) || fallback;
+		}
+		if (type === "ai-elements") {
+			return getAiElementsGithubUrl(componentName) || fallback;
+		}
+		return getPromptKitGithubUrl(componentName) || fallback;
+	}
+
+	const githubUrl = getGithubUrl();
 </script>
 
 <OpenIn {query}>

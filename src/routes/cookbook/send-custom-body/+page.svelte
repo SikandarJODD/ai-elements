@@ -69,7 +69,7 @@ export const POST = async ({ request }) => {
 			<h1 class="text-4xl font-semibold tracking-tight">Send Custom Body</h1>
 			<div class="flex shrink-0 items-center gap-2">
 				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Send Custom Body" {llmsTxtUrl} type="ai-elements" />
+				<OpenInMenu componentName="Send Custom Body" {llmsTxtUrl} type="cookbook" />
 			</div>
 		</div>
 

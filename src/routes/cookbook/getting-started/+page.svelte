@@ -101,7 +101,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			<h1 class="text-4xl font-semibold tracking-tight">Getting Started</h1>
 			<div class="flex shrink-0 items-center gap-2">
 				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Getting Started" {llmsTxtUrl} type="ai-elements" />
+				<OpenInMenu componentName="Getting Started" {llmsTxtUrl} type="cookbook" />
 			</div>
 		</div>
 

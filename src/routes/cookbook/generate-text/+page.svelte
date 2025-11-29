@@ -100,7 +100,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			<h1 class="text-4xl font-semibold tracking-tight md:text-4xl">Generate Text</h1>
 			<div class="flex shrink-0 items-center gap-2">
 				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Generate Text" {llmsTxtUrl} type="ai-elements" />
+				<OpenInMenu componentName="Generate Text" {llmsTxtUrl} type="cookbook" />
 			</div>
 		</div>
 

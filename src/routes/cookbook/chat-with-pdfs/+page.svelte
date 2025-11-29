@@ -103,7 +103,7 @@ export const POST = async ({ request }) => {
 			<h1 class="text-4xl font-semibold tracking-tight">Chat with PDFs</h1>
 			<div class="flex shrink-0 items-center gap-2">
 				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Chat with PDFs" {llmsTxtUrl} type="ai-elements" />
+				<OpenInMenu componentName="Chat with PDFs" {llmsTxtUrl} type="cookbook" />
 			</div>
 		</div>
 

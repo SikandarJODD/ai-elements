@@ -3,7 +3,7 @@
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import ExternalLinkIcon from "@lucide/svelte/icons/external-link";
 	import { recipes } from "$lib/config/cookbook-data";
-	import { onMount, type ComponentProps } from "svelte";
+	import { type ComponentProps } from "svelte";
 
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 
@@ -11,11 +11,8 @@
 	let availableRecipes = recipes.filter((r) => r.status === "available");
 	let comingSoonRecipes = recipes.filter((r) => r.status === "coming-soon");
 
-	let currentPath = $state("");
-
-	onMount(() => {
-		currentPath = page.url.pathname;
-	});
+	// Reactive current path - updates automatically on navigation
+	let currentPath = $derived(page.url.pathname);
 
 	function isActive(slug: string): boolean {
 		return currentPath === `/cookbook/${slug}`;
@@ -26,9 +23,7 @@
 	<Sidebar.Content class="no-scrollbar bg-background gap-0 pt-6">
 		<!-- Available Recipes -->
 		<Sidebar.Group class="p-0">
-			<Sidebar.GroupLabel class="text-sidebar-foreground text-sm">
-				Recipes
-			</Sidebar.GroupLabel>
+			<Sidebar.GroupLabel class="text-sidebar-foreground text-sm">Recipes</Sidebar.GroupLabel>
 			<Sidebar.GroupContent>
 				<Sidebar.Menu class="gap-0.5">
 					{#each availableRecipes as recipe (recipe.slug)}
@@ -36,9 +31,6 @@
 							<Sidebar.MenuButton
 								isActive={isActive(recipe.slug)}
 								class="hover:text-primary text-muted-foreground active:text-primary hover:bg-transparent active:bg-transparent data-[active=true]:bg-transparent data-[active=true]:font-normal data-[active=true]:text-blue-500"
-								onclick={() => {
-									currentPath = `/cookbook/${recipe.slug}`;
-								}}
 							>
 								{#snippet child({ props })}
 									<a href="/cookbook/{recipe.slug}" {...props}>
@@ -76,12 +68,6 @@
 	<Sidebar.Footer class="border-border mt-0 border-t pt-0">
 		<div class="flex flex-col gap-1 py-3">
 			<a
-				href="/cookbook"
-				class="text-muted-foreground hover:text-foreground group hover:bg-accent flex items-center justify-between rounded-md px-2 py-1.5 text-sm transition-colors"
-			>
-				<span>All Recipes</span>
-			</a>
-			<a
 				href="/cookbook/llms.txt"
 				target="_blank"
 				class="text-muted-foreground hover:text-foreground group hover:bg-accent flex items-center justify-between rounded-md px-2 py-1.5 text-sm transition-colors"
@@ -94,4 +80,3 @@
 		</div>
 	</Sidebar.Footer>
 </Sidebar.Root>
-

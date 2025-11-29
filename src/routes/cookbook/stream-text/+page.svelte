@@ -87,7 +87,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			<h1 class="text-4xl font-semibold tracking-tight">Stream Text</h1>
 			<div class="flex shrink-0 items-center gap-2">
 				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Stream Text" {llmsTxtUrl} type="ai-elements" />
+				<OpenInMenu componentName="Stream Text" {llmsTxtUrl} type="cookbook" />
 			</div>
 		</div>
 

@@ -104,7 +104,7 @@ export const POST = async ({ request }) => {
 			<h1 class="text-4xl font-semibold tracking-tight">Generate Object</h1>
 			<div class="flex shrink-0 items-center gap-2">
 				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Generate Object" {llmsTxtUrl} type="ai-elements" />
+				<OpenInMenu componentName="Generate Object" {llmsTxtUrl} type="cookbook" />
 			</div>
 		</div>
 
