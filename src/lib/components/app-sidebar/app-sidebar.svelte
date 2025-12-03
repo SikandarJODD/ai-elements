@@ -97,6 +97,11 @@
 						url: "/components/message",
 					},
 					{
+						title: "Message (New)",
+						url: "/components/new-message",
+						badge: "new",
+					},
+					{
 						title: "Model Selector",
 						url: "/components/model-selector",
 						badge: "new",
