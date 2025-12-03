@@ -564,6 +564,114 @@
 			}
 		},
 		{
+			"name": "new-message",
+			"title": "New Message",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "Enhanced message component with branching, attachments, actions, and markdown rendering for AI chat interfaces.",
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/new-message/Message.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/Message.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/MessageContent.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/MessageContent.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/MessageResponse.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/MessageResponse.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/MessageActions.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/MessageActions.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/MessageAction.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/MessageAction.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/MessageToolbar.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/MessageToolbar.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/MessageBranch.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/MessageBranch.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/MessageBranchContent.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/MessageBranchContent.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/MessageBranchSelector.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/MessageBranchSelector.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/MessageBranchPrevious.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/MessageBranchPrevious.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/MessageBranchNext.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/MessageBranchNext.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/MessageBranchPage.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/MessageBranchPage.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/MessageAttachment.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/MessageAttachment.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/MessageAttachments.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/MessageAttachments.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/message-context.svelte.ts",
+					"type": "registry:file",
+					"target": "ai-elements/new-message/message-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/new-message/index.ts"
+				}
+			],
+			"registryDependencies": ["button", "button-group", "tooltip"],
+			"dependencies": [
+				"svelte-streamdown",
+				"runed",
+				"tailwind-variants",
+				"mode-watcher",
+				"@lucide/svelte"
+			],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["message", "branching", "attachments", "markdown", "actions", "chat"],
+				"category": "AI Chat",
+				"documentation": "https://svelte-ai-elements.vercel.app/components/new-message",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2025-12-03",
+				"featured": true
+			}
+		},
+		{
 			"name": "open-in-chat",
 			"title": "Open in Chat",
 			"type": "registry:block",
