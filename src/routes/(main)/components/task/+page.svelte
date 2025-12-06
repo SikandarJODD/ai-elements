@@ -19,6 +19,7 @@
 
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
+	import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
 	let toc = new UseToc();
 
 	// URL for llm.txt
@@ -454,6 +455,8 @@ export const POST: RequestHandler = async ({ request }) => {
 				props={taskItemFileProps}
 				id="task-item-file-props"
 			/>
+
+			<AiElementsPrevNext currentSlug="task" />
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

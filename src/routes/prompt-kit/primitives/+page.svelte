@@ -6,6 +6,7 @@
 	import PanelsTopLeft from "@lucide/svelte/icons/panels-top-left";
 
 	import { Subheading } from "$lib/components/docs";
+	import PromptKitPrevNext from "$lib/components/prompt-kit/prompt-kit-prev-next.svelte";
 	import { Button } from "$lib/components/ui/button";
 	import { Input } from "$lib/components/ui/input";
 	import { Label } from "$lib/components/ui/label";
@@ -303,6 +304,8 @@
 					</Button>
 				</div>
 			</div>
+
+			<PromptKitPrevNext currentSlug="primitives" />
 		</main>
 	</div>
 </Sidebar.Inset>

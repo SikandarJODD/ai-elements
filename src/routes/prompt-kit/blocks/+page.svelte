@@ -5,6 +5,7 @@
 	import Playground from "$lib/components/docs/playground.svelte";
 	import AiInstallCommand from "$lib/components/docs/ai-install-command.svelte";
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
+	import PromptKitPrevNext from "$lib/components/prompt-kit/prompt-kit-prev-next.svelte";
 
 	import PromptInputWithActions from "$lib/components/prompt-kit-blocks/prompt-input-with-actions.svelte";
 	import PromptInputWithSuggestions from "$lib/components/prompt-kit-blocks/prompt-input-with-suggestions.svelte";
@@ -332,6 +333,8 @@
 			<Playground code={fullChatAppRaw} class="aspect-video h-[700px]">
 				<FullChatApp />
 			</Playground> -->
+
+			<PromptKitPrevNext currentSlug="blocks" />
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

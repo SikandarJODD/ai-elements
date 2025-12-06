@@ -4,6 +4,7 @@
 	import Code from "$lib/components/docs/code.svelte";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import { MetaTags } from "svelte-meta-tags";
+	import PromptKitPrevNext from "$lib/components/prompt-kit/prompt-kit-prev-next.svelte";
 </script>
 
 <MetaTags
@@ -347,5 +348,7 @@
 				</svg>
 			</a>
 		</section>
+
+		<PromptKitPrevNext currentSlug="installation" />
 	</div>
 </Sidebar.Inset>

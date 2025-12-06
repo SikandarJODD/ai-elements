@@ -1,7 +1,7 @@
 {
 	"$schema": "https://unpkg.com/jsrepo@1.47.0/schemas/registry-config.json",
 	"name": "@ai/elements",
-	"version": "0.1.7",
+	"version": "0.1.8",
 	"dirs": ["./src/lib", "./src/lib/components"],
 	"includeCategories": ["ai-elements", "ui", "lib", "hooks", "utils"],
 	"excludeBlocks": ["index", "assets", "components", "config", "hooks", "learning"],

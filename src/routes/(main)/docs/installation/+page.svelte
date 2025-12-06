@@ -11,6 +11,7 @@
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import { MetaTags } from "svelte-meta-tags";
 	import InfoIcon from "@lucide/svelte/icons/info";
+	import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
 </script>
 
 <MetaTags
@@ -338,5 +339,7 @@ Configure the import alias for ui: › $lib/components/ui</code
 				</div>
 			</div>
 		</section>
+
+		<AiElementsPrevNext currentSlug="installation" />
 	</div>
 </Sidebar.Inset>

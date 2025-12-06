@@ -66,7 +66,7 @@
 			"target": "src/routes/playground/components/code-viewer-dialog.svelte"
 		},
 		{
-			"content": "PUBLIC_WEBSITE_URL=\"http://localhost:5173\"\n# On prod it would be something like: https://svelte-ai-elements.vercel.app/\n# Make sure to set this in your deployment environment as well!\n\n# OpenRouter API Key\n# Get your free API key at: https://openrouter.ai/keys\n#\n# NOTE: We're using a FREE AI model (z-ai/glm-4.5-air:free) in the playground\n# so you won't be charged for API usage. Perfect for testing and development!\nOPENROUTER_API_KEY=your_openrouter_api_key_here",
+			"content": "PUBLIC_WEBSITE_URL=\"http://localhost:5173\"\n# On prod it would be something like: https://svelte-ai-elements.vercel.app/\n# Make sure to set this in your deployment environment as well!\n\n# OpenRouter API Key\n# Get your free API key at: https://openrouter.ai/keys\n#\n# NOTE: We're using a FREE AI model (z-ai/glm-4.5-air:free) in the playground\n# so you won't be charged for API usage. Perfect for testing and development!\nOPENROUTER_API_KEY=your_openrouter_api_key_here\n\n# VERCEL AI GATEWAY KEY\nAI_GATEWAY_API_KEY=your_vercel_ai_gateway_key_here\n# Get your free API key at: https://vercel.com/ai-gateway",
 			"type": "registry:file",
 			"target": ".env.example"
 		}

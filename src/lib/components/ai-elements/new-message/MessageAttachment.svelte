@@ -23,9 +23,7 @@
 	let { data, class: className, onRemove, ...restProps }: Props = $props();
 
 	let filename = $derived(data.filename || "");
-	let mediaType = $derived(
-		data.mediaType?.startsWith("image/") && data.url ? "image" : "file"
-	);
+	let mediaType = $derived(data.mediaType?.startsWith("image/") && data.url ? "image" : "file");
 	let isImage = $derived(mediaType === "image");
 	let attachmentLabel = $derived(filename || (isImage ? "Image" : "Attachment"));
 
@@ -35,10 +33,7 @@
 	}
 </script>
 
-<div
-	class={cn("group relative size-24 overflow-hidden rounded-lg", className)}
-	{...restProps}
->
+<div class={cn("group relative size-24 overflow-hidden rounded-lg", className)} {...restProps}>
 	{#if isImage}
 		<img
 			alt={filename || "attachment"}
@@ -50,7 +45,7 @@
 		{#if onRemove}
 			<Button
 				aria-label="Remove attachment"
-				class="absolute top-2 right-2 size-6 rounded-full bg-background/80 p-0 opacity-0 backdrop-blur-sm transition-opacity hover:bg-background group-hover:opacity-100 [&>svg]:size-3"
+				class="bg-background/80 hover:bg-background absolute top-2 right-2 size-6 rounded-full p-0 opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100 [&>svg]:size-3"
 				onclick={handleRemove}
 				type="button"
 				variant="ghost"
@@ -66,7 +61,7 @@
 					{#snippet child({ props })}
 						<div
 							{...props}
-							class="flex size-full shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground"
+							class="bg-muted text-muted-foreground flex size-full shrink-0 items-center justify-center rounded-lg"
 						>
 							<Paperclip class="size-4" />
 						</div>
@@ -80,7 +75,7 @@
 		{#if onRemove}
 			<Button
 				aria-label="Remove attachment"
-				class="size-6 shrink-0 rounded-full p-0 opacity-0 transition-opacity hover:bg-accent group-hover:opacity-100 [&>svg]:size-3"
+				class="hover:bg-accent size-6 shrink-0 rounded-full p-0 opacity-0 transition-opacity group-hover:opacity-100 [&>svg]:size-3"
 				onclick={handleRemove}
 				type="button"
 				variant="ghost"
@@ -91,4 +86,3 @@
 		{/if}
 	{/if}
 </div>
-

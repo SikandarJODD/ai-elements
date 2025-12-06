@@ -153,6 +153,33 @@
 		"relativeUrl": "message.json"
 	},
 	{
+		"name": "new-message",
+		"title": "New Message",
+		"type": "registry:block",
+		"author": "SikandarJODD",
+		"description": "Enhanced message component with branching, attachments, actions, and markdown rendering for AI chat interfaces.",
+		"dependencies": [
+			"svelte-streamdown",
+			"runed",
+			"tailwind-variants",
+			"mode-watcher",
+			"@lucide/svelte"
+		],
+		"registryDependencies": ["button", "button-group", "tooltip"],
+		"meta": {
+			"author": "SikandarJODD",
+			"version": "1.0.0",
+			"tags": ["message", "branching", "attachments", "markdown", "actions", "chat"],
+			"category": "AI Chat",
+			"documentation": "https://svelte-ai-elements.vercel.app/components/new-message",
+			"repository": "https://github.com/SikandarJODD/ai-elements",
+			"complexity": "intermediate",
+			"updated": "2025-12-03",
+			"featured": true
+		},
+		"relativeUrl": "new-message.json"
+	},
+	{
 		"name": "open-in-chat",
 		"title": "Open in Chat",
 		"type": "registry:block",

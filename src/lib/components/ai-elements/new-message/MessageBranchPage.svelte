@@ -16,10 +16,7 @@
 </script>
 
 <ButtonGroup.Text
-	class={cn(
-		"border-none bg-transparent text-muted-foreground shadow-none",
-		className
-	)}
+	class={cn("text-muted-foreground border-none bg-transparent shadow-none", className)}
 	{...restProps}
 >
 	{#if children}
@@ -28,4 +25,3 @@
 		{branchContext.currentBranch + 1} of {branchContext.totalBranches}
 	{/if}
 </ButtonGroup.Text>
-

@@ -5,8 +5,10 @@
 		MessageResponse,
 		MessageActions,
 		MessageAction,
+		MessageToolbar,
 	} from "$lib/components/ai-elements/new-message";
 	import Copy from "@lucide/svelte/icons/copy";
+	import Check from "@lucide/svelte/icons/check";
 	import RefreshCcw from "@lucide/svelte/icons/refresh-ccw";
 	import ThumbsUp from "@lucide/svelte/icons/thumbs-up";
 	import ThumbsDown from "@lucide/svelte/icons/thumbs-down";
@@ -14,23 +16,38 @@
 
 	let liked = $state(false);
 	let disliked = $state(false);
+	let copied = $state(false);
 
-	const content = `Here's a simple Svelte 5 component:
+	const content = `## Svelte 5 Component Example
+
+Here's a reactive greeting component using runes:
 
 \`\`\`svelte
 \<script lang="ts"\>
   let name = $state('World');
+  let greeting = $derived('Hello, ' + name + '!');
 \<\/script\>
 
-\<h1\>Hello {name}!\</h1\>
-\<input bind:value={name} /\>
+\<div class="card"\>
+  \<h1\>{greeting}\<\/h1\>
+  \<input bind:value={name} placeholder="Enter name" /\>
+\<\/div\>
 \`\`\`
 
-This demonstrates the new \`$state\` rune for reactive variables.`;
+### Key Concepts
+
+| Rune | Usage in Example |
+|------|-----------------|
+| \`$state\` | Reactive \`name\` variable |
+| \`$derived\` | Auto-updating \`greeting\` |
+
+This pattern is perfect for form inputs and dynamic content!`;
 
 	function handleCopy() {
 		navigator.clipboard.writeText(content);
+		copied = true;
 		toast.success("Copied to clipboard!");
+		setTimeout(() => (copied = false), 2000);
 	}
 
 	function handleRetry() {
@@ -50,31 +67,37 @@ This demonstrates the new \`$state\` rune for reactive variables.`;
 	}
 </script>
 
-<div class="flex w-full flex-col gap-4">
+<div class="flex w-full flex-col gap-6">
 	<Message from="user">
-		<MessageContent>Show me a simple Svelte 5 example</MessageContent>
+		<MessageContent>Show me a Svelte 5 component with runes</MessageContent>
 	</Message>
 
 	<Message from="assistant">
 		<MessageContent>
 			<MessageResponse {content} />
 		</MessageContent>
-		<MessageActions>
-			<MessageAction tooltip="Regenerate" onclick={handleRetry}>
-				<RefreshCcw class="size-4" />
-			</MessageAction>
-			<MessageAction tooltip={liked ? "Remove like" : "Like"} onclick={handleLike}>
-				<ThumbsUp class="size-4" fill={liked ? "currentColor" : "none"} />
-			</MessageAction>
-			<MessageAction
-				tooltip={disliked ? "Remove dislike" : "Dislike"}
-				onclick={handleDislike}
-			>
-				<ThumbsDown class="size-4" fill={disliked ? "currentColor" : "none"} />
-			</MessageAction>
-			<MessageAction tooltip="Copy to clipboard" onclick={handleCopy}>
-				<Copy class="size-4" />
-			</MessageAction>
-		</MessageActions>
+		<MessageToolbar>
+			<MessageActions>
+				<MessageAction tooltip="Regenerate response" onclick={handleRetry}>
+					<RefreshCcw class="size-4" />
+				</MessageAction>
+				<MessageAction tooltip={liked ? "Remove like" : "Like"} onclick={handleLike}>
+					<ThumbsUp class="size-4" fill={liked ? "currentColor" : "none"} />
+				</MessageAction>
+				<MessageAction
+					tooltip={disliked ? "Remove dislike" : "Dislike"}
+					onclick={handleDislike}
+				>
+					<ThumbsDown class="size-4" fill={disliked ? "currentColor" : "none"} />
+				</MessageAction>
+				<MessageAction tooltip="Copy to clipboard" onclick={handleCopy}>
+					{#if copied}
+						<Check class="size-4" />
+					{:else}
+						<Copy class="size-4" />
+					{/if}
+				</MessageAction>
+			</MessageActions>
+		</MessageToolbar>
 	</Message>
 </div>

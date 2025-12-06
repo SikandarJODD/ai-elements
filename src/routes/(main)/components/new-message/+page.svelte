@@ -17,6 +17,7 @@
 
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
+	import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
 	let toc = new UseToc();
 
 	import { examples } from "./examples/examples";
@@ -436,6 +437,8 @@ export const POST: RequestHandler = async ({ request }) => {
 				props={messageAttachmentProps}
 				id="message-attachment"
 			/>
+
+			<AiElementsPrevNext currentSlug="new-message" />
 		</main>
 
 		<!-- TOC Sidebar -->

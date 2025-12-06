@@ -32,4 +32,3 @@ export let seo: MetaTagsProps = {
 		imageAlt: "Svelte AI Elements",
 	},
 };
-

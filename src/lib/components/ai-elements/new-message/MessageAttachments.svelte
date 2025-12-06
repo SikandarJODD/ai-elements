@@ -15,11 +15,7 @@
 </script>
 
 {#if hasChildren}
-	<div
-		class={cn("ml-auto flex w-fit flex-wrap items-start gap-2", className)}
-		{...restProps}
-	>
+	<div class={cn("ml-auto flex w-fit flex-wrap items-start gap-2", className)} {...restProps}>
 		{@render children?.()}
 	</div>
 {/if}
-

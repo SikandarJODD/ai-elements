@@ -10,6 +10,7 @@ import BasicSetupPrereq from "./basic-setup-prereq.svelte";
 import ComponentAPITable from "./component-api-table.svelte";
 import CopyMarkdownButton from "./copy-markdown-button.svelte";
 import OpenInMenu from "./open-in-menu.svelte";
+import PrevNext from "./prev-next.svelte";
 
 export {
 	Subheading,
@@ -24,5 +25,6 @@ export {
 	ComponentAPITable,
 	CopyMarkdownButton,
 	OpenInMenu,
+	PrevNext,
 };
 export type { PropDefinition, ComponentAPITableProps } from "./component-api-table.types";
