@@ -401,6 +401,41 @@ export const navigationData: NavigationItem[] = [
 		category: "component",
 		keywords: ["prompt kit", "scroll", "button", "auto", "chat"],
 	},
+	{
+		title: "Prompt Kit - Feedback Bar",
+		href: "/prompt-kit/feedback-bar",
+		description: "Feedback component with thumbs up/down buttons for AI responses",
+		category: "component",
+		keywords: ["prompt kit", "feedback", "thumbs up", "thumbs down", "rating", "response"],
+	},
+	{
+		title: "Prompt Kit - Text Shimmer",
+		href: "/prompt-kit/text-shimmer",
+		description: "Text with animated shimmer effect for loading states",
+		category: "component",
+		keywords: ["prompt kit", "shimmer", "loading", "animation", "text", "effect"],
+	},
+	{
+		title: "Prompt Kit - Thinking Bar",
+		href: "/prompt-kit/thinking-bar",
+		description: "AI thinking state indicator with shimmer animation",
+		category: "component",
+		keywords: ["prompt kit", "thinking", "loading", "ai", "processing", "shimmer"],
+	},
+	{
+		title: "Prompt Kit - Primitives",
+		href: "/prompt-kit/primitives",
+		description: "Core UI primitive components for building AI interfaces",
+		category: "component",
+		keywords: ["prompt kit", "primitives", "ui", "components", "building blocks"],
+	},
+	{
+		title: "Prompt Kit - Blocks",
+		href: "/prompt-kit/blocks",
+		description: "Pre-built conversation layouts ready to use",
+		category: "component",
+		keywords: ["prompt kit", "blocks", "layouts", "templates", "conversation", "chat"],
+	},
 ];
 
 // Helper function to search navigation data

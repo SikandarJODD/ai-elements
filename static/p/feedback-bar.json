@@ -1,0 +1,45 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "feedback-bar",
+	"type": "registry:block",
+	"description": "The FeedbackBar component displays feedback buttons (thumbs up/down) for AI responses. Features customizable icons and state management for collecting user feedback on generated content.",
+	"dependencies": [
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
+	],
+	"registryDependencies": [
+		"button"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"prompt-kit",
+			"feedback",
+			"thumbs-up",
+			"thumbs-down",
+			"rating",
+			"response"
+		],
+		"category": "Prompt Kit",
+		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/feedback-bar",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "beginner",
+		"updated": "2025-12-06",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\" module>\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\texport type FeedbackBarProps = HTMLAttributes<HTMLDivElement> & {\n\t\t/** Additional CSS classes */\n\t\tclass?: string;\n\t\t/** Title text to display */\n\t\ttitle?: string;\n\t\t/** Custom icon snippet */\n\t\ticon?: Snippet;\n\t\t/** Callback when helpful (thumbs up) is clicked */\n\t\tonHelpful?: () => void;\n\t\t/** Callback when not helpful (thumbs down) is clicked */\n\t\tonNotHelpful?: () => void;\n\t\t/** Callback when close button is clicked */\n\t\tonClose?: () => void;\n\t};\n</script>\n\n<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { ThumbsUp, ThumbsDown, X } from \"@lucide/svelte\";\n\n\tlet {\n\t\tclass: className,\n\t\ttitle,\n\t\ticon,\n\t\tonHelpful,\n\t\tonNotHelpful,\n\t\tonClose,\n\t\t...restProps\n\t}: FeedbackBarProps = $props();\n</script>\n\n<div\n\tclass={cn(\n\t\t\"bg-background border-border inline-flex rounded-[12px] border text-sm\",\n\t\tclassName\n\t)}\n\t{...restProps}\n>\n\t<div class=\"flex w-full items-center justify-between\">\n\t\t<div class=\"flex flex-1 items-center justify-start gap-4 py-3 pl-4\">\n\t\t\t{#if icon}\n\t\t\t\t{@render icon()}\n\t\t\t{/if}\n\t\t\t<span class=\"text-foreground font-medium\">{title}</span>\n\t\t</div>\n\t\t<div class=\"flex items-center justify-center gap-0.5 px-3 py-0\">\n\t\t\t<button\n\t\t\t\ttype=\"button\"\n\t\t\t\tclass=\"text-muted-foreground hover:text-foreground flex size-8 items-center justify-center rounded-md transition-colors\"\n\t\t\t\taria-label=\"Helpful\"\n\t\t\t\tonclick={onHelpful}\n\t\t\t>\n\t\t\t\t<ThumbsUp class=\"size-4\" />\n\t\t\t</button>\n\t\t\t<button\n\t\t\t\ttype=\"button\"\n\t\t\t\tclass=\"text-muted-foreground hover:text-foreground flex size-8 items-center justify-center rounded-md transition-colors\"\n\t\t\t\taria-label=\"Not helpful\"\n\t\t\t\tonclick={onNotHelpful}\n\t\t\t>\n\t\t\t\t<ThumbsDown class=\"size-4\" />\n\t\t\t</button>\n\t\t</div>\n\t\t<div class=\"border-border flex items-center justify-center border-l\">\n\t\t\t<button\n\t\t\t\ttype=\"button\"\n\t\t\t\tonclick={onClose}\n\t\t\t\tclass=\"text-muted-foreground hover:text-foreground flex items-center justify-center rounded-md p-3\"\n\t\t\t\taria-label=\"Close\"\n\t\t\t>\n\t\t\t\t<X class=\"size-5\" />\n\t\t\t</button>\n\t\t</div>\n\t</div>\n</div>\n\n",
+			"type": "registry:component",
+			"target": "prompt-kit/feedback-bar/feedback-bar.svelte"
+		},
+		{
+			"content": "import Root, { type FeedbackBarProps } from \"./feedback-bar.svelte\";\n\nexport {\n\tRoot,\n\ttype FeedbackBarProps as Props,\n\t//\n\tRoot as FeedbackBar,\n\ttype FeedbackBarProps,\n};\n\n",
+			"type": "registry:file",
+			"target": "prompt-kit/feedback-bar/index.ts"
+		}
+	]
+}

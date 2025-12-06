@@ -32,6 +32,7 @@ export const PROMPT_KIT_GITHUB_PATHS: Record<string, string> = {
 	"Chain of Thought": `${GITHUB_REPO_BASE}/src/lib/components/prompt-kit/chain-of-thought`,
 	"Chat Container": `${GITHUB_REPO_BASE}/src/lib/components/prompt-kit/chat-container`,
 	"Code Block": `${GITHUB_REPO_BASE}/src/lib/components/prompt-kit/code-block`,
+	"Feedback Bar": `${GITHUB_REPO_BASE}/src/lib/components/prompt-kit/feedback-bar`,
 	"File Upload": `${GITHUB_REPO_BASE}/src/lib/components/prompt-kit/file-upload`,
 	Image: `${GITHUB_REPO_BASE}/src/lib/components/prompt-kit/image`,
 	Loader: `${GITHUB_REPO_BASE}/src/lib/components/prompt-kit/loader`,
@@ -44,6 +45,8 @@ export const PROMPT_KIT_GITHUB_PATHS: Record<string, string> = {
 	Source: `${GITHUB_REPO_BASE}/src/lib/components/prompt-kit/source`,
 	Steps: `${GITHUB_REPO_BASE}/src/lib/components/prompt-kit/steps`,
 	"System Message": `${GITHUB_REPO_BASE}/src/lib/components/prompt-kit/system-message`,
+	"Text Shimmer": `${GITHUB_REPO_BASE}/src/lib/components/prompt-kit/text-shimmer`,
+	"Thinking Bar": `${GITHUB_REPO_BASE}/src/lib/components/prompt-kit/thinking-bar`,
 	Tool: `${GITHUB_REPO_BASE}/src/lib/components/prompt-kit/tool`,
 };
 

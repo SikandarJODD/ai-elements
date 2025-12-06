@@ -14,7 +14,9 @@
 		"svelte-sonner",
 		"@lucide/svelte"
 	],
-	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
+	],
 	"registryDependencies": [
 		"button",
 		"badge",
@@ -36,7 +38,15 @@
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["playground", "chat", "ai", "openrouter", "example", "free-model", "suggestions"],
+		"tags": [
+			"playground",
+			"chat",
+			"ai",
+			"openrouter",
+			"example",
+			"free-model",
+			"suggestions"
+		],
 		"category": "Examples",
 		"documentation": "https://svelte-ai-elements.vercel.app/playground",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

@@ -73,6 +73,13 @@ export const promptKitData: PromptKitItem[] = [
 		category: "components",
 	},
 	{
+		name: "Feedback Bar",
+		slug: "feedback-bar",
+		href: "/prompt-kit/feedback-bar",
+		description: "Feedback component with thumbs up/down buttons for AI responses",
+		category: "components",
+	},
+	{
 		name: "File Upload",
 		slug: "file-upload",
 		href: "/prompt-kit/file-upload",
@@ -157,6 +164,20 @@ export const promptKitData: PromptKitItem[] = [
 		category: "components",
 	},
 	{
+		name: "Text Shimmer",
+		slug: "text-shimmer",
+		href: "/prompt-kit/text-shimmer",
+		description: "Text with animated shimmer effect for loading states",
+		category: "components",
+	},
+	{
+		name: "Thinking Bar",
+		slug: "thinking-bar",
+		href: "/prompt-kit/thinking-bar",
+		description: "AI thinking state display with optional stop button",
+		category: "components",
+	},
+	{
 		name: "Tool",
 		slug: "tool",
 		href: "/prompt-kit/tool",
@@ -185,4 +206,3 @@ export function getPrevNextBySlug(slug: string): {
 		next: currentIndex < promptKitData.length - 1 ? promptKitData[currentIndex + 1] : null,
 	};
 }
-

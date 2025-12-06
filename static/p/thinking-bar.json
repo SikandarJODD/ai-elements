@@ -1,0 +1,45 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "thinking-bar",
+	"type": "registry:block",
+	"description": "The ThinkingBar component displays an AI thinking state indicator with shimmer animation. Features optional stop button and customizable styling for streaming AI responses.",
+	"dependencies": [
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.544.0"
+	],
+	"registryDependencies": [
+		"button"
+	],
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"prompt-kit",
+			"thinking",
+			"loading",
+			"shimmer",
+			"stop",
+			"streaming"
+		],
+		"category": "Prompt Kit",
+		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/thinking-bar",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "beginner",
+		"updated": "2025-12-06",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\" module>\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\texport type ThinkingBarProps = HTMLAttributes<HTMLDivElement> & {\n\t\t/** Additional CSS classes */\n\t\tclass?: string;\n\t\t/** Text to display with shimmer effect */\n\t\ttext?: string;\n\t\t/** Callback when stop button is clicked */\n\t\tonStop?: () => void;\n\t\t/** Label for the stop button */\n\t\tstopLabel?: string;\n\t\t/** Callback when thinking text is clicked */\n\t\tonclick?: () => void;\n\t};\n</script>\n\n<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { TextShimmer } from \"$COMPONENTS$/prompt-kit/text-shimmer/index.js\";\n\timport { ChevronRight } from \"@lucide/svelte\";\n\n\tlet {\n\t\tclass: className,\n\t\ttext = \"Thinking\",\n\t\tonStop,\n\t\tstopLabel = \"Answer now\",\n\t\tonclick,\n\t\t...restProps\n\t}: ThinkingBarProps = $props();\n</script>\n\n<div class={cn(\"flex w-full items-center justify-between\", className)} {...restProps}>\n\t{#if onclick}\n\t\t<button\n\t\t\ttype=\"button\"\n\t\t\t{onclick}\n\t\t\tclass=\"flex items-center gap-1 text-sm transition-opacity hover:opacity-80\"\n\t\t>\n\t\t\t<TextShimmer class=\"font-medium\">{text}</TextShimmer>\n\t\t\t<ChevronRight class=\"text-muted-foreground size-4\" />\n\t\t</button>\n\t{:else}\n\t\t<TextShimmer class=\"cursor-default font-medium\">{text}</TextShimmer>\n\t{/if}\n\t{#if onStop}\n\t\t<button\n\t\t\tonclick={onStop}\n\t\t\ttype=\"button\"\n\t\t\tclass=\"text-muted-foreground hover:text-foreground border-muted-foreground/50 hover:border-foreground border-b border-dotted text-sm transition-colors\"\n\t\t>\n\t\t\t{stopLabel}\n\t\t</button>\n\t{/if}\n</div>\n\n",
+			"type": "registry:component",
+			"target": "prompt-kit/thinking-bar/thinking-bar.svelte"
+		},
+		{
+			"content": "import Root, { type ThinkingBarProps } from \"./thinking-bar.svelte\";\n\nexport {\n\tRoot,\n\ttype ThinkingBarProps as Props,\n\t//\n\tRoot as ThinkingBar,\n\ttype ThinkingBarProps,\n};\n\n",
+			"type": "registry:file",
+			"target": "prompt-kit/thinking-bar/index.ts"
+		}
+	]
+}

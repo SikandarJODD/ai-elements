@@ -1,0 +1,36 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "text-shimmer",
+	"type": "registry:block",
+	"description": "The TextShimmer component displays text with an animated shimmer effect for loading states. Features customizable text, colors, duration, and spread settings for AI thinking indicators.",
+	"meta": {
+		"author": "SikandarJODD",
+		"version": "1.0.0",
+		"tags": [
+			"prompt-kit",
+			"shimmer",
+			"loading",
+			"animation",
+			"text",
+			"effect"
+		],
+		"category": "Prompt Kit",
+		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/text-shimmer",
+		"repository": "https://github.com/SikandarJODD/ai-elements",
+		"complexity": "beginner",
+		"updated": "2025-12-06",
+		"featured": false
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\" module>\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\texport type TextShimmerProps = HTMLAttributes<HTMLElement> & {\n\t\t/** The HTML element to render as */\n\t\tas?: keyof HTMLElementTagNameMap;\n\t\t/** Animation duration in seconds */\n\t\tduration?: number;\n\t\t/** Spread of the shimmer highlight (5-45) */\n\t\tspread?: number;\n\t\t/** Content to display */\n\t\tchildren?: Snippet;\n\t\t/** Additional CSS classes */\n\t\tclass?: string;\n\t};\n</script>\n\n<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\n\tlet {\n\t\tas = \"span\",\n\t\tduration = 4,\n\t\tspread = 20,\n\t\tchildren,\n\t\tclass: className,\n\t\t...restProps\n\t}: TextShimmerProps = $props();\n\n\t// Clamp spread between 5 and 45\n\tconst dynamicSpread = $derived(Math.min(Math.max(spread, 5), 45));\n\n\tconst shimmerStyle = $derived(\n\t\t`background-image: linear-gradient(to right, var(--muted-foreground) ${50 - dynamicSpread}%, var(--foreground) 50%, var(--muted-foreground) ${50 + dynamicSpread}%); animation-duration: ${duration}s;`\n\t);\n</script>\n\n<svelte:element\n\tthis={as}\n\tclass={cn(\n\t\t\"bg-size-[200%_auto] bg-clip-text font-medium text-transparent\",\n\t\t\"animate-[shimmer_4s_infinite_linear]\",\n\t\tclassName\n\t)}\n\tstyle={shimmerStyle}\n\t{...restProps}\n>\n\t{#if children}\n\t\t{@render children()}\n\t{/if}\n</svelte:element>\n\n",
+			"type": "registry:component",
+			"target": "prompt-kit/text-shimmer/text-shimmer.svelte"
+		},
+		{
+			"content": "import Root, { type TextShimmerProps } from \"./text-shimmer.svelte\";\n\nexport {\n\tRoot,\n\ttype TextShimmerProps as Props,\n\t//\n\tRoot as TextShimmer,\n\ttype TextShimmerProps,\n};\n\n",
+			"type": "registry:file",
+			"target": "prompt-kit/text-shimmer/index.ts"
+		}
+	]
+}

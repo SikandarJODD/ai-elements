@@ -2792,6 +2792,102 @@
 			}
 		},
 		{
+			"name": "prompt-kit-feedback-bar",
+			"type": "registry:block",
+			"description": "The FeedbackBar component displays feedback buttons (thumbs up/down) for AI responses. Features customizable icons and state management for collecting user feedback on generated content.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/feedback-bar/feedback-bar.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/feedback-bar/feedback-bar.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/feedback-bar/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/feedback-bar/index.ts"
+				}
+			],
+			"dependencies": ["@lucide/svelte"],
+			"registryDependencies": ["button"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": [
+					"prompt-kit",
+					"feedback",
+					"thumbs-up",
+					"thumbs-down",
+					"rating",
+					"response"
+				],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/feedback-bar",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "beginner",
+				"updated": "2025-12-06",
+				"featured": false
+			}
+		},
+		{
+			"name": "prompt-kit-text-shimmer",
+			"type": "registry:block",
+			"description": "The TextShimmer component displays text with an animated shimmer effect for loading states. Features customizable text, colors, duration, and spread settings for AI thinking indicators.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/text-shimmer/text-shimmer.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/text-shimmer/text-shimmer.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/text-shimmer/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/text-shimmer/index.ts"
+				}
+			],
+			"registryDependencies": [],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "shimmer", "loading", "animation", "text", "effect"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/text-shimmer",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "beginner",
+				"updated": "2025-12-06",
+				"featured": false
+			}
+		},
+		{
+			"name": "prompt-kit-thinking-bar",
+			"type": "registry:block",
+			"description": "The ThinkingBar component displays an AI thinking state indicator with shimmer animation. Features optional stop button and customizable styling for streaming AI responses.",
+			"files": [
+				{
+					"path": "src/lib/components/prompt-kit/thinking-bar/thinking-bar.svelte",
+					"type": "registry:component",
+					"target": "prompt-kit/thinking-bar/thinking-bar.svelte"
+				},
+				{
+					"path": "src/lib/components/prompt-kit/thinking-bar/index.ts",
+					"type": "registry:file",
+					"target": "prompt-kit/thinking-bar/index.ts"
+				}
+			],
+			"dependencies": ["@lucide/svelte"],
+			"registryDependencies": ["button"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": ["prompt-kit", "thinking", "loading", "shimmer", "stop", "streaming"],
+				"category": "Prompt Kit",
+				"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/thinking-bar",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "beginner",
+				"updated": "2025-12-06",
+				"featured": false
+			}
+		},
+		{
 			"name": "prompt-input-with-actions-block",
 			"title": "Prompt Input with Actions Block",
 			"type": "registry:block",
