@@ -11,6 +11,7 @@
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
+	import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
 	let toc = new UseToc();
 </script>
 
@@ -136,6 +137,8 @@
   </Panel>
 </Canvas>`}
 			/>
+
+			<AiElementsPrevNext currentSlug="panel" />
 		</main>
 
 		<Toc.Root toc={toc.current} />

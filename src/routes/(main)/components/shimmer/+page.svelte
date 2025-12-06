@@ -19,6 +19,7 @@
 
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
+	import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
 	let toc = new UseToc();
 
 	// URL for llm.txt
@@ -284,6 +285,8 @@
 			<Subheading>Props</Subheading>
 
 			<ComponentAPITable componentName="Shimmer" props={shimmerProps} class="mt-6" />
+
+			<AiElementsPrevNext currentSlug="shimmer" />
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

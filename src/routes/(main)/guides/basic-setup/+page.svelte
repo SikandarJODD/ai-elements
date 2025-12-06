@@ -16,6 +16,7 @@
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	import { Button } from "$lib/components/ui/button/index.js";
+	import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
 
 	let toc = new UseToc();
 </script>
@@ -483,6 +484,8 @@ bun dev`}
 					</div>
 				</div>
 			</section>
+
+			<AiElementsPrevNext currentSlug="basic-setup" />
 		</article>
 
 		<!-- Table of Contents Sidebar -->

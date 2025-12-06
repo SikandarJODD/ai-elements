@@ -19,6 +19,7 @@
 
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
+	import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
 	let toc = new UseToc();
 
 	// URL for llm.txt
@@ -270,6 +271,8 @@
 				<li>Debugging conversation flows</li>
 				<li>Enhanced user control over chat history</li>
 			</ul>
+
+			<AiElementsPrevNext currentSlug="checkpoint" />
 		</main>
 
 		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">

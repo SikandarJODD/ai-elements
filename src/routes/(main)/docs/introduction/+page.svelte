@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+	import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
 </script>
 
 <MetaTags
@@ -59,5 +60,6 @@
 			>.
 		</p>
 	</div>
-	<!-- </div> -->
+
+	<AiElementsPrevNext currentSlug="introduction" />
 </Sidebar.Inset>

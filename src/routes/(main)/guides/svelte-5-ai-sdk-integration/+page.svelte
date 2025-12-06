@@ -15,6 +15,7 @@
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	import { Button } from "$lib/components/ui/button/index.js";
 	import { Action } from "$lib/components/ai-elements/action/index.js";
+	import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
 
 	let toc = new UseToc();
 </script>
@@ -833,6 +834,8 @@ bun x shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/prompt-input.json`}
 					</div>
 				</Card>
 			</section>
+
+			<AiElementsPrevNext currentSlug="svelte-5-ai-sdk-integration" />
 		</article>
 
 		<!-- Table of Contents -->
