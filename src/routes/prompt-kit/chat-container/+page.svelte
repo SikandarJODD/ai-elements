@@ -16,6 +16,7 @@
 
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
+	import PromptKitPrevNext from "$lib/components/prompt-kit/prompt-kit-prev-next.svelte";
 	let toc = new UseToc();
 
 	// URL for llm.txt
@@ -268,6 +269,8 @@
 				> component. The ScrollButton automatically appears when the user scrolls up and disappears
 				when at the bottom.
 			</p>
+
+			<PromptKitPrevNext currentSlug="chat-container" />
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

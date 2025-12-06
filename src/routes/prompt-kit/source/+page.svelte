@@ -16,6 +16,7 @@
 
 	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
+	import PromptKitPrevNext from "$lib/components/prompt-kit/prompt-kit-prev-next.svelte";
 	let toc = new UseToc();
 
 	// URL for llm.txt
@@ -175,6 +176,8 @@
 				props={sourceContentProps}
 				id="source-content-props"
 			/>
+
+			<PromptKitPrevNext currentSlug="source" />
 		</main>
 
 		<!-- TOC Sidebar - Sticky on larger screens -->

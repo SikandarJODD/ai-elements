@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+	import PromptKitPrevNext from "$lib/components/prompt-kit/prompt-kit-prev-next.svelte";
 </script>
 
 <MetaTags
@@ -90,5 +91,7 @@
 				rel="noreferrer noopener">Prompt Kit</a
 			>, adapted for the Svelte ecosystem.
 		</p>
+
+		<PromptKitPrevNext currentSlug="introduction" />
 	</div>
 </Sidebar.Inset>
