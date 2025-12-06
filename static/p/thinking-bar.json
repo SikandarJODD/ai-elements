@@ -3,26 +3,13 @@
 	"name": "thinking-bar",
 	"type": "registry:block",
 	"description": "The ThinkingBar component displays an AI thinking state indicator with shimmer animation. Features optional stop button and customizable styling for streaming AI responses.",
-	"dependencies": [
-		"@lucide/svelte"
-	],
-	"devDependencies": [
-		"@lucide/svelte@^0.544.0"
-	],
-	"registryDependencies": [
-		"button"
-	],
+	"dependencies": ["@lucide/svelte"],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"registryDependencies": ["button"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"prompt-kit",
-			"thinking",
-			"loading",
-			"shimmer",
-			"stop",
-			"streaming"
-		],
+		"tags": ["prompt-kit", "thinking", "loading", "shimmer", "stop", "streaming"],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/thinking-bar",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

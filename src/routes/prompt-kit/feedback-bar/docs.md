@@ -56,17 +56,16 @@ npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app/p/feedback-ba
 
 ### FeedbackBar
 
-| Prop         | Type         | Default | Description                                |
-| ------------ | ------------ | ------- | ------------------------------------------ |
-| title        | string       | -       | Title text to display                      |
-| icon         | Snippet      | -       | Custom icon snippet                        |
-| onHelpful    | () => void   | -       | Callback when helpful button is clicked    |
-| onNotHelpful | () => void   | -       | Callback when not helpful button is clicked|
-| onClose      | () => void   | -       | Callback when close button is clicked      |
-| className    | string       | -       | Additional CSS classes                     |
-| ...props     | HTMLAttributes<HTMLDivElement> | - | All other div props are supported |
+| Prop         | Type                           | Default | Description                                 |
+| ------------ | ------------------------------ | ------- | ------------------------------------------- |
+| title        | string                         | -       | Title text to display                       |
+| icon         | Snippet                        | -       | Custom icon snippet                         |
+| onHelpful    | () => void                     | -       | Callback when helpful button is clicked     |
+| onNotHelpful | () => void                     | -       | Callback when not helpful button is clicked |
+| onClose      | () => void                     | -       | Callback when close button is clicked       |
+| className    | string                         | -       | Additional CSS classes                      |
+| ...props     | HTMLAttributes<HTMLDivElement> | -       | All other div props are supported           |
 
 ---
 
 For more information, visit: https://svelte-ai-elements.vercel.app/prompt-kit/feedback-bar
-

@@ -102,7 +102,11 @@
 			<div class="mb-6">
 				<AiInstallCommand
 					command="execute"
-					args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/feedback-bar.json`]}
+					args={[
+						"shadcn-svelte@latest",
+						"add",
+						`${PUBLIC_WEBSITE_URL}/p/feedback-bar.json`,
+					]}
 					component="feedback-bar"
 					registry="prompt-kit"
 				/>
@@ -113,7 +117,12 @@
 
 			<!-- Example 1: Basic feedback bar -->
 			<H3>Basic feedback bar</H3>
-			<Playground code={examples.basic.code} component="feedback-bar" registry="prompt-kit" source="example">
+			<Playground
+				code={examples.basic.code}
+				component="feedback-bar"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.basic.Component />
 				</div>
@@ -122,10 +131,17 @@
 			<!-- Example 2: With custom icon -->
 			<H3>With custom icon</H3>
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				Add a custom icon using the <code class="bg-muted rounded px-1.5 py-0.5 text-sm">icon</code>
+				Add a custom icon using the <code class="bg-muted rounded px-1.5 py-0.5 text-sm"
+					>icon</code
+				>
 				snippet prop.
 			</p>
-			<Playground code={examples.withIcon.code} component="feedback-bar" registry="prompt-kit" source="example">
+			<Playground
+				code={examples.withIcon.code}
+				component="feedback-bar"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.withIcon.Component />
 				</div>
@@ -155,4 +171,3 @@
 		</aside>
 	</div>
 </Sidebar.Inset>
-

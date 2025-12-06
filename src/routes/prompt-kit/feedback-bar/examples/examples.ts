@@ -16,4 +16,3 @@ const examples = {
 };
 
 export { examples };
-

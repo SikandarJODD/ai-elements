@@ -49,25 +49,22 @@ npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app/p/text-shimme
   Heading with shimmer effect
 </TextShimmer>
 
-<TextShimmer as="p" class="text-lg">
-  Paragraph with shimmer effect
-</TextShimmer>
+<TextShimmer as="p" class="text-lg">Paragraph with shimmer effect</TextShimmer>
 ```
 
 ## Component API
 
 ### TextShimmer
 
-| Prop      | Type                       | Default | Description                               |
-| --------- | -------------------------- | ------- | ----------------------------------------- |
-| children  | Snippet                    | -       | Content to display with shimmer effect    |
-| as        | keyof HTMLElementTagNameMap| "span"  | HTML element to render as                 |
-| duration  | number                     | 4       | Animation duration in seconds             |
-| spread    | number                     | 20      | Spread of shimmer highlight (5-45)        |
-| className | string                     | -       | Additional CSS classes                    |
-| ...props  | HTMLAttributes<HTMLElement>| -       | All other element props are supported     |
+| Prop      | Type                        | Default | Description                            |
+| --------- | --------------------------- | ------- | -------------------------------------- |
+| children  | Snippet                     | -       | Content to display with shimmer effect |
+| as        | keyof HTMLElementTagNameMap | "span"  | HTML element to render as              |
+| duration  | number                      | 4       | Animation duration in seconds          |
+| spread    | number                      | 20      | Spread of shimmer highlight (5-45)     |
+| className | string                      | -       | Additional CSS classes                 |
+| ...props  | HTMLAttributes<HTMLElement> | -       | All other element props are supported  |
 
 ---
 
 For more information, visit: https://svelte-ai-elements.vercel.app/prompt-kit/text-shimmer
-

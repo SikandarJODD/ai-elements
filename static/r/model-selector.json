@@ -5,20 +5,9 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The ModelSelector component provides a searchable dialog interface for selecting AI models. Features model grouping, search functionality, keyboard shortcuts, and customizable model logos for a seamless model selection experience.",
-	"dependencies": [
-		"@lucide/svelte",
-		"runed"
-	],
-	"devDependencies": [
-		"bits-ui@^2.14.1",
-		"@internationalized/date@^3.8.1"
-	],
-	"registryDependencies": [
-		"dialog",
-		"button",
-		"input",
-		"command"
-	],
+	"dependencies": ["@lucide/svelte", "runed"],
+	"devDependencies": ["bits-ui@^2.14.1", "@internationalized/date@^3.8.1"],
+	"registryDependencies": ["dialog", "button", "input", "command"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",

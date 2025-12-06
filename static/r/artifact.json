@@ -5,13 +5,8 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Artifact component provides a structured container for displaying generated content like code, documents, or other outputs with built-in header actions.",
-	"devDependencies": [
-		"@lucide/svelte@^0.544.0"
-	],
-	"registryDependencies": [
-		"button",
-		"tooltip"
-	],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"registryDependencies": ["button", "tooltip"],
 	"meta": {
 		"author": "SikandarJODD"
 	},

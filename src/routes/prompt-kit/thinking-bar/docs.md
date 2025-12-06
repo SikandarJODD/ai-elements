@@ -61,16 +61,15 @@ npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app/p/thinking-ba
 
 ### ThinkingBar
 
-| Prop      | Type         | Default       | Description                              |
-| --------- | ------------ | ------------- | ---------------------------------------- |
-| text      | string       | "Thinking"    | Text to display with shimmer effect      |
-| onStop    | () => void   | -             | Callback when stop button is clicked     |
-| stopLabel | string       | "Answer now"  | Label for the stop button                |
-| onclick   | () => void   | -             | Callback when thinking text is clicked   |
-| className | string       | -             | Additional CSS classes                   |
-| ...props  | HTMLAttributes<HTMLDivElement> | - | All other div props are supported |
+| Prop      | Type                           | Default      | Description                            |
+| --------- | ------------------------------ | ------------ | -------------------------------------- |
+| text      | string                         | "Thinking"   | Text to display with shimmer effect    |
+| onStop    | () => void                     | -            | Callback when stop button is clicked   |
+| stopLabel | string                         | "Answer now" | Label for the stop button              |
+| onclick   | () => void                     | -            | Callback when thinking text is clicked |
+| className | string                         | -            | Additional CSS classes                 |
+| ...props  | HTMLAttributes<HTMLDivElement> | -            | All other div props are supported      |
 
 ---
 
 For more information, visit: https://svelte-ai-elements.vercel.app/prompt-kit/thinking-bar
-

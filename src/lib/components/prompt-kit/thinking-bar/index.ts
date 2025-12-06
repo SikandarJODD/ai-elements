@@ -7,4 +7,3 @@ export {
 	Root as ThinkingBar,
 	type ThinkingBarProps,
 };
-

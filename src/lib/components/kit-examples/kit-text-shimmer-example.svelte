@@ -5,8 +5,5 @@
 <div class="flex flex-col gap-4">
 	<TextShimmer>Processing your request...</TextShimmer>
 
-	<TextShimmer as="p" class="text-lg">
-		Analyzing data with custom styling
-	</TextShimmer>
+	<TextShimmer as="p" class="text-lg">Analyzing data with custom styling</TextShimmer>
 </div>
-

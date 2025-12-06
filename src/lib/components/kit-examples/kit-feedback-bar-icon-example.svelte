@@ -25,4 +25,3 @@
 		<Sparkles class="text-primary size-4" />
 	{/snippet}
 </FeedbackBar>
-

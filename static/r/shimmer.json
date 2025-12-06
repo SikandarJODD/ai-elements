@@ -5,20 +5,11 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Shimmer component provides an animated shimmer effect for text content, creating a smooth gradient animation that moves across the text. Perfect for loading states, highlighting important text, or adding visual interest to AI-generated content.",
-	"dependencies": [
-		"runed"
-	],
+	"dependencies": ["runed"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"shimmer",
-			"animation",
-			"loading",
-			"text-effect",
-			"gradient",
-			"visual-effect"
-		],
+		"tags": ["shimmer", "animation", "loading", "text-effect", "gradient", "visual-effect"],
 		"category": "AI Response",
 		"documentation": "https://svelte-ai-elements.vercel.app//components/shimmer",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

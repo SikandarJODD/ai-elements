@@ -20,4 +20,3 @@
 	onNotHelpful={handleNotHelpful}
 	onClose={handleClose}
 />
-

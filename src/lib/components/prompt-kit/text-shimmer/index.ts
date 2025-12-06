@@ -7,4 +7,3 @@ export {
 	Root as TextShimmer,
 	type TextShimmerProps,
 };
-

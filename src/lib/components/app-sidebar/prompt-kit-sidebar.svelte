@@ -177,7 +177,9 @@
 											{/snippet}
 										</Sidebar.MenuButton>
 										{#if itemWithBadge.badge}
-											<Sidebar.MenuBadge class="text-muted-foreground border border-border rounded-md text-[10px]">
+											<Sidebar.MenuBadge
+												class="text-muted-foreground border-border rounded-md border text-[10px]"
+											>
 												{itemWithBadge.badge}
 											</Sidebar.MenuBadge>
 										{/if}

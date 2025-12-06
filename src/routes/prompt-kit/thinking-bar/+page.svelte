@@ -74,8 +74,8 @@
 
 			<!-- Description -->
 			<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
-				A component for displaying AI thinking state with animated shimmer text and optional stop
-				button
+				A component for displaying AI thinking state with animated shimmer text and optional
+				stop button
 			</p>
 
 			<!-- Actions -->
@@ -99,7 +99,11 @@
 			<div class="mb-6">
 				<AiInstallCommand
 					command="execute"
-					args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/thinking-bar.json`]}
+					args={[
+						"shadcn-svelte@latest",
+						"add",
+						`${PUBLIC_WEBSITE_URL}/p/thinking-bar.json`,
+					]}
 					component="thinking-bar"
 					registry="prompt-kit"
 				/>
@@ -110,7 +114,12 @@
 
 			<!-- Example 1: Basic thinking bar -->
 			<H3>Basic thinking bar</H3>
-			<Playground code={examples.basic.code} component="thinking-bar" registry="prompt-kit" source="example">
+			<Playground
+				code={examples.basic.code}
+				component="thinking-bar"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.basic.Component />
 				</div>
@@ -119,11 +128,18 @@
 			<!-- Example 2: With stop button -->
 			<H3>With stop button</H3>
 			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				Add a stop button using the <code class="bg-muted rounded px-1.5 py-0.5 text-sm">onStop</code>
+				Add a stop button using the <code class="bg-muted rounded px-1.5 py-0.5 text-sm"
+					>onStop</code
+				>
 				callback. Customize the button label with
 				<code class="bg-muted rounded px-1.5 py-0.5 text-sm">stopLabel</code>.
 			</p>
-			<Playground code={examples.withStop.code} component="thinking-bar" registry="prompt-kit" source="example">
+			<Playground
+				code={examples.withStop.code}
+				component="thinking-bar"
+				registry="prompt-kit"
+				source="example"
+			>
 				<div class="flex w-full justify-center">
 					<examples.withStop.Component />
 				</div>
@@ -153,4 +169,3 @@
 		</aside>
 	</div>
 </Sidebar.Inset>
-

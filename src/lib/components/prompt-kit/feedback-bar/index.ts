@@ -7,4 +7,3 @@ export {
 	Root as FeedbackBar,
 	type FeedbackBarProps,
 };
-

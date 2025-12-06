@@ -3,26 +3,13 @@
 	"name": "feedback-bar",
 	"type": "registry:block",
 	"description": "The FeedbackBar component displays feedback buttons (thumbs up/down) for AI responses. Features customizable icons and state management for collecting user feedback on generated content.",
-	"dependencies": [
-		"@lucide/svelte"
-	],
-	"devDependencies": [
-		"@lucide/svelte@^0.544.0"
-	],
-	"registryDependencies": [
-		"button"
-	],
+	"dependencies": ["@lucide/svelte"],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"registryDependencies": ["button"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"prompt-kit",
-			"feedback",
-			"thumbs-up",
-			"thumbs-down",
-			"rating",
-			"response"
-		],
+		"tags": ["prompt-kit", "feedback", "thumbs-up", "thumbs-down", "rating", "response"],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/feedback-bar",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

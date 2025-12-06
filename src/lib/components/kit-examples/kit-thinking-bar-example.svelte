@@ -5,4 +5,3 @@
 <div class="w-full max-w-md">
 	<ThinkingBar />
 </div>
-

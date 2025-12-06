@@ -34,10 +34,7 @@
 </script>
 
 <div
-	class={cn(
-		"bg-background border-border inline-flex rounded-[12px] border text-sm",
-		className
-	)}
+	class={cn("bg-background border-border inline-flex rounded-[12px] border text-sm", className)}
 	{...restProps}
 >
 	<div class="flex w-full items-center justify-between">
@@ -77,4 +74,3 @@
 		</div>
 	</div>
 </div>
-

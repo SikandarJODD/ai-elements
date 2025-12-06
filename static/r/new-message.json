@@ -12,25 +12,12 @@
 		"mode-watcher",
 		"@lucide/svelte"
 	],
-	"devDependencies": [
-		"@lucide/svelte@^0.544.0"
-	],
-	"registryDependencies": [
-		"button",
-		"button-group",
-		"tooltip"
-	],
+	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"registryDependencies": ["button", "button-group", "tooltip"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"message",
-			"branching",
-			"attachments",
-			"markdown",
-			"actions",
-			"chat"
-		],
+		"tags": ["message", "branching", "attachments", "markdown", "actions", "chat"],
 		"category": "AI Chat",
 		"documentation": "https://svelte-ai-elements.vercel.app/components/new-message",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
