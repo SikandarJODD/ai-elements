@@ -1,9 +1,6 @@
 <script lang="ts">
 	import { cn } from "$lib/utils/utils";
-	import {
-		MessageBranchClass,
-		setMessageBranchContext,
-	} from "./message-context.svelte.js";
+	import { MessageBranchClass, setMessageBranchContext } from "./message-context.svelte.js";
 	import type { Snippet } from "svelte";
 	import type { HTMLAttributes } from "svelte/elements";
 
@@ -43,4 +40,3 @@
 <div class={cn("grid w-full gap-2 [&>div]:pb-0", className)} {...restProps}>
 	{@render children()}
 </div>
-

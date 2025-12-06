@@ -1,11 +1,11 @@
 # New Message
 
-> Enhanced message component with branching, attachments, actions, and markdown rendering for AI chat interfaces.
+> A comprehensive suite of components for displaying chat messages, including message rendering, branching, actions, and markdown responses.
 
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app/r/new-message.json
+npx shadcn-svelte@latest add https://ai-elements.vercel.app/r/new-message.json
 ```
 
 ## Usage
@@ -112,38 +112,155 @@ npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app/r/new-message
     Message,
     MessageContent,
     MessageResponse,
+    MessageToolbar,
     MessageActions,
     MessageAction,
   } from "$lib/components/ai-elements/new-message";
   import Copy from "@lucide/svelte/icons/copy";
   import ThumbsUp from "@lucide/svelte/icons/thumbs-up";
+  import RefreshCcw from "@lucide/svelte/icons/refresh-ccw";
 </script>
 
 <Message from="assistant">
   <MessageContent>
     <MessageResponse content="Here's my response!" />
   </MessageContent>
-  <MessageActions>
-    <MessageAction tooltip="Like" onclick={() => console.log("liked")}>
-      <ThumbsUp class="size-4" />
-    </MessageAction>
-    <MessageAction
-      tooltip="Copy"
-      onclick={() => navigator.clipboard.writeText("...")}
-    >
-      <Copy class="size-4" />
-    </MessageAction>
-  </MessageActions>
+  <MessageToolbar>
+    <MessageActions>
+      <MessageAction
+        tooltip="Regenerate"
+        onclick={() => console.log("regenerate")}
+      >
+        <RefreshCcw class="size-4" />
+      </MessageAction>
+      <MessageAction tooltip="Like" onclick={() => console.log("liked")}>
+        <ThumbsUp class="size-4" />
+      </MessageAction>
+      <MessageAction
+        tooltip="Copy"
+        onclick={() => navigator.clipboard.writeText("...")}
+      >
+        <Copy class="size-4" />
+      </MessageAction>
+    </MessageActions>
+  </MessageToolbar>
 </Message>
+```
+
+### Usage with AI SDK
+
+Integrate with Vercel AI SDK v5's `Chat` class for real-time streaming responses.
+
+```svelte
+<script lang="ts">
+  import { Chat } from "@ai-sdk/svelte";
+  import {
+    Message,
+    MessageContent,
+    MessageResponse,
+    MessageToolbar,
+    MessageActions,
+    MessageAction,
+  } from "$lib/components/ai-elements/new-message";
+  import Copy from "@lucide/svelte/icons/copy";
+  import RefreshCcw from "@lucide/svelte/icons/refresh-ccw";
+
+  let chat = new Chat({});
+
+  function handleCopy(content: string) {
+    navigator.clipboard.writeText(content);
+  }
+</script>
+
+<div class="flex flex-col gap-4 p-4">
+  {#each chat.messages as message (message.id)}
+    <Message from={message.role}>
+      <MessageContent>
+        {#each message.parts as part, i (i)}
+          {#if part.type === "text"}
+            <MessageResponse content={part.text} />
+          {/if}
+        {/each}
+      </MessageContent>
+      {#if message.role === "assistant"}
+        <MessageToolbar>
+          <MessageActions>
+            <MessageAction tooltip="Regenerate" onclick={() => chat.reload()}>
+              <RefreshCcw class="size-4" />
+            </MessageAction>
+            <MessageAction
+              tooltip="Copy"
+              onclick={() => handleCopy(message.content || "")}
+            >
+              <Copy class="size-4" />
+            </MessageAction>
+          </MessageActions>
+        </MessageToolbar>
+      {/if}
+    </Message>
+  {/each}
+</div>
+```
+
+## Component Structure
+
+```
+Message
+├── MessageAttachments
+│   └── MessageAttachment
+│
+├── MessageContent
+│   └── MessageResponse (markdown)
+│
+├── MessageBranch (for multiple versions)
+│   ├── MessageBranchContent
+│   └── MessageBranchSelector
+│       ├── MessageBranchPrevious
+│       ├── MessageBranchPage
+│       └── MessageBranchNext
+│
+├── MessageToolbar
+│   └── MessageActions
+│       └── MessageAction (retry, like, copy...)
 ```
 
 ## Component API
 
+### Message
+
+| Prop     | Type                  | Default | Description                                      |
+| -------- | --------------------- | ------- | ------------------------------------------------ |
+| from     | 'user' \| 'assistant' | -       | The role of the message sender                   |
+| children | Snippet               | -       | Child components (MessageContent, Actions, etc.) |
+| class    | string                | -       | Additional CSS classes                           |
+
+### MessageContent
+
+| Prop     | Type    | Default | Description                            |
+| -------- | ------- | ------- | -------------------------------------- |
+| children | Snippet | -       | Content to render (typically Response) |
+| class    | string  | -       | Additional CSS classes                 |
+
+### MessageResponse
+
+| Prop    | Type   | Default | Description                                |
+| ------- | ------ | ------- | ------------------------------------------ |
+| content | string | -       | Markdown content to render with highlights |
+| class   | string | -       | Additional CSS classes                     |
+
+### MessageToolbar
+
+| Prop     | Type    | Default | Description               |
+| -------- | ------- | ------- | ------------------------- |
+| children | Snippet | -       | MessageActions components |
+| class    | string  | -       | Additional CSS classes    |
+
 ### MessageActions
 
-| Prop  | Type   | Default | Description            |
-| ----- | ------ | ------- | ---------------------- |
-| class | string | -       | Additional CSS classes |
+| Prop     | Type    | Default | Description            |
+| -------- | ------- | ------- | ---------------------- |
+| children | Snippet | -       | MessageAction children |
+| class    | string  | -       | Additional CSS classes |
 
 ### MessageAction
 
@@ -156,9 +273,11 @@ npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app/r/new-message
 
 ### MessageBranch
 
-| Prop  | Type   | Default | Description            |
-| ----- | ------ | ------- | ---------------------- |
-| class | string | -       | Additional CSS classes |
+| Prop          | Type    | Default | Description                  |
+| ------------- | ------- | ------- | ---------------------------- |
+| defaultBranch | number  | 0       | Initial branch index to show |
+| children      | Snippet | -       | BranchContent and Selector   |
+| class         | string  | -       | Additional CSS classes       |
 
 ### MessageBranchContent
 
@@ -174,46 +293,33 @@ npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app/r/new-message
 | ----- | ------ | ------- | ---------------------- |
 | class | string | -       | Additional CSS classes |
 
+### MessageAttachments
+
+| Prop     | Type    | Default | Description                  |
+| -------- | ------- | ------- | ---------------------------- |
+| children | Snippet | -       | MessageAttachment components |
+| class    | string  | -       | Additional CSS classes       |
+
 ### MessageAttachment
 
-| Prop     | Type       | Default | Description        |
-| -------- | ---------- | ------- | ------------------ |
-| name     | string     | -       | File name          |
-| type     | string     | -       | MIME type          |
-| size     | number     | -       | File size in bytes |
-| onRemove | () => void | -       | Remove handler     |
+| Prop     | Type       | Default | Description            |
+| -------- | ---------- | ------- | ---------------------- |
+| name     | string     | -       | File name to display   |
+| type     | string     | -       | MIME type              |
+| size     | number     | -       | File size in bytes     |
+| onRemove | () => void | -       | Remove button handler  |
+| class    | string     | -       | Additional CSS classes |
 
 ## Features
 
-- **Markdown Rendering**: Built-in markdown support with syntax highlighting
-- **Message Branching**: Navigate between multiple response versions
-- **File Attachments**: Display attached files with size and type info
-- **Action Buttons**: Customizable action buttons with tooltips
-- **Theme Support**: Automatic dark/light mode via mode-watcher
-- **Svelte 5 Runes**: Built with $state, $derived, and context API
+- **Markdown Rendering**: Built-in markdown support with syntax highlighting via `svelte-streamdown`
+- **Message Branching**: Navigate between multiple AI response versions
+- **File Attachments**: Display attached files with file type icons, names, and sizes
+- **Action Buttons**: Customizable action buttons with tooltips for copy, retry, like, dislike
+- **Theme Support**: Automatic dark/light mode via `mode-watcher`
+- **Svelte 5 Runes**: Built with `$state`, `$derived`, and class-based context for state management
+- **Minimalist Design**: Flat design with user messages in secondary background, assistant messages full-width
 
 ---
 
-For more information, visit: https://svelte-ai-elements.vercel.app/components/new-message
-
-## Component API
-
-### Message
-
-| Prop  | Type                  | Default | Description                    |
-| ----- | --------------------- | ------- | ------------------------------ |
-| from  | 'user' \| 'assistant' | -       | The role of the message sender |
-| class | string                | -       | Additional CSS classes         |
-
-### MessageContent
-
-| Prop  | Type   | Default | Description            |
-| ----- | ------ | ------- | ---------------------- |
-| class | string | -       | Additional CSS classes |
-
-### MessageResponse
-
-| Prop    | Type   | Default | Description                |
-| ------- | ------ | ------- | -------------------------- |
-| content | string | -       | Markdown content to render |
-| class   | string | -       | Additional CSS classes     |
+For more information, visit: https://ai-elements.vercel.app/components/new-message

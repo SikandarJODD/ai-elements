@@ -24,6 +24,12 @@
 			},
 		],
 	}}
+	additionalLinkTags={[
+		{
+			rel: "icon",
+			href: "https://svelte-ai-elements.vercel.app/favicon.svg",
+		},
+	]}
 	twitter={{
 		creator: "@Sikandar_Bhide",
 		site: "https://svelte-ai-elements.vercel.app",

@@ -64,6 +64,8 @@ export const AI_ELEMENTS_GITHUB_PATHS: Record<string, string> = {
 	"Inline Citation": `${GITHUB_REPO_BASE}/src/lib/components/ai-elements/inline-citation`,
 	Loader: `${GITHUB_REPO_BASE}/src/lib/components/ai-elements/loader`,
 	Message: `${GITHUB_REPO_BASE}/src/lib/components/ai-elements/message`,
+	"Model Selector": `${GITHUB_REPO_BASE}/src/lib/components/ai-elements/model-selector`,
+	"New Message": `${GITHUB_REPO_BASE}/src/lib/components/ai-elements/new-message`,
 	"Open In Chat": `${GITHUB_REPO_BASE}/src/lib/components/ai-elements/open-in-chat`,
 	Plan: `${GITHUB_REPO_BASE}/src/lib/components/ai-elements/plan`,
 	"Prompt Input": `${GITHUB_REPO_BASE}/src/lib/components/ai-elements/prompt-input`,

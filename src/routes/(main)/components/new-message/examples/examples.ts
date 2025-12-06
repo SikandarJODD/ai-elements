@@ -38,4 +38,3 @@ const examples = {
 };
 
 export { examples };
-
