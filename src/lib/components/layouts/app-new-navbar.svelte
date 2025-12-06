@@ -4,14 +4,12 @@
 	import * as Icons from "$lib/components/icons";
 
 	import BookOpenIcon from "@lucide/svelte/icons/book-open";
-	import BoxIcon from "@lucide/svelte/icons/box";
 	import SparklesIcon from "@lucide/svelte/icons/sparkles";
 	import FileTextIcon from "@lucide/svelte/icons/file-text";
 	import HomeIcon from "@lucide/svelte/icons/home";
 	import ZapIcon from "@lucide/svelte/icons/zap";
 	import BoxesIcon from "@lucide/svelte/icons/boxes";
 	import type { Component } from "svelte";
-	// import { Logo } from '$lib/components/_extras/navbars';
 	import {
 		NavigationMenuContent,
 		NavigationMenuItem,
@@ -21,7 +19,6 @@
 		NavigationMenuTrigger,
 	} from "$lib/components/ui/navigation-menu";
 	import { Popover, PopoverContent, PopoverTrigger } from "$lib/components/ui/popover";
-	import { cn } from "$lib/utils/utils";
 	import AppSearchbar from "./app-searchbar.svelte";
 	import LightSwitch from "../ui/light-switch/light-switch.svelte";
 	import McpDialog from "./mcp-dialog.svelte";
@@ -295,20 +292,43 @@
 					label: "System Message",
 				},
 				{
+					description: "Text with animated shimmer effect",
+					href: "/prompt-kit/text-shimmer",
+					label: "Text Shimmer",
+					badge: "new",
+				},
+				{
+					description: "AI thinking state indicator",
+					href: "/prompt-kit/thinking-bar",
+					label: "Thinking Bar",
+					badge: "new",
+				},
+				{
 					description: "Tool usage and execution display",
 					href: "/prompt-kit/tool",
 					label: "Tool",
 				},
+				{
+					description: "Feedback with thumbs up/down",
+					href: "/prompt-kit/feedback-bar",
+					label: "Feedback Bar",
+					badge: "new",
+				},
+				{
+					description: "Core UI primitive components",
+					href: "/prompt-kit/primitives",
+					label: "Primitives",
+					badge: "new",
+				},
+				{
+					description: "Pre-built conversation layouts",
+					href: "/prompt-kit/blocks",
+					label: "Blocks",
+					badge: "new",
+				},
 			],
 		},
 	];
-
-	// desktop links
-	type NavigationLink = {
-		active: boolean;
-		href: string;
-		label: string;
-	};
 
 	type ComponentDropdownItem = {
 		href: string;
@@ -323,21 +343,20 @@
 		{
 			href: "/components/actions",
 			title: "Svelte AI Elements",
-			description: "29 full-featured components for production AI apps",
+			description: "30 full-featured components for production AI apps",
 			icon: SparklesIcon,
 		},
 		{
 			href: "/prompt-kit",
 			title: "Svelte Prompt Kit",
-			description: "17 Core building blocks for AI apps",
+			description: "20 core building blocks for AI apps",
 			icon: ZapIcon,
 		},
 		{
 			href: "/prompt-kit/blocks",
-			title: "8 New UI Blocks",
+			title: "8 UI Blocks",
 			description: "Pre-built conversation layouts ready to use",
 			icon: BoxesIcon,
-			badge: "New",
 		},
 	];
 </script>

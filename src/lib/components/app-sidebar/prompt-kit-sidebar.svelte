@@ -21,23 +21,11 @@
 						title: "Installation",
 						url: "/prompt-kit/installation",
 					},
-				],
-			},
-			{
-				title: "Primitives",
-				url: "/prompt-kit/primitives",
-				items: [
 					{
 						title: "Primitives",
 						url: "/prompt-kit/primitives",
 						badge: "new",
 					},
-				],
-			},
-			{
-				title: "Blocks",
-				url: "/prompt-kit/blocks",
-				items: [
 					{
 						title: "Blocks",
 						url: "/prompt-kit/blocks",
@@ -62,6 +50,11 @@
 					{
 						title: "Code Block",
 						url: "/prompt-kit/code-block",
+					},
+					{
+						title: "Feedback Bar",
+						url: "/prompt-kit/feedback-bar",
+						badge: "new",
 					},
 					{
 						title: "File Upload",
@@ -110,6 +103,16 @@
 					{
 						title: "System Message",
 						url: "/prompt-kit/system-message",
+					},
+					{
+						title: "Text Shimmer",
+						url: "/prompt-kit/text-shimmer",
+						badge: "new",
+					},
+					{
+						title: "Thinking Bar",
+						url: "/prompt-kit/thinking-bar",
+						badge: "new",
 					},
 					{
 						title: "Tool",
@@ -174,7 +177,9 @@
 											{/snippet}
 										</Sidebar.MenuButton>
 										{#if itemWithBadge.badge}
-											<Sidebar.MenuBadge class="bg-blue-500 text-white">
+											<Sidebar.MenuBadge
+												class="text-muted-foreground border-border rounded-md border text-[10px]"
+											>
 												{itemWithBadge.badge}
 											</Sidebar.MenuBadge>
 										{/if}
