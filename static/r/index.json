@@ -52,7 +52,7 @@
 		"description": "The Code component displays formatted code snippets with syntax highlighting, line numbers, and a copy-to-clipboard feature. It supports multiple programming languages and themes for better readability.",
 		"dependencies": [
 			"svelte-toolbelt",
-			"isomorphic-dompurify",
+			"dompurify",
 			"shiki",
 			"runed",
 			"@shikijs/langs",

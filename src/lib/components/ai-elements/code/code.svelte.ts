@@ -2,12 +2,15 @@ import { Context } from "runed";
 import type { ReadableBoxedValues, WritableBoxedValues } from "svelte-toolbelt";
 import type { CodeRootProps } from "./types";
 import { highlighter } from "./shiki";
-import DOMPurify from "isomorphic-dompurify";
+import createDOMPurify from "dompurify";
 import type { HighlighterCore } from "shiki";
 
 type CodeOverflowStateProps = WritableBoxedValues<{
 	collapsed: boolean;
 }>;
+
+// Bind DOMPurify only in the browser
+const DOMPurify = typeof window !== "undefined" ? createDOMPurify(window) : null;
 
 class CodeOverflowState {
 	constructor(readonly opts: CodeOverflowStateProps) {
@@ -45,7 +48,7 @@ class CodeRootState {
 			lang: this.opts.lang.current,
 			themes: {
 				light: "github-light-default",
-				dark: "vesper",
+				dark: "github-dark-default",
 			},
 			transformers: [
 				{
@@ -74,7 +77,17 @@ class CodeRootState {
 		return this.opts.code.current;
 	}
 
-	highlighted = $derived(DOMPurify.sanitize(this.highlight(this.code) ?? ""));
+	// highlighted = $derived(DOMPurify.sanitize(this.highlight(this.code) ?? ""));
+	// Use DOMPurify in the browser, raw HTML as a fallback during SSR
+	highlighted = $derived(() => {
+		const html = this.highlight(this.code) ?? "";
+
+		if (DOMPurify) {
+			return DOMPurify.sanitize(html);
+		}
+
+		return html;
+	});
 }
 
 function within(num: number, range: CodeRootProps["highlight"]) {

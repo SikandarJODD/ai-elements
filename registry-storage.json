@@ -318,7 +318,7 @@
 			"registryDependencies": ["local:copy-button", "button", "tooltip"],
 			"dependencies": [
 				"svelte-toolbelt",
-				"isomorphic-dompurify",
+				"dompurify",
 				"shiki",
 				"runed",
 				"@shikijs/langs",
@@ -2243,7 +2243,7 @@
 				}
 			],
 			"registryDependencies": [],
-			"dependencies": ["marked", "isomorphic-dompurify"],
+			"dependencies": ["marked", "dompurify"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",

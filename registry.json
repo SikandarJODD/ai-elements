@@ -209,7 +209,7 @@
 			"registryDependencies": ["local:copy-button", "button", "tooltip"],
 			"dependencies": [
 				"svelte-toolbelt",
-				"isomorphic-dompurify",
+				"dompurify",
 				"shiki",
 				"runed",
 				"@shikijs/langs",
