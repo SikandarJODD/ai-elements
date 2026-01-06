@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cn } from "$lib/utils/utils";
 	import { watch } from "runed";
-	import { onMount } from "svelte";
+	import { onMount, untrack } from "svelte";
 	import {
 		AttachmentsContext,
 		setAttachmentsContext,
@@ -44,11 +44,11 @@
 	let anchorRef = $state<HTMLSpanElement | null>(null);
 	let formRef = $state<HTMLFormElement | null>(null);
 	let attachmentsContext = new AttachmentsContext(
-		accept,
-		multiple,
-		maxFiles,
-		maxFileSize,
-		onError
+		(accept = untrack(() => accept)),
+		(multiple = untrack(() => multiple)),
+		(maxFiles = untrack(() => maxFiles)),
+		(maxFileSize = untrack(() => maxFileSize)),
+		(onError = untrack(() => onError))
 	);
 
 	// Find nearest form to scope drag & drop

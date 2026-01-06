@@ -2,7 +2,6 @@ import { streamText, type UIMessage, convertToModelMessages, tool } from "ai";
 import type { RequestHandler } from "./$types";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { OPENROUTER_API_KEY } from "$env/static/private";
-import { z } from "zod";
 
 let defaultModel = "z-ai/glm-4.5-air:free";
 

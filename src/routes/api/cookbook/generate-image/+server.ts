@@ -6,7 +6,6 @@ import {
 	streamText,
 	type UIMessage,
 } from "ai";
-import { openai } from "@ai-sdk/openai";
 
 import { generateImageTool } from "$lib/components/cookbook/tools/generate-image";
 import type { RequestHandler } from "./$types";

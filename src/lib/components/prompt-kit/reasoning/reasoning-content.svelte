@@ -6,6 +6,11 @@
 	import { Streamdown } from "svelte-streamdown";
 	import { mode } from "mode-watcher";
 
+	// Import Shiki themes
+	import githubLightDefault from "@shikijs/themes/github-light-default";
+	import githubDarkDefault from "@shikijs/themes/github-dark-default";
+	import Code from "svelte-streamdown/code";
+
 	interface Props {
 		children?: Snippet;
 		content?: string;
@@ -53,6 +58,9 @@
 
 	// Compute max height reactively
 	let maxHeight = $derived(context.isOpen && contentRef ? `${contentRef.scrollHeight}px` : "0px");
+	let currentTheme = $derived(
+		mode.current === "dark" ? "github-dark-default" : "github-light-default"
+	);
 </script>
 
 <div
@@ -72,10 +80,12 @@
 			<Streamdown
 				{content}
 				class="pb-4 [&>*:first-child]:mt-2 [&>*:last-child]:mb-0"
-				shikiTheme={mode.current === "dark"
-					? "github-dark-default"
-					: "github-light-default"}
-				shikiPreloadThemes={["github-dark-default", "github-light-default"]}
+				shikiTheme={currentTheme}
+				shikiThemes={{
+					"github-light-default": githubLightDefault,
+					"github-dark-default": githubDarkDefault,
+				}}
+				components={{ code: Code }}
 				baseTheme="shadcn"
 			/>
 		{:else}

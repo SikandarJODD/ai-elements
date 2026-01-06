@@ -6,6 +6,8 @@
 		setPromptInputContext,
 		type PromptInputSchema,
 	} from "./prompt-input-context.svelte.js";
+	import { untrack } from "svelte";
+	import { watch } from "runed";
 
 	let {
 		class: className,
@@ -21,39 +23,58 @@
 	} = $props();
 
 	const contextInstance = new PromptInputClass({
-		isLoading,
-		value,
-		onValueChange,
-		maxHeight,
-		onSubmit,
-		disabled: isLoading,
+		isLoading: untrack(() => isLoading),
+		value: untrack(() => value),
+		onValueChange: untrack(() => onValueChange),
+		maxHeight: untrack(() => maxHeight),
+		onSubmit: untrack(() => onSubmit),
+		disabled: untrack(() => isLoading),
 	});
 
 	setPromptInputContext(contextInstance);
 
 	// Sync props with context
-	$effect(() => {
-		contextInstance.isLoading = isLoading;
-		contextInstance.disabled = isLoading;
-	});
-
-	$effect(() => {
-		if (value !== undefined) {
-			contextInstance.value = value;
+	// $effect(() => {
+	// 	contextInstance.isLoading = isLoading;
+	// 	contextInstance.disabled = isLoading;
+	// });
+	watch(
+		() => isLoading,
+		() => {
+			contextInstance.isLoading = isLoading;
+			contextInstance.disabled = isLoading;
 		}
-	});
+	);
 
-	$effect(() => {
-		contextInstance.onValueChange = onValueChange;
-	});
+	watch(
+		() => value,
+		(newValue) => {
+			if (newValue !== undefined) {
+				contextInstance.value = newValue;
+			}
+		}
+	);
 
-	$effect(() => {
-		contextInstance.maxHeight = maxHeight;
-	});
+	watch(
+		() => onValueChange,
+		(newValue) => {
+			contextInstance.onValueChange = newValue;
+		}
+	);
 
-	$effect(() => {
-		contextInstance.onSubmit = onSubmit;
-	});
+	watch(
+		() => maxHeight,
+		() => {
+			contextInstance.maxHeight = maxHeight;
+		}
+	);
+
+	watch(
+		() => onSubmit,
+		() => {
+			contextInstance.onSubmit = onSubmit;
+		}
+	);
 
 	function handleClick() {
 		contextInstance.textareaRef?.focus();
@@ -70,16 +91,17 @@
 </script>
 
 <TooltipPrimitive.Provider>
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<div
 		class={cn(
 			"border-input bg-background cursor-text rounded-3xl border p-2 shadow-xs",
 			className
 		)}
 		onclick={handleClick}
-		onkeydown={handleKeyDown}
 		role="button"
 		tabindex="-1"
 	>
+		<!-- onkeydown={handleKeyDown} -->
 		{@render children()}
 	</div>
 </TooltipPrimitive.Provider>

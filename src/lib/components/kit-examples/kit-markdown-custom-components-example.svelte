@@ -1,8 +1,12 @@
 <script lang="ts">
-	import { Markdown } from "$lib/components/prompt-kit/markdown";
 	import { Streamdown } from "svelte-streamdown";
+	import Code from "svelte-streamdown/code";
 	import { cn } from "$lib/utils/utils";
 	import { mode } from "mode-watcher";
+
+	// Import Shiki themes
+	import githubLightDefault from "@shikijs/themes/github-light-default";
+	import githubDarkDefault from "@shikijs/themes/github-dark-default";
 
 	const markdownContent = `# Custom Components Example
 
@@ -27,6 +31,10 @@
 	function toggleTheme() {
 		theme = theme === "light" ? "dark" : "light";
 	}
+
+	let currentTheme = $derived(
+		mode.current === "dark" ? "github-dark-default" : "github-light-default"
+	);
 </script>
 
 <div
@@ -51,7 +59,11 @@
 	<Streamdown
 		content={markdownContent}
 		shikiTheme={mode.current === "dark" ? "github-dark-default" : "github-light-default"}
-		shikiPreloadThemes={["github-dark-default", "github-light-default"]}
+		components={{ code: Code }}
+		shikiThemes={{
+			"github-light-default": githubLightDefault,
+			"github-dark-default": githubDarkDefault,
+		}}
 		baseTheme="shadcn"
 		theme={{
 			h3: {
