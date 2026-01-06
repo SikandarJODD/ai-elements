@@ -16,7 +16,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	const result = streamText({
 		model: provider(defaultModel),
-		messages: convertToModelMessages(messages),
+		messages: await convertToModelMessages(messages),
 	});
 
 	return result.toUIMessageStreamResponse({

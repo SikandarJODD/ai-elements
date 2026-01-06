@@ -28,7 +28,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	const result = streamText({
 		model: gateway("openai/gpt-oss-20b"),
-		messages: convertToModelMessages(messages),
+		messages: await convertToModelMessages(messages),
 		stopWhen: stepCountIs(5),
 		tools,
 	});
