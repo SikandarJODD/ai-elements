@@ -12,6 +12,13 @@ type CodeOverflowStateProps = WritableBoxedValues<{
 // Bind DOMPurify only in the browser
 const DOMPurify = typeof window !== "undefined" ? createDOMPurify(window) : null;
 
+type CodeRootStateProps = ReadableBoxedValues<{
+	code: string;
+	lang: NonNullable<CodeRootProps["lang"]>;
+	hideLines: boolean;
+	highlight: CodeRootProps["highlight"];
+}>;
+
 class CodeOverflowState {
 	constructor(readonly opts: CodeOverflowStateProps) {
 		this.toggleCollapsed = this.toggleCollapsed.bind(this);
@@ -25,13 +32,6 @@ class CodeOverflowState {
 		return this.opts.collapsed.current;
 	}
 }
-
-type CodeRootStateProps = ReadableBoxedValues<{
-	code: string;
-	lang: NonNullable<CodeRootProps["lang"]>;
-	hideLines: boolean;
-	highlight: CodeRootProps["highlight"];
-}>;
 
 class CodeRootState {
 	highlighter: HighlighterCore | null = $state(null);
@@ -77,9 +77,8 @@ class CodeRootState {
 		return this.opts.code.current;
 	}
 
-	// highlighted = $derived(DOMPurify.sanitize(this.highlight(this.code) ?? ""));
 	// Use DOMPurify in the browser, raw HTML as a fallback during SSR
-	highlighted = $derived(() => {
+	highlighted = $derived.by(() => {
 		const html = this.highlight(this.code) ?? "";
 
 		if (DOMPurify) {
@@ -122,7 +121,6 @@ class CodeCopyButtonState {
 }
 
 const overflowCtx = new Context<CodeOverflowState>("code-overflow-state");
-
 const ctx = new Context<CodeRootState>("code-root-state");
 
 export function useCodeOverflow(props: CodeOverflowStateProps) {
