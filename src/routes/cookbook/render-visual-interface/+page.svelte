@@ -51,29 +51,46 @@ export const getLocationClient = tool({
   outputSchema: z.string()
 });`;
 
-	let serverCode = `import { streamText, convertToModelMessages, stepCountIs } from "ai";
-import type { InferUITools, ToolSet, UIDataTypes, UIMessage } from "ai";
+	let serverCode = `import type { RequestHandler } from "@sveltejs/kit";
+import {
+  type InferUITools,
+  type ToolSet,
+  type UIDataTypes,
+  type UIMessage,
+  convertToModelMessages,
+  stepCountIs,
+  streamText,
+} from "ai";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
-import { getWeatherInformation, askForConfirmation, getLocationClient } from "$lib/tools";
+import { OPENROUTER_API_KEY } from "$env/static/private";
+import {
+  getWeatherInformation,
+  askForConfirmation,
+  getLocationClient,
+} from "$lib/components/cookbook/tools";
 
 const tools = {
-  getWeatherInformation,   // Server-side: fetches weather data
-  askForConfirmation,      // Client-side: shows confirmation UI
-  getLocation: getLocationClient  // Client-side: gets user location
+  getWeatherInformation,
+  askForConfirmation,
+  getLocation: getLocationClient,
 } satisfies ToolSet;
 
-// Export types for client-side type safety
 export type ChatTools = InferUITools<typeof tools>;
 export type ChatMessage = UIMessage<never, UIDataTypes, ChatTools>;
 
-export const POST = async ({ request }) => {
-  const { messages } = await request.json();
+let defaultModel = "z-ai/glm-4.5-air:free";
+
+export const POST: RequestHandler = async ({ request }) => {
+  const openrouter = createOpenRouter({
+    apiKey: OPENROUTER_API_KEY,
+  });
+  const { messages }: { messages: ChatMessage[] } = await request.json();
 
   const result = streamText({
-    model: openrouter("z-ai/glm-4.5-air:free"),
-    messages: convertToModelMessages(messages),
+    model: openrouter(defaultModel),
+    messages: await convertToModelMessages(messages),
     tools,
-    stopWhen: stepCountIs(5)  // Limit tool call loops
+    stopWhen: stepCountIs(5),
   });
 
   return result.toUIMessageStreamResponse();

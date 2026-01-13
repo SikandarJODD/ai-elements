@@ -36,7 +36,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	const result = streamText({
 		model: openrouter(defaultModel),
-		messages: convertToModelMessages(messages),
+		messages: await convertToModelMessages(messages),
 		tools,
 		stopWhen: stepCountIs(5),
 	});

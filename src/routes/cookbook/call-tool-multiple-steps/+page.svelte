@@ -31,23 +31,40 @@ export const getWeather = tool({
   }
 });`;
 
-	let serverCode = `import { streamText, convertToModelMessages, stepCountIs } from "ai";
+	let serverCode = `import {
+  type InferUITools,
+  type ToolSet,
+  type UIDataTypes,
+  type UIMessage,
+  convertToModelMessages,
+  stepCountIs,
+  streamText,
+} from "ai";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { OPENROUTER_API_KEY } from "$env/static/private";
 import { getLocation, getWeather } from "$lib/components/cookbook/tools";
 
 // Combine multiple tools
 const tools = {
   getLocation,
-  getWeather
-};
+  getWeather,
+} satisfies ToolSet;
+
+export type ChatTools = InferUITools<typeof tools>;
+export type ChatMessage = UIMessage<never, UIDataTypes, ChatTools>;
 
 export const POST = async ({ request }) => {
-  const { messages } = await request.json();
+  const openrouter = createOpenRouter({
+    apiKey: OPENROUTER_API_KEY,
+  });
+  const { messages }: { messages: ChatMessage[] } = await request.json();
 
   const result = streamText({
     model: openrouter("z-ai/glm-4.5-air:free"),
-    messages: convertToModelMessages(messages),
+    system: "You are a helpful assistant. Response in 100 words.",
+    messages: await convertToModelMessages(messages),
+    stopWhen: stepCountIs(5),
     tools,
-    stopWhen: stepCountIs(5)  // Allow up to 5 steps
   });
 
   return result.toUIMessageStreamResponse();

@@ -22,26 +22,37 @@ export const notificationSchema = z.object({
   )
 });`;
 
-	let serverCode = `import { generateObject } from "ai";
+	let serverCode = `import { generateText, Output } from "ai";
+import { z } from "zod";
+import { json } from "@sveltejs/kit";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { OPENROUTER_API_KEY } from "$env/static/private";
-import { notificationSchema } from "./schema";
 
 export const POST = async ({ request }) => {
-  const { prompt } = await request.json();
+  const { prompt }: { prompt: string } = await request.json();
 
   const openrouter = createOpenRouter({
-    apiKey: OPENROUTER_API_KEY
+    apiKey: OPENROUTER_API_KEY,
   });
 
-  const result = await generateObject({
+  const { output } = await generateText({
     model: openrouter("z-ai/glm-4.5-air:free"),
     system: "You generate three notifications for a messages app.",
     prompt: prompt,
-    schema: notificationSchema
+    output: Output.object({
+      schema: z.object({
+        notifications: z.array(
+          z.object({
+            name: z.string().describe("Name of a fictional person."),
+            message: z.string().describe("Do not use emojis or links."),
+            minutesAgo: z.number(),
+          })
+        ),
+      }),
+    }),
   });
 
-  return result.toJsonResponse();
+  return json(output);
 };`;
 
 	let clientCode = `<script lang="ts">

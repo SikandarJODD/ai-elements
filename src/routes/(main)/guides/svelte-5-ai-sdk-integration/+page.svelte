@@ -122,7 +122,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
   const result = streamText({
     model: openrouter(defaultModel),
-    messages: convertToModelMessages(messages),
+    messages: awaitconvertToModelMessages(messages),
   });
 
   return result.toUIMessageStreamResponse();
@@ -527,14 +527,6 @@ bun x shadcn-svelte@latest add ${PUBLIC_WEBSITE_URL}/r/prompt-input.json`}
 
 			<section class="mb-8 sm:mb-12">
 				<Subheading>Free AI Models for Testing</Subheading>
-
-				<!-- <p class="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
-          Experiment with these free models from <strong
-            class="text-zinc-900 dark:text-zinc-100">OpenRouter</strong
-          > while building and testing your applications. Perfect for development
-          and prototyping.
-        </p> -->
-
 				<p class="text-muted-foreground mb-6 text-sm leading-relaxed sm:text-base">
 					Here are some free OpenRouter models you can use for testing and development:
 				</p>

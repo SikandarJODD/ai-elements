@@ -18,7 +18,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
 Use these formatting features when appropriate:
 - **Bold** for emphasis
-- *Italic* for subtle emphasis  
+- *Italic* for subtle emphasis
 - Code blocks with syntax highlighting for code snippets
 - Bullet lists for multiple items
 - Numbered lists for steps
@@ -27,7 +27,7 @@ Use these formatting features when appropriate:
 - Blockquotes for important notes
 
 Always format code with the correct language identifier (typescript, javascript, python, bash, etc).`,
-		messages: convertToModelMessages(messages),
+		messages: await convertToModelMessages(messages),
 	});
 
 	return result.toUIMessageStreamResponse({

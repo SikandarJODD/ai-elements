@@ -12,12 +12,25 @@
 		"mode-watcher",
 		"@lucide/svelte"
 	],
-	"devDependencies": ["@lucide/svelte@^0.544.0"],
-	"registryDependencies": ["button", "button-group", "tooltip"],
+	"devDependencies": [
+		"@lucide/svelte@^0.562.0"
+	],
+	"registryDependencies": [
+		"button",
+		"button-group",
+		"tooltip"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["message", "branching", "attachments", "markdown", "actions", "chat"],
+		"tags": [
+			"message",
+			"branching",
+			"attachments",
+			"markdown",
+			"actions",
+			"chat"
+		],
 		"category": "AI Chat",
 		"documentation": "https://svelte-ai-elements.vercel.app/components/new-message",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -37,7 +50,7 @@
 			"target": "ai-elements/new-message/MessageContent.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { Streamdown, type StreamdownProps } from \"svelte-streamdown\";\n\timport { mode } from \"mode-watcher\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\ttype Props = {\n\t\tcontent: string;\n\t\tclass?: string;\n\t} & Omit<StreamdownProps, \"content\" | \"class\"> &\n\t\tOmit<HTMLAttributes<HTMLDivElement>, \"content\">;\n\n\tlet { content, class: className, ...restProps }: Props = $props();\n</script>\n\n<div class={cn(\"size-full [&>*:first-child]:mt-0 [&>*:last-child]:mb-0\", className)}>\n\t<Streamdown\n\t\t{content}\n\t\tshikiTheme={mode.current === \"dark\" ? \"github-dark-default\" : \"github-light-default\"}\n\t\tshikiPreloadThemes={[\"github-dark-default\", \"github-light-default\"]}\n\t\tbaseTheme=\"shadcn\"\n\t\t{...restProps}\n\t/>\n</div>\n",
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { Streamdown, type StreamdownProps } from \"svelte-streamdown\";\n\timport Code from \"svelte-streamdown/code\"; // Shiki syntax highlighting\n\timport { mode } from \"mode-watcher\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\t// Import Shiki themes\n\timport githubLightDefault from \"@shikijs/themes/github-light-default\";\n\timport githubDarkDefault from \"@shikijs/themes/github-dark-default\";\n\n\ttype Props = {\n\t\tcontent: string;\n\t\tclass?: string;\n\t} & Omit<StreamdownProps, \"content\" | \"class\"> &\n\t\tOmit<HTMLAttributes<HTMLDivElement>, \"content\">;\n\n\tlet { content, class: className, ...restProps }: Props = $props();\n\tlet currentTheme = $derived(\n\t\tmode.current === \"dark\" ? \"github-dark-default\" : \"github-light-default\"\n\t);\n</script>\n\n<div class={cn(\"size-full [&>*:first-child]:mt-0 [&>*:last-child]:mb-0\", className)}>\n\t<Streamdown\n\t\t{content}\n\t\tshikiTheme={currentTheme}\n\t\tbaseTheme=\"shadcn\"\n\t\tcomponents={{ code: Code }}\n\t\tshikiThemes={{\n\t\t\t\"github-light-default\": githubLightDefault,\n\t\t\t\"github-dark-default\": githubDarkDefault,\n\t\t}}\n\t\t{...restProps}\n\t/>\n</div>\n",
 			"type": "registry:component",
 			"target": "ai-elements/new-message/MessageResponse.svelte"
 		},

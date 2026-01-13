@@ -30,10 +30,10 @@ Svelte 5 introduces **runes** - special compiler directives that make reactivity
 ## Quick Example
 
 \`\`\`svelte
-<script lang="ts">
+\<script lang="ts"\>
   let count = $state(0);
   let doubled = $derived(count * 2);
-</script>
+\<\/script\>
 
 <button onclick={() => count++}>
   Count: {count}, Doubled: {doubled}

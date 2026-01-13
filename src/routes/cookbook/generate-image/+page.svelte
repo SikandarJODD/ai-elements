@@ -27,19 +27,35 @@ export const generateImageTool = tool({
   }
 });`;
 
-	let serverCode = `import { streamText, convertToModelMessages, stepCountIs } from "ai";
-import { generateImageTool } from "$lib/components/cookbook/tools";
+	let serverCode = `import {
+  convertToModelMessages,
+  createGateway,
+  type InferUITools,
+  stepCountIs,
+  streamText,
+  type UIMessage,
+} from "ai";
+import { generateImageTool } from "$lib/components/cookbook/tools/generate-image";
+import { AI_GATEWAY_API_KEY } from "$env/static/private";
 
-const tools = { generateImageTool };
+const tools = {
+  generateImageTool,
+};
+
+const gateway = createGateway({
+  apiKey: AI_GATEWAY_API_KEY,
+});
+
+export type ChatTools = InferUITools<typeof tools>;
 
 export const POST = async ({ request }) => {
-  const { messages } = await request.json();
+  const { messages }: { messages: UIMessage[] } = await request.json();
 
   const result = streamText({
-    model: openrouter("openai/gpt-4o"),
-    messages: convertToModelMessages(messages),
+    model: gateway("openai/gpt-oss-20b"),
+    messages: await convertToModelMessages(messages),
+    stopWhen: stepCountIs(5),
     tools,
-    stopWhen: stepCountIs(5)
   });
 
   return result.toUIMessageStreamResponse();

@@ -5,13 +5,27 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A complete prompt input block with multiple action buttons for search, voice input, and more. This is a ready-to-use block that includes all functionality for advanced prompt input interactions.",
-	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^0.544.0"],
-	"registryDependencies": ["../p/prompt-input.json", "button"],
+	"dependencies": [
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.562.0"
+	],
+	"registryDependencies": [
+		"../p/prompt-input.json",
+		"button"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["prompt-kit", "block", "input", "actions", "voice", "search"],
+		"tags": [
+			"prompt-kit",
+			"block",
+			"input",
+			"actions",
+			"voice",
+			"search"
+		],
 		"category": "Prompt Kit Blocks",
 		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

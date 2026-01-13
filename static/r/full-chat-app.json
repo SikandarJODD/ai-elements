@@ -12,7 +12,9 @@
 		"zod",
 		"@lucide/svelte"
 	],
-	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"devDependencies": [
+		"@lucide/svelte@^0.562.0"
+	],
 	"registryDependencies": [
 		"button",
 		"../p/chat-container.json",
@@ -71,7 +73,7 @@
 			"target": "prompt-kit-primitives/full-chat-app/index.ts"
 		},
 		{
-			"content": "import { streamText, type UIMessage, convertToModelMessages, tool } from \"ai\";\nimport type { RequestHandler } from \"./$types\";\nimport { createOpenRouter } from \"@openrouter/ai-sdk-provider\";\nimport { OPENROUTER_API_KEY } from \"$env/static/private\";\nimport { z } from \"zod\";\n\nlet defaultModel = \"z-ai/glm-4.5-air:free\";\n\nexport const POST: RequestHandler = async ({ request }) => {\n\tconst { messages, apiKey }: { messages: UIMessage[]; apiKey?: string } = await request.json();\n\n\t// Create OpenRouter instance\n\tlet openrouter = createOpenRouter({\n\t\tapiKey: OPENROUTER_API_KEY,\n\t});\n\n\t// Override with user-provided API key if available\n\tif (apiKey) {\n\t\topenrouter = createOpenRouter({\n\t\t\tapiKey,\n\t\t});\n\t}\n\n\tconst result = streamText({\n\t\tmodel: openrouter(defaultModel),\n\t\tmessages: convertToModelMessages(messages),\n\t});\n\n\treturn result.toUIMessageStreamResponse();\n};\n",
+			"content": "import { streamText, type UIMessage, convertToModelMessages, tool } from \"ai\";\nimport type { RequestHandler } from \"./$types\";\nimport { createOpenRouter } from \"@openrouter/ai-sdk-provider\";\nimport { OPENROUTER_API_KEY } from \"$env/static/private\";\n\nlet defaultModel = \"z-ai/glm-4.5-air:free\";\n\nexport const POST: RequestHandler = async ({ request }) => {\n\tconst { messages, apiKey }: { messages: UIMessage[]; apiKey?: string } = await request.json();\n\n\t// Create OpenRouter instance\n\tlet openrouter = createOpenRouter({\n\t\tapiKey: OPENROUTER_API_KEY,\n\t});\n\n\t// Override with user-provided API key if available\n\tif (apiKey) {\n\t\topenrouter = createOpenRouter({\n\t\t\tapiKey,\n\t\t});\n\t}\n\n\tconst result = streamText({\n\t\tmodel: openrouter(defaultModel),\n\t\tmessages: await convertToModelMessages(messages),\n\t});\n\n\treturn result.toUIMessageStreamResponse();\n};\n",
 			"type": "registry:file",
 			"target": "~/src/routes/api/primitives/full-chat-app/+server.ts"
 		}

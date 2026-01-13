@@ -4,13 +4,15 @@
 	"title": "Response",
 	"type": "registry:block",
 	"description": "The Response component provides a structured container for displaying AI responses with consistent formatting and styling.",
-	"dependencies": ["svelte-streamdown"],
+	"dependencies": [
+		"svelte-streamdown"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\n\timport { Streamdown, type StreamdownProps } from \"svelte-streamdown\";\n\timport { cn } from \"$UTILS$\";\n\timport { mode } from \"mode-watcher\";\n\n\ttype Props = StreamdownProps & {\n\t\tclass?: string;\n\t};\n\n\tlet { class: className, ...restProps }: Props = $props();\n</script>\n\n<Streamdown\n\tclass={cn(\"size-full [&>*:first-child]:mt-0 [&>*:last-child]:mb-0\", className)}\n\tshikiTheme={mode.current === \"dark\" ? \"github-dark-default\" : \"github-light-default\"}\n\tshikiPreloadThemes={[\"github-dark-default\", \"github-light-default\"]}\n\tbaseTheme=\"shadcn\"\n\t{...restProps}\n/>\n",
+			"content": "<script lang=\"ts\">\n\timport { Streamdown, type StreamdownProps } from \"svelte-streamdown\";\n\timport Code from \"svelte-streamdown/code\"; // Shiki syntax highlighting\n\timport { cn } from \"$UTILS$\";\n\timport { mode } from \"mode-watcher\";\n\n\t// Import Shiki themes\n\timport githubLightDefault from \"@shikijs/themes/github-light-default\";\n\timport githubDarkDefault from \"@shikijs/themes/github-dark-default\";\n\n\ttype Props = StreamdownProps & {\n\t\tclass?: string;\n\t};\n\n\tlet { class: className, ...restProps }: Props = $props();\n\tlet currentTheme = $derived(\n\t\tmode.current === \"dark\" ? \"github-dark-default\" : \"github-light-default\"\n\t);\n</script>\n\n<Streamdown\n\tclass={cn(\"size-full [&>*:first-child]:mt-0 [&>*:last-child]:mb-0\", className)}\n\tshikiTheme={currentTheme}\n\tbaseTheme=\"shadcn\"\n\tcomponents={{ code: Code }}\n\tshikiThemes={{\n\t\t\"github-light-default\": githubLightDefault,\n\t\t\"github-dark-default\": githubDarkDefault,\n\t}}\n\t{...restProps}\n/>\n",
 			"type": "registry:component",
 			"target": "ai-elements/response/Response.svelte"
 		},

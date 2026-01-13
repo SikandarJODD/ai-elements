@@ -14,7 +14,9 @@
 		"svelte-sonner",
 		"@lucide/svelte"
 	],
-	"devDependencies": ["@lucide/svelte@^0.544.0"],
+	"devDependencies": [
+		"@lucide/svelte@^0.562.0"
+	],
 	"registryDependencies": [
 		"button",
 		"badge",
@@ -36,7 +38,15 @@
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["playground", "chat", "ai", "openrouter", "example", "free-model", "suggestions"],
+		"tags": [
+			"playground",
+			"chat",
+			"ai",
+			"openrouter",
+			"example",
+			"free-model",
+			"suggestions"
+		],
 		"category": "Examples",
 		"documentation": "https://svelte-ai-elements.vercel.app/playground",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -51,7 +61,7 @@
 			"target": "src/routes/playground/+page.svelte"
 		},
 		{
-			"content": "import { streamText, type UIMessage, convertToModelMessages } from \"ai\";\nimport { createOpenRouter } from \"@openrouter/ai-sdk-provider\";\nimport { defaultModel } from \"$LIB$/config/ai-config\";\nimport type { RequestHandler } from \"./$types\";\nimport { OPENROUTER_API_KEY } from \"$env/static/private\";\n\nexport const POST: RequestHandler = async ({ request }) => {\n\tconst { messages, apiKey }: { messages: UIMessage[]; apiKey?: string } = await request.json();\n\n\t// Use custom API key if provided, otherwise use default\n\tconst provider = apiKey\n\t\t? createOpenRouter({ apiKey })\n\t\t: createOpenRouter({\n\t\t\t\tapiKey: OPENROUTER_API_KEY || \"\",\n\t\t\t});\n\n\tconst result = streamText({\n\t\tmodel: provider(defaultModel),\n\t\tmessages: convertToModelMessages(messages),\n\t});\n\n\treturn result.toUIMessageStreamResponse({\n\t\tsendReasoning: true,\n\t\tsendSources: true,\n\t});\n};\n",
+			"content": "import { streamText, type UIMessage, convertToModelMessages } from \"ai\";\nimport { createOpenRouter } from \"@openrouter/ai-sdk-provider\";\nimport { defaultModel } from \"$LIB$/config/ai-config\";\nimport type { RequestHandler } from \"./$types\";\nimport { OPENROUTER_API_KEY } from \"$env/static/private\";\n\nexport const POST: RequestHandler = async ({ request }) => {\n\tconst { messages, apiKey }: { messages: UIMessage[]; apiKey?: string } = await request.json();\n\n\t// Use custom API key if provided, otherwise use default\n\tconst provider = apiKey\n\t\t? createOpenRouter({ apiKey })\n\t\t: createOpenRouter({\n\t\t\t\tapiKey: OPENROUTER_API_KEY || \"\",\n\t\t\t});\n\n\tconst result = streamText({\n\t\tmodel: provider(defaultModel),\n\t\tmessages: await convertToModelMessages(messages),\n\t});\n\n\treturn result.toUIMessageStreamResponse({\n\t\tsendReasoning: true,\n\t\tsendSources: true,\n\t});\n};\n",
 			"type": "registry:file",
 			"target": "src/routes/api/playground/+server.ts"
 		},
@@ -66,7 +76,7 @@
 			"target": "src/routes/playground/components/code-viewer-dialog.svelte"
 		},
 		{
-			"content": "PUBLIC_WEBSITE_URL=\"http://localhost:5173\"\n# On prod it would be something like: https://svelte-ai-elements.vercel.app/\n# Make sure to set this in your deployment environment as well!\n\n# OpenRouter API Key\n# Get your free API key at: https://openrouter.ai/keys\n#\n# NOTE: We're using a FREE AI model (z-ai/glm-4.5-air:free) in the playground\n# so you won't be charged for API usage. Perfect for testing and development!\nOPENROUTER_API_KEY=your_openrouter_api_key_here\n\n# VERCEL AI GATEWAY KEY\nAI_GATEWAY_API_KEY=your_vercel_ai_gateway_key_here\n# Get your free API key at: https://vercel.com/ai-gateway",
+			"content": "PUBLIC_WEBSITE_URL=\"http://localhost:5173\"\n# On prod it would be something like: https://svelte-ai-elements.vercel.app/\n\n# OpenRouter API Key\n# Get your free API key at: https://openrouter.ai/keys\n#\n# NOTE: We're using a FREE AI model (z-ai/glm-4.5-air:free) in the playground\n# so you won't be charged for API usage. Perfect for testing and development!\nOPENROUTER_API_KEY=your_openrouter_api_key_here\n\n# VERCEL AI GATEWAY KEY\nAI_GATEWAY_API_KEY=your_vercel_ai_gateway_key_here\n# Get your free API key at: https://vercel.com/ai-gateway",
 			"type": "registry:file",
 			"target": ".env.example"
 		}

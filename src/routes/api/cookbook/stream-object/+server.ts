@@ -1,4 +1,4 @@
-import { streamObject } from "ai";
+import { streamText, Output } from "ai";
 import { z } from "zod";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import type { RequestHandler } from "./$types";
@@ -23,9 +23,12 @@ export const POST: RequestHandler = async ({ request }) => {
 		apiKey: OPENROUTER_API_KEY,
 	});
 
-	let result = streamObject({
+	let result = streamText({
 		model: openrouter(defaultModel),
-		schema: notificationSchema,
+		// schema: notificationSchema,
+		output: Output.object({
+			schema: notificationSchema,
+		}),
 		prompt: `Generate 3 notifications for a messages app in this context:` + prompt,
 	});
 

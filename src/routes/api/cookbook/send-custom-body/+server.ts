@@ -19,7 +19,7 @@ export const POST: RequestHandler = async ({ request }) => {
 Personalize your responses based on their age and use their name naturally in conversation.
 For example, give age-appropriate advice, use references they might understand, and be friendly.
 Keep responses concise (under 50 words).`,
-		messages: convertToModelMessages(messages),
+		messages: await convertToModelMessages(messages),
 	});
 	return result.toUIMessageStreamResponse({
 		sendReasoning: false,

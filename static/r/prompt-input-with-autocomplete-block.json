@@ -5,13 +5,28 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A prompt input block with autocomplete suggestions that filter as you type. Provides smart auto-completion for enhanced user experience.",
-	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^0.544.0"],
-	"registryDependencies": ["../p/prompt-input.json", "../p/prompt-suggestion.json", "button"],
+	"dependencies": [
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^0.562.0"
+	],
+	"registryDependencies": [
+		"../p/prompt-input.json",
+		"../p/prompt-suggestion.json",
+		"button"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["prompt-kit", "block", "input", "autocomplete", "suggestions", "filtering"],
+		"tags": [
+			"prompt-kit",
+			"block",
+			"input",
+			"autocomplete",
+			"suggestions",
+			"filtering"
+		],
 		"category": "Prompt Kit Blocks",
 		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/blocks",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

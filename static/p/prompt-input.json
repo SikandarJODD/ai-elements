@@ -3,13 +3,29 @@
 	"name": "prompt-input",
 	"type": "registry:block",
 	"description": "The PromptInput component provides a comprehensive text input interface for AI chat with actions, textarea, and state management. Features context-based control for building flexible prompt input experiences.",
-	"dependencies": ["runed"],
-	"devDependencies": ["bits-ui@^2.14.1", "@internationalized/date@^3.8.1"],
-	"registryDependencies": ["textarea", "button", "tooltip"],
+	"dependencies": [
+		"runed"
+	],
+	"devDependencies": [
+		"bits-ui@^2.14.1",
+		"@internationalized/date@^3.8.1"
+	],
+	"registryDependencies": [
+		"textarea",
+		"button",
+		"tooltip"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["prompt-kit", "input", "prompt", "textarea", "chat-input", "actions"],
+		"tags": [
+			"prompt-kit",
+			"input",
+			"prompt",
+			"textarea",
+			"chat-input",
+			"actions"
+		],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/prompt-input",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -19,7 +35,7 @@
 	},
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { Tooltip as TooltipPrimitive } from \"bits-ui\";\n\timport {\n\t\tPromptInputClass,\n\t\tsetPromptInputContext,\n\t\ttype PromptInputSchema,\n\t} from \"./prompt-input-context.svelte.js\";\n\n\tlet {\n\t\tclass: className,\n\t\tisLoading = false,\n\t\tvalue,\n\t\tonValueChange,\n\t\tmaxHeight = 240,\n\t\tonSubmit,\n\t\tchildren,\n\t}: PromptInputSchema & {\n\t\tclass?: string;\n\t\tchildren: import(\"svelte\").Snippet;\n\t} = $props();\n\n\tconst contextInstance = new PromptInputClass({\n\t\tisLoading,\n\t\tvalue,\n\t\tonValueChange,\n\t\tmaxHeight,\n\t\tonSubmit,\n\t\tdisabled: isLoading,\n\t});\n\n\tsetPromptInputContext(contextInstance);\n\n\t// Sync props with context\n\t$effect(() => {\n\t\tcontextInstance.isLoading = isLoading;\n\t\tcontextInstance.disabled = isLoading;\n\t});\n\n\t$effect(() => {\n\t\tif (value !== undefined) {\n\t\t\tcontextInstance.value = value;\n\t\t}\n\t});\n\n\t$effect(() => {\n\t\tcontextInstance.onValueChange = onValueChange;\n\t});\n\n\t$effect(() => {\n\t\tcontextInstance.maxHeight = maxHeight;\n\t});\n\n\t$effect(() => {\n\t\tcontextInstance.onSubmit = onSubmit;\n\t});\n\n\tfunction handleClick() {\n\t\tcontextInstance.textareaRef?.focus();\n\t}\n\n\tfunction handleKeyDown(e: KeyboardEvent) {\n\t\t// Only handle Enter key to focus textarea from wrapper\n\t\t// Don't intercept Space key as it prevents typing spaces in the textarea\n\t\tif (e.key === \"Enter\") {\n\t\t\te.preventDefault();\n\t\t\thandleClick();\n\t\t}\n\t}\n</script>\n\n<TooltipPrimitive.Provider>\n\t<div\n\t\tclass={cn(\n\t\t\t\"border-input bg-background cursor-text rounded-3xl border p-2 shadow-xs\",\n\t\t\tclassName\n\t\t)}\n\t\tonclick={handleClick}\n\t\tonkeydown={handleKeyDown}\n\t\trole=\"button\"\n\t\ttabindex=\"-1\"\n\t>\n\t\t{@render children()}\n\t</div>\n</TooltipPrimitive.Provider>\n",
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { Tooltip as TooltipPrimitive } from \"bits-ui\";\n\timport {\n\t\tPromptInputClass,\n\t\tsetPromptInputContext,\n\t\ttype PromptInputSchema,\n\t} from \"./prompt-input-context.svelte.js\";\n\timport { untrack } from \"svelte\";\n\timport { watch } from \"runed\";\n\n\tlet {\n\t\tclass: className,\n\t\tisLoading = false,\n\t\tvalue,\n\t\tonValueChange,\n\t\tmaxHeight = 240,\n\t\tonSubmit,\n\t\tchildren,\n\t}: PromptInputSchema & {\n\t\tclass?: string;\n\t\tchildren: import(\"svelte\").Snippet;\n\t} = $props();\n\n\tconst contextInstance = new PromptInputClass({\n\t\tisLoading: untrack(() => isLoading),\n\t\tvalue: untrack(() => value),\n\t\tonValueChange: untrack(() => onValueChange),\n\t\tmaxHeight: untrack(() => maxHeight),\n\t\tonSubmit: untrack(() => onSubmit),\n\t\tdisabled: untrack(() => isLoading),\n\t});\n\n\tsetPromptInputContext(contextInstance);\n\n\t// Sync props with context\n\t// $effect(() => {\n\t// \tcontextInstance.isLoading = isLoading;\n\t// \tcontextInstance.disabled = isLoading;\n\t// });\n\twatch(\n\t\t() => isLoading,\n\t\t() => {\n\t\t\tcontextInstance.isLoading = isLoading;\n\t\t\tcontextInstance.disabled = isLoading;\n\t\t}\n\t);\n\n\twatch(\n\t\t() => value,\n\t\t(newValue) => {\n\t\t\tif (newValue !== undefined) {\n\t\t\t\tcontextInstance.value = newValue;\n\t\t\t}\n\t\t}\n\t);\n\n\twatch(\n\t\t() => onValueChange,\n\t\t(newValue) => {\n\t\t\tcontextInstance.onValueChange = newValue;\n\t\t}\n\t);\n\n\twatch(\n\t\t() => maxHeight,\n\t\t() => {\n\t\t\tcontextInstance.maxHeight = maxHeight;\n\t\t}\n\t);\n\n\twatch(\n\t\t() => onSubmit,\n\t\t() => {\n\t\t\tcontextInstance.onSubmit = onSubmit;\n\t\t}\n\t);\n\n\tfunction handleClick() {\n\t\tcontextInstance.textareaRef?.focus();\n\t}\n\n\tfunction handleKeyDown(e: KeyboardEvent) {\n\t\t// Only handle Enter key to focus textarea from wrapper\n\t\t// Don't intercept Space key as it prevents typing spaces in the textarea\n\t\tif (e.key === \"Enter\") {\n\t\t\te.preventDefault();\n\t\t\thandleClick();\n\t\t}\n\t}\n</script>\n\n<TooltipPrimitive.Provider>\n\t<!-- svelte-ignore a11y_click_events_have_key_events -->\n\t<div\n\t\tclass={cn(\n\t\t\t\"border-input bg-background cursor-text rounded-3xl border p-2 shadow-xs\",\n\t\t\tclassName\n\t\t)}\n\t\tonclick={handleClick}\n\t\trole=\"button\"\n\t\ttabindex=\"-1\"\n\t>\n\t\t<!-- onkeydown={handleKeyDown} -->\n\t\t{@render children()}\n\t</div>\n</TooltipPrimitive.Provider>\n",
 			"type": "registry:component",
 			"target": "prompt-kit/prompt-input/PromptInput.svelte"
 		},

@@ -425,8 +425,8 @@
 			<Subheading class="md:text-3xl">Prompt Input</Subheading>
 
 			<p class="!text-muted-foreground my-2 text-lg">
-				The <CodeSpan>Prompt Input</CodeSpan> component allows a user to send a message with
-				file attachments to a large language model. It includes a textarea, file upload capabilities,
+				The <CodeSpan>Prompt Input</CodeSpan> component allows a user to send a message with file
+				attachments to a large language model. It includes a textarea, file upload capabilities,
 				a submit button, and a dropdown for selecting the model.
 			</p>
 
@@ -456,7 +456,7 @@
 				<Code
 					lang="svelte"
 					code={`\<script lang="ts"\>
-	import {
+  import {
     PromptInput,
     PromptInputActionAddAttachments,
     PromptInputActionMenu,
@@ -478,48 +478,89 @@
     PromptInputTools,
     type ChatStatus,
   } from "$lib/components/ai-elements/prompt-input/index.js";
+  import GlobeIcon from "$lib/components/ai-elements/prompt-input/GlobeIcon.svelte";
+  import MicIcon from "$lib/components/ai-elements/prompt-input/MicIcon.svelte";
+
+  let handleSubmit = async (
+    message: PromptInputMessage,
+    event: SubmitEvent,
+  ) => {
+    console.log("Submitted:", message);
+  };
+
+  let models = [
+    { id: "mistralai/devstral-2512:free", name: "MistralAI Devstral 2512" },
+    { id: "qwen/qwen3-coder:free", name: "Qwen 3 Coder" },
+    {
+      id: "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
+      name: "Dolphin Mistral 24B Venice Edition",
+    },
+  ];
+
+  let model = $state("");
+  let status = $state<ChatStatus>("idle");
 \<\/script\>
 
-<PromptInput globalDrop multiple onSubmit={handleSubmit}>
+<div class="max-w-xl mx-auto py-10 min-h-dvh">
+  <PromptInput globalDrop multiple onSubmit={handleSubmit} class="shadow-none">
     <PromptInputBody>
       <PromptInputAttachments>
         {#snippet children(attachment)}
           <PromptInputAttachment data={attachment} />
         {/snippet}
       </PromptInputAttachments>
-      <PromptInputTextarea
-        bind:value={text}
-        onchange={(e) => (text = (e.target as HTMLTextAreaElement).value)}
-      />
+      <PromptInputTextarea  />
     </PromptInputBody>
     <PromptInputToolbar>
       <PromptInputTools>
         <PromptInputActionMenu>
-          <PromptInputActionMenuTrigger />
+          <PromptInputActionMenuTrigger>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              fill="#000000"
+              viewBox="0 0 256 256"
+              ><path
+                d="M209.66,122.34a8,8,0,0,1,0,11.32l-82.05,82a56,56,0,0,1-79.2-79.21L147.67,35.73a40,40,0,1,1,56.61,56.55L105,193A24,24,0,1,1,71,159L154.3,74.38A8,8,0,1,1,165.7,85.6L82.39,170.31a8,8,0,1,0,11.27,11.36L192.93,81A24,24,0,1,0,159,47L59.76,147.68a40,40,0,1,0,56.53,56.62l82.06-82A8,8,0,0,1,209.66,122.34Z"
+              ></path></svg
+            >
+          </PromptInputActionMenuTrigger>
           <PromptInputActionMenuContent>
             <PromptInputActionAddAttachments />
           </PromptInputActionMenuContent>
         </PromptInputActionMenu>
         <PromptInputButton>
-          <MicIcon size={16} />
+          <!-- <MicIcon size={16} /> -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="#000000"
+            viewBox="0 0 256 256"
+            ><path
+              d="M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z"
+            ></path></svg
+          >
         </PromptInputButton>
         <PromptInputButton size="default">
-          <GlobeIcon size={16} />
+          <!-- <GlobeIcon size={16} /> -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="#000000"
+            viewBox="0 0 256 256"
+            ><path
+              d="M196.12,128c24.65-34.61,37.22-70.38,19.74-87.86S162.61,35.23,128,59.88C93.39,35.23,57.62,22.66,40.14,40.14S35.23,93.39,59.88,128c-24.65,34.61-37.22,70.38-19.74,87.86h0c5.63,5.63,13.15,8.14,21.91,8.14,18.48,0,42.48-11.17,66-27.88C151.47,212.83,175.47,224,194,224c8.76,0,16.29-2.52,21.91-8.14h0C233.34,198.38,220.77,162.61,196.12,128Zm8.43-76.55c7.64,7.64,2.48,32.4-18.52,63.28a300.33,300.33,0,0,0-21.19-23.57A300.33,300.33,0,0,0,141.27,70C172.15,49,196.91,43.8,204.55,51.45ZM176.29,128a289.14,289.14,0,0,1-22.76,25.53A289.14,289.14,0,0,1,128,176.29a289.14,289.14,0,0,1-25.53-22.76A289.14,289.14,0,0,1,79.71,128,298.62,298.62,0,0,1,128,79.71a289.14,289.14,0,0,1,25.53,22.76A289.14,289.14,0,0,1,176.29,128ZM51.45,51.45c2.2-2.21,5.83-3.35,10.62-3.35C73.89,48.1,92.76,55,114.72,70A304,304,0,0,0,91.16,91.16,300.33,300.33,0,0,0,70,114.73C49,83.85,43.81,59.09,51.45,51.45Zm0,153.1C43.81,196.91,49,172.15,70,141.27a300.33,300.33,0,0,0,21.19,23.57A304.18,304.18,0,0,0,114.73,186C83.85,207,59.09,212.2,51.45,204.55Zm153.1,0c-7.64,7.65-32.4,2.48-63.28-18.52a304.18,304.18,0,0,0,23.57-21.19A300.33,300.33,0,0,0,186,141.27C207,172.15,212.19,196.91,204.55,204.55ZM140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Z"
+            ></path></svg
+          >
           <span>Search</span>
         </PromptInputButton>
-        <PromptInputModelSelect
-          bind:value={model}
-          onValueChange={(value) => {
-            if (value) {
-              model = value;
-              const selectedModel = models.find((m) => m.id === model);
-              model_name = selectedModel ? selectedModel.name : "";
-            }
-          }}
-        >
+        <PromptInputModelSelect bind:value={model}>
           <PromptInputModelSelectTrigger>
             <PromptInputModelSelectValue
-              value={model_name}
+              value={model}
               placeholder="Select Model"
             />
           </PromptInputModelSelectTrigger>
@@ -534,7 +575,8 @@
       </PromptInputTools>
       <PromptInputSubmit {status} />
     </PromptInputToolbar>
-</PromptInput>`}
+  </PromptInput>
+</div>`}
 				/>
 			</div>
 
@@ -578,133 +620,127 @@
     PromptInputTextarea,
     PromptInputToolbar,
     PromptInputTools,
+    type ChatStatus,
   } from "$lib/components/ai-elements/prompt-input/index.js";
-  import {
-    Conversation,
-    ConversationContent,
-    ConversationScrollButton,
-  } from "$lib/components/ai-elements/conversation/index.js";
-  import { Message, MessageContent } from "$lib/components/ai-elements/message/index.js";
-  import { Response } from "$lib/components/ai-elements/response/index.js";
-  import { MicIcon, GlobeIcon } from "lucide-svelte";
-
-  const models = [
-    { id: "gpt-4o", name: "GPT-4o" },
-    { id: "claude-opus-4-20250514", name: "Claude 4 Opus" },
-  ];
-
-  let text = $state<string>("");
-  let model = $state<string>(models[0].id);
-  let useMicrophone = $state<boolean>(false);
-  let useWebSearch = $state<boolean>(false);
 
   let chat = new Chat({});
 
-  const handleSubmit = (message: PromptInputMessage) => {
-    const hasText = Boolean(message.text);
-    const hasAttachments = Boolean(message.files?.length);
-
-    if (!(hasText || hasAttachments)) {
-      return;
-    }
-
-    chat.sendMessage(
-      {
-        text: message.text || "Sent with attachments",
-        files: message.files,
-      },
-      {
-        body: {
-          model: model,
-          webSearch: useWebSearch,
-        },
-      }
-    );
-    text = "";
+  let handleSubmit = async (message: PromptInputMessage) => {
+    console.log("Submitted:", message.text);
+    chat.sendMessage({ text: message.text || "" });
   };
+
+  let models = [
+    { id: "mistralai/devstral-2512:free", name: "MistralAI Devstral 2512" },
+    { id: "qwen/qwen3-coder:free", name: "Qwen 3 Coder" },
+    {
+      id: "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
+      name: "Dolphin Mistral 24B Venice Edition",
+    },
+  ];
+
+  let model = $state("");
+  let model_name = $derived.by(() => {
+    if (model) {
+      return models.find((modelOption) => modelOption.id === model)?.name;
+    }
+    return "Select Model";
+  });
+  let status = $state<ChatStatus>("idle");
 \<\/script\>
 
-<div class="max-w-4xl mx-auto p-6 relative size-full rounded-lg border h-[600px]">
-  <div class="flex flex-col h-full">
-    <Conversation>
-      <ConversationContent>
-        {#each chat.messages as message (message.id)}
-          <Message from={message.role}>
-            <MessageContent>
-              {#each message.parts as part, i (i)}
-                {#if part.type === "text"}
-                  <Response>
-                    {part.text}
-                  </Response>
-                {/if}
-              {/each}
-            </MessageContent>
-          </Message>
-        {/each}
-      </ConversationContent>
-      <ConversationScrollButton />
-    </Conversation>
+<div class="max-w-xl mx-auto py-10 min-h-dvh">
+  <PromptInput globalDrop multiple onSubmit={handleSubmit} class="shadow-none">
+    <PromptInputBody>
+      <PromptInputAttachments>
+        {#snippet children(attachment)}
+          <PromptInputAttachment data={attachment} />
+        {/snippet}
+      </PromptInputAttachments>
+      <PromptInputTextarea />
+    </PromptInputBody>
+    <PromptInputToolbar>
+      <PromptInputTools>
+        <PromptInputActionMenu>
+          <PromptInputActionMenuTrigger>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              fill="#000000"
+              viewBox="0 0 256 256"
+              ><path
+                d="M209.66,122.34a8,8,0,0,1,0,11.32l-82.05,82a56,56,0,0,1-79.2-79.21L147.67,35.73a40,40,0,1,1,56.61,56.55L105,193A24,24,0,1,1,71,159L154.3,74.38A8,8,0,1,1,165.7,85.6L82.39,170.31a8,8,0,1,0,11.27,11.36L192.93,81A24,24,0,1,0,159,47L59.76,147.68a40,40,0,1,0,56.53,56.62l82.06-82A8,8,0,0,1,209.66,122.34Z"
+              ></path></svg
+            >
+          </PromptInputActionMenuTrigger>
+          <PromptInputActionMenuContent>
+            <PromptInputActionAddAttachments />
+          </PromptInputActionMenuContent>
+        </PromptInputActionMenu>
+        <PromptInputButton>
+          <!-- <MicIcon size={16} /> -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="#000000"
+            viewBox="0 0 256 256"
+            ><path
+              d="M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z"
+            ></path></svg
+          >
+        </PromptInputButton>
+        <PromptInputButton size="default">
+          <!-- <GlobeIcon size={16} /> -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="#000000"
+            viewBox="0 0 256 256"
+            ><path
+              d="M196.12,128c24.65-34.61,37.22-70.38,19.74-87.86S162.61,35.23,128,59.88C93.39,35.23,57.62,22.66,40.14,40.14S35.23,93.39,59.88,128c-24.65,34.61-37.22,70.38-19.74,87.86h0c5.63,5.63,13.15,8.14,21.91,8.14,18.48,0,42.48-11.17,66-27.88C151.47,212.83,175.47,224,194,224c8.76,0,16.29-2.52,21.91-8.14h0C233.34,198.38,220.77,162.61,196.12,128Zm8.43-76.55c7.64,7.64,2.48,32.4-18.52,63.28a300.33,300.33,0,0,0-21.19-23.57A300.33,300.33,0,0,0,141.27,70C172.15,49,196.91,43.8,204.55,51.45ZM176.29,128a289.14,289.14,0,0,1-22.76,25.53A289.14,289.14,0,0,1,128,176.29a289.14,289.14,0,0,1-25.53-22.76A289.14,289.14,0,0,1,79.71,128,298.62,298.62,0,0,1,128,79.71a289.14,289.14,0,0,1,25.53,22.76A289.14,289.14,0,0,1,176.29,128ZM51.45,51.45c2.2-2.21,5.83-3.35,10.62-3.35C73.89,48.1,92.76,55,114.72,70A304,304,0,0,0,91.16,91.16,300.33,300.33,0,0,0,70,114.73C49,83.85,43.81,59.09,51.45,51.45Zm0,153.1C43.81,196.91,49,172.15,70,141.27a300.33,300.33,0,0,0,21.19,23.57A304.18,304.18,0,0,0,114.73,186C83.85,207,59.09,212.2,51.45,204.55Zm153.1,0c-7.64,7.65-32.4,2.48-63.28-18.52a304.18,304.18,0,0,0,23.57-21.19A300.33,300.33,0,0,0,186,141.27C207,172.15,212.19,196.91,204.55,204.55ZM140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Z"
+            ></path></svg
+          >
+          <span>Search</span>
+        </PromptInputButton>
+        <PromptInputModelSelect bind:value={model}>
+          <PromptInputModelSelectTrigger>
+            <PromptInputModelSelectValue
+              value={model_name}
+              placeholder="Select Model"
+            />
+          </PromptInputModelSelectTrigger>
+          <PromptInputModelSelectContent>
+            {#each models as modelOption (modelOption.id)}
+              <PromptInputModelSelectItem value={modelOption.id}>
+                {modelOption.name}
+              </PromptInputModelSelectItem>
+            {/each}
+          </PromptInputModelSelectContent>
+        </PromptInputModelSelect>
+      </PromptInputTools>
+      <PromptInputSubmit {status} />
+    </PromptInputToolbar>
+  </PromptInput>
 
-    <PromptInput onSubmit={handleSubmit} class="mt-4" globalDrop multiple>
-      <PromptInputBody>
-        <PromptInputAttachments>
-          {#snippet children(attachment)}
-            <PromptInputAttachment data={attachment} />
-          {/snippet}
-        </PromptInputAttachments>
-        <PromptInputTextarea
-          bind:value={text}
-          onchange={(e) => (text = (e.target as HTMLTextAreaElement).value)}
-        />
-      </PromptInputBody>
-      <PromptInputToolbar>
-        <PromptInputTools>
-          <PromptInputActionMenu>
-            <PromptInputActionMenuTrigger />
-            <PromptInputActionMenuContent>
-              <PromptInputActionAddAttachments />
-            </PromptInputActionMenuContent>
-          </PromptInputActionMenu>
-          <PromptInputButton
-            onclick={() => (useMicrophone = !useMicrophone)}
-            variant={useMicrophone ? "default" : "ghost"}
-          >
-            <MicIcon size={16} />
-            <span class="sr-only">Microphone</span>
-          </PromptInputButton>
-          <PromptInputButton
-            onclick={() => (useWebSearch = !useWebSearch)}
-            variant={useWebSearch ? "default" : "ghost"}
-          >
-            <GlobeIcon size={16} />
-            <span class="sr-only">Web Search</span>
-          </PromptInputButton>
-          <PromptInputModelSelect
-            bind:value={model}
-            onValueChange={(value) => {
-              if (value) {
-                model = value;
-              }
-            }}
-          >
-            <PromptInputModelSelectTrigger>
-              <PromptInputModelSelectValue placeholder="Select model" />
-            </PromptInputModelSelectTrigger>
-            <PromptInputModelSelectContent>
-              {#each models as modelOption (modelOption.id)}
-                <PromptInputModelSelectItem value={modelOption.id}>
-                  {modelOption.name}
-                </PromptInputModelSelectItem>
-              {/each}
-            </PromptInputModelSelectContent>
-          </PromptInputModelSelect>
-        </PromptInputTools>
-        <PromptInputSubmit
-          status={chat.status === "streaming" ? "streaming" : "ready"}
-        />
-      </PromptInputToolbar>
-    </PromptInput>
-  </div>
+  <main class="p-4">
+    <ul>
+      {#each chat.messages as message, messageIndex (messageIndex)}
+        <li>
+          <div>{message.role}</div>
+          <div>
+            {#each message.parts as part, partIndex (partIndex)}
+              {#if part.type === "text"}
+                <div>{part.text}</div>
+              {/if}
+            {/each}
+          </div>
+        </li>
+      {/each}
+    </ul>
+  </main>
 </div>`}
 				/>
 			</div>
@@ -717,23 +753,17 @@
 				<CodeNameBlock
 					filename="api/chat/+server.ts"
 					lang="typescript"
-					code={`import { streamText, type UIMessage, convertToModelMessages } from "ai";
-import type { RequestHandler } from "./$types";
+					code={`import { streamText, type UIMessage, convertToModelMessages } from 'ai';
+import { openrouter, defaultModel } from '$lib/ai/config';
+import type { RequestHandler } from './$types';
 
 export const POST: RequestHandler = async ({ request }) => {
-  const {
-    model,
-    messages,
-    webSearch,
-  }: {
-    messages: UIMessage[];
-    model: string;
-    webSearch?: boolean;
-  } = await request.json();
+  const { messages, model }: { messages: UIMessage[], model: string } = await request.json();
 
+  let model_name = model || defaultModel;
   const result = streamText({
-    model: webSearch ? "perplexity/sonar" : model,
-    messages: convertToModelMessages(messages),
+    model: openrouter(model_name),
+    messages: await convertToModelMessages(messages),
   });
 
   return result.toUIMessageStreamResponse();
