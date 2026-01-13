@@ -73,22 +73,37 @@
   </div>
 {/if}`;
 
-	let serverCode = `import { streamText, convertToModelMessages } from "ai";
+	let serverCode = `import { type UIMessage, convertToModelMessages, streamText } from "ai";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import type { RequestHandler } from "./$types";
+import { OPENROUTER_API_KEY } from "$env/static/private";
 
-export const POST = async ({ request }) => {
+let defaultModel = "z-ai/glm-4.5-air:free";
+
+export const POST: RequestHandler = async ({ request }) => {
   // Destructure custom fields alongside messages
-  const { messages, name, age } = await request.json();
+  const { messages, name, age }: {
+    messages: UIMessage[];
+    name: string;
+    age: number
+  } = await request.json();
 
-  console.log("Custom data:", name, age);
-
-  const result = streamText({
-    model: openrouter("z-ai/glm-4.5-air:free"),
-    // Use custom data to personalize the system prompt
-    system: \`You are talking to \${name} who is \${age} years old.\`,
-    messages: convertToModelMessages(messages)
+  const openrouter = createOpenRouter({
+    apiKey: OPENROUTER_API_KEY,
   });
 
-  return result.toUIMessageStreamResponse();
+  const result = streamText({
+    model: openrouter(defaultModel),
+    // Use custom data to personalize the system prompt
+    system: \`You are talking to \${name} who is \${age} years old.
+Personalize your responses based on their age and use their name naturally.
+Keep responses concise (under 50 words).\`,
+    messages: await convertToModelMessages(messages),
+  });
+
+  return result.toUIMessageStreamResponse({
+    sendReasoning: false,
+  });
 };`;
 </script>
 

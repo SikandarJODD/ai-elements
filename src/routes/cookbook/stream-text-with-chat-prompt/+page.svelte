@@ -14,23 +14,28 @@ import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import type { RequestHandler } from "./$types";
 import { OPENROUTER_API_KEY } from "$env/static/private";
 
+let defaultModel = "z-ai/glm-4.5-air:free";
+
 export const POST: RequestHandler = async ({ request }) => {
   // 1. Parse UIMessage array from request
   const { messages }: { messages: UIMessage[] } = await request.json();
 
+  // 2. Use custom API key if provided, otherwise use default
   const openrouter = createOpenRouter({
     apiKey: OPENROUTER_API_KEY,
   });
 
-  // 2. Convert UIMessage to ModelMessage format
+  // 3. Convert UIMessage to ModelMessage format and stream
   const result = streamText({
-    model: openrouter("z-ai/glm-4.5-air:free"),
-    system: "You are a helpful assistant. Respond in 100 words.",
-    messages: convertToModelMessages(messages),
+    model: openrouter(defaultModel),
+    system: "You are a helpful assistant. Response in 100 words.",
+    messages: await convertToModelMessages(messages),
   });
 
-  // 3. Return streaming response compatible with Chat class
-  return result.toUIMessageStreamResponse();
+  // 4. Return streaming response compatible with Chat class
+  return result.toUIMessageStreamResponse({
+    sendReasoning: false,
+  });
 };`;
 
 	let clientCode = `<script lang="ts">

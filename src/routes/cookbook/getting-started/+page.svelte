@@ -39,7 +39,7 @@ export const POST: RequestHandler = async ({ request }) => {
   const result = streamText({
     model: openrouter(defaultModel),
     system: "You are a helpful assistant.",
-    messages: convertToModelMessages(messages),
+    messages: await convertToModelMessages(messages),
   });
 
   return result.toUIMessageStreamResponse();

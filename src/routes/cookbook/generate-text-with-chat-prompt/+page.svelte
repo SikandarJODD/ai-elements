@@ -16,6 +16,9 @@ import type { RequestHandler } from "./$types";
 import { OPENROUTER_API_KEY } from "$env/static/private";
 import { json } from "@sveltejs/kit";
 
+// Using a reasoning model for better responses
+let defaultModel = "tngtech/deepseek-r1t2-chimera:free";
+
 export const POST: RequestHandler = async ({ request }) => {
   // 1. Extract messages from request body
   const { messages }: { messages: ModelMessage[] } = await request.json();
@@ -25,14 +28,14 @@ export const POST: RequestHandler = async ({ request }) => {
   });
 
   // 2. Use generateText with messages array (not prompt string)
-  const result = await generateText({
-    model: openrouter("z-ai/glm-4.5-air:free"),
-    system: "You are a helpful assistant. Respond in 100 words.",
+  const text = await generateText({
+    model: openrouter(defaultModel),
+    system: "You are a helpful assistant. Response in 100 words.",
     messages: messages,  // Pass full conversation history
   });
 
   // 3. Return the response messages
-  return json(result.response.messages);
+  return json(text.response.messages);
 };`;
 
 	let clientCode = `<script lang="ts">
