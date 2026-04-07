@@ -6,7 +6,8 @@
 		PromptInputTextarea,
 	} from "$lib/components/prompt-kit/prompt-input";
 	import { Button } from "$lib/components/ui/button/index.js";
-	import { ArrowUp, Square } from "@lucide/svelte";
+	import ArrowUp from "@lucide/svelte/icons/arrow-up";
+	import Square from "@lucide/svelte/icons/square";
 
 	let input = $state("");
 	let isLoading = $state(false);

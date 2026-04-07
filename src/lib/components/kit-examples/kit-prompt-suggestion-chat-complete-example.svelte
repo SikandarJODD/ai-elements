@@ -6,7 +6,9 @@
 	} from "$lib/components/prompt-kit/prompt-input";
 	import { PromptSuggestion } from "$lib/components/prompt-kit/prompt-suggestion";
 	import { Button } from "$lib/components/ui/button";
-	import { ArrowUp, Brain } from "@lucide/svelte";
+	import ArrowUp from "@lucide/svelte/icons/arrow-up";
+	import Brain from "@lucide/svelte/icons/brain";
+
 
 	let inputValue = $state("");
 	let activeCategory = $state("");

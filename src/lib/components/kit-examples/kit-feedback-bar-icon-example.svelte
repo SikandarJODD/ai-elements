@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { FeedbackBar } from "$lib/components/prompt-kit/feedback-bar/index.js";
-	import { Sparkles } from "@lucide/svelte";
+	import Sparkles from "@lucide/svelte/icons/sparkles";
 
 	function handleHelpful() {
 		console.log("Marked as helpful");

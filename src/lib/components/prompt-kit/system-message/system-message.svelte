@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { tv, type VariantProps } from "tailwind-variants";
-	import { AlertCircle, AlertTriangle, Info } from "@lucide/svelte";
+	import AlertCircle from "@lucide/svelte/icons/alert-circle";
+	import AlertTriangle from "@lucide/svelte/icons/alert-triangle";
+	import Info from "@lucide/svelte/icons/info";
+
 	import { Button } from "$lib/components/ui/button";
 	import type { Snippet } from "svelte";
 	import type { HTMLAttributes } from "svelte/elements";

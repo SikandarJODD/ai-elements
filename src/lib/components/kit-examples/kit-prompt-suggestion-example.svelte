@@ -6,7 +6,7 @@
 	} from "$lib/components/prompt-kit/prompt-input";
 	import { PromptSuggestion } from "$lib/components/prompt-kit/prompt-suggestion";
 	import { Button } from "$lib/components/ui/button";
-	import { ArrowUp } from "@lucide/svelte";
+	import ArrowUp from "@lucide/svelte/icons/arrow-up";
 
 	let inputValue = $state("");
 

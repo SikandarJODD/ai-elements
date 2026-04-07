@@ -20,7 +20,9 @@
 
 <script lang="ts">
 	import { cn } from "$lib/utils/utils";
-	import { ThumbsUp, ThumbsDown, X } from "@lucide/svelte";
+	import ThumbsUp from "@lucide/svelte/icons/thumbs-up";
+	import ThumbsDown from "@lucide/svelte/icons/thumbs-down";
+	import X from "@lucide/svelte/icons/x";
 
 	let {
 		class: className,

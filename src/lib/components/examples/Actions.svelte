@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { Action, Actions } from "$lib/components/ai-elements/action/index.js";
-	import { Copy, RefreshCcw, Share, ThumbsDown, ThumbsUp } from "@lucide/svelte";
+	import Copy from "@lucide/svelte/icons/copy";
+	import RefreshCcw from "@lucide/svelte/icons/refresh-ccw";
+	import Share from "@lucide/svelte/icons/share";
+	import ThumbsDown from "@lucide/svelte/icons/thumbs-down";
+	import ThumbsUp from "@lucide/svelte/icons/thumbs-up";
 
 	// Define message type
 	type Message = {

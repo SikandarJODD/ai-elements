@@ -3,24 +3,18 @@
 	import { Chat } from "@ai-sdk/svelte";
 	import { watch } from "runed";
 	import { onMount } from "svelte";
-	import {
-		PlusIcon,
-		Code,
-		InfoIcon,
-		Copy,
-		RefreshCcw,
-		ThumbsUp,
-		ThumbsDown,
-		Brain,
-		ArrowUp as ArrowUpIcon,
-		Key as KeyIcon,
-		Trash2 as Trash2Icon,
-		FileText,
-		Palette,
-		Search,
-		Terminal,
-		Check,
-	} from "@lucide/svelte";
+	import PlusIcon from "@lucide/svelte/icons/plus";
+	import Code from "@lucide/svelte/icons/code";
+	import Copy from "@lucide/svelte/icons/copy";
+	import RefreshCcw from "@lucide/svelte/icons/refresh-ccw";
+	import ThumbsUp from "@lucide/svelte/icons/thumbs-up";
+	import ThumbsDown from "@lucide/svelte/icons/thumbs-down";
+	import ArrowUpIcon from "@lucide/svelte/icons/arrow-up";
+	import KeyIcon from "@lucide/svelte/icons/key";
+	import Trash2Icon from "@lucide/svelte/icons/trash-2";
+	import FileText from "@lucide/svelte/icons/file-text";
+	import Palette from "@lucide/svelte/icons/palette";
+	import Search from "@lucide/svelte/icons/search";
 
 	// UI Components
 	import { Button } from "$lib/components/ui/button";

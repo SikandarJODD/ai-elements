@@ -10,7 +10,7 @@
 </script>
 
 <script lang="ts">
-	import { Bookmark } from "@lucide/svelte";
+	import Bookmark from "@lucide/svelte/icons/bookmark";
 
 	let { class: className, children, size = 16, ...restProps }: CheckpointIconProps = $props();
 </script>

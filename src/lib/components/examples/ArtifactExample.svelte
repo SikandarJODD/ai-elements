@@ -9,7 +9,11 @@
 		ArtifactTitle,
 	} from "$lib/components/ai-elements/artifact/index.js";
 	import * as Code from "$lib/components/ai-elements/code/index.js";
-	import { CopyIcon, DownloadIcon, PlayIcon, RefreshCwIcon, ShareIcon } from "@lucide/svelte";
+	import CopyIcon from "@lucide/svelte/icons/copy";
+	import DownloadIcon from "@lucide/svelte/icons/download";
+	import PlayIcon from "@lucide/svelte/icons/play";
+	import RefreshCwIcon from "@lucide/svelte/icons/refresh-ccw";
+	import ShareIcon from "@lucide/svelte/icons/share-2";
 
 	let code = `# Dijkstra's Algorithm implementation
 import heapq

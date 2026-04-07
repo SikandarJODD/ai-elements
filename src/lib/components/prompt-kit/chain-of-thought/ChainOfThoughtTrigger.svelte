@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { CollapsibleTrigger } from "$lib/components/ui/collapsible/index.js";
 	import { cn } from "$lib/utils/utils";
-	import { ChevronDown, Circle } from "@lucide/svelte";
+	import ChevronDown from "@lucide/svelte/icons/chevron-down";
+	import Circle from "@lucide/svelte/icons/circle";
 	import type { Collapsible as CollapsiblePrimitive } from "bits-ui";
 	import type { Snippet } from "svelte";
 

@@ -5,7 +5,9 @@
 	import MessageActions from "$lib/components/prompt-kit/message/MessageActions.svelte";
 	import MessageAction from "$lib/components/prompt-kit/message/MessageAction.svelte";
 	import { Button } from "$lib/components/ui/button";
-	import { Copy, ThumbsUp, ThumbsDown } from "@lucide/svelte";
+	import Copy from "@lucide/svelte/icons/copy";
+	import ThumbsUp from "@lucide/svelte/icons/thumbs-up";
+	import ThumbsDown from "@lucide/svelte/icons/thumbs-down";
 	import type { UIMessage } from "ai";
 
 	let {
