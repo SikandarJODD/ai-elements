@@ -11,10 +11,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"registry:build": "node scripts/build-registries.js",
-		"registry:build:prompt-kit": "node scripts/build-prompt-kit.js",
-		"registry:build:ai-elements": "node scripts/build-ai-elements.js",
-		"registry:build:old": "pnpm shadcn-svelte registry build",
+		"build:ai-elements": "pnpm shadcn-svelte registry build",
+		"build:prompt-kit":"pnpm shadcn-svelte registry build ./prompt-kit.json -o ./static/p",
 		"jsrepo:build": "jsrepo build",
 		"jsrepo:publish": "jsrepo publish",
 		"jsrepo:publish:dry": "jsrepo publish --dry-run"
