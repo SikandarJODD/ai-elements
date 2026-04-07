@@ -46,6 +46,30 @@
 			e.preventDefault();
 			let form = (e.currentTarget as HTMLTextAreaElement).form;
 			if (form) {
+				let promptInputSubmit = form.querySelector(
+					"[data-prompt-input-submit]"
+				) as HTMLButtonElement | null;
+				if (promptInputSubmit) {
+					if (promptInputSubmit.disabled || promptInputSubmit.type !== "submit") {
+						return;
+					}
+
+					form.requestSubmit(promptInputSubmit);
+					return;
+				}
+
+				let submitButton = form.querySelector(
+					'button[type="submit"]'
+				) as HTMLButtonElement | null;
+				if (submitButton?.disabled) {
+					return;
+				}
+
+				if (submitButton) {
+					form.requestSubmit(submitButton);
+					return;
+				}
+
 				form.requestSubmit();
 			}
 		}
