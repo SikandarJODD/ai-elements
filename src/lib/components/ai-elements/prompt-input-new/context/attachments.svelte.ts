@@ -1,35 +1,116 @@
 import { getContext, setContext } from "svelte";
-import type { FileWithId } from "./types.js";
+import type { PromptInputAttachment } from "./types.js";
 
-type AttachmentError = {
+export type AttachmentError = {
 	code: "max_files" | "max_file_size" | "accept";
 	message: string;
 };
 
+type AttachmentCallbacks = {
+	onAttachmentsChange?: (attachments: PromptInputAttachment[]) => void;
+	onFileAdd?: (
+		added: PromptInputAttachment[],
+		attachments: PromptInputAttachment[]
+	) => void;
+	onFileRemove?: (
+		removed: PromptInputAttachment[],
+		attachments: PromptInputAttachment[]
+	) => void;
+};
+
+type AttachmentOptions = {
+	accept?: string;
+	multiple?: boolean;
+	maxFiles?: number;
+	maxFileSize?: number;
+	onError?: (err: AttachmentError) => void;
+	onFileAdd?: AttachmentCallbacks["onFileAdd"];
+	onFileRemove?: AttachmentCallbacks["onFileRemove"];
+};
+
 export class AttachmentsContext {
-	files = $state<FileWithId[]>([]);
+	attachments = $state<PromptInputAttachment[]>([]);
 	fileInputRef = $state<HTMLInputElement | null>(null);
 
-	constructor(
-		private accept?: string,
-		private multiple?: boolean,
-		private maxFiles?: number,
-		private maxFileSize?: number,
-		private onError?: (err: AttachmentError) => void
-	) {}
+	accept?: string;
+	multiple?: boolean;
+	maxFiles?: number;
+	maxFileSize?: number;
+	onError?: (err: AttachmentError) => void;
+	onAttachmentsChange?: (attachments: PromptInputAttachment[]) => void;
+	onFileAdd?: (added: PromptInputAttachment[], attachments: PromptInputAttachment[]) => void;
+	onFileRemove?: (
+		removed: PromptInputAttachment[],
+		attachments: PromptInputAttachment[]
+	) => void;
+
+	constructor(options: AttachmentOptions = {}) {
+		this.configure(options);
+	}
+
+	configure = (options: AttachmentOptions = {}) => {
+		this.accept = options.accept;
+		this.multiple = options.multiple;
+		this.maxFiles = options.maxFiles;
+		this.maxFileSize = options.maxFileSize;
+		this.onError = options.onError;
+		this.onFileAdd = options.onFileAdd;
+		this.onFileRemove = options.onFileRemove;
+	};
 
 	openFileDialog = () => {
 		this.fileInputRef?.click();
+	};
+
+	private cleanupPreviewUrls = (
+		previous: PromptInputAttachment[],
+		next: PromptInputAttachment[]
+	) => {
+		let nextUrls = new Set(
+			next
+				.map((attachment) => attachment.previewUrl)
+				.filter((url): url is string => Boolean(url))
+		);
+
+		for (let attachment of previous) {
+			let previewUrl = attachment.previewUrl;
+			if (previewUrl?.startsWith("blob:") && !nextUrls.has(previewUrl)) {
+				URL.revokeObjectURL(previewUrl);
+			}
+		}
+	};
+
+	private setAttachments = (next: PromptInputAttachment[]) => {
+		if (this.attachments === next) {
+			return;
+		}
+
+		this.cleanupPreviewUrls(this.attachments, next);
+		this.attachments = next;
+		this.onAttachmentsChange?.(next);
+	};
+
+	replace = (attachments: PromptInputAttachment[] | undefined) => {
+		this.setAttachments(attachments ?? []);
 	};
 
 	matchesAccept = (file: File): boolean => {
 		if (!this.accept || this.accept.trim() === "") {
 			return true;
 		}
-		if (this.accept.includes("image/*")) {
-			return file.type.startsWith("image/");
-		}
-		return true;
+
+		let patterns = this.accept
+			.split(",")
+			.map((pattern) => pattern.trim())
+			.filter(Boolean);
+
+		return patterns.some((pattern) => {
+			if (pattern.endsWith("/*")) {
+				return file.type.startsWith(pattern.slice(0, -1));
+			}
+
+			return file.type === pattern;
+		});
 	};
 
 	add = (files: File[] | FileList) => {
@@ -55,9 +136,16 @@ export class AttachmentsContext {
 			return;
 		}
 
+		let effectiveMaxFiles =
+			this.multiple === false
+				? typeof this.maxFiles === "number"
+					? Math.min(this.maxFiles, 1)
+					: 1
+				: this.maxFiles;
+
 		let capacity =
-			typeof this.maxFiles === "number"
-				? Math.max(0, this.maxFiles - this.files.length)
+			typeof effectiveMaxFiles === "number"
+				? Math.max(0, effectiveMaxFiles - this.attachments.length)
 				: undefined;
 		let capped = typeof capacity === "number" ? sized.slice(0, capacity) : sized;
 
@@ -68,35 +156,57 @@ export class AttachmentsContext {
 			});
 		}
 
-		let next: FileWithId[] = [];
+		let added: PromptInputAttachment[] = [];
 		for (let file of capped) {
-			next.push({
+			added.push({
 				id: crypto.randomUUID(),
-				type: "file",
-				url: URL.createObjectURL(file),
+				file,
+				previewUrl: URL.createObjectURL(file),
 				mediaType: file.type,
 				filename: file.name,
 			});
 		}
 
-		this.files = [...this.files, ...next];
+		if (added.length === 0) {
+			return [];
+		}
+
+		let next = [...this.attachments, ...added];
+		this.setAttachments(next);
+		this.onFileAdd?.(added, next);
+
+		return added;
 	};
 
 	remove = (id: string) => {
-		let found = this.files.find((file) => file.id === id);
-		if (found?.url) {
-			URL.revokeObjectURL(found.url);
+		let removed = this.attachments.filter((attachment) => attachment.id === id);
+		if (removed.length === 0) {
+			return [];
 		}
-		this.files = this.files.filter((file) => file.id !== id);
+
+		let next = this.attachments.filter((attachment) => attachment.id !== id);
+		this.setAttachments(next);
+		this.onFileRemove?.(removed, next);
+
+		return removed;
 	};
 
 	clear = () => {
-		for (let file of this.files) {
-			if (file.url) {
-				URL.revokeObjectURL(file.url);
-			}
+		let removed = this.attachments;
+		if (removed.length === 0) {
+			return [];
 		}
-		this.files = [];
+
+		this.setAttachments([]);
+		this.onFileRemove?.(removed, []);
+
+		return removed;
+	};
+
+	destroy = () => {
+		this.cleanupPreviewUrls(this.attachments, []);
+		this.attachments = [];
+		this.fileInputRef = null;
 	};
 }
 

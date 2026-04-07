@@ -1,24 +1,30 @@
 <script lang="ts">
-	import * as AspectRatio from "$lib/components/ui/aspect-ratio";
+	import * as AspectRatio from "$lib/components/ui/aspect-ratio/index.js";
 	import * as Dialog from "$lib/components/ui/dialog";
 	import { getAttachmentsContext } from "../context/attachments.svelte.js";
-	import { cn } from "$lib/utils";
-	import type { FileWithId } from "../context/types.js";
+	import { cn } from "$lib/utils/utils";
+	import type { PromptInputAttachment } from "../context/types.js";
 
 	interface Props {
-		data: FileWithId;
+		data: PromptInputAttachment;
 		class?: string;
 	}
 
 	let { data, class: className, ...props }: Props = $props();
 
-	let attachments = getAttachmentsContext();
+	let attachmentsContext = getAttachmentsContext();
 	let open = $state(false);
 	let ratio = $state(1);
 	let currentImageId = $state("");
 
+	let getDisplayUrl = (attachment: PromptInputAttachment) => {
+		return attachment.previewUrl ?? attachment.remoteUrl;
+	};
+
 	let imageFiles = $derived(
-		attachments.files.filter((file) => file.mediaType?.startsWith("image/") && file.url)
+		attachmentsContext.attachments.filter(
+			(file) => file.mediaType?.startsWith("image/") && getDisplayUrl(file)
+		)
 	);
 
 	let currentIndex = $derived.by(() => {
@@ -89,7 +95,7 @@
 			class="size-full rounded-md object-cover transition-transform duration-200 group-hover:scale-[1.03]"
 			height={56}
 			onload={handleImageLoad}
-			src={data.url}
+			src={getDisplayUrl(data)}
 			width={56}
 		/>
 	</Dialog.Trigger>
@@ -100,12 +106,12 @@
 	>
 		<div class="flex items-center justify-center">
 			<div style:width="min(92vw, 960px)" style:max-height="min(80vh, 720px)">
-				<AspectRatio.Root class="overflow-hidden rounded-2xl bg-black/95" ratio={ratio}>
+				<AspectRatio.Root class="overflow-hidden rounded-2xl bg-black/95" {ratio}>
 					<img
 						alt={currentImage.filename || "attachment preview"}
 						class="size-full object-contain"
 						onload={handleImageLoad}
-						src={currentImage.url}
+						src={getDisplayUrl(currentImage)}
 					/>
 				</AspectRatio.Root>
 			</div>

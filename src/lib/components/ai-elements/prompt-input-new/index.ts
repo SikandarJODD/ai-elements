@@ -101,7 +101,8 @@ export {
 } from "./context/provider.svelte.js";
 
 export type {
-	FileUIPart,
+	PromptInputAttachment as PromptInputAttachmentData,
+	PromptInputUploadStatus,
 	FileWithId,
 	Message,
 	Message as PromptInputMessage,

@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
-	import { Textarea } from '$lib/components/ui/textarea/index.js';
-	import { getAttachmentsContext } from '../context/attachments.svelte.js';
+	import { cn } from "$lib/utils/utils";
+	import { Textarea } from "$lib/components/ui/textarea/index.js";
+	import { getAttachmentsContext } from "../context/attachments.svelte.js";
+	import { getPromptInputProvider } from "../context/provider.svelte.js";
 
 	interface Props {
 		ref?: HTMLTextAreaElement | null;
@@ -14,16 +15,23 @@
 	let {
 		ref = $bindable(null),
 		class: className,
-		placeholder = 'What would you like to know?',
-		value = $bindable(''),
+		placeholder = "What would you like to know?",
+		value = $bindable(""),
 		onchange,
 		...props
 	}: Props = $props();
 
 	let attachments = getAttachmentsContext();
+	let controller = getPromptInputProvider();
+
+	$effect(() => {
+		if (controller && value !== controller.textInput.value) {
+			value = controller.textInput.value;
+		}
+	});
 
 	let handleKeyDown = (e: KeyboardEvent) => {
-		if (e.key === 'Enter') {
+		if (e.key === "Enter") {
 			// Don't submit if IME composition is in progress
 			if (e.isComposing) {
 				return;
@@ -43,6 +51,12 @@
 		}
 	};
 
+	let handleInput = (event: Event) => {
+		if (controller) {
+			controller.textInput.setInput((event.currentTarget as HTMLTextAreaElement).value);
+		}
+	};
+
 	let handlePaste = (e: ClipboardEvent) => {
 		let items = e.clipboardData?.items;
 
@@ -53,7 +67,7 @@
 		let files: File[] = [];
 
 		for (let item of items) {
-			if (item.kind === 'file') {
+			if (item.kind === "file") {
 				let file = item.getAsFile();
 				if (file) {
 					files.push(file);
@@ -71,12 +85,13 @@
 <Textarea
 	bind:ref
 	class={cn(
-		'w-full resize-none rounded-none border-none p-3 shadow-none ring-0 outline-none',
-		'field-sizing-content bg-transparent dark:bg-transparent',
-		'max-h-48 min-h-10',
-		'focus-visible:ring-0',
+		"w-full resize-none rounded-none border-none p-3 shadow-none ring-0 outline-none",
+		"field-sizing-content bg-transparent dark:bg-transparent",
+		"max-h-48 min-h-10",
+		"focus-visible:ring-0",
 		className
 	)}
+	oninput={handleInput}
 	onpaste={handlePaste}
 	name="message"
 	{onchange}

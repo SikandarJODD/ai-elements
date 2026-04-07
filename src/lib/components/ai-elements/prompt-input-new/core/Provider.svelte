@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { untrack } from "svelte";
+	import { onDestroy, untrack } from "svelte";
 	import { Controller, setPromptInputProvider } from "../context/provider.svelte.js";
 
 	interface Props {
@@ -18,6 +18,10 @@
 	);
 
 	setPromptInputProvider(controller);
+
+	onDestroy(() => {
+		controller.attachments.destroy();
+	});
 </script>
 
 {#if children}

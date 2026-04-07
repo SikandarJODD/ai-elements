@@ -1,27 +1,31 @@
 <script lang="ts">
-	import { cn } from "$lib/utils";
+	import { cn } from "$lib/utils/utils";
 	import { watch } from "runed";
 	import { getAttachmentsContext } from "../context/attachments.svelte.js";
-	import type { FileWithId } from "../context/types.js";
+	import type { PromptInputAttachment } from "../context/types.js";
 
 	interface Props {
 		class?: string;
-		children?: import("svelte").Snippet<[FileWithId]>;
+		children?: import("svelte").Snippet<[PromptInputAttachment]>;
 	}
 
 	let { class: className, children, ...props }: Props = $props();
 
-	let attachments = getAttachmentsContext();
+	let attachmentsContext = getAttachmentsContext();
 	let height = $state(0);
 	let contentRef = $state<HTMLDivElement | null>(null);
 
 	// Separate files and images for grouped rendering
 	let nonImageFiles = $derived(
-		attachments.files.filter((f) => !(f.mediaType?.startsWith("image/") && f.url))
+		attachmentsContext.attachments.filter(
+			(f) => !(f.mediaType?.startsWith("image/") && (f.previewUrl ?? f.remoteUrl))
+		)
 	);
 
 	let imageFiles = $derived(
-		attachments.files.filter((f) => f.mediaType?.startsWith("image/") && f.url)
+		attachmentsContext.attachments.filter(
+			(f) => f.mediaType?.startsWith("image/") && (f.previewUrl ?? f.remoteUrl)
+		)
 	);
 
 	// Watch for resize changes using ResizeObserver
@@ -44,7 +48,7 @@
 	);
 
 	let computedHeight = $derived.by(() => {
-		return attachments.files.length ? height : 0;
+		return attachmentsContext.attachments.length ? height : 0;
 	});
 </script>
 

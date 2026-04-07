@@ -20,7 +20,7 @@ export class Controller {
 	constructor(initialInput = "", accept?: string, multiple?: boolean) {
 		this.textInput = new TextController();
 		this.textInput.value = initialInput;
-		this.attachments = new AttachmentsContext(accept, multiple);
+		this.attachments = new AttachmentsContext({ accept, multiple });
 	}
 }
 

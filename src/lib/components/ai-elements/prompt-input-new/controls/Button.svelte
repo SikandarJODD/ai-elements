@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from "$lib/utils";
+	import { cn } from "$lib/utils/utils";
 	import { Button } from "$lib/components/ui/button";
 	import type { ButtonProps } from "$lib/components/ui/button/index.js";
 

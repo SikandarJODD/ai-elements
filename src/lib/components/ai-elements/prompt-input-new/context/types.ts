@@ -1,17 +1,21 @@
-export interface FileUIPart {
-	type: "file";
-	url?: string;
-	mediaType?: string;
+export type PromptInputUploadStatus = "uploading" | "uploaded" | "error";
+
+export interface PromptInputAttachment {
+	id: string;
+	file?: File;
 	filename?: string;
+	mediaType?: string;
+	previewUrl?: string;
+	remoteUrl?: string;
+	uploadStatus?: PromptInputUploadStatus;
+	error?: string;
 }
 
-export interface FileWithId extends FileUIPart {
-	id: string;
-}
+export type FileWithId = PromptInputAttachment;
 
 export interface Message {
 	text?: string;
-	files?: FileUIPart[];
+	attachments?: PromptInputAttachment[];
 }
 
 export type ChatStatus = "submitted" | "streaming" | "error" | "idle";

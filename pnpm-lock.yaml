@@ -73,7 +73,7 @@ importers:
         version: 4.3.6
     devDependencies:
       '@internationalized/date':
-        specifier: ^3.8.1
+        specifier: ^3.12.0
         version: 3.12.0
       '@lucide/svelte':
         specifier: ^1.7.0
@@ -91,7 +91,7 @@ importers:
         specifier: ^4.2.2
         version: 4.2.2(vite@8.0.7(jiti@2.6.1))
       bits-ui:
-        specifier: ^2.14.1
+        specifier: ^2.16.3
         version: 2.17.2(@internationalized/date@3.12.0)(@sveltejs/kit@2.56.1(@opentelemetry/api@1.9.0)(@sveltejs/vite-plugin-svelte@7.0.0(svelte@5.55.1)(vite@8.0.7(jiti@2.6.1)))(svelte@5.55.1)(typescript@6.0.2)(vite@8.0.7(jiti@2.6.1)))(svelte@5.55.1)
       clsx:
         specifier: ^2.1.1

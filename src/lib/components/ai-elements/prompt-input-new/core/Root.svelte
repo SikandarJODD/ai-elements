@@ -1,12 +1,14 @@
 <script lang="ts">
-	import { cn } from "$lib/utils";
+	import { cn } from "$lib/utils/utils";
 	import { watch } from "runed";
-	import { onMount, untrack } from "svelte";
+	import { onDestroy } from "svelte";
 	import { AttachmentsContext, setAttachmentsContext } from "../context/attachments.svelte.js";
-	import type { Message } from "../context/types.js";
+	import { getPromptInputProvider } from "../context/provider.svelte.js";
+	import type { Message, PromptInputAttachment } from "../context/types.js";
 
 	interface Props {
 		class?: string;
+		attachments?: PromptInputAttachment[];
 		accept?: string;
 		multiple?: boolean;
 		globalDrop?: boolean;
@@ -18,12 +20,21 @@
 			code: "max_files" | "max_file_size" | "accept";
 			message: string;
 		}) => void;
+		onFileAdd?: (
+			added: PromptInputAttachment[],
+			attachments: PromptInputAttachment[]
+		) => void;
+		onFileRemove?: (
+			removed: PromptInputAttachment[],
+			attachments: PromptInputAttachment[]
+		) => void;
 		onSubmit: (message: Message, event: SubmitEvent) => void | Promise<void>;
 		children?: import("svelte").Snippet;
 	}
 
 	let {
 		class: className,
+		attachments = $bindable<PromptInputAttachment[] | undefined>(undefined),
 		accept,
 		multiple,
 		globalDrop,
@@ -32,26 +43,51 @@
 		maxFiles,
 		maxFileSize,
 		onError,
+		onFileAdd,
+		onFileRemove,
 		onSubmit,
 		children,
 		...props
 	}: Props = $props();
 
-	let anchorRef = $state<HTMLSpanElement | null>(null);
 	let formRef = $state<HTMLFormElement | null>(null);
-	let attachmentsContext = new AttachmentsContext(
-		(accept = untrack(() => accept)),
-		(multiple = untrack(() => multiple)),
-		(maxFiles = untrack(() => maxFiles)),
-		(maxFileSize = untrack(() => maxFileSize)),
-		(onError = untrack(() => onError))
-	);
+	let controller = getPromptInputProvider();
+	let usingProvider = Boolean(controller);
+	let localAttachmentsContext = new AttachmentsContext();
+	let attachmentsContext = controller?.attachments ?? localAttachmentsContext;
 
-	// Find nearest form to scope drag & drop
-	onMount(() => {
-		let root = anchorRef?.closest("form");
-		if (root instanceof HTMLFormElement) {
-			formRef = root;
+	$effect(() => {
+		attachmentsContext.configure({
+			accept,
+			multiple,
+			maxFiles,
+			maxFileSize,
+			onError,
+			onFileAdd,
+			onFileRemove,
+		});
+	});
+
+	$effect(() => {
+		let syncAttachments = (next: PromptInputAttachment[]) => {
+			if (attachments !== next) {
+				attachments = next;
+			}
+		};
+
+		attachmentsContext.onAttachmentsChange = syncAttachments;
+		syncAttachments(attachmentsContext.attachments);
+
+		return () => {
+			if (attachmentsContext.onAttachmentsChange === syncAttachments) {
+				attachmentsContext.onAttachmentsChange = undefined;
+			}
+		};
+	});
+
+	$effect(() => {
+		if (attachments !== undefined && attachmentsContext.attachments !== attachments) {
+			attachmentsContext.replace(attachments);
 		}
 	});
 
@@ -120,11 +156,11 @@
 	// Note: File input cannot be programmatically set for security reasons
 	// The syncHiddenInput prop is no longer functional
 	watch(
-		() => attachmentsContext.files,
+		() => attachmentsContext.attachments,
 		() => {
 			if (syncHiddenInput && attachmentsContext.fileInputRef) {
 				// Clear the input when items are cleared
-				if (attachmentsContext.files.length === 0) {
+				if (attachmentsContext.attachments.length === 0) {
 					attachmentsContext.fileInputRef.value = "";
 				}
 			}
@@ -136,41 +172,26 @@
 		if (target.files) {
 			attachmentsContext.add(target.files);
 		}
+		target.value = "";
 	};
-
-	// Convert blob URLs to data URLs for proper serialization
-	async function convertBlobUrlToDataUrl(url: string): Promise<string> {
-		const response = await fetch(url);
-		const blob = await response.blob();
-		return new Promise((resolve, reject) => {
-			const reader = new FileReader();
-			reader.onloadend = () => resolve(reader.result as string);
-			reader.onerror = reject;
-			reader.readAsDataURL(blob);
-		});
-	}
 
 	let handleSubmit = async (event: SubmitEvent) => {
 		event.preventDefault();
 
 		let form = event.currentTarget as HTMLFormElement;
 		let formData = new FormData(form);
-		let text = (formData.get("message") as string) || "";
-
-		// Convert blob URLs to data URLs asynchronously
-		let filesPromises = attachmentsContext.files.map(async ({ id, ...item }) => {
-			if (item.url && item.url.startsWith("blob:")) {
-				return {
-					...item,
-					url: await convertBlobUrlToDataUrl(item.url),
-				};
-			}
-			return item;
-		});
+		let text = usingProvider
+			? (controller?.textInput.value ?? "")
+			: ((formData.get("message") as string) || "");
 
 		try {
-			let files = await Promise.all(filesPromises);
-			let result = onSubmit({ text, files }, event);
+			let result = onSubmit(
+				{
+					text,
+					attachments: attachmentsContext.attachments.map((attachment) => ({ ...attachment })),
+				},
+				event
+			);
 
 			// Handle both sync and async onSubmit
 			if (result && typeof result === "object" && "then" in result) {
@@ -180,7 +201,11 @@
 			// Only clear if submission was successful
 			if (clearOnSubmit) {
 				attachmentsContext.clear();
-				form.reset();
+				if (usingProvider) {
+					controller?.textInput.clear();
+				} else {
+					form.reset();
+				}
 			}
 		} catch (error) {
 			// Don't clear on error - user may want to retry
@@ -188,10 +213,24 @@
 		}
 	};
 
+	onDestroy(() => {
+		if (usingProvider) {
+			attachmentsContext.onAttachmentsChange = undefined;
+			attachmentsContext.onFileAdd = undefined;
+			attachmentsContext.onFileRemove = undefined;
+			attachmentsContext.onError = undefined;
+			if (attachmentsContext.fileInputRef) {
+				attachmentsContext.fileInputRef = null;
+			}
+			return;
+		}
+
+		localAttachmentsContext.destroy();
+	});
+
 	setAttachmentsContext(attachmentsContext);
 </script>
 
-<span aria-hidden="true" class="hidden" bind:this={anchorRef}></span>
 <input
 	{accept}
 	class="hidden"
@@ -201,6 +240,7 @@
 	type="file"
 />
 <form
+	bind:this={formRef}
 	class={cn(
 		"bg-background w-full divide-y overflow-hidden rounded-xl border shadow-sm",
 		className

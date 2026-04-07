@@ -1,23 +1,24 @@
 <script lang="ts">
-	import { cn } from "$lib/utils";
+	import { cn } from "$lib/utils/utils";
 	import { Button } from "$lib/components/ui/button";
 	import * as Tooltip from "$lib/components/ui/tooltip/index.js";
 	import { getAttachmentsContext } from "../context/attachments.svelte.js";
-	import type { FileWithId } from "../context/types.js";
+	import type { PromptInputAttachment } from "../context/types.js";
 	import AttachmentImagePreview from "./AttachmentImagePreview.svelte";
 	import PaperclipIcon from "../icons/PaperclipIcon.svelte";
 	import XIcon from "../icons/XIcon.svelte";
 
 	interface Props {
-		data: FileWithId;
+		data: PromptInputAttachment;
 		class?: string;
 	}
 
 	let { data, class: className, ...props }: Props = $props();
 
-	let attachments = getAttachmentsContext();
+	let attachmentsContext = getAttachmentsContext();
+	let displayUrl = $derived(data.previewUrl ?? data.remoteUrl);
 
-	let mediaType = $derived(data.mediaType?.startsWith("image/") && data.url ? "image" : "file");
+	let mediaType = $derived(data.mediaType?.startsWith("image/") && displayUrl ? "image" : "file");
 </script>
 
 <div
@@ -65,9 +66,9 @@
 					{...tooltipTriggerProps}
 					onclick={(event) => {
 						event.stopPropagation();
-						attachments.remove(data.id);
+						attachmentsContext.remove(data.id);
 					}}
-					size="icon-sm"
+					size="icon"
 					type="button"
 					variant="secondary"
 				>
