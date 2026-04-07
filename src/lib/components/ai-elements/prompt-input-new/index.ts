@@ -1,5 +1,6 @@
 import Root from "./core/Root.svelte";
 import Provider from "./core/Provider.svelte";
+import Header from "./layout/Header.svelte";
 import Body from "./layout/Body.svelte";
 import Toolbar from "./layout/Toolbar.svelte";
 import Tools from "./layout/Tools.svelte";
@@ -32,6 +33,7 @@ import MicIcon from "./icons/MicIcon.svelte";
 export {
 	Root,
 	Provider,
+	Header,
 	Body,
 	Toolbar,
 	Tools,
@@ -63,6 +65,7 @@ export {
 	//
 	Root as PromptInput,
 	Provider as PromptInputProvider,
+	Header as PromptInputHeader,
 	Body as PromptInputBody,
 	Toolbar as PromptInputToolbar,
 	Tools as PromptInputTools,
