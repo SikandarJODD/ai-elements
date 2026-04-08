@@ -2,9 +2,9 @@ export type PromptInputUploadStatus = "uploading" | "uploaded" | "error";
 
 export interface PromptInputAttachment {
 	id: string;
-	file?: File;
-	filename?: string;
-	mediaType?: string;
+	file: File;
+	filename: string;
+	mediaType: string;
 	previewUrl?: string;
 	remoteUrl?: string;
 	uploadStatus?: PromptInputUploadStatus;
@@ -18,6 +18,6 @@ export interface Message {
 	attachments?: PromptInputAttachment[];
 }
 
-export type ChatStatus = "submitted" | "streaming" | "error" | "idle";
+export type ChatStatus = "submitted" | "streaming" | "error" | "ready";
 
 export type PromptInputMessage = Message;

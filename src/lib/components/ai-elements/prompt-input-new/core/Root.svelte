@@ -242,7 +242,7 @@
 <form
 	bind:this={formRef}
 	class={cn(
-		"bg-background w-full divide-y overflow-hidden rounded-xl border shadow-sm",
+		"bg-background w-full overflow-hidden rounded-xl border shadow-sm",
 		className
 	)}
 	onsubmit={handleSubmit}
