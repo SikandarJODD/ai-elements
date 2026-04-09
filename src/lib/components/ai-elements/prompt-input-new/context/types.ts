@@ -14,8 +14,9 @@ export interface PromptInputAttachment {
 export type FileWithId = PromptInputAttachment;
 
 export interface Message {
-	text?: string;
-	attachments?: PromptInputAttachment[];
+	text: string;
+	files?: FileList;
+	attachments: PromptInputAttachment[];
 }
 
 export type ChatStatus = "submitted" | "streaming" | "error" | "ready";

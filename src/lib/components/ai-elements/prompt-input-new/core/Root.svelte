@@ -175,6 +175,19 @@
 		target.value = "";
 	};
 
+	let createFileList = (attachments: PromptInputAttachment[]) => {
+		if (attachments.length === 0) {
+			return undefined;
+		}
+
+		let dataTransfer = new DataTransfer();
+		for (let attachment of attachments) {
+			dataTransfer.items.add(attachment.file);
+		}
+
+		return dataTransfer.files.length > 0 ? dataTransfer.files : undefined;
+	};
+
 	let handleSubmit = async (event: SubmitEvent) => {
 		event.preventDefault();
 
@@ -183,12 +196,17 @@
 		let text = usingProvider
 			? (controller?.textInput.value ?? "")
 			: ((formData.get("message") as string) || "");
+		let submittedAttachments = attachmentsContext.attachments.map((attachment) => ({
+			...attachment,
+		}));
+		let files = createFileList(attachmentsContext.attachments);
 
 		try {
 			let result = onSubmit(
 				{
 					text,
-					attachments: attachmentsContext.attachments.map((attachment) => ({ ...attachment })),
+					files,
+					attachments: submittedAttachments,
 				},
 				event
 			);

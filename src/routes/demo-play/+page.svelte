@@ -5,11 +5,14 @@
 	let chat = new Chat({});
 
 	function handleSubmit(message: Message) {
-		if (message.text) {
-			chat.sendMessage({
-				text: message.text,
-			});
-		}
+		// if (!message.text.trim() && !message.files?.length) {
+		// 	return;
+		// }
+
+		chat.sendMessage({
+			text: message.text,
+			files: message.files,
+		});
 	}
 </script>
 
@@ -32,6 +35,25 @@
 						{#each message.parts as part}
 							{#if part.type === "text"}
 								<p>{part.text}</p>
+							{:else if part.type === "file"}
+								<div class="mt-1 text-sm">
+									{#if part.mediaType?.startsWith("image/")}
+										<img
+											alt={part.filename ?? "Uploaded file"}
+											class="mt-1 max-h-40 rounded border"
+											src={part.url}
+										/>
+									{:else}
+										<a
+											class="text-blue-600 underline"
+											href={part.url}
+											rel="noreferrer"
+											target="_blank"
+										>
+											{part.filename ?? "Attached file"}
+										</a>
+									{/if}
+								</div>
 							{/if}
 						{/each}
 					{/each}
