@@ -9,12 +9,23 @@
 		"mode-watcher@^1.1.0",
 		"@shikijs/themes@^4.0.2"
 	],
-	"devDependencies": ["@lucide/svelte@^1.7.0"],
-	"registryDependencies": ["collapsible", "button"],
+	"devDependencies": [
+		"@lucide/svelte@^1.7.0"
+	],
+	"registryDependencies": [
+		"collapsible",
+		"button"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["prompt-kit", "reasoning", "thinking", "ai-process", "collapsible"],
+		"tags": [
+			"prompt-kit",
+			"reasoning",
+			"thinking",
+			"ai-process",
+			"collapsible"
+		],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/reasoning",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
