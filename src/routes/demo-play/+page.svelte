@@ -5,10 +5,6 @@
 	let chat = new Chat({});
 
 	function handleSubmit(message: Message) {
-		// if (!message.text.trim() && !message.files?.length) {
-		// 	return;
-		// }
-
 		chat.sendMessage({
 			text: message.text,
 			files: message.files,

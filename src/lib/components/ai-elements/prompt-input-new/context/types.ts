@@ -1,3 +1,5 @@
+import type { FileUIPart } from "ai";
+
 export type PromptInputUploadStatus = "uploading" | "uploaded" | "error";
 
 export interface PromptInputAttachment {
@@ -15,7 +17,7 @@ export type FileWithId = PromptInputAttachment;
 
 export interface Message {
 	text: string;
-	files?: FileList;
+	files?: FileUIPart[];
 	attachments: PromptInputAttachment[];
 }
 

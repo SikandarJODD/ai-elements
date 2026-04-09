@@ -111,3 +111,5 @@ export type {
 	Message as PromptInputMessage,
 	ChatStatus,
 } from "./context/types.js";
+
+export type { FileUIPart } from "ai";

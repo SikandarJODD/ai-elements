@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { FileUIPart } from "ai";
 	import { cn } from "$lib/utils/utils";
 	import { watch } from "runed";
 	import { onDestroy } from "svelte";
@@ -172,17 +173,38 @@
 		target.value = "";
 	};
 
-	let createFileList = (attachments: PromptInputAttachment[]) => {
+	let convertFileToDataUrl = (file: File): Promise<string> =>
+		new Promise((resolve, reject) => {
+			let reader = new FileReader();
+			reader.onload = () => resolve(reader.result as string);
+			reader.onerror = () => reject(reader.error ?? new Error("Failed to read file."));
+			reader.readAsDataURL(file);
+		});
+
+	let createFiles = async (
+		attachments: PromptInputAttachment[]
+	): Promise<FileUIPart[] | undefined> => {
 		if (attachments.length === 0) {
 			return undefined;
 		}
 
-		let dataTransfer = new DataTransfer();
-		for (let attachment of attachments) {
-			dataTransfer.items.add(attachment.file);
-		}
+		let files = await Promise.all(
+			attachments.map(async (attachment) => {
+				let url = attachment.remoteUrl
+					? attachment.remoteUrl
+					: await convertFileToDataUrl(attachment.file);
 
-		return dataTransfer.files.length > 0 ? dataTransfer.files : undefined;
+				return {
+					type: "file" as const,
+					url,
+					mediaType:
+						attachment.mediaType || attachment.file.type || "application/octet-stream",
+					filename: attachment.filename || attachment.file.name,
+				};
+			})
+		);
+
+		return files.length > 0 ? files : undefined;
 	};
 
 	let handleSubmit = async (event: SubmitEvent) => {
@@ -196,7 +218,7 @@
 		let submittedAttachments = attachmentsContext.attachments.map((attachment) => ({
 			...attachment,
 		}));
-		let files = createFileList(attachmentsContext.attachments);
+		let files = await createFiles(attachmentsContext.attachments);
 
 		try {
 			let result = onSubmit(
