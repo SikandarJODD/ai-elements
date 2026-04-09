@@ -3,24 +3,12 @@
 	"name": "steps",
 	"type": "registry:block",
 	"description": "The Steps component provides a visual step-by-step progress indicator for AI processes. Features step items, trigger, content, and progress bar with context-based state management.",
-	"devDependencies": [
-		"@lucide/svelte@^0.562.0"
-	],
-	"registryDependencies": [
-		"collapsible",
-		"button"
-	],
+	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"registryDependencies": ["collapsible", "button"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"prompt-kit",
-			"steps",
-			"progress",
-			"workflow",
-			"process",
-			"stepper"
-		],
+		"tags": ["prompt-kit", "steps", "progress", "workflow", "process", "stepper"],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/steps",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -40,7 +28,7 @@
 			"target": "prompt-kit/steps/steps-item.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { CollapsibleTrigger } from \"$COMPONENTS$/ui/collapsible\";\n\timport { cn } from \"$UTILS$\";\n\timport { ChevronDown } from \"@lucide/svelte\";\n\timport type { Snippet } from \"svelte\";\n\n\tlet {\n\t\tclass: className,\n\t\tleftIcon,\n\t\tswapIconOnHover = true,\n\t\tchildren,\n\t}: {\n\t\tclass?: string;\n\t\tleftIcon?: Snippet;\n\t\tswapIconOnHover?: boolean;\n\t\tchildren?: Snippet;\n\t} = $props();\n</script>\n\n<CollapsibleTrigger\n\tclass={cn(\n\t\t\"group text-muted-foreground hover:text-foreground flex w-full cursor-pointer items-center justify-start gap-1 text-sm transition-colors\",\n\t\tclassName\n\t)}\n>\n\t<div class=\"flex items-center gap-2\">\n\t\t{#if leftIcon}\n\t\t\t<span class=\"relative inline-flex size-4 items-center justify-center\">\n\t\t\t\t<span class={cn(\"transition-opacity\", swapIconOnHover && \"group-hover:opacity-0\")}>\n\t\t\t\t\t{@render leftIcon()}\n\t\t\t\t</span>\n\t\t\t\t{#if swapIconOnHover}\n\t\t\t\t\t<ChevronDown\n\t\t\t\t\t\tclass=\"absolute size-4 opacity-0 transition-opacity group-hover:opacity-100 group-data-[state=open]:rotate-180\"\n\t\t\t\t\t/>\n\t\t\t\t{/if}\n\t\t\t</span>\n\t\t{/if}\n\t\t{#if children}\n\t\t\t<span>{@render children()}</span>\n\t\t{/if}\n\t</div>\n\t{#if !leftIcon}\n\t\t<ChevronDown class=\"size-4 transition-transform group-data-[state=open]:rotate-180\" />\n\t{/if}\n</CollapsibleTrigger>\n",
+			"content": "<script lang=\"ts\">\n\timport { CollapsibleTrigger } from \"$COMPONENTS$/ui/collapsible\";\n\timport { cn } from \"$UTILS$\";\n\timport ChevronDown from \"@lucide/svelte/icons/chevron-down\";\n\n\timport type { Snippet } from \"svelte\";\n\n\tlet {\n\t\tclass: className,\n\t\tleftIcon,\n\t\tswapIconOnHover = true,\n\t\tchildren,\n\t}: {\n\t\tclass?: string;\n\t\tleftIcon?: Snippet;\n\t\tswapIconOnHover?: boolean;\n\t\tchildren?: Snippet;\n\t} = $props();\n</script>\n\n<CollapsibleTrigger\n\tclass={cn(\n\t\t\"group text-muted-foreground hover:text-foreground flex w-full cursor-pointer items-center justify-start gap-1 text-sm transition-colors\",\n\t\tclassName\n\t)}\n>\n\t<div class=\"flex items-center gap-2\">\n\t\t{#if leftIcon}\n\t\t\t<span class=\"relative inline-flex size-4 items-center justify-center\">\n\t\t\t\t<span class={cn(\"transition-opacity\", swapIconOnHover && \"group-hover:opacity-0\")}>\n\t\t\t\t\t{@render leftIcon()}\n\t\t\t\t</span>\n\t\t\t\t{#if swapIconOnHover}\n\t\t\t\t\t<ChevronDown\n\t\t\t\t\t\tclass=\"absolute size-4 opacity-0 transition-opacity group-hover:opacity-100 group-data-[state=open]:rotate-180\"\n\t\t\t\t\t/>\n\t\t\t\t{/if}\n\t\t\t</span>\n\t\t{/if}\n\t\t{#if children}\n\t\t\t<span>{@render children()}</span>\n\t\t{/if}\n\t</div>\n\t{#if !leftIcon}\n\t\t<ChevronDown class=\"size-4 transition-transform group-data-[state=open]:rotate-180\" />\n\t{/if}\n</CollapsibleTrigger>\n",
 			"type": "registry:component",
 			"target": "prompt-kit/steps/steps-trigger.svelte"
 		},

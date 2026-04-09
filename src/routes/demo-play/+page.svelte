@@ -26,7 +26,7 @@
 				<PromptInput.Submit status={chat.status} />
 			</PromptInput.Toolbar>
 		</PromptInput.Root>
-		<div class="rounded-md border p-4 max-w-xl">
+		<div class="max-w-xl rounded-md border p-4">
 			{#if chat.messages.length > 0}
 				<h2 class="text-lg font-bold">Chat Messages:</h2>
 				<ul class="list-disc pl-5">

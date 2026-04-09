@@ -20,10 +20,7 @@
 			code: "max_files" | "max_file_size" | "accept";
 			message: string;
 		}) => void;
-		onFileAdd?: (
-			added: PromptInputAttachment[],
-			attachments: PromptInputAttachment[]
-		) => void;
+		onFileAdd?: (added: PromptInputAttachment[], attachments: PromptInputAttachment[]) => void;
 		onFileRemove?: (
 			removed: PromptInputAttachment[],
 			attachments: PromptInputAttachment[]
@@ -195,7 +192,7 @@
 		let formData = new FormData(form);
 		let text = usingProvider
 			? (controller?.textInput.value ?? "")
-			: ((formData.get("message") as string) || "");
+			: (formData.get("message") as string) || "";
 		let submittedAttachments = attachmentsContext.attachments.map((attachment) => ({
 			...attachment,
 		}));
@@ -259,10 +256,7 @@
 />
 <form
 	bind:this={formRef}
-	class={cn(
-		"bg-background w-full overflow-hidden rounded-xl border shadow-sm",
-		className
-	)}
+	class={cn("bg-background w-full overflow-hidden rounded-xl border shadow-sm", className)}
 	onsubmit={handleSubmit}
 	{...props}
 >

@@ -32,7 +32,7 @@
 		ref = $bindable(null),
 		variant = "default",
 		size = "icon",
-		status='ready',
+		status = "ready",
 		onStop,
 		onclick,
 		children,

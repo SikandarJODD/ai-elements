@@ -1,4 +1,4 @@
-	<script lang="ts">
+<script lang="ts">
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
 	import Button from "../controls/Button.svelte";
 	import PlusIcon from "../icons/PlusIcon.svelte";

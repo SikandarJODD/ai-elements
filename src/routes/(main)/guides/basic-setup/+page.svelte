@@ -163,8 +163,8 @@
 			<section class="mb-12 sm:mb-16">
 				<Subheading>Step 2: Installing shadcn-svelte</Subheading>
 				<p class="mb-6 text-sm leading-relaxed sm:text-base">
-					<strong>shadcn-svelte</strong> provides beautiful, accessible UI components that
-					integrate seamlessly with Tailwind CSS. Install and configure it:
+					<strong>shadcn-svelte</strong> provides beautiful, accessible UI components that integrate
+					seamlessly with Tailwind CSS. Install and configure it:
 				</p>
 
 				<div class="mb-6">

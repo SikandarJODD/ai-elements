@@ -211,8 +211,8 @@
 				Shiki supports many popular themes. This example automatically switches between <code
 					class="bg-muted rounded px-1.5 py-0.5 text-sm">github-light</code
 				>
-				and <code class="bg-muted rounded px-1.5 py-0.5 text-sm">github-dark</code> based on
-				your current color mode. Try toggling your theme to see the change!
+				and <code class="bg-muted rounded px-1.5 py-0.5 text-sm">github-dark</code> based on your
+				current color mode. Try toggling your theme to see the change!
 			</p>
 			<!-- <div class="mb-4 rounded-lg border bg-muted/50 p-3.5">
         <p class="text-sm text-muted-foreground">

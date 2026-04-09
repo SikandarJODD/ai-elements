@@ -167,8 +167,8 @@
 					showing where the connection will end
 				</li>
 				<li>
-					<strong>Smooth Animation:</strong> Uses cubic bezier curves for natural, flowing
-					connection paths that feel organic
+					<strong>Smooth Animation:</strong> Uses cubic bezier curves for natural, flowing connection
+					paths that feel organic
 				</li>
 				<li>
 					<strong>Theme Integration:</strong> Automatically adapts colors to your theme

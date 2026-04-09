@@ -11,7 +11,7 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"build:ai-elements": "pnpm shadcn-svelte registry build",
+		"build:ai-elements": "pnpm shadcn-svelte registry build ./ai-elements.json -o ./static/r",
 		"build:prompt-kit": "pnpm shadcn-svelte registry build ./prompt-kit.json -o ./static/p",
 		"jsrepo:build": "jsrepo build",
 		"jsrepo:publish": "jsrepo publish",

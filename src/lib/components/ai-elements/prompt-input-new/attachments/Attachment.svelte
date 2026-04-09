@@ -30,7 +30,7 @@
 	{...props}
 >
 	{#if mediaType === "image"}
-		<AttachmentImagePreview data={data} />
+		<AttachmentImagePreview {data} />
 	{:else}
 		<div
 			class="text-muted-foreground flex size-full max-w-full cursor-pointer items-center justify-start gap-2 overflow-hidden px-2"

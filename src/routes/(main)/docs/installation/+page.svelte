@@ -107,8 +107,7 @@
 			<p
 				class="text-muted-foreground mb-4 max-w-4xl text-base leading-7 sm:text-lg md:leading-8"
 			>
-				Make sure to select <CodeSpan>Tailwind CSS</CodeSpan> when prompted during the setup
-				process.
+				Make sure to select <CodeSpan>Tailwind CSS</CodeSpan> when prompted during the setup process.
 			</p>
 
 			<p

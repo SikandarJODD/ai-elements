@@ -1,4 +1,4 @@
-	<script lang="ts">
+<script lang="ts">
 	import { getAttachmentsContext } from "../context/attachments.svelte.js";
 	import ActionMenuItem from "./ActionMenuItem.svelte";
 	import ImageIcon from "../icons/ImageIcon.svelte";

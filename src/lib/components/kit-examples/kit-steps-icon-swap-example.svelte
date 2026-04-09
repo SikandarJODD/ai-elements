@@ -7,7 +7,6 @@
 		StepsTrigger,
 	} from "$lib/components/prompt-kit/steps";
 	import Hammer from "@lucide/svelte/icons/hammer";
-
 </script>
 
 <div class="min-w-sm space-y-4">

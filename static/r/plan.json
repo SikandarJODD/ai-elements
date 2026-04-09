@@ -4,21 +4,14 @@
 	"title": "Plan",
 	"type": "registry:block",
 	"author": "SikandarJODD",
-	"description": "The Plan component provides a collapsible container for displaying AI-generated plans with structured sections including header, title, description, actions, content, and footer.",
-	"dependencies": [
-		"@lucide/svelte"
-	],
+	"description": "A collapsible plan component for displaying AI-generated execution plans with streaming support and shimmer animations.",
+	"dependencies": ["@lucide/svelte"],
 	"devDependencies": [
-		"@lucide/svelte@^0.562.0",
-		"bits-ui@^2.14.1",
-		"@internationalized/date@^3.8.1"
+		"@lucide/svelte@^1.7.0",
+		"bits-ui@^2.16.3",
+		"@internationalized/date@^3.12.0"
 	],
-	"registryDependencies": [
-		"collapsible",
-		"card",
-		"button",
-		"./shimmer.json"
-	],
+	"registryDependencies": ["card", "button", "collapsible", "shimmer"],
 	"meta": {
 		"author": "SikandarJODD"
 	},
@@ -27,6 +20,21 @@
 			"content": "<script lang=\"ts\">\n\timport { Collapsible } from \"$COMPONENTS$/ui/collapsible/index.js\";\n\timport { Card } from \"$COMPONENTS$/ui/card/index.js\";\n\timport { cn } from \"$UTILS$\";\n\timport { setPlanContext } from \"./plan-context.svelte.js\";\n\timport type { PlanProps } from \"./types.js\";\n\n\tlet { class: className, isStreaming = false, children, ...restProps }: PlanProps = $props();\n\n\t// Set context for child components\n\tsetPlanContext({ isStreaming });\n</script>\n\n<Collapsible data-slot=\"plan\" {...restProps}>\n\t<Card class={cn(\"shadow-none\", className)}>\n\t\t{@render children?.()}\n\t</Card>\n</Collapsible>\n",
 			"type": "registry:component",
 			"target": "ai-elements/plan/Plan.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { CardHeader } from \"$COMPONENTS$/ui/card/index.js\";\n\timport { cn } from \"$UTILS$\";\n\timport type { PlanHeaderProps } from \"./types.js\";\n\n\tlet { class: className, children, ...restProps }: PlanHeaderProps = $props();\n</script>\n\n<CardHeader\n\tclass={cn(\"flex items-start justify-between\", className)}\n\tdata-slot=\"plan-header\"\n\t{...restProps}\n>\n\t{@render children?.()}\n</CardHeader>\n",
+			"type": "registry:component",
+			"target": "ai-elements/plan/PlanHeader.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { CardTitle } from \"$COMPONENTS$/ui/card/index.js\";\n\timport { Shimmer } from \"$COMPONENTS$/ai-elements/shimmer/index.js\";\n\timport { getPlanContext } from \"./plan-context.svelte.js\";\n\timport type { PlanTitleProps } from \"./types.js\";\n\n\tlet { children, ...restProps }: PlanTitleProps = $props();\n\n\tconst { isStreaming } = getPlanContext();\n</script>\n\n<CardTitle data-slot=\"plan-title\" {...restProps}>\n\t{#if isStreaming}\n\t\t<Shimmer content_length={50}>\n\t\t\t{#snippet children()}\n\t\t\t\t{@render children()}\n\t\t\t{/snippet}\n\t\t</Shimmer>\n\t{:else}\n\t\t{@render children()}\n\t{/if}\n</CardTitle>\n",
+			"type": "registry:component",
+			"target": "ai-elements/plan/PlanTitle.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { CardDescription } from \"$COMPONENTS$/ui/card/index.js\";\n\timport { Shimmer } from \"$COMPONENTS$/ai-elements/shimmer/index.js\";\n\timport { cn } from \"$UTILS$\";\n\timport { getPlanContext } from \"./plan-context.svelte.js\";\n\timport type { PlanDescriptionProps } from \"./types.js\";\n\n\tlet { class: className, children, ...restProps }: PlanDescriptionProps = $props();\n\n\tconst { isStreaming } = getPlanContext();\n</script>\n\n<CardDescription class={cn(\"text-balance\", className)} data-slot=\"plan-description\" {...restProps}>\n\t{#if isStreaming}\n\t\t<Shimmer content_length={80}>\n\t\t\t{#snippet children()}\n\t\t\t\t{@render children()}\n\t\t\t{/snippet}\n\t\t</Shimmer>\n\t{:else}\n\t\t{@render children()}\n\t{/if}\n</CardDescription>\n",
+			"type": "registry:component",
+			"target": "ai-elements/plan/PlanDescription.svelte"
 		},
 		{
 			"content": "<script lang=\"ts\">\n\timport { CardAction } from \"$COMPONENTS$/ui/card/index.js\";\n\timport type { PlanActionProps } from \"./types.js\";\n\n\tlet { children, ...restProps }: PlanActionProps = $props();\n</script>\n\n<CardAction data-slot=\"plan-action\" {...restProps}>\n\t{@render children?.()}\n</CardAction>\n",
@@ -39,24 +47,9 @@
 			"target": "ai-elements/plan/PlanContent.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { CardDescription } from \"$COMPONENTS$/ui/card/index.js\";\n\timport { Shimmer } from \"$COMPONENTS$/ai-elements/shimmer/index.js\";\n\timport { cn } from \"$UTILS$\";\n\timport { getPlanContext } from \"./plan-context.svelte.js\";\n\timport type { PlanDescriptionProps } from \"./types.js\";\n\n\tlet { class: className, children, ...restProps }: PlanDescriptionProps = $props();\n\n\tconst { isStreaming } = getPlanContext();\n</script>\n\n<CardDescription class={cn(\"text-balance\", className)} data-slot=\"plan-description\" {...restProps}>\n\t{#if isStreaming}\n\t\t<Shimmer content_length={80}>\n\t\t\t{#snippet children()}\n\t\t\t\t{@render children()}\n\t\t\t{/snippet}\n\t\t</Shimmer>\n\t{:else}\n\t\t{@render children()}\n\t{/if}\n</CardDescription>\n",
-			"type": "registry:component",
-			"target": "ai-elements/plan/PlanDescription.svelte"
-		},
-		{
 			"content": "<script lang=\"ts\">\n\timport { CardFooter } from \"$COMPONENTS$/ui/card/index.js\";\n\timport type { PlanFooterProps } from \"./types.js\";\n\n\tlet { children, ...restProps }: PlanFooterProps = $props();\n</script>\n\n<CardFooter data-slot=\"plan-footer\" {...restProps}>\n\t{@render children?.()}\n</CardFooter>\n",
 			"type": "registry:component",
 			"target": "ai-elements/plan/PlanFooter.svelte"
-		},
-		{
-			"content": "<script lang=\"ts\">\n\timport { CardHeader } from \"$COMPONENTS$/ui/card/index.js\";\n\timport { cn } from \"$UTILS$\";\n\timport type { PlanHeaderProps } from \"./types.js\";\n\n\tlet { class: className, children, ...restProps }: PlanHeaderProps = $props();\n</script>\n\n<CardHeader\n\tclass={cn(\"flex items-start justify-between\", className)}\n\tdata-slot=\"plan-header\"\n\t{...restProps}\n>\n\t{@render children?.()}\n</CardHeader>\n",
-			"type": "registry:component",
-			"target": "ai-elements/plan/PlanHeader.svelte"
-		},
-		{
-			"content": "<script lang=\"ts\">\n\timport { CardTitle } from \"$COMPONENTS$/ui/card/index.js\";\n\timport { Shimmer } from \"$COMPONENTS$/ai-elements/shimmer/index.js\";\n\timport { getPlanContext } from \"./plan-context.svelte.js\";\n\timport type { PlanTitleProps } from \"./types.js\";\n\n\tlet { children, ...restProps }: PlanTitleProps = $props();\n\n\tconst { isStreaming } = getPlanContext();\n</script>\n\n<CardTitle data-slot=\"plan-title\" {...restProps}>\n\t{#if isStreaming}\n\t\t<Shimmer content_length={50}>\n\t\t\t{#snippet children()}\n\t\t\t\t{@render children()}\n\t\t\t{/snippet}\n\t\t</Shimmer>\n\t{:else}\n\t\t{@render children()}\n\t{/if}\n</CardTitle>\n",
-			"type": "registry:component",
-			"target": "ai-elements/plan/PlanTitle.svelte"
 		},
 		{
 			"content": "<script lang=\"ts\">\n\timport { CollapsibleTrigger } from \"$COMPONENTS$/ui/collapsible/index.js\";\n\timport { Button } from \"$COMPONENTS$/ui/button/index.js\";\n\timport { cn } from \"$UTILS$\";\n\timport ChevronsUpDownIcon from \"@lucide/svelte/icons/chevrons-up-down\";\n\timport type { PlanTriggerProps } from \"./types.js\";\n\n\tlet { class: className, children, ...restProps }: PlanTriggerProps = $props();\n</script>\n\n<CollapsibleTrigger {...restProps}>\n\t<Button class={cn(\"size-8\", className)} data-slot=\"plan-trigger\" size=\"icon\" variant=\"ghost\">\n\t\t{#if children}\n\t\t\t{@render children()}\n\t\t{:else}\n\t\t\t<ChevronsUpDownIcon class=\"size-4\" />\n\t\t\t<span class=\"sr-only\">Toggle plan</span>\n\t\t{/if}\n\t</Button>\n</CollapsibleTrigger>\n",

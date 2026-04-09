@@ -223,8 +223,8 @@
 					API
 				</li>
 				<li>
-					<strong>User Control:</strong> Automatically disables sticky behavior when users
-					scroll up
+					<strong>User Control:</strong> Automatically disables sticky behavior when users scroll
+					up
 				</li>
 				<li><strong>Mobile Support:</strong> Works seamlessly on touch devices</li>
 				<li>
@@ -254,8 +254,8 @@
 					<strong>Cancel on Scroll:</strong> User can scroll up to cancel auto-scrolling behavior
 				</li>
 				<li>
-					<strong>Resume Auto-Scroll:</strong> Returns to auto-scrolling when user scrolls
-					back to bottom
+					<strong>Resume Auto-Scroll:</strong> Returns to auto-scrolling when user scrolls back
+					to bottom
 				</li>
 			</ul>
 

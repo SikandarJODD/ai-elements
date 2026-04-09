@@ -10,7 +10,7 @@
 	let { class: className, children, ...props }: Props = $props();
 </script>
 
-<Select.Content  class={cn(className)} {...props}>
+<Select.Content class={cn(className)} {...props}>
 	{#if children}
 		{@render children()}
 	{/if}

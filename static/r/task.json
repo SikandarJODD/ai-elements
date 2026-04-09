@@ -6,14 +6,11 @@
 	"author": "SikandarJODD",
 	"description": "The Task component displays structured task information with collapsible content, file attachments, and progress indicators for AI-generated tasks.",
 	"devDependencies": [
-		"bits-ui@^2.14.1",
-		"@internationalized/date@^3.8.1",
-		"@lucide/svelte@^0.562.0"
+		"bits-ui@^2.16.3",
+		"@internationalized/date@^3.12.0",
+		"@lucide/svelte@^1.7.0"
 	],
-	"registryDependencies": [
-		"collapsible",
-		"badge"
-	],
+	"registryDependencies": ["collapsible", "badge"],
 	"meta": {
 		"author": "SikandarJODD"
 	},
@@ -39,7 +36,7 @@
 			"target": "ai-elements/task/TaskItemFile.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { CollapsibleTrigger } from \"$COMPONENTS$/ui/collapsible/index.js\";\n\timport { cn } from \"$UTILS$\";\n\timport { ChevronDown, Search } from \"@lucide/svelte\";\n\timport { Collapsible as CollapsiblePrimitive } from \"bits-ui\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface TaskTriggerProps extends CollapsiblePrimitive.TriggerProps {\n\t\ttitle: string;\n\t\tclass?: string;\n\t\tchildren?: Snippet;\n\t}\n\n\tlet { children, class: className, title, ...restProps }: TaskTriggerProps = $props();\n\n\tlet randomId = crypto.randomUUID();\n</script>\n\n{#if children}\n\t<CollapsibleTrigger class={cn(\"group\", className)} {...restProps}>\n\t\t{@render children?.()}\n\t</CollapsibleTrigger>\n{:else}\n\t<CollapsibleTrigger class={cn(\"group\", className)} {...restProps}>\n\t\t<div\n\t\t\tclass=\"text-muted-foreground hover:text-foreground flex w-full cursor-pointer items-center gap-2 text-sm transition-colors\"\n\t\t>\n\t\t\t<Search class=\"size-4\" />\n\t\t\t<p class=\"text-sm\">{title}</p>\n\t\t\t<ChevronDown class=\"size-4 transition-transform group-data-[state=open]:rotate-180\" />\n\t\t</div>\n\t</CollapsibleTrigger>\n{/if}\n",
+			"content": "<script lang=\"ts\">\n\timport { CollapsibleTrigger } from \"$COMPONENTS$/ui/collapsible/index.js\";\n\timport { cn } from \"$UTILS$\";\n\timport ChevronDown from \"@lucide/svelte/icons/chevron-down\";\n\timport Search from \"@lucide/svelte/icons/search\";\n\timport { Collapsible as CollapsiblePrimitive } from \"bits-ui\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface TaskTriggerProps extends CollapsiblePrimitive.TriggerProps {\n\t\ttitle: string;\n\t\tclass?: string;\n\t\tchildren?: Snippet;\n\t}\n\n\tlet { children, class: className, title, ...restProps }: TaskTriggerProps = $props();\n\n\tlet randomId = crypto.randomUUID();\n</script>\n\n{#if children}\n\t<CollapsibleTrigger class={cn(\"group\", className)} {...restProps}>\n\t\t{@render children?.()}\n\t</CollapsibleTrigger>\n{:else}\n\t<CollapsibleTrigger class={cn(\"group\", className)} {...restProps}>\n\t\t<div\n\t\t\tclass=\"text-muted-foreground hover:text-foreground flex w-full cursor-pointer items-center gap-2 text-sm transition-colors\"\n\t\t>\n\t\t\t<Search class=\"size-4\" />\n\t\t\t<p class=\"text-sm\">{title}</p>\n\t\t\t<ChevronDown class=\"size-4 transition-transform group-data-[state=open]:rotate-180\" />\n\t\t</div>\n\t</CollapsibleTrigger>\n{/if}\n",
 			"type": "registry:component",
 			"target": "ai-elements/task/TaskTrigger.svelte"
 		},

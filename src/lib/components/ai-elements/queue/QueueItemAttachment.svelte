@@ -3,8 +3,9 @@
 	import type { HTMLAttributes } from "svelte/elements";
 	import type { Snippet } from "svelte";
 
-	export interface QueueItemAttachmentProps
-		extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
+	export interface QueueItemAttachmentProps extends WithElementRef<
+		HTMLAttributes<HTMLDivElement>
+	> {
 		children?: Snippet;
 	}
 </script>

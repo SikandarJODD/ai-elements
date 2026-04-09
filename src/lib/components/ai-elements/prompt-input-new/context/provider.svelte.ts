@@ -42,7 +42,4 @@ export function getPromptInputController(): Controller {
 	return context;
 }
 
-export {
-	Controller as PromptInputController,
-	TextController as TextInputController,
-};
+export { Controller as PromptInputController, TextController as TextInputController };

@@ -9,7 +9,6 @@
 	import ArrowUp from "@lucide/svelte/icons/arrow-up";
 	import Brain from "@lucide/svelte/icons/brain";
 
-
 	let inputValue = $state("");
 	let activeCategory = $state("");
 

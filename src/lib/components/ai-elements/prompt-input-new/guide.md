@@ -6,9 +6,9 @@ Use this order:
 
 ```svelte
 <PromptInput>
-	<PromptInputHeader />
-	<PromptInputBody />
-	<PromptInputToolbar />
+  <PromptInputHeader />
+  <PromptInputBody />
+  <PromptInputToolbar />
 </PromptInput>
 ```
 

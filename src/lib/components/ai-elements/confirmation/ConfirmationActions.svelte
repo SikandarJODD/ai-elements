@@ -3,8 +3,9 @@
 	import type { HTMLAttributes } from "svelte/elements";
 	import type { Snippet } from "svelte";
 
-	export interface ConfirmationActionsProps
-		extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
+	export interface ConfirmationActionsProps extends WithElementRef<
+		HTMLAttributes<HTMLDivElement>
+	> {
 		children?: Snippet;
 	}
 </script>

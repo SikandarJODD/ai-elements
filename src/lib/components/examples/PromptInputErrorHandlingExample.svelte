@@ -183,8 +183,7 @@
 			<div class="flex gap-3">
 				<CheckCircle2 class="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
 				<div>
-					<strong>Retry Capability:</strong> Users can fix issues and retry without losing
-					work
+					<strong>Retry Capability:</strong> Users can fix issues and retry without losing work
 				</div>
 			</div>
 

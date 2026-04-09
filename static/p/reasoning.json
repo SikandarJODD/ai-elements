@@ -4,28 +4,17 @@
 	"type": "registry:block",
 	"description": "The Reasoning component displays AI reasoning and thinking process with collapsible content. Features trigger, content, and context management for showing step-by-step AI reasoning in responses.",
 	"dependencies": [
-		"runed@^0.31.1",
+		"runed@^0.37.1",
 		"svelte-streamdown@^3.0.1",
 		"mode-watcher@^1.1.0",
-		"@shikijs/themes@^3.13.0"
+		"@shikijs/themes@^4.0.2"
 	],
-	"devDependencies": [
-		"@lucide/svelte@^0.562.0"
-	],
-	"registryDependencies": [
-		"collapsible",
-		"button"
-	],
+	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"registryDependencies": ["collapsible", "button"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"prompt-kit",
-			"reasoning",
-			"thinking",
-			"ai-process",
-			"collapsible"
-		],
+		"tags": ["prompt-kit", "reasoning", "thinking", "ai-process", "collapsible"],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/reasoning",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -40,7 +29,7 @@
 			"target": "prompt-kit/reasoning/reasoning.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { ChevronDown } from \"@lucide/svelte\";\n\timport { getReasoningContext } from \"./reasoning-context.svelte.js\";\n\timport { cn } from \"$UTILS$\";\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLButtonAttributes } from \"svelte/elements\";\n\n\tinterface Props extends HTMLButtonAttributes {\n\t\tchildren: Snippet;\n\t}\n\n\tlet { children, class: className, onclick, ...rest }: Props = $props();\n\n\tconst context = getReasoningContext();\n\n\tfunction handleClick(e: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {\n\t\tcontext.toggle();\n\t\tonclick?.(e);\n\t}\n</script>\n\n<button\n\tclass={cn(\"flex cursor-pointer items-center gap-2\", className)}\n\tonclick={handleClick}\n\t{...rest}\n>\n\t<span class=\"text-primary\">\n\t\t{@render children()}\n\t</span>\n\t<div class={cn(\"transform transition-transform\", context.isOpen ? \"rotate-180\" : \"\")}>\n\t\t<ChevronDown class=\"size-4\" />\n\t</div>\n</button>\n",
+			"content": "<script lang=\"ts\">\n\timport ChevronDown from \"@lucide/svelte/icons/chevron-down\";\n\n\timport { getReasoningContext } from \"./reasoning-context.svelte.js\";\n\timport { cn } from \"$UTILS$\";\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLButtonAttributes } from \"svelte/elements\";\n\n\tinterface Props extends HTMLButtonAttributes {\n\t\tchildren: Snippet;\n\t}\n\n\tlet { children, class: className, onclick, ...rest }: Props = $props();\n\n\tconst context = getReasoningContext();\n\n\tfunction handleClick(e: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {\n\t\tcontext.toggle();\n\t\tonclick?.(e);\n\t}\n</script>\n\n<button\n\tclass={cn(\"flex cursor-pointer items-center gap-2\", className)}\n\tonclick={handleClick}\n\t{...rest}\n>\n\t<span class=\"text-primary\">\n\t\t{@render children()}\n\t</span>\n\t<div class={cn(\"transform transition-transform\", context.isOpen ? \"rotate-180\" : \"\")}>\n\t\t<ChevronDown class=\"size-4\" />\n\t</div>\n</button>\n",
 			"type": "registry:component",
 			"target": "prompt-kit/reasoning/reasoning-trigger.svelte"
 		},

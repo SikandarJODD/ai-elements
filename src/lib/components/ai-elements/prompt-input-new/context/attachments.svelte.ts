@@ -8,14 +8,8 @@ export type AttachmentError = {
 
 type AttachmentCallbacks = {
 	onAttachmentsChange?: (attachments: PromptInputAttachment[]) => void;
-	onFileAdd?: (
-		added: PromptInputAttachment[],
-		attachments: PromptInputAttachment[]
-	) => void;
-	onFileRemove?: (
-		removed: PromptInputAttachment[],
-		attachments: PromptInputAttachment[]
-	) => void;
+	onFileAdd?: (added: PromptInputAttachment[], attachments: PromptInputAttachment[]) => void;
+	onFileRemove?: (removed: PromptInputAttachment[], attachments: PromptInputAttachment[]) => void;
 };
 
 type AttachmentOptions = {
@@ -39,10 +33,7 @@ export class AttachmentsContext {
 	onError?: (err: AttachmentError) => void;
 	onAttachmentsChange?: (attachments: PromptInputAttachment[]) => void;
 	onFileAdd?: (added: PromptInputAttachment[], attachments: PromptInputAttachment[]) => void;
-	onFileRemove?: (
-		removed: PromptInputAttachment[],
-		attachments: PromptInputAttachment[]
-	) => void;
+	onFileRemove?: (removed: PromptInputAttachment[], attachments: PromptInputAttachment[]) => void;
 
 	constructor(options: AttachmentOptions = {}) {
 		this.configure(options);

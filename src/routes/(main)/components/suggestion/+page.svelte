@@ -114,8 +114,8 @@
 			<Subheading class="md:text-3xl">Suggestion</Subheading>
 
 			<p class="!text-muted-foreground my-2 text-lg">
-				The <CodeSpan>Suggestion</CodeSpan> component displays a horizontal row of clickable
-				suggestions for user interaction.
+				The <CodeSpan>Suggestion</CodeSpan> component displays a horizontal row of clickable suggestions
+				for user interaction.
 			</p>
 
 			<!-- Actions -->

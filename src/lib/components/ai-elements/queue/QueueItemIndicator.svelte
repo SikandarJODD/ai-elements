@@ -3,8 +3,9 @@
 	import type { HTMLAttributes } from "svelte/elements";
 	import type { Snippet } from "svelte";
 
-	export interface QueueItemIndicatorProps
-		extends WithElementRef<HTMLAttributes<HTMLSpanElement>> {
+	export interface QueueItemIndicatorProps extends WithElementRef<
+		HTMLAttributes<HTMLSpanElement>
+	> {
 		completed?: boolean;
 		children?: Snippet;
 	}

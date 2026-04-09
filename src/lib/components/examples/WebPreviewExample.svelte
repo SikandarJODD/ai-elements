@@ -13,7 +13,6 @@
 	import RotateCcw from "@lucide/svelte/icons/rotate-ccw";
 	import ExternalLink from "@lucide/svelte/icons/external-link";
 
-
 	// Sample logs for the console
 	let sampleLogs: LogEntry[] = [
 		{

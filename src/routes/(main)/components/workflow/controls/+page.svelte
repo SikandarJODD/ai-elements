@@ -26,8 +26,8 @@
 
 			<p class="!text-muted-foreground my-2 text-lg">
 				The <CodeSpan>Controls</CodeSpan> component provides interactive zoom and fit view controls
-				for Svelte Flow canvases. It includes a modern, themed design with backdrop blur and
-				card styling.
+				for Svelte Flow canvases. It includes a modern, themed design with backdrop blur and card
+				styling.
 			</p>
 
 			<Playground code={examples.basic.code}>
