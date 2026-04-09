@@ -26,8 +26,8 @@
 
 			<p class="!text-muted-foreground my-2 text-lg">
 				The <CodeSpan>Toolbar</CodeSpan> component provides a positioned toolbar that attaches
-				to nodes in Svelte Flow canvases. It features modern card styling with backdrop blur
-				and flexbox layout for action buttons and controls.
+				to nodes in Svelte Flow canvases. It features modern card styling with backdrop blur and
+				flexbox layout for action buttons and controls.
 			</p>
 
 			<Playground code={examples.basic.code}>

@@ -35,8 +35,8 @@
 							class="text-primary underline underline-offset-2">shadcn-svelte</a
 						>
 						to help you build AI-native applications faster.
-						<br /> It provides pre-built components like conversations, messages, prompt
-						input, response and more.
+						<br /> It provides pre-built components like conversations, messages, prompt input,
+						response and more.
 					</p>
 
 					<div class="mt-12 flex items-center gap-1 md:gap-3">

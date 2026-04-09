@@ -39,7 +39,7 @@
 	</div>
 
 	<p class="text-muted-foreground px-2 text-xs">
-		💡 <strong>Try it:</strong> Drag from the Source node's right edge to connect to Target A or
-		Target B
+		💡 <strong>Try it:</strong> Drag from the Source node's right edge to connect to Target A or Target
+		B
 	</p>
 </div>

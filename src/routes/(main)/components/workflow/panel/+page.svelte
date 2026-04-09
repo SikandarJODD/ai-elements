@@ -26,8 +26,8 @@
 
 			<p class="!text-muted-foreground my-2 text-lg">
 				The <CodeSpan>Panel</CodeSpan> component provides a positioned container for custom UI
-				elements on Svelte Flow canvases. It includes modern card styling with backdrop blur
-				and flexible positioning options.
+				elements on Svelte Flow canvases. It includes modern card styling with backdrop blur and
+				flexible positioning options.
 			</p>
 
 			<Playground code={examples.basic.code}>

@@ -4,9 +4,7 @@
 	"title": "Response",
 	"type": "registry:block",
 	"description": "The Response component provides a structured container for displaying AI responses with consistent formatting and styling.",
-	"dependencies": [
-		"svelte-streamdown"
-	],
+	"dependencies": ["svelte-streamdown"],
 	"meta": {
 		"author": "SikandarJODD"
 	},

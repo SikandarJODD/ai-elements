@@ -2,14 +2,13 @@
 	import { CollapsibleTrigger } from "$lib/components/ui/collapsible/index.js";
 	import { Badge } from "$lib/components/ui/badge/index.js";
 	import { cn } from "$lib/utils/utils";
-	import {
-		CheckCircleIcon,
-		ChevronDownIcon,
-		CircleIcon,
-		ClockIcon,
-		WrenchIcon,
-		XCircleIcon,
-	} from "@lucide/svelte";
+
+	import CheckCircleIcon from "@lucide/svelte/icons/check-circle";
+	import ChevronDownIcon from "@lucide/svelte/icons/chevron-down";
+	import CircleIcon from "@lucide/svelte/icons/circle";
+	import ClockIcon from "@lucide/svelte/icons/clock";
+	import WrenchIcon from "@lucide/svelte/icons/wrench";
+	import XCircleIcon from "@lucide/svelte/icons/x-circle";
 
 	type ToolUIPartType = string;
 	type ToolUIPartState =

@@ -200,10 +200,10 @@
 			<Subheading class="md:text-3xl">Context</Subheading>
 
 			<p class="!text-muted-foreground my-2 text-lg">
-				The <CodeSpan>Context</CodeSpan> component provides a comprehensive view of AI model
-				usage through a compound component system. It displays context window utilization, token
-				consumption breakdown (input, output, reasoning, cache), and cost estimation in an interactive
-				hover card interface.
+				The <CodeSpan>Context</CodeSpan> component provides a comprehensive view of AI model usage
+				through a compound component system. It displays context window utilization, token consumption
+				breakdown (input, output, reasoning, cache), and cost estimation in an interactive hover
+				card interface.
 			</p>
 
 			<!-- Actions -->

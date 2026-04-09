@@ -78,8 +78,8 @@
 			<p class="!text-muted-foreground my-2 text-lg">
 				The <CodeSpan>Image</CodeSpan> component displays AI-generated images from base64 encoded
 				data. It's designed to work seamlessly with the AI SDK's
-				<CodeSpan>Experimental_GeneratedImage</CodeSpan> type and provides automatic styling
-				with proper accessibility features.
+				<CodeSpan>Experimental_GeneratedImage</CodeSpan> type and provides automatic styling with
+				proper accessibility features.
 			</p>
 
 			<!-- Actions -->
@@ -516,8 +516,8 @@ export const POST: RequestHandler = async ({ request }) => {
 			<Subheading>Accessibility</Subheading>
 
 			<p class="text-muted-foreground mb-4">
-				Always provide meaningful <code class="text-sm">alt</code> text for images to ensure
-				your application is accessible to all users:
+				Always provide meaningful <code class="text-sm">alt</code> text for images to ensure your
+				application is accessible to all users:
 			</p>
 
 			<CodeNameBlock

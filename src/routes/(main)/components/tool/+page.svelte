@@ -145,8 +145,8 @@
 
 			<p class="!text-muted-foreground my-2 text-lg">
 				The <CodeSpan>Tool</CodeSpan> component displays a collapsible interface for showing/hiding
-				tool details. It is designed to take the ToolUIPart type from the AI SDK and display
-				it in a collapsible interface.
+				tool details. It is designed to take the ToolUIPart type from the AI SDK and display it
+				in a collapsible interface.
 			</p>
 
 			<!-- Actions -->

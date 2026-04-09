@@ -5,7 +5,7 @@ import type { RequestHandler } from "./$types";
 export const POST: RequestHandler = async ({ request }) => {
 	const { messages }: { messages: UIMessage[] } = await request.json();
 
-	const result = streamText({
+	let result = streamText({
 		model: openrouter(defaultModel),
 		messages: await convertToModelMessages(messages),
 	});

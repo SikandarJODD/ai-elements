@@ -7,7 +7,9 @@
 		ChainOfThoughtTrigger,
 	} from "$lib/components/prompt-kit/chain-of-thought";
 	import { CodeBlock, CodeBlockCode } from "$lib/components/prompt-kit/code-block";
-	import { Lightbulb, Search, Target } from "@lucide/svelte";
+	import Lightbulb from "@lucide/svelte/icons/lightbulb";
+	import Search from "@lucide/svelte/icons/search";
+	import Target from "@lucide/svelte/icons/target";
 </script>
 
 <div class="w-full max-w-3xl">

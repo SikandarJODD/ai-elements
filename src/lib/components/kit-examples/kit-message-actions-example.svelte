@@ -7,7 +7,9 @@
 		MessageAction,
 	} from "$lib/components/prompt-kit/message/index.js";
 	import { Button } from "$lib/components/ui/button";
-	import { Copy, ThumbsUp, ThumbsDown } from "@lucide/svelte";
+	import Copy from "@lucide/svelte/icons/copy";
+	import ThumbsUp from "@lucide/svelte/icons/thumbs-up";
+	import ThumbsDown from "@lucide/svelte/icons/thumbs-down";
 
 	function handleCopy() {
 		console.log("Copy clicked");

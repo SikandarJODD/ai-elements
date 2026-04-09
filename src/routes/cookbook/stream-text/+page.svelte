@@ -179,8 +179,8 @@ export const POST: RequestHandler = async ({ request }) => {
 		<h2 class="mb-6 text-2xl font-semibold">Server Endpoint</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
 			The server endpoint uses <code class="text-foreground">streamText</code> to generate
-			responses and <code class="text-foreground">toUIMessageStreamResponse()</code> to stream
-			them back to the client in a format the Chat class can consume.
+			responses and <code class="text-foreground">toUIMessageStreamResponse()</code> to stream them
+			back to the client in a format the Chat class can consume.
 		</p>
 		<CodeNameBlock
 			filename="src/routes/api/cookbook/stream-text/+server.ts"

@@ -2,7 +2,7 @@
 	import { Chat } from "@ai-sdk/svelte";
 	import { DefaultChatTransport } from "ai";
 	import { Button } from "$lib/components/ui/button";
-	import { ArrowUp } from "@lucide/svelte";
+	import ArrowUp from "@lucide/svelte/icons/arrow-up";
 	import {
 		ChatContainerRoot,
 		ChatContainerContent,

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { SystemMessage } from "$lib/components/prompt-kit/system-message/index.js";
-	import { ShieldCheck } from "@lucide/svelte";
+	import ShieldCheck from "@lucide/svelte/icons/shield-check";
 </script>
 
 <div class="max-w-2xl">

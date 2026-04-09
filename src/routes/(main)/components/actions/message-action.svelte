@@ -1,7 +1,13 @@
 <script lang="ts">
 	import { Action, Actions } from "$lib/components/ai-elements/action/index.js";
 	import { Message, MessageContent } from "$lib/components/ai-elements/message/index.js";
-	import { Copy, Heart, RefreshCcw, Share, ThumbsDown, ThumbsUp } from "@lucide/svelte";
+	// import { Copy, Heart, RefreshCcw, Share, ThumbsDown, ThumbsUp } from "@lucide/svelte";
+	import RefreshCcw from "@lucide/svelte/icons/refresh-ccw";
+	import ThumbsUp from "@lucide/svelte/icons/thumbs-up";
+	import ThumbsDown from "@lucide/svelte/icons/thumbs-down";
+	import Copy from "@lucide/svelte/icons/copy";
+	import Share from "@lucide/svelte/icons/share-2";
+	import Heart from "@lucide/svelte/icons/heart";
 
 	// Using Svelte 5 state runes
 	let liked = $state(false);

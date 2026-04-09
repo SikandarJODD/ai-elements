@@ -18,7 +18,7 @@
 <script lang="ts">
 	import { cn } from "$lib/utils/utils";
 	import { TextShimmer } from "$lib/components/prompt-kit/text-shimmer/index.js";
-	import { ChevronRight } from "@lucide/svelte";
+	import ChevronRight from "@lucide/svelte/icons/chevron-right";
 
 	let {
 		class: className,

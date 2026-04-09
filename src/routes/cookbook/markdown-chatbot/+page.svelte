@@ -117,8 +117,8 @@ Always format code with the correct language identifier.\`,
 		<p class="text-muted-foreground leading-relaxed">
 			Most AI responses contain markdown - code blocks, bullet points, headers. Raw markdown
 			is hard to read. This recipe uses <code class="text-foreground">svelte-streamdown</code>
-			to render streaming markdown with Shiki-powered syntax highlighting that works perfectly
-			in both light and dark modes.
+			to render streaming markdown with Shiki-powered syntax highlighting that works perfectly in
+			both light and dark modes.
 		</p>
 	</section>
 

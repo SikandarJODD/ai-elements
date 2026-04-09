@@ -358,6 +358,12 @@
 			description: "Pre-built conversation layouts ready to use",
 			icon: BoxesIcon,
 		},
+		{
+			href: "/demo-play",
+			title: "Demo Play",
+			description: "Pre-built conversation layouts ready to use",
+			icon: BoxesIcon,
+		},
 	];
 </script>
 

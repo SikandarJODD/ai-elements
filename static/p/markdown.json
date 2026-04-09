@@ -5,7 +5,7 @@
 	"description": "The Markdown component renders markdown content with proper styling and support for code blocks, lists, links, and other markdown elements. Perfect for displaying AI-generated markdown responses.",
 	"dependencies": [
 		"marked",
-		"isomorphic-dompurify"
+		"dompurify"
 	],
 	"meta": {
 		"author": "SikandarJODD",

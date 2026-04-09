@@ -10,7 +10,7 @@
 		MessageAvatar,
 		MessageContent,
 	} from "$lib/components/ai-elements/message/index.js";
-	import { MessageSquare } from "@lucide/svelte";
+	import MessageSquare from "@lucide/svelte/icons/message-square";
 
 	interface MessageData {
 		key: string;

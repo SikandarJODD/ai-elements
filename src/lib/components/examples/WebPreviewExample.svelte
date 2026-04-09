@@ -8,7 +8,10 @@
 		WebPreviewConsole,
 		type LogEntry,
 	} from "$lib/components/ai-elements/web-preview/index.js";
-	import { ArrowLeft, ArrowRight, RotateCcw, ExternalLink } from "@lucide/svelte";
+	import ArrowLeft from "@lucide/svelte/icons/arrow-left";
+	import ArrowRight from "@lucide/svelte/icons/arrow-right";
+	import RotateCcw from "@lucide/svelte/icons/rotate-ccw";
+	import ExternalLink from "@lucide/svelte/icons/external-link";
 
 	// Sample logs for the console
 	let sampleLogs: LogEntry[] = [

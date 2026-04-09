@@ -220,8 +220,8 @@ export const POST = async ({ request }) => {
 	<section class="mb-10">
 		<h2 class="mb-6 text-3xl font-semibold">Client Component</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
-			The client uses the <code class="text-foreground">Chat</code> class to send messages and
-			render tool call results as they stream in.
+			The client uses the <code class="text-foreground">Chat</code> class to send messages and render
+			tool call results as they stream in.
 		</p>
 		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} />
 	</section>

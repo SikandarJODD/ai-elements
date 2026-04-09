@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { Chat } from "@ai-sdk/svelte";
 
-	import { RefreshCcwIcon, ClipboardIcon, SunIcon, MoonIcon, PlusIcon } from "@lucide/svelte";
+	import RefreshCcwIcon from "@lucide/svelte/icons/refresh-ccw";
+	import ClipboardIcon from "@lucide/svelte/icons/clipboard";
+	import SunIcon from "@lucide/svelte/icons/sun";
+	import MoonIcon from "@lucide/svelte/icons/moon";
+	import PlusIcon from "@lucide/svelte/icons/plus";
 
 	import { mode, toggleMode } from "mode-watcher";
 	import { watch } from "runed";

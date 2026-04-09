@@ -5,19 +5,9 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The InlineCitation component displays a citation or reference within text, typically used to attribute sources in AI-generated content. It includes a tooltip for additional information.",
-	"dependencies": [
-		"@lucide/svelte"
-	],
-	"devDependencies": [
-		"@lucide/svelte@^0.562.0"
-	],
-	"registryDependencies": [
-		"tooltip",
-		"hover-card",
-		"badge",
-		"button",
-		"carousel"
-	],
+	"dependencies": ["@lucide/svelte"],
+	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"registryDependencies": ["tooltip", "hover-card", "badge", "button", "carousel"],
 	"meta": {
 		"author": "SikandarJODD"
 	},
@@ -68,12 +58,12 @@
 			"target": "ai-elements/inline-citation/InlineCitationCarouselItem.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { getCarouselContext } from \"./carousel-context.svelte.js\";\n\timport { ArrowRight } from \"@lucide/svelte\";\n\timport type { HTMLButtonAttributes } from \"svelte/elements\";\n\n\ttype Props = HTMLButtonAttributes & {\n\t\tclass?: string;\n\t};\n\n\tlet { class: className, ...restProps }: Props = $props();\n\n\tconst carouselContext = getCarouselContext();\n\n\tfunction handleClick() {\n\t\tconst api = carouselContext?.getApi();\n\t\tif (api) {\n\t\t\tapi.scrollNext();\n\t\t}\n\t}\n</script>\n\n<button\n\taria-label=\"Next\"\n\tclass={cn(\"shrink-0\", className)}\n\tonclick={handleClick}\n\ttype=\"button\"\n\t{...restProps}\n>\n\t<ArrowRight class=\"text-muted-foreground size-4\" />\n</button>\n",
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { getCarouselContext } from \"./carousel-context.svelte.js\";\n\timport ArrowRight from \"@lucide/svelte/icons/arrow-right\";\n\timport type { HTMLButtonAttributes } from \"svelte/elements\";\n\n\ttype Props = HTMLButtonAttributes & {\n\t\tclass?: string;\n\t};\n\n\tlet { class: className, ...restProps }: Props = $props();\n\n\tconst carouselContext = getCarouselContext();\n\n\tfunction handleClick() {\n\t\tconst api = carouselContext?.getApi();\n\t\tif (api) {\n\t\t\tapi.scrollNext();\n\t\t}\n\t}\n</script>\n\n<button\n\taria-label=\"Next\"\n\tclass={cn(\"shrink-0\", className)}\n\tonclick={handleClick}\n\ttype=\"button\"\n\t{...restProps}\n>\n\t<ArrowRight class=\"text-muted-foreground size-4\" />\n</button>\n",
 			"type": "registry:component",
 			"target": "ai-elements/inline-citation/InlineCitationCarouselNext.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { getCarouselContext } from \"./carousel-context.svelte.js\";\n\timport { ArrowLeft } from \"@lucide/svelte\";\n\timport type { HTMLButtonAttributes } from \"svelte/elements\";\n\n\ttype Props = HTMLButtonAttributes & {\n\t\tclass?: string;\n\t};\n\n\tlet { class: className, ...restProps }: Props = $props();\n\n\tconst carouselContext = getCarouselContext();\n\n\tfunction handleClick() {\n\t\tconst api = carouselContext?.getApi();\n\t\tif (api) {\n\t\t\tapi.scrollPrev();\n\t\t}\n\t}\n</script>\n\n<button\n\taria-label=\"Previous\"\n\tclass={cn(\"shrink-0\", className)}\n\tonclick={handleClick}\n\ttype=\"button\"\n\t{...restProps}\n>\n\t<ArrowLeft class=\"text-muted-foreground size-4\" />\n</button>\n",
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { getCarouselContext } from \"./carousel-context.svelte.js\";\n\timport ArrowLeft from \"@lucide/svelte/icons/arrow-left\";\n\timport type { HTMLButtonAttributes } from \"svelte/elements\";\n\n\ttype Props = HTMLButtonAttributes & {\n\t\tclass?: string;\n\t};\n\n\tlet { class: className, ...restProps }: Props = $props();\n\n\tconst carouselContext = getCarouselContext();\n\n\tfunction handleClick() {\n\t\tconst api = carouselContext?.getApi();\n\t\tif (api) {\n\t\t\tapi.scrollPrev();\n\t\t}\n\t}\n</script>\n\n<button\n\taria-label=\"Previous\"\n\tclass={cn(\"shrink-0\", className)}\n\tonclick={handleClick}\n\ttype=\"button\"\n\t{...restProps}\n>\n\t<ArrowLeft class=\"text-muted-foreground size-4\" />\n</button>\n",
 			"type": "registry:component",
 			"target": "ai-elements/inline-citation/InlineCitationCarouselPrev.svelte"
 		},

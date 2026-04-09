@@ -7,22 +7,18 @@
 	"description": "The Code component displays formatted code snippets with syntax highlighting, line numbers, and a copy-to-clipboard feature. It supports multiple programming languages and themes for better readability.",
 	"dependencies": [
 		"svelte-toolbelt",
-		"dompurify",
+		"isomorphic-dompurify",
 		"shiki",
 		"runed",
 		"@shikijs/langs",
 		"@shikijs/themes"
 	],
 	"devDependencies": [
-		"bits-ui@^2.14.1",
-		"@internationalized/date@^3.8.1",
+		"bits-ui@^2.16.3",
+		"@internationalized/date@^3.12.0",
 		"tailwind-variants@^3.1.1"
 	],
-	"registryDependencies": [
-		"./copy-button.json",
-		"button",
-		"tooltip"
-	],
+	"registryDependencies": ["./copy-button.json", "button", "tooltip"],
 	"meta": {
 		"author": "SikandarJODD"
 	},

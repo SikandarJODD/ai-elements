@@ -222,8 +222,8 @@
 				You can use <code class="bg-muted rounded px-1.5 py-0.5 text-sm"
 					>MessageActions</code
 				>
-				and <code class="bg-muted rounded px-1.5 py-0.5 text-sm">MessageAction</code> to add
-				interactive elements to your messages.
+				and <code class="bg-muted rounded px-1.5 py-0.5 text-sm">MessageAction</code> to add interactive
+				elements to your messages.
 			</p>
 			<Playground
 				code={examples.withActions.code}

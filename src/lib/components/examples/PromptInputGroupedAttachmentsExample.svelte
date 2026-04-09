@@ -223,8 +223,8 @@
 	<div class="rounded-lg bg-blue-50 p-4 dark:bg-blue-950/20">
 		<p class="text-sm">
 			<strong>Try it:</strong> Upload a mix of images and documents. Notice how they're grouped
-			separately and displayed differently. Hover over document names to see the full filename
-			and media type in a tooltip.
+			separately and displayed differently. Hover over document names to see the full filename and
+			media type in a tooltip.
 		</p>
 	</div>
 </div>

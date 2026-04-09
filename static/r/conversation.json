@@ -5,15 +5,9 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Conversation component provides a structured layout for displaying a series of chat messages between a user and an AI. It supports features like message grouping, typing indicators, and customizable avatars.",
-	"dependencies": [
-		"runed@^0.31.1"
-	],
-	"devDependencies": [
-		"@lucide/svelte@^0.562.0"
-	],
-	"registryDependencies": [
-		"button"
-	],
+	"dependencies": ["runed@^0.37.1"],
+	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"registryDependencies": ["button"],
 	"meta": {
 		"author": "SikandarJODD"
 	},
@@ -34,7 +28,7 @@
 			"target": "ai-elements/conversation/ConversationEmptyState.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\" module>\n\timport { cn } from \"$UTILS$\";\n\timport type { ButtonProps } from \"$COMPONENTS$/ui/button/index.js\";\n\n\texport interface ConversationScrollButtonProps extends ButtonProps {}\n</script>\n\n<script lang=\"ts\">\n\timport { Button } from \"$COMPONENTS$/ui/button\";\n\timport { ArrowDown } from \"@lucide/svelte\";\n\timport { getStickToBottomContext } from \"./stick-to-bottom-context.svelte.js\";\n\timport { fade, fly, scale } from \"svelte/transition\";\n\timport { backOut } from \"svelte/easing\";\n\n\tlet { class: className, onclick, ...restProps }: ConversationScrollButtonProps = $props();\n\n\tconst context = getStickToBottomContext();\n\n\tconst handleScrollToBottom = (event: MouseEvent) => {\n\t\tcontext.scrollToBottom();\n\t\tif (onclick) {\n\t\t\tonclick(\n\t\t\t\tevent as MouseEvent & {\n\t\t\t\t\tcurrentTarget: EventTarget & HTMLButtonElement;\n\t\t\t\t}\n\t\t\t);\n\t\t}\n\t};\n</script>\n\n{#if !context.isAtBottom}\n\t<div\n\t\tin:fly={{\n\t\t\tduration: 300,\n\t\t\ty: 10,\n\t\t\teasing: backOut,\n\t\t}}\n\t\tout:fly={{\n\t\t\tduration: 200,\n\t\t\ty: 10,\n\t\t\teasing: backOut,\n\t\t}}\n\t\tclass=\"absolute bottom-4 left-[50%] translate-x-[-50%]\"\n\t>\n\t\t<Button\n\t\t\tclass={cn(\n\t\t\t\t\"bg-background/80 border-border/50 hover:bg-background/90 rounded-full shadow-lg backdrop-blur-sm hover:shadow-xl\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\tonclick={handleScrollToBottom}\n\t\t\tsize=\"icon\"\n\t\t\ttype=\"button\"\n\t\t\tvariant=\"outline\"\n\t\t\t{...restProps}\n\t\t>\n\t\t\t<ArrowDown class=\"size-4\" />\n\t\t</Button>\n\t</div>\n{/if}\n",
+			"content": "<script lang=\"ts\" module>\n\timport { cn } from \"$UTILS$\";\n\timport type { ButtonProps } from \"$COMPONENTS$/ui/button/index.js\";\n\n\texport interface ConversationScrollButtonProps extends ButtonProps {}\n</script>\n\n<script lang=\"ts\">\n\timport { Button } from \"$COMPONENTS$/ui/button\";\n\timport ArrowDown from \"@lucide/svelte/icons/arrow-down\";\n\timport { getStickToBottomContext } from \"./stick-to-bottom-context.svelte.js\";\n\timport { fly} from \"svelte/transition\";\n\timport { backOut } from \"svelte/easing\";\n\n\tlet { class: className, onclick, ...restProps }: ConversationScrollButtonProps = $props();\n\n\tconst context = getStickToBottomContext();\n\n\tconst handleScrollToBottom = (event: MouseEvent) => {\n\t\tcontext.scrollToBottom();\n\t\tif (onclick) {\n\t\t\tonclick(\n\t\t\t\tevent as MouseEvent & {\n\t\t\t\t\tcurrentTarget: EventTarget & HTMLButtonElement;\n\t\t\t\t}\n\t\t\t);\n\t\t}\n\t};\n</script>\n\n{#if !context.isAtBottom}\n\t<div\n\t\tin:fly={{\n\t\t\tduration: 300,\n\t\t\ty: 10,\n\t\t\teasing: backOut,\n\t\t}}\n\t\tout:fly={{\n\t\t\tduration: 200,\n\t\t\ty: 10,\n\t\t\teasing: backOut,\n\t\t}}\n\t\tclass=\"absolute bottom-4 left-[50%] translate-x-[-50%]\"\n\t>\n\t\t<Button\n\t\t\tclass={cn(\n\t\t\t\t\"bg-background/80 border-border/50 hover:bg-background/90 rounded-full shadow-lg backdrop-blur-sm hover:shadow-xl\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\tonclick={handleScrollToBottom}\n\t\t\tsize=\"icon\"\n\t\t\ttype=\"button\"\n\t\t\tvariant=\"outline\"\n\t\t\t{...restProps}\n\t\t>\n\t\t\t<ArrowDown class=\"size-4\" />\n\t\t</Button>\n\t</div>\n{/if}\n",
 			"type": "registry:component",
 			"target": "ai-elements/conversation/ConversationScrollButton.svelte"
 		},

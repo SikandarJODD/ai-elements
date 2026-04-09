@@ -167,8 +167,8 @@
 			<Subheading class="md:text-3xl">Open In Chat</Subheading>
 
 			<p class="!text-muted-foreground my-2 text-lg">
-				The <CodeSpan>Open In Chat</CodeSpan> component provides a dropdown menu that allows
-				users to open queries in different AI chat platforms with a single click.
+				The <CodeSpan>Open In Chat</CodeSpan> component provides a dropdown menu that allows users
+				to open queries in different AI chat platforms with a single click.
 			</p>
 
 			<!-- Actions -->

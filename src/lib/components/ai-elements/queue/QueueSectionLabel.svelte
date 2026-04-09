@@ -3,8 +3,9 @@
 	import type { HTMLAttributes } from "svelte/elements";
 	import type { Snippet } from "svelte";
 
-	export interface QueueSectionLabelProps
-		extends WithElementRef<HTMLAttributes<HTMLSpanElement>> {
+	export interface QueueSectionLabelProps extends WithElementRef<
+		HTMLAttributes<HTMLSpanElement>
+	> {
 		count?: number;
 		label: string;
 		icon?: Snippet;

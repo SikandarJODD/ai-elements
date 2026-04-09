@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Message from "$lib/components/prompt-kit/message/Message.svelte";
-	import { AlertTriangle } from "@lucide/svelte";
+	import AlertTriangle from "@lucide/svelte/icons/triangle-alert";
 
 	let { error }: { error: Error } = $props();
 </script>

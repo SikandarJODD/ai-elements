@@ -6,7 +6,11 @@
 	import AiInstallCommand from "$lib/components/docs/ai-install-command.svelte";
 	import SvelteLogo from "$lib/components/icons/svelte.svelte";
 	import TypeScriptLogo from "$lib/components/icons/typescript.svelte";
-	import { FileText, FileJson, Settings } from "@lucide/svelte";
+
+	import FileText from "@lucide/svelte/icons/file-text";
+	// TODO: add file-json custom icon
+	import FileJson from "@lucide/svelte/icons/file";
+	import Settings from "@lucide/svelte/icons/settings";
 
 	type Props = {
 		open: boolean;

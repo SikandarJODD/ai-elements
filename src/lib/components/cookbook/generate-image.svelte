@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { Chat } from "@ai-sdk/svelte";
 	import { DefaultChatTransport, type UIMessage } from "ai";
 	import type { ChatTools } from "../../../routes/api/cookbook/generate-image/+server";
@@ -63,4 +63,4 @@
 			placeholder="Say something..."
 		/>
 	</form>
-</div>
+</div> -->

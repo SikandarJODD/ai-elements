@@ -11,7 +11,9 @@
 		GitHubIcon,
 	} from "$lib/components/ai-elements/open-in-chat";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
-	import { ChevronDown, ExternalLink } from "@lucide/svelte";
+	import ChevronDown from "@lucide/svelte/icons/chevron-down";
+	import ExternalLink from "@lucide/svelte/icons/external-link";
+
 	import {
 		getPromptKitGithubUrl,
 		getAiElementsGithubUrl,
