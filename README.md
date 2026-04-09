@@ -14,64 +14,86 @@
 
 <div align="center">
   <p>
-    <a href="https://svelte-ai-elements.vercel.app">Website</a> •
-    <a href="https://svelte-ai-elements.vercel.app/docs/installation">Documentation</a> •
-    <a href="https://svelte-ai-elements.vercel.app/playground">Playground</a> •
+    <a href="https://svelte-ai-elements.vercel.app">Website</a> |
+    <a href="https://svelte-ai-elements.vercel.app/docs/introduction">Documentation</a> |
+    <a href="https://svelte-ai-elements.vercel.app/playground">Playground</a> |
     <a href="https://github.com/SikandarJODD/ai-elements/issues">Issues</a>
   </p>
 </div>
 
----
-
 ## Overview
 
-**Svelte AI Elements** is a comprehensive component registry built on top of [shadcn-svelte](https://www.shadcn-svelte.com/) that provides **44+ production-ready components** specifically designed for building AI-powered applications with Svelte and SvelteKit.
+**Svelte AI Elements** is a developer-focused component registry for building AI-native interfaces with **Svelte** and **SvelteKit**. It is built on top of [shadcn-svelte](https://www.shadcn-svelte.com/) and includes two libraries: **AI Elements** for richer production-ready AI UI patterns, and **Prompt Kit** for lightweight prompt and chat interfaces.
 
-### Two Component Libraries
+[![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-Support-pink?logo=githubsponsors)](https://github.com/sponsors/SikandarJODD)
 
-1. **AI Elements** (27 components) - Full-featured components for complete AI applications
-2. **Prompt Kit** (17 components) - Lightweight components for prompt engineering interfaces
+## Libraries
 
----
+### AI Elements
 
-## ✨ Key Features
+Full-featured components for chat apps, streaming responses, reasoning UIs, tools, and workflow-style AI interfaces.
 
-- **Beautiful Design** - Built on shadcn-svelte with modern, accessible UI
-- **Highly Customizable** - Easily modify components to match your brand
-- **Responsive** - Works seamlessly across desktop and mobile devices
-- **Accessible** - Built with accessibility best practices (ARIA, keyboard navigation)
-- **TypeScript Ready** - Full TypeScript support with comprehensive type definitions
-- **AI SDK Integration** - Seamless integration with [Vercel AI SDK](https://sdk.vercel.ai/)
-- **Copy Markdown** - All component pages include "Copy Markdown" feature
-- **Open In** - Share prompts directly to ChatGPT, Claude, V0, and other AI platforms
-- **8 UI Blocks** - Pre-built blocks for rapid development
+- Docs: https://svelte-ai-elements.vercel.app/components
+- Registry: https://svelte-ai-elements.vercel.app/r/index.json
 
----
+### Prompt Kit
+
+Lightweight prompt engineering and conversational UI components that are easy to compose into simple AI interfaces.
+
+- Docs: https://svelte-ai-elements.vercel.app/prompt-kit
+- Registry: https://svelte-ai-elements.vercel.app/p/index.json
+
+## Most Used Components
+
+### AI Elements
+
+| Component | What it helps with |
+| --- | --- |
+| `Message` | Role-based chat messages and response layout |
+| `Prompt Input` | Prompt submission with AI-focused input controls |
+| `Conversation` | Scrollable conversation containers and chat structure |
+| `Response` | Streaming markdown response rendering |
+| `Reasoning` | Expandable AI thinking and reasoning views |
+| `Tool` | Tool call input/output presentation |
+
+### Prompt Kit
+
+| Component | What it helps with |
+| --- | --- |
+| `Message` | Lightweight assistant and user message UI |
+| `Prompt Input` | Chat-style prompt input with actions |
+| `Chat Container` | Sticky-to-bottom chat layout and scrolling |
+| `Markdown` | Render streamed markdown responses |
+| `Prompt Suggestion` | Clickable starter prompts and suggestions |
+| `System Message` | Inline status, warning, and helper messages |
+
+## 8 Prompt Kit UI Blocks
+
+Prompt Kit also includes eight ready-to-use UI blocks for faster composition. Browse them here: https://svelte-ai-elements.vercel.app/prompt-kit/blocks
+
+- `Prompt Input with Actions`
+- `Prompt Input with Suggestions`
+- `Prompt Input with Autocomplete`
+- `Basic Full Conversation`
+- `Conversation with Avatars`
+- `Conversation with Actions`
+- `Conversation with Scroll`
+- `Conversation with Prompt Input`
+
+## Streaming Responses
+
+For markdown and streaming response rendering, this project uses [`svelte-streamdown`](https://github.com/beynar/svelte-streamdown), the Svelte port used throughout the repo for streamed markdown output.
+
+## Inspired By
+
+- [Vercel AI Elements](https://vercel.com/changelog/introducing-ai-elements)
+- [ibelick/prompt-kit](https://github.com/ibelick/prompt-kit)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-This project draws inspiration from several excellent projects:
-
-- **[shadcn-svelte](https://www.shadcn-svelte.com/)** - UI component foundation
-- **[shadcn-svelte-extras](https://www.shadcn-svelte-extras.com)** - Additional components and utilities
-- **[Vercel AI Elements](https://vercel.com/changelog/introducing-ai-elements)** - AI component concepts
-- **[Prompt Kit](https://www.prompt-kit.com)** - Beautiful AI UI components
-
----
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
 <div align="center">
-  <p>Made with ❤️ by <a href="https://github.com/SikandarJODD">Sikandar Bhide (Bhide Svelte)</a></p>
-  <p>
-    <a href="https://svelte-ai-elements.vercel.app">Website</a> •
-    <a href="https://svelte-ai-elements.vercel.app/docs/installation">Documentation</a> •
-    <a href="https://svelte-ai-elements.vercel.app/playground">Playground</a> •
-    <a href="https://github.com/SikandarJODD/ai-elements">GitHub</a> •
-    <a href="https://github.com/SikandarJODD/ai-elements/issues">Issues</a>
-  </p>
+  <p>Made with 😊 by <a href="https://github.com/SikandarJODD">Bhide Svelte</a></p>
+
 </div>
