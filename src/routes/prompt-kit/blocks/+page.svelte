@@ -96,7 +96,7 @@
 					args={[
 						"shadcn-svelte@latest",
 						"add",
-						`${PUBLIC_WEBSITE_URL}/r/prompt-input-with-actions-block.json`,
+						`${PUBLIC_WEBSITE_URL}/p/prompt-input-with-actions-block.json`,
 					]}
 					component="prompt-input-with-actions-block"
 					registry="prompt-kit"
@@ -127,7 +127,7 @@
 					args={[
 						"shadcn-svelte@latest",
 						"add",
-						`${PUBLIC_WEBSITE_URL}/r/prompt-input-with-suggestions-block.json`,
+						`${PUBLIC_WEBSITE_URL}/p/prompt-input-with-suggestions-block.json`,
 					]}
 					component="prompt-input-with-suggestions-block"
 					registry="prompt-kit"
@@ -158,7 +158,7 @@
 					args={[
 						"shadcn-svelte@latest",
 						"add",
-						`${PUBLIC_WEBSITE_URL}/r/prompt-input-with-autocomplete-block.json`,
+						`${PUBLIC_WEBSITE_URL}/p/prompt-input-with-autocomplete-block.json`,
 					]}
 					component="prompt-input-with-autocomplete-block"
 					registry="prompt-kit"
@@ -192,7 +192,7 @@
 					args={[
 						"shadcn-svelte@latest",
 						"add",
-						`${PUBLIC_WEBSITE_URL}/r/basic-full-conversation-block.json`,
+						`${PUBLIC_WEBSITE_URL}/p/basic-full-conversation-block.json`,
 					]}
 					component="basic-full-conversation-block"
 					registry="prompt-kit"
@@ -223,7 +223,7 @@
 					args={[
 						"shadcn-svelte@latest",
 						"add",
-						`${PUBLIC_WEBSITE_URL}/r/conversation-with-avatars-block.json`,
+						`${PUBLIC_WEBSITE_URL}/p/conversation-with-avatars-block.json`,
 					]}
 					component="conversation-with-avatars-block"
 					registry="prompt-kit"
@@ -254,7 +254,7 @@
 					args={[
 						"shadcn-svelte@latest",
 						"add",
-						`${PUBLIC_WEBSITE_URL}/r/conversation-with-actions-block.json`,
+						`${PUBLIC_WEBSITE_URL}/p/conversation-with-actions-block.json`,
 					]}
 					component="conversation-with-actions-block"
 					registry="prompt-kit"
@@ -285,7 +285,7 @@
 					args={[
 						"shadcn-svelte@latest",
 						"add",
-						`${PUBLIC_WEBSITE_URL}/r/conversation-with-scroll-block.json`,
+						`${PUBLIC_WEBSITE_URL}/p/conversation-with-scroll-block.json`,
 					]}
 					component="conversation-with-scroll-block"
 					registry="prompt-kit"
@@ -316,7 +316,7 @@
 					args={[
 						"shadcn-svelte@latest",
 						"add",
-						`${PUBLIC_WEBSITE_URL}/r/conversation-with-prompt-input-block.json`,
+						`${PUBLIC_WEBSITE_URL}/p/conversation-with-prompt-input-block.json`,
 					]}
 					component="conversation-with-prompt-input-block"
 					registry="prompt-kit"

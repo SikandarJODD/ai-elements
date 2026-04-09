@@ -1,36 +1,36 @@
-import {
-	convertToModelMessages,
-	createGateway,
-	type InferUITools,
-	stepCountIs,
-	streamText,
-	type UIMessage,
-} from "ai";
+// import {
+// 	convertToModelMessages,
+// 	createGateway,
+// 	type InferUITools,
+// 	stepCountIs,
+// 	streamText,
+// 	type UIMessage,
+// } from "ai";
 
-import { generateImageTool } from "$lib/components/cookbook/tools/generate-image";
-import type { RequestHandler } from "./$types";
+// import { generateImageTool } from "$lib/components/cookbook/tools/generate-image";
+// import type { RequestHandler } from "./$types";
 
-const tools = {
-	generateImageTool,
-};
+// const tools = {
+// 	generateImageTool,
+// };
 
-import { AI_GATEWAY_API_KEY } from "$env/static/private";
+// import { AI_GATEWAY_API_KEY } from "$env/static/private";
 
-const gateway = createGateway({
-	apiKey: AI_GATEWAY_API_KEY,
-});
+// const gateway = createGateway({
+// 	apiKey: AI_GATEWAY_API_KEY,
+// });
 
-export type ChatTools = InferUITools<typeof tools>;
+// export type ChatTools = InferUITools<typeof tools>;
 
-export const POST: RequestHandler = async ({ request }) => {
-	const { messages }: { messages: UIMessage[] } = await request.json();
+// export const POST: RequestHandler = async ({ request }) => {
+// 	const { messages }: { messages: UIMessage[] } = await request.json();
 
-	const result = streamText({
-		model: gateway("openai/gpt-oss-20b"),
-		messages: await convertToModelMessages(messages),
-		stopWhen: stepCountIs(5),
-		tools,
-	});
+// 	const result = streamText({
+// 		model: gateway("openai/gpt-oss-20b"),
+// 		messages: await convertToModelMessages(messages),
+// 		stopWhen: stepCountIs(5),
+// 		tools,
+// 	});
 
-	return result.toUIMessageStreamResponse();
-};
+// 	return result.toUIMessageStreamResponse();
+// };
