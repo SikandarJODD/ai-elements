@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { Chat } from "@ai-sdk/svelte";
 	import { DefaultChatTransport, type UIMessage } from "ai";
 	import { Card, CardContent } from "$lib/components/ui/card";
@@ -69,4 +69,4 @@
 			</div>
 		{/if}
 	</CardContent>
-</Card>
+</Card> -->

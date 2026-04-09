@@ -16,4 +16,4 @@ export { getLocation, getLocationClient } from "./get-location";
 export { askForConfirmation } from "./ask-for-confirmation";
 
 // Image generation tools
-export { generateImageTool } from "./generate-image";
+// export { generateImageTool } from "./generate-image";
