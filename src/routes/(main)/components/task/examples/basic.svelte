@@ -36,7 +36,7 @@
 	];
 </script>
 
-<div style="height: 200px;">
+<div class="w-full min-w-lg" style="height: 200px;">
 	<Task class="w-full">
 		<TaskTrigger title="Found project files" />
 		<TaskContent>
