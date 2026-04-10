@@ -5,12 +5,24 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A component for requesting user approval before executing sensitive AI actions. Displays different states for approval requests, accepted, and rejected actions.",
-	"dependencies": ["@lucide/svelte/icons", "runed"],
-	"registryDependencies": ["button", "alert"],
+	"dependencies": [
+		"@lucide/svelte/icons",
+		"runed"
+	],
+	"registryDependencies": [
+		"button",
+		"alert"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["confirmation", "approval", "ai-actions", "permissions", "security"],
+		"tags": [
+			"confirmation",
+			"approval",
+			"ai-actions",
+			"permissions",
+			"security"
+		],
 		"category": "AI Response",
 		"documentation": "https://ai-elements.vercel.app/components/confirmation",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -45,7 +57,7 @@
 			"target": "ai-elements/confirmation/ConfirmationRejected.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\" module>\n\timport { cn, type WithElementRef } from \"$UTILS$\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface ConfirmationActionsProps\n\t\textends WithElementRef<HTMLAttributes<HTMLDivElement>> {\n\t\tchildren?: Snippet;\n\t}\n</script>\n\n<script lang=\"ts\">\n\timport { getConfirmationContext } from \"./confirmation-context.svelte.js\";\n\n\tlet {\n\t\tclass: className,\n\t\tchildren,\n\t\tref = $bindable(null),\n\t\t...restProps\n\t}: ConfirmationActionsProps = $props();\n\n\tconst context = getConfirmationContext();\n\n\t// Only show when approval is requested\n\tlet shouldShow = $derived(context.state === \"approval-requested\");\n</script>\n\n{#if shouldShow}\n\t<div\n\t\tbind:this={ref}\n\t\tclass={cn(\"flex items-center justify-end gap-2 self-end\", className)}\n\t\t{...restProps}\n\t>\n\t\t{@render children?.()}\n\t</div>\n{/if}\n",
+			"content": "<script lang=\"ts\" module>\n\timport { cn, type WithElementRef } from \"$UTILS$\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface ConfirmationActionsProps extends WithElementRef<\n\t\tHTMLAttributes<HTMLDivElement>\n\t> {\n\t\tchildren?: Snippet;\n\t}\n</script>\n\n<script lang=\"ts\">\n\timport { getConfirmationContext } from \"./confirmation-context.svelte.js\";\n\n\tlet {\n\t\tclass: className,\n\t\tchildren,\n\t\tref = $bindable(null),\n\t\t...restProps\n\t}: ConfirmationActionsProps = $props();\n\n\tconst context = getConfirmationContext();\n\n\t// Only show when approval is requested\n\tlet shouldShow = $derived(context.state === \"approval-requested\");\n</script>\n\n{#if shouldShow}\n\t<div\n\t\tbind:this={ref}\n\t\tclass={cn(\"flex items-center justify-end gap-2 self-end\", className)}\n\t\t{...restProps}\n\t>\n\t\t{@render children?.()}\n\t</div>\n{/if}\n",
 			"type": "registry:component",
 			"target": "ai-elements/confirmation/ConfirmationActions.svelte"
 		},

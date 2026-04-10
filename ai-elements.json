@@ -867,213 +867,6 @@
 			}
 		},
 		{
-			"name": "prompt-input",
-			"type": "registry:block",
-			"description": "A comprehensive prompt input component for AI chat interfaces with file attachments, drag-and-drop support, model selection, and advanced state management. Features include PromptInputProvider for external state control, async error handling, automatic blob-to-data URL conversion, grouped attachment rendering, and paste image support. Perfect for building ChatGPT-like interfaces.",
-			"files": [
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInput.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInput.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputProvider.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputProvider.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputBody.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputBody.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputTextarea.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputTextarea.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputToolbar.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputToolbar.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputTools.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputTools.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputButton.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputButton.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputAttachment.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputAttachment.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputAttachments.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputAttachments.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputActionMenu.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputActionMenu.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputActionMenuTrigger.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputActionMenuTrigger.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputActionMenuContent.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputActionMenuContent.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputActionMenuItem.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputActionMenuItem.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputActionAddAttachments.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputActionAddAttachments.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputSubmit.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputSubmit.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputModelSelect.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputModelSelect.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputModelSelectTrigger.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputModelSelectTrigger.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputModelSelectContent.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputModelSelectContent.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputModelSelectItem.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputModelSelectItem.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PromptInputModelSelectValue.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PromptInputModelSelectValue.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/ImageIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/ImageIcon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/Loader2Icon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/Loader2Icon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PaperclipIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PaperclipIcon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/PlusIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/PlusIcon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/SendIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/SendIcon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/SquareIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/SquareIcon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/XIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/XIcon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/GlobeIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/GlobeIcon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/MicIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/MicIcon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/attachments-context.svelte.ts",
-					"type": "registry:file",
-					"target": "ai-elements/prompt-input/attachments-context.svelte.ts"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/index.ts",
-					"type": "registry:file",
-					"target": "ai-elements/prompt-input/index.ts"
-				}
-			],
-			"registryDependencies": ["button", "textarea", "select", "dropdown-menu", "tooltip"],
-			"dependencies": ["runed"],
-			"meta": {
-				"author": "SikandarJODD",
-				"version": "2.0.0",
-				"tags": [
-					"prompt",
-					"input",
-					"chat",
-					"attachments",
-					"upload",
-					"ai-interface",
-					"provider",
-					"state-management",
-					"drag-drop",
-					"async"
-				],
-				"category": "AI Input",
-				"documentation": "https://svelte-ai-elements.vercel.app//components/prompt-input",
-				"repository": "https://github.com/SikandarJODD/ai-elements",
-				"complexity": "intermediate",
-				"updated": "2025-10-15",
-				"featured": true,
-				"features": [
-					"PromptInputProvider for external state management",
-					"Async error handling with data preservation",
-					"Automatic blob-to-data URL conversion",
-					"Grouped attachment rendering (files/images)",
-					"File tooltips with full details",
-					"Paste image support",
-					"Drag and drop file upload",
-					"Global drop zone support",
-					"Model selection dropdown",
-					"File validation (size, type, count)",
-					"Svelte 5 runes with watch() from runed"
-				],
-				"improvements": [
-					"Added PromptInputProvider for global state control",
-					"Enhanced async submit with proper error handling",
-					"Blob URL conversion for API compatibility",
-					"Separate rendering for files and images",
-					"File attachment tooltips showing full filename and media type",
-					"Prevent data loss on submission errors"
-				]
-			}
-		},
-		{
 			"name": "queue",
 			"title": "Queue",
 			"type": "registry:block",
@@ -1343,6 +1136,225 @@
 			"dependencies": ["@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD"
+			}
+		},
+		{
+			"name": "prompt-input",
+			"title": "Prompt Input",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "A comprehensive prompt input component for AI chat interfaces with provider-backed state management, attachments, action menus, model selection, and submit or stop controls. Includes a composable header, body, toolbar, tools, and attachment previews for building polished AI input experiences.",
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/core/Root.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/core/Root.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/core/Provider.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/core/Provider.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/layout/Header.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/layout/Header.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/layout/Body.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/layout/Body.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/layout/Toolbar.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/layout/Toolbar.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/layout/Tools.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/layout/Tools.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/controls/Button.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/controls/Button.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/controls/Textarea.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/controls/Textarea.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/controls/Submit.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/controls/Submit.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/attachments/Attachment.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/attachments/Attachment.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/attachments/AttachmentImagePreview.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/attachments/AttachmentImagePreview.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/attachments/Attachments.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/attachments/Attachments.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/action-menu/ActionMenu.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/action-menu/ActionMenu.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/action-menu/ActionMenuTrigger.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/action-menu/ActionMenuTrigger.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/action-menu/ActionMenuContent.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/action-menu/ActionMenuContent.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/action-menu/ActionMenuItem.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/action-menu/ActionMenuItem.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/action-menu/ActionAddAttachments.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/action-menu/ActionAddAttachments.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/model-select/ModelSelect.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/model-select/ModelSelect.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/model-select/ModelSelectTrigger.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/model-select/ModelSelectTrigger.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/model-select/ModelSelectContent.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/model-select/ModelSelectContent.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/model-select/ModelSelectItem.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/model-select/ModelSelectItem.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/model-select/ModelSelectValue.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/model-select/ModelSelectValue.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/icons/ImageIcon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/icons/ImageIcon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/icons/Loader2Icon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/icons/Loader2Icon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/icons/PaperclipIcon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/icons/PaperclipIcon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/icons/PlusIcon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/icons/PlusIcon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/icons/SendIcon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/icons/SendIcon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/icons/SquareIcon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/icons/SquareIcon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/icons/XIcon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/icons/XIcon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/icons/GlobeIcon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/icons/GlobeIcon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/icons/MicIcon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/icons/MicIcon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/context/attachments.svelte.ts",
+					"type": "registry:file",
+					"target": "ai-elements/prompt-input/context/attachments.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/context/provider.svelte.ts",
+					"type": "registry:file",
+					"target": "ai-elements/prompt-input/context/provider.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/context/types.ts",
+					"type": "registry:file",
+					"target": "ai-elements/prompt-input/context/types.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/prompt-input/index.ts"
+				}
+			],
+			"registryDependencies": ["button", "textarea", "dropdown-menu", "tooltip", "select"],
+			"dependencies": ["runed"],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "3.0.0",
+				"tags": [
+					"prompt",
+					"input",
+					"chat",
+					"attachments",
+					"model-select",
+					"action-menu",
+					"provider",
+					"ai-interface",
+					"multimodal"
+				],
+				"category": "AI Input",
+				"documentation": "https://svelte-ai-elements.vercel.app//components/prompt-input",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2026-04-10",
+				"featured": true,
+				"features": [
+					"Composable header, body, toolbar, and tools layout",
+					"Provider-backed external state management",
+					"Attachment previews with image and file rendering",
+					"Action menu for quick attachment actions",
+					"Model selection with searchable UI primitives",
+					"Submit and stop button state handling",
+					"Drag and drop file upload",
+					"Global drop zone support",
+					"Paste image support",
+					"File validation and attachment lifecycle management"
+				]
 			}
 		},
 		{

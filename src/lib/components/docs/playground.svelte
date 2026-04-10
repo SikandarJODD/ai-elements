@@ -18,6 +18,7 @@
 		component?: string;
 		registry?: AnalyticsRegistry;
 		source?: string;
+		isExpand?: boolean;
 	};
 
 	let {
@@ -28,6 +29,7 @@
 		highlight = [],
 		component,
 		registry,
+		isExpand = false,
 		source = "copy_example",
 	}: Props = $props();
 
@@ -67,12 +69,10 @@
 	</Tabs.Content>
 	<Tabs.Content value="code" class="w-full pb-4">
 		<div
-			class={cn(
-				"border-border relative flex min-h-[400px] w-full rounded-lg border",
-				className
-			)}
+			class={cn("border-border relative flex min-h-100 w-full rounded-lg border", className)}
 		>
-			<Code.Overflow class="w-full data-[collapsed=true]:max-h-[380px]">
+			{#if isExpand}
+				<!-- <Code.Overflow class="w-full data-[collapsed=true]:max-h-[380px]"> -->
 				<Code.Root
 					{highlight}
 					lang="svelte"
@@ -80,14 +80,36 @@
 					class="no-scrollbar w-full border-none bg-transparent"
 				>
 					<Code.CopyButton
+						variant="secondary"
 						class="z-30"
+						size="icon"
 						aria-label={`Copy ${component}`}
 						{component}
 						{registry}
 						{source}
 					/>
 				</Code.Root>
-			</Code.Overflow>
+				<!-- </Code.Overflow> -->
+			{:else}
+				<Code.Overflow class="w-full data-[collapsed=true]:max-h-95">
+					<Code.Root
+						{highlight}
+						lang="svelte"
+						{code}
+						class="no-scrollbar w-full border-none bg-transparent"
+					>
+						<Code.CopyButton
+							variant="secondary"
+							class="z-30"
+							size="icon"
+							aria-label={`Copy ${component}`}
+							{component}
+							{registry}
+							{source}
+						/>
+					</Code.Root>
+				</Code.Overflow>
+			{/if}
 		</div>
 	</Tabs.Content>
 </Tabs.Root>

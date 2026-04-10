@@ -4,11 +4,12 @@
 	import { ModeWatcher, toggleMode } from "mode-watcher";
 	import AppNewNavbar from "$lib/components/layouts/app-new-navbar.svelte";
 	import { Toaster } from "svelte-sonner";
-	import { PressedKeys } from "runed";
+	import { PressedKeys, activeElement } from "runed";
 	let { children } = $props();
 
 	let keys = new PressedKeys();
 	keys.onKeys(["d"], () => {
+		if(activeElement.current?.localName==='textarea' || activeElement.current?.localName==='input') return;
 		toggleMode();
 	});
 </script>

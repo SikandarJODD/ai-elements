@@ -1,15 +1,17 @@
 <script lang="ts">
 	import { cn } from "$lib/utils/utils";
-	import {
-		buttonVariants,
-		type ButtonSize,
-		type ButtonVariant,
-	} from "$lib/components/ui/button/index.js";
 	import type { ChatStatus } from "../context/types.js";
 	import Loader2Icon from "../icons/Loader2Icon.svelte";
 	import SendIcon from "../icons/SendIcon.svelte";
 	import SquareIcon from "../icons/SquareIcon.svelte";
 	import XIcon from "../icons/XIcon.svelte";
+
+	import {
+		buttonVariants,
+		type ButtonSize,
+		type ButtonVariant,
+	} from "$lib/components/ui/button/index.js";
+
 	import type { HTMLButtonAttributes } from "svelte/elements";
 
 	type SubmitClickEvent = MouseEvent & {
@@ -20,7 +22,7 @@
 		class?: string;
 		variant?: ButtonVariant;
 		size?: ButtonSize;
-		status: ChatStatus;
+		status?: ChatStatus;
 		onStop?: () => void;
 		ref?: HTMLButtonElement | null;
 		onclick?: (event: SubmitClickEvent) => void;
@@ -49,6 +51,7 @@
 		} else if (status === "error") {
 			return XIcon;
 		}
+		// for ready status, show send icon
 		return SendIcon;
 	});
 
@@ -82,7 +85,6 @@
 	bind:this={ref}
 	aria-label={ariaLabel}
 	class={cn(buttonVariants({ variant, size }), "gap-1.5 rounded-lg", className)}
-	data-prompt-input-submit=""
 	data-slot="button"
 	type={buttonType}
 	onclick={handleClick}
@@ -91,7 +93,6 @@
 	{#if children}
 		{@render children()}
 	{:else}
-		<!-- <svelte:component this={Icon} class={iconClass} /> -->
 		<Icon class={iconClass} />
 	{/if}
 </button>

@@ -30,7 +30,7 @@
 	let { componentName, llmsTxtUrl, type = "prompt-kit" }: Props = $props();
 
 	// Create the query for AI assistants
-	const query = `Read ${llmsTxtUrl} and help me understand the ${componentName} component`;
+	let query = $derived(`Read ${llmsTxtUrl} and help me understand the ${componentName} component`);
 
 	// Get the exact GitHub file URL for the component based on type
 	function getGithubUrl(): string {
@@ -44,12 +44,12 @@
 		return getPromptKitGithubUrl(componentName) || fallback;
 	}
 
-	const githubUrl = getGithubUrl();
+	let githubUrl = getGithubUrl();
 </script>
 
 <OpenIn {query}>
 	<OpenInTrigger>
-		<Button variant="secondary" size="lg" class="gap-2">
+		<Button variant="secondary" size="default" class="gap-2">
 			<span>Open</span>
 			<ChevronDown class="size-4" />
 		</Button>

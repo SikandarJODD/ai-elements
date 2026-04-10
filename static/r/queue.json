@@ -5,17 +5,30 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A flexible component for displaying lists of pending and completed tasks, messages, or items with collapsible sections and attachment support.",
-	"dependencies": ["@lucide/svelte"],
+	"dependencies": [
+		"@lucide/svelte"
+	],
 	"devDependencies": [
 		"@lucide/svelte@^1.7.0",
 		"bits-ui@^2.16.3",
 		"@internationalized/date@^3.12.0"
 	],
-	"registryDependencies": ["button", "collapsible", "scroll-area"],
+	"registryDependencies": [
+		"button",
+		"collapsible",
+		"scroll-area"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["queue", "tasks", "todo", "list", "collapsible", "attachments"],
+		"tags": [
+			"queue",
+			"tasks",
+			"todo",
+			"list",
+			"collapsible",
+			"attachments"
+		],
 		"category": "Task Management",
 		"documentation": "https://svelte-ai-elements.vercel.app/components/queue",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -35,7 +48,7 @@
 			"target": "ai-elements/queue/QueueItem.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\" module>\n\timport { cn, type WithElementRef } from \"$UTILS$\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface QueueItemIndicatorProps\n\t\textends WithElementRef<HTMLAttributes<HTMLSpanElement>> {\n\t\tcompleted?: boolean;\n\t\tchildren?: Snippet;\n\t}\n</script>\n\n<script lang=\"ts\">\n\tlet {\n\t\tcompleted = false,\n\t\tclass: className,\n\t\tchildren,\n\t\tref = $bindable(null),\n\t\t...restProps\n\t}: QueueItemIndicatorProps = $props();\n</script>\n\n<span\n\tbind:this={ref}\n\tclass={cn(\n\t\t\"mt-0.5 inline-block size-2.5 rounded-full border\",\n\t\tcompleted\n\t\t\t? \"border-muted-foreground/20 bg-muted-foreground/10\"\n\t\t\t: \"border-muted-foreground/50\",\n\t\tclassName\n\t)}\n\t{...restProps}\n>\n\t{@render children?.()}\n</span>\n",
+			"content": "<script lang=\"ts\" module>\n\timport { cn, type WithElementRef } from \"$UTILS$\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface QueueItemIndicatorProps extends WithElementRef<\n\t\tHTMLAttributes<HTMLSpanElement>\n\t> {\n\t\tcompleted?: boolean;\n\t\tchildren?: Snippet;\n\t}\n</script>\n\n<script lang=\"ts\">\n\tlet {\n\t\tcompleted = false,\n\t\tclass: className,\n\t\tchildren,\n\t\tref = $bindable(null),\n\t\t...restProps\n\t}: QueueItemIndicatorProps = $props();\n</script>\n\n<span\n\tbind:this={ref}\n\tclass={cn(\n\t\t\"mt-0.5 inline-block size-2.5 rounded-full border\",\n\t\tcompleted\n\t\t\t? \"border-muted-foreground/20 bg-muted-foreground/10\"\n\t\t\t: \"border-muted-foreground/50\",\n\t\tclassName\n\t)}\n\t{...restProps}\n>\n\t{@render children?.()}\n</span>\n",
 			"type": "registry:component",
 			"target": "ai-elements/queue/QueueItemIndicator.svelte"
 		},
@@ -45,7 +58,7 @@
 			"target": "ai-elements/queue/QueueItemContent.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\" module>\n\timport { cn, type WithElementRef } from \"$UTILS$\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface QueueItemDescriptionProps\n\t\textends WithElementRef<HTMLAttributes<HTMLDivElement>> {\n\t\tcompleted?: boolean;\n\t\tchildren?: Snippet;\n\t}\n</script>\n\n<script lang=\"ts\">\n\tlet {\n\t\tcompleted = false,\n\t\tclass: className,\n\t\tchildren,\n\t\tref = $bindable(null),\n\t\t...restProps\n\t}: QueueItemDescriptionProps = $props();\n</script>\n\n<div\n\tbind:this={ref}\n\tclass={cn(\n\t\t\"ml-6 text-xs\",\n\t\tcompleted ? \"text-muted-foreground/40 line-through\" : \"text-muted-foreground\",\n\t\tclassName\n\t)}\n\t{...restProps}\n>\n\t{@render children?.()}\n</div>\n",
+			"content": "<script lang=\"ts\" module>\n\timport { cn, type WithElementRef } from \"$UTILS$\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface QueueItemDescriptionProps extends WithElementRef<\n\t\tHTMLAttributes<HTMLDivElement>\n\t> {\n\t\tcompleted?: boolean;\n\t\tchildren?: Snippet;\n\t}\n</script>\n\n<script lang=\"ts\">\n\tlet {\n\t\tcompleted = false,\n\t\tclass: className,\n\t\tchildren,\n\t\tref = $bindable(null),\n\t\t...restProps\n\t}: QueueItemDescriptionProps = $props();\n</script>\n\n<div\n\tbind:this={ref}\n\tclass={cn(\n\t\t\"ml-6 text-xs\",\n\t\tcompleted ? \"text-muted-foreground/40 line-through\" : \"text-muted-foreground\",\n\t\tclassName\n\t)}\n\t{...restProps}\n>\n\t{@render children?.()}\n</div>\n",
 			"type": "registry:component",
 			"target": "ai-elements/queue/QueueItemDescription.svelte"
 		},
@@ -60,7 +73,7 @@
 			"target": "ai-elements/queue/QueueItemAction.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\" module>\n\timport { cn, type WithElementRef } from \"$UTILS$\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface QueueItemAttachmentProps\n\t\textends WithElementRef<HTMLAttributes<HTMLDivElement>> {\n\t\tchildren?: Snippet;\n\t}\n</script>\n\n<script lang=\"ts\">\n\tlet {\n\t\tclass: className,\n\t\tchildren,\n\t\tref = $bindable(null),\n\t\t...restProps\n\t}: QueueItemAttachmentProps = $props();\n</script>\n\n<div bind:this={ref} class={cn(\"mt-1 flex flex-wrap gap-2\", className)} {...restProps}>\n\t{@render children?.()}\n</div>\n",
+			"content": "<script lang=\"ts\" module>\n\timport { cn, type WithElementRef } from \"$UTILS$\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface QueueItemAttachmentProps extends WithElementRef<\n\t\tHTMLAttributes<HTMLDivElement>\n\t> {\n\t\tchildren?: Snippet;\n\t}\n</script>\n\n<script lang=\"ts\">\n\tlet {\n\t\tclass: className,\n\t\tchildren,\n\t\tref = $bindable(null),\n\t\t...restProps\n\t}: QueueItemAttachmentProps = $props();\n</script>\n\n<div bind:this={ref} class={cn(\"mt-1 flex flex-wrap gap-2\", className)} {...restProps}>\n\t{@render children?.()}\n</div>\n",
 			"type": "registry:component",
 			"target": "ai-elements/queue/QueueItemAttachment.svelte"
 		},
@@ -90,7 +103,7 @@
 			"target": "ai-elements/queue/QueueSectionTrigger.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\" module>\n\timport { cn, type WithElementRef } from \"$UTILS$\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface QueueSectionLabelProps\n\t\textends WithElementRef<HTMLAttributes<HTMLSpanElement>> {\n\t\tcount?: number;\n\t\tlabel: string;\n\t\ticon?: Snippet;\n\t\tchildren?: Snippet;\n\t}\n</script>\n\n<script lang=\"ts\">\n\timport CollapsibleContent from \"$COMPONENTS$/ui/collapsible/collapsible-content.svelte\";\n\timport ChevronDown from \"@lucide/svelte/icons/chevron-down\";\n\n\tlet {\n\t\tcount,\n\t\tlabel,\n\t\ticon,\n\t\tclass: className,\n\t\tchildren,\n\t\tref = $bindable(null),\n\t\t...restProps\n\t}: QueueSectionLabelProps = $props();\n</script>\n\n<span bind:this={ref} class={cn(\"flex items-center gap-2\", className)} {...restProps}>\n\t<ChevronDown class=\"size-4 transition-transform group-data-[state=closed]:-rotate-90\" />\n\t{#if icon}\n\t\t{@render icon()}\n\t{/if}\n\t<span>\n\t\t{#if count !== undefined}\n\t\t\t{count}\n\t\t{/if}\n\t\t{label}\n\t</span>\n\t{@render children?.()}\n</span>\n",
+			"content": "<script lang=\"ts\" module>\n\timport { cn, type WithElementRef } from \"$UTILS$\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface QueueSectionLabelProps extends WithElementRef<\n\t\tHTMLAttributes<HTMLSpanElement>\n\t> {\n\t\tcount?: number;\n\t\tlabel: string;\n\t\ticon?: Snippet;\n\t\tchildren?: Snippet;\n\t}\n</script>\n\n<script lang=\"ts\">\n\timport CollapsibleContent from \"$COMPONENTS$/ui/collapsible/collapsible-content.svelte\";\n\timport ChevronDown from \"@lucide/svelte/icons/chevron-down\";\n\n\tlet {\n\t\tcount,\n\t\tlabel,\n\t\ticon,\n\t\tclass: className,\n\t\tchildren,\n\t\tref = $bindable(null),\n\t\t...restProps\n\t}: QueueSectionLabelProps = $props();\n</script>\n\n<span bind:this={ref} class={cn(\"flex items-center gap-2\", className)} {...restProps}>\n\t<ChevronDown class=\"size-4 transition-transform group-data-[state=closed]:-rotate-90\" />\n\t{#if icon}\n\t\t{@render icon()}\n\t{/if}\n\t<span>\n\t\t{#if count !== undefined}\n\t\t\t{count}\n\t\t{/if}\n\t\t{label}\n\t</span>\n\t{@render children?.()}\n</span>\n",
 			"type": "registry:component",
 			"target": "ai-elements/queue/QueueSectionLabel.svelte"
 		},
