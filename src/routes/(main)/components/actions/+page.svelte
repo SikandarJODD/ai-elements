@@ -8,19 +8,18 @@
 	} from "$lib/components/docs";
 	import Installation from "$lib/components/docs/installation.svelte";
 	import { data } from "./data";
-	import CodeSpan from "$lib/components/docs/code-span.svelte";
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
 	import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
 	import { PreviewComponent } from "$lib/components/ui/preview-component";
-	import { H2 } from "$lib/components/markdown";
-	import H3 from "$lib/components/markdown/H3.svelte";
+	import { H1, H2, H3, Paragraph } from "$lib/components/markdown";
+	import { CopyPageDropdown } from "$lib/components/docs/copy-page-dropdown";
 
 	// URL for llm.txt
-	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/actions/llms.txt`;
+	let llmsTxtUrl = $derived(`${PUBLIC_WEBSITE_URL}/components/actions/llms.txt`);
 
 	// Component API Props Data
-	const actionsProps = [
+	let actionsProps = [
 		{
 			name: "children",
 			type: "Snippet",
@@ -38,7 +37,7 @@
 		},
 	];
 
-	const actionProps = [
+	let actionProps = [
 		{
 			name: "tooltip",
 			type: "string",
@@ -97,16 +96,18 @@
 
 <!-- Main Content Area -->
 <section class="min-w-0">
-	<Subheading class="md:text-3xl">Actions</Subheading>
-
-	<p class="text-muted-foreground! my-2 text-lg">
+	<div class="flex flex-col justify-between gap-3 md:flex-row md:items-center md:gap-4">
+		<H1>Actions</H1>
+		<CopyPageDropdown componentName="Actions" {llmsTxtUrl} />
+	</div>
+	<Paragraph>
 		The Action component provides a flexible row of action buttons for AI responses with common
 		actions like retry, like, dislike, copy, and share.
-	</p>
-	<div class="mb-8 flex items-center gap-2">
-		<CopyMarkdownButton {llmsTxtUrl} />
+	</Paragraph>
+
+	<!-- <div class="mb-8 flex items-center gap-2">
 		<OpenInMenu componentName="Actions" {llmsTxtUrl} type="ai-elements" />
-	</div>
+	</div> -->
 	<PreviewComponent code={data.previewCode}>
 		{#if PreviewComp}
 			<PreviewComp />
@@ -115,12 +116,9 @@
 
 	<Installation
 		specifier={`${PUBLIC_WEBSITE_URL}/r/action.json`}
-		is_jsrepo={true}
+		is_jsrepo={false}
 		blockname="action"
 	/>
-
-	<!-- Examples  -->
-	<Subheading>Examples</Subheading>
 
 	{#if examples.length > 0}
 		<section>
@@ -141,7 +139,7 @@
 	{/if}
 
 	<!-- Component API Section -->
-	<Subheading>Props</Subheading>
+	<Subheading class="mt-6">Props</Subheading>
 
 	<!-- Actions -->
 	<ComponentAPITable

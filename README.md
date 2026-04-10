@@ -94,6 +94,6 @@ For markdown and streaming response rendering, this project uses [`svelte-stream
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
 <div align="center">
-  <p>Made with 😊 by <a href="https://github.com/SikandarJODD">Bhide Svelte</a></p>
+  <p>Made with 😊 by <a href="https://x.com/Sikandar_Bhide">Bhide Svelte</a></p>
 
 </div>

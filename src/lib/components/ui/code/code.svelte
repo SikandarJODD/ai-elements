@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from "$lib/utils.js";
+	import { cn } from "$lib/utils/utils";
 	import { codeVariants } from ".";
 	import type { CodeRootProps } from "./types";
 	import { useCode } from "./code.svelte.js";
@@ -31,7 +31,7 @@
 </div>
 
 <style>
-	@reference '../../../../routes/layout.css';
+	@reference '../../../../app.css';
 
 	:global(.dark) {
 		:global(.shiki, .shiki span) {

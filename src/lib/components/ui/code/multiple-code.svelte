@@ -1,8 +1,6 @@
 <script lang="ts">
-	import type { Snippet } from "svelte";
 	import * as Code from "./index";
 	import type { CodeBlock as MagicCode } from "./index";
-	import { ChevronDown } from "@lucide/svelte";
 	import Button from "$lib/components/ui/button/button.svelte";
 	import { cn } from "$lib/utils/utils";
 	import { Svelte, TypeScript, Terminal } from "$lib/components/icons";

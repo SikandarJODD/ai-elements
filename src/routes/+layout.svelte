@@ -19,7 +19,7 @@
 </svelte:head>
 
 <ModeWatcher defaultMode="dark" />
-<Toaster />
+<Toaster richColors position='bottom-center' />
 
 <!-- <AppNavbar /> -->
 <AppNewNavbar />

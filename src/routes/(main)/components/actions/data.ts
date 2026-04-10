@@ -1,8 +1,8 @@
 import Basic from "./examples/basic.svelte";
-import basicRaw from "./basic.svelte?raw";
+import basicRaw from "./examples/basic.svelte?raw";
 
 import MessageAction from "./examples/message-action.svelte";
-import messageActionRaw from "./message-action.svelte?raw";
+import messageActionRaw from "./examples/message-action.svelte?raw";
 
 import type { ComponentDoc, ComponentMeta } from "$lib/structure/structure";
 import type { SEO } from "$lib/structure/seo";
@@ -25,16 +25,6 @@ const seo: SEO = {
 };
 
 const examples: Example[] = [
-	{
-		name: "Basic Usage",
-		preview: Basic,
-		code: {
-			filename: "basic.svelte",
-			filecode: basicRaw,
-			lang: "svelte",
-			isExpand: true,
-		},
-	},
     {
         name: "Message Action",
         preview: MessageAction,
