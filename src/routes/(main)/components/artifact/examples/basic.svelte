@@ -69,7 +69,7 @@ print(dijkstra(graph, 'A'))`;
 	};
 </script>
 
-<Artifact>
+<Artifact class="w-full">
 	<ArtifactHeader>
 		<div>
 			<ArtifactTitle>Dijkstra's Algorithm Implementation</ArtifactTitle>
