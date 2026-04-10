@@ -99,43 +99,39 @@
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
-<Sidebar.Inset class="min-h-svh">
-	<div
-		class="grid min-h-svh grid-cols-1 gap-8 md:grid-cols-[1fr_280px] md:px-6 md:pb-6 lg:grid-cols-[1fr_240px]"
-	>
-		<!-- Main Content Area -->
-		<main class="min-w-0" bind:this={toc.ref}>
-			<Subheading class="md:text-3xl">Actions</Subheading>
+<!-- Main Content Area -->
+<main class="min-w-0" bind:this={toc.ref}>
+	<Subheading class="md:text-3xl">Actions</Subheading>
 
-			<p class="!text-muted-foreground my-2 text-lg">
-				The <CodeSpan>Action</CodeSpan> component provides a flexible row of action buttons for
-				AI responses with common actions like retry, like, dislike, copy, and share.
-			</p>
+	<p class="!text-muted-foreground my-2 text-lg">
+		The <CodeSpan>Action</CodeSpan> component provides a flexible row of action buttons for AI responses
+		with common actions like retry, like, dislike, copy, and share.
+	</p>
 
-			<!-- Actions -->
-			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Actions" {llmsTxtUrl} type="ai-elements" />
-			</div>
+	<!-- Actions -->
+	<div class="mb-8 flex items-center gap-2">
+		<CopyMarkdownButton {llmsTxtUrl} />
+		<OpenInMenu componentName="Actions" {llmsTxtUrl} type="ai-elements" />
+	</div>
 
-			<Playground code={examples.basic.code}>
-				<examples.basic.Component />
-			</Playground>
+	<Playground code={examples.basic.code}>
+		<examples.basic.Component />
+	</Playground>
 
-			<!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
-			<Installation
-				specifier={`${PUBLIC_WEBSITE_URL}/r/action.json`}
-				is_jsrepo={true}
-				blockname="action"
-			/>
+	<!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
+	<Installation
+		specifier={`${PUBLIC_WEBSITE_URL}/r/action.json`}
+		is_jsrepo={true}
+		blockname="action"
+	/>
 
-			<!-- Usage -->
-			<Subheading>Usage</Subheading>
+	<!-- Usage -->
+	<Subheading>Usage</Subheading>
 
-			<div>
-				<Code
-					lang="svelte"
-					code={`\<script lang="ts"\>
+	<div>
+		<Code
+			lang="svelte"
+			code={`\<script lang="ts"\>
 	 import { Actions, Action } from "$lib/components/ai-elements/action/index.js";
 \<\/script\>
 
@@ -144,26 +140,25 @@
     <ThumbsUpIcon class="size-4" />
   </Action>
 </Actions>`}
-				/>
-			</div>
+		/>
+	</div>
 
-			<!-- Usage with AI SDK -->
-			<Subheading>Usage with AI SDK</Subheading>
+	<!-- Usage with AI SDK -->
+	<Subheading>Usage with AI SDK</Subheading>
 
-			<p class="mb-6 text-sm leading-relaxed sm:text-base">
-				Build a simple chat UI where the user can copy or regenerate the most recent
-				message.
-			</p>
+	<p class="mb-6 text-sm leading-relaxed sm:text-base">
+		Build a simple chat UI where the user can copy or regenerate the most recent message.
+	</p>
 
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Add the following component to your frontend:
-			</p>
+	<p class="mb-4 text-sm leading-relaxed sm:text-base">
+		Add the following component to your frontend:
+	</p>
 
-			<div class="mb-6">
-				<CodeNameBlock
-					filename="+page.svelte"
-					lang="svelte"
-					code={`\<script lang="ts"\>
+	<div class="mb-6">
+		<CodeNameBlock
+			filename="+page.svelte"
+			lang="svelte"
+			code={`\<script lang="ts"\>
   import { Chat } from "@ai-sdk/svelte";
   import { Actions, Action } from "$lib/components/ai-elements/action/index.js";
   import { Message, MessageContent } from "$lib/components/ai-elements/message/index.js";
@@ -252,18 +247,18 @@
     </Input>
   </div>
 </div>`}
-				/>
-			</div>
+		/>
+	</div>
 
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Add the following route to your backend:
-			</p>
+	<p class="mb-4 text-sm leading-relaxed sm:text-base">
+		Add the following route to your backend:
+	</p>
 
-			<div class="mb-6">
-				<CodeNameBlock
-					filename="api/chat/+server.ts"
-					lang="typescript"
-					code={`import { streamText, type UIMessage, convertToModelMessages } from "ai";
+	<div class="mb-6">
+		<CodeNameBlock
+			filename="api/chat/+server.ts"
+			lang="typescript"
+			code={`import { streamText, type UIMessage, convertToModelMessages } from "ai";
 import type { RequestHandler } from "./$types";
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -276,53 +271,42 @@ export const POST: RequestHandler = async ({ request }) => {
 
   return result.toUIMessageStreamResponse();
 };`}
-				/>
-			</div>
-
-			<!-- Features -->
-			<Subheading>Features</Subheading>
-
-			<ul class="mb-6 list-inside list-disc space-y-2 text-sm leading-relaxed sm:text-base">
-				<li>Row of composable action buttons with consistent styling</li>
-				<li>Support for custom actions with tooltips</li>
-				<li>State management for toggle actions (like, dislike, favorite)</li>
-				<li>Keyboard accessible with proper ARIA labels</li>
-				<li>Clipboard and Web Share API integration</li>
-				<li>TypeScript support with proper type definitions</li>
-				<li>Consistent with design system styling</li>
-			</ul>
-
-			<!-- Examples  -->
-			<Subheading>Examples</Subheading>
-
-			<Playground code={examples.messageAction.code}>
-				<examples.messageAction.Component />
-			</Playground>
-
-			<!-- Component API Section -->
-			<Subheading>Props</Subheading>
-
-			<!-- Actions -->
-			<ComponentAPITable
-				componentName="Actions"
-				props={actionsProps}
-				class="mt-6"
-				id="actions-props"
-			/>
-
-			<!-- Action -->
-			<ComponentAPITable componentName="Action" props={actionProps} id="action-props" />
-
-			<AiElementsPrevNext currentSlug="actions" />
-		</main>
-
-		<!-- TOC Sidebar - Sticky on larger screens -->
-		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">
-			<!-- TOC Component -->
-			<div>
-				<h3 class="text-sm">On this page</h3>
-				<Toc.Root toc={toc.current} />
-			</div>
-		</aside>
+		/>
 	</div>
-</Sidebar.Inset>
+
+	<!-- Features -->
+	<Subheading>Features</Subheading>
+
+	<ul class="mb-6 list-inside list-disc space-y-2 text-sm leading-relaxed sm:text-base">
+		<li>Row of composable action buttons with consistent styling</li>
+		<li>Support for custom actions with tooltips</li>
+		<li>State management for toggle actions (like, dislike, favorite)</li>
+		<li>Keyboard accessible with proper ARIA labels</li>
+		<li>Clipboard and Web Share API integration</li>
+		<li>TypeScript support with proper type definitions</li>
+		<li>Consistent with design system styling</li>
+	</ul>
+
+	<!-- Examples  -->
+	<Subheading>Examples</Subheading>
+
+	<Playground code={examples.messageAction.code}>
+		<examples.messageAction.Component />
+	</Playground>
+
+	<!-- Component API Section -->
+	<Subheading>Props</Subheading>
+
+	<!-- Actions -->
+	<ComponentAPITable
+		componentName="Actions"
+		props={actionsProps}
+		class="mt-6"
+		id="actions-props"
+	/>
+
+	<!-- Action -->
+	<ComponentAPITable componentName="Action" props={actionProps} id="action-props" />
+
+	<AiElementsPrevNext currentSlug="actions" />
+</main>

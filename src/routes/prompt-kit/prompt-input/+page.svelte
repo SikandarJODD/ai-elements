@@ -152,125 +152,105 @@
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
-<Sidebar.Inset class="min-h-svh">
-	<div
-		class="grid min-h-svh grid-cols-1 gap-8 md:grid-cols-[1fr_280px] md:px-6 md:pb-6 lg:grid-cols-[1fr_240px]"
-	>
-		<!-- Main Content Area -->
-		<main class="min-w-0" bind:this={toc.ref}>
-			<!-- Title -->
-			<Subheading class="mb-4 md:text-3xl">Prompt Input</Subheading>
+<!-- Main Content Area -->
+<main class="min-w-0" bind:this={toc.ref}>
+	<!-- Title -->
+	<Subheading class="mb-4 md:text-3xl">Prompt Input</Subheading>
 
-			<!-- Description -->
-			<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
-				An input field that allows users to enter and submit text to an AI model.
-			</p>
+	<!-- Description -->
+	<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
+		An input field that allows users to enter and submit text to an AI model.
+	</p>
 
-			<!-- Actions -->
-			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton
-					{llmsTxtUrl}
-					component="prompt-input"
-					registry="prompt-kit"
-					source="documentation"
-				/>
-				<OpenInMenu componentName="Prompt Input" {llmsTxtUrl} />
-			</div>
-
-			<!-- Installation Section -->
-			<Subheading>Installation</Subheading>
-
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Copy and paste the following code into your project.
-			</p>
-
-			<div class="mb-6">
-				<AiInstallCommand
-					command="execute"
-					args={[
-						"shadcn-svelte@latest",
-						"add",
-						`${PUBLIC_WEBSITE_URL}/p/prompt-input.json`,
-					]}
-					component="prompt-input"
-					registry="prompt-kit"
-				/>
-			</div>
-			<!-- Examples Section -->
-			<Subheading>Examples</Subheading>
-
-			<!-- Example 1: Prompt Input basic -->
-			<H3>Prompt Input basic</H3>
-			<Playground
-				code={examples.basic.code}
-				component="prompt-input"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.basic.Component />
-				</div>
-			</Playground>
-			<!-- Example 2: Prompt Input with actions -->
-			<H3 class="mt-8">Prompt Input with actions</H3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				You can use <code class="bg-muted rounded px-1.5 py-0.5 text-sm"
-					>PromptInputActions</code
-				>
-				to add actions with tooltips to the
-				<code class="bg-muted rounded px-1.5 py-0.5 text-sm">PromptInput</code>.
-			</p>
-			<Playground
-				code={examples.withActions.code}
-				component="prompt-input"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.withActions.Component />
-				</div>
-			</Playground>
-			<!-- Component API Section -->
-			<Subheading>Component API</Subheading>
-
-			<!-- PromptInput -->
-			<ComponentAPITable
-				componentName="PromptInput"
-				props={promptInputProps}
-				class="mt-6"
-				id="promptinput"
-			/>
-
-			<!-- PromptInputTextarea -->
-			<ComponentAPITable
-				componentName="PromptInputTextarea"
-				props={promptInputTextareaProps}
-				id="promptinputtextarea"
-			/>
-
-			<!-- PromptInputActions -->
-			<ComponentAPITable
-				componentName="PromptInputActions"
-				props={promptInputActionsProps}
-				id="promptinputactions"
-			/>
-
-			<!-- PromptInputAction -->
-			<ComponentAPITable
-				componentName="PromptInputAction"
-				props={promptInputActionProps}
-				id="promptinputaction"
-			/>
-
-			<PromptKitPrevNext currentSlug="prompt-input" />
-		</main>
-
-		<!-- TOC Sidebar - Sticky on larger screens -->
-		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">
-			<div>
-				<H3 class="mt-0 mb-4 text-sm">On this page</H3>
-				<Toc.Root toc={toc.current} />
-			</div>
-		</aside>
+	<!-- Actions -->
+	<div class="mb-8 flex items-center gap-2">
+		<CopyMarkdownButton
+			{llmsTxtUrl}
+			component="prompt-input"
+			registry="prompt-kit"
+			source="documentation"
+		/>
+		<OpenInMenu componentName="Prompt Input" {llmsTxtUrl} />
 	</div>
-</Sidebar.Inset>
+
+	<!-- Installation Section -->
+	<Subheading>Installation</Subheading>
+
+	<p class="mb-4 text-sm leading-relaxed sm:text-base">
+		Copy and paste the following code into your project.
+	</p>
+
+	<div class="mb-6">
+		<AiInstallCommand
+			command="execute"
+			args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/prompt-input.json`]}
+			component="prompt-input"
+			registry="prompt-kit"
+		/>
+	</div>
+	<!-- Examples Section -->
+	<Subheading>Examples</Subheading>
+
+	<!-- Example 1: Prompt Input basic -->
+	<H3>Prompt Input basic</H3>
+	<Playground
+		code={examples.basic.code}
+		component="prompt-input"
+		registry="prompt-kit"
+		source="example"
+	>
+		<div class="flex w-full justify-center">
+			<examples.basic.Component />
+		</div>
+	</Playground>
+	<!-- Example 2: Prompt Input with actions -->
+	<H3 class="mt-8">Prompt Input with actions</H3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		You can use <code class="bg-muted rounded px-1.5 py-0.5 text-sm">PromptInputActions</code>
+		to add actions with tooltips to the
+		<code class="bg-muted rounded px-1.5 py-0.5 text-sm">PromptInput</code>.
+	</p>
+	<Playground
+		code={examples.withActions.code}
+		component="prompt-input"
+		registry="prompt-kit"
+		source="example"
+	>
+		<div class="flex w-full justify-center">
+			<examples.withActions.Component />
+		</div>
+	</Playground>
+	<!-- Component API Section -->
+	<Subheading>Component API</Subheading>
+
+	<!-- PromptInput -->
+	<ComponentAPITable
+		componentName="PromptInput"
+		props={promptInputProps}
+		class="mt-6"
+		id="promptinput"
+	/>
+
+	<!-- PromptInputTextarea -->
+	<ComponentAPITable
+		componentName="PromptInputTextarea"
+		props={promptInputTextareaProps}
+		id="promptinputtextarea"
+	/>
+
+	<!-- PromptInputActions -->
+	<ComponentAPITable
+		componentName="PromptInputActions"
+		props={promptInputActionsProps}
+		id="promptinputactions"
+	/>
+
+	<!-- PromptInputAction -->
+	<ComponentAPITable
+		componentName="PromptInputAction"
+		props={promptInputActionProps}
+		id="promptinputaction"
+	/>
+
+	<PromptKitPrevNext currentSlug="prompt-input" />
+</main>

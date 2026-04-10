@@ -121,10 +121,7 @@
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
-<Sidebar.Inset class="min-h-svh">
-	<div
-		class="grid min-h-svh grid-cols-1 gap-8 md:grid-cols-[1fr_280px] md:px-6 md:pb-6 lg:grid-cols-[1fr_240px]"
-	>
+
 		<main class="min-w-0" bind:this={toc.ref}>
 			<Subheading class="md:text-3xl">Queue</Subheading>
 			<p class="!text-muted-foreground my-2 text-lg">
@@ -335,11 +332,4 @@
 			<AiElementsPrevNext currentSlug="queue" />
 		</main>
 
-		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">
-			<div>
-				<h3 class="text-sm">On this page</h3>
-				<Toc.Root toc={toc.current} />
-			</div>
-		</aside>
-	</div>
-</Sidebar.Inset>
+

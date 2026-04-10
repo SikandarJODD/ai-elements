@@ -213,45 +213,40 @@
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
-<Sidebar.Inset class="min-h-svh">
-	<div
-		class="grid min-h-svh grid-cols-1 gap-8 md:grid-cols-[1fr_280px] md:px-6 md:pb-6 lg:grid-cols-[1fr_240px]"
-	>
-		<!-- Main Content Area -->
-		<main class="min-w-0" bind:this={toc.ref}>
-			<Subheading class="md:text-3xl">Artifact</Subheading>
+<main class="min-w-0" bind:this={toc.ref}>
+	<Subheading class="md:text-3xl">Artifact</Subheading>
 
-			<p class="!text-muted-foreground my-2 text-lg">
-				The <CodeSpan>Artifact</CodeSpan> component provides a structured container for displaying
-				generated content like code, documents, or other outputs with built-in header actions.
-			</p>
+	<p class="!text-muted-foreground my-2 text-lg">
+		The <CodeSpan>Artifact</CodeSpan> component provides a structured container for displaying generated
+		content like code, documents, or other outputs with built-in header actions.
+	</p>
 
-			<!-- Actions -->
-			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Artifact" {llmsTxtUrl} type="ai-elements" />
-			</div>
+	<!-- Actions -->
+	<div class="mb-8 flex items-center gap-2">
+		<CopyMarkdownButton {llmsTxtUrl} />
+		<OpenInMenu componentName="Artifact" {llmsTxtUrl} type="ai-elements" />
+	</div>
 
-			<Playground code={examples.basic.code}>
-				<div class="mx-auto w-full">
-					<examples.basic.Component />
-				</div>
-			</Playground>
+	<Playground code={examples.basic.code}>
+		<div class="mx-auto w-full">
+			<examples.basic.Component />
+		</div>
+	</Playground>
 
-			<!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
-			<Installation
-				specifier={`${PUBLIC_WEBSITE_URL}/r/artifact.json`}
-				is_jsrepo={true}
-				blockname="artifact"
-			/>
+	<!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
+	<Installation
+		specifier={`${PUBLIC_WEBSITE_URL}/r/artifact.json`}
+		is_jsrepo={true}
+		blockname="artifact"
+	/>
 
-			<!-- Usage -->
-			<Subheading>Usage</Subheading>
+	<!-- Usage -->
+	<Subheading>Usage</Subheading>
 
-			<div>
-				<Code
-					lang="svelte"
-					code={`\<script lang="ts"\>
+	<div>
+		<Code
+			lang="svelte"
+			code={`\<script lang="ts"\>
 	 import {
     Artifact,
     ArtifactAction,
@@ -277,86 +272,68 @@
     {/* Your content here */}
   </ArtifactContent>
 </Artifact>`}
-				/>
-			</div>
-
-			<!-- Examples  -->
-			<!-- <Subheading>Examples</Subheading>
-
-      <Playground code={examples.messageAction.code}>
-        <examples.messageAction.Component />
-      </Playground> -->
-
-			<!-- Component API Section -->
-			<Subheading>Props</Subheading>
-
-			<!-- Artifact -->
-			<ComponentAPITable
-				componentName="Artifact"
-				props={artifactProps}
-				class="mt-6"
-				id="artifact-props"
-			/>
-
-			<!-- ArtifactHeader -->
-			<ComponentAPITable
-				componentName="ArtifactHeader"
-				props={artifactHeaderProps}
-				id="artifact-header-props"
-			/>
-
-			<!-- ArtifactTitle -->
-			<ComponentAPITable
-				componentName="ArtifactTitle"
-				props={artifactTitleProps}
-				id="artifact-title-props"
-			/>
-
-			<!-- ArtifactDescription -->
-			<ComponentAPITable
-				componentName="ArtifactDescription"
-				props={artifactDescriptionProps}
-				id="artifact-description-props"
-			/>
-
-			<!-- ArtifactActions -->
-			<ComponentAPITable
-				componentName="ArtifactActions"
-				props={artifactActionsProps}
-				id="artifact-actions-props"
-			/>
-
-			<!-- ArtifactAction -->
-			<ComponentAPITable
-				componentName="ArtifactAction"
-				props={artifactActionProps}
-				id="artifact-action-props"
-			/>
-
-			<!-- ArtifactClose -->
-			<ComponentAPITable
-				componentName="ArtifactClose"
-				props={artifactCloseProps}
-				id="artifact-close-props"
-			/>
-
-			<!-- ArtifactContent -->
-			<ComponentAPITable
-				componentName="ArtifactContent"
-				props={artifactContentProps}
-				id="artifact-content-props"
-			/>
-
-			<AiElementsPrevNext currentSlug="artifact" />
-		</main>
-
-		<!-- TOC Sidebar - Sticky on larger screens -->
-		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">
-			<!-- TOC Component -->
-			<div>
-				<h3 class="text-sm">On this page</h3>
-				<Toc.Root toc={toc.current} />
-			</div>
-		</aside>
+		/>
 	</div>
-</Sidebar.Inset>
+
+	<!-- Component API Section -->
+	<Subheading>Props</Subheading>
+
+	<!-- Artifact -->
+	<ComponentAPITable
+		componentName="Artifact"
+		props={artifactProps}
+		class="mt-6"
+		id="artifact-props"
+	/>
+
+	<!-- ArtifactHeader -->
+	<ComponentAPITable
+		componentName="ArtifactHeader"
+		props={artifactHeaderProps}
+		id="artifact-header-props"
+	/>
+
+	<!-- ArtifactTitle -->
+	<ComponentAPITable
+		componentName="ArtifactTitle"
+		props={artifactTitleProps}
+		id="artifact-title-props"
+	/>
+
+	<!-- ArtifactDescription -->
+	<ComponentAPITable
+		componentName="ArtifactDescription"
+		props={artifactDescriptionProps}
+		id="artifact-description-props"
+	/>
+
+	<!-- ArtifactActions -->
+	<ComponentAPITable
+		componentName="ArtifactActions"
+		props={artifactActionsProps}
+		id="artifact-actions-props"
+	/>
+
+	<!-- ArtifactAction -->
+	<ComponentAPITable
+		componentName="ArtifactAction"
+		props={artifactActionProps}
+		id="artifact-action-props"
+	/>
+
+	<!-- ArtifactClose -->
+	<ComponentAPITable
+		componentName="ArtifactClose"
+		props={artifactCloseProps}
+		id="artifact-close-props"
+	/>
+
+	<!-- ArtifactContent -->
+	<ComponentAPITable
+		componentName="ArtifactContent"
+		props={artifactContentProps}
+		id="artifact-content-props"
+	/>
+
+	<AiElementsPrevNext currentSlug="artifact" />
+</main>

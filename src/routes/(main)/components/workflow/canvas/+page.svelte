@@ -18,10 +18,7 @@
 
 <MetaTags {...seo} />
 
-<Sidebar.Inset class="min-h-svh">
-	<div
-		class="grid min-h-svh grid-cols-1 gap-8 md:grid-cols-[1fr_280px] md:px-6 md:pb-6 lg:grid-cols-[1fr_240px]"
-	>
+
 		<main class="min-w-0" bind:this={toc.ref}>
 			<Subheading class="md:text-3xl">Canvas</Subheading>
 
@@ -172,6 +169,4 @@
 			<AiElementsPrevNext currentSlug="canvas" />
 		</main>
 
-		<Toc.Root toc={toc.current} />
-	</div>
-</Sidebar.Inset>
+
