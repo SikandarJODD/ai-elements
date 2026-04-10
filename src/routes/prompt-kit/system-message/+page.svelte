@@ -97,7 +97,7 @@
 		<!-- Main Content Area -->
 		<main class="min-w-0" bind:this={toc.ref}>
 			<!-- Title -->
-			<Subheading class="mb-4 md:text-3xl">System Message</Subheading>
+			<Subheading class="md:text-3xl">System Message</Subheading>
 
 			<!-- Description -->
 			<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
