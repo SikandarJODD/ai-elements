@@ -8,9 +8,10 @@
 	let { children } = $props();
 
 	let keys = new PressedKeys();
-	keys.onKeys(["d"], () => {
-		toggleMode();
-	});
+	// keys.onKeys(["d"], () => {
+	// 	console.log("Toggling mode");
+	// 	toggleMode();
+	// });
 </script>
 
 <svelte:head>

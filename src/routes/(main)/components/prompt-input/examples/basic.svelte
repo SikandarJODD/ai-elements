@@ -2,14 +2,9 @@
 	import * as PromptInput from "$lib/components/ai-elements/prompt-input";
 	import type { Message } from "$lib/components/ai-elements/prompt-input";
 
-	import { Chat } from "@ai-sdk/svelte";
-	let chat = new Chat({});
-
 	function handleSubmit(message: Message) {
-		chat.sendMessage({
-			text: message.text,
-			files: message.files,
-		});
+		console.log("Submitted message:", message.text);
+		console.log("Files", message.files);
 	}
 </script>
 
@@ -18,6 +13,6 @@
 		<PromptInput.Textarea />
 	</PromptInput.Body>
 	<PromptInput.Toolbar class="justify-end">
-		<PromptInput.Submit status={chat.status} />
+		<PromptInput.Submit />
 	</PromptInput.Toolbar>
 </PromptInput.Root>

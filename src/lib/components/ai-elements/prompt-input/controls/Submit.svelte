@@ -22,7 +22,7 @@
 		class?: string;
 		variant?: ButtonVariant;
 		size?: ButtonSize;
-		status: ChatStatus;
+		status?: ChatStatus;
 		onStop?: () => void;
 		ref?: HTMLButtonElement | null;
 		onclick?: (event: SubmitClickEvent) => void;
