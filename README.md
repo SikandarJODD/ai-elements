@@ -97,3 +97,21 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
   <p>Made with 😊 by <a href="https://github.com/SikandarJODD">Bhide Svelte</a></p>
 
 </div>
+
+
+## Installation
+
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+
+```python
+# Example usage
+```
+
+
+## Contributing
+
+Contributions are welcome! Please open an issue first.
