@@ -1,0 +1,82 @@
+<script lang="ts">
+	import InfoPopover from "./InfoPopover.svelte";
+	import { cn } from "$lib/utils/utils";
+	import { H3, Table, Tbody, Td, Thead, Tr, Th } from "$lib/components/markdown";
+
+	type PropDef = {
+		name?: string;
+		type: string;
+		default?: string;
+		required?: boolean;
+		description?: string;
+	};
+
+	type PropsTable = {
+		name?: string;
+		desc?: string;
+		props: PropDef[];
+	};
+
+	let {
+		data,
+	}: {
+		data: PropsTable | PropDef[];
+	} = $props();
+
+	const isPropsTable = (data: PropsTable | PropDef[]): data is PropsTable => {
+		return "props" in data;
+	};
+
+	let tableData = $derived(isPropsTable(data) ? data.props : data);
+	let tableHeaders = $state(["Name", "Type", "Default", "Description"]);
+	let tableKeys = $state(["name", "type", "default", "description"]);
+</script>
+
+{#if isPropsTable(data)}
+	<div class="space-y-2">
+		{#if data.name}
+			<H3 id={data.name} class="mt-0 text-xl font-semibold">
+				{data.name}
+			</H3>
+		{/if}
+		{#if data.desc}
+			<p class="text-muted-foreground m-0 leading-relaxed">
+				{data.desc}
+			</p>
+		{/if}
+	</div>
+{/if}
+
+<Table>
+	<Thead>
+		<Tr>
+			{#each tableHeaders as header (header)}
+				<Th>{header}</Th>
+			{/each}
+		</Tr>
+	</Thead>
+	<Tbody>
+		{#each tableData as row, i (i)}
+			<Tr>
+				{#each tableKeys as key, index (key)}
+					<Td>
+						<span class="inline-flex items-center gap-1">
+							<code
+								class={cn(
+									"dark:bg-muted/50 bg-muted/75 rounded-md px-2 py-0.5 font-mono text-sm text-neutral-600 dark:text-neutral-300"
+								)}
+							>
+								{key === "default" && row.required
+									? "required"
+									: (row as any)[key] || ""}
+							</code>
+							{#if index === 0 && row.description}
+								<InfoPopover description={row.description} />
+							{/if}
+						</span>
+					</Td>
+				{/each}
+			</Tr>
+		{/each}
+	</Tbody>
+</Table>
