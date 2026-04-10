@@ -171,7 +171,7 @@
 	});
 </script>
 
-<Conversation class="h-full">
+<Conversation class="h-full w-full">
 	<ConversationContent>
 		{#if visibleMessages.length === 0}
 			<ConversationEmptyState
