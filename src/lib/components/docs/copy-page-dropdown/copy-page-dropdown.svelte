@@ -61,7 +61,7 @@
 				</Button>
 			{/snippet}
 		</DropdownMenu.Trigger>
-		<OpenInContent align="end">
+		<OpenInContent align="end" preventScroll={false}>
 			<!-- <OpenInLabel class="font-normal!">Open In</OpenInLabel> -->
 			<DropdownMenu.Item class="gap-2">
 				<a

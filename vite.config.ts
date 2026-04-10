@@ -4,10 +4,10 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
 	plugins: [tailwindcss(), sveltekit()],
-	// optimizeDeps: {
-	// 	force: false,
-	// 	exclude: ["@lucide/svelte"],
-	// },
+	optimizeDeps: {
+		force: false,
+		exclude: ["@lucide/svelte"],
+	},
 	// resolve: {
 	// 	dedupe: ["svelte"],
 	// },
@@ -28,4 +28,13 @@ export default defineConfig({
 	// // ssr: {
 	// 	noExternal: ['shiki', '@shikijs/langs', '@shikijs/themes']
 	// }
+	server: {
+		watch: {
+			ignored: [
+				"**/node_modules/**",
+				"**/.svelte-kit/**",
+				"**/.vercel/**",
+			],
+		},
+	},
 });

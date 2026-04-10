@@ -57,7 +57,7 @@
 		}
 	}
 
-	const IconComponent = getLanguageIcon(lang);
+	let IconComponent = $derived(getLanguageIcon(lang));
 </script>
 
 <div class={cn("not-prose relative overflow-hidden rounded-lg border", className)} {...rest}>

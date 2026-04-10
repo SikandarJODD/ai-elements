@@ -7,6 +7,7 @@
 	import XIcon from "@lucide/svelte/icons/x";
 	import { scale } from "svelte/transition";
 	import type { CopyButtonProps } from "./types";
+	import { watch } from "runed";
 
 	let {
 		ref = $bindable(null),
@@ -27,9 +28,11 @@
 	}: CopyButtonProps = $props();
 
 	// this way if the user passes text then the button will be the default size
-	if (size === "icon" && children) {
-		size = "default";
-	}
+	watch([() => size, () => children], ([size, children]) => {
+		if (size === "icon" && children) {
+			size = "default";
+		}
+	});
 
 	let clipboard = new UseClipboard();
 </script>

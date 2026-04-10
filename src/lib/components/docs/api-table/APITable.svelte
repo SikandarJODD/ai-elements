@@ -28,8 +28,9 @@
 	};
 
 	let tableData = $derived(isPropsTable(data) ? data.props : data);
-	let tableHeaders = $state(["Name", "Type", "Default", "Description"]);
-	let tableKeys = $state(["name", "type", "default", "description"]);
+	// name, type, default, descrption
+	let tableHeaders = $state(["Name", "Type", "Default"]);
+	let tableKeys = $state(["name", "type", "default"]);
 </script>
 
 {#if isPropsTable(data)}
@@ -63,7 +64,7 @@
 						<span class="inline-flex items-center gap-1">
 							<code
 								class={cn(
-									"dark:bg-muted/50 bg-muted/75 rounded-md px-2 py-0.5 font-mono text-sm text-neutral-600 dark:text-neutral-300"
+									"dark:bg-muted/50  bg-muted/75 rounded-md px-2 py-0.5 font-mono text-sm text-neutral-600 dark:text-neutral-300 max-w-90"
 								)}
 							>
 								{key === "default" && row.required
