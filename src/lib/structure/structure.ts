@@ -27,23 +27,21 @@ export type PropsTable = {
 	props: PropDef[];
 };
 
-export type InstallComponentDocs = {
-	installCode?: CodeBlock | CodeBlock[];
-	tailwind?: CodeBlock;
-	folderStructure?: string;
-	packages?: string[];
-};
+// as we are not using : manual install we don't need this...
+// export type InstallComponentDocs = {
+// 	tailwind?: CodeBlock;
+// 	packages?: string[];
+// 	installCode?: CodeBlock | CodeBlock[];
+//  folderStructure?: string;
+// };
 
 export type ComponentDoc = ComponentMeta & {
 	preview?: Component;
-	installBlock?: InstallComponentDocs;
 	previewCode?: CodeBlock | CodeBlock[];
 	examples?: Example[];
 	seo: SEO;
-	/** @deprecated Use installBlock.tailwind instead */
-	tailwind?: CodeBlock;
 	props?: PropsTable[];
 	folderStructure?: string;
-	/** @deprecated Use installBlock.packages instead */
+	tailwind?: CodeBlock;
 	packages?: string[];
 };
