@@ -63,98 +63,91 @@
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
+<!-- Main Content Area -->
+<main class="min-w-0" bind:this={toc.ref}>
+	<!-- Title -->
+	<Subheading class="mb-4 md:text-3xl">Thinking Bar</Subheading>
 
-		<!-- Main Content Area -->
-		<main class="min-w-0" bind:this={toc.ref}>
-			<!-- Title -->
-			<Subheading class="mb-4 md:text-3xl">Thinking Bar</Subheading>
+	<!-- Description -->
+	<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
+		A component for displaying AI thinking state with animated shimmer text and optional stop
+		button
+	</p>
 
-			<!-- Description -->
-			<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
-				A component for displaying AI thinking state with animated shimmer text and optional
-				stop button
-			</p>
+	<!-- Actions -->
+	<div class="mb-8 flex items-center gap-2">
+		<CopyMarkdownButton
+			{llmsTxtUrl}
+			component="thinking-bar"
+			registry="prompt-kit"
+			source="documentation"
+		/>
+		<OpenInMenu componentName="Thinking Bar" {llmsTxtUrl} />
+	</div>
 
-			<!-- Actions -->
-			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton
-					{llmsTxtUrl}
-					component="thinking-bar"
-					registry="prompt-kit"
-					source="documentation"
-				/>
-				<OpenInMenu componentName="Thinking Bar" {llmsTxtUrl} />
-			</div>
+	<!-- Installation Section -->
+	<Subheading>Installation</Subheading>
 
-			<!-- Installation Section -->
-			<Subheading>Installation</Subheading>
+	<p class="mb-4 text-sm leading-relaxed sm:text-base">
+		Copy and paste the following code into your project.
+	</p>
 
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Copy and paste the following code into your project.
-			</p>
+	<div class="mb-6">
+		<AiInstallCommand
+			command="execute"
+			args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/thinking-bar.json`]}
+			component="thinking-bar"
+			registry="prompt-kit"
+		/>
+	</div>
 
-			<div class="mb-6">
-				<AiInstallCommand
-					command="execute"
-					args={[
-						"shadcn-svelte@latest",
-						"add",
-						`${PUBLIC_WEBSITE_URL}/p/thinking-bar.json`,
-					]}
-					component="thinking-bar"
-					registry="prompt-kit"
-				/>
-			</div>
+	<!-- Examples Section -->
+	<Subheading>Examples</Subheading>
 
-			<!-- Examples Section -->
-			<Subheading>Examples</Subheading>
+	<!-- Example 1: Basic thinking bar -->
+	<H3>Basic thinking bar</H3>
+	<Playground
+		code={examples.basic.code}
+		component="thinking-bar"
+		registry="prompt-kit"
+		source="example"
+	>
+		<div class="flex w-full justify-center">
+			<examples.basic.Component />
+		</div>
+	</Playground>
 
-			<!-- Example 1: Basic thinking bar -->
-			<H3>Basic thinking bar</H3>
-			<Playground
-				code={examples.basic.code}
-				component="thinking-bar"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.basic.Component />
-				</div>
-			</Playground>
+	<!-- Example 2: With stop button -->
+	<H3>With stop button</H3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		Add a stop button using the <code class="bg-muted rounded px-1.5 py-0.5 text-sm"
+			>onStop</code
+		>
+		callback. Customize the button label with
+		<code class="bg-muted rounded px-1.5 py-0.5 text-sm">stopLabel</code>.
+	</p>
+	<Playground
+		code={examples.withStop.code}
+		component="thinking-bar"
+		registry="prompt-kit"
+		source="example"
+	>
+		<div class="flex w-full justify-center">
+			<examples.withStop.Component />
+		</div>
+	</Playground>
 
-			<!-- Example 2: With stop button -->
-			<H3>With stop button</H3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				Add a stop button using the <code class="bg-muted rounded px-1.5 py-0.5 text-sm"
-					>onStop</code
-				>
-				callback. Customize the button label with
-				<code class="bg-muted rounded px-1.5 py-0.5 text-sm">stopLabel</code>.
-			</p>
-			<Playground
-				code={examples.withStop.code}
-				component="thinking-bar"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.withStop.Component />
-				</div>
-			</Playground>
+	<!-- Component API Section -->
+	<Subheading>Component API</Subheading>
 
-			<!-- Component API Section -->
-			<Subheading>Component API</Subheading>
+	<!-- ThinkingBar -->
+	<H3>ThinkingBar</H3>
+	<ComponentAPITable
+		componentName="ThinkingBar"
+		props={thinkingBarProps}
+		class="mt-4"
+		id="thinking-bar-props"
+	/>
 
-			<!-- ThinkingBar -->
-			<H3>ThinkingBar</H3>
-			<ComponentAPITable
-				componentName="ThinkingBar"
-				props={thinkingBarProps}
-				class="mt-4"
-				id="thinking-bar-props"
-			/>
-
-			<PromptKitPrevNext currentSlug="thinking-bar" />
-		</main>
-
-
+	<PromptKitPrevNext currentSlug="thinking-bar" />
+</main>

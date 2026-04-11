@@ -76,198 +76,180 @@
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
+<!-- Main Content Area -->
+<main class="min-w-0" bind:this={toc.ref}>
+	<!-- Title -->
+	<Subheading class="mb-4 md:text-3xl">Chat Container</Subheading>
 
-		<!-- Main Content Area -->
-		<main class="min-w-0" bind:this={toc.ref}>
-			<!-- Title -->
-			<Subheading class="mb-4 md:text-3xl">Chat Container</Subheading>
+	<!-- Description -->
+	<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
+		A component for creating chat interfaces with intelligent auto-scrolling behavior, designed
+		to provide a smooth experience in conversation interfaces.
+	</p>
 
-			<!-- Description -->
-			<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
-				A component for creating chat interfaces with intelligent auto-scrolling behavior,
-				designed to provide a smooth experience in conversation interfaces.
-			</p>
+	<!-- Actions -->
+	<div class="mb-8 flex items-center gap-2">
+		<CopyMarkdownButton
+			{llmsTxtUrl}
+			component="chat-container"
+			registry="prompt-kit"
+			source="documentation"
+		/>
+		<OpenInMenu componentName="Chat Container" {llmsTxtUrl} />
+	</div>
 
-			<!-- Actions -->
-			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton
-					{llmsTxtUrl}
-					component="chat-container"
-					registry="prompt-kit"
-					source="documentation"
-				/>
-				<OpenInMenu componentName="Chat Container" {llmsTxtUrl} />
-			</div>
+	<!-- Installation Section -->
+	<Subheading>Installation</Subheading>
 
-			<!-- Installation Section -->
-			<Subheading>Installation</Subheading>
+	<p class="mb-4 text-sm leading-relaxed sm:text-base">
+		Copy and paste the following code into your project.
+	</p>
 
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Copy and paste the following code into your project.
-			</p>
+	<div class="mb-6">
+		<AiInstallCommand
+			command="execute"
+			args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/chat-container.json`]}
+			component="chat-container"
+			registry="prompt-kit"
+		/>
+	</div>
+	<!-- Examples Section -->
+	<Subheading>Examples</Subheading>
 
-			<div class="mb-6">
-				<AiInstallCommand
-					command="execute"
-					args={[
-						"shadcn-svelte@latest",
-						"add",
-						`${PUBLIC_WEBSITE_URL}/p/chat-container.json`,
-					]}
-					component="chat-container"
-					registry="prompt-kit"
-				/>
-			</div>
-			<!-- Examples Section -->
-			<Subheading>Examples</Subheading>
+	<!-- Example 1: Chat Container Basic -->
+	<h3 class="mt-6 mb-3 text-lg font-semibold" id="chat-container-basic">Chat Container Basic</h3>
+	<Playground
+		code={examples.basic.code}
+		component="chat-container"
+		registry="prompt-kit"
+		source="example"
+	>
+		<div class="flex w-full justify-center">
+			<examples.basic.Component />
+		</div>
+	</Playground>
+	<!-- Example 2: Streaming Text Example -->
+	<h3 class="mt-8 mb-3 text-lg font-semibold" id="streaming-text-example">
+		Streaming Text Example
+	</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		A chat container that demonstrates text streaming with automatic scrolling. Click the "Show
+		Streaming" button to see a simulated streaming response with the smart auto-scroll behavior
+		in action.
+	</p>
+	<Playground code={examples.streaming.code}>
+		<div class="flex w-full justify-center">
+			<examples.streaming.Component />
+		</div>
+	</Playground>
 
-			<!-- Example 1: Chat Container Basic -->
-			<h3 class="mt-6 mb-3 text-lg font-semibold" id="chat-container-basic">
-				Chat Container Basic
-			</h3>
-			<Playground
-				code={examples.basic.code}
-				component="chat-container"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.basic.Component />
-				</div>
-			</Playground>
-			<!-- Example 2: Streaming Text Example -->
-			<h3 class="mt-8 mb-3 text-lg font-semibold" id="streaming-text-example">
-				Streaming Text Example
-			</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				A chat container that demonstrates text streaming with automatic scrolling. Click
-				the "Show Streaming" button to see a simulated streaming response with the smart
-				auto-scroll behavior in action.
-			</p>
-			<Playground code={examples.streaming.code}>
-				<div class="flex w-full justify-center">
-					<examples.streaming.Component />
-				</div>
-			</Playground>
+	<!-- Component API Section -->
+	<Subheading>Component API</Subheading>
 
-			<!-- Component API Section -->
-			<Subheading>Component API</Subheading>
+	<p class="text-muted-foreground mb-6 text-sm leading-relaxed sm:text-base">
+		The ChatContainer is built using three separate components that work together:
+	</p>
 
-			<p class="text-muted-foreground mb-6 text-sm leading-relaxed sm:text-base">
-				The ChatContainer is built using three separate components that work together:
-			</p>
+	<!-- ChatContainerRoot -->
+	<h3 class="mt-6 mb-3 text-base font-semibold" id="chat-container-root">ChatContainerRoot</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		The main container that provides auto-scrolling functionality using the <code
+			class="bg-muted rounded px-1.5 py-0.5 text-sm">use-stick-to-bottom</code
+		> library.
+	</p>
+	<ComponentAPITable
+		componentName="ChatContainerRoot"
+		props={chatContainerRootProps}
+		class="mt-4"
+		id="chat-container-root-props"
+	/>
 
-			<!-- ChatContainerRoot -->
-			<h3 class="mt-6 mb-3 text-base font-semibold" id="chat-container-root">
-				ChatContainerRoot
-			</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				The main container that provides auto-scrolling functionality using the <code
-					class="bg-muted rounded px-1.5 py-0.5 text-sm">use-stick-to-bottom</code
-				> library.
-			</p>
-			<ComponentAPITable
-				componentName="ChatContainerRoot"
-				props={chatContainerRootProps}
-				class="mt-4"
-				id="chat-container-root-props"
-			/>
+	<!-- ChatContainerContent -->
+	<h3 class="mt-6 mb-3 text-base font-semibold" id="chat-container-content">
+		ChatContainerContent
+	</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		The content wrapper that should contain your messages.
+	</p>
+	<ComponentAPITable
+		componentName="ChatContainerContent"
+		props={chatContainerContentProps}
+		id="chat-container-content-props"
+	/>
 
-			<!-- ChatContainerContent -->
-			<h3 class="mt-6 mb-3 text-base font-semibold" id="chat-container-content">
-				ChatContainerContent
-			</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				The content wrapper that should contain your messages.
-			</p>
-			<ComponentAPITable
-				componentName="ChatContainerContent"
-				props={chatContainerContentProps}
-				id="chat-container-content-props"
-			/>
+	<!-- ChatContainerScrollAnchor -->
+	<h3 class="mt-6 mb-3 text-base font-semibold" id="chat-container-scroll-anchor">
+		ChatContainerScrollAnchor
+	</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		An optional scroll anchor element that can be used for scroll targeting.
+	</p>
+	<ComponentAPITable
+		componentName="ChatContainerScrollAnchor"
+		props={chatContainerScrollAnchorProps}
+		id="chat-container-scroll-anchor-props"
+	/>
 
-			<!-- ChatContainerScrollAnchor -->
-			<h3 class="mt-6 mb-3 text-base font-semibold" id="chat-container-scroll-anchor">
-				ChatContainerScrollAnchor
-			</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				An optional scroll anchor element that can be used for scroll targeting.
-			</p>
-			<ComponentAPITable
-				componentName="ChatContainerScrollAnchor"
-				props={chatContainerScrollAnchorProps}
-				id="chat-container-scroll-anchor-props"
-			/>
+	<!-- Auto-Scroll Behavior Section -->
+	<h3 class="mt-8 mb-3 text-lg font-semibold" id="auto-scroll-behavior">Auto-Scroll Behavior</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		The component uses the <code class="bg-muted rounded px-1.5 py-0.5 text-sm"
+			>use-stick-to-bottom</code
+		> library to provide sophisticated auto-scrolling:
+	</p>
+	<ul
+		class="text-muted-foreground mb-6 ml-4 list-inside list-disc space-y-2 text-sm sm:text-base"
+	>
+		<li>
+			<strong>Smooth Animations:</strong> Uses velocity-based spring animations for natural scrolling
+		</li>
+		<li>
+			<strong>Content Resizing:</strong> Automatically detects content changes using ResizeObserver
+			API
+		</li>
+		<li>
+			<strong>User Control:</strong> Automatically disables sticky behavior when users scroll up
+		</li>
+		<li><strong>Mobile Support:</strong> Works seamlessly on touch devices</li>
+		<li>
+			<strong>Performance:</strong> Zero dependencies and optimized for chat applications
+		</li>
+		<li>
+			<strong>Scroll Anchoring:</strong> Prevents content jumping when new content is added above
+			the viewport
+		</li>
+	</ul>
 
-			<!-- Auto-Scroll Behavior Section -->
-			<h3 class="mt-8 mb-3 text-lg font-semibold" id="auto-scroll-behavior">
-				Auto-Scroll Behavior
-			</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				The component uses the <code class="bg-muted rounded px-1.5 py-0.5 text-sm"
-					>use-stick-to-bottom</code
-				> library to provide sophisticated auto-scrolling:
-			</p>
-			<ul
-				class="text-muted-foreground mb-6 ml-4 list-inside list-disc space-y-2 text-sm sm:text-base"
-			>
-				<li>
-					<strong>Smooth Animations:</strong> Uses velocity-based spring animations for natural
-					scrolling
-				</li>
-				<li>
-					<strong>Content Resizing:</strong> Automatically detects content changes using ResizeObserver
-					API
-				</li>
-				<li>
-					<strong>User Control:</strong> Automatically disables sticky behavior when users scroll
-					up
-				</li>
-				<li><strong>Mobile Support:</strong> Works seamlessly on touch devices</li>
-				<li>
-					<strong>Performance:</strong> Zero dependencies and optimized for chat applications
-				</li>
-				<li>
-					<strong>Scroll Anchoring:</strong> Prevents content jumping when new content is added
-					above the viewport
-				</li>
-			</ul>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">Key behaviors:</p>
+	<ul
+		class="text-muted-foreground mb-6 ml-4 list-inside list-disc space-y-2 text-sm sm:text-base"
+	>
+		<li>
+			<strong>Stick to Bottom:</strong> Automatically scrolls to bottom when new content is added
+			(if already at bottom)
+		</li>
+		<li>
+			<strong>Smart Scrolling:</strong> Only scrolls when user is at the bottom, preserves scroll
+			position otherwise
+		</li>
+		<li>
+			<strong>Cancel on Scroll:</strong> User can scroll up to cancel auto-scrolling behavior
+		</li>
+		<li>
+			<strong>Resume Auto-Scroll:</strong> Returns to auto-scrolling when user scrolls back to bottom
+		</li>
+	</ul>
 
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				Key behaviors:
-			</p>
-			<ul
-				class="text-muted-foreground mb-6 ml-4 list-inside list-disc space-y-2 text-sm sm:text-base"
-			>
-				<li>
-					<strong>Stick to Bottom:</strong> Automatically scrolls to bottom when new content
-					is added (if already at bottom)
-				</li>
-				<li>
-					<strong>Smart Scrolling:</strong> Only scrolls when user is at the bottom, preserves
-					scroll position otherwise
-				</li>
-				<li>
-					<strong>Cancel on Scroll:</strong> User can scroll up to cancel auto-scrolling behavior
-				</li>
-				<li>
-					<strong>Resume Auto-Scroll:</strong> Returns to auto-scrolling when user scrolls back
-					to bottom
-				</li>
-			</ul>
+	<!-- Using with ScrollButton Section -->
+	<h3 class="mt-8 mb-3 text-lg font-semibold" id="using-with-scroll-button">
+		Using with ScrollButton
+	</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		The ChatContainer pairs perfectly with the <code
+			class="bg-muted rounded px-1.5 py-0.5 text-sm">ScrollButton</code
+		> component. The ScrollButton automatically appears when the user scrolls up and disappears when
+		at the bottom.
+	</p>
 
-			<!-- Using with ScrollButton Section -->
-			<h3 class="mt-8 mb-3 text-lg font-semibold" id="using-with-scroll-button">
-				Using with ScrollButton
-			</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				The ChatContainer pairs perfectly with the <code
-					class="bg-muted rounded px-1.5 py-0.5 text-sm">ScrollButton</code
-				> component. The ScrollButton automatically appears when the user scrolls up and disappears
-				when at the bottom.
-			</p>
-
-			<PromptKitPrevNext currentSlug="chat-container" />
-		</main>
-
-
+	<PromptKitPrevNext currentSlug="chat-container" />
+</main>

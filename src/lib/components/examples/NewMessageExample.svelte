@@ -234,7 +234,8 @@ The beauty of runes is they make Svelte's "magic" explicit while keeping the syn
 									label="Copy"
 									onclick={() =>
 										handleCopy(
-											message.versions?.[currentBranches[message.key] ?? 0]?.content || ""
+											message.versions?.[currentBranches[message.key] ?? 0]
+												?.content || ""
 										)}
 									tooltip="Copy to clipboard"
 								>

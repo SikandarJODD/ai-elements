@@ -42,7 +42,7 @@
 			class="size-full object-cover object-center transition-transform duration-200 group-hover:scale-[1.03]"
 			height={96}
 			onload={handleImageLoad}
-			src={src}
+			{src}
 			width={96}
 		/>
 	</Dialog.Trigger>
@@ -65,7 +65,7 @@
 					alt={data.filename || "attachment preview"}
 					class="size-full object-contain object-center"
 					onload={handleImageLoad}
-					src={src}
+					{src}
 				/>
 			</div>
 		</div>

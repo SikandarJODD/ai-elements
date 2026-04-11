@@ -15,4 +15,4 @@ export interface Props extends HTMLAttributes<SVGElement> {
 	height?: number;
 }
 
-export { GitHub,CSS, TypeScript, Twitter, Svelte, Terminal, Code as CodeIcon, MCP, Markdown };
+export { GitHub, CSS, TypeScript, Twitter, Svelte, Terminal, Code as CodeIcon, MCP, Markdown };

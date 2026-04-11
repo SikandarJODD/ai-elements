@@ -50,13 +50,7 @@
 		</Tooltip.Root>
 	</Tooltip.Provider>
 {:else}
-	<Button
-		{...restProps}
-		{size}
-		type="button"
-		{variant}
-		class={cn("size-7", className)}
-	>
+	<Button {...restProps} {size} type="button" {variant} class={cn("size-7", className)}>
 		{@render children?.()}
 		{#if srOnlyLabel}
 			<span class="sr-only">{srOnlyLabel}</span>

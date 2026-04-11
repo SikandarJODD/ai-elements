@@ -30,7 +30,9 @@
 	let { componentName, llmsTxtUrl, type = "prompt-kit" }: Props = $props();
 
 	// Create the query for AI assistants
-	let query = $derived(`Read ${llmsTxtUrl} and help me understand the ${componentName} component`);
+	let query = $derived(
+		`Read ${llmsTxtUrl} and help me understand the ${componentName} component`
+	);
 
 	// Get the exact GitHub file URL for the component based on type
 	function getGithubUrl(): string {

@@ -139,140 +139,133 @@
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
+<!-- Main Content Area -->
+<main class="min-w-0" bind:this={toc.ref}>
+	<!-- Title -->
+	<Subheading class="mb-4 md:text-3xl">Message</Subheading>
 
-		<!-- Main Content Area -->
-		<main class="min-w-0" bind:this={toc.ref}>
-			<!-- Title -->
-			<Subheading class="mb-4 md:text-3xl">Message</Subheading>
+	<!-- Description -->
+	<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
+		A component for displaying messages in a conversation interface, with support for avatars,
+		markdown content, and interactive actions.
+	</p>
 
-			<!-- Description -->
-			<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
-				A component for displaying messages in a conversation interface, with support for
-				avatars, markdown content, and interactive actions.
-			</p>
+	<!-- Actions -->
+	<div class="mb-8 flex items-center gap-2">
+		<CopyMarkdownButton
+			{llmsTxtUrl}
+			component="message"
+			registry="prompt-kit"
+			source="documentation"
+		/>
+		<OpenInMenu componentName="Message" {llmsTxtUrl} />
+	</div>
 
-			<!-- Actions -->
-			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton
-					{llmsTxtUrl}
-					component="message"
-					registry="prompt-kit"
-					source="documentation"
-				/>
-				<OpenInMenu componentName="Message" {llmsTxtUrl} />
-			</div>
+	<!-- Installation Section -->
+	<Subheading>Installation</Subheading>
 
-			<!-- Installation Section -->
-			<Subheading>Installation</Subheading>
+	<p class="mb-4 text-sm leading-relaxed sm:text-base">
+		Copy and paste the following code into your project.
+	</p>
 
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Copy and paste the following code into your project.
-			</p>
+	<div class="mb-6">
+		<AiInstallCommand
+			command="execute"
+			args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/message.json`]}
+			component="message"
+			registry="prompt-kit"
+		/>
+	</div>
+	<!-- Examples Section -->
+	<Subheading>Examples</Subheading>
 
-			<div class="mb-6">
-				<AiInstallCommand
-					command="execute"
-					args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/message.json`]}
-					component="message"
-					registry="prompt-kit"
-				/>
-			</div>
-			<!-- Examples Section -->
-			<Subheading>Examples</Subheading>
+	<!-- Example 1: Basic Message -->
+	<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-message">Basic Message</h3>
+	<Playground
+		code={examples.basic.code}
+		component="message"
+		registry="prompt-kit"
+		source="example"
+	>
+		<div class="flex w-full justify-center">
+			<examples.basic.Component />
+		</div>
+	</Playground>
+	<!-- Example 2: Message with Markdown -->
+	<h3 class="mt-8 mb-3 text-lg font-semibold" id="message-with-markdown">
+		Message with Markdown
+	</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		The <code class="bg-muted rounded px-1.5 py-0.5 text-sm">markdown</code> prop enables rendering
+		content as Markdown, perfect for rich text formatting in messages.
+	</p>
+	<Playground
+		code={examples.markdown.code}
+		component="message"
+		registry="prompt-kit"
+		source="example"
+	>
+		<div class="flex w-full justify-center">
+			<examples.markdown.Component />
+		</div>
+	</Playground>
 
-			<!-- Example 1: Basic Message -->
-			<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-message">Basic Message</h3>
-			<Playground
-				code={examples.basic.code}
-				component="message"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.basic.Component />
-				</div>
-			</Playground>
-			<!-- Example 2: Message with Markdown -->
-			<h3 class="mt-8 mb-3 text-lg font-semibold" id="message-with-markdown">
-				Message with Markdown
-			</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				The <code class="bg-muted rounded px-1.5 py-0.5 text-sm">markdown</code> prop enables
-				rendering content as Markdown, perfect for rich text formatting in messages.
-			</p>
-			<Playground
-				code={examples.markdown.code}
-				component="message"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.markdown.Component />
-				</div>
-			</Playground>
+	<!-- Example 3: Message with Actions -->
+	<h3 class="mt-8 mb-3 text-lg font-semibold" id="message-with-actions">Message with Actions</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		You can use <code class="bg-muted rounded px-1.5 py-0.5 text-sm">MessageActions</code>
+		and <code class="bg-muted rounded px-1.5 py-0.5 text-sm">MessageAction</code> to add interactive
+		elements to your messages.
+	</p>
+	<Playground
+		code={examples.withActions.code}
+		component="message"
+		registry="prompt-kit"
+		source="example"
+	>
+		<div class="flex w-full justify-center">
+			<examples.withActions.Component />
+		</div>
+	</Playground>
 
-			<!-- Example 3: Message with Actions -->
-			<h3 class="mt-8 mb-3 text-lg font-semibold" id="message-with-actions">
-				Message with Actions
-			</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				You can use <code class="bg-muted rounded px-1.5 py-0.5 text-sm"
-					>MessageActions</code
-				>
-				and <code class="bg-muted rounded px-1.5 py-0.5 text-sm">MessageAction</code> to add interactive
-				elements to your messages.
-			</p>
-			<Playground
-				code={examples.withActions.code}
-				component="message"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.withActions.Component />
-				</div>
-			</Playground>
+	<!-- Component API Section -->
+	<Subheading>Component API</Subheading>
 
-			<!-- Component API Section -->
-			<Subheading>Component API</Subheading>
+	<!-- Message -->
+	<ComponentAPITable
+		componentName="Message"
+		props={messageProps}
+		class="mt-6"
+		id="message-props"
+	/>
 
-			<!-- Message -->
-			<ComponentAPITable
-				componentName="Message"
-				props={messageProps}
-				class="mt-6"
-				id="message-props"
-			/>
+	<!-- MessageAvatar -->
+	<ComponentAPITable
+		componentName="MessageAvatar"
+		props={messageAvatarProps}
+		id="message-avatar-props"
+	/>
 
-			<!-- MessageAvatar -->
-			<ComponentAPITable
-				componentName="MessageAvatar"
-				props={messageAvatarProps}
-				id="message-avatar-props"
-			/>
+	<!-- MessageContent -->
+	<ComponentAPITable
+		componentName="MessageContent"
+		props={messageContentProps}
+		id="message-content-props"
+	/>
 
-			<!-- MessageContent -->
-			<ComponentAPITable
-				componentName="MessageContent"
-				props={messageContentProps}
-				id="message-content-props"
-			/>
+	<!-- MessageActions -->
+	<ComponentAPITable
+		componentName="MessageActions"
+		props={messageActionsProps}
+		id="message-actions-props"
+	/>
 
-			<!-- MessageActions -->
-			<ComponentAPITable
-				componentName="MessageActions"
-				props={messageActionsProps}
-				id="message-actions-props"
-			/>
+	<!-- MessageAction -->
+	<ComponentAPITable
+		componentName="MessageAction"
+		props={messageActionProps}
+		id="message-action-props"
+	/>
 
-			<!-- MessageAction -->
-			<ComponentAPITable
-				componentName="MessageAction"
-				props={messageActionProps}
-				id="message-action-props"
-			/>
-
-			<PromptKitPrevNext currentSlug="message" />
-		</main>
-
-
+	<PromptKitPrevNext currentSlug="message" />
+</main>

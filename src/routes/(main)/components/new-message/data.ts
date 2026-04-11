@@ -15,14 +15,14 @@ import type { SEO } from "$lib/structure/seo";
 
 export const meta: ComponentMeta = {
 	id: "new-message",
-	title: "New Message",
+	title: "Message",
 	description:
 		"Composable chat message primitives for Svelte with markdown responses, attachments, branching, and action slots.",
 	category: "utilities",
 };
 
 const seo: SEO = {
-	title: "New Message",
+	title: "Message",
 	description:
 		"Build chat interfaces with role-aware messages, markdown rendering, file attachments, and branch navigation in Svelte.",
 	keywords: ["Svelte", "Message", "Chat UI", "Svelte AI Elements"],

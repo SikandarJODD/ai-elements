@@ -5,30 +5,17 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A flexible component for displaying lists of pending and completed tasks, messages, or items with collapsible sections and attachment support.",
-	"dependencies": [
-		"@lucide/svelte"
-	],
+	"dependencies": ["@lucide/svelte"],
 	"devDependencies": [
 		"@lucide/svelte@^1.7.0",
 		"bits-ui@^2.16.3",
 		"@internationalized/date@^3.12.0"
 	],
-	"registryDependencies": [
-		"button",
-		"collapsible",
-		"scroll-area"
-	],
+	"registryDependencies": ["button", "collapsible", "scroll-area"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"queue",
-			"tasks",
-			"todo",
-			"list",
-			"collapsible",
-			"attachments"
-		],
+		"tags": ["queue", "tasks", "todo", "list", "collapsible", "attachments"],
 		"category": "Task Management",
 		"documentation": "https://svelte-ai-elements.vercel.app/components/queue",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

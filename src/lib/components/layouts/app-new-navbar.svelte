@@ -526,7 +526,7 @@
 							>
 								Components
 							</NavigationMenuTrigger>
-							<NavigationMenuContent class='p-0'>
+							<NavigationMenuContent class="p-0">
 								<ul class="grid w-[320px] p-2">
 									{#each componentItems as item (item.href)}
 										<li>

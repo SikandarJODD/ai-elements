@@ -21,7 +21,7 @@
 	};
 </script>
 
-<ActionMenuItem class={cn("gap-2",className)} onSelect={handleSelect} {...props}>
+<ActionMenuItem class={cn("gap-2", className)} onSelect={handleSelect} {...props}>
 	<ImageIcon class="size-4" />
 	{label}
 </ActionMenuItem>

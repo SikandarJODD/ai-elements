@@ -8,7 +8,7 @@
 
 <ComponentPageDocs
 	{data}
-	llmsTxtUrl={llmsTxtUrl}
+	{llmsTxtUrl}
 	intro="The Action component provides a flexible row of action buttons for AI responses with common actions like retry, like, dislike, copy, and share."
 	installation={{
 		specifier: `${PUBLIC_WEBSITE_URL}/r/action.json`,

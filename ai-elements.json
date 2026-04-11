@@ -33,20 +33,11 @@
 					"target": "ai-elements/action/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button",
-				"tooltip"
-			],
+			"registryDependencies": ["button", "tooltip"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"actions",
-					"buttons",
-					"ai-response",
-					"interactive",
-					"feedback"
-				],
+				"tags": ["actions", "buttons", "ai-response", "interactive", "feedback"],
 				"category": "AI Response",
 				"documentation": "https://svelte-ai-elements.vercel.app//components/actions",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -108,10 +99,7 @@
 					"target": "ai-elements/artifact/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button",
-				"tooltip"
-			],
+			"registryDependencies": ["button", "tooltip"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -169,14 +157,8 @@
 					"target": "ai-elements/chain-of-thought/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"badge",
-				"collapsible"
-			],
-			"dependencies": [
-				"ai",
-				"@lucide/svelte"
-			],
+			"registryDependencies": ["badge", "collapsible"],
+			"dependencies": ["ai", "@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -209,24 +191,12 @@
 					"target": "ai-elements/checkpoint/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button",
-				"separator",
-				"tooltip"
-			],
-			"dependencies": [
-				"@lucide/svelte/icons"
-			],
+			"registryDependencies": ["button", "separator", "tooltip"],
+			"dependencies": ["@lucide/svelte/icons"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"checkpoint",
-					"conversation",
-					"history",
-					"restore",
-					"undo"
-				],
+				"tags": ["checkpoint", "conversation", "history", "restore", "undo"],
 				"category": "Conversation",
 				"documentation": "https://svelte-ai-elements.vercel.app/components/checkpoint",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -288,24 +258,12 @@
 					"target": "ai-elements/confirmation/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button",
-				"alert"
-			],
-			"dependencies": [
-				"@lucide/svelte/icons",
-				"runed"
-			],
+			"registryDependencies": ["button", "alert"],
+			"dependencies": ["@lucide/svelte/icons", "runed"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"confirmation",
-					"approval",
-					"ai-actions",
-					"permissions",
-					"security"
-				],
+				"tags": ["confirmation", "approval", "ai-actions", "permissions", "security"],
 				"category": "AI Response",
 				"documentation": "https://ai-elements.vercel.app/components/confirmation",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -357,11 +315,7 @@
 					"target": "ai-elements/code/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"local:copy-button",
-				"button",
-				"tooltip"
-			],
+			"registryDependencies": ["local:copy-button", "button", "tooltip"],
 			"dependencies": [
 				"svelte-toolbelt",
 				"isomorphic-dompurify",
@@ -452,11 +406,7 @@
 					"target": "ai-elements/context/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"hover-card",
-				"progress",
-				"button"
-			],
+			"registryDependencies": ["hover-card", "progress", "button"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -499,9 +449,7 @@
 					"target": "ai-elements/conversation/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button"
-			],
+			"registryDependencies": ["button"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -534,13 +482,8 @@
 					"target": "hooks/use-clipboard.svelte.ts"
 				}
 			],
-			"registryDependencies": [
-				"button",
-				"tooltip"
-			],
-			"dependencies": [
-				"@lucide/svelte"
-			],
+			"registryDependencies": ["button", "tooltip"],
+			"dependencies": ["@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -568,9 +511,7 @@
 					"target": "ai-elements/image/index.ts"
 				}
 			],
-			"dependencies": [
-				"ai"
-			],
+			"dependencies": ["ai"],
 			"registryDependencies": [],
 			"meta": {
 				"author": "SikandarJODD"
@@ -664,16 +605,8 @@
 					"target": "ai-elements/inline-citation/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"tooltip",
-				"hover-card",
-				"badge",
-				"button",
-				"carousel"
-			],
-			"dependencies": [
-				"@lucide/svelte"
-			],
+			"registryDependencies": ["tooltip", "hover-card", "badge", "button", "carousel"],
+			"dependencies": ["@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -734,13 +667,8 @@
 					"target": "ai-elements/message/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"avatar"
-			],
-			"dependencies": [
-				"ai",
-				"tailwind-variants"
-			],
+			"registryDependencies": ["avatar"],
+			"dependencies": ["ai", "tailwind-variants"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -838,12 +766,7 @@
 					"target": "ai-elements/new-message/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button",
-				"button-group",
-				"tooltip",
-				"dialog"
-			],
+			"registryDependencies": ["button", "button-group", "tooltip", "dialog"],
 			"dependencies": [
 				"svelte-streamdown",
 				"mode-watcher",
@@ -953,14 +876,8 @@
 					"target": "ai-elements/model-selector/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"dialog",
-				"command",
-				"button"
-			],
-			"dependencies": [
-				"@lucide/svelte"
-			],
+			"registryDependencies": ["dialog", "command", "button"],
+			"dependencies": ["@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -1063,14 +980,8 @@
 					"target": "ai-elements/open-in-chat/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button",
-				"dropdown-menu",
-				"tooltip"
-			],
-			"dependencies": [
-				"@lucide/svelte"
-			],
+			"registryDependencies": ["button", "dropdown-menu", "tooltip"],
+			"dependencies": ["@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -1168,25 +1079,12 @@
 					"target": "ai-elements/queue/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button",
-				"collapsible",
-				"scroll-area"
-			],
-			"dependencies": [
-				"@lucide/svelte"
-			],
+			"registryDependencies": ["button", "collapsible", "scroll-area"],
+			"dependencies": ["@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"queue",
-					"tasks",
-					"todo",
-					"list",
-					"collapsible",
-					"attachments"
-				],
+				"tags": ["queue", "tasks", "todo", "list", "collapsible", "attachments"],
 				"category": "Task Management",
 				"documentation": "https://svelte-ai-elements.vercel.app/components/queue",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1233,13 +1131,8 @@
 					"target": "ai-elements/reasoning/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"collapsible"
-			],
-			"dependencies": [
-				"runed",
-				"@lucide/svelte"
-			],
+			"registryDependencies": ["collapsible"],
+			"dependencies": ["runed", "@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -1262,9 +1155,7 @@
 				}
 			],
 			"registryDependencies": [],
-			"dependencies": [
-				"svelte-streamdown"
-			],
+			"dependencies": ["svelte-streamdown"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -1293,9 +1184,7 @@
 				}
 			],
 			"registryDependencies": [],
-			"dependencies": [
-				"runed"
-			],
+			"dependencies": ["runed"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -1363,15 +1252,8 @@
 					"target": "ai-elements/plan/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"card",
-				"button",
-				"collapsible",
-				"shimmer"
-			],
-			"dependencies": [
-				"@lucide/svelte"
-			],
+			"registryDependencies": ["card", "button", "collapsible", "shimmer"],
+			"dependencies": ["@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -1559,16 +1441,8 @@
 					"target": "ai-elements/prompt-input/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button",
-				"textarea",
-				"dropdown-menu",
-				"tooltip",
-				"select"
-			],
-			"dependencies": [
-				"runed"
-			],
+			"registryDependencies": ["button", "textarea", "dropdown-menu", "tooltip", "select"],
+			"dependencies": ["runed"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "3.0.0",
@@ -1636,12 +1510,8 @@
 					"target": "ai-elements/sources/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"collapsible"
-			],
-			"dependencies": [
-				"@lucide/svelte"
-			],
+			"registryDependencies": ["collapsible"],
+			"dependencies": ["@lucide/svelte"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -1669,10 +1539,7 @@
 					"target": "ai-elements/suggestion/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button",
-				"scroll-area"
-			],
+			"registryDependencies": ["button", "scroll-area"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -1720,10 +1587,7 @@
 					"target": "ai-elements/task/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"collapsible",
-				"badge"
-			],
+			"registryDependencies": ["collapsible", "badge"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -1771,11 +1635,7 @@
 					"target": "ai-elements/tool/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"local:code",
-				"collapsible",
-				"badge"
-			],
+			"registryDependencies": ["local:code", "collapsible", "badge"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -1828,12 +1688,7 @@
 					"target": "ai-elements/web-preview/index.ts"
 				}
 			],
-			"registryDependencies": [
-				"button",
-				"input",
-				"tooltip",
-				"collapsible"
-			],
+			"registryDependencies": ["button", "input", "tooltip", "collapsible"],
 			"meta": {
 				"author": "SikandarJODD"
 			}
@@ -1851,22 +1706,12 @@
 					"target": "ai-elements/workflow/canvas/Canvas.svelte"
 				}
 			],
-			"dependencies": [
-				"@xyflow/svelte"
-			],
-			"registryDependencies": [
-				"local:controls"
-			],
+			"dependencies": ["@xyflow/svelte"],
+			"registryDependencies": ["local:controls"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"workflow",
-					"canvas",
-					"flow",
-					"diagram",
-					"visualization"
-				],
+				"tags": ["workflow", "canvas", "flow", "diagram", "visualization"],
 				"category": "AI Workflow",
 				"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1888,20 +1733,12 @@
 					"target": "ai-elements/workflow/connection/Connection.svelte"
 				}
 			],
-			"dependencies": [
-				"@xyflow/svelte"
-			],
+			"dependencies": ["@xyflow/svelte"],
 			"registryDependencies": [],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"workflow",
-					"connection",
-					"edge",
-					"drag",
-					"preview"
-				],
+				"tags": ["workflow", "connection", "edge", "drag", "preview"],
 				"category": "AI Workflow",
 				"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1923,22 +1760,12 @@
 					"target": "ai-elements/workflow/controls/Controls.svelte"
 				}
 			],
-			"dependencies": [
-				"@xyflow/svelte"
-			],
-			"registryDependencies": [
-				"button"
-			],
+			"dependencies": ["@xyflow/svelte"],
+			"registryDependencies": ["button"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"workflow",
-					"controls",
-					"zoom",
-					"navigation",
-					"viewport"
-				],
+				"tags": ["workflow", "controls", "zoom", "navigation", "viewport"],
 				"category": "AI Workflow",
 				"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -1970,20 +1797,12 @@
 					"target": "ai-elements/workflow/edge/index.ts"
 				}
 			],
-			"dependencies": [
-				"@xyflow/svelte"
-			],
+			"dependencies": ["@xyflow/svelte"],
 			"registryDependencies": [],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"workflow",
-					"edge",
-					"connection",
-					"animated",
-					"path"
-				],
+				"tags": ["workflow", "edge", "connection", "animated", "path"],
 				"category": "AI Workflow",
 				"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -2040,22 +1859,12 @@
 					"target": "ai-elements/workflow/node/index.ts"
 				}
 			],
-			"dependencies": [
-				"@xyflow/svelte"
-			],
-			"registryDependencies": [
-				"card"
-			],
+			"dependencies": ["@xyflow/svelte"],
+			"registryDependencies": ["card"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"workflow",
-					"node",
-					"step",
-					"card",
-					"process"
-				],
+				"tags": ["workflow", "node", "step", "card", "process"],
 				"category": "AI Workflow",
 				"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -2082,22 +1891,12 @@
 					"target": "ai-elements/workflow/panel/index.ts"
 				}
 			],
-			"dependencies": [
-				"@xyflow/svelte"
-			],
-			"registryDependencies": [
-				"card"
-			],
+			"dependencies": ["@xyflow/svelte"],
+			"registryDependencies": ["card"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"workflow",
-					"panel",
-					"overlay",
-					"information",
-					"settings"
-				],
+				"tags": ["workflow", "panel", "overlay", "information", "settings"],
 				"category": "AI Workflow",
 				"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -2122,22 +1921,12 @@
 					"target": "ai-elements/workflow/toolbar/index.ts"
 				}
 			],
-			"dependencies": [
-				"@xyflow/svelte"
-			],
-			"registryDependencies": [
-				"button"
-			],
+			"dependencies": ["@xyflow/svelte"],
+			"registryDependencies": ["button"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "1.0.0",
-				"tags": [
-					"workflow",
-					"toolbar",
-					"actions",
-					"node-actions",
-					"hover"
-				],
+				"tags": ["workflow", "toolbar", "actions", "node-actions", "hover"],
 				"category": "AI Workflow",
 				"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
 				"repository": "https://github.com/SikandarJODD/ai-elements",

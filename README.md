@@ -47,25 +47,25 @@ Lightweight prompt engineering and conversational UI components that are easy to
 
 ### AI Elements
 
-| Component | What it helps with |
-| --- | --- |
-| `Message` | Role-based chat messages and response layout |
-| `Prompt Input` | Prompt submission with AI-focused input controls |
+| Component      | What it helps with                                    |
+| -------------- | ----------------------------------------------------- |
+| `Message`      | Role-based chat messages and response layout          |
+| `Prompt Input` | Prompt submission with AI-focused input controls      |
 | `Conversation` | Scrollable conversation containers and chat structure |
-| `Response` | Streaming markdown response rendering |
-| `Reasoning` | Expandable AI thinking and reasoning views |
-| `Tool` | Tool call input/output presentation |
+| `Response`     | Streaming markdown response rendering                 |
+| `Reasoning`    | Expandable AI thinking and reasoning views            |
+| `Tool`         | Tool call input/output presentation                   |
 
 ### Prompt Kit
 
-| Component | What it helps with |
-| --- | --- |
-| `Message` | Lightweight assistant and user message UI |
-| `Prompt Input` | Chat-style prompt input with actions |
-| `Chat Container` | Sticky-to-bottom chat layout and scrolling |
-| `Markdown` | Render streamed markdown responses |
-| `Prompt Suggestion` | Clickable starter prompts and suggestions |
-| `System Message` | Inline status, warning, and helper messages |
+| Component           | What it helps with                          |
+| ------------------- | ------------------------------------------- |
+| `Message`           | Lightweight assistant and user message UI   |
+| `Prompt Input`      | Chat-style prompt input with actions        |
+| `Chat Container`    | Sticky-to-bottom chat layout and scrolling  |
+| `Markdown`          | Render streamed markdown responses          |
+| `Prompt Suggestion` | Clickable starter prompts and suggestions   |
+| `System Message`    | Inline status, warning, and helper messages |
 
 ## 8 Prompt Kit UI Blocks
 

@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { cn } from "$lib/utils/utils";
 	import type { HTMLAttributes } from "svelte/elements";
-	import { getMessageBranchContext, type MessageVersion } from "../context/message-context.svelte.js";
+	import {
+		getMessageBranchContext,
+		type MessageVersion,
+	} from "../context/message-context.svelte.js";
 	import MessageContent from "../core/MessageContent.svelte";
 	import MessageResponse from "../response/MessageResponse.svelte";
 

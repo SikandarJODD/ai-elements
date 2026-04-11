@@ -30,11 +30,7 @@ export default defineConfig({
 	// }
 	server: {
 		watch: {
-			ignored: [
-				"**/node_modules/**",
-				"**/.svelte-kit/**",
-				"**/.vercel/**",
-			],
+			ignored: ["**/node_modules/**", "**/.svelte-kit/**", "**/.vercel/**"],
 		},
 	},
 });

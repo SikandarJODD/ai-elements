@@ -1,6 +1,6 @@
 <script lang="ts">
 	import CopyIcon from "@lucide/svelte/icons/copy";
-	import RefreshCcwIcon  from "@lucide/svelte/icons/refresh-ccw";
+	import RefreshCcwIcon from "@lucide/svelte/icons/refresh-ccw";
 	import * as PromptInput from "$lib/components/ai-elements/prompt-input";
 	import type { PromptInputMessage } from "$lib/components/ai-elements/prompt-input";
 	import {

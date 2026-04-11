@@ -5,19 +5,11 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Edge component provides custom edge types for workflow connections. Includes Animated edges for active connections and Temporary edges for conditional or inactive paths, with smooth transitions and visual styling.",
-	"dependencies": [
-		"@xyflow/svelte"
-	],
+	"dependencies": ["@xyflow/svelte"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"workflow",
-			"edge",
-			"connection",
-			"animated",
-			"path"
-		],
+		"tags": ["workflow", "edge", "connection", "animated", "path"],
 		"category": "AI Workflow",
 		"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

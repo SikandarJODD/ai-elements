@@ -102,108 +102,104 @@
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
+<!-- Main Content Area -->
+<main class="min-w-0" bind:this={toc.ref}>
+	<!-- Title -->
+	<Subheading class="mb-4 md:text-3xl">Reasoning</Subheading>
 
-		<!-- Main Content Area -->
-		<main class="min-w-0" bind:this={toc.ref}>
-			<!-- Title -->
-			<Subheading class="mb-4 md:text-3xl">Reasoning</Subheading>
+	<!-- Description -->
+	<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
+		A collapsible component for showing AI reasoning, explanations, or logic. You can control it
+		manually or let it auto-close when the stream ends. Markdown is supported.
+	</p>
 
-			<!-- Description -->
-			<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
-				A collapsible component for showing AI reasoning, explanations, or logic. You can
-				control it manually or let it auto-close when the stream ends. Markdown is
-				supported.
-			</p>
+	<!-- Actions -->
+	<div class="mb-8 flex items-center gap-2">
+		<CopyMarkdownButton
+			{llmsTxtUrl}
+			component="reasoning"
+			registry="prompt-kit"
+			source="documentation"
+		/>
+		<OpenInMenu componentName="Reasoning" {llmsTxtUrl} />
+	</div>
 
-			<!-- Actions -->
-			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton
-					{llmsTxtUrl}
-					component="reasoning"
-					registry="prompt-kit"
-					source="documentation"
-				/>
-				<OpenInMenu componentName="Reasoning" {llmsTxtUrl} />
-			</div>
+	<!-- Installation Section -->
+	<Subheading>Installation</Subheading>
 
-			<!-- Installation Section -->
-			<Subheading>Installation</Subheading>
+	<p class="mb-4 text-sm leading-relaxed sm:text-base">
+		Copy and paste the following code into your project.
+	</p>
 
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Copy and paste the following code into your project.
-			</p>
+	<div class="mb-6">
+		<AiInstallCommand
+			command="execute"
+			args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/reasoning.json`]}
+			component="reasoning"
+			registry="prompt-kit"
+		/>
+	</div>
 
-			<div class="mb-6">
-				<AiInstallCommand
-					command="execute"
-					args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/reasoning.json`]}
-					component="reasoning"
-					registry="prompt-kit"
-				/>
-			</div>
+	<!-- Examples Section -->
+	<Subheading>Examples</Subheading>
 
-			<!-- Examples Section -->
-			<Subheading>Examples</Subheading>
+	<!-- Example 1: Basic Usage -->
+	<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-usage">Basic Usage</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		The most basic implementation of the Reasoning component with auto-close functionality when
+		streaming ends.
+	</p>
+	<Playground
+		code={examples.basic.code}
+		component="reasoning"
+		registry="prompt-kit"
+		source="example"
+	>
+		<div class="flex w-full justify-center">
+			<examples.basic.Component />
+		</div>
+	</Playground>
 
-			<!-- Example 1: Basic Usage -->
-			<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-usage">Basic Usage</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				The most basic implementation of the Reasoning component with auto-close
-				functionality when streaming ends.
-			</p>
-			<Playground
-				code={examples.basic.code}
-				component="reasoning"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.basic.Component />
-				</div>
-			</Playground>
+	<!-- Example 2: With Markdown -->
+	<h3 class="mt-8 mb-3 text-lg font-semibold" id="with-markdown">With Markdown</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		Show rich formatting with markdown support for better structured reasoning content.
+	</p>
+	<Playground
+		code={examples.markdown.code}
+		component="reasoning"
+		registry="prompt-kit"
+		source="example"
+	>
+		<div class="flex w-full justify-center">
+			<examples.markdown.Component />
+		</div>
+	</Playground>
 
-			<!-- Example 2: With Markdown -->
-			<h3 class="mt-8 mb-3 text-lg font-semibold" id="with-markdown">With Markdown</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				Show rich formatting with markdown support for better structured reasoning content.
-			</p>
-			<Playground
-				code={examples.markdown.code}
-				component="reasoning"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.markdown.Component />
-				</div>
-			</Playground>
+	<!-- Component API Section -->
+	<Subheading>Component API</Subheading>
 
-			<!-- Component API Section -->
-			<Subheading>Component API</Subheading>
+	<!-- Reasoning -->
+	<ComponentAPITable
+		componentName="Reasoning"
+		props={reasoningProps}
+		class="mt-6"
+		id="reasoning-props"
+	/>
 
-			<!-- Reasoning -->
-			<ComponentAPITable
-				componentName="Reasoning"
-				props={reasoningProps}
-				class="mt-6"
-				id="reasoning-props"
-			/>
+	<!-- ReasoningTrigger -->
+	<ComponentAPITable
+		componentName="ReasoningTrigger"
+		props={reasoningTriggerProps}
+		id="reasoning-trigger-props"
+	/>
 
-			<!-- ReasoningTrigger -->
-			<ComponentAPITable
-				componentName="ReasoningTrigger"
-				props={reasoningTriggerProps}
-				id="reasoning-trigger-props"
-			/>
+	<!-- ReasoningContent -->
+	<ComponentAPITable
+		componentName="ReasoningContent"
+		props={reasoningContentProps}
+		id="reasoning-content-props"
+	/>
 
-			<!-- ReasoningContent -->
-			<ComponentAPITable
-				componentName="ReasoningContent"
-				props={reasoningContentProps}
-				id="reasoning-content-props"
-			/>
-
-			<PromptKitPrevNext currentSlug="reasoning" />
-		</main>
-
-
+	<PromptKitPrevNext currentSlug="reasoning" />
+</main>

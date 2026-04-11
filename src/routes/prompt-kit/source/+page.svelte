@@ -77,104 +77,96 @@
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
+<!-- Main Content Area -->
+<main class="min-w-0" bind:this={toc.ref}>
+	<!-- Title -->
+	<Subheading class="mb-4 md:text-3xl">Source</Subheading>
 
-		<!-- Main Content Area -->
-		<main class="min-w-0" bind:this={toc.ref}>
-			<!-- Title -->
-			<Subheading class="mb-4 md:text-3xl">Source</Subheading>
+	<!-- Description -->
+	<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
+		Displays website sources used by AI-generated content, showing URL details, titles, and
+		descriptions on hover.
+	</p>
 
-			<!-- Description -->
-			<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
-				Displays website sources used by AI-generated content, showing URL details, titles,
-				and descriptions on hover.
-			</p>
+	<!-- Actions -->
+	<div class="mb-8 flex items-center gap-2">
+		<CopyMarkdownButton
+			{llmsTxtUrl}
+			component="source"
+			registry="prompt-kit"
+			source="documentation"
+		/>
+		<OpenInMenu componentName="Source" {llmsTxtUrl} />
+	</div>
 
-			<!-- Actions -->
-			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton
-					{llmsTxtUrl}
-					component="source"
-					registry="prompt-kit"
-					source="documentation"
-				/>
-				<OpenInMenu componentName="Source" {llmsTxtUrl} />
-			</div>
+	<!-- Installation Section -->
+	<Subheading>Installation</Subheading>
 
-			<!-- Installation Section -->
-			<Subheading>Installation</Subheading>
+	<p class="mb-4 text-sm leading-relaxed sm:text-base">
+		Copy and paste the following code into your project.
+	</p>
 
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Copy and paste the following code into your project.
-			</p>
+	<div class="mb-6">
+		<AiInstallCommand
+			command="execute"
+			args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/source.json`]}
+			component="source"
+			registry="prompt-kit"
+		/>
+	</div>
 
-			<div class="mb-6">
-				<AiInstallCommand
-					command="execute"
-					args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/source.json`]}
-					component="source"
-					registry="prompt-kit"
-				/>
-			</div>
+	<!-- Examples Section -->
+	<Subheading>Examples</Subheading>
 
-			<!-- Examples Section -->
-			<Subheading>Examples</Subheading>
+	<!-- Example 1: Basic Source -->
+	<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-source">Basic Source</h3>
+	<Playground
+		code={examples.basic.code}
+		component="source"
+		registry="prompt-kit"
+		source="example"
+	>
+		<div class="flex w-full justify-center">
+			<examples.basic.Component />
+		</div>
+	</Playground>
 
-			<!-- Example 1: Basic Source -->
-			<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-source">Basic Source</h3>
-			<Playground
-				code={examples.basic.code}
-				component="source"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.basic.Component />
-				</div>
-			</Playground>
+	<!-- Example 2: Custom Source -->
+	<h3 class="mt-8 mb-3 text-lg font-semibold" id="custom-source">Custom Source</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		Customize the appearance and labels of the source components. You can use custom labels,
+		numbers, or combine them with favicons.
+	</p>
+	<Playground
+		code={examples.custom.code}
+		component="source"
+		registry="prompt-kit"
+		source="example"
+	>
+		<div class="flex w-full justify-center">
+			<examples.custom.Component />
+		</div>
+	</Playground>
 
-			<!-- Example 2: Custom Source -->
-			<h3 class="mt-8 mb-3 text-lg font-semibold" id="custom-source">Custom Source</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				Customize the appearance and labels of the source components. You can use custom
-				labels, numbers, or combine them with favicons.
-			</p>
-			<Playground
-				code={examples.custom.code}
-				component="source"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.custom.Component />
-				</div>
-			</Playground>
+	<!-- Component API Section -->
+	<Subheading>Component API</Subheading>
 
-			<!-- Component API Section -->
-			<Subheading>Component API</Subheading>
+	<!-- Source -->
+	<ComponentAPITable componentName="Source" props={sourceProps} class="mt-6" id="source-props" />
 
-			<!-- Source -->
-			<ComponentAPITable
-				componentName="Source"
-				props={sourceProps}
-				class="mt-6"
-				id="source-props"
-			/>
+	<!-- SourceTrigger -->
+	<ComponentAPITable
+		componentName="SourceTrigger"
+		props={sourceTriggerProps}
+		id="source-trigger-props"
+	/>
 
-			<!-- SourceTrigger -->
-			<ComponentAPITable
-				componentName="SourceTrigger"
-				props={sourceTriggerProps}
-				id="source-trigger-props"
-			/>
+	<!-- SourceContent -->
+	<ComponentAPITable
+		componentName="SourceContent"
+		props={sourceContentProps}
+		id="source-content-props"
+	/>
 
-			<!-- SourceContent -->
-			<ComponentAPITable
-				componentName="SourceContent"
-				props={sourceContentProps}
-				id="source-content-props"
-			/>
-
-			<PromptKitPrevNext currentSlug="source" />
-		</main>
-
-
+	<PromptKitPrevNext currentSlug="source" />
+</main>

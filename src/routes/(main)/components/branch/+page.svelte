@@ -146,41 +146,40 @@
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
+<!-- Main Content Area -->
+<main class="min-w-0" bind:this={toc.ref}>
+	<Subheading class="md:text-3xl">Branch</Subheading>
 
-		<!-- Main Content Area -->
-		<main class="min-w-0" bind:this={toc.ref}>
-			<Subheading class="md:text-3xl">Branch</Subheading>
+	<p class="!text-muted-foreground my-2 text-lg">
+		The <CodeSpan>Branch</CodeSpan> component manages multiple versions of AI messages, allowing users
+		to navigate between different response branches. It provides a clean, modern interface with customizable
+		themes and keyboard-accessible navigation buttons.
+	</p>
 
-			<p class="!text-muted-foreground my-2 text-lg">
-				The <CodeSpan>Branch</CodeSpan> component manages multiple versions of AI messages, allowing
-				users to navigate between different response branches. It provides a clean, modern interface
-				with customizable themes and keyboard-accessible navigation buttons.
-			</p>
+	<!-- Actions -->
+	<div class="mb-8 flex items-center gap-2">
+		<CopyMarkdownButton {llmsTxtUrl} />
+		<OpenInMenu componentName="Branch" {llmsTxtUrl} type="ai-elements" />
+	</div>
 
-			<!-- Actions -->
-			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Branch" {llmsTxtUrl} type="ai-elements" />
-			</div>
+	<Playground code={examples.basic.code}>
+		<examples.basic.Component />
+	</Playground>
 
-			<Playground code={examples.basic.code}>
-				<examples.basic.Component />
-			</Playground>
+	<!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
+	<Installation
+		specifier={`${PUBLIC_WEBSITE_URL}/r/action.json`}
+		is_jsrepo={true}
+		blockname="branch"
+	/>
 
-			<!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
-			<Installation
-				specifier={`${PUBLIC_WEBSITE_URL}/r/action.json`}
-				is_jsrepo={true}
-				blockname="branch"
-			/>
+	<!-- Usage -->
+	<Subheading>Usage</Subheading>
 
-			<!-- Usage -->
-			<Subheading>Usage</Subheading>
-
-			<div>
-				<Code
-					lang="svelte"
-					code={`\<script lang="ts"\>
+	<div>
+		<Code
+			lang="svelte"
+			code={`\<script lang="ts"\>
 	import {
 		Branch,
 		BranchMessages,
@@ -206,60 +205,46 @@
     <BranchNext />
   </BranchSelector>
 </Branch>`}
-				/>
-			</div>
+		/>
+	</div>
 
-			<!-- Examples  -->
-			<!-- <Subheading>Examples</Subheading>
+	<!-- Examples  -->
+	<!-- <Subheading>Examples</Subheading>
 
       <Playground code={examples.messageAction.code}>
         <examples.messageAction.Component />
       </Playground> -->
 
-			<!-- Component API Section -->
-			<Subheading>Props</Subheading>
+	<!-- Component API Section -->
+	<Subheading>Props</Subheading>
 
-			<!-- Branch -->
-			<ComponentAPITable
-				componentName="Branch"
-				props={branchProps}
-				class="mt-6"
-				id="branch-props"
-			/>
+	<!-- Branch -->
+	<ComponentAPITable componentName="Branch" props={branchProps} class="mt-6" id="branch-props" />
 
-			<!-- BranchMessages -->
-			<ComponentAPITable
-				componentName="BranchMessages"
-				props={branchMessagesProps}
-				id="branch-messages-props"
-			/>
+	<!-- BranchMessages -->
+	<ComponentAPITable
+		componentName="BranchMessages"
+		props={branchMessagesProps}
+		id="branch-messages-props"
+	/>
 
-			<!-- BranchSelector -->
-			<ComponentAPITable
-				componentName="BranchSelector"
-				props={branchSelectorProps}
-				id="branch-selector-props"
-			/>
+	<!-- BranchSelector -->
+	<ComponentAPITable
+		componentName="BranchSelector"
+		props={branchSelectorProps}
+		id="branch-selector-props"
+	/>
 
-			<!-- BranchPrevious -->
-			<ComponentAPITable
-				componentName="BranchPrevious"
-				props={branchPreviousProps}
-				id="branch-previous-props"
-			/>
+	<!-- BranchPrevious -->
+	<ComponentAPITable
+		componentName="BranchPrevious"
+		props={branchPreviousProps}
+		id="branch-previous-props"
+	/>
 
-			<!-- BranchNext -->
-			<ComponentAPITable
-				componentName="BranchNext"
-				props={branchNextProps}
-				id="branch-next-props"
-			/>
+	<!-- BranchNext -->
+	<ComponentAPITable componentName="BranchNext" props={branchNextProps} id="branch-next-props" />
 
-			<!-- BranchPage -->
-			<ComponentAPITable
-				componentName="BranchPage"
-				props={branchPageProps}
-				id="branch-page-props"
-			/>
-		</main>
-
+	<!-- BranchPage -->
+	<ComponentAPITable componentName="BranchPage" props={branchPageProps} id="branch-page-props" />
+</main>

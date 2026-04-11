@@ -99,40 +99,39 @@
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
+<!-- Main Content Area -->
+<main class="min-w-0" bind:this={toc.ref}>
+	<Subheading class="md:text-3xl">Message</Subheading>
 
-		<!-- Main Content Area -->
-		<main class="min-w-0" bind:this={toc.ref}>
-			<Subheading class="md:text-3xl">Message</Subheading>
+	<p class="!text-muted-foreground my-2 text-lg">
+		The <CodeSpan>Message</CodeSpan> component displays a chat interface message from either a user
+		or an AI. <br /> It includes an avatar, a name, and a message content.
+	</p>
 
-			<p class="!text-muted-foreground my-2 text-lg">
-				The <CodeSpan>Message</CodeSpan> component displays a chat interface message from either
-				a user or an AI. <br /> It includes an avatar, a name, and a message content.
-			</p>
+	<!-- Actions -->
+	<div class="mb-8 flex items-center gap-2">
+		<CopyMarkdownButton {llmsTxtUrl} />
+		<OpenInMenu componentName="Message" {llmsTxtUrl} type="ai-elements" />
+	</div>
 
-			<!-- Actions -->
-			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Message" {llmsTxtUrl} type="ai-elements" />
-			</div>
+	<Playground code={examples.basic.code}>
+		<examples.basic.Component />
+	</Playground>
 
-			<Playground code={examples.basic.code}>
-				<examples.basic.Component />
-			</Playground>
+	<!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
+	<Installation
+		specifier={`${PUBLIC_WEBSITE_URL}/r/message.json`}
+		is_jsrepo={true}
+		blockname="message"
+	/>
 
-			<!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
-			<Installation
-				specifier={`${PUBLIC_WEBSITE_URL}/r/message.json`}
-				is_jsrepo={true}
-				blockname="message"
-			/>
+	<!-- Usage -->
+	<Subheading>Usage</Subheading>
 
-			<!-- Usage -->
-			<Subheading>Usage</Subheading>
-
-			<div>
-				<Code
-					lang="svelte"
-					code={`\<script lang="ts"\>
+	<div>
+		<Code
+			lang="svelte"
+			code={`\<script lang="ts"\>
  import {
     Message,
     MessageAvatar,
@@ -148,25 +147,25 @@
     </Message>
   {/each}
 </div>`}
-				/>
-			</div>
+		/>
+	</div>
 
-			<!-- Usage with AI SDK -->
-			<Subheading>Usage with AI SDK</Subheading>
+	<!-- Usage with AI SDK -->
+	<Subheading>Usage with AI SDK</Subheading>
 
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Render messages in a list with the AI SDK's <CodeSpan>Chat</CodeSpan> class.
-			</p>
+	<p class="mb-4 text-sm leading-relaxed sm:text-base">
+		Render messages in a list with the AI SDK's <CodeSpan>Chat</CodeSpan> class.
+	</p>
 
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Add the following component to your frontend:
-			</p>
+	<p class="mb-4 text-sm leading-relaxed sm:text-base">
+		Add the following component to your frontend:
+	</p>
 
-			<div class="mb-6">
-				<CodeNameBlock
-					filename="+page.svelte"
-					lang="svelte"
-					code={`\<script lang="ts"\>
+	<div class="mb-6">
+		<CodeNameBlock
+			filename="+page.svelte"
+			lang="svelte"
+			code={`\<script lang="ts"\>
   import { Chat } from "@ai-sdk/svelte";
   import { Message, MessageContent } from "$lib/components/ai-elements/message/index.js";
   import { Response } from "$lib/components/ai-elements/response/index.js";
@@ -191,18 +190,18 @@
     {/each}
   </div>
 </div>`}
-				/>
-			</div>
+		/>
+	</div>
 
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Add the following route to your backend:
-			</p>
+	<p class="mb-4 text-sm leading-relaxed sm:text-base">
+		Add the following route to your backend:
+	</p>
 
-			<div class="mb-6">
-				<CodeNameBlock
-					filename="api/chat/+server.ts"
-					lang="typescript"
-					code={`import { streamText, type UIMessage, convertToModelMessages } from "ai";
+	<div class="mb-6">
+		<CodeNameBlock
+			filename="api/chat/+server.ts"
+			lang="typescript"
+			code={`import { streamText, type UIMessage, convertToModelMessages } from "ai";
 import type { RequestHandler } from "./$types";
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -215,36 +214,34 @@ export const POST: RequestHandler = async ({ request }) => {
 
   return result.toUIMessageStreamResponse();
 };`}
-				/>
-			</div>
+		/>
+	</div>
 
-			<!-- Component API Section -->
-			<Subheading>Props</Subheading>
+	<!-- Component API Section -->
+	<Subheading>Props</Subheading>
 
-			<!-- Message -->
-			<ComponentAPITable
-				componentName="Message"
-				props={messageProps}
-				class="mt-6"
-				id="message-props"
-			/>
+	<!-- Message -->
+	<ComponentAPITable
+		componentName="Message"
+		props={messageProps}
+		class="mt-6"
+		id="message-props"
+	/>
 
-			<!-- MessageAvatar -->
-			<ComponentAPITable
-				componentName="MessageAvatar"
-				props={messageAvatarProps}
-				id="message-avatar-props"
-			/>
+	<!-- MessageAvatar -->
+	<ComponentAPITable
+		componentName="MessageAvatar"
+		props={messageAvatarProps}
+		id="message-avatar-props"
+	/>
 
-			<!-- MessageContent -->
-			<ComponentAPITable
-				componentName="MessageContent"
-				props={messageContentProps}
-				id="message-content-props"
-			/>
+	<!-- MessageContent -->
+	<ComponentAPITable
+		componentName="MessageContent"
+		props={messageContentProps}
+		id="message-content-props"
+	/>
 
-			<!-- Prev/Next Navigation -->
-			<AiElementsPrevNext currentSlug="message" />
-		</main>
-
-
+	<!-- Prev/Next Navigation -->
+	<AiElementsPrevNext currentSlug="message" />
+</main>

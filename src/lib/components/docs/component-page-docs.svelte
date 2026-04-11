@@ -36,7 +36,7 @@
 		<CopyPageDropdown {type} componentName={resolvedComponentName} {llmsTxtUrl} />
 	</div>
 
-	<Paragraph>{pageIntro}</Paragraph>
+	<Paragraph class="max-w-2xl">{pageIntro}</Paragraph>
 
 	{#if PreviewComp}
 		<PreviewComponent
