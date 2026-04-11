@@ -12,7 +12,7 @@
 
 <div
 	class={cn(
-		"[&>img]:bg-background [&>img]:ring-border flex shrink-0 items-center -space-x-1 [&>img]:rounded-full [&>img]:p-px [&>img]:ring-1",
+		"flex shrink-0 items-center -space-x-1 [&>img]:rounded-full [&>img]:bg-background [&>img]:p-px [&>img]:ring-1 dark:[&>img]:bg-foreground",
 		className
 	)}
 	{...restProps}

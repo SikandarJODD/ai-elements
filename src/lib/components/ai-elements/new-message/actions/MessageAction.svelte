@@ -1,10 +1,12 @@
 <script lang="ts">
-	import { Button, type ButtonElementProps } from "$lib/components/ui/button/index.js";
+	import { Button, type ButtonProps } from "$lib/components/ui/button/index.js";
 	import * as Tooltip from "$lib/components/ui/tooltip/index.js";
 	import { cn } from "$lib/utils/utils";
 	import type { Snippet } from "svelte";
 
-	type Props = Omit<ButtonElementProps, "children" | "type"> & {
+	type MessageButtonProps = Omit<ButtonProps, "children" | "type" | "href">;
+
+	type Props = MessageButtonProps & {
 		tooltip?: string;
 		label?: string;
 		class?: string;

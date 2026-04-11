@@ -15,6 +15,7 @@
 	let chat = new Chat({});
 
 	function handleSubmit(message: PromptInputMessage) {
+		if (message.text.trim() === "") return;
 		chat.sendMessage({ text: message.text });
 	}
 
@@ -60,7 +61,7 @@
 
 	<PromptInput.Root class="w-full" onSubmit={handleSubmit}>
 		<PromptInput.Body>
-			<PromptInput.Textarea placeholder="Ask about the new-message API..." />
+			<PromptInput.Textarea placeholder="Type your message..." />
 		</PromptInput.Body>
 		<PromptInput.Toolbar class="justify-end">
 			<PromptInput.Submit onStop={handleStop} status={chat.status} />

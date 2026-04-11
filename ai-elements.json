@@ -1442,7 +1442,7 @@
 				}
 			],
 			"registryDependencies": ["button", "textarea", "dropdown-menu", "tooltip", "select"],
-			"dependencies": ["runed"],
+			"dependencies": ["runed", "ai"],
 			"meta": {
 				"author": "SikandarJODD",
 				"version": "3.0.0",
