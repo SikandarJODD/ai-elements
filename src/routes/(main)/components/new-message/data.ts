@@ -245,7 +245,7 @@ export const data: ComponentDoc = {
 				},
 				{
 					name: "...restProps",
-					type: 'Omit<ButtonElementProps, "children" | "type">',
+					type: 'Omit<ButtonProps, "children" | "type" | "href">',
 					description: "Additional button props are forwarded.",
 				},
 			],
@@ -339,7 +339,7 @@ export const data: ComponentDoc = {
 				},
 				{
 					name: "...restProps",
-					type: 'Omit<ButtonElementProps, "children" | "type">',
+					type: 'Omit<ButtonProps, "children" | "type" | "href">',
 					description: "Additional button props are forwarded.",
 				},
 			],
@@ -359,7 +359,7 @@ export const data: ComponentDoc = {
 				},
 				{
 					name: "...restProps",
-					type: 'Omit<ButtonElementProps, "children" | "type">',
+					type: 'Omit<ButtonProps, "children" | "type" | "href">',
 					description: "Additional button props are forwarded.",
 				},
 			],
