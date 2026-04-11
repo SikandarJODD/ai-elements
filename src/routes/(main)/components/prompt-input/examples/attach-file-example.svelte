@@ -8,9 +8,14 @@
 	}
 </script>
 
-<PromptInput.Root class="w-xl" onSubmit={handleSubmit}>
+<PromptInput.Root globalDrop multiple maxFiles={2} class="w-xl" onSubmit={handleSubmit}>
+	<PromptInput.Attachments>
+		{#snippet children(file)}
+			<PromptInput.Attachment data={file} />
+		{/snippet}
+	</PromptInput.Attachments>
 	<PromptInput.Body>
-		<PromptInput.Textarea />
+		<PromptInput.Textarea placeholder="Add Text + Files" />
 	</PromptInput.Body>
 	<PromptInput.Toolbar class="justify-end">
 		<PromptInput.Submit />

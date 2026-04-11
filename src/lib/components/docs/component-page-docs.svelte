@@ -32,11 +32,11 @@
 
 <section class="min-w-0">
 	<div class="flex flex-col justify-between gap-3 md:flex-row md:items-center md:gap-4">
-		<H1 class='font-bold'>{pageTitle}</H1>
+		<H1 class="font-bold" id="title">{pageTitle}</H1>
 		<CopyPageDropdown {type} componentName={resolvedComponentName} {llmsTxtUrl} />
 	</div>
 
-	<Paragraph>{pageIntro}</Paragraph>
+	<Paragraph>{pageIntro}</Paragraph>w
 
 	{#if PreviewComp}
 		<PreviewComponent

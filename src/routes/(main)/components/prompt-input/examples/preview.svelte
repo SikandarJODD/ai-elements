@@ -3,8 +3,8 @@
 	import type { Message } from "$lib/components/ai-elements/prompt-input";
 
 	function handleSubmit(message: Message) {
+		console.log("Submitted message:", message.text);
 		console.log("Files", message.files);
-		console.log("Message", message.text);
 	}
 </script>
 

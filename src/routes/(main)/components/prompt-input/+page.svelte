@@ -1,58 +1,73 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Subheading, CopyMarkdownButton, OpenInMenu } from "$lib/components/docs";
+
 	import Installation from "$lib/components/docs/installation.svelte";
-	import Playground from "$lib/components/docs/playground.svelte";
-	import Code from "$lib/components/docs/code.svelte";
-	import { examples } from "./examples/examples";
-	import { seo } from "./examples/seo";
-	import CodeSpan from "$lib/components/docs/code-span.svelte";
+	import { APITable } from "$lib/components/docs/api-table";
+	import { CopyPageDropdown } from "$lib/components/docs/copy-page-dropdown";
+	import { H1, H2, H3, Paragraph } from "$lib/components/markdown";
+	import { PreviewComponent } from "$lib/components/ui/preview-component";
+	import { data } from "./data";
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 
-	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-
-	import * as Toc from "$lib/components/docs/toc";
-	import { UseToc } from "$lib/hooks/use-toc.svelte";
-	import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
-	let toc = new UseToc();
-
-	// URL for llm.txt
+	let pageTitle = $derived(data.title);
+	let pageIntro = $derived(data.description);
+	let resolvedComponentName = $derived(data.title);
+	let PreviewComp = $derived(data.preview);
+	let examples = $derived(data.examples ?? []);
+	let propsTables = $derived(data.props ?? []);
 	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/prompt-input/llms.txt`;
-	// Component API Props Data
 </script>
 
-<!-- SEO Meta Tags -->
-<MetaTags {...seo} />
+<MetaTags {...data.seo} />
 
+<section class="min-w-0">
+	<div class="flex flex-col justify-between gap-3 md:flex-row md:items-center md:gap-4">
+		<H1 class="font-bold" id="title">{pageTitle}</H1>
+		<CopyPageDropdown type="ai-elements" componentName={resolvedComponentName} {llmsTxtUrl} />
+	</div>
 
-		<!-- Main Content Area -->
-		<main class="min-w-0" bind:this={toc.ref}>
-			<Subheading class="md:text-3xl">Prompt Input</Subheading>
+	<Paragraph>{pageIntro}</Paragraph>
 
-			<p class="text-muted-foreground! my-2 text-lg">
-				The <CodeSpan>Prompt Input</CodeSpan> component allows a user to send a message with file
-				attachments to a large language model. It includes a textarea, file upload capabilities,
-				a submit button, and a dropdown for selecting the model.
-			</p>
+	{#if PreviewComp}
+		<PreviewComponent code={data.previewCode} isCentered={true}>
+			<PreviewComp />
+		</PreviewComponent>
+	{/if}
 
-			<!-- Actions -->
-			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Prompt Input" {llmsTxtUrl} type="ai-elements" />
+	<Installation
+		specifier="${PUBLIC_WEBSITE_URL}/r/action.json"
+		is_jsrepo={false}
+		blockname="prompt-input"
+	/>
+
+	{#if examples.length > 0}
+		<section>
+			<H2 id="examples">Examples</H2>
+			<div class="mt-4 space-y-8">
+				{#each examples as example}
+					<div class="space-y-0">
+						<H3 id={example.name.toLowerCase().replace(/\s+/g, "-")} class="mt-0">
+							{example.name}
+						</H3>
+						<PreviewComponent code={example.code}>
+							<example.preview />
+						</PreviewComponent>
+					</div>
+				{/each}
 			</div>
+		</section>
+	{/if}
 
-			<Playground code={examples.basic.code} isExpand>
-				<examples.basic.Component />
-			</Playground>
-
-			<!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
-			<Installation
-				specifier={`${PUBLIC_WEBSITE_URL}/r/prompt-input.json`}
-				is_jsrepo={false}
-				blockname="prompt-input"
-			/>
-
-			<AiElementsPrevNext currentSlug="prompt-input" />
-		</main>
-
-
+	{#if propsTables.length > 0}
+		<section>
+			<H2 id="props">Props</H2>
+			<div class="mt-3 space-y-6">
+				<div>
+					{#each propsTables as prop}
+						<APITable data={prop} />
+					{/each}
+				</div>
+			</div>
+		</section>
+	{/if}
+</section>
