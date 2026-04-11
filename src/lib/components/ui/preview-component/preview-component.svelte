@@ -56,6 +56,7 @@
 		{#if value === "preview"}
 			<!-- <ComponentView> -->
 			<div
+				data-toc-index="false"
 				class={cn(
 					"border-border relative flex min-h-64 w-full overflow-hidden rounded-lg border p-6",
 					isCentered ? "items-center justify-center" : "",

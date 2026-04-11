@@ -106,15 +106,15 @@ export const aiElementsData: AIElementItem[] = [
 		description: "Loading indicators for AI responses",
 		category: "components",
 	},
+	// {
+	// 	name: "Message",
+	// 	slug: "message",
+	// 	href: "/components/message",
+	// 	description: "Chat message with avatar and content",
+	// 	category: "components",
+	// },
 	{
 		name: "Message",
-		slug: "message",
-		href: "/components/message",
-		description: "Chat message with avatar and content",
-		category: "components",
-	},
-	{
-		name: "Message (New)",
 		slug: "new-message",
 		href: "/components/new-message",
 		description: "Enhanced message component",

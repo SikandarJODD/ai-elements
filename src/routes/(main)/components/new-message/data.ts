@@ -67,11 +67,11 @@ const examples: Example[] = [
 		showRetry: false,
 	},
 	{
-		name: "Prompt Input Example",
+		name: "Usage AI SDK",
 		description: "Compose prompt-input with new-message using a local text-only workflow.",
 		preview: PromptInputExample,
 		code: {
-			filename: "prompt-input.svelte",
+			filename: "message-chat.svelte",
 			filecode: promptInputRaw,
 			lang: "svelte",
 			isExpand: true,
