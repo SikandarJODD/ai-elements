@@ -13,7 +13,7 @@
 </script>
 
 <div class="space-y-4">
-	<PromptInput.Root class="w-xl" globalDrop maxFiles={2} onSubmit={handleSubmit}>
+	<PromptInput.Root class="w-xl" onSubmit={handleSubmit}>
 		<PromptInput.Body>
 			<PromptInput.Textarea />
 		</PromptInput.Body>

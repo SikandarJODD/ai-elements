@@ -6,7 +6,7 @@
 	"author": "SikandarJODD",
 	"description": "A complete prompt input block with multiple action buttons for search, voice input, and more. This is a ready-to-use block that includes all functionality for advanced prompt input interactions.",
 	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"devDependencies": ["@lucide/svelte@^1.8.0"],
 	"registryDependencies": ["./prompt-input.json", "button"],
 	"meta": {
 		"author": "SikandarJODD",

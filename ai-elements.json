@@ -1441,7 +1441,14 @@
 					"target": "ai-elements/prompt-input/index.ts"
 				}
 			],
-			"registryDependencies": ["button", "textarea", "dropdown-menu", "tooltip", "select"],
+			"registryDependencies": [
+				"button",
+				"textarea",
+				"dropdown-menu",
+				"tooltip",
+				"select",
+				"dialog"
+			],
 			"dependencies": ["runed", "ai"],
 			"meta": {
 				"author": "SikandarJODD",

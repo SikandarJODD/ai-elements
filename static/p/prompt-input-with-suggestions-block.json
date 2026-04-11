@@ -6,7 +6,7 @@
 	"author": "SikandarJODD",
 	"description": "A prompt input block with categorized suggestions that expand on click. Perfect for helping users get started with AI conversations.",
 	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"devDependencies": ["@lucide/svelte@^1.8.0"],
 	"registryDependencies": ["./prompt-input.json", "./prompt-suggestion.json", "button"],
 	"meta": {
 		"author": "SikandarJODD",

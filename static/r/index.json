@@ -327,8 +327,15 @@
 		"type": "registry:block",
 		"author": "SikandarJODD",
 		"description": "A comprehensive prompt input component for AI chat interfaces with provider-backed state management, attachments, action menus, model selection, and submit or stop controls. Includes a composable header, body, toolbar, tools, and attachment previews for building polished AI input experiences.",
-		"dependencies": ["runed"],
-		"registryDependencies": ["button", "textarea", "dropdown-menu", "tooltip", "select"],
+		"dependencies": ["runed", "ai"],
+		"registryDependencies": [
+			"button",
+			"textarea",
+			"dropdown-menu",
+			"tooltip",
+			"select",
+			"dialog"
+		],
 		"meta": {
 			"author": "SikandarJODD",
 			"version": "3.0.0",

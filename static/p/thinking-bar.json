@@ -4,7 +4,7 @@
 	"type": "registry:block",
 	"description": "The ThinkingBar component displays an AI thinking state indicator with shimmer animation. Features optional stop button and customizable styling for streaming AI responses.",
 	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"devDependencies": ["@lucide/svelte@^1.8.0"],
 	"registryDependencies": ["button"],
 	"meta": {
 		"author": "SikandarJODD",

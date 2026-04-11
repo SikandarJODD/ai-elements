@@ -6,7 +6,7 @@
 	"author": "SikandarJODD",
 	"description": "A complete chat application block with sidebar, chat history, and all features combined. The most comprehensive chat interface block available.",
 	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"devDependencies": ["@lucide/svelte@^1.8.0"],
 	"registryDependencies": [
 		"./chat-container.json",
 		"./message.json",

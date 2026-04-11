@@ -18,7 +18,12 @@
 	} = $props();
 </script>
 
-<Dialog.Content bind:ref class={cn("outline! border-none! p-0 outline-border! outline-solid!", className)} {portalProps} {...restProps}>
+<Dialog.Content
+	bind:ref
+	class={cn("outline-border! border-none! p-0 outline! outline-solid!", className)}
+	{portalProps}
+	{...restProps}
+>
 	<Command.Root class="**:data-[slot=command-input-wrapper]:h-auto">
 		{@render children()}
 	</Command.Root>

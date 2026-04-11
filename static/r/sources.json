@@ -6,7 +6,7 @@
 	"author": "SikandarJODD",
 	"description": "The Sources component displays a collapsible list of sources and references used in AI responses, with expandable content and visual indicators.",
 	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"devDependencies": ["@lucide/svelte@^1.8.0"],
 	"registryDependencies": ["collapsible"],
 	"meta": {
 		"author": "SikandarJODD"

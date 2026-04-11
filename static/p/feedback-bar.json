@@ -4,7 +4,7 @@
 	"type": "registry:block",
 	"description": "The FeedbackBar component displays feedback buttons (thumbs up/down) for AI responses. Features customizable icons and state management for collecting user feedback on generated content.",
 	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"devDependencies": ["@lucide/svelte@^1.8.0"],
 	"registryDependencies": ["button"],
 	"meta": {
 		"author": "SikandarJODD",

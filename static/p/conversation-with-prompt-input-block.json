@@ -6,7 +6,7 @@
 	"author": "SikandarJODD",
 	"description": "A complete chat interface block with conversation history and prompt input. The ultimate all-in-one block for full chat experiences.",
 	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"devDependencies": ["@lucide/svelte@^1.8.0"],
 	"registryDependencies": [
 		"./chat-container.json",
 		"./message.json",

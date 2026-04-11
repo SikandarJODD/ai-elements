@@ -9,7 +9,7 @@
 		"mode-watcher@^1.1.0",
 		"@shikijs/themes@^4.0.2"
 	],
-	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"devDependencies": ["@lucide/svelte@^1.8.0"],
 	"registryDependencies": ["collapsible", "button"],
 	"meta": {
 		"author": "SikandarJODD",
