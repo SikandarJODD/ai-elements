@@ -35,7 +35,7 @@
 	{/if}
 
 	<Installation
-		specifier="${PUBLIC_WEBSITE_URL}/r/action.json"
+		specifier="{PUBLIC_WEBSITE_URL}/r/prompt-input.json"
 		is_jsrepo={false}
 		blockname="prompt-input"
 	/>
