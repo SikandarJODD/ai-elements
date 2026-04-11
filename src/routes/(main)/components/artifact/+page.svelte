@@ -3,7 +3,7 @@
 	import { ComponentPageDocs } from "$lib/components/docs";
 	import { data } from "./data";
 
-	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/artifact/llms.txt`;
+	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/artifact/llms.txt`;
 </script>
 
 <ComponentPageDocs

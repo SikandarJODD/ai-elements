@@ -71,7 +71,7 @@
 <img
 	{...restProps}
 	alt={`${provider} logo`}
-	class={cn("size-3", className)}
+	class={cn("size-3 dark:invert", className)}
 	height={12}
 	src={`https://models.dev/logos/${provider}.svg`}
 	width={12}
