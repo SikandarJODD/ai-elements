@@ -13,4 +13,5 @@ export type Example = {
 	preview: Component;
 	/** Source code block(s) */
 	code: CodeBlock | CodeBlock[];
+	showRetry?: boolean;
 };

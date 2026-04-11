@@ -36,7 +36,7 @@
 		<CopyPageDropdown {type} componentName={resolvedComponentName} {llmsTxtUrl} />
 	</div>
 
-	<Paragraph>{pageIntro}</Paragraph>w
+	<Paragraph>{pageIntro}</Paragraph>
 
 	{#if PreviewComp}
 		<PreviewComponent
@@ -64,7 +64,7 @@
 						<H3 id={example.name.toLowerCase().replace(/\s+/g, "-")} class="mt-0">
 							{example.name}
 						</H3>
-						<PreviewComponent code={example.code}>
+						<PreviewComponent code={example.code} showRetry={example.showRetry}>
 							<example.preview />
 						</PreviewComponent>
 					</div>
