@@ -21,6 +21,7 @@
 
 	let liked = $state(false);
 	let disliked = $state(false);
+	let currentBranch = $state(0);
 
 	type Version = {
 		id: string;
@@ -108,16 +109,10 @@ export class Counter {
 	</Message>
 
 	<Message from="assistant">
-		<MessageBranch>
-			<MessageBranchContent content={versions}>
-				{#snippet renderItem(version)}
-					<MessageContent>
-						<MessageResponse content={version.content} />
-					</MessageContent>
-				{/snippet}
-			</MessageBranchContent>
+		<MessageBranch onBranchChange={(branchIndex) => (currentBranch = branchIndex)}>
+			<MessageBranchContent {versions} />
 			<MessageToolbar>
-				<MessageBranchSelector from="assistant">
+				<MessageBranchSelector>
 					<MessageBranchPrevious />
 					<MessageBranchPage />
 					<MessageBranchNext />
@@ -144,7 +139,13 @@ export class Counter {
 					>
 						<ThumbsDown class="size-4" fill={disliked ? "currentColor" : "none"} />
 					</MessageAction>
-					<MessageAction tooltip="Copy" onclick={handleCopy}>
+					<MessageAction
+						tooltip="Copy"
+						onclick={() => {
+							void navigator.clipboard.writeText(versions[currentBranch]?.content || "");
+							handleCopy();
+						}}
+					>
 						<Copy class="size-4" />
 					</MessageAction>
 				</MessageActions>

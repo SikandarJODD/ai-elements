@@ -52,11 +52,21 @@ npx shadcn-svelte@latest add https://ai-elements.vercel.app/r/new-message.json
 <Message from="user">
   <MessageAttachments>
     <MessageAttachment
-      name="document.pdf"
-      type="application/pdf"
-      size={128000}
+      data={{
+        type: "file",
+        url: "",
+        mediaType: "application/pdf",
+        filename: "document.pdf"
+      }}
     />
-    <MessageAttachment name="image.png" type="image/png" size={245000} />
+    <MessageAttachment
+      data={{
+        type: "file",
+        url: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=400&fit=crop",
+        mediaType: "image/png",
+        filename: "image.png"
+      }}
+    />
   </MessageAttachments>
   <MessageContent>
     <MessageResponse content="Please review these files" />
@@ -88,13 +98,7 @@ npx shadcn-svelte@latest add https://ai-elements.vercel.app/r/new-message.json
 
 <Message from="assistant">
   <MessageBranch>
-    <MessageBranchContent content={versions}>
-      {#snippet renderItem(version)}
-        <MessageContent>
-          <MessageResponse content={version.content} />
-        </MessageContent>
-      {/snippet}
-    </MessageBranchContent>
+    <MessageBranchContent {versions} />
     <MessageBranchSelector>
       <MessageBranchPrevious />
       <MessageBranchPage />
@@ -230,7 +234,7 @@ Message
 
 | Prop     | Type                  | Default | Description                                      |
 | -------- | --------------------- | ------- | ------------------------------------------------ |
-| from     | 'user' \| 'assistant' | -       | The role of the message sender                   |
+| from     | 'user' \| 'assistant' \| 'system' \| 'function' \| 'data' \| 'tool' | - | The role of the message sender |
 | children | Snippet               | -       | Child components (MessageContent, Actions, etc.) |
 | class    | string                | -       | Additional CSS classes                           |
 
@@ -283,9 +287,8 @@ Message
 
 | Prop       | Type                 | Default | Description                 |
 | ---------- | -------------------- | ------- | --------------------------- |
-| content    | T[]                  | -       | Array of content items      |
-| renderItem | Snippet<[T, number]> | -       | Snippet to render each item |
-| class      | string               | -       | Additional CSS classes      |
+| versions | { id: string; content: string }[] | - | Array of message versions to render |
+| class    | string | - | Additional CSS classes |
 
 ### MessageBranchSelector
 
@@ -304,17 +307,22 @@ Message
 
 | Prop     | Type       | Default | Description            |
 | -------- | ---------- | ------- | ---------------------- |
-| name     | string     | -       | File name to display   |
-| type     | string     | -       | MIME type              |
-| size     | number     | -       | File size in bytes     |
+| data     | { type: 'file'; filename?: string; mediaType?: string; url?: string } | - | Attachment data |
 | onRemove | () => void | -       | Remove button handler  |
 | class    | string     | -       | Additional CSS classes |
 
+### MessageAttachmentPreview
+
+| Prop  | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| data  | { type: 'file'; filename?: string; mediaType?: string; url?: string } | - | Image attachment data used by the preview dialog |
+| class | string | - | Additional CSS classes |
+
 ## Features
 
-- **Markdown Rendering**: Built-in markdown support with syntax highlighting via `svelte-streamdown`
+- **Markdown Rendering**: Built-in markdown support with syntax highlighting, Mermaid, and math rendering via `svelte-streamdown`
 - **Message Branching**: Navigate between multiple AI response versions
-- **File Attachments**: Display attached files with file type icons, names, and sizes
+- **File Attachments**: Display attached files with centered image preview dialogs and file tooltips
 - **Action Buttons**: Customizable action buttons with tooltips for copy, retry, like, dislike
 - **Theme Support**: Automatic dark/light mode via `mode-watcher`
 - **Svelte 5 Runes**: Built with `$state`, `$derived`, and class-based context for state management

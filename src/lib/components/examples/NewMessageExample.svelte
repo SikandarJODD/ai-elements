@@ -162,6 +162,7 @@ The beauty of runes is they make Svelte's "magic" explicit while keeping the syn
 	// State for liked/disliked messages
 	let liked = $state<Record<string, boolean>>({});
 	let disliked = $state<Record<string, boolean>>({});
+	let currentBranches = $state<Record<string, number>>({});
 
 	function handleCopy(content: string) {
 		navigator.clipboard.writeText(content);
@@ -185,18 +186,17 @@ The beauty of runes is they make Svelte's "magic" explicit while keeping the syn
 		<Message from={message.from}>
 			{#if message.versions && message.versions.length > 1}
 				<!-- Message with multiple versions (branching) -->
-				<MessageBranch defaultBranch={0}>
-					<MessageBranchContent content={message.versions}>
-						{#snippet renderItem(version)}
-							<MessageContent>
-								<MessageResponse content={version.content} />
-							</MessageContent>
-						{/snippet}
-					</MessageBranchContent>
+				<MessageBranch
+					defaultBranch={0}
+					onBranchChange={(branchIndex) => {
+						currentBranches[message.key] = branchIndex;
+					}}
+				>
+					<MessageBranchContent versions={message.versions} />
 
 					{#if message.from === "assistant"}
 						<MessageToolbar>
-							<MessageBranchSelector from={message.from}>
+							<MessageBranchSelector>
 								<MessageBranchPrevious />
 								<MessageBranchPage />
 								<MessageBranchNext />
@@ -232,7 +232,10 @@ The beauty of runes is they make Svelte's "magic" explicit while keeping the syn
 								</MessageAction>
 								<MessageAction
 									label="Copy"
-									onclick={() => handleCopy(message.versions?.[0]?.content || "")}
+									onclick={() =>
+										handleCopy(
+											message.versions?.[currentBranches[message.key] ?? 0]?.content || ""
+										)}
 									tooltip="Copy to clipboard"
 								>
 									<Copy class="size-4" />

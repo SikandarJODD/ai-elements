@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { cn } from "$lib/utils/utils";
-	import { getMessageBranchContext } from "./message-context.svelte.js";
 	import * as ButtonGroup from "$lib/components/ui/button-group/index.js";
-	import type { HTMLAttributes } from "svelte/elements";
+	import { cn } from "$lib/utils/utils";
 	import type { Snippet } from "svelte";
+	import type { HTMLAttributes } from "svelte/elements";
+	import { getMessageBranchContext } from "../context/message-context.svelte.js";
 
-	interface Props extends HTMLAttributes<HTMLSpanElement> {
+	interface Props extends HTMLAttributes<HTMLDivElement> {
 		class?: string;
 		children?: Snippet;
 	}
@@ -16,7 +16,7 @@
 </script>
 
 <ButtonGroup.Text
-	class={cn("text-muted-foreground border-none bg-transparent shadow-none", className)}
+	class={cn("border-none bg-transparent text-muted-foreground shadow-none", className)}
 	{...restProps}
 >
 	{#if children}

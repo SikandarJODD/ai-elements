@@ -34,7 +34,7 @@
 	const messageProps = [
 		{
 			name: "from",
-			type: "'user' | 'assistant'",
+			type: "'user' | 'assistant' | 'system' | 'function' | 'data' | 'tool'",
 			description: "The role of the message sender",
 		},
 		{
@@ -66,7 +66,7 @@
 		{
 			name: "content",
 			type: "string",
-			description: "Markdown content to render with syntax highlighting",
+			description: "Markdown content to render with syntax highlighting, Mermaid, and math",
 		},
 		{
 			name: "class",
@@ -122,37 +122,35 @@
 
 	const messageBranchContentProps = [
 		{
-			name: "content",
-			type: "T[]",
-			description: "Array of content items to render",
-		},
-		{
-			name: "renderItem",
-			type: "Snippet<[T, number]>",
-			description: "Snippet to render each content item",
+			name: "versions",
+			type: "{ id: string; content: string }[]",
+			description: "Array of message versions to render",
 		},
 	];
 
 	const messageAttachmentProps = [
 		{
-			name: "name",
-			type: "string",
-			description: "File name to display",
-		},
-		{
-			name: "type",
-			type: "string",
-			description: "MIME type (e.g., 'image/png', 'application/pdf')",
-		},
-		{
-			name: "size",
-			type: "number",
-			description: "File size in bytes",
+			name: "data",
+			type: "{ type: 'file'; filename?: string; mediaType?: string; url?: string }",
+			description: "Attachment data for file and image previews",
 		},
 		{
 			name: "onRemove",
 			type: "() => void",
 			description: "Handler called when remove button is clicked",
+		},
+	];
+
+	const messageAttachmentPreviewProps = [
+		{
+			name: "data",
+			type: "{ type: 'file'; filename?: string; mediaType?: string; url?: string }",
+			description: "Image attachment data used by the preview dialog",
+		},
+		{
+			name: "class",
+			type: "string",
+			description: "Additional CSS classes",
 		},
 	];
 
@@ -239,12 +237,12 @@
 					Response branching with navigation controls to switch between multiple AI
 					versions
 				</li>
-				<li>File attachments display with file type icons, names, and sizes</li>
+				<li>File attachments support centered image preview dialogs and file tooltips</li>
 				<li>
 					Action buttons with tooltips for common actions like copy, retry, like, dislike
 				</li>
 				<li>
-					Built-in markdown rendering with syntax highlighting via <CodeSpan
+					Built-in markdown rendering with syntax highlighting, Mermaid, and math via <CodeSpan
 						>svelte-streamdown</CodeSpan
 					>
 				</li>
@@ -264,7 +262,7 @@
 			<!-- With Attachments Example -->
 			<Subheading>With Attachments</Subheading>
 			<p class="text-muted-foreground mb-4 text-sm">
-				Messages with file attachments like images and documents.
+				Messages with file attachments, including centered image previews in a dialog.
 			</p>
 			<div data-toc-index={false}>
 				<Playground code={examples.withAttachments.code}>
@@ -435,8 +433,13 @@ export const POST: RequestHandler = async ({ request }) => {
 				id="message-attachment"
 			/>
 
+			<ComponentAPITable
+				componentName="MessageAttachmentPreview"
+				props={messageAttachmentPreviewProps}
+				id="message-attachment-preview"
+			/>
+
 			<AiElementsPrevNext currentSlug="new-message" />
 		</main>
 
 		<!-- TOC Sidebar -->
-

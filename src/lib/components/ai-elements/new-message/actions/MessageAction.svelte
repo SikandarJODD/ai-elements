@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { cn } from "$lib/utils/utils";
-	import { Button, type ButtonProps } from "$lib/components/ui/button/index.js";
+	import { Button, type ButtonElementProps } from "$lib/components/ui/button/index.js";
 	import * as Tooltip from "$lib/components/ui/tooltip/index.js";
+	import { cn } from "$lib/utils/utils";
 	import type { Snippet } from "svelte";
 
-	interface Props extends Omit<ButtonProps, "children"> {
+	type Props = Omit<ButtonElementProps, "children" | "type"> & {
 		tooltip?: string;
 		label?: string;
 		class?: string;
 		children?: Snippet;
-	}
+	};
 
 	let {
 		tooltip,
@@ -20,6 +20,8 @@
 		children,
 		...restProps
 	}: Props = $props();
+
+	const srOnlyLabel = $derived(label || tooltip);
 </script>
 
 {#if tooltip}
@@ -29,14 +31,16 @@
 				{#snippet child({ props })}
 					<Button
 						{...props}
+						{...restProps}
 						{size}
 						type="button"
 						{variant}
 						class={cn("size-7", className)}
-						{...restProps}
 					>
 						{@render children?.()}
-						<span class="sr-only">{label || tooltip}</span>
+						{#if srOnlyLabel}
+							<span class="sr-only">{srOnlyLabel}</span>
+						{/if}
 					</Button>
 				{/snippet}
 			</Tooltip.Trigger>
@@ -46,10 +50,16 @@
 		</Tooltip.Root>
 	</Tooltip.Provider>
 {:else}
-	<Button {size} type="button" {variant} class={cn("size-7", className)} {...restProps}>
+	<Button
+		{...restProps}
+		{size}
+		type="button"
+		{variant}
+		class={cn("size-7", className)}
+	>
 		{@render children?.()}
-		{#if label}
-			<span class="sr-only">{label}</span>
+		{#if srOnlyLabel}
+			<span class="sr-only">{srOnlyLabel}</span>
 		{/if}
 	</Button>
 {/if}

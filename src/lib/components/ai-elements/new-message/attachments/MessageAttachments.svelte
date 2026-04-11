@@ -10,7 +10,6 @@
 
 	let { class: className, children, ...restProps }: Props = $props();
 
-	// Check if children is provided
 	let hasChildren = $derived(!!children);
 </script>
 

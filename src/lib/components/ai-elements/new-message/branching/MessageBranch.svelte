@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { cn } from "$lib/utils/utils";
-	import { MessageBranchClass, setMessageBranchContext } from "./message-context.svelte.js";
+	import {
+		MessageBranchController,
+		setMessageBranchContext,
+	} from "../context/message-context.svelte.js";
 	import type { Snippet } from "svelte";
 	import type { HTMLAttributes } from "svelte/elements";
 
@@ -19,20 +22,31 @@
 		...restProps
 	}: Props = $props();
 
-	// Create the branch context class
-	const branchContext = new MessageBranchClass(defaultBranch);
-
-	// Set up the context
+	const branchContext = new MessageBranchController();
 	setMessageBranchContext(branchContext);
 
-	// Watch for branch changes and call the callback
-	// Using $derived to track changes without $effect
-	let previousBranch = $state(defaultBranch);
+	let initialized = $state(false);
+	let previousBranch = $state<number | null>(null);
 
 	$effect.pre(() => {
-		if (branchContext.currentBranch !== previousBranch) {
+		if (!initialized) {
+			branchContext.setCurrentBranch(defaultBranch);
 			previousBranch = branchContext.currentBranch;
-			onBranchChange?.(branchContext.currentBranch);
+			initialized = true;
+		}
+	});
+
+	$effect(() => {
+		const currentBranch = branchContext.currentBranch;
+
+		if (previousBranch === null) {
+			previousBranch = currentBranch;
+			return;
+		}
+
+		if (currentBranch !== previousBranch) {
+			previousBranch = currentBranch;
+			onBranchChange?.(currentBranch);
 		}
 	});
 </script>
