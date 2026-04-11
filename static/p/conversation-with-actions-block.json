@@ -6,7 +6,7 @@
 	"author": "SikandarJODD",
 	"description": "A conversation block with action buttons like copy, like, dislike, and regenerate. Perfect for interactive chat experiences with user feedback.",
 	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"devDependencies": ["@lucide/svelte@^1.8.0"],
 	"registryDependencies": ["./chat-container.json", "./message.json", "button"],
 	"meta": {
 		"author": "SikandarJODD",

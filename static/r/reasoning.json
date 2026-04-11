@@ -6,7 +6,7 @@
 	"author": "SikandarJODD",
 	"description": "The Reasoning component displays AI reasoning content, automatically opening during streaming and closing when finished.",
 	"dependencies": ["runed", "@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"devDependencies": ["@lucide/svelte@^1.8.0"],
 	"registryDependencies": ["collapsible"],
 	"meta": {
 		"author": "SikandarJODD"

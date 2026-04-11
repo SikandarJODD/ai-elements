@@ -6,7 +6,7 @@
 	"author": "SikandarJODD",
 	"description": "The OpenIn component provides a dropdown menu that allows users to open queries in different AI chat platforms (ChatGPT, Claude, V0, etc.) with a single click.",
 	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"devDependencies": ["@lucide/svelte@^1.8.0"],
 	"registryDependencies": ["button", "dropdown-menu", "tooltip"],
 	"meta": {
 		"author": "SikandarJODD"

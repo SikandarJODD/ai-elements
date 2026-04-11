@@ -14,7 +14,7 @@
 		"svelte-sonner",
 		"@lucide/svelte"
 	],
-	"devDependencies": ["@lucide/svelte@^1.7.0"],
+	"devDependencies": ["@lucide/svelte@^1.8.0"],
 	"registryDependencies": [
 		"button",
 		"badge",
@@ -56,7 +56,7 @@
 			"target": "src/routes/api/playground/+server.ts"
 		},
 		{
-			"content": "import { createOpenRouter } from \"@openrouter/ai-sdk-provider\";\nimport { OPENROUTER_API_KEY } from \"$env/static/private\";\nimport { PUBLIC_WEBSITE_URL} from \"$env/static/public\";\n\nexport const openrouter = createOpenRouter({\n\tapiKey: OPENROUTER_API_KEY,\n\tappName: \"Svelte AI Elements\",\n\tappUrl: PUBLIC_WEBSITE_URL,\n});\n\n// export const defaultModel = \"z-ai/glm-4.5-air:free\";\nexport let defaultModel = \"arcee-ai/trinity-large-preview:free\";\n",
+			"content": "import { createOpenRouter } from \"@openrouter/ai-sdk-provider\";\nimport { OPENROUTER_API_KEY } from \"$env/static/private\";\nimport { PUBLIC_WEBSITE_URL } from \"$env/static/public\";\n\nexport const openrouter = createOpenRouter({\n\tapiKey: OPENROUTER_API_KEY,\n\tappName: \"Svelte AI Elements\",\n\tappUrl: PUBLIC_WEBSITE_URL,\n});\n\n// export const defaultModel = \"z-ai/glm-4.5-air:free\";\nexport let defaultModel = \"arcee-ai/trinity-large-preview:free\";\n",
 			"type": "registry:file",
 			"target": "$lib/config/ai-config.ts"
 		},
