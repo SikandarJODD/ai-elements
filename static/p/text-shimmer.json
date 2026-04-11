@@ -6,14 +6,7 @@
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"prompt-kit",
-			"shimmer",
-			"loading",
-			"animation",
-			"text",
-			"effect"
-		],
+		"tags": ["prompt-kit", "shimmer", "loading", "animation", "text", "effect"],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app/prompt-kit/text-shimmer",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

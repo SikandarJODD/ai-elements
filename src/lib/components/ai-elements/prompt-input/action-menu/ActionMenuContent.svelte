@@ -10,7 +10,7 @@
 	let { class: className, children, ...props }: Props = $props();
 </script>
 
-<DropdownMenu.Content align="start" class={cn(className)} {...props}>
+<DropdownMenu.Content preventScroll={false} align="start" class={cn(className)} {...props}>
 	{#if children}
 		{@render children()}
 	{/if}

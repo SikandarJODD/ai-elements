@@ -115,190 +115,164 @@ watch(
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
-<Sidebar.Inset class="min-h-svh">
-	<div
-		class="grid min-h-svh grid-cols-1 gap-8 md:grid-cols-[1fr_280px] md:px-6 md:pb-6 lg:grid-cols-[1fr_240px]"
-	>
-		<!-- Main Content Area -->
-		<main class="min-w-0" bind:this={toc.ref}>
-			<!-- Title -->
-			<Subheading class="mb-4 md:text-3xl">Scroll Button</Subheading>
+<!-- Main Content Area -->
+<main class="min-w-0" bind:this={toc.ref}>
+	<!-- Title -->
+	<Subheading class="mb-4 md:text-3xl">Scroll Button</Subheading>
 
-			<!-- Description -->
-			<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
-				A floating button that appears when users scroll up in chat containers, providing
-				quick navigation back to the bottom with smooth scrolling behavior and context-based
-				visibility management.
-			</p>
+	<!-- Description -->
+	<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
+		A floating button that appears when users scroll up in chat containers, providing quick
+		navigation back to the bottom with smooth scrolling behavior and context-based visibility
+		management.
+	</p>
 
-			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton
-					{llmsTxtUrl}
-					component="scroll-button"
-					registry="prompt-kit"
-					source="documentation"
-				/>
-				<OpenInMenu componentName="Scroll Button" {llmsTxtUrl} />
-			</div>
-
-			<!-- Installation Section -->
-			<Subheading>Installation</Subheading>
-
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Copy and paste the following code into your project.
-			</p>
-
-			<div class="mb-6">
-				<AiInstallCommand
-					command="execute"
-					args={[
-						"shadcn-svelte@latest",
-						"add",
-						`${PUBLIC_WEBSITE_URL}/p/scroll-button.json`,
-					]}
-					component="scroll-button"
-					registry="prompt-kit"
-				/>
-			</div>
-
-			<!-- Examples Section -->
-			<Subheading>Examples</Subheading>
-
-			<!-- Example 1: Basic Usage -->
-			<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-usage" data-toc-ignore={true}>
-				Basic Usage
-			</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				The ScrollButton component works with a scroll context. Set up the context in a
-				parent component and bind it to a scrollable container. The button automatically
-				appears when scrolling up and hides when at the bottom.
-			</p>
-			<div data-toc-index={false}>
-				<Playground
-					code={examples.basic.code}
-					component="scroll-button"
-					registry="prompt-kit"
-					source="example"
-				>
-					<examples.basic.Component />
-				</Playground>
-			</div>
-
-			<!-- Example 2: Custom Styling -->
-			<h3 class="mt-8 mb-3 text-lg font-semibold" id="custom-styling" data-toc-ignore={true}>
-				Custom Styling
-			</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				Customize the button's appearance using different variants and sizes. The button
-				supports all standard button variants.
-			</p>
-			<div data-toc-index={false}>
-				<Playground
-					code={examples.custom.code}
-					component="scroll-button"
-					registry="prompt-kit"
-					source="example"
-				>
-					<examples.custom.Component />
-				</Playground>
-			</div>
-
-			<!-- Usage Guide Section -->
-			<Subheading>Usage Guide</Subheading>
-
-			<h3 class="mt-6 mb-3 text-lg font-semibold" id="setup-context">
-				Setting Up the Context
-			</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				The ScrollButton requires a scroll context to track the scroll position. Create the
-				context in a parent component and bind it to your scrollable container:
-			</p>
-
-			<div>
-				<Code.Root lang="typescript" code={setupContextCode} class="mb-6">
-					<Code.CopyButton />
-				</Code.Root>
-			</div>
-
-			<h3 class="mt-8 mb-3 text-lg font-semibold" id="positioning">Positioning the Button</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				Position the ScrollButton absolutely within your container. It's typically placed in
-				the bottom-right corner:
-			</p>
-
-			<div>
-				<Code.Root lang="svelte" code={positioningCode} class="mb-6">
-					<Code.CopyButton />
-				</Code.Root>
-			</div>
-
-			<h3 class="mt-8 mb-3 text-lg font-semibold" id="chat-container-integration">
-				Integration with ChatContainer
-			</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				The ScrollButton pairs perfectly with the ChatContainer component. Both use similar
-				context patterns for scroll management. See the <a
-					href="/prompt-kit/chat-container#using-with-scroll-button"
-					class="text-primary hover:underline">ChatContainer documentation</a
-				> for integration examples.
-			</p>
-
-			<!-- Component API Section -->
-			<Subheading>Component API</Subheading>
-
-			<!-- ScrollButton Props -->
-			<ComponentAPITable
-				componentName="ScrollButton"
-				props={scrollButtonProps}
-				class="mt-6"
-				id="scroll-button-props"
-			/>
-
-			<!-- Scroll Context API -->
-			<h3 class="mt-8 mb-3 text-lg font-semibold" id="scroll-context-api">
-				Scroll Context API
-			</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				The scroll context provides functions and state for managing scroll behavior:
-			</p>
-			<ComponentAPITable
-				componentName="Scroll Context"
-				props={scrollContextFunctions}
-				class="mt-6"
-				id="scroll-context-functions"
-			/>
-
-			<!-- Features Section -->
-			<Subheading>Features</Subheading>
-
-			<ul
-				class="text-muted-foreground mb-6 list-inside list-disc space-y-2 text-sm sm:text-base"
-			>
-				<li>
-					<strong>Context-based visibility:</strong> Automatically shows/hides based on scroll
-					position
-				</li>
-				<li><strong>Smooth animations:</strong> Elegant fade and slide transitions</li>
-				<li>
-					<strong>Customizable styling:</strong> Supports all button variants and sizes
-				</li>
-				<li><strong>SSR-safe:</strong> Handles server-side rendering gracefully</li>
-				<li>
-					<strong>Threshold detection:</strong> Configurable threshold for bottom detection
-					(50px default)
-				</li>
-				<li><strong>Smooth scrolling:</strong> Uses native smooth scroll behavior</li>
-			</ul>
-
-			<PromptKitPrevNext currentSlug="scroll-button" />
-		</main>
-
-		<!-- TOC Sidebar - Sticky on larger screens -->
-		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">
-			<div>
-				<h3 class="mb-4 text-sm font-semibold">On this page</h3>
-				<Toc.Root toc={toc.current} />
-			</div>
-		</aside>
+	<div class="mb-8 flex items-center gap-2">
+		<CopyMarkdownButton
+			{llmsTxtUrl}
+			component="scroll-button"
+			registry="prompt-kit"
+			source="documentation"
+		/>
+		<OpenInMenu componentName="Scroll Button" {llmsTxtUrl} />
 	</div>
-</Sidebar.Inset>
+
+	<!-- Installation Section -->
+	<Subheading>Installation</Subheading>
+
+	<p class="mb-4 text-sm leading-relaxed sm:text-base">
+		Copy and paste the following code into your project.
+	</p>
+
+	<div class="mb-6">
+		<AiInstallCommand
+			command="execute"
+			args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/scroll-button.json`]}
+			component="scroll-button"
+			registry="prompt-kit"
+		/>
+	</div>
+
+	<!-- Examples Section -->
+	<Subheading>Examples</Subheading>
+
+	<!-- Example 1: Basic Usage -->
+	<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-usage" data-toc-ignore={true}>
+		Basic Usage
+	</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		The ScrollButton component works with a scroll context. Set up the context in a parent
+		component and bind it to a scrollable container. The button automatically appears when
+		scrolling up and hides when at the bottom.
+	</p>
+	<div data-toc-index={false}>
+		<Playground
+			code={examples.basic.code}
+			component="scroll-button"
+			registry="prompt-kit"
+			source="example"
+		>
+			<examples.basic.Component />
+		</Playground>
+	</div>
+
+	<!-- Example 2: Custom Styling -->
+	<h3 class="mt-8 mb-3 text-lg font-semibold" id="custom-styling" data-toc-ignore={true}>
+		Custom Styling
+	</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		Customize the button's appearance using different variants and sizes. The button supports
+		all standard button variants.
+	</p>
+	<div data-toc-index={false}>
+		<Playground
+			code={examples.custom.code}
+			component="scroll-button"
+			registry="prompt-kit"
+			source="example"
+		>
+			<examples.custom.Component />
+		</Playground>
+	</div>
+
+	<!-- Usage Guide Section -->
+	<Subheading>Usage Guide</Subheading>
+
+	<h3 class="mt-6 mb-3 text-lg font-semibold" id="setup-context">Setting Up the Context</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		The ScrollButton requires a scroll context to track the scroll position. Create the context
+		in a parent component and bind it to your scrollable container:
+	</p>
+
+	<div>
+		<Code.Root lang="typescript" code={setupContextCode} class="mb-6">
+			<Code.CopyButton />
+		</Code.Root>
+	</div>
+
+	<h3 class="mt-8 mb-3 text-lg font-semibold" id="positioning">Positioning the Button</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		Position the ScrollButton absolutely within your container. It's typically placed in the
+		bottom-right corner:
+	</p>
+
+	<div>
+		<Code.Root lang="svelte" code={positioningCode} class="mb-6">
+			<Code.CopyButton />
+		</Code.Root>
+	</div>
+
+	<h3 class="mt-8 mb-3 text-lg font-semibold" id="chat-container-integration">
+		Integration with ChatContainer
+	</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		The ScrollButton pairs perfectly with the ChatContainer component. Both use similar context
+		patterns for scroll management. See the <a
+			href="/prompt-kit/chat-container#using-with-scroll-button"
+			class="text-primary hover:underline">ChatContainer documentation</a
+		> for integration examples.
+	</p>
+
+	<!-- Component API Section -->
+	<Subheading>Component API</Subheading>
+
+	<!-- ScrollButton Props -->
+	<ComponentAPITable
+		componentName="ScrollButton"
+		props={scrollButtonProps}
+		class="mt-6"
+		id="scroll-button-props"
+	/>
+
+	<!-- Scroll Context API -->
+	<h3 class="mt-8 mb-3 text-lg font-semibold" id="scroll-context-api">Scroll Context API</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		The scroll context provides functions and state for managing scroll behavior:
+	</p>
+	<ComponentAPITable
+		componentName="Scroll Context"
+		props={scrollContextFunctions}
+		class="mt-6"
+		id="scroll-context-functions"
+	/>
+
+	<!-- Features Section -->
+	<Subheading>Features</Subheading>
+
+	<ul class="text-muted-foreground mb-6 list-inside list-disc space-y-2 text-sm sm:text-base">
+		<li>
+			<strong>Context-based visibility:</strong> Automatically shows/hides based on scroll position
+		</li>
+		<li><strong>Smooth animations:</strong> Elegant fade and slide transitions</li>
+		<li>
+			<strong>Customizable styling:</strong> Supports all button variants and sizes
+		</li>
+		<li><strong>SSR-safe:</strong> Handles server-side rendering gracefully</li>
+		<li>
+			<strong>Threshold detection:</strong> Configurable threshold for bottom detection (50px default)
+		</li>
+		<li><strong>Smooth scrolling:</strong> Uses native smooth scroll behavior</li>
+	</ul>
+
+	<PromptKitPrevNext currentSlug="scroll-button" />
+</main>

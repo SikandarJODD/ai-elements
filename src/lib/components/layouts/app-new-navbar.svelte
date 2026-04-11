@@ -343,7 +343,7 @@
 		{
 			href: "/components/actions",
 			title: "Svelte AI Elements",
-			description: "30 full-featured components for production AI apps",
+			description: "Svelte Port of Vercel AI Elements",
 			icon: SparklesIcon,
 		},
 		{
@@ -522,12 +522,12 @@
 						<!-- Components Menu -->
 						<NavigationMenuItem>
 							<NavigationMenuTrigger
-								class="text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary bg-transparent px-4 py-2 text-sm font-medium hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent"
+								class="text-muted-foreground hover:text-primary focus:text-primary data-[state=open]:text-primary bg-transparent! px-0 py-2 text-sm font-medium hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent!"
 							>
 								Components
 							</NavigationMenuTrigger>
-							<NavigationMenuContent>
-								<ul class="grid w-[400px] gap-2 p-3">
+							<NavigationMenuContent class="p-0">
+								<ul class="grid w-[320px] p-2">
 									{#each componentItems as item (item.href)}
 										<li>
 											<NavigationMenuLink href={item.href}>

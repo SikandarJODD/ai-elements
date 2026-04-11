@@ -1,45 +1,35 @@
-// Main Message Components
-import Message from "./Message.svelte";
-import MessageContent from "./MessageContent.svelte";
-import MessageActions from "./MessageActions.svelte";
-import MessageAction from "./MessageAction.svelte";
-import MessageToolbar from "./MessageToolbar.svelte";
+import Message from "./core/Message.svelte";
+import MessageContent from "./core/MessageContent.svelte";
+import MessageActions from "./actions/MessageActions.svelte";
+import MessageAction from "./actions/MessageAction.svelte";
+import MessageToolbar from "./actions/MessageToolbar.svelte";
+import MessageBranch from "./branching/MessageBranch.svelte";
+import MessageBranchContent from "./branching/MessageBranchContent.svelte";
+import MessageBranchSelector from "./branching/MessageBranchSelector.svelte";
+import MessageBranchPrevious from "./branching/MessageBranchPrevious.svelte";
+import MessageBranchNext from "./branching/MessageBranchNext.svelte";
+import MessageBranchPage from "./branching/MessageBranchPage.svelte";
+import MessageResponse from "./response/MessageResponse.svelte";
+import MessageAttachment from "./attachments/MessageAttachment.svelte";
+import MessageAttachmentPreview from "./attachments/MessageAttachmentPreview.svelte";
+import MessageAttachments from "./attachments/MessageAttachments.svelte";
 
-// Branch Components
-import MessageBranch from "./MessageBranch.svelte";
-import MessageBranchContent from "./MessageBranchContent.svelte";
-import MessageBranchSelector from "./MessageBranchSelector.svelte";
-import MessageBranchPrevious from "./MessageBranchPrevious.svelte";
-import MessageBranchNext from "./MessageBranchNext.svelte";
-import MessageBranchPage from "./MessageBranchPage.svelte";
-
-// Response Component
-import MessageResponse from "./MessageResponse.svelte";
-
-// Attachment Components
-import MessageAttachment from "./MessageAttachment.svelte";
-import MessageAttachments from "./MessageAttachments.svelte";
-
-// Export context utilities
-export * from "./message-context.svelte.js";
+export * from "./context/message-context.svelte.js";
 
 export {
-	// Main components
 	Message,
 	MessageContent,
 	MessageActions,
 	MessageAction,
 	MessageToolbar,
-	// Branch components
 	MessageBranch,
 	MessageBranchContent,
 	MessageBranchSelector,
 	MessageBranchPrevious,
 	MessageBranchNext,
 	MessageBranchPage,
-	// Response
 	MessageResponse,
-	// Attachments
 	MessageAttachment,
+	MessageAttachmentPreview,
 	MessageAttachments,
 };

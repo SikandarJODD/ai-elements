@@ -61,102 +61,75 @@
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
-<Sidebar.Inset class="min-h-svh">
-	<div
-		class="grid min-h-svh grid-cols-1 gap-8 md:grid-cols-[1fr_280px] md:px-6 md:pb-6 lg:grid-cols-[1fr_240px]"
-	>
-		<!-- Main Content Area -->
-		<main class="min-w-0" bind:this={toc.ref}>
-			<!-- Title -->
-			<Subheading class="mb-4 md:text-3xl">Image</Subheading>
+<!-- Main Content Area -->
+<main class="min-w-0" bind:this={toc.ref}>
+	<!-- Title -->
+	<Subheading class="mb-4 md:text-3xl">Image</Subheading>
 
-			<!-- Description -->
-			<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
-				The <code class="bg-muted rounded px-1.5 py-0.5 text-sm">Image</code> component displays
-				images from base64 or Uint8Array data, supporting all standard HTML image attributes.
-				It is ideal for showing AI-generated images or user uploads in chat and AI apps. Compatible
-				with AI SDK v5 architecture.
-			</p>
+	<!-- Description -->
+	<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
+		The <code class="bg-muted rounded px-1.5 py-0.5 text-sm">Image</code> component displays images
+		from base64 or Uint8Array data, supporting all standard HTML image attributes. It is ideal for
+		showing AI-generated images or user uploads in chat and AI apps. Compatible with AI SDK v5 architecture.
+	</p>
 
-			<!-- Actions -->
-			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton
-					{llmsTxtUrl}
-					component="image"
-					registry="prompt-kit"
-					source="documentation"
-				/>
-				<OpenInMenu componentName="Image" {llmsTxtUrl} />
-			</div>
-
-			<!-- Installation Section -->
-			<Subheading>Installation</Subheading>
-
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Copy and paste the following code into your project.
-			</p>
-
-			<div class="mb-6">
-				<AiInstallCommand
-					command="execute"
-					args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/image.json`]}
-					component="image"
-					registry="prompt-kit"
-				/>
-			</div>
-
-			<!-- Features Section -->
-			<h3 class="mt-6 mb-3 text-lg font-semibold" id="features">Features</h3>
-			<ul
-				class="text-muted-foreground mb-6 list-inside list-disc space-y-2 text-sm sm:text-base"
-			>
-				<li>Accepts base64 or Uint8Array image data</li>
-				<li>Supports all standard HTML image attributes</li>
-				<li>
-					Responsive by default with <code class="bg-muted rounded px-1.5 py-0.5 text-sm"
-						>max-w-full h-auto</code
-					>
-				</li>
-				<li>Customizable with Tailwind classes</li>
-				<li>Fully accessible (alt required)</li>
-			</ul>
-
-			<!-- Examples Section -->
-			<Subheading>Examples</Subheading>
-
-			<!-- Example 1: Basic Usage -->
-			<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-usage">Basic Usage</h3>
-			<Playground
-				code={examples.basic.code}
-				component="image"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.basic.Component />
-				</div>
-			</Playground>
-
-			<!-- Component API Section -->
-			<Subheading>Component API</Subheading>
-
-			<!-- Image -->
-			<ComponentAPITable
-				componentName="Image"
-				props={imageProps}
-				class="mt-6"
-				id="image-props"
-			/>
-
-			<PromptKitPrevNext currentSlug="image" />
-		</main>
-
-		<!-- TOC Sidebar - Sticky on larger screens -->
-		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">
-			<div>
-				<h3 class="mb-4 text-sm font-semibold">On this page</h3>
-				<Toc.Root toc={toc.current} />
-			</div>
-		</aside>
+	<!-- Actions -->
+	<div class="mb-8 flex items-center gap-2">
+		<CopyMarkdownButton
+			{llmsTxtUrl}
+			component="image"
+			registry="prompt-kit"
+			source="documentation"
+		/>
+		<OpenInMenu componentName="Image" {llmsTxtUrl} />
 	</div>
-</Sidebar.Inset>
+
+	<!-- Installation Section -->
+	<Subheading>Installation</Subheading>
+
+	<p class="mb-4 text-sm leading-relaxed sm:text-base">
+		Copy and paste the following code into your project.
+	</p>
+
+	<div class="mb-6">
+		<AiInstallCommand
+			command="execute"
+			args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/image.json`]}
+			component="image"
+			registry="prompt-kit"
+		/>
+	</div>
+
+	<!-- Features Section -->
+	<h3 class="mt-6 mb-3 text-lg font-semibold" id="features">Features</h3>
+	<ul class="text-muted-foreground mb-6 list-inside list-disc space-y-2 text-sm sm:text-base">
+		<li>Accepts base64 or Uint8Array image data</li>
+		<li>Supports all standard HTML image attributes</li>
+		<li>
+			Responsive by default with <code class="bg-muted rounded px-1.5 py-0.5 text-sm"
+				>max-w-full h-auto</code
+			>
+		</li>
+		<li>Customizable with Tailwind classes</li>
+		<li>Fully accessible (alt required)</li>
+	</ul>
+
+	<!-- Examples Section -->
+	<Subheading>Examples</Subheading>
+
+	<!-- Example 1: Basic Usage -->
+	<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-usage">Basic Usage</h3>
+	<Playground code={examples.basic.code} component="image" registry="prompt-kit" source="example">
+		<div class="flex w-full justify-center">
+			<examples.basic.Component />
+		</div>
+	</Playground>
+
+	<!-- Component API Section -->
+	<Subheading>Component API</Subheading>
+
+	<!-- Image -->
+	<ComponentAPITable componentName="Image" props={imageProps} class="mt-6" id="image-props" />
+
+	<PromptKitPrevNext currentSlug="image" />
+</main>

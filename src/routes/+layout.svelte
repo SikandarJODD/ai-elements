@@ -9,7 +9,11 @@
 
 	let keys = new PressedKeys();
 	keys.onKeys(["d"], () => {
-		if(activeElement.current?.localName==='textarea' || activeElement.current?.localName==='input') return;
+		if (
+			activeElement.current?.localName === "textarea" ||
+			activeElement.current?.localName === "input"
+		)
+			return;
 		toggleMode();
 	});
 </script>
@@ -19,7 +23,7 @@
 </svelte:head>
 
 <ModeWatcher defaultMode="dark" />
-<Toaster />
+<Toaster richColors position="bottom-center" />
 
 <!-- <AppNavbar /> -->
 <AppNewNavbar />

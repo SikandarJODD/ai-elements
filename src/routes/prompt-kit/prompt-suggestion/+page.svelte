@@ -64,145 +64,124 @@
 <!-- SEO Meta Tags -->
 <MetaTags {...seo} />
 
-<Sidebar.Inset class="min-h-svh">
-	<div
-		class="grid min-h-svh grid-cols-1 gap-8 md:grid-cols-[1fr_280px] md:px-6 md:pb-6 lg:grid-cols-[1fr_240px]"
-	>
-		<!-- Main Content Area -->
-		<main class="min-w-0" bind:this={toc.ref}>
-			<!-- Title -->
-			<Subheading class="mb-4 md:text-3xl">Prompt Suggestion</Subheading>
+<!-- Main Content Area -->
+<main class="min-w-0" bind:this={toc.ref}>
+	<!-- Title -->
+	<Subheading class="mb-4 md:text-3xl">Prompt Suggestion</Subheading>
 
-			<!-- Description -->
-			<p class="text-muted-foreground mb-4 text-base leading-relaxed sm:text-lg">
-				A component for implementing interactive prompt suggestions in AI interfaces. The
-				PromptSuggestion component offers two distinct modes:
-			</p>
+	<!-- Description -->
+	<p class="text-muted-foreground mb-4 text-base leading-relaxed sm:text-lg">
+		A component for implementing interactive prompt suggestions in AI interfaces. The
+		PromptSuggestion component offers two distinct modes:
+	</p>
 
-			<ul
-				class="text-muted-foreground mb-6 list-inside list-disc space-y-2 text-sm sm:text-base"
-			>
-				<li>
-					<strong>Normal Mode:</strong> Renders clickable, pill-shaped buttons ideal for suggesting
-					quick prompts in chat interfaces
-				</li>
-				<li>
-					<strong>Highlight Mode:</strong> Provides text highlighting to highlight a part of
-					the suggestion
-				</li>
-			</ul>
+	<ul class="text-muted-foreground mb-6 list-inside list-disc space-y-2 text-sm sm:text-base">
+		<li>
+			<strong>Normal Mode:</strong> Renders clickable, pill-shaped buttons ideal for suggesting
+			quick prompts in chat interfaces
+		</li>
+		<li>
+			<strong>Highlight Mode:</strong> Provides text highlighting to highlight a part of the suggestion
+		</li>
+	</ul>
 
-			<!-- Actions -->
-			<div class="mb-8 flex items-center gap-2">
-				<CopyMarkdownButton
-					{llmsTxtUrl}
-					component="prompt-suggestion"
-					registry="prompt-kit"
-					source="documentation"
-				/>
-				<OpenInMenu componentName="Prompt Suggestion" {llmsTxtUrl} />
-			</div>
-
-			<!-- Installation Section -->
-			<Subheading>Installation</Subheading>
-
-			<p class="mb-4 text-sm leading-relaxed sm:text-base">
-				Copy and paste the following code into your project.
-			</p>
-
-			<div class="mb-6">
-				<AiInstallCommand
-					command="execute"
-					args={[
-						"shadcn-svelte@latest",
-						"add",
-						`${PUBLIC_WEBSITE_URL}/p/prompt-suggestion.json`,
-					]}
-					component="prompt-suggestion"
-					registry="prompt-kit"
-				/>
-			</div>
-
-			<!-- Examples Section -->
-			<Subheading>Examples</Subheading>
-
-			<!-- Example 1: Basic Usage -->
-			<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-usage">Basic Usage</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				Display clickable prompt suggestions that users can select to populate an input
-				field. You can easily use it with the <code
-					class="bg-muted rounded px-1.5 py-0.5 text-sm">PromptInput</code
-				> component.
-			</p>
-			<Playground
-				code={examples.basic.code}
-				component="prompt-suggestion"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.basic.Component />
-				</div>
-			</Playground>
-
-			<!-- Example 2: Highlighted Prompt Suggestions -->
-			<h3 class="mt-8 mb-3 text-lg font-semibold" id="highlighted-prompt-suggestions">
-				Highlighted Prompt Suggestions
-			</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				Implement prompt suggestions with search term highlighting. It's perfect to showcase
-				a list of related prompts.
-			</p>
-			<Playground
-				code={examples.highlight.code}
-				component="prompt-suggestion"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.highlight.Component />
-				</div>
-			</Playground>
-
-			<!-- Example 3: Complete Chat Interface -->
-			<h3 class="mt-8 mb-3 text-lg font-semibold" id="complete-chat-interface">
-				Complete Chat Interface
-			</h3>
-			<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
-				Build a full-featured chat interface with dynamic prompt suggestions that switch
-				between both modes.
-			</p>
-			<Playground
-				code={examples.chatComplete.code}
-				component="prompt-suggestion"
-				registry="prompt-kit"
-				source="example"
-			>
-				<div class="flex w-full justify-center">
-					<examples.chatComplete.Component />
-				</div>
-			</Playground>
-
-			<!-- Component API Section -->
-			<Subheading>Component API</Subheading>
-
-			<!-- PromptSuggestion -->
-			<ComponentAPITable
-				componentName="PromptSuggestion"
-				props={promptSuggestionProps}
-				class="mt-6"
-				id="prompt-suggestion-props"
-			/>
-
-			<PromptKitPrevNext currentSlug="prompt-suggestion" />
-		</main>
-
-		<!-- TOC Sidebar - Sticky on larger screens -->
-		<aside class="sticky top-24 hidden h-fit max-h-[calc(100vh-3rem)] overflow-y-auto md:flex">
-			<div>
-				<h3 class="mb-4 text-sm font-semibold">On this page</h3>
-				<Toc.Root toc={toc.current} />
-			</div>
-		</aside>
+	<!-- Actions -->
+	<div class="mb-8 flex items-center gap-2">
+		<CopyMarkdownButton
+			{llmsTxtUrl}
+			component="prompt-suggestion"
+			registry="prompt-kit"
+			source="documentation"
+		/>
+		<OpenInMenu componentName="Prompt Suggestion" {llmsTxtUrl} />
 	</div>
-</Sidebar.Inset>
+
+	<!-- Installation Section -->
+	<Subheading>Installation</Subheading>
+
+	<p class="mb-4 text-sm leading-relaxed sm:text-base">
+		Copy and paste the following code into your project.
+	</p>
+
+	<div class="mb-6">
+		<AiInstallCommand
+			command="execute"
+			args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/prompt-suggestion.json`]}
+			component="prompt-suggestion"
+			registry="prompt-kit"
+		/>
+	</div>
+
+	<!-- Examples Section -->
+	<Subheading>Examples</Subheading>
+
+	<!-- Example 1: Basic Usage -->
+	<h3 class="mt-6 mb-3 text-lg font-semibold" id="basic-usage">Basic Usage</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		Display clickable prompt suggestions that users can select to populate an input field. You
+		can easily use it with the <code class="bg-muted rounded px-1.5 py-0.5 text-sm"
+			>PromptInput</code
+		> component.
+	</p>
+	<Playground
+		code={examples.basic.code}
+		component="prompt-suggestion"
+		registry="prompt-kit"
+		source="example"
+	>
+		<div class="flex w-full justify-center">
+			<examples.basic.Component />
+		</div>
+	</Playground>
+
+	<!-- Example 2: Highlighted Prompt Suggestions -->
+	<h3 class="mt-8 mb-3 text-lg font-semibold" id="highlighted-prompt-suggestions">
+		Highlighted Prompt Suggestions
+	</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		Implement prompt suggestions with search term highlighting. It's perfect to showcase a list
+		of related prompts.
+	</p>
+	<Playground
+		code={examples.highlight.code}
+		component="prompt-suggestion"
+		registry="prompt-kit"
+		source="example"
+	>
+		<div class="flex w-full justify-center">
+			<examples.highlight.Component />
+		</div>
+	</Playground>
+
+	<!-- Example 3: Complete Chat Interface -->
+	<h3 class="mt-8 mb-3 text-lg font-semibold" id="complete-chat-interface">
+		Complete Chat Interface
+	</h3>
+	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
+		Build a full-featured chat interface with dynamic prompt suggestions that switch between
+		both modes.
+	</p>
+	<Playground
+		code={examples.chatComplete.code}
+		component="prompt-suggestion"
+		registry="prompt-kit"
+		source="example"
+	>
+		<div class="flex w-full justify-center">
+			<examples.chatComplete.Component />
+		</div>
+	</Playground>
+
+	<!-- Component API Section -->
+	<Subheading>Component API</Subheading>
+
+	<!-- PromptSuggestion -->
+	<ComponentAPITable
+		componentName="PromptSuggestion"
+		props={promptSuggestionProps}
+		class="mt-6"
+		id="prompt-suggestion-props"
+	/>
+
+	<PromptKitPrevNext currentSlug="prompt-suggestion" />
+</main>

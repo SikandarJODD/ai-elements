@@ -35,7 +35,7 @@
 	}}
 />
 
-<Sidebar.Inset class="px-4 py-8 md:px-6 md:py-12 lg:py-12">
+<div class="px-4 py-8 md:px-10 md:py-12 lg:py-12">
 	<h1
 		class="text-foreground text-3xl leading-tight font-semibold tracking-tight md:text-4xl md:font-bold"
 	>
@@ -341,4 +341,4 @@ Configure the import alias for ui: › $lib/components/ui</code
 
 		<AiElementsPrevNext currentSlug="installation" />
 	</div>
-</Sidebar.Inset>
+</div>

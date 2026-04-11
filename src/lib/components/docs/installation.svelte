@@ -11,7 +11,7 @@
 	let { specifier, is_jsrepo = true, blockname }: Props = $props();
 </script>
 
-<Subheading>Installation</Subheading>
+<Subheading class="mt-4">Installation</Subheading>
 <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
 
 <AiInstallCommand command="execute" args={["shadcn-svelte@latest", "add", specifier]} />

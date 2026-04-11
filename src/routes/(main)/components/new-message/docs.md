@@ -1,11 +1,11 @@
 # New Message
 
-> A comprehensive suite of components for displaying chat messages, including message rendering, branching, actions, and markdown responses.
+> Composable chat message primitives for Svelte with markdown responses, attachments, branching, and action slots.
 
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add https://ai-elements.vercel.app/r/new-message.json
+npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app/r/new-message.json
 ```
 
 ## Usage
@@ -22,62 +22,69 @@ npx shadcn-svelte@latest add https://ai-elements.vercel.app/r/new-message.json
 </script>
 
 <Message from="user">
-  <MessageContent>
-    <MessageResponse content="Hello! How can I help you today?" />
-  </MessageContent>
+  <MessageContent>How do I compose the new message primitives?</MessageContent>
 </Message>
 
 <Message from="assistant">
   <MessageContent>
     <MessageResponse
-      content="I'm here to help! What would you like to know?"
+      content={`Use \`Message\` as the wrapper, \`MessageContent\` for a single body, and \`MessageResponse\` when you want markdown rendering.`}
     />
   </MessageContent>
 </Message>
 ```
 
-### With Attachments
+### File Attachment Example
 
 ```svelte
 <script lang="ts">
   import {
     Message,
-    MessageContent,
-    MessageResponse,
-    MessageAttachments,
     MessageAttachment,
+    MessageAttachments,
+    MessageContent,
   } from "$lib/components/ai-elements/new-message";
 </script>
 
 <Message from="user">
-  <MessageAttachments>
+  <MessageAttachments class="mb-2">
     <MessageAttachment
-      name="document.pdf"
-      type="application/pdf"
-      size={128000}
+      data={{
+        type: "file",
+        url: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&h=720&fit=crop",
+        mediaType: "image/jpeg",
+        filename: "dashboard-review.jpg",
+      }}
     />
-    <MessageAttachment name="image.png" type="image/png" size={245000} />
+    <MessageAttachment
+      data={{
+        type: "file",
+        mediaType: "application/pdf",
+        filename: "release-notes.pdf",
+      }}
+    />
   </MessageAttachments>
-  <MessageContent>
-    <MessageResponse content="Please review these files" />
-  </MessageContent>
+
+  <MessageContent>Please review these files.</MessageContent>
 </Message>
 ```
 
-### With Branching
+Image attachments open inside the built-in centered dialog preview. Non-image files stay compact and tooltip-based.
+
+### Branch Example
 
 ```svelte
 <script lang="ts">
   import {
     Message,
-    MessageContent,
-    MessageResponse,
     MessageBranch,
     MessageBranchContent,
-    MessageBranchSelector,
-    MessageBranchPrevious,
     MessageBranchNext,
     MessageBranchPage,
+    MessageBranchPrevious,
+    MessageBranchSelector,
+    MessageContent,
+    MessageToolbar,
   } from "$lib/components/ai-elements/new-message";
 
   const versions = [
@@ -86,240 +93,115 @@ npx shadcn-svelte@latest add https://ai-elements.vercel.app/r/new-message.json
   ];
 </script>
 
+<Message from="user">
+  <MessageContent>Show two versions of the assistant response.</MessageContent>
+</Message>
+
 <Message from="assistant">
   <MessageBranch>
-    <MessageBranchContent content={versions}>
-      {#snippet renderItem(version)}
-        <MessageContent>
-          <MessageResponse content={version.content} />
-        </MessageContent>
-      {/snippet}
-    </MessageBranchContent>
-    <MessageBranchSelector>
-      <MessageBranchPrevious />
-      <MessageBranchPage />
-      <MessageBranchNext />
-    </MessageBranchSelector>
+    <MessageBranchContent {versions} />
+
+    <MessageToolbar>
+      <MessageBranchSelector>
+        <MessageBranchPrevious />
+        <MessageBranchPage />
+        <MessageBranchNext />
+      </MessageBranchSelector>
+    </MessageToolbar>
   </MessageBranch>
 </Message>
 ```
 
-### With Actions
+`MessageBranchContent` now accepts a single `versions` prop and renders each version with `MessageResponse` internally.
+
+### Prompt Input Composition
 
 ```svelte
 <script lang="ts">
+  import * as PromptInput from "$lib/components/ai-elements/prompt-input";
+  import type { PromptInputMessage } from "$lib/components/ai-elements/prompt-input";
   import {
     Message,
     MessageContent,
     MessageResponse,
-    MessageToolbar,
-    MessageActions,
-    MessageAction,
   } from "$lib/components/ai-elements/new-message";
-  import Copy from "@lucide/svelte/icons/copy";
-  import ThumbsUp from "@lucide/svelte/icons/thumbs-up";
-  import RefreshCcw from "@lucide/svelte/icons/refresh-ccw";
-</script>
 
-<Message from="assistant">
-  <MessageContent>
-    <MessageResponse content="Here's my response!" />
-  </MessageContent>
-  <MessageToolbar>
-    <MessageActions>
-      <MessageAction
-        tooltip="Regenerate"
-        onclick={() => console.log("regenerate")}
-      >
-        <RefreshCcw class="size-4" />
-      </MessageAction>
-      <MessageAction tooltip="Like" onclick={() => console.log("liked")}>
-        <ThumbsUp class="size-4" />
-      </MessageAction>
-      <MessageAction
-        tooltip="Copy"
-        onclick={() => navigator.clipboard.writeText("...")}
-      >
-        <Copy class="size-4" />
-      </MessageAction>
-    </MessageActions>
-  </MessageToolbar>
-</Message>
-```
+  type ChatMessage = {
+    id: string;
+    role: "user" | "assistant";
+    content: string;
+  };
 
-### Usage with AI SDK
+  let messages = $state<ChatMessage[]>([
+    {
+      id: crypto.randomUUID(),
+      role: "assistant",
+      content: "Ask about attachments, branching, or markdown rendering.",
+    },
+  ]);
 
-Integrate with Vercel AI SDK v5's `Chat` class for real-time streaming responses.
+  function handleSubmit(payload: PromptInputMessage) {
+    const text = payload.text.trim();
 
-```svelte
-<script lang="ts">
-  import { Chat } from "@ai-sdk/svelte";
-  import {
-    Message,
-    MessageContent,
-    MessageResponse,
-    MessageToolbar,
-    MessageActions,
-    MessageAction,
-  } from "$lib/components/ai-elements/new-message";
-  import Copy from "@lucide/svelte/icons/copy";
-  import RefreshCcw from "@lucide/svelte/icons/refresh-ccw";
+    if (!text) return;
 
-  let chat = new Chat({});
-
-  function handleCopy(content: string) {
-    navigator.clipboard.writeText(content);
+    messages = [
+      ...messages,
+      { id: crypto.randomUUID(), role: "user", content: text },
+    ];
   }
 </script>
 
-<div class="flex flex-col gap-4 p-4">
-  {#each chat.messages as message (message.id)}
+<div class="flex w-full max-w-2xl flex-col gap-4">
+  {#each messages as message (message.id)}
     <Message from={message.role}>
       <MessageContent>
-        {#each message.parts as part, i (i)}
-          {#if part.type === "text"}
-            <MessageResponse content={part.text} />
-          {/if}
-        {/each}
+        {#if message.role === "assistant"}
+          <MessageResponse content={message.content} />
+        {:else}
+          {message.content}
+        {/if}
       </MessageContent>
-      {#if message.role === "assistant"}
-        <MessageToolbar>
-          <MessageActions>
-            <MessageAction tooltip="Regenerate" onclick={() => chat.reload()}>
-              <RefreshCcw class="size-4" />
-            </MessageAction>
-            <MessageAction
-              tooltip="Copy"
-              onclick={() => handleCopy(message.content || "")}
-            >
-              <Copy class="size-4" />
-            </MessageAction>
-          </MessageActions>
-        </MessageToolbar>
-      {/if}
     </Message>
   {/each}
+
+  <PromptInput.Root class="w-full" onSubmit={handleSubmit}>
+    <PromptInput.Body>
+      <PromptInput.Textarea placeholder="Ask about the new-message API..." />
+    </PromptInput.Body>
+    <PromptInput.Toolbar class="justify-end">
+      <PromptInput.Submit />
+    </PromptInput.Toolbar>
+  </PromptInput.Root>
 </div>
 ```
 
 ## Component Structure
 
-```
+```text
 Message
-├── MessageAttachments
-│   └── MessageAttachment
-│
-├── MessageContent
-│   └── MessageResponse (markdown)
-│
-├── MessageBranch (for multiple versions)
-│   ├── MessageBranchContent
-│   └── MessageBranchSelector
-│       ├── MessageBranchPrevious
-│       ├── MessageBranchPage
-│       └── MessageBranchNext
-│
-├── MessageToolbar
-│   └── MessageActions
-│       └── MessageAction (retry, like, copy...)
+|- MessageAttachments
+|  `- MessageAttachment
+|- MessageContent
+|  `- MessageResponse
+|- MessageBranch
+|  |- MessageBranchContent
+|  `- MessageToolbar
+|     `- MessageBranchSelector
+|        |- MessageBranchPrevious
+|        |- MessageBranchPage
+|        `- MessageBranchNext
+`- MessageToolbar
+   `- MessageActions
+      `- MessageAction
 ```
 
-## Component API
+## Key Props
 
-### Message
-
-| Prop     | Type                  | Default | Description                                      |
-| -------- | --------------------- | ------- | ------------------------------------------------ |
-| from     | 'user' \| 'assistant' | -       | The role of the message sender                   |
-| children | Snippet               | -       | Child components (MessageContent, Actions, etc.) |
-| class    | string                | -       | Additional CSS classes                           |
-
-### MessageContent
-
-| Prop     | Type    | Default | Description                            |
-| -------- | ------- | ------- | -------------------------------------- |
-| children | Snippet | -       | Content to render (typically Response) |
-| class    | string  | -       | Additional CSS classes                 |
-
-### MessageResponse
-
-| Prop    | Type   | Default | Description                                |
-| ------- | ------ | ------- | ------------------------------------------ |
-| content | string | -       | Markdown content to render with highlights |
-| class   | string | -       | Additional CSS classes                     |
-
-### MessageToolbar
-
-| Prop     | Type    | Default | Description               |
-| -------- | ------- | ------- | ------------------------- |
-| children | Snippet | -       | MessageActions components |
-| class    | string  | -       | Additional CSS classes    |
-
-### MessageActions
-
-| Prop     | Type    | Default | Description            |
-| -------- | ------- | ------- | ---------------------- |
-| children | Snippet | -       | MessageAction children |
-| class    | string  | -       | Additional CSS classes |
-
-### MessageAction
-
-| Prop    | Type       | Default | Description            |
-| ------- | ---------- | ------- | ---------------------- |
-| tooltip | string     | -       | Tooltip text on hover  |
-| label   | string     | -       | Accessible label       |
-| onclick | () => void | -       | Click handler          |
-| class   | string     | -       | Additional CSS classes |
-
-### MessageBranch
-
-| Prop          | Type    | Default | Description                  |
-| ------------- | ------- | ------- | ---------------------------- |
-| defaultBranch | number  | 0       | Initial branch index to show |
-| children      | Snippet | -       | BranchContent and Selector   |
-| class         | string  | -       | Additional CSS classes       |
-
-### MessageBranchContent
-
-| Prop       | Type                 | Default | Description                 |
-| ---------- | -------------------- | ------- | --------------------------- |
-| content    | T[]                  | -       | Array of content items      |
-| renderItem | Snippet<[T, number]> | -       | Snippet to render each item |
-| class      | string               | -       | Additional CSS classes      |
-
-### MessageBranchSelector
-
-| Prop  | Type   | Default | Description            |
-| ----- | ------ | ------- | ---------------------- |
-| class | string | -       | Additional CSS classes |
-
-### MessageAttachments
-
-| Prop     | Type    | Default | Description                  |
-| -------- | ------- | ------- | ---------------------------- |
-| children | Snippet | -       | MessageAttachment components |
-| class    | string  | -       | Additional CSS classes       |
-
-### MessageAttachment
-
-| Prop     | Type       | Default | Description            |
-| -------- | ---------- | ------- | ---------------------- |
-| name     | string     | -       | File name to display   |
-| type     | string     | -       | MIME type              |
-| size     | number     | -       | File size in bytes     |
-| onRemove | () => void | -       | Remove button handler  |
-| class    | string     | -       | Additional CSS classes |
-
-## Features
-
-- **Markdown Rendering**: Built-in markdown support with syntax highlighting via `svelte-streamdown`
-- **Message Branching**: Navigate between multiple AI response versions
-- **File Attachments**: Display attached files with file type icons, names, and sizes
-- **Action Buttons**: Customizable action buttons with tooltips for copy, retry, like, dislike
-- **Theme Support**: Automatic dark/light mode via `mode-watcher`
-- **Svelte 5 Runes**: Built with `$state`, `$derived`, and class-based context for state management
-- **Minimalist Design**: Flat design with user messages in secondary background, assistant messages full-width
-
----
-
-For more information, visit: https://ai-elements.vercel.app/components/new-message
+- `Message`: set `from` to control role-aware layout.
+- `MessageResponse`: pass `content` for markdown, plus optional `components` overrides for `svelte-streamdown`.
+- `MessageBranch`: use `defaultBranch` and `onBranchChange` to manage branched assistant output.
+- `MessageBranchContent`: pass `versions: { id: string; content: string }[]`.
+- `MessageAttachment`: pass `data: { type: "file"; filename?: string; mediaType?: string; url?: string }`.
+- `MessageAttachmentPreview`: image-only preview surface used by `MessageAttachment`.
+- `MessageAction`: optional `tooltip` and `label` on top of standard button props.

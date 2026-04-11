@@ -19,7 +19,7 @@
 	];
 </script>
 
-<div style="height: 110px;">
+<div class="min-w-xs" style="height: 110px;">
 	<Sources>
 		<SourcesTrigger count={sources.length} />
 		<SourcesContent>

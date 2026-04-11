@@ -92,12 +92,12 @@
 						title: "Loader",
 						url: "/components/loader",
 					},
+					// {
+					// 	title: "Message",
+					// 	url: "/components/message",
+					// },
 					{
 						title: "Message",
-						url: "/components/message",
-					},
-					{
-						title: "Message (New)",
 						url: "/components/new-message",
 						badge: "new",
 					},

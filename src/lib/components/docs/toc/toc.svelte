@@ -49,7 +49,7 @@
 				<a
 					href="#{heading.id}"
 					class={[
-						"hover:text-foreground block rounded-md py-1 font-normal transition-all duration-200",
+						"hover:text-foreground block rounded-md py-0 font-normal transition-all duration-200",
 						heading.active ? "text-blue-500" : "",
 					]}
 					onclick={(e) => handleLinkClick(e, heading.id)}
@@ -57,7 +57,7 @@
 					{heading.label}
 				</a>
 			{:else}
-				<span class="block px-2 py-1">
+				<span class="block px-2 py-0">
 					{heading.label}
 				</span>
 			{/if}

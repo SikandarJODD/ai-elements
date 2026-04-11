@@ -5,24 +5,12 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A component for requesting user approval before executing sensitive AI actions. Displays different states for approval requests, accepted, and rejected actions.",
-	"dependencies": [
-		"@lucide/svelte/icons",
-		"runed"
-	],
-	"registryDependencies": [
-		"button",
-		"alert"
-	],
+	"dependencies": ["@lucide/svelte/icons", "runed"],
+	"registryDependencies": ["button", "alert"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"confirmation",
-			"approval",
-			"ai-actions",
-			"permissions",
-			"security"
-		],
+		"tags": ["confirmation", "approval", "ai-actions", "permissions", "security"],
 		"category": "AI Response",
 		"documentation": "https://ai-elements.vercel.app/components/confirmation",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

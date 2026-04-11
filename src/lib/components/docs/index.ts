@@ -11,6 +11,7 @@ import ComponentAPITable from "./component-api-table.svelte";
 import CopyMarkdownButton from "./copy-markdown-button.svelte";
 import OpenInMenu from "./open-in-menu.svelte";
 import PrevNext from "./prev-next.svelte";
+import ComponentPageDocs from "./component-page-docs.svelte";
 
 export {
 	Subheading,
@@ -26,5 +27,11 @@ export {
 	CopyMarkdownButton,
 	OpenInMenu,
 	PrevNext,
+	ComponentPageDocs,
 };
 export type { PropDefinition, ComponentAPITableProps } from "./component-api-table.types";
+export type {
+	ComponentPageDocsProps,
+	ComponentPageDocsInstallation,
+	ComponentPageDocsType,
+} from "./component-page-docs.types";

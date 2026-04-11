@@ -674,6 +674,126 @@
 			}
 		},
 		{
+			"name": "new-message",
+			"title": "New Message",
+			"type": "registry:block",
+			"author": "SikandarJODD",
+			"description": "Enhanced message component with simplified branching, image attachment previews, actions, and rich markdown rendering for AI chat interfaces.",
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/new-message/core/Message.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/core/Message.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/core/MessageContent.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/core/MessageContent.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/response/MessageResponse.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/response/MessageResponse.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/actions/MessageActions.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/actions/MessageActions.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/actions/MessageAction.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/actions/MessageAction.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/actions/MessageToolbar.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/actions/MessageToolbar.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/branching/MessageBranch.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/branching/MessageBranch.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/branching/MessageBranchContent.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/branching/MessageBranchContent.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/branching/MessageBranchSelector.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/branching/MessageBranchSelector.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/branching/MessageBranchPrevious.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/branching/MessageBranchPrevious.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/branching/MessageBranchNext.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/branching/MessageBranchNext.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/branching/MessageBranchPage.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/branching/MessageBranchPage.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/attachments/MessageAttachment.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/attachments/MessageAttachment.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/attachments/MessageAttachmentPreview.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/attachments/MessageAttachmentPreview.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/attachments/MessageAttachments.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/new-message/attachments/MessageAttachments.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/context/message-context.svelte.ts",
+					"type": "registry:file",
+					"target": "ai-elements/new-message/context/message-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/new-message/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/new-message/index.ts"
+				}
+			],
+			"registryDependencies": ["button", "button-group", "tooltip", "dialog"],
+			"dependencies": [
+				"svelte-streamdown",
+				"mode-watcher",
+				"@shikijs/themes",
+				"@lucide/svelte"
+			],
+			"meta": {
+				"author": "SikandarJODD",
+				"version": "1.0.0",
+				"tags": [
+					"message",
+					"branching",
+					"attachments",
+					"markdown",
+					"actions",
+					"chat",
+					"preview"
+				],
+				"category": "AI Chat",
+				"documentation": "https://svelte-ai-elements.vercel.app/components/new-message",
+				"repository": "https://github.com/SikandarJODD/ai-elements",
+				"complexity": "intermediate",
+				"updated": "2026-04-11",
+				"featured": true
+			}
+		},
+		{
 			"name": "model-selector",
 			"title": "Model Selector",
 			"type": "registry:block",

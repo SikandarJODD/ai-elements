@@ -2,23 +2,26 @@
 	import { getAttachmentsContext } from "../context/attachments.svelte.js";
 	import ActionMenuItem from "./ActionMenuItem.svelte";
 	import ImageIcon from "../icons/ImageIcon.svelte";
+	import { cn } from "$lib/utils/utils.js";
 
 	interface Props {
+		onSelect?: () => void;
 		label?: string;
 		class?: string;
 	}
 
-	let { label = "Add photos or files", class: className, ...props }: Props = $props();
+	let { onSelect, label = "Add photos or files", class: className, ...props }: Props = $props();
 
 	let attachments = getAttachmentsContext();
 
 	let handleSelect = (e: Event) => {
 		e.preventDefault();
+		onSelect?.();
 		attachments.openFileDialog();
 	};
 </script>
 
-<ActionMenuItem class={className} onSelect={handleSelect} {...props}>
-	<ImageIcon class="mr-2 size-4" />
+<ActionMenuItem class={cn("gap-2", className)} onSelect={handleSelect} {...props}>
+	<ImageIcon class="size-4" />
 	{label}
 </ActionMenuItem>

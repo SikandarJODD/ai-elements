@@ -5,16 +5,8 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A comprehensive prompt input component for AI chat interfaces with provider-backed state management, attachments, action menus, model selection, and submit or stop controls. Includes a composable header, body, toolbar, tools, and attachment previews for building polished AI input experiences.",
-	"dependencies": [
-		"runed"
-	],
-	"registryDependencies": [
-		"button",
-		"textarea",
-		"dropdown-menu",
-		"tooltip",
-		"select"
-	],
+	"dependencies": ["runed"],
+	"registryDependencies": ["button", "textarea", "dropdown-menu", "tooltip", "select"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "3.0.0",
@@ -120,7 +112,7 @@
 			"target": "ai-elements/prompt-input/action-menu/ActionMenuTrigger.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport * as DropdownMenu from \"$COMPONENTS$/ui/dropdown-menu/index.js\";\n\n\tinterface Props {\n\t\tclass?: string;\n\t\tchildren?: import(\"svelte\").Snippet;\n\t}\n\n\tlet { class: className, children, ...props }: Props = $props();\n</script>\n\n<DropdownMenu.Content align=\"start\" class={cn(className)} {...props}>\n\t{#if children}\n\t\t{@render children()}\n\t{/if}\n</DropdownMenu.Content>\n",
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport * as DropdownMenu from \"$COMPONENTS$/ui/dropdown-menu/index.js\";\n\n\tinterface Props {\n\t\tclass?: string;\n\t\tchildren?: import(\"svelte\").Snippet;\n\t}\n\n\tlet { class: className, children, ...props }: Props = $props();\n</script>\n\n<DropdownMenu.Content preventScroll={false} align=\"start\" class={cn(className)} {...props}>\n\t{#if children}\n\t\t{@render children()}\n\t{/if}\n</DropdownMenu.Content>\n",
 			"type": "registry:component",
 			"target": "ai-elements/prompt-input/action-menu/ActionMenuContent.svelte"
 		},
@@ -130,7 +122,7 @@
 			"target": "ai-elements/prompt-input/action-menu/ActionMenuItem.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { getAttachmentsContext } from \"../context/attachments.svelte.js\";\n\timport ActionMenuItem from \"./ActionMenuItem.svelte\";\n\timport ImageIcon from \"../icons/ImageIcon.svelte\";\n\n\tinterface Props {\n\t\tlabel?: string;\n\t\tclass?: string;\n\t}\n\n\tlet { label = \"Add photos or files\", class: className, ...props }: Props = $props();\n\n\tlet attachments = getAttachmentsContext();\n\n\tlet handleSelect = (e: Event) => {\n\t\te.preventDefault();\n\t\tattachments.openFileDialog();\n\t};\n</script>\n\n<ActionMenuItem class={className} onSelect={handleSelect} {...props}>\n\t<ImageIcon class=\"mr-2 size-4\" />\n\t{label}\n</ActionMenuItem>\n",
+			"content": "<script lang=\"ts\">\n\timport { getAttachmentsContext } from \"../context/attachments.svelte.js\";\n\timport ActionMenuItem from \"./ActionMenuItem.svelte\";\n\timport ImageIcon from \"../icons/ImageIcon.svelte\";\n\timport { cn } from \"$UTILS$.js\";\n\n\tinterface Props {\n\t\tonSelect?: () => void;\n\t\tlabel?: string;\n\t\tclass?: string;\n\t}\n\n\tlet { onSelect, label = \"Add photos or files\", class: className, ...props }: Props = $props();\n\n\tlet attachments = getAttachmentsContext();\n\n\tlet handleSelect = (e: Event) => {\n\t\te.preventDefault();\n\t\tonSelect?.();\n\t\tattachments.openFileDialog();\n\t};\n</script>\n\n<ActionMenuItem class={cn(\"gap-2\",className)} onSelect={handleSelect} {...props}>\n\t<ImageIcon class=\"size-4\" />\n\t{label}\n</ActionMenuItem>\n",
 			"type": "registry:component",
 			"target": "ai-elements/prompt-input/action-menu/ActionAddAttachments.svelte"
 		},
