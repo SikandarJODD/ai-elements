@@ -5,7 +5,7 @@
 	import { getAttachmentsContext } from "../context/attachments.svelte.js";
 	import type { PromptInputAttachment } from "../context/types.js";
 	import AttachmentImagePreview from "./AttachmentImagePreview.svelte";
-	import PaperclipIcon from "../icons/PaperclipIcon.svelte";
+	import PaperclipIcon from "@lucide/svelte/icons/paperclip";
 	import XIcon from "@lucide/svelte/icons/x";
 
 	interface Props {
