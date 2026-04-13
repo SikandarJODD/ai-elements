@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getAttachmentsContext } from "../context/attachments.svelte.js";
 	import ActionMenuItem from "./ActionMenuItem.svelte";
-	import ImageIcon from "../icons/ImageIcon.svelte";
+	import ImageIcon from "@lucide/svelte/icons/image";
 	import { cn } from "$lib/utils/utils.js";
 
 	interface Props {

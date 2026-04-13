@@ -12,6 +12,8 @@ import Usage from "./examples/usage.svelte";
 import UsageRaw from "./examples/usage.svelte?raw";
 import ActionMenuExample from "./examples/action-menu-example.svelte";
 import ActionMenuExampleRaw from "./examples/action-menu-example.svelte?raw";
+import SelectModelExample from "./examples/select-model-example.svelte";
+import SelectModelExampleRaw from "./examples/select-model-example.svelte?raw";
 
 export const meta: ComponentMeta = {
 	id: "prompt-input",
@@ -82,6 +84,19 @@ const examples: Example[] = [
 				lang: "typescript",
 			},
 		],
+	},
+	{
+		name: "Model Selection + AI SDK Integration",
+		preview: SelectModelExample,
+		code: [
+			{
+				filename: "select-model-example.svelte",
+				filecode: SelectModelExampleRaw,
+				lang: "svelte",
+				highlight: [[12, 16]],
+				isExpand: true,
+			}
+		]
 	},
 ];
 
