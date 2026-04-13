@@ -93,8 +93,6 @@ const examples: Example[] = [
 				filename: "select-model-example.svelte",
 				filecode: SelectModelExampleRaw,
 				lang: "svelte",
-				highlight: [[12, 16]],
-				isExpand: true,
 			}
 		]
 	},
