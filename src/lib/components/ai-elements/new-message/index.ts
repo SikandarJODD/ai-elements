@@ -32,4 +32,21 @@ export {
 	MessageAttachment,
 	MessageAttachmentPreview,
 	MessageAttachments,
+
+	// Aliases
+	Message as Root,
+	MessageContent as Content,
+	MessageActions as Actions,
+	MessageAction as Action,
+	MessageToolbar as Toolbar,
+	MessageBranch as Branch,
+	MessageBranchContent as BranchContent,
+	MessageBranchSelector as BranchSelector,
+	MessageBranchPrevious as BranchPrevious,
+	MessageBranchNext as BranchNext,
+	MessageBranchPage as BranchPage,
+	MessageResponse as Response,
+	MessageAttachment as Attachment,
+	MessageAttachmentPreview as AttachmentPreview,
+	MessageAttachments as Attachments,
 };

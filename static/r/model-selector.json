@@ -5,9 +5,18 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A searchable command palette for selecting AI models with provider logos and multi-provider support.",
-	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["bits-ui@^2.16.3", "@internationalized/date@^3.12.0"],
-	"registryDependencies": ["dialog", "command", "button"],
+	"dependencies": [
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"bits-ui@^2.16.3",
+		"@internationalized/date@^3.12.0"
+	],
+	"registryDependencies": [
+		"dialog",
+		"command",
+		"button"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},
@@ -23,7 +32,7 @@
 			"target": "ai-elements/model-selector/ModelSelectorTrigger.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport * as Dialog from \"$COMPONENTS$/ui/dialog/index.js\";\n\timport * as Command from \"$COMPONENTS$/ui/command/index.js\";\n\timport type { Dialog as DialogPrimitive } from \"bits-ui\";\n\timport type { WithoutChildrenOrChild } from \"$UTILS$.js\";\n\timport type { Snippet } from \"svelte\";\n\timport { cn } from \"$UTILS$.js\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\tchildren,\n\t\tportalProps,\n\t\t...restProps\n\t}: WithoutChildrenOrChild<DialogPrimitive.ContentProps> & {\n\t\tchildren: Snippet;\n\t\tportalProps?: DialogPrimitive.PortalProps;\n\t} = $props();\n</script>\n\n<Dialog.Content bind:ref class={cn(\"outline! border-none! p-0 outline-border! outline-solid!\", className)} {portalProps} {...restProps}>\n\t<Command.Root class=\"**:data-[slot=command-input-wrapper]:h-auto\">\n\t\t{@render children()}\n\t</Command.Root>\n</Dialog.Content>\n",
+			"content": "<script lang=\"ts\">\n\timport * as Dialog from \"$COMPONENTS$/ui/dialog/index.js\";\n\timport * as Command from \"$COMPONENTS$/ui/command/index.js\";\n\timport type { Dialog as DialogPrimitive } from \"bits-ui\";\n\timport type { WithoutChildrenOrChild } from \"$UTILS$.js\";\n\timport type { Snippet } from \"svelte\";\n\timport { cn } from \"$UTILS$.js\";\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\tchildren,\n\t\tportalProps,\n\t\t...restProps\n\t}: WithoutChildrenOrChild<DialogPrimitive.ContentProps> & {\n\t\tchildren: Snippet;\n\t\tportalProps?: DialogPrimitive.PortalProps;\n\t} = $props();\n</script>\n\n<Dialog.Content\n\tbind:ref\n\tclass={cn(\"outline-border! border-none! p-0 outline! outline-solid!\", className)}\n\t{portalProps}\n\t{...restProps}\n>\n\t<Command.Root class=\"**:data-[slot=command-input-wrapper]:h-auto\">\n\t\t{@render children()}\n\t</Command.Root>\n</Dialog.Content>\n",
 			"type": "registry:component",
 			"target": "ai-elements/model-selector/ModelSelectorContent.svelte"
 		},
@@ -73,7 +82,7 @@
 			"target": "ai-elements/model-selector/ModelSelectorLogo.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$.js\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\ttype Props = HTMLAttributes<HTMLDivElement> & {\n\t\tchildren: Snippet;\n\t};\n\n\tlet { class: className, children, ...restProps }: Props = $props();\n</script>\n\n<div\n\tclass={cn(\n\t\t\"flex shrink-0 items-center -space-x-1 [&>img]:rounded-full [&>img]:bg-background [&>img]:p-px [&>img]:ring-1 dark:[&>img]:bg-foreground\",\n\t\tclassName\n\t)}\n\t{...restProps}\n>\n\t{@render children()}\n</div>\n",
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$.js\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport type { Snippet } from \"svelte\";\n\n\ttype Props = HTMLAttributes<HTMLDivElement> & {\n\t\tchildren: Snippet;\n\t};\n\n\tlet { class: className, children, ...restProps }: Props = $props();\n</script>\n\n<div\n\tclass={cn(\n\t\t\"[&>img]:bg-background dark:[&>img]:bg-foreground flex shrink-0 items-center -space-x-1 [&>img]:rounded-full [&>img]:p-px [&>img]:ring-1\",\n\t\tclassName\n\t)}\n\t{...restProps}\n>\n\t{@render children()}\n</div>\n",
 			"type": "registry:component",
 			"target": "ai-elements/model-selector/ModelSelectorLogoGroup.svelte"
 		},

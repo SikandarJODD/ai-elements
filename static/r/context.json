@@ -5,7 +5,11 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Context component provides a comprehensive view of AI model usage, displaying token consumption, costs, and performance metrics through an interactive hover card interface.",
-	"registryDependencies": ["hover-card", "progress", "button"],
+	"registryDependencies": [
+		"hover-card",
+		"progress",
+		"button"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},

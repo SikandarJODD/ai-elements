@@ -5,13 +5,20 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A collapsible plan component for displaying AI-generated execution plans with streaming support and shimmer animations.",
-	"dependencies": ["@lucide/svelte"],
+	"dependencies": [
+		"@lucide/svelte"
+	],
 	"devDependencies": [
 		"@lucide/svelte@^1.8.0",
 		"bits-ui@^2.16.3",
 		"@internationalized/date@^3.12.0"
 	],
-	"registryDependencies": ["card", "button", "collapsible", "shimmer"],
+	"registryDependencies": [
+		"card",
+		"button",
+		"collapsible",
+		"shimmer"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},
