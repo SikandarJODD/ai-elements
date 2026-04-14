@@ -43,9 +43,9 @@
 					</h4>
 				</Tooltip.Trigger>
 				<Tooltip.Content>
-					<div class="text-muted-foreground text-xs">
+					<div class="text-xs">
 						<h4
-							class="max-w-[240px] overflow-hidden text-left text-sm font-semibold break-words whitespace-normal"
+							class="max-w-60 overflow-hidden text-left text-sm font-semibold wrap-break-word whitespace-normal"
 						>
 							{data.filename || "Unknown file"}
 						</h4>

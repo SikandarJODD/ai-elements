@@ -66,7 +66,7 @@ export {
 	Controller as PromptInputController,
 	TextController as TextInputController,
 	getPromptInputProvider,
-	getPromptInputController,
+	usePromptInput,
 	setPromptInputProvider,
 } from "./context/provider.svelte.js";
 

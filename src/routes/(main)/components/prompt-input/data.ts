@@ -14,6 +14,11 @@ import ActionMenuExample from "./examples/action-menu-example.svelte";
 import ActionMenuExampleRaw from "./examples/action-menu-example.svelte?raw";
 import SelectModelExample from "./examples/select-model-example.svelte";
 import SelectModelExampleRaw from "./examples/select-model-example.svelte?raw";
+import ProviderSharedDraftExample from "./examples/provider-shared-draft-example.svelte";
+import ProviderSharedDraftExampleRaw from "./examples/provider-shared-draft-example.svelte?raw";
+import ProviderDraftSummaryRaw from "./examples/provider-draft-summary.svelte?raw";
+import ProviderDraftActionsRaw from "./examples/provider-draft-actions.svelte?raw";
+import ProviderPromptComposerRaw from "./examples/provider-prompt-composer.svelte?raw";
 
 export const meta: ComponentMeta = {
 	id: "prompt-input",
@@ -41,6 +46,23 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	let result = streamText({
 		model: openrouter(defaultModel),
+		messages: await convertToModelMessages(messages),
+	});
+
+	return result.toUIMessageStreamResponse();
+};
+`;
+
+let serverTsFileRawWithModelSelection = `import { streamText, type UIMessage, convertToModelMessages } from "ai";
+import { openrouter, defaultModel } from "$lib/config/ai-config";
+import type { RequestHandler } from "./$types";
+
+export const POST: RequestHandler = async ({ request }) => {
+	const { messages, model }: { messages: UIMessage[]; model: string } = await request.json();
+
+	let modelToUse = model.length > 0 ? model : defaultModel;
+	let result = streamText({
+		model: openrouter(modelToUse),
 		messages: await convertToModelMessages(messages),
 	});
 
@@ -93,8 +115,39 @@ const examples: Example[] = [
 				filename: "select-model-example.svelte",
 				filecode: SelectModelExampleRaw,
 				lang: "svelte",
-			}
-		]
+			},
+			{
+				filename: "api/chat/+server.ts",
+				filecode: serverTsFileRawWithModelSelection,
+				lang: "typescript",
+			},
+		],
+	},
+	{
+		name: "Prompt Input Provider Example",
+		preview: ProviderSharedDraftExample,
+		code: [
+			{
+				filename: "provider-example.svelte",
+				filecode: ProviderSharedDraftExampleRaw,
+				lang: "svelte",
+			},
+			{
+				filename: "draft-summary.svelte",
+				filecode: ProviderDraftSummaryRaw,
+				lang: "svelte",
+			},
+			{
+				filename: "draft-actions.svelte",
+				filecode: ProviderDraftActionsRaw,
+				lang: "svelte",
+			},
+			{
+				filename: "draft-input.svelte",
+				filecode: ProviderPromptComposerRaw,
+				lang: "svelte",
+			},
+		],
 	},
 ];
 

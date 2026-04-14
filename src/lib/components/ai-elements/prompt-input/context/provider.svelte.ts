@@ -34,10 +34,10 @@ export function getPromptInputProvider(): Controller | null {
 	return getContext<Controller>(PROVIDER_CONTEXT_KEY) || null;
 }
 
-export function getPromptInputController(): Controller {
+export function usePromptInput(): Controller {
 	let context = getContext<Controller>(PROVIDER_CONTEXT_KEY);
 	if (!context) {
-		throw new Error("getPromptInputController must be used within a PromptInputProvider");
+		throw new Error("usePromptInput must be used within a PromptInputProvider");
 	}
 	return context;
 }

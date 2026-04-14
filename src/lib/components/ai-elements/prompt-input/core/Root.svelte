@@ -5,6 +5,10 @@
 	import { onDestroy } from "svelte";
 	import { AttachmentsContext, setAttachmentsContext } from "../context/attachments.svelte.js";
 	import { getPromptInputProvider } from "../context/provider.svelte.js";
+	import {
+		setPromptInputTextRegistration,
+		type PromptInputTextHandle,
+	} from "../context/text-registration.svelte.js";
 	import type { Message, PromptInputAttachment } from "../context/types.js";
 
 	interface Props {
@@ -15,6 +19,7 @@
 		globalDrop?: boolean;
 		syncHiddenInput?: boolean;
 		clearOnSubmit?: boolean;
+		resetFormOnSubmit?: boolean;
 		maxFiles?: number;
 		maxFileSize?: number; // bytes
 		onError?: (err: {
@@ -38,6 +43,7 @@
 		globalDrop,
 		syncHiddenInput,
 		clearOnSubmit = true,
+		resetFormOnSubmit = false,
 		maxFiles,
 		maxFileSize,
 		onError,
@@ -53,6 +59,18 @@
 	let usingProvider = Boolean(controller);
 	let localAttachmentsContext = new AttachmentsContext();
 	let attachmentsContext = controller?.attachments ?? localAttachmentsContext;
+	let promptTextHandle = $state<PromptInputTextHandle | null>(null);
+
+	setPromptInputTextRegistration({
+		register: (handle) => {
+			promptTextHandle = handle;
+		},
+		unregister: (handle) => {
+			if (promptTextHandle === handle) {
+				promptTextHandle = null;
+			}
+		},
+	});
 
 	$effect(() => {
 		attachmentsContext.configure({
@@ -211,10 +229,9 @@
 		event.preventDefault();
 
 		let form = event.currentTarget as HTMLFormElement;
-		let formData = new FormData(form);
 		let text = usingProvider
 			? (controller?.textInput.value ?? "")
-			: (formData.get("message") as string) || "";
+			: promptTextHandle?.getValue() ?? ((new FormData(form).get("message") as string) || "");
 		let submittedAttachments = attachmentsContext.attachments.map((attachment) => ({
 			...attachment,
 		}));
@@ -241,6 +258,10 @@
 				if (usingProvider) {
 					controller?.textInput.clear();
 				} else {
+					promptTextHandle?.clear();
+				}
+
+				if (resetFormOnSubmit) {
 					form.reset();
 				}
 			}

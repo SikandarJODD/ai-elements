@@ -1,5 +1,6 @@
 import type { RequestHandler } from "./$types";
 import docs from "../docs.md?raw";
+export const prerender = true;
 
 export const GET: RequestHandler = async () => {
 	return new Response(docs, {

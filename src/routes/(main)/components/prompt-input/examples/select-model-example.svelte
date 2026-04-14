@@ -6,11 +6,11 @@
 
 	// This are from OpenRouter : https://openrouter.ai/models
 	let models = [
-		{ name: "arcee-ai/trinity-large-preview:free", label: "Acree AI: Trinity Large Preview" },
+		{ name: "arcee-ai/trinity-large-preview:free", label: "Arcee AI: Trinity Large Preview" },
 		{ name: "z-ai/glm-4.5-air:free", label: "Z-AI: GLM-4.5 Air" },
-		{ name: "alibaba/wan-2.6", label: "Alibaba: WAN-2.6" },
+		{ name: "openrouter/elephant-alpha", label: "OpenRouter: Elephant Alpha" },
 	];
-	let selectedModel: string = $state("");
+	let selectedModel = $state("");
 
 	let chat = new Chat({});
 
@@ -26,33 +26,56 @@
 			}
 		);
 	}
+
+	let handleStop = () => {
+		chat.stop();
+	};
 </script>
 
-<PromptInput.Root class="w-xl" onSubmit={handleSubmit}>
-	<PromptInput.Body>
-		<PromptInput.Textarea />
-	</PromptInput.Body>
-	<PromptInput.Toolbar>
-		<Select.Root type="single" name="favoriteFruit" bind:value={selectedModel}>
-			<Select.Trigger class="border-none">
-				{#if selectedModel}
-					{models.find((model) => model.name === selectedModel)?.label}
-				{:else}
-					Select Model
-				{/if}
-			</Select.Trigger>
-			<Select.Content align="start">
-				{#each models as model (model.name)}
-					<Select.Item
-						value={model.name}
-						label={model.label}
-						disabled={model.name === "grapes"}
-					>
-						{model.label}
-					</Select.Item>
+<div class="space-y-4">
+	<PromptInput.Root class="w-xl" onSubmit={handleSubmit}>
+		<PromptInput.Body>
+			<PromptInput.Textarea />
+		</PromptInput.Body>
+		<PromptInput.Toolbar>
+			<Select.Root type="single" bind:value={selectedModel}>
+				<Select.Trigger class="border-none">
+					{#if selectedModel}
+						{models.find((model) => model.name === selectedModel)?.label}
+					{:else}
+						Select Model
+					{/if}
+				</Select.Trigger>
+				<Select.Content align="start">
+					{#each models as model (model.name)}
+						<Select.Item value={model.name} label={model.label}>
+							{model.label}
+						</Select.Item>
+					{/each}
+				</Select.Content>
+			</Select.Root>
+			<PromptInput.Submit status={chat.status} onStop={handleStop} />
+		</PromptInput.Toolbar>
+	</PromptInput.Root>
+
+	{#if chat.messages.length > 0}
+		<main class="max-w-xl p-2">
+			<ul>
+				{#each chat.messages as message, messageIndex (messageIndex)}
+					<li>
+						<div class="text-base font-semibold">{message.role}</div>
+						<div>
+							{#each message.parts as part, partIndex (partIndex)}
+								{#if part.type === "text"}
+									<div class="text-muted-foreground text-sm">{part.text}</div>
+								{/if}
+							{/each}
+						</div>
+					</li>
 				{/each}
-			</Select.Content>
-		</Select.Root>
-		<PromptInput.Submit />
-	</PromptInput.Toolbar>
-</PromptInput.Root>
+			</ul>
+		</main>
+	{:else}
+		<p class="text-muted-foreground pl-0.5 text-sm">Please send message to view response...</p>
+	{/if}
+</div>
