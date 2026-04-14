@@ -9,28 +9,30 @@ import PreviewRaw from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "text-shimmer",
 	title: "Text Shimmer",
-	description: "A component to display the thinking state of an AI model with optional actions.",
+	description:
+		"A text component with an animated shimmer effect, perfect for indicating AI thinking or loading states.",
 	category: "utilities",
 	badge: "new",
 };
 
 const seo: SEO = {
 	title: "Text Shimmer",
-	description: "A component to display the thinking state of an AI model with optional actions.",
+	description:
+		"A text component with an animated shimmer effect, perfect for indicating AI thinking or loading states.",
 	keywords: ["Svelte", "Text Shimmer", "Svelte Prompt Kit"],
 	titleTemplate: "%s | Svelte Prompt Kit",
 };
 
 const examples: Example[] = [
-    {
-        name: "Custom Text Shimmer",
-        preview: CustomExample,
-        code: {
-            filename: "CustomExample.svelte",
-            filecode: CustomExampleRaw,
-            lang: "svelte",
-        },
-    }
+	{
+		name: "Custom Text Shimmer",
+		preview: CustomExample,
+		code: {
+			filename: "custom-example.svelte",
+			filecode: CustomExampleRaw,
+			lang: "svelte",
+		},
+	},
 ];
 const textShimmerProps = [
 	{
