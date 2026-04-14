@@ -1,6 +1,6 @@
 <script lang="ts">
-	import AiInstallCommand from "./ai-install-command.svelte";
 	import { Subheading } from "$lib/components/docs";
+	import { PMCommand } from "../ui/pm-command";
 
 	type Props = {
 		specifier: string;
@@ -14,7 +14,7 @@
 <Subheading class="mt-4">Installation</Subheading>
 <!-- pnpm dlx shadcn-svelte@latest add http://localhost:5173/r/hello-world.json -->
 
-<AiInstallCommand command="execute" args={["shadcn-svelte@latest", "add", specifier]} />
+<PMCommand command="execute" args={["shadcn-svelte@latest", "add", specifier]} />
 
 {#if is_jsrepo}
 	<p class="text-muted-foreground mt-4 text-sm">
@@ -26,7 +26,7 @@
 		>, please install via the command below:
 	</p>
 	<div class="mt-2">
-		<AiInstallCommand
+		<PMCommand
 			command="execute"
 			args={["jsrepo", "add", `@ai/elements/ai-elements/${blockname ?? specifier}`]}
 		/>

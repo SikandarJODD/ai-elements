@@ -34,7 +34,7 @@
 	import * as Tabs from "$lib/components/ui/tabs";
 
 	let {
-		variant = "default",
+		variant = "secondary",
 		class: className,
 		command,
 		agents = ["npm", "pnpm", "yarn", "bun"],
@@ -56,7 +56,7 @@
 			<Tabs.Root bind:value={agent}>
 				<Tabs.List class="h-auto bg-transparent p-0">
 					{#each agents as pm (pm)}
-						<Tabs.Trigger value={pm} class="h-7 font-mono text-sm font-light">
+						<Tabs.Trigger value={pm} class="h-7 font-mono border-none text-sm font-light">
 							{pm}
 						</Tabs.Trigger>
 					{/each}
