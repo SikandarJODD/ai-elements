@@ -166,10 +166,10 @@ export function getPromptInputProvider(): PromptInputController | null {
 	return getContext<PromptInputController>(PROVIDER_CONTEXT_KEY) || null;
 }
 
-export function getPromptInputController(): PromptInputController {
+export function usePromptInput(): PromptInputController {
 	let context = getContext<PromptInputController>(PROVIDER_CONTEXT_KEY);
 	if (!context) {
-		throw new Error("getPromptInputController must be used within a PromptInputProvider");
+		throw new Error("usePromptInput must be used within a PromptInputProvider");
 	}
 	return context;
 }

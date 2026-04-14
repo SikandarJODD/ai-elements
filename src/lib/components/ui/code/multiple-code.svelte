@@ -1,87 +1,146 @@
 <script lang="ts">
+	import { tick } from "svelte";
+	import { watch } from "runed";
 	import * as Code from "./index";
 	import type { CodeBlock as MagicCode } from "./index";
-	import { Button } from "$lib/components/internal/button";
-	import { cn } from "$lib/utils/utils";
+	import { CopyButton } from "$lib/components/ui/copy-button";
+	import { ScrollArea } from "$lib/components/ui/scroll-area/index.js";
+	import * as Select from "$lib/components/ui/select/index.js";
 	import { Svelte, TypeScript, Terminal } from "$lib/components/icons";
+
 	type Props = {
 		code: MagicCode[];
 	};
+
 	let { code }: Props = $props();
-	let selectedIndex = $state(0);
-	let selectedCode = $derived(code[selectedIndex]);
+	const MAX_BODY_HEIGHT = 550;
+	let selectedValue = $state("0");
+	let codeBodyRef: HTMLDivElement | undefined = $state();
+	let scrollAreaHeight = $state<number | undefined>();
+	let safeSelectedValue = $derived.by(() => {
+		if (code.length === 0) {
+			return "";
+		}
+
+		const index = Number.parseInt(selectedValue, 10);
+		return Number.isNaN(index) || index < 0 || index >= code.length ? "0" : selectedValue;
+	});
+
+	let selectedIndex = $derived.by(() => {
+		const index = Number.parseInt(safeSelectedValue, 10);
+		return Number.isNaN(index) ? -1 : index;
+	});
+
+	let selectedCode = $derived(
+		selectedIndex >= 0 && selectedIndex < code.length ? code[selectedIndex] : undefined
+	);
+
+	function updateScrollAreaHeight() {
+		if (!codeBodyRef) {
+			scrollAreaHeight = undefined;
+			return;
+		}
+
+		scrollAreaHeight = Math.min(codeBodyRef.scrollHeight, MAX_BODY_HEIGHT);
+	}
+
+	watch(
+		() => codeBodyRef,
+		(node) => {
+			if (!node) return;
+
+			const observer = new ResizeObserver(() => {
+				updateScrollAreaHeight();
+			});
+
+			observer.observe(node);
+			updateScrollAreaHeight();
+
+			return () => observer.disconnect();
+		}
+	);
+
+	watch(
+		() => selectedCode?.filecode,
+		() => {
+			tick().then(() => {
+				updateScrollAreaHeight();
+			});
+		}
+	);
 </script>
 
-<div class="flex overflow-auto rounded-md border">
-	<div
-		class="hidden min-w-54 overflow-auto rounded-tl-md border-r bg-neutral-50 font-mono text-black [--color-background:var(--color-zinc-900)] [--color-foreground:white] [--color-muted:var(--color-zinc-800)] sm:block dark:bg-zinc-900/25 dark:text-white"
-	>
-		<div>
-			<div
-				class="dark:hover:bg-muted/50 flex items-center gap-1.5 py-2 pr-5.5 pl-4 font-mono text-xs hover:bg-white/5"
+<div class="bg-background flex flex-col overflow-hidden rounded-md border">
+	<div class="bg-background/80 flex shrink-0 items-center justify-between gap-3 border-b p-2">
+		{#if selectedCode}
+			<Select.Root
+				type="single"
+				value={safeSelectedValue}
+				onValueChange={(value) => (selectedValue = value ?? "")}
 			>
-				<!-- <ChevronDown class="size-4 opacity-50" /> -->
-				<svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 16 16">
-					<path
-						fill="none"
-						stroke="#cad3f5"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M4.5 4.5H12c.83 0 1.5.67 1.5 1.5v.5m-7.5 7H2A1.5 1.5 0 0 1 .5 12V3.5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1"
-						stroke-width={1}
-					></path>
-					<path
-						fill="none"
-						stroke="#a6da95"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M8 10.278c0-.576.468-1.044 1.044-1.044h1.045v-.19a1.044 1.044 0 0 1 2.088 0v.19h1.045c.576 0 1.044.468 1.044 1.044v1.045h.19a1.044 1.044 0 1 1 0 2.088h-.19v1.045c0 .576-.468 1.044-1.044 1.044h-1.045v-.19a1.044 1.044 0 1 0-2.088 0v.19H8v-2.089h.19a1.044 1.044 0 0 0 0-2.088H8Z"
-						stroke-width={1}
-					></path>
-				</svg>
-				<span>components</span>
-			</div>
-
-			{#each code as item, index}
-				<Button
-					class={cn(
-						`flex w-full items-center justify-start gap-1.5 rounded-none border-l-2 border-transparent pl-6! text-xs hover:bg-neutral-200/70 hover:dark:bg-zinc-900 [&_svg:not([class*='size-'])]:size-3`,
-						selectedIndex === index &&
-							"border-muted-foreground border-l-2 bg-neutral-200/40 dark:bg-zinc-800/50"
-					)}
-					variant="ghost"
-					onclick={() => (selectedIndex = index)}
+				<Select.Trigger
+					size="sm"
+					class="font-mono text-xs shadow-none sm:w-[18rem] sm:flex-none"
 				>
-					{#if item.lang === "svelte"}
-						<Svelte class="size-3" />
-					{:else if item.lang === "typescript"}
-						<TypeScript class="size-3" />
-					{:else}
-						<Terminal class="size-3" />
-					{/if}
-					<span
-						class={[
-							"transition-all duration-200",
-							selectedIndex === index
-								? "!text-black dark:!text-white"
-								: "text-muted-foreground",
-						]}>{item?.filename || "Svelte"}</span
-					>
-				</Button>
-			{/each}
-		</div>
+					<div class="flex min-w-0 items-center gap-2">
+						{#if selectedCode.lang === "svelte"}
+							<Svelte class="size-3.5 shrink-0" />
+						{:else if selectedCode.lang === "typescript"}
+							<TypeScript class="size-3.5 shrink-0" />
+						{:else}
+							<Terminal class="size-3.5 shrink-0" />
+						{/if}
+						<span class="truncate">{selectedCode.filename || "Untitled"}</span>
+					</div>
+				</Select.Trigger>
+				<Select.Content align="start" class="font-mono text-xs">
+					{#each code as item, index (`${index}-${item.filename}`)}
+						<Select.Item value={String(index)} label={item.filename || "Untitled"}>
+							<div class="flex min-w-0 items-center gap-2">
+								{#if item.lang === "svelte"}
+									<Svelte class="size-3.5 shrink-0" />
+								{:else if item.lang === "typescript"}
+									<TypeScript class="size-3.5 shrink-0" />
+								{:else}
+									<Terminal class="size-3.5 shrink-0" />
+								{/if}
+								<span class="truncate">{item.filename || "Untitled"}</span>
+							</div>
+						</Select.Item>
+					{/each}
+				</Select.Content>
+			</Select.Root>
+
+			<CopyButton
+				text={selectedCode.filecode}
+				size="icon"
+				variant="ghost"
+				class="size-8 shrink-0"
+			/>
+		{:else}
+			<div class="text-muted-foreground flex h-8 items-center px-2 text-sm">No files</div>
+		{/if}
 	</div>
-	<div class="relative max-h-[550px] min-h-[32rem] w-full overflow-auto border-none sm:w-full">
-		<!-- <Code.Overflow> -->
-		<Code.Root
-			lang={selectedCode.lang}
-			class="w-full rounded-none border-none "
-			code={selectedCode.filecode}
-			highlight={selectedCode.highlight}
-			hideLines={false}
+
+	{#if selectedCode}
+		<ScrollArea
+			orientation="both"
+			class="w-full overflow-hidden"
+			scrollbarXClasses="hidden"
+			fade={false}
+			style={scrollAreaHeight ? `height: ${scrollAreaHeight}px;` : undefined}
 		>
-			<Code.CopyButton />
-		</Code.Root>
-		<!-- </Code.Overflow> -->
-	</div>
+			<div bind:this={codeBodyRef} data-code-overflow class="w-max min-w-full">
+				<Code.Root
+					lang={selectedCode.lang}
+					class="bg-background w-full  rounded-none border-none"
+					code={selectedCode.filecode}
+					highlight={selectedCode.highlight}
+					hideLines={false}
+				/>
+			</div>
+		</ScrollArea>
+	{:else}
+		<div class="text-muted-foreground p-6 text-sm">No code available.</div>
+	{/if}
 </div>

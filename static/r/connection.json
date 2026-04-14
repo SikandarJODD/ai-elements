@@ -5,11 +5,19 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Connection component displays the connection line preview when dragging to create new edges between nodes in the workflow. It provides visual feedback during node connection operations.",
-	"dependencies": ["@xyflow/svelte"],
+	"dependencies": [
+		"@xyflow/svelte"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["workflow", "connection", "edge", "drag", "preview"],
+		"tags": [
+			"workflow",
+			"connection",
+			"edge",
+			"drag",
+			"preview"
+		],
 		"category": "AI Workflow",
 		"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { cn } from "$lib/utils/utils";
 	import type { ChatStatus } from "../context/types.js";
-	import Loader2Icon from "../icons/Loader2Icon.svelte";
-	import SendIcon from "../icons/SendIcon.svelte";
-	import SquareIcon from "../icons/SquareIcon.svelte";
-	import XIcon from "../icons/XIcon.svelte";
+	import LoaderIcon from "@lucide/svelte/icons/loader";
+	import SendIcon from "@lucide/svelte/icons/send";
+	import SquareIcon from "@lucide/svelte/icons/square";
+	import XIcon from "@lucide/svelte/icons/x";
 
 	import {
 		buttonVariants,
@@ -45,7 +45,7 @@
 
 	let Icon = $derived.by(() => {
 		if (status === "submitted") {
-			return Loader2Icon;
+			return LoaderIcon;
 		} else if (status === "streaming") {
 			return SquareIcon;
 		} else if (status === "error") {

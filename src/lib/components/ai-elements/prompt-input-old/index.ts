@@ -49,7 +49,7 @@ export {
 	PromptInputController,
 	TextInputController,
 	getPromptInputProvider,
-	getPromptInputController,
+	usePromptInput,
 	setPromptInputProvider,
 	type FileUIPart,
 	type FileWithId,

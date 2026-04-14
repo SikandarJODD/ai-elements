@@ -15,20 +15,6 @@ import ActionMenuTrigger from "./action-menu/ActionMenuTrigger.svelte";
 import ActionMenuContent from "./action-menu/ActionMenuContent.svelte";
 import ActionMenuItem from "./action-menu/ActionMenuItem.svelte";
 import ActionAddAttachments from "./action-menu/ActionAddAttachments.svelte";
-import ModelSelect from "./model-select/ModelSelect.svelte";
-import ModelSelectTrigger from "./model-select/ModelSelectTrigger.svelte";
-import ModelSelectContent from "./model-select/ModelSelectContent.svelte";
-import ModelSelectItem from "./model-select/ModelSelectItem.svelte";
-import ModelSelectValue from "./model-select/ModelSelectValue.svelte";
-import ImageIcon from "./icons/ImageIcon.svelte";
-import Loader2Icon from "./icons/Loader2Icon.svelte";
-import PaperclipIcon from "./icons/PaperclipIcon.svelte";
-import PlusIcon from "./icons/PlusIcon.svelte";
-import SendIcon from "./icons/SendIcon.svelte";
-import SquareIcon from "./icons/SquareIcon.svelte";
-import XIcon from "./icons/XIcon.svelte";
-import GlobeIcon from "./icons/GlobeIcon.svelte";
-import MicIcon from "./icons/MicIcon.svelte";
 
 export {
 	Root,
@@ -48,20 +34,6 @@ export {
 	ActionMenuContent,
 	ActionMenuItem,
 	ActionAddAttachments,
-	ModelSelect,
-	ModelSelectTrigger,
-	ModelSelectContent,
-	ModelSelectItem,
-	ModelSelectValue,
-	ImageIcon,
-	Loader2Icon,
-	PaperclipIcon,
-	PlusIcon,
-	SendIcon,
-	SquareIcon,
-	XIcon,
-	GlobeIcon,
-	MicIcon,
 	//
 	Root as PromptInput,
 	Provider as PromptInputProvider,
@@ -80,11 +52,6 @@ export {
 	ActionMenuContent as PromptInputActionMenuContent,
 	ActionMenuItem as PromptInputActionMenuItem,
 	ActionAddAttachments as PromptInputActionAddAttachments,
-	ModelSelect as PromptInputModelSelect,
-	ModelSelectTrigger as PromptInputModelSelectTrigger,
-	ModelSelectContent as PromptInputModelSelectContent,
-	ModelSelectItem as PromptInputModelSelectItem,
-	ModelSelectValue as PromptInputModelSelectValue,
 };
 
 export {
@@ -99,7 +66,7 @@ export {
 	Controller as PromptInputController,
 	TextController as TextInputController,
 	getPromptInputProvider,
-	getPromptInputController,
+	usePromptInput,
 	setPromptInputProvider,
 } from "./context/provider.svelte.js";
 

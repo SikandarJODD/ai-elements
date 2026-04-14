@@ -5,13 +5,33 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "Enhanced message component with simplified branching, image attachment previews, actions, and rich markdown rendering for AI chat interfaces.",
-	"dependencies": ["svelte-streamdown", "mode-watcher", "@shikijs/themes", "@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^1.8.0"],
-	"registryDependencies": ["button", "button-group", "tooltip", "dialog"],
+	"dependencies": [
+		"svelte-streamdown",
+		"mode-watcher",
+		"@shikijs/themes",
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^1.8.0"
+	],
+	"registryDependencies": [
+		"button",
+		"button-group",
+		"tooltip",
+		"dialog"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["message", "branching", "attachments", "markdown", "actions", "chat", "preview"],
+		"tags": [
+			"message",
+			"branching",
+			"attachments",
+			"markdown",
+			"actions",
+			"chat",
+			"preview"
+		],
 		"category": "AI Chat",
 		"documentation": "https://svelte-ai-elements.vercel.app/components/new-message",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

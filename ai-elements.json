@@ -1263,7 +1263,7 @@
 			"title": "Prompt Input",
 			"type": "registry:block",
 			"author": "SikandarJODD",
-			"description": "A comprehensive prompt input component for AI chat interfaces with provider-backed state management, attachments, action menus, model selection, and submit or stop controls. Includes a composable header, body, toolbar, tools, and attachment previews for building polished AI input experiences.",
+			"description": "A comprehensive prompt input component for AI chat interfaces with provider-backed state management, attachments, action menus, and submit or stop controls. Includes a composable header, body, toolbar, tools, and attachment previews for building polished AI input experiences.",
 			"files": [
 				{
 					"path": "src/lib/components/ai-elements/prompt-input/core/Root.svelte",
@@ -1351,76 +1351,6 @@
 					"target": "ai-elements/prompt-input/action-menu/ActionAddAttachments.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/prompt-input/model-select/ModelSelect.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/model-select/ModelSelect.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/model-select/ModelSelectTrigger.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/model-select/ModelSelectTrigger.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/model-select/ModelSelectContent.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/model-select/ModelSelectContent.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/model-select/ModelSelectItem.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/model-select/ModelSelectItem.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/model-select/ModelSelectValue.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/model-select/ModelSelectValue.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/icons/ImageIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/icons/ImageIcon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/icons/Loader2Icon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/icons/Loader2Icon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/icons/PaperclipIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/icons/PaperclipIcon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/icons/PlusIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/icons/PlusIcon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/icons/SendIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/icons/SendIcon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/icons/SquareIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/icons/SquareIcon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/icons/XIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/icons/XIcon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/icons/GlobeIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/icons/GlobeIcon.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/prompt-input/icons/MicIcon.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/prompt-input/icons/MicIcon.svelte"
-				},
-				{
 					"path": "src/lib/components/ai-elements/prompt-input/context/attachments.svelte.ts",
 					"type": "registry:file",
 					"target": "ai-elements/prompt-input/context/attachments.svelte.ts"
@@ -1429,6 +1359,11 @@
 					"path": "src/lib/components/ai-elements/prompt-input/context/provider.svelte.ts",
 					"type": "registry:file",
 					"target": "ai-elements/prompt-input/context/provider.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/context/text-registration.svelte.ts",
+					"type": "registry:file",
+					"target": "ai-elements/prompt-input/context/text-registration.svelte.ts"
 				},
 				{
 					"path": "src/lib/components/ai-elements/prompt-input/context/types.ts",
@@ -1446,8 +1381,8 @@
 				"textarea",
 				"dropdown-menu",
 				"tooltip",
-				"select",
-				"dialog"
+				"dialog",
+				"aspect-ratio"
 			],
 			"dependencies": ["runed", "ai"],
 			"meta": {
@@ -1458,7 +1393,6 @@
 					"input",
 					"chat",
 					"attachments",
-					"model-select",
 					"action-menu",
 					"provider",
 					"ai-interface",
@@ -1468,14 +1402,14 @@
 				"documentation": "https://svelte-ai-elements.vercel.app//components/prompt-input",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
 				"complexity": "intermediate",
-				"updated": "2026-04-10",
+				"updated": "2026-04-14",
 				"featured": true,
 				"features": [
 					"Composable header, body, toolbar, and tools layout",
 					"Provider-backed external state management",
 					"Attachment previews with image and file rendering",
 					"Action menu for quick attachment actions",
-					"Model selection with searchable UI primitives",
+					"Success-only draft clearing with optional native form reset",
 					"Submit and stop button state handling",
 					"Drag and drop file upload",
 					"Global drop zone support",
