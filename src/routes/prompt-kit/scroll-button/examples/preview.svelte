@@ -27,7 +27,7 @@
 	);
 </script>
 
-<div class="relative h-[400px] w-full overflow-hidden">
+<div class="relative h-100 w-full overflow-hidden">
 	<div bind:this={containerRef} class="h-full overflow-y-auto">
 		<div class="flex w-full flex-col p-4">
 			{#each content as item (item.id)}

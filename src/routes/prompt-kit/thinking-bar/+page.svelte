@@ -9,7 +9,7 @@
 <ComponentPageDocs
 	{data}
 	{llmsTxtUrl}
-	intro="The ThinkingBar component provides a visual indicator of the AI's thought process with optional stop functionality."
+	intro={data.description}
 	installation={{
 		specifier: `${PUBLIC_WEBSITE_URL}/p/thinking-bar.json`,
 		blockname: "thinking-bar",

@@ -48,6 +48,18 @@
 			content:
 				"Creating a responsive layout with CSS Grid is straightforward. Here's a basic example:\n\n```css\n.container {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n  gap: 1rem;\n}\n```\n\nThis creates a grid where:\n- Columns automatically fit as many as possible\n- Each column is at least 250px wide\n- Columns expand to fill available space\n- There's a 1rem gap between items\n\nWould you like me to explain more about how this works?",
 		},
+		{
+			id: 5,
+			role: "user",
+			content:
+				"Yes, please explain more about the `grid-template-columns` property and how the `repeat()` function works.",
+		},
+		{
+			id: 6,
+			role: "assistant",
+			content:
+				"Sure! The `grid-template-columns` property defines the columns of your grid layout. In the example I provided, we use the `repeat()` function to create a pattern for the columns. Here's a breakdown:\n\n- `repeat(auto-fit, minmax(250px, 1fr))`: This tells the grid to automatically fit as many columns as possible within the container. Each column will be at least 250px wide and can grow to fill available space (up to 1 fraction unit).\n- `auto-fit`: This keyword allows the grid to create as many columns as will fit in the container. If there is extra space, it will distribute it among the columns.\n- `minmax(250px, 1fr)`: This function sets a minimum and maximum size for each column. The minimum is 250px, and the maximum is 1fr (which means it can grow to fill available space).\n\nThis approach creates a responsive grid that adjusts based on the screen size without needing media queries. As you resize the browser, the number of columns will change dynamically while maintaining a good layout.",
+		},
 	]);
 
 	let isStreaming = $state(false);
@@ -110,7 +122,7 @@
 	);
 </script>
 
-<div class="relative flex h-[400px] w-full flex-col overflow-hidden">
+<div class="relative flex h-100 w-full flex-col overflow-hidden">
 	<div class="flex w-full items-center justify-between border-b p-3">
 		<div></div>
 		<Button size="sm" onclick={streamResponse} disabled={isStreaming}>
@@ -118,8 +130,8 @@
 		</Button>
 	</div>
 
-	<div bind:this={containerRef} class="flex-1 overflow-auto">
-		<ChatContainerRoot class="h-full">
+	<div class="flex-1 overflow-auto">
+		<ChatContainerRoot bind:ref={containerRef} class="relative h-full">
 			<ChatContainerContent class="space-y-4 p-4">
 				{#each messages as message (message.id)}
 					{@const isAssistant = message.role === "assistant"}
@@ -141,9 +153,9 @@
 					</Message>
 				{/each}
 			</ChatContainerContent>
-			<div class="absolute right-7 bottom-4">
-				<ScrollButton class="shadow-sm" />
-			</div>
 		</ChatContainerRoot>
+		<div class="absolute right-7 bottom-4">
+			<ScrollButton class="shadow-sm" />
+		</div>
 	</div>
 </div>

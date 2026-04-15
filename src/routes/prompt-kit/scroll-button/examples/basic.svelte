@@ -31,9 +31,8 @@
 	);
 </script>
 
-<div class="flex h-[500px] w-full flex-col overflow-hidden">
-	<div class="flex w-full items-center justify-between gap-2 overflow-x-scroll border-b p-3">
-		<div></div>
+<div class="flex h-125 w-full flex-col overflow-hidden">
+	<div class="flex w-full items-center justify-end gap-2 overflow-x-scroll no-scrollbar! p-3">
 		<div class="flex gap-2">
 			<Button
 				size="sm"
@@ -59,7 +58,7 @@
 		</div>
 	</div>
 
-	<div class="relative flex-1 overflow-hidden">
+	<div class="relative flex-1 overflow-hidden border rounded-xl">
 		<div bind:this={containerRef} class="h-full overflow-y-auto">
 			<div class="flex w-full flex-col p-4">
 				{#each content as item (item.id)}
@@ -70,7 +69,7 @@
 				{/each}
 			</div>
 		</div>
-		<div class="absolute right-4 bottom-4">
+		<div class="absolute right-6 bottom-4">
 			<ScrollButton {variant} />
 		</div>
 	</div>

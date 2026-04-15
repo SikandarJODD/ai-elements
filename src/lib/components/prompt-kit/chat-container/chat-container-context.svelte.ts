@@ -38,6 +38,12 @@ class ChatContainerContext {
 	setElement(element: HTMLElement) {
 		this.#element = element;
 	}
+	updateResizeMode(mode: ResizeMode) {
+		this.#resizeMode = mode;
+	}
+	updateInitialMode(mode: InitialMode) {
+		this.#initialMode = mode;
+	}
 
 	scrollToBottom = (behavior?: ScrollBehavior) => {
 		if (!this.#element) return;

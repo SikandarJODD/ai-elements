@@ -8,12 +8,14 @@
 	import { watch } from "runed";
 
 	let {
+		ref = $bindable<HTMLDivElement | null>(null),
 		children,
 		class: className,
 		resize = "smooth",
 		initial = "instant",
 		...restProps
 	}: {
+		ref: HTMLDivElement | null;
 		children?: import("svelte").Snippet;
 		class?: string;
 		resize?: ResizeMode;
@@ -21,25 +23,30 @@
 		[key: string]: any;
 	} = $props();
 
-	const context = setChatContainerContext(resize, initial);
-
-	let containerElement: HTMLElement;
+	let context = setChatContainerContext("smooth", "instant");
 
 	watch(
-		() => containerElement,
+		() => ref,
 		() => {
-			if (containerElement) {
-				context.setElement(containerElement);
+			if (ref) {
+				context.setElement(ref);
 			}
+		}
+	);
+	watch(
+		() => resize,
+		() => {
+			context.updateResizeMode(resize);
+		}
+	);
+	watch(
+		() => initial,
+		() => {
+			context.updateInitialMode(initial);
 		}
 	);
 </script>
 
-<div
-	bind:this={containerElement}
-	class={cn("flex overflow-y-auto", className)}
-	role="log"
-	{...restProps}
->
+<div bind:this={ref} class={cn("flex overflow-y-auto", className)} role="log" {...restProps}>
 	{@render children?.()}
 </div>

@@ -1,23 +1,16 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import {
-		Subheading,
-		AiInstallCommand,
-		ComponentAPITable,
-		CopyMarkdownButton,
-		OpenInMenu,
-	} from "$lib/components/docs";
-	import Playground from "$lib/components/docs/playground.svelte";
-	import { examples } from "./examples/examples";
-	import { seo } from "./examples/seo";
+	import { Subheading, AiInstallCommand, ComponentAPITable } from "$lib/components/docs";
 	import * as Code from "$lib/components/ai-elements/code/index.js";
 
-	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-
-	import * as Toc from "$lib/components/docs/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	import PromptKitPrevNext from "$lib/components/prompt-kit/prompt-kit-prev-next.svelte";
+	import { H1, Paragraph } from "$lib/components/markdown";
+	import { data } from "./data";
+	import { CopyPageDropdown } from "$lib/components/docs/copy-page-dropdown";
+	import { PreviewComponent } from "$lib/components/ui/preview-component";
+	import PmCommand from "$lib/components/ui/pm-command/pm-command.svelte";
 	let toc = new UseToc();
 
 	// URL for llm.txt
@@ -110,32 +103,28 @@ watch(
     <ScrollButton />
   </div>
 </div>`;
+
+	let PreviewComp = $derived(data.preview);
 </script>
 
 <!-- SEO Meta Tags -->
-<MetaTags {...seo} />
+<MetaTags {...data.seo} />
 
 <!-- Main Content Area -->
 <main class="min-w-0" bind:this={toc.ref}>
-	<!-- Title -->
-	<Subheading class="mb-4 md:text-3xl">Scroll Button</Subheading>
-
-	<!-- Description -->
-	<p class="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
-		A floating button that appears when users scroll up in chat containers, providing quick
-		navigation back to the bottom with smooth scrolling behavior and context-based visibility
-		management.
-	</p>
-
-	<div class="mb-8 flex items-center gap-2">
-		<CopyMarkdownButton
-			{llmsTxtUrl}
-			component="scroll-button"
-			registry="prompt-kit"
-			source="documentation"
-		/>
-		<OpenInMenu componentName="Scroll Button" {llmsTxtUrl} />
+	<div>
+		<div class="flex flex-col justify-between gap-3 md:flex-row md:items-center md:gap-4">
+			<H1 class="font-bold" id="title">{data.title}</H1>
+			<CopyPageDropdown type="prompt-kit" componentName={data.title} {llmsTxtUrl} />
+		</div>
+		<Paragraph class="max-w-2xl">{data.description}</Paragraph>
 	</div>
+
+	{#if PreviewComp}
+		<PreviewComponent code={data.previewCode} showRetry={false}>
+			<PreviewComp />
+		</PreviewComponent>
+	{/if}
 
 	<!-- Installation Section -->
 	<Subheading>Installation</Subheading>
@@ -145,11 +134,9 @@ watch(
 	</p>
 
 	<div class="mb-6">
-		<AiInstallCommand
+		<PmCommand
 			command="execute"
 			args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/p/scroll-button.json`]}
-			component="scroll-button"
-			registry="prompt-kit"
 		/>
 	</div>
 
@@ -166,14 +153,20 @@ watch(
 		scrolling up and hides when at the bottom.
 	</p>
 	<div data-toc-index={false}>
-		<Playground
-			code={examples.basic.code}
+		<!-- <Playground
+			code={data.examples[0].code}
 			component="scroll-button"
 			registry="prompt-kit"
 			source="example"
 		>
 			<examples.basic.Component />
-		</Playground>
+		</Playground> -->
+		{#if data.examples}
+			{@const ExampleComponent = data.examples[0].preview}
+			<PreviewComponent code={data.examples[0].code} showRetry={false}>
+				<ExampleComponent />
+			</PreviewComponent>
+		{/if}
 	</div>
 
 	<!-- Example 2: Custom Styling -->
@@ -185,14 +178,20 @@ watch(
 		all standard button variants.
 	</p>
 	<div data-toc-index={false}>
-		<Playground
+		<!-- <Playground
 			code={examples.custom.code}
 			component="scroll-button"
 			registry="prompt-kit"
 			source="example"
 		>
 			<examples.custom.Component />
-		</Playground>
+		</Playground> -->
+		{#if data.examples}
+			{@const ExampleComponent = data.examples[1].preview}
+			<PreviewComponent code={data.examples[1].code} showRetry={false}>
+				<ExampleComponent />
+			</PreviewComponent>
+		{/if}
 	</div>
 
 	<!-- Usage Guide Section -->

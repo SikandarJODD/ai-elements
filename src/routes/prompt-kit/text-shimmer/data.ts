@@ -9,8 +9,7 @@ import PreviewRaw from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "text-shimmer",
 	title: "Text Shimmer",
-	description:
-		"A text component with an animated shimmer effect, perfect for indicating AI thinking or loading states.",
+	description: "An animated text shimmer effect for loading states and AI responses.",
 	category: "utilities",
 	badge: "new",
 };
