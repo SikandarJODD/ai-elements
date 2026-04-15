@@ -58,7 +58,7 @@
 					{#each agents as pm (pm)}
 						<Tabs.Trigger
 							value={pm}
-							class="h-7 data-[state=active]:bg-neutral-200/60 border-none font-mono text-sm font-light shadow-none! text-muted-foreground data-[state=active]:text-primary"
+							class="text-muted-foreground data-[state=active]:text-primary h-7 border-none font-mono text-sm font-light shadow-none! data-[state=active]:bg-neutral-200/60"
 						>
 							{pm}
 						</Tabs.Trigger>
@@ -82,7 +82,9 @@
 		</Tooltip.Provider>
 	</div>
 	<div class="no-scrollbar overflow-x-auto p-3">
-		<span class="text-primary dark:text-muted-foreground font-mono text-sm leading-none font-light text-nowrap">
+		<span
+			class="text-primary dark:text-muted-foreground font-mono text-sm leading-none font-light text-nowrap"
+		>
 			{commandText}
 		</span>
 	</div>

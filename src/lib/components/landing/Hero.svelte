@@ -42,7 +42,7 @@
 					<div class="mt-12 flex items-center gap-1 md:gap-3">
 						<Button
 							size="lg"
-							class="h-10.5 px-4 rounded-full font-normal md:text-base"
+							class="h-10.5 rounded-full px-4 font-normal md:text-base"
 							href="/docs/introduction"
 						>
 							Get Started
@@ -53,7 +53,7 @@
 							href="https://github.com/SikandarJODD/ai-elements"
 							target="_blank"
 							rel="noreferrer"
-							class="border-secondary px-4 h-10.5 rounded-full border font-normal md:text-base"
+							class="border-secondary h-10.5 rounded-full border px-4 font-normal md:text-base"
 						>
 							<Icons.GitHub class="mr-1 size-5" />
 							Star on Github

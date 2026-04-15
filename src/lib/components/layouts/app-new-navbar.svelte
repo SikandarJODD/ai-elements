@@ -352,12 +352,12 @@
 			description: "20 core building blocks for AI apps",
 			icon: ZapIcon,
 		},
-		{
-			href: "/prompt-kit/blocks",
-			title: "8 UI Blocks",
-			description: "Pre-built conversation layouts ready to use",
-			icon: BoxesIcon,
-		},
+		// {
+		// 	href: "/prompt-kit/blocks",
+		// 	title: "8 UI Blocks",
+		// 	description: "Pre-built conversation layouts ready to use",
+		// 	icon: BoxesIcon,
+		// },
 		// {
 		// 	href: "/demo-play",
 		// 	title: "Demo Play",

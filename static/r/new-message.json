@@ -5,33 +5,13 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "Enhanced message component with simplified branching, image attachment previews, actions, and rich markdown rendering for AI chat interfaces.",
-	"dependencies": [
-		"svelte-streamdown",
-		"mode-watcher",
-		"@shikijs/themes",
-		"@lucide/svelte"
-	],
-	"devDependencies": [
-		"@lucide/svelte@^1.8.0"
-	],
-	"registryDependencies": [
-		"button",
-		"button-group",
-		"tooltip",
-		"dialog"
-	],
+	"dependencies": ["svelte-streamdown", "mode-watcher", "@shikijs/themes", "@lucide/svelte"],
+	"devDependencies": ["@lucide/svelte@^1.8.0"],
+	"registryDependencies": ["button", "button-group", "tooltip", "dialog"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"message",
-			"branching",
-			"attachments",
-			"markdown",
-			"actions",
-			"chat",
-			"preview"
-		],
+		"tags": ["message", "branching", "attachments", "markdown", "actions", "chat", "preview"],
 		"category": "AI Chat",
 		"documentation": "https://svelte-ai-elements.vercel.app/components/new-message",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -121,7 +101,7 @@
 			"target": "ai-elements/new-message/context/message-context.svelte.ts"
 		},
 		{
-			"content": "import Message from \"./core/Message.svelte\";\nimport MessageContent from \"./core/MessageContent.svelte\";\nimport MessageActions from \"./actions/MessageActions.svelte\";\nimport MessageAction from \"./actions/MessageAction.svelte\";\nimport MessageToolbar from \"./actions/MessageToolbar.svelte\";\nimport MessageBranch from \"./branching/MessageBranch.svelte\";\nimport MessageBranchContent from \"./branching/MessageBranchContent.svelte\";\nimport MessageBranchSelector from \"./branching/MessageBranchSelector.svelte\";\nimport MessageBranchPrevious from \"./branching/MessageBranchPrevious.svelte\";\nimport MessageBranchNext from \"./branching/MessageBranchNext.svelte\";\nimport MessageBranchPage from \"./branching/MessageBranchPage.svelte\";\nimport MessageResponse from \"./response/MessageResponse.svelte\";\nimport MessageAttachment from \"./attachments/MessageAttachment.svelte\";\nimport MessageAttachmentPreview from \"./attachments/MessageAttachmentPreview.svelte\";\nimport MessageAttachments from \"./attachments/MessageAttachments.svelte\";\n\nexport * from \"./context/message-context.svelte.js\";\n\nexport {\n\tMessage,\n\tMessageContent,\n\tMessageActions,\n\tMessageAction,\n\tMessageToolbar,\n\tMessageBranch,\n\tMessageBranchContent,\n\tMessageBranchSelector,\n\tMessageBranchPrevious,\n\tMessageBranchNext,\n\tMessageBranchPage,\n\tMessageResponse,\n\tMessageAttachment,\n\tMessageAttachmentPreview,\n\tMessageAttachments,\n};\n",
+			"content": "import Message from \"./core/Message.svelte\";\nimport MessageContent from \"./core/MessageContent.svelte\";\nimport MessageActions from \"./actions/MessageActions.svelte\";\nimport MessageAction from \"./actions/MessageAction.svelte\";\nimport MessageToolbar from \"./actions/MessageToolbar.svelte\";\nimport MessageBranch from \"./branching/MessageBranch.svelte\";\nimport MessageBranchContent from \"./branching/MessageBranchContent.svelte\";\nimport MessageBranchSelector from \"./branching/MessageBranchSelector.svelte\";\nimport MessageBranchPrevious from \"./branching/MessageBranchPrevious.svelte\";\nimport MessageBranchNext from \"./branching/MessageBranchNext.svelte\";\nimport MessageBranchPage from \"./branching/MessageBranchPage.svelte\";\nimport MessageResponse from \"./response/MessageResponse.svelte\";\nimport MessageAttachment from \"./attachments/MessageAttachment.svelte\";\nimport MessageAttachmentPreview from \"./attachments/MessageAttachmentPreview.svelte\";\nimport MessageAttachments from \"./attachments/MessageAttachments.svelte\";\n\nexport * from \"./context/message-context.svelte.js\";\n\nexport {\n\tMessage,\n\tMessageContent,\n\tMessageActions,\n\tMessageAction,\n\tMessageToolbar,\n\tMessageBranch,\n\tMessageBranchContent,\n\tMessageBranchSelector,\n\tMessageBranchPrevious,\n\tMessageBranchNext,\n\tMessageBranchPage,\n\tMessageResponse,\n\tMessageAttachment,\n\tMessageAttachmentPreview,\n\tMessageAttachments,\n\n\t// Aliases\n\tMessage as Root,\n\tMessageContent as Content,\n\tMessageActions as Actions,\n\tMessageAction as Action,\n\tMessageToolbar as Toolbar,\n\tMessageBranch as Branch,\n\tMessageBranchContent as BranchContent,\n\tMessageBranchSelector as BranchSelector,\n\tMessageBranchPrevious as BranchPrevious,\n\tMessageBranchNext as BranchNext,\n\tMessageBranchPage as BranchPage,\n\tMessageResponse as Response,\n\tMessageAttachment as Attachment,\n\tMessageAttachmentPreview as AttachmentPreview,\n\tMessageAttachments as Attachments,\n};\n",
 			"type": "registry:file",
 			"target": "ai-elements/new-message/index.ts"
 		}

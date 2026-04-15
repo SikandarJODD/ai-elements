@@ -162,7 +162,7 @@ That lets one component render the composer, another inspect the draft, and anot
   let { onSubmit } = $props();
 </script>
 
-<PromptInput onSubmit={onSubmit}>
+<PromptInput {onSubmit}>
   <PromptInputAttachments>
     {#snippet children(file)}
       <PromptInputAttachment data={file} />
@@ -190,20 +190,20 @@ That lets one component render the composer, another inspect the draft, and anot
 
 ### PromptInput
 
-| Prop              | Type                                                                                 | Default | Description                                                                                          |
-| ----------------- | ------------------------------------------------------------------------------------ | ------- | ---------------------------------------------------------------------------------------------------- |
-| class             | string                                                                               | -       | Additional CSS classes to apply to the form container                                                |
-| accept            | string                                                                               | -       | File types to accept (e.g., 'image/\*' or leave undefined for any)                                   |
-| multiple          | boolean                                                                              | -       | Whether to allow multiple file uploads                                                               |
-| globalDrop        | boolean                                                                              | false   | When true, accepts drops anywhere on document                                                        |
-| syncHiddenInput   | boolean                                                                              | false   | When true, renders a hidden input with given name and keeps it in sync for native form posts         |
-| clearOnSubmit     | boolean                                                                              | true    | When true, clears prompt text and attachments after a successful submission                           |
-| resetFormOnSubmit | boolean                                                                              | false   | When true, also runs the native `form.reset()` after a successful `clearOnSubmit`                    |
-| maxFiles          | number                                                                               | -       | Maximum number of files allowed                                                                      |
-| maxFileSize       | number                                                                               | -       | Maximum file size in bytes                                                                           |
-| onError           | (err: { code: 'max_files' \| 'max_file_size' \| 'accept'; message: string }) => void | -       | Error handler for file validation errors                                                             |
-| onSubmit          | (message: PromptInputMessage, event: SubmitEvent) => void \| Promise<void>           | -       | Submit handler called when the form is submitted                                                     |
-| children          | Snippet                                                                              | -       | Child components (typically PromptInputBody, PromptInputToolbar)                                     |
+| Prop              | Type                                                                                 | Default | Description                                                                                  |
+| ----------------- | ------------------------------------------------------------------------------------ | ------- | -------------------------------------------------------------------------------------------- |
+| class             | string                                                                               | -       | Additional CSS classes to apply to the form container                                        |
+| accept            | string                                                                               | -       | File types to accept (e.g., 'image/\*' or leave undefined for any)                           |
+| multiple          | boolean                                                                              | -       | Whether to allow multiple file uploads                                                       |
+| globalDrop        | boolean                                                                              | false   | When true, accepts drops anywhere on document                                                |
+| syncHiddenInput   | boolean                                                                              | false   | When true, renders a hidden input with given name and keeps it in sync for native form posts |
+| clearOnSubmit     | boolean                                                                              | true    | When true, clears prompt text and attachments after a successful submission                  |
+| resetFormOnSubmit | boolean                                                                              | false   | When true, also runs the native `form.reset()` after a successful `clearOnSubmit`            |
+| maxFiles          | number                                                                               | -       | Maximum number of files allowed                                                              |
+| maxFileSize       | number                                                                               | -       | Maximum file size in bytes                                                                   |
+| onError           | (err: { code: 'max_files' \| 'max_file_size' \| 'accept'; message: string }) => void | -       | Error handler for file validation errors                                                     |
+| onSubmit          | (message: PromptInputMessage, event: SubmitEvent) => void \| Promise<void>           | -       | Submit handler called when the form is submitted                                             |
+| children          | Snippet                                                                              | -       | Child components (typically PromptInputBody, PromptInputToolbar)                             |
 
 ### PromptInputProvider
 

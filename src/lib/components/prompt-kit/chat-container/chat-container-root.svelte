@@ -15,7 +15,7 @@
 		initial = "instant",
 		...restProps
 	}: {
-		ref: HTMLDivElement | null;
+		ref?: HTMLDivElement | null;
 		children?: import("svelte").Snippet;
 		class?: string;
 		resize?: ResizeMode;

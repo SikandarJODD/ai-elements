@@ -19,12 +19,37 @@ const seo: SEO = {
 	titleTemplate: "%s | Svelte Prompt Kit",
 };
 
+// Component API Props Data
+const markdownProps = [
+	{
+		name: "content",
+		type: "string",
+		description: "Markdown content to render",
+	},
+	{
+		name: "className",
+		type: "string",
+		description: "Additional CSS classes",
+	},
+	{
+		name: "...props",
+		type: "HTMLAttributes<HTMLDivElement>",
+		description: "All other div props are supported",
+	},
+];
+
 export const data: ComponentDoc = {
 	...meta,
 	seo,
-    preview: Preview,
-    previewCode: {
-        filename: "preview.svelte",
-        filecode: PreviewRaw,
-    }
+	preview: Preview,
+	previewCode: {
+		filename: "preview.svelte",
+		filecode: PreviewRaw,
+	},
+	props: [
+		{
+			name: "Markdown",
+			props: markdownProps,
+		},
+	],
 };

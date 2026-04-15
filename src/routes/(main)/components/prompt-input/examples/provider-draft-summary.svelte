@@ -16,7 +16,9 @@
 	{#if hasDraft}
 		<p class="mt-2 text-sm">
 			<span class="font-medium">Preview:</span>
-			{text.trim().length > 0 ? text.slice(0, 120) : "Waiting for text, attachments already added."}
+			{text.trim().length > 0
+				? text.slice(0, 120)
+				: "Waiting for text, attachments already added."}
 		</p>
 	{:else}
 		<p class="text-muted-foreground mt-2 text-sm">Nothing in the draft yet.</p>

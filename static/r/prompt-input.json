@@ -5,13 +5,8 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A comprehensive prompt input component for AI chat interfaces with provider-backed state management, attachments, action menus, and submit or stop controls. Includes a composable header, body, toolbar, tools, and attachment previews for building polished AI input experiences.",
-	"dependencies": [
-		"runed",
-		"ai"
-	],
-	"devDependencies": [
-		"@lucide/svelte@^1.8.0"
-	],
+	"dependencies": ["runed", "ai"],
+	"devDependencies": ["@lucide/svelte@^1.8.0"],
 	"registryDependencies": [
 		"button",
 		"textarea",

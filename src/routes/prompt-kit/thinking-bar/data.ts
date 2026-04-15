@@ -43,4 +43,39 @@ export const data: ComponentDoc = {
 		filecode: BasicRaw,
 		lang: "svelte",
 	},
+	props: [
+		{
+			name: "Thinking bar",
+			props: [
+				{
+					name: "text",
+					type: "string",
+					default: "'Thinking...'",
+					description: "The text to display",
+				},
+				{
+					name: "stopLabel",
+					type: "string",
+					default: "'Answer now'",
+					description: "The label for the stop button",
+				},
+				{
+					name: "onStop",
+					type: "() => void",
+					description: "Callback function when the stop button is clicked",
+				},
+				{
+					name: "class",
+					type: "string",
+					description: "Additional CSS classes",
+					default: "''",
+				},
+				{
+					name: "onclick",
+					type: "() => void",
+					description: "Callback function when the thinking bar is clicked",
+				},
+			],
+		},
+	],
 };

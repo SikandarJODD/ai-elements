@@ -6,11 +6,12 @@
 
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 	import PromptKitPrevNext from "$lib/components/prompt-kit/prompt-kit-prev-next.svelte";
-	import { H1, Paragraph } from "$lib/components/markdown";
+	import { H1, H2, Paragraph } from "$lib/components/markdown";
 	import { data } from "./data";
 	import { CopyPageDropdown } from "$lib/components/docs/copy-page-dropdown";
 	import { PreviewComponent } from "$lib/components/ui/preview-component";
 	import PmCommand from "$lib/components/ui/pm-command/pm-command.svelte";
+	import { APITable } from "$lib/components/docs/api-table";
 	let toc = new UseToc();
 
 	// URL for llm.txt
@@ -273,5 +274,17 @@ watch(
 		<li><strong>Smooth scrolling:</strong> Uses native smooth scroll behavior</li>
 	</ul>
 
+	{#if data.props}
+		<section>
+			<H2 id="props">Props</H2>
+			<div class="mt-3 space-y-6">
+				<div>
+					{#each data.props as prop}
+						<APITable data={prop} />
+					{/each}
+				</div>
+			</div>
+		</section>
+	{/if}
 	<PromptKitPrevNext currentSlug="scroll-button" />
 </main>

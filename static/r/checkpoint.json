@@ -5,27 +5,13 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A simple component for marking conversation history points and restoring the chat to a previous state. Inspired by VSCode's Copilot checkpoint feature.",
-	"dependencies": [
-		"@lucide/svelte/icons"
-	],
-	"devDependencies": [
-		"@lucide/svelte@^1.8.0"
-	],
-	"registryDependencies": [
-		"button",
-		"separator",
-		"tooltip"
-	],
+	"dependencies": ["@lucide/svelte/icons"],
+	"devDependencies": ["@lucide/svelte@^1.8.0"],
+	"registryDependencies": ["button", "separator", "tooltip"],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": [
-			"checkpoint",
-			"conversation",
-			"history",
-			"restore",
-			"undo"
-		],
+		"tags": ["checkpoint", "conversation", "history", "restore", "undo"],
 		"category": "Conversation",
 		"documentation": "https://svelte-ai-elements.vercel.app/components/checkpoint",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

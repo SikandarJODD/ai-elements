@@ -67,6 +67,6 @@ export const data: ComponentDoc = {
 		{
 			name: "Image",
 			props: imageProps,
-		}
-	]
+		},
+	],
 };

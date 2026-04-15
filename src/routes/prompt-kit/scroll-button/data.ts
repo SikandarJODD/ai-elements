@@ -44,6 +44,66 @@ const examples: Example[] = [
 	},
 ];
 
+// Component API Props Data
+const scrollButtonProps = [
+	{
+		name: "variant",
+		type: '"default" | "outline" | "secondary" | "ghost" | "link" | "destructive"',
+		default: '"outline"',
+		description: "The visual style of the button",
+	},
+	{
+		name: "size",
+		type: '"default" | "sm" | "lg" | "icon"',
+		default: '"sm"',
+		description: "The size of the button",
+	},
+	{
+		name: "class",
+		type: "string",
+		description: "Additional CSS classes for custom styling",
+	},
+	{
+		name: "ref",
+		type: "HTMLElement | null",
+		description: "Reference to the button element",
+	},
+	{
+		name: "onclick",
+		type: "(event: MouseEvent) => void",
+		description: "Click event handler",
+	},
+];
+
+const scrollContextFunctions = [
+	{
+		name: "setScrollContext()",
+		type: "() => ScrollContext",
+		description: "Creates and sets the scroll context. Must be called in a parent component.",
+	},
+	{
+		name: "getScrollContext()",
+		type: "() => ScrollContext",
+		description: "Retrieves the scroll context. Used internally by ScrollButton.",
+	},
+	{
+		name: "scrollContext.setElement()",
+		type: "(element: HTMLElement | null) => void",
+		description: "Sets the scrollable container element to monitor.",
+	},
+	{
+		name: "scrollContext.scrollToBottom()",
+		type: "(behavior?: ScrollBehavior) => void",
+		description:
+			"Scrolls the container to the bottom with optional behavior ('smooth' or 'instant').",
+	},
+	{
+		name: "scrollContext.isAtBottom",
+		type: "boolean",
+		description: "Reactive state indicating if the container is scrolled to the bottom.",
+	},
+];
+
 export const data: ComponentDoc = {
 	...meta,
 	seo,
@@ -53,4 +113,14 @@ export const data: ComponentDoc = {
 		filecode: PreviewRaw,
 	},
 	examples,
+	props: [
+		{
+			name: "Scroll Button",
+			props: scrollButtonProps,
+		},
+		{
+			name: "Scroll Context",
+			props: scrollContextFunctions,
+		},
+	],
 };
