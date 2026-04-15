@@ -228,7 +228,7 @@ watch(
 	<p class="text-muted-foreground mb-4 text-sm leading-relaxed sm:text-base">
 		The ScrollButton pairs perfectly with the ChatContainer component. Both use similar context
 		patterns for scroll management. See the <a
-			href="/prompt-kit/chat-container#using-with-scroll-button"
+			href="/prompt-kit/chat-container"
 			class="text-primary hover:underline">ChatContainer documentation</a
 		> for integration examples.
 	</p>
