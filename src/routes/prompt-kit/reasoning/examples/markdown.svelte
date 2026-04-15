@@ -1,0 +1,61 @@
+<script lang="ts">
+	import {
+		Reasoning,
+		ReasoningContent,
+		ReasoningTrigger,
+	} from "$lib/components/prompt-kit/reasoning";
+	import { Button } from "$lib/components/ui/button";
+
+	let reasoningText = $state("");
+	let isStreaming = $state(false);
+
+	async function simulateMarkdownStream() {
+		const reasoning = `### Solving: Square Root of 144
+
+#### Step 1: Problem Analysis
+I need to find a number that, when **multiplied by itself**, equals 144.
+
+#### Step 2: Testing Values
+- \`10^2 = 100\` (too small)
+- \`13^2 = 169\` (too large)
+- \`12^2 = 144\` (perfect)
+
+#### Step 3: Verification
+\`\`\`
+12 x 12 = 144
+\`\`\`
+
+> **Answer:** The square root of 144 is **12**.`;
+
+		isStreaming = true;
+		reasoningText = "";
+
+		for (let i = 0; i <= reasoning.length; i++) {
+			reasoningText = reasoning.slice(0, i);
+			await new Promise((resolve) => setTimeout(resolve, 20));
+		}
+
+		isStreaming = false;
+	}
+
+	function handleGenerateReasoning() {
+		simulateMarkdownStream();
+	}
+</script>
+
+<div class="flex w-full flex-col items-start gap-4">
+	<Button variant="outline" size="sm" onclick={handleGenerateReasoning} disabled={isStreaming}>
+		{isStreaming ? "Thinking..." : "Generate Reasoning"}
+	</Button>
+
+	<div>
+		<Reasoning {isStreaming}>
+			<ReasoningTrigger>Show AI reasoning</ReasoningTrigger>
+			<ReasoningContent
+				markdown
+				content={reasoningText}
+				class="ml-2 border-l-2 border-l-slate-200 px-2 pb-0 dark:border-l-slate-700"
+			/>
+		</Reasoning>
+	</div>
+</div>

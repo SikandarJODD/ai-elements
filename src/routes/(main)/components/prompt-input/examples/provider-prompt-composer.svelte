@@ -9,7 +9,7 @@
 	let { onSubmit }: Props = $props();
 </script>
 
-<PromptInput.Root class="w-xl" onSubmit={onSubmit}>
+<PromptInput.Root class="w-xl" {onSubmit}>
 	<PromptInput.Attachments>
 		{#snippet children(file)}
 			<PromptInput.Attachment data={file} />

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HTMLAttributes } from 'svelte/elements';
-	import { cn, type WithElementRef } from '$lib/utils';
+	import type { HTMLAttributes } from "svelte/elements";
+	import { cn, type WithElementRef } from "$lib/utils";
 
 	let {
 		class: className,
@@ -9,6 +9,6 @@
 	}: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props();
 </script>
 
-<div data-slot="frame-panel-title" class={cn('text-sm font-semibold', className)} {...restProps}>
+<div data-slot="frame-panel-title" class={cn("text-sm font-semibold", className)} {...restProps}>
 	{@render children?.()}
 </div>

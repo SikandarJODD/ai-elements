@@ -231,7 +231,8 @@
 		let form = event.currentTarget as HTMLFormElement;
 		let text = usingProvider
 			? (controller?.textInput.value ?? "")
-			: promptTextHandle?.getValue() ?? ((new FormData(form).get("message") as string) || "");
+			: (promptTextHandle?.getValue() ??
+				((new FormData(form).get("message") as string) || ""));
 		let submittedAttachments = attachmentsContext.attachments.map((attachment) => ({
 			...attachment,
 		}));

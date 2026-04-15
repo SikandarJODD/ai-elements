@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HTMLAttributes } from 'svelte/elements';
-	import { cn, type WithElementRef } from '$lib/utils';
+	import type { HTMLAttributes } from "svelte/elements";
+	import { cn, type WithElementRef } from "$lib/utils";
 
 	let {
 		class: className,
@@ -11,7 +11,7 @@
 
 <header
 	data-slot="frame-panel-header"
-	class={cn('flex flex-col px-5 py-4', className)}
+	class={cn("flex flex-col px-5 py-4", className)}
 	{...restProps}
 >
 	{@render children?.()}
