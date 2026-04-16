@@ -1,1 +1,2 @@
-export { default as Response } from "./Response.svelte";
+import Response from "./Response.svelte";
+export { Response };

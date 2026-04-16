@@ -1,7 +1,22 @@
-export { default as Branch } from "./Branch.svelte";
-export { default as BranchMessages } from "./BranchMessages.svelte";
-export { default as BranchSelector } from "./BranchSelector.svelte";
-export { default as BranchPrevious } from "./BranchPrevious.svelte";
-export { default as BranchNext } from "./BranchNext.svelte";
-export { default as BranchPage } from "./BranchPage.svelte";
-export { setBranchContext, getBranchContext, type BranchContextType } from "./branch-context.js";
+import Branch from "./Branch.svelte";
+import BranchMessages from "./BranchMessages.svelte";
+import BranchNext from "./BranchNext.svelte";
+import BranchPrevious from "./BranchPrevious.svelte";
+import BranchPage from "./BranchPage.svelte";
+import BranchSelector from "./BranchSelector.svelte";
+
+export {
+	Branch,
+	BranchMessages,
+	BranchNext,
+	BranchPrevious,
+	BranchPage,
+	BranchSelector,
+	//
+	Branch as Root,
+	BranchMessages as Messages,
+	BranchNext as Next,
+	BranchPrevious as Previous,
+	BranchPage as Page,
+	BranchSelector as Selector,
+};
