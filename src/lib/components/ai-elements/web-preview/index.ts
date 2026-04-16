@@ -1,9 +1,25 @@
-export { default as WebPreview } from "./WebPreview.svelte";
-export { default as WebPreviewNavigation } from "./WebPreviewNavigation.svelte";
-export { default as WebPreviewNavigationButton } from "./WebPreviewNavigationButton.svelte";
-export { default as WebPreviewUrl } from "./WebPreviewUrl.svelte";
-export { default as WebPreviewBody } from "./WebPreviewBody.svelte";
-export { default as WebPreviewConsole } from "./WebPreviewConsole.svelte";
+import WebPreview from "./WebPreview.svelte";
+import WebPreviewBody from "./WebPreviewBody.svelte";
+import WebPreviewConsole from "./WebPreviewConsole.svelte";
+import WebPreviewNavigation from "./WebPreviewNavigation.svelte";
+import WebPreviewNavigationButton from "./WebPreviewNavigationButton.svelte";
+import WebPreviewUrl from "./WebPreviewUrl.svelte";
+
+export {
+	WebPreview,
+	WebPreviewNavigation,
+	WebPreviewNavigationButton,
+	WebPreviewUrl,
+	WebPreviewBody,
+	WebPreviewConsole,
+	//
+	WebPreview as Root,
+	WebPreviewNavigation as Navigation,
+	WebPreviewNavigationButton as NavigationButton,
+	WebPreviewUrl as Url,
+	WebPreviewBody as Body,
+	WebPreviewConsole as Console,
+};
 
 export {
 	WebPreviewContext,
