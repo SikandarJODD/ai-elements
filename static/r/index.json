@@ -50,7 +50,7 @@
 		"type": "registry:block",
 		"author": "SikandarJODD",
 		"description": "A simple component for marking conversation history points and restoring the chat to a previous state. Inspired by VSCode's Copilot checkpoint feature.",
-		"dependencies": ["@lucide/svelte/icons"],
+		"dependencies": ["@lucide/svelte"],
 		"registryDependencies": ["button", "separator", "tooltip"],
 		"meta": {
 			"author": "SikandarJODD",
@@ -71,7 +71,7 @@
 		"type": "registry:block",
 		"author": "SikandarJODD",
 		"description": "A component for requesting user approval before executing sensitive AI actions. Displays different states for approval requests, accepted, and rejected actions.",
-		"dependencies": ["@lucide/svelte/icons", "runed"],
+		"dependencies": ["@lucide/svelte", "runed"],
 		"registryDependencies": ["button", "alert"],
 		"meta": {
 			"author": "SikandarJODD",
