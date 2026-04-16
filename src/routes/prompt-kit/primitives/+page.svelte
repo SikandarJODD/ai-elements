@@ -54,7 +54,7 @@
 	}
 
 	function getInstallCommand(registryName: string) {
-		return `npx shadcn@latest add https://svelte-ai-elements.vercel.app/r/${registryName}.json`;
+		return `npx shadcn@latest add https://svelte-ai-elements.vercel.app/p/${registryName}.json`;
 	}
 </script>
 
@@ -141,44 +141,40 @@
 						<div class="mb-4 flex items-center justify-between">
 							<div>
 								<h2 class="text-2xl font-bold tracking-tight">{primitive.title}</h2>
-								<p class="text-muted-foreground mt-1 text-sm">
+								<p class="text-muted-foreground mt-1 text-base">
 									{primitive.description}
 								</p>
 							</div>
-							<Badge variant="secondary">New</Badge>
 						</div>
 
 						<!-- Tabs Container -->
 						<Tabs.Root value="preview" class="items-start">
-							<ScrollArea>
-								<Tabs.List class="mb-3">
-									<Tabs.Trigger value="preview">
-										<House
-											class="-ms-0.5 me-1.5 opacity-60"
-											size={16}
-											aria-hidden="true"
-										/>
-										Preview
-									</Tabs.Trigger>
-									<Tabs.Trigger value="code" class="group">
-										<PanelsTopLeft
-											class="-ms-0.5 me-1.5 opacity-60"
-											size={16}
-											aria-hidden="true"
-										/>
-										Components
-									</Tabs.Trigger>
-									<Tabs.Trigger value="api" class="group">
-										<Box
-											class="-ms-0.5 me-1.5 opacity-60"
-											size={16}
-											aria-hidden="true"
-										/>
-										API <span class="font-mono">(+server.ts)</span>
-									</Tabs.Trigger>
-								</Tabs.List>
-								<Scrollbar orientation="horizontal" />
-							</ScrollArea>
+							<Tabs.List class="mb-3">
+								<Tabs.Trigger value="preview">
+									<House
+										class="-ms-0.5 me-1.5 opacity-60"
+										size={16}
+										aria-hidden="true"
+									/>
+									Preview
+								</Tabs.Trigger>
+								<Tabs.Trigger value="code" class="group">
+									<PanelsTopLeft
+										class="-ms-0.5 me-1.5 opacity-60"
+										size={16}
+										aria-hidden="true"
+									/>
+									Components
+								</Tabs.Trigger>
+								<Tabs.Trigger value="api" class="group">
+									<Box
+										class="-ms-0.5 me-1.5 opacity-60"
+										size={16}
+										aria-hidden="true"
+									/>
+									API <span class="font-mono">(+server.ts)</span>
+								</Tabs.Trigger>
+							</Tabs.List>
 
 							<!-- Preview Tab -->
 							<Tabs.Content value="preview" class="mt-4 w-full overflow-hidden ">
@@ -243,13 +239,13 @@
 									args={[
 										"shadcn-svelte@latest",
 										"add",
-										`https://svelte-ai-elements.vercel.app/r/${primitive.registryName}.json`,
+										`https://svelte-ai-elements.vercel.app/p/${primitive.registryName}.json`,
 									]}
 									component={primitive.id}
 									registry="primitives"
 								/>
 							</div>
-							<div>
+							<!-- <div>
 								<Button
 									variant="outline"
 									href={primitive.demoUrl}
@@ -259,7 +255,7 @@
 									Open Full Demo
 									<ExternalLink class="size-4" />
 								</Button>
-							</div>
+							</div> -->
 						</div>
 					</div>
 
@@ -267,42 +263,6 @@
 						<div class="border-t"></div>
 					{/if}
 				{/each}
-				<!-- Call to Action -->
-				<!--
-			<div class="mt-12 flex flex-col gap-4 sm:flex-row">
-				<Button
-					variant="outline"
-					class="gap-2"
-					href="https://github.com/SikandarJODD/ai-elements/issues/new"
-					target="_blank"
-				>
-					Suggest a new primitive
-					<ExternalLink class="size-4" />
-				</Button>
-				<Button
-					variant="outline"
-					class="gap-2"
-					href="https://github.com/SikandarJODD/ai-elements"
-					target="_blank"
-				>
-					Contribute to prompt-kit
-					<ExternalLink class="size-4" />
-				</Button>
-			</div>
-			-->
-
-				<!-- Link to Blocks -->
-				<div class="bg-muted/50 mt-8 rounded-lg border p-6">
-					<h3 class="mb-2 text-lg font-semibold">Looking for UI-only components?</h3>
-					<p class="text-muted-foreground mb-4 text-sm">
-						Check out our Blocks collection for ready-to-use UI components without API
-						integration.
-					</p>
-					<Button variant="outline" href="/prompt-kit/blocks" class="gap-2">
-						View Blocks
-						<ExternalLink class="size-4" />
-					</Button>
-				</div>
 			</div>
 
 			<PromptKitPrevNext currentSlug="primitives" />
