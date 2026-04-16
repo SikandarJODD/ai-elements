@@ -15,7 +15,7 @@
 			"target": "ai-elements/response/Response.svelte"
 		},
 		{
-			"content": "export { default as Response } from \"./Response.svelte\";\n",
+			"content": "import Response from \"./Response.svelte\";\nexport { Response };\n",
 			"type": "registry:file",
 			"target": "ai-elements/response/index.ts"
 		}

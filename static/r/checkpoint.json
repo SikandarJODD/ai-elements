@@ -36,7 +36,7 @@
 			"target": "ai-elements/checkpoint/CheckpointTrigger.svelte"
 		},
 		{
-			"content": "export { default as Checkpoint } from \"./Checkpoint.svelte\";\nexport { default as CheckpointIcon } from \"./CheckpointIcon.svelte\";\nexport { default as CheckpointTrigger } from \"./CheckpointTrigger.svelte\";\n\nexport type { CheckpointProps } from \"./Checkpoint.svelte\";\nexport type { CheckpointIconProps } from \"./CheckpointIcon.svelte\";\nexport type { CheckpointTriggerProps } from \"./CheckpointTrigger.svelte\";\n",
+			"content": "import Checkpoint from \"./Checkpoint.svelte\";\nimport CheckpointIcon from \"./CheckpointIcon.svelte\";\nimport CheckpointTrigger from \"./CheckpointTrigger.svelte\";\n\nexport {\n    Checkpoint,\n    CheckpointIcon,\n    CheckpointTrigger,\n    //\n    Checkpoint as Root,\n    CheckpointIcon as Icon,\n    CheckpointTrigger as Trigger\n}",
 			"type": "registry:file",
 			"target": "ai-elements/checkpoint/index.ts"
 		}

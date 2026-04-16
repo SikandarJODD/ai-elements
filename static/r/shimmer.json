@@ -21,7 +21,7 @@
 			"target": "ai-elements/shimmer/types.ts"
 		},
 		{
-			"content": "export { default as Shimmer } from \"./Shimmer.svelte\";\nexport type { ShimmerProps } from \"./types\";\n",
+			"content": "import Shimmer from \"./Shimmer.svelte\";\nexport { Shimmer };\nexport type { ShimmerProps } from \"./types\";\n",
 			"type": "registry:file",
 			"target": "ai-elements/shimmer/index.ts"
 		}

@@ -13,5 +13,4 @@ export {
 	Reasoning as Root,
 	ReasoningTrigger as Trigger,
 	ReasoningContent as Content,
-
 };
