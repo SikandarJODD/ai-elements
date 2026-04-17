@@ -9,7 +9,7 @@
 		MessageBranchSelector,
 		MessageContent,
 		MessageToolbar,
-	} from "$lib/components/ai-elements/new-message";
+	} from "$lib/components/ai-elements/message";
 
 	const versions = [
 		{

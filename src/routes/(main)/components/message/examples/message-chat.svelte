@@ -9,7 +9,7 @@
 		MessageResponse,
 		MessageActions,
 		MessageAction,
-	} from "$lib/components/ai-elements/new-message";
+	} from "$lib/components/ai-elements/message";
 
 	import { Chat } from "@ai-sdk/svelte";
 	let chat = new Chat({});

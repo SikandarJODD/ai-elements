@@ -14,7 +14,7 @@ import type { Example } from "$lib/structure/examples";
 import type { SEO } from "$lib/structure/seo";
 
 export const meta: ComponentMeta = {
-	id: "new-message",
+	id: "message",
 	title: "Message",
 	description:
 		"Composable chat message primitives for Svelte with markdown responses, attachments, branching, and action slots.",
@@ -68,7 +68,7 @@ const examples: Example[] = [
 	},
 	{
 		name: "Usage AI SDK",
-		description: "Compose prompt-input with new-message using a local text-only workflow.",
+		description: "Compose prompt-input with message using a local text-only workflow.",
 		preview: PromptInputExample,
 		code: {
 			filename: "message-chat.svelte",

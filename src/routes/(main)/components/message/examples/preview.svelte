@@ -3,7 +3,7 @@
 		Message,
 		MessageContent,
 		MessageResponse,
-	} from "$lib/components/ai-elements/new-message";
+	} from "$lib/components/ai-elements/message";
 </script>
 
 <div class="flex w-full flex-col gap-4">
