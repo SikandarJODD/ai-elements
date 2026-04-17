@@ -5,9 +5,16 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Reasoning component displays AI reasoning content, automatically opening during streaming and closing when finished.",
-	"dependencies": ["runed", "@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^1.8.0"],
-	"registryDependencies": ["collapsible"],
+	"dependencies": [
+		"runed",
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^1.8.0"
+	],
+	"registryDependencies": [
+		"collapsible"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},
@@ -38,7 +45,7 @@
 			"target": "ai-elements/reasoning/reasoning-context.svelte.ts"
 		},
 		{
-			"content": "import Reasoning from \"./Reasoning.svelte\";\nimport ReasoningTrigger from \"./ReasoningTrigger.svelte\";\nimport ReasoningContent from \"./ReasoningContent.svelte\";\nimport Response from \"./Response.svelte\";\nexport * from \"./reasoning-context.svelte.js\";\n\nexport {\n\tReasoning,\n\tReasoningTrigger,\n\tReasoningContent,\n\tResponse,\n\t//\n\tReasoning as Root,\n\tReasoningTrigger as Trigger,\n\tReasoningContent as Content,\n\n};\n",
+			"content": "import Reasoning from \"./Reasoning.svelte\";\nimport ReasoningTrigger from \"./ReasoningTrigger.svelte\";\nimport ReasoningContent from \"./ReasoningContent.svelte\";\nimport Response from \"./Response.svelte\";\nexport * from \"./reasoning-context.svelte.js\";\n\nexport {\n\tReasoning,\n\tReasoningTrigger,\n\tReasoningContent,\n\tResponse,\n\t//\n\tReasoning as Root,\n\tReasoningTrigger as Trigger,\n\tReasoningContent as Content,\n};\n",
 			"type": "registry:file",
 			"target": "ai-elements/reasoning/index.ts"
 		}

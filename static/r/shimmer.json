@@ -5,7 +5,9 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Shimmer component provides an animated shimmer effect for text, perfect for loading states and highlighting content in your AI applications.",
-	"dependencies": ["runed"],
+	"dependencies": [
+		"runed"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},

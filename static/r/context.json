@@ -5,7 +5,11 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Context component provides a comprehensive view of AI model usage, displaying token consumption, costs, and performance metrics through an interactive hover card interface.",
-	"registryDependencies": ["hover-card", "progress", "button"],
+	"registryDependencies": [
+		"hover-card",
+		"progress",
+		"button"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},
@@ -76,7 +80,7 @@
 			"target": "ai-elements/context/context-context.svelte.ts"
 		},
 		{
-			"content": "import Context from \"./Context.svelte\";\nimport ContextIcon from \"./ContextIcon.svelte\";\nimport ContextTrigger from \"./ContextTrigger.svelte\";\nimport ContextContent from \"./ContextContent.svelte\";\nimport ContextContentHeader from \"./ContextContentHeader.svelte\";\nimport ContextContentBody from \"./ContextContentBody.svelte\";\nimport ContextContentFooter from \"./ContextContentFooter.svelte\";\nimport ContextInputUsage from \"./ContextInputUsage.svelte\";\nimport ContextOutputUsage from \"./ContextOutputUsage.svelte\";\nimport ContextReasoningUsage from \"./ContextReasoningUsage.svelte\";\nimport ContextCacheUsage from \"./ContextCacheUsage.svelte\";\nimport TokensWithCost from \"./TokensWithCost.svelte\";\n\nexport * from \"./context-context.svelte.js\";\n\nexport {\n\tContext,\n\tContextIcon,\n\tContextTrigger,\n\tContextContent,\n\tContextContentHeader,\n\tContextContentBody,\n\tContextContentFooter,\n\tContextInputUsage,\n\tContextOutputUsage,\n\tContextReasoningUsage,\n\tContextCacheUsage,\n\tTokensWithCost,\n\t//\n    Context as Root,\n    ContextTrigger as Trigger,\n    ContextContent as Content,\n    ContextContentHeader as ContentHeader,\n    ContextContentBody as ContentBody,\n    ContextContentFooter as ContentFooter,\n    ContextInputUsage as InputUsage,\n    ContextOutputUsage as OutputUsage,\n    ContextReasoningUsage as ReasoningUsage,\n    ContextCacheUsage as CacheUsage,\n};\n",
+			"content": "import Context from \"./Context.svelte\";\nimport ContextIcon from \"./ContextIcon.svelte\";\nimport ContextTrigger from \"./ContextTrigger.svelte\";\nimport ContextContent from \"./ContextContent.svelte\";\nimport ContextContentHeader from \"./ContextContentHeader.svelte\";\nimport ContextContentBody from \"./ContextContentBody.svelte\";\nimport ContextContentFooter from \"./ContextContentFooter.svelte\";\nimport ContextInputUsage from \"./ContextInputUsage.svelte\";\nimport ContextOutputUsage from \"./ContextOutputUsage.svelte\";\nimport ContextReasoningUsage from \"./ContextReasoningUsage.svelte\";\nimport ContextCacheUsage from \"./ContextCacheUsage.svelte\";\nimport TokensWithCost from \"./TokensWithCost.svelte\";\n\nexport * from \"./context-context.svelte.js\";\n\nexport {\n\tContext,\n\tContextIcon,\n\tContextTrigger,\n\tContextContent,\n\tContextContentHeader,\n\tContextContentBody,\n\tContextContentFooter,\n\tContextInputUsage,\n\tContextOutputUsage,\n\tContextReasoningUsage,\n\tContextCacheUsage,\n\tTokensWithCost,\n\t//\n\tContext as Root,\n\tContextTrigger as Trigger,\n\tContextContent as Content,\n\tContextContentHeader as ContentHeader,\n\tContextContentBody as ContentBody,\n\tContextContentFooter as ContentFooter,\n\tContextInputUsage as InputUsage,\n\tContextOutputUsage as OutputUsage,\n\tContextReasoningUsage as ReasoningUsage,\n\tContextCacheUsage as CacheUsage,\n};\n",
 			"type": "registry:file",
 			"target": "ai-elements/context/index.ts"
 		}

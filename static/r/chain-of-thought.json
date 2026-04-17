@@ -5,9 +5,17 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The ChainOfThought component provides a visual representation of an AI's reasoning process, showing step-by-step thinking with support for search results, images, and progress indicators. It helps users understand how AI arrives at conclusions.",
-	"dependencies": ["ai", "@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^1.8.0"],
-	"registryDependencies": ["badge", "collapsible"],
+	"dependencies": [
+		"ai",
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^1.8.0"
+	],
+	"registryDependencies": [
+		"badge",
+		"collapsible"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},
@@ -53,7 +61,7 @@
 			"target": "ai-elements/chain-of-thought/ChainOfThoughtSearchResults.svelte"
 		},
 		{
-			"content": "import ChainOfThought from \"./ChainOfThought.svelte\";\nimport ChainOfThoughtHeader from \"./ChainOfThoughtHeader.svelte\";\nimport ChainOfThoughtStep from \"./ChainOfThoughtStep.svelte\";\nimport ChainOfThoughtContent from \"./ChainOfThoughtContent.svelte\";\nimport ChainOfThoughtSearchResults from \"./ChainOfThoughtSearchResults.svelte\";\nimport ChainOfThoughtSearchResult from \"./ChainOfThoughtSearchResult.svelte\";\nimport ChainOfThoughtImage from \"./ChainOfThoughtImage.svelte\";\n\nexport {\n\tChainOfThoughtContext,\n\tgetChainOfThoughtContext,\n\tsetChainOfThoughtContext,\n} from \"./chain-of-thought-context.svelte.js\";\n\nexport {\n\tChainOfThought,\n\tChainOfThoughtHeader,\n\tChainOfThoughtStep,\n\tChainOfThoughtContent,\n\tChainOfThoughtSearchResults,\n\tChainOfThoughtSearchResult,\n\tChainOfThoughtImage,\n\t//\n\tChainOfThought as Root,\n\tChainOfThoughtHeader as Header,\n\tChainOfThoughtStep as Step,\n\tChainOfThoughtContent as Content,\n\tChainOfThoughtSearchResults as SearchResults,\n\tChainOfThoughtSearchResult as SearchResult,\n\tChainOfThoughtImage as Image,\n};",
+			"content": "import ChainOfThought from \"./ChainOfThought.svelte\";\nimport ChainOfThoughtHeader from \"./ChainOfThoughtHeader.svelte\";\nimport ChainOfThoughtStep from \"./ChainOfThoughtStep.svelte\";\nimport ChainOfThoughtContent from \"./ChainOfThoughtContent.svelte\";\nimport ChainOfThoughtSearchResults from \"./ChainOfThoughtSearchResults.svelte\";\nimport ChainOfThoughtSearchResult from \"./ChainOfThoughtSearchResult.svelte\";\nimport ChainOfThoughtImage from \"./ChainOfThoughtImage.svelte\";\n\nexport {\n\tChainOfThoughtContext,\n\tgetChainOfThoughtContext,\n\tsetChainOfThoughtContext,\n} from \"./chain-of-thought-context.svelte.js\";\n\nexport {\n\tChainOfThought,\n\tChainOfThoughtHeader,\n\tChainOfThoughtStep,\n\tChainOfThoughtContent,\n\tChainOfThoughtSearchResults,\n\tChainOfThoughtSearchResult,\n\tChainOfThoughtImage,\n\t//\n\tChainOfThought as Root,\n\tChainOfThoughtHeader as Header,\n\tChainOfThoughtStep as Step,\n\tChainOfThoughtContent as Content,\n\tChainOfThoughtSearchResults as SearchResults,\n\tChainOfThoughtSearchResult as SearchResult,\n\tChainOfThoughtImage as Image,\n};\n",
 			"type": "registry:file",
 			"target": "ai-elements/chain-of-thought/index.ts"
 		}
