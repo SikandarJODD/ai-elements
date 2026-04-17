@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app/r/new-message.json
+npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app/r/message.json
 ```
 
 ## Usage
@@ -167,7 +167,7 @@ Image attachments open inside the built-in centered dialog preview. Non-image fi
 
   <PromptInput.Root class="w-full" onSubmit={handleSubmit}>
     <PromptInput.Body>
-      <PromptInput.Textarea placeholder="Ask about the new-message API..." />
+      <PromptInput.Textarea placeholder="Ask about the message API..." />
     </PromptInput.Body>
     <PromptInput.Toolbar class="justify-end">
       <PromptInput.Submit />

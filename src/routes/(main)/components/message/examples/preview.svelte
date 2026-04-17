@@ -14,7 +14,7 @@
 	<Message from="assistant">
 		<MessageContent>
 			<MessageResponse
-				content={"`new-message` gives you role-aware layout, markdown rendering, attachments, branching, and action slots in one composable API."}
+				content={"`message` gives you role-aware layout, markdown rendering, attachments, branching, and action slots in one composable API."}
 			/>
 		</MessageContent>
 	</Message>
