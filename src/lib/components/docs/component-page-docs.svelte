@@ -61,13 +61,22 @@
 			<div class="mt-4 space-y-8">
 				{#each examples as example}
 					<div class="space-y-3">
-						<H3 id={example.name.toLowerCase().replace(/\s+/g, "-")} class="mt-0">
-							{example.name}
-						</H3>
-						{#if example.description}
-							<Paragraph class="max-w-2xl">{example.description}</Paragraph>
-						{/if}
-						<PreviewComponent code={example.code} showRetry={example.showRetry}>
+						<div>
+							<H3
+								id={example.name.toLowerCase().replace(/\s+/g, "-")}
+								class="mt-0 mb-0"
+							>
+								{example.name}
+							</H3>
+							{#if example.description}
+								<Paragraph class="mt-1 max-w-2xl">{example.description}</Paragraph>
+							{/if}
+						</div>
+						<PreviewComponent
+							code={example.code}
+							showRetry={example.showRetry}
+							class={example.previewClass}
+						>
 							<example.preview />
 						</PreviewComponent>
 					</div>

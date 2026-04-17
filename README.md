@@ -8,6 +8,7 @@
 
 [![jsrepo](https://jsrepo.com/badges/@ai/elements/dm)](https://jsrepo.com/@ai/elements)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-Support-pink?logo=githubsponsors)](https://github.com/sponsors/SikandarJODD)
 
 </div>
 
@@ -19,8 +20,6 @@ Project is divided into two parts:
 
 1. **AI Elements**: Full-featured, production-ready components for complex AI interfaces, including chat apps, reasoning UIs, tool integrations, and workflow builders.
 2. **Prompt Kit**: Lightweight, composable UI primitives for prompt engineering and simple conversational interfaces.
-
-[![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-Support-pink?logo=githubsponsors)](https://github.com/sponsors/SikandarJODD)
 
 ## Installation
 
