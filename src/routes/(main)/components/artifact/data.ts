@@ -4,6 +4,9 @@ import basicRaw from "./examples/basic.svelte?raw";
 import type { ComponentDoc, ComponentMeta } from "$lib/structure/structure";
 import type { Example } from "$lib/structure/examples";
 import type { SEO } from "$lib/structure/seo";
+import StreamArtifact from "./examples/stream-artifact.svelte";
+import StreamArtifactRaw from "./examples/stream-artifact.svelte?raw";
+import CodeSchemaRaw from "$lib/schema/code-schema?raw";
 
 export const meta: ComponentMeta = {
 	id: "artifact",
@@ -19,7 +22,74 @@ const seo: SEO = {
 	keywords: ["Svelte", "Artifact", "Svelte AI Elements"],
 };
 
-const examples: Example[] = [];
+let streamArtifactServerFile = `import { streamText, Output } from "ai";
+import { openrouter, defaultModel } from "$lib/config/ai-config";
+import type { RequestHandler } from "./$types";
+import { codeSchema } from "$lib/schema/code-schema";
+
+export const POST: RequestHandler = async ({ request }) => {
+	let context = await request.json();
+    console.log("Received context for code generation:", context);
+
+	let result = streamText({
+		model: openrouter(defaultModel),
+		prompt: \`Generate code based on the following context: \` + context,
+		output: Output.object({
+			schema: codeSchema,
+		}),
+	});
+
+	return result.toTextStreamResponse();
+};
+`;
+
+let aiConfi = `import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { OPENROUTER_API_KEY } from "$env/static/private";
+
+export const openrouter = createOpenRouter({
+	apiKey: OPENROUTER_API_KEY,
+});
+
+export let defaultModel = "arcee-ai/trinity-large-preview:free";
+`;
+
+const examples: Example[] = [
+	{
+		name: "Stream Artifact using AI SDK",
+		description:
+			"we are using `streamText` from the AI SDK to stream generated code output from the server and render it inside the Artifact component in real-time.",
+		preview: StreamArtifact,
+		code: [
+			{
+				filename: "stream-artifact.svelte",
+				filecode: StreamArtifactRaw,
+				lang: "svelte",
+				isExpand: true,
+				highlight: [4, 5, 8, [11, 14]],
+			},
+			{
+				filename: "code-schema.ts",
+				filecode: CodeSchemaRaw,
+				lang: "typescript",
+				isExpand: true,
+			},
+			{
+				filename: "ai-config.ts",
+				filecode: aiConfi,
+				lang: "typescript",
+				isExpand: true,
+			},
+			{
+				filename: "/api/stream-artifact/+server.ts",
+				filecode: streamArtifactServerFile,
+				lang: "typescript",
+				isExpand: true,
+			},
+		],
+		previewClass: "min-h-200 items-start",
+		showRetry: true,
+	},
+];
 
 export const data: ComponentDoc = {
 	...meta,

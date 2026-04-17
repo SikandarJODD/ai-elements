@@ -111,8 +111,6 @@ print(dijkstra(graph, 'A'))`;
 		</div>
 	</ArtifactHeader>
 	<ArtifactContent class="p-0">
-		<Code.Root class="border-none" {code} lang="python" hideLines={false}>
-			<Code.CopyButton />
-		</Code.Root>
+		<Code.Root class="border-none" {code} lang="python" hideLines={false}></Code.Root>
 	</ArtifactContent>
 </Artifact>

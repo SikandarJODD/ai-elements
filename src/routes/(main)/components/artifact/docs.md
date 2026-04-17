@@ -121,6 +121,75 @@ npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app//r/artifact.j
 </Artifact>
 ```
 
+### Extract Using Regex
+
+Use this pattern with AI SDK Chat when the model returns markdown text and you want to turn the first fenced code block into an artifact.
+
+```ts
+import { Chat } from "@ai-sdk/svelte";
+import { DefaultChatTransport } from "ai";
+
+let chat = new Chat({
+  transport: new DefaultChatTransport({
+    api: "/api/chat",
+    body: { model: "" },
+  }),
+});
+
+function extractCode(text: string) {
+  const match = text.match(/```[\s\S]*?```/);
+  return match ? match[0].replace(/```[a-z]*|```/g, "").trim() : text;
+}
+```
+
+Render the extracted code in `ArtifactContent` with the code component:
+
+```svelte
+<Artifact.Root>
+  <Artifact.Header>
+    <Artifact.Title>generated.py</Artifact.Title>
+    <Artifact.Description>Extracted from the latest AI response</Artifact.Description>
+  </Artifact.Header>
+  <Artifact.Content class="p-0">
+    <Code.Root code={extractCode(assistantText)} lang="python">
+      <Code.CopyButton />
+    </Code.Root>
+  </Artifact.Content>
+</Artifact.Root>
+```
+
+### Structured Output
+
+Use structured output when the model can return a typed payload instead of markdown. With the shared `/api/chat` route, send instructions that require JSON and parse the latest assistant message on the client.
+
+```json
+{
+  "type": "code",
+  "language": "python",
+  "title": "Group Revenue By Region",
+  "filename": "group_revenue.py",
+  "content": "def group_revenue(rows):\n    return rows"
+}
+```
+
+Then map the payload fields directly to the artifact:
+
+```svelte
+{#if payload}
+  <Artifact.Root>
+    <Artifact.Header>
+      <Artifact.Title>{payload.title}</Artifact.Title>
+      <Artifact.Description>{payload.filename}</Artifact.Description>
+    </Artifact.Header>
+    <Artifact.Content class="p-0">
+      <Code.Root code={payload.content} lang={payload.language}>
+        <Code.CopyButton />
+      </Code.Root>
+    </Artifact.Content>
+  </Artifact.Root>
+{/if}
+```
+
 ## Component API
 
 ### Artifact
