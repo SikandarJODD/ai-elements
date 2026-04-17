@@ -18,7 +18,7 @@ npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app/r/new-message
     Message,
     MessageContent,
     MessageResponse,
-  } from "$lib/components/ai-elements/new-message";
+  } from "$lib/components/ai-elements/message";
 </script>
 
 <Message from="user">
@@ -43,7 +43,7 @@ npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app/r/new-message
     MessageAttachment,
     MessageAttachments,
     MessageContent,
-  } from "$lib/components/ai-elements/new-message";
+  } from "$lib/components/ai-elements/message";
 </script>
 
 <Message from="user">
@@ -85,7 +85,7 @@ Image attachments open inside the built-in centered dialog preview. Non-image fi
     MessageBranchSelector,
     MessageContent,
     MessageToolbar,
-  } from "$lib/components/ai-elements/new-message";
+  } from "$lib/components/ai-elements/message";
 
   const versions = [
     { id: "1", content: "First response version..." },
@@ -124,7 +124,7 @@ Image attachments open inside the built-in centered dialog preview. Non-image fi
     Message,
     MessageContent,
     MessageResponse,
-  } from "$lib/components/ai-elements/new-message";
+  } from "$lib/components/ai-elements/message";
 
   type ChatMessage = {
     id: string;

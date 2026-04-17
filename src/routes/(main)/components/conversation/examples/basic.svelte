@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Conversation from "$lib/components/ai-elements/conversation";
-	import * as Message from "$lib/components/ai-elements/new-message";
+	import * as Message from "$lib/components/ai-elements/message";
 
 	import MessageSquare from "@lucide/svelte/icons/message-square";
 
