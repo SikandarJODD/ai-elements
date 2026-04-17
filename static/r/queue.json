@@ -5,17 +5,30 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A flexible component for displaying lists of pending and completed tasks, messages, or items with collapsible sections and attachment support.",
-	"dependencies": ["@lucide/svelte"],
+	"dependencies": [
+		"@lucide/svelte"
+	],
 	"devDependencies": [
 		"@lucide/svelte@^1.8.0",
 		"bits-ui@^2.16.3",
 		"@internationalized/date@^3.12.0"
 	],
-	"registryDependencies": ["button", "collapsible", "scroll-area"],
+	"registryDependencies": [
+		"button",
+		"collapsible",
+		"scroll-area"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["queue", "tasks", "todo", "list", "collapsible", "attachments"],
+		"tags": [
+			"queue",
+			"tasks",
+			"todo",
+			"list",
+			"collapsible",
+			"attachments"
+		],
 		"category": "Task Management",
 		"documentation": "https://svelte-ai-elements.vercel.app/components/queue",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -105,7 +118,7 @@
 			"target": "ai-elements/queue/types.ts"
 		},
 		{
-			"content": "export { default as Queue } from \"./Queue.svelte\";\nexport { default as QueueItem } from \"./QueueItem.svelte\";\nexport { default as QueueItemIndicator } from \"./QueueItemIndicator.svelte\";\nexport { default as QueueItemContent } from \"./QueueItemContent.svelte\";\nexport { default as QueueItemDescription } from \"./QueueItemDescription.svelte\";\nexport { default as QueueItemActions } from \"./QueueItemActions.svelte\";\nexport { default as QueueItemAction } from \"./QueueItemAction.svelte\";\nexport { default as QueueItemAttachment } from \"./QueueItemAttachment.svelte\";\nexport { default as QueueItemImage } from \"./QueueItemImage.svelte\";\nexport { default as QueueItemFile } from \"./QueueItemFile.svelte\";\nexport { default as QueueList } from \"./QueueList.svelte\";\nexport { default as QueueSection } from \"./QueueSection.svelte\";\nexport { default as QueueSectionTrigger } from \"./QueueSectionTrigger.svelte\";\nexport { default as QueueSectionLabel } from \"./QueueSectionLabel.svelte\";\nexport { default as QueueSectionContent } from \"./QueueSectionContent.svelte\";\n\nexport type { QueueProps } from \"./Queue.svelte\";\nexport type { QueueItemProps } from \"./QueueItem.svelte\";\nexport type { QueueItemIndicatorProps } from \"./QueueItemIndicator.svelte\";\nexport type { QueueItemContentProps } from \"./QueueItemContent.svelte\";\nexport type { QueueItemDescriptionProps } from \"./QueueItemDescription.svelte\";\nexport type { QueueItemActionsProps } from \"./QueueItemActions.svelte\";\nexport type { QueueItemActionProps } from \"./QueueItemAction.svelte\";\nexport type { QueueItemAttachmentProps } from \"./QueueItemAttachment.svelte\";\nexport type { QueueItemImageProps } from \"./QueueItemImage.svelte\";\nexport type { QueueItemFileProps } from \"./QueueItemFile.svelte\";\nexport type { QueueListProps } from \"./QueueList.svelte\";\nexport type { QueueSectionProps } from \"./QueueSection.svelte\";\nexport type { QueueSectionTriggerProps } from \"./QueueSectionTrigger.svelte\";\nexport type { QueueSectionLabelProps } from \"./QueueSectionLabel.svelte\";\nexport type { QueueSectionContentProps } from \"./QueueSectionContent.svelte\";\n\nexport type { QueueMessagePart, QueueMessage, QueueTodo } from \"./types.js\";\n",
+			"content": "import Queue from \"./Queue.svelte\";\nimport QueueItem from \"./QueueItem.svelte\";\nimport QueueItemIndicator from \"./QueueItemIndicator.svelte\";\nimport QueueItemContent from \"./QueueItemContent.svelte\";\nimport QueueItemDescription from \"./QueueItemDescription.svelte\";\nimport QueueItemActions from \"./QueueItemActions.svelte\";\nimport QueueItemAction from \"./QueueItemAction.svelte\";\nimport QueueItemAttachment from \"./QueueItemAttachment.svelte\";\nimport QueueItemImage from \"./QueueItemImage.svelte\";\nimport QueueItemFile from \"./QueueItemFile.svelte\";\nimport QueueList from \"./QueueList.svelte\";\nimport QueueSection from \"./QueueSection.svelte\";\nimport QueueSectionTrigger from \"./QueueSectionTrigger.svelte\";\nimport QueueSectionLabel from \"./QueueSectionLabel.svelte\";\nimport QueueSectionContent from \"./QueueSectionContent.svelte\";\n\nexport type { QueueProps } from \"./Queue.svelte\";\nexport type { QueueItemProps } from \"./QueueItem.svelte\";\nexport type { QueueItemIndicatorProps } from \"./QueueItemIndicator.svelte\";\nexport type { QueueItemContentProps } from \"./QueueItemContent.svelte\";\nexport type { QueueItemDescriptionProps } from \"./QueueItemDescription.svelte\";\nexport type { QueueItemActionsProps } from \"./QueueItemActions.svelte\";\nexport type { QueueItemActionProps } from \"./QueueItemAction.svelte\";\nexport type { QueueItemAttachmentProps } from \"./QueueItemAttachment.svelte\";\nexport type { QueueItemImageProps } from \"./QueueItemImage.svelte\";\nexport type { QueueItemFileProps } from \"./QueueItemFile.svelte\";\nexport type { QueueListProps } from \"./QueueList.svelte\";\nexport type { QueueSectionProps } from \"./QueueSection.svelte\";\nexport type { QueueSectionTriggerProps } from \"./QueueSectionTrigger.svelte\";\nexport type { QueueSectionLabelProps } from \"./QueueSectionLabel.svelte\";\nexport type { QueueSectionContentProps } from \"./QueueSectionContent.svelte\";\n\nexport type { QueueMessagePart, QueueMessage, QueueTodo } from \"./types.js\";\n\nexport {\n\tQueue,\n\tQueueItem,\n\tQueueItemIndicator,\n\tQueueItemContent,\n\tQueueItemDescription,\n\tQueueItemActions,\n\tQueueItemAction,\n\tQueueItemAttachment,\n\tQueueItemImage,\n\tQueueItemFile,\n\tQueueList,\n\tQueueSection,\n\tQueueSectionTrigger,\n\tQueueSectionLabel,\n\tQueueSectionContent,\n\t//\n\tQueue as Root,\n\tQueueItem as Item,\n\tQueueItemIndicator as ItemIndicator,\n\tQueueItemContent as ItemContent,\n\tQueueItemDescription as ItemDescription,\n\tQueueItemActions as ItemActions,\n\tQueueItemAction as ItemAction,\n\tQueueItemAttachment as ItemAttachment,\n\tQueueItemImage as ItemImage,\n\tQueueItemFile as ItemFile,\n\tQueueList as List,\n\tQueueSection as Section,\n\tQueueSectionTrigger as SectionTrigger,\n\tQueueSectionLabel as SectionLabel,\n\tQueueSectionContent as SectionContent,\n};\n",
 			"type": "registry:file",
 			"target": "ai-elements/queue/index.ts"
 		}

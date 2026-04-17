@@ -5,9 +5,17 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Tool component provides a comprehensive interface for displaying AI tool usage, including input parameters, execution status, and output results with collapsible sections.",
-	"dependencies": ["runed@^0.37.1"],
-	"devDependencies": ["@lucide/svelte@^1.8.0"],
-	"registryDependencies": ["./code.json", "collapsible", "badge"],
+	"dependencies": [
+		"runed@^0.37.1"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^1.8.0"
+	],
+	"registryDependencies": [
+		"./code.json",
+		"collapsible",
+		"badge"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},
@@ -43,7 +51,7 @@
 			"target": "ai-elements/tool/tool-context.svelte.ts"
 		},
 		{
-			"content": "export { default as Tool } from \"./Tool.svelte\";\nexport { default as ToolHeader } from \"./ToolHeader.svelte\";\nexport { default as ToolContent } from \"./ToolContent.svelte\";\nexport { default as ToolInput } from \"./ToolInput.svelte\";\nexport { default as ToolOutput } from \"./ToolOutput.svelte\";\n\nexport {\n\tToolClass,\n\tsetToolContext,\n\tgetToolContext,\n\ttype ToolSchema,\n\ttype ToolUIPartType,\n\ttype ToolUIPartState,\n} from \"./tool-context.svelte.js\";\n",
+			"content": "import Tool from \"./Tool.svelte\";\nimport ToolContent from \"./ToolContent.svelte\";\nimport ToolHeader from \"./ToolHeader.svelte\";\nimport ToolInput from \"./ToolInput.svelte\";\nimport ToolOutput from \"./ToolOutput.svelte\";\n\nexport {\n\tTool,\n\tToolHeader,\n\tToolContent,\n\tToolInput,\n\tToolOutput,\n\t//\n\tTool as Root,\n\tToolHeader as Header,\n\tToolContent as Content,\n\tToolInput as Input,\n\tToolOutput as Output,\n};\n\nexport {\n\tToolClass,\n\tsetToolContext,\n\tgetToolContext,\n\ttype ToolSchema,\n\ttype ToolUIPartType,\n\ttype ToolUIPartState,\n} from \"./tool-context.svelte.js\";\n",
 			"type": "registry:file",
 			"target": "ai-elements/tool/index.ts"
 		}

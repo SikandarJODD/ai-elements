@@ -5,13 +5,27 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A simple component for marking conversation history points and restoring the chat to a previous state. Inspired by VSCode's Copilot checkpoint feature.",
-	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^1.8.0"],
-	"registryDependencies": ["button", "separator", "tooltip"],
+	"dependencies": [
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^1.8.0"
+	],
+	"registryDependencies": [
+		"button",
+		"separator",
+		"tooltip"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["checkpoint", "conversation", "history", "restore", "undo"],
+		"tags": [
+			"checkpoint",
+			"conversation",
+			"history",
+			"restore",
+			"undo"
+		],
 		"category": "Conversation",
 		"documentation": "https://svelte-ai-elements.vercel.app/components/checkpoint",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -36,7 +50,7 @@
 			"target": "ai-elements/checkpoint/CheckpointTrigger.svelte"
 		},
 		{
-			"content": "export { default as Checkpoint } from \"./Checkpoint.svelte\";\nexport { default as CheckpointIcon } from \"./CheckpointIcon.svelte\";\nexport { default as CheckpointTrigger } from \"./CheckpointTrigger.svelte\";\n\nexport type { CheckpointProps } from \"./Checkpoint.svelte\";\nexport type { CheckpointIconProps } from \"./CheckpointIcon.svelte\";\nexport type { CheckpointTriggerProps } from \"./CheckpointTrigger.svelte\";\n",
+			"content": "import Checkpoint from \"./Checkpoint.svelte\";\nimport CheckpointIcon from \"./CheckpointIcon.svelte\";\nimport CheckpointTrigger from \"./CheckpointTrigger.svelte\";\n\nexport {\n\tCheckpoint,\n\tCheckpointIcon,\n\tCheckpointTrigger,\n\t//\n\tCheckpoint as Root,\n\tCheckpointIcon as Icon,\n\tCheckpointTrigger as Trigger,\n};\n",
 			"type": "registry:file",
 			"target": "ai-elements/checkpoint/index.ts"
 		}

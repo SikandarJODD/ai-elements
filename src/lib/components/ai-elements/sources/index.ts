@@ -1,4 +1,16 @@
-export { default as Sources } from "./Sources.svelte";
-export { default as SourcesTrigger } from "./SourcesTrigger.svelte";
-export { default as SourcesContent } from "./SourcesContent.svelte";
-export { default as Source } from "./Source.svelte";
+import Sources from "./Sources.svelte";
+import SourcesTrigger from "./SourcesTrigger.svelte";
+import SourcesContent from "./SourcesContent.svelte";
+import Source from "./Source.svelte";
+
+export {
+	Sources,
+	SourcesTrigger,
+	SourcesContent,
+	Source,
+	//
+	Sources as Root,
+	SourcesTrigger as Trigger,
+	SourcesContent as Content,
+	Source as Item,
+};

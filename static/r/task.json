@@ -10,7 +10,10 @@
 		"@internationalized/date@^3.12.0",
 		"@lucide/svelte@^1.8.0"
 	],
-	"registryDependencies": ["collapsible", "badge"],
+	"registryDependencies": [
+		"collapsible",
+		"badge"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},
@@ -46,7 +49,7 @@
 			"target": "ai-elements/task/SvelteIcon.svelte"
 		},
 		{
-			"content": "export { default as Task } from \"./Task.svelte\";\nexport { default as TaskContent } from \"./TaskContent.svelte\";\nexport { default as TaskItem } from \"./TaskItem.svelte\";\nexport { default as TaskItemFile } from \"./TaskItemFile.svelte\";\nexport { default as TaskTrigger } from \"./TaskTrigger.svelte\";\n\nexport type { TaskProps } from \"./Task.svelte\";\nexport type { TaskContentProps } from \"./TaskContent.svelte\";\nexport type { TaskItemProps } from \"./TaskItem.svelte\";\nexport type { TaskItemFileProps } from \"./TaskItemFile.svelte\";\nexport type { TaskTriggerProps } from \"./TaskTrigger.svelte\";\n",
+			"content": "import Task from \"./Task.svelte\";\nimport TaskContent from \"./TaskContent.svelte\";\nimport TaskItem from \"./TaskItem.svelte\";\nimport TaskItemFile from \"./TaskItemFile.svelte\";\nimport TaskTrigger from \"./TaskTrigger.svelte\";\n\nexport {\n\tTask,\n\tTaskContent,\n\tTaskItem,\n\tTaskItemFile,\n\tTaskTrigger,\n\t//\n\tTask as Root,\n\tTaskTrigger as Trigger,\n\tTaskContent as Content,\n\tTaskItem as Item,\n\tTaskItemFile as ItemFile,\n};\n\nexport type { TaskProps } from \"./Task.svelte\";\nexport type { TaskContentProps } from \"./TaskContent.svelte\";\nexport type { TaskItemProps } from \"./TaskItem.svelte\";\nexport type { TaskItemFileProps } from \"./TaskItemFile.svelte\";\nexport type { TaskTriggerProps } from \"./TaskTrigger.svelte\";\n",
 			"type": "registry:file",
 			"target": "ai-elements/task/index.ts"
 		}

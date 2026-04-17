@@ -98,7 +98,7 @@
 					// },
 					{
 						title: "Message",
-						url: "/components/new-message",
+						url: "/components/message",
 						badge: "new",
 					},
 					{

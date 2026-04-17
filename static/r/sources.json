@@ -5,9 +5,15 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Sources component displays a collapsible list of sources and references used in AI responses, with expandable content and visual indicators.",
-	"dependencies": ["@lucide/svelte"],
-	"devDependencies": ["@lucide/svelte@^1.8.0"],
-	"registryDependencies": ["collapsible"],
+	"dependencies": [
+		"@lucide/svelte"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^1.8.0"
+	],
+	"registryDependencies": [
+		"collapsible"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},
@@ -33,7 +39,7 @@
 			"target": "ai-elements/sources/Source.svelte"
 		},
 		{
-			"content": "export { default as Sources } from \"./Sources.svelte\";\nexport { default as SourcesTrigger } from \"./SourcesTrigger.svelte\";\nexport { default as SourcesContent } from \"./SourcesContent.svelte\";\nexport { default as Source } from \"./Source.svelte\";\n",
+			"content": "import Sources from \"./Sources.svelte\";\nimport SourcesTrigger from \"./SourcesTrigger.svelte\";\nimport SourcesContent from \"./SourcesContent.svelte\";\nimport Source from \"./Source.svelte\";\n\nexport {\n\tSources,\n\tSourcesTrigger,\n\tSourcesContent,\n\tSource,\n\t//\n\tSources as Root,\n\tSourcesTrigger as Trigger,\n\tSourcesContent as Content,\n\tSource as Item,\n};\n",
 			"type": "registry:file",
 			"target": "ai-elements/sources/index.ts"
 		}

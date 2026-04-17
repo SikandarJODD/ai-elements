@@ -5,9 +5,15 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "The Conversation component provides a structured layout for displaying a series of chat messages between a user and an AI. It supports features like message grouping, typing indicators, and customizable avatars.",
-	"dependencies": ["runed@^0.37.1"],
-	"devDependencies": ["@lucide/svelte@^1.8.0"],
-	"registryDependencies": ["button"],
+	"dependencies": [
+		"runed@^0.37.1"
+	],
+	"devDependencies": [
+		"@lucide/svelte@^1.8.0"
+	],
+	"registryDependencies": [
+		"button"
+	],
 	"meta": {
 		"author": "SikandarJODD"
 	},
@@ -38,7 +44,7 @@
 			"target": "ai-elements/conversation/stick-to-bottom-context.svelte.ts"
 		},
 		{
-			"content": "export { default as Conversation } from \"./Conversation.svelte\";\nexport { default as ConversationContent } from \"./ConversationContent.svelte\";\nexport { default as ConversationEmptyState } from \"./ConversationEmptyState.svelte\";\nexport { default as ConversationScrollButton } from \"./ConversationScrollButton.svelte\";\nexport {\n\tgetStickToBottomContext,\n\tsetStickToBottomContext,\n\tStickToBottomContext,\n} from \"./stick-to-bottom-context.svelte.js\";\n\nexport type { ConversationProps } from \"./Conversation.svelte\";\nexport type { ConversationContentProps } from \"./ConversationContent.svelte\";\nexport type { ConversationEmptyStateProps } from \"./ConversationEmptyState.svelte\";\nexport type { ConversationScrollButtonProps } from \"./ConversationScrollButton.svelte\";\n",
+			"content": "import Conversation from \"./Conversation.svelte\";\nimport ConversationContent from \"./ConversationContent.svelte\";\nimport ConversationEmptyState from \"./ConversationEmptyState.svelte\";\nimport ConversationScrollButton from \"./ConversationScrollButton.svelte\";\nimport {\n\tgetStickToBottomContext,\n\tsetStickToBottomContext,\n\tStickToBottomContext,\n} from \"./stick-to-bottom-context.svelte.js\";\n\nexport {\n\tConversation,\n\tConversationContent,\n\tConversationEmptyState,\n\tConversationScrollButton,\n\tgetStickToBottomContext,\n\tsetStickToBottomContext,\n\tStickToBottomContext,\n\t//\n\tConversation as Root,\n\tConversationContent as Content,\n\tConversationEmptyState as EmptyState,\n\tConversationScrollButton as ScrollButton,\n};\n",
 			"type": "registry:file",
 			"target": "ai-elements/conversation/index.ts"
 		}

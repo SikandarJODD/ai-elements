@@ -1,8 +1,22 @@
-export { default as Task } from "./Task.svelte";
-export { default as TaskContent } from "./TaskContent.svelte";
-export { default as TaskItem } from "./TaskItem.svelte";
-export { default as TaskItemFile } from "./TaskItemFile.svelte";
-export { default as TaskTrigger } from "./TaskTrigger.svelte";
+import Task from "./Task.svelte";
+import TaskContent from "./TaskContent.svelte";
+import TaskItem from "./TaskItem.svelte";
+import TaskItemFile from "./TaskItemFile.svelte";
+import TaskTrigger from "./TaskTrigger.svelte";
+
+export {
+	Task,
+	TaskContent,
+	TaskItem,
+	TaskItemFile,
+	TaskTrigger,
+	//
+	Task as Root,
+	TaskTrigger as Trigger,
+	TaskContent as Content,
+	TaskItem as Item,
+	TaskItemFile as ItemFile,
+};
 
 export type { TaskProps } from "./Task.svelte";
 export type { TaskContentProps } from "./TaskContent.svelte";

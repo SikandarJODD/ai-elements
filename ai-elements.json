@@ -640,31 +640,31 @@
 			}
 		},
 		{
-			"name": "message",
-			"title": "Message",
+			"name": "message-old",
+			"title": "Message (Old)",
 			"type": "registry:block",
 			"author": "SikandarJODD",
 			"description": "The Message component displays a chat interface message from either a user or an AI. It includes an avatar, a name, and a message content.",
 			"files": [
 				{
-					"path": "src/lib/components/ai-elements/message/Message.svelte",
+					"path": "src/lib/components/ai-elements/message-old/Message.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/message/Message.svelte"
+					"target": "ai-elements/message-old/Message.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/message/MessageAvatar.svelte",
+					"path": "src/lib/components/ai-elements/message-old/MessageAvatar.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/message/MessageAvatar.svelte"
+					"target": "ai-elements/message-old/MessageAvatar.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/message/MessageContent.svelte",
+					"path": "src/lib/components/ai-elements/message-old/MessageContent.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/message/MessageContent.svelte"
+					"target": "ai-elements/message-old/MessageContent.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/message/index.ts",
+					"path": "src/lib/components/ai-elements/message-old/index.ts",
 					"type": "registry:file",
-					"target": "ai-elements/message/index.ts"
+					"target": "ai-elements/message-old/index.ts"
 				}
 			],
 			"registryDependencies": ["avatar"],
@@ -674,96 +674,96 @@
 			}
 		},
 		{
-			"name": "new-message",
-			"title": "New Message",
+			"name": "message",
+			"title": "Message",
 			"type": "registry:block",
 			"author": "SikandarJODD",
-			"description": "Enhanced message component with simplified branching, image attachment previews, actions, and rich markdown rendering for AI chat interfaces.",
+			"description": "A comprehensive suite of components for displaying chat messages, including message rendering, branching, actions, and markdown responses.",
 			"files": [
 				{
-					"path": "src/lib/components/ai-elements/new-message/core/Message.svelte",
+					"path": "src/lib/components/ai-elements/message/core/Message.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/new-message/core/Message.svelte"
+					"target": "ai-elements/message/core/Message.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/core/MessageContent.svelte",
+					"path": "src/lib/components/ai-elements/message/core/MessageContent.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/new-message/core/MessageContent.svelte"
+					"target": "ai-elements/message/core/MessageContent.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/response/MessageResponse.svelte",
+					"path": "src/lib/components/ai-elements/message/response/MessageResponse.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/new-message/response/MessageResponse.svelte"
+					"target": "ai-elements/message/response/MessageResponse.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/actions/MessageActions.svelte",
+					"path": "src/lib/components/ai-elements/message/actions/MessageActions.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/new-message/actions/MessageActions.svelte"
+					"target": "ai-elements/message/actions/MessageActions.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/actions/MessageAction.svelte",
+					"path": "src/lib/components/ai-elements/message/actions/MessageAction.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/new-message/actions/MessageAction.svelte"
+					"target": "ai-elements/message/actions/MessageAction.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/actions/MessageToolbar.svelte",
+					"path": "src/lib/components/ai-elements/message/actions/MessageToolbar.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/new-message/actions/MessageToolbar.svelte"
+					"target": "ai-elements/message/actions/MessageToolbar.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/branching/MessageBranch.svelte",
+					"path": "src/lib/components/ai-elements/message/branching/MessageBranch.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/new-message/branching/MessageBranch.svelte"
+					"target": "ai-elements/message/branching/MessageBranch.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/branching/MessageBranchContent.svelte",
+					"path": "src/lib/components/ai-elements/message/branching/MessageBranchContent.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/new-message/branching/MessageBranchContent.svelte"
+					"target": "ai-elements/message/branching/MessageBranchContent.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/branching/MessageBranchSelector.svelte",
+					"path": "src/lib/components/ai-elements/message/branching/MessageBranchSelector.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/new-message/branching/MessageBranchSelector.svelte"
+					"target": "ai-elements/message/branching/MessageBranchSelector.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/branching/MessageBranchPrevious.svelte",
+					"path": "src/lib/components/ai-elements/message/branching/MessageBranchPrevious.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/new-message/branching/MessageBranchPrevious.svelte"
+					"target": "ai-elements/message/branching/MessageBranchPrevious.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/branching/MessageBranchNext.svelte",
+					"path": "src/lib/components/ai-elements/message/branching/MessageBranchNext.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/new-message/branching/MessageBranchNext.svelte"
+					"target": "ai-elements/message/branching/MessageBranchNext.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/branching/MessageBranchPage.svelte",
+					"path": "src/lib/components/ai-elements/message/branching/MessageBranchPage.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/new-message/branching/MessageBranchPage.svelte"
+					"target": "ai-elements/message/branching/MessageBranchPage.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/attachments/MessageAttachment.svelte",
+					"path": "src/lib/components/ai-elements/message/attachments/MessageAttachment.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/new-message/attachments/MessageAttachment.svelte"
+					"target": "ai-elements/message/attachments/MessageAttachment.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/attachments/MessageAttachmentPreview.svelte",
+					"path": "src/lib/components/ai-elements/message/attachments/MessageAttachmentPreview.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/new-message/attachments/MessageAttachmentPreview.svelte"
+					"target": "ai-elements/message/attachments/MessageAttachmentPreview.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/attachments/MessageAttachments.svelte",
+					"path": "src/lib/components/ai-elements/message/attachments/MessageAttachments.svelte",
 					"type": "registry:component",
-					"target": "ai-elements/new-message/attachments/MessageAttachments.svelte"
+					"target": "ai-elements/message/attachments/MessageAttachments.svelte"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/context/message-context.svelte.ts",
+					"path": "src/lib/components/ai-elements/message/context/message-context.svelte.ts",
 					"type": "registry:file",
-					"target": "ai-elements/new-message/context/message-context.svelte.ts"
+					"target": "ai-elements/message/context/message-context.svelte.ts"
 				},
 				{
-					"path": "src/lib/components/ai-elements/new-message/index.ts",
+					"path": "src/lib/components/ai-elements/message/index.ts",
 					"type": "registry:file",
-					"target": "ai-elements/new-message/index.ts"
+					"target": "ai-elements/message/index.ts"
 				}
 			],
 			"registryDependencies": ["button", "button-group", "tooltip", "dialog"],
@@ -786,7 +786,7 @@
 					"preview"
 				],
 				"category": "AI Chat",
-				"documentation": "https://svelte-ai-elements.vercel.app/components/new-message",
+				"documentation": "https://svelte-ai-elements.vercel.app/components/message",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
 				"complexity": "intermediate",
 				"updated": "2026-04-11",

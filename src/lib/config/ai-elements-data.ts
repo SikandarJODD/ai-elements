@@ -107,17 +107,17 @@ export const aiElementsData: AIElementItem[] = [
 		category: "components",
 	},
 	// {
-	// 	name: "Message",
-	// 	slug: "message",
-	// 	href: "/components/message",
+	// 	name: "Message (Old)",
+	// 	slug: "message-old",
+	// 	href: "/components/message-old",
 	// 	description: "Chat message with avatar and content",
 	// 	category: "components",
 	// },
 	{
 		name: "Message",
-		slug: "new-message",
-		href: "/components/new-message",
-		description: "Enhanced message component",
+		slug: "message",
+		href: "/components/message",
+		description: "Enhanced message component with content, file attachments",
 		category: "components",
 	},
 	{

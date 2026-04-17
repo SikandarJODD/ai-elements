@@ -5,12 +5,24 @@
 	"type": "registry:block",
 	"author": "SikandarJODD",
 	"description": "A component for requesting user approval before executing sensitive AI actions. Displays different states for approval requests, accepted, and rejected actions.",
-	"dependencies": ["@lucide/svelte", "runed"],
-	"registryDependencies": ["button", "alert"],
+	"dependencies": [
+		"@lucide/svelte",
+		"runed"
+	],
+	"registryDependencies": [
+		"button",
+		"alert"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["confirmation", "approval", "ai-actions", "permissions", "security"],
+		"tags": [
+			"confirmation",
+			"approval",
+			"ai-actions",
+			"permissions",
+			"security"
+		],
 		"category": "AI Response",
 		"documentation": "https://ai-elements.vercel.app/components/confirmation",
 		"repository": "https://github.com/SikandarJODD/ai-elements",
@@ -60,7 +72,7 @@
 			"target": "ai-elements/confirmation/confirmation-context.svelte.ts"
 		},
 		{
-			"content": "export { default as Confirmation } from \"./Confirmation.svelte\";\nexport { default as ConfirmationTitle } from \"./ConfirmationTitle.svelte\";\nexport { default as ConfirmationRequest } from \"./ConfirmationRequest.svelte\";\nexport { default as ConfirmationAccepted } from \"./ConfirmationAccepted.svelte\";\nexport { default as ConfirmationRejected } from \"./ConfirmationRejected.svelte\";\nexport { default as ConfirmationActions } from \"./ConfirmationActions.svelte\";\nexport { default as ConfirmationAction } from \"./ConfirmationAction.svelte\";\n\nexport type { ConfirmationProps } from \"./Confirmation.svelte\";\nexport type { ConfirmationTitleProps } from \"./ConfirmationTitle.svelte\";\nexport type { ConfirmationRequestProps } from \"./ConfirmationRequest.svelte\";\nexport type { ConfirmationAcceptedProps } from \"./ConfirmationAccepted.svelte\";\nexport type { ConfirmationRejectedProps } from \"./ConfirmationRejected.svelte\";\nexport type { ConfirmationActionsProps } from \"./ConfirmationActions.svelte\";\nexport type { ConfirmationActionProps } from \"./ConfirmationAction.svelte\";\n\nexport type {\n\tToolUIPartApproval,\n\tToolUIPartState,\n\tConfirmationContextValue,\n} from \"./confirmation-context.svelte.js\";\n",
+			"content": "import Confirmation from \"./Confirmation.svelte\";\nimport ConfirmationTitle from \"./ConfirmationTitle.svelte\";\nimport ConfirmationRequest from \"./ConfirmationRequest.svelte\";\nimport ConfirmationAccepted from \"./ConfirmationAccepted.svelte\";\nimport ConfirmationRejected from \"./ConfirmationRejected.svelte\";\nimport ConfirmationActions from \"./ConfirmationActions.svelte\";\nimport ConfirmationAction from \"./ConfirmationAction.svelte\";\n\nimport { type ConfirmationProps } from \"./Confirmation.svelte\";\nimport { type ConfirmationTitleProps } from \"./ConfirmationTitle.svelte\";\nimport { type ConfirmationRequestProps } from \"./ConfirmationRequest.svelte\";\nimport { type ConfirmationAcceptedProps } from \"./ConfirmationAccepted.svelte\";\nimport { type ConfirmationRejectedProps } from \"./ConfirmationRejected.svelte\";\nimport { type ConfirmationActionsProps } from \"./ConfirmationActions.svelte\";\nimport { type ConfirmationActionProps } from \"./ConfirmationAction.svelte\";\n\nexport type {\n\tToolUIPartApproval,\n\tToolUIPartState,\n\tConfirmationContextValue,\n} from \"./confirmation-context.svelte.js\";\n\nexport {\n\tConfirmation,\n\tConfirmationTitle,\n\tConfirmationRequest,\n\tConfirmationAccepted,\n\tConfirmationRejected,\n\tConfirmationActions,\n\tConfirmationAction,\n\t//\n\tConfirmation as Root,\n\tConfirmationTitle as Title,\n\tConfirmationRequest as Request,\n\tConfirmationAccepted as Accepted,\n\tConfirmationRejected as Rejected,\n\tConfirmationActions as Actions,\n\tConfirmationAction as Action,\n};\n\nexport type {\n\tConfirmationProps,\n\tConfirmationTitleProps,\n\tConfirmationRequestProps,\n\tConfirmationAcceptedProps,\n\tConfirmationRejectedProps,\n\tConfirmationActionsProps,\n\tConfirmationActionProps,\n};\n",
 			"type": "registry:file",
 			"target": "ai-elements/confirmation/index.ts"
 		}

@@ -3,7 +3,7 @@
 		Message,
 		MessageContent,
 		MessageResponse,
-	} from "$lib/components/ai-elements/new-message";
+	} from "$lib/components/ai-elements/message";
 </script>
 
 <div class="flex w-full flex-col gap-4">
@@ -14,7 +14,7 @@
 	<Message from="assistant">
 		<MessageContent>
 			<MessageResponse
-				content={"`new-message` gives you role-aware layout, markdown rendering, attachments, branching, and action slots in one composable API."}
+				content={"`message` gives you role-aware layout, markdown rendering, attachments, branching, and action slots in one composable API."}
 			/>
 		</MessageContent>
 	</Message>
