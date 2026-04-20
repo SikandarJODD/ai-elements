@@ -5,12 +5,28 @@
 	interface Props {
 		children?: import("svelte").Snippet;
 		class?: string;
+		align?: "center" | "start" | "end";
+		side?: "top" | "right" | "bottom" | "left";
+		sideOffset?: number;
 		[key: string]: any;
 	}
 
-	let { children, class: className, ...props }: Props = $props();
+	let {
+		children,
+		side = "top",
+		align = "center",
+		sideOffset = 4,
+		class: className,
+		...props
+	}: Props = $props();
 </script>
 
-<HoverCardContent class={cn("min-w-[240px] divide-y overflow-hidden p-0", className)} {...props}>
+<HoverCardContent
+	{side}
+	{align}
+	{sideOffset}
+	class={cn("min-w-60 divide-y overflow-hidden p-0", className)}
+	{...props}
+>
 	{@render children?.()}
 </HoverCardContent>

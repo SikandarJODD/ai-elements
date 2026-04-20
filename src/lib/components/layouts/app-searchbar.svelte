@@ -85,12 +85,12 @@
 <!-- Search Button -->
 <button
 	onclick={() => (open = true)}
-	class="bg-muted/50 hover:bg-muted inline-flex h-9 w-full items-center justify-between gap-2 rounded-md px-3 text-sm transition-colors md:w-72"
+	class="bg-muted/50 hover:bg-muted inline-flex h-9 w-full items-center justify-between gap-2 rounded-md pl-3 pr-2 text-sm transition-colors md:w-56"
 	type="button"
 >
 	<div class="flex items-center gap-2">
 		<SearchIcon class="text-muted-foreground size-4" />
-		<span class="text-muted-foreground">Search documentation...</span>
+		<span class="text-muted-foreground">Search..</span>
 	</div>
 	<div class="flex items-center gap-1">
 		<kbd

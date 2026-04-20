@@ -1,13 +1,11 @@
 <script lang="ts">
-	import { Button } from "$lib/components/ui/button";
+	import { Button, type ButtonProps } from "$lib/components/ui/button";
 	import HoverCardTrigger from "$lib/components/ui/hover-card/hover-card-trigger.svelte";
 	import ContextIcon from "./ContextIcon.svelte";
 	import { getContextValue } from "./context-context.svelte";
 
-	interface Props {
+	interface Props extends ButtonProps {
 		children?: import("svelte").Snippet;
-		variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
-		size?: "default" | "sm" | "lg" | "icon";
 		[key: string]: any;
 	}
 

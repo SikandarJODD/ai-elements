@@ -38,7 +38,7 @@ const seo: SEO = {
 let serverTsFileRaw = `// Place it inside routes/api/chat/+server.ts
 
 import { streamText, type UIMessage, convertToModelMessages } from "ai";
-import { openrouter, defaultModel } from "$lib/config/ai-config";
+import { openrouter, defaultModel } from "$lib/config/ai";
 import type { RequestHandler } from "./$types";
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -54,13 +54,13 @@ export const POST: RequestHandler = async ({ request }) => {
 `;
 
 let serverTsFileRawWithModelSelection = `import { streamText, type UIMessage, convertToModelMessages } from "ai";
-import { openrouter, defaultModel } from "$lib/config/ai-config";
+import { openrouter, defaultModel } from "$lib/config/ai";
 import type { RequestHandler } from "./$types";
 
 export const POST: RequestHandler = async ({ request }) => {
 	const { messages, model }: { messages: UIMessage[]; model: string } = await request.json();
 
-	let modelToUse = model.length > 0 ? model : defaultModel;
+	let modelToUse = model ? model : defaultModel;
 	let result = streamText({
 		model: openrouter(modelToUse),
 		messages: await convertToModelMessages(messages),
@@ -68,6 +68,16 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	return result.toUIMessageStreamResponse();
 };
+`;
+
+let aiConfigFile = `import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { OPENROUTER_API_KEY } from "$env/static/private";
+
+export const openrouter = createOpenRouter({
+	apiKey: OPENROUTER_API_KEY,
+});
+
+export let defaultModel = "arcee-ai/trinity-large-preview:free";
 `;
 
 const examples: Example[] = [
@@ -105,6 +115,12 @@ const examples: Example[] = [
 				filecode: serverTsFileRaw,
 				lang: "typescript",
 			},
+			{
+				filename: "lib/config/ai.ts",
+				filecode: aiConfigFile,
+				lang: "typescript",
+			},
+
 		],
 	},
 	{
@@ -119,6 +135,11 @@ const examples: Example[] = [
 			{
 				filename: "api/chat/+server.ts",
 				filecode: serverTsFileRawWithModelSelection,
+				lang: "typescript",
+			},
+			{
+				filename: "lib/config/ai.ts",
+				filecode: aiConfigFile,
 				lang: "typescript",
 			},
 		],

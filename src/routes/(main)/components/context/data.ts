@@ -4,6 +4,8 @@ import basicRaw from "./examples/basic.svelte?raw";
 import type { Example } from "$lib/structure/examples";
 import type { SEO } from "$lib/structure/seo";
 import type { ComponentDoc, ComponentMeta } from "$lib/structure/structure";
+import Usage from "./examples/usage.svelte";
+import UsageRaw from "./examples/usage.svelte?raw";
 
 export const meta: ComponentMeta = {
 	id: "context",
@@ -19,7 +21,65 @@ const seo: SEO = {
 	keywords: ["Svelte", "Context", "Token usage", "Svelte AI Elements"],
 };
 
-const examples: Example[] = [];
+let serverUsageFile = `import { streamText, type UIMessage, convertToModelMessages } from "ai";
+import { openrouter, defaultModel } from "$lib/config/ai";
+import type { RequestHandler } from "./$types";
+
+export const POST: RequestHandler = async ({ request }) => {
+	const { messages }: { messages: UIMessage[];} = await request.json();
+
+	let result = streamText({
+		model: openrouter(defaultModel),
+		messages: await convertToModelMessages(messages),
+	});
+
+	return result.toUIMessageStreamResponse({
+		messageMetadata: ({ part }) => {
+			if (part.type === "finish") {
+				return {
+					inputTokens: part.totalUsage.inputTokens,
+					totalTokens: part.totalUsage.totalTokens,
+					outputTokens: part.totalUsage.outputTokens,
+					reasoningTokens: part.totalUsage.outputTokenDetails.reasoningTokens,
+				};
+			}
+		},
+	});
+};
+`;
+
+let aiConfigFile = `import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { OPENROUTER_API_KEY } from "$env/static/private";
+
+export const openrouter = createOpenRouter({
+	apiKey: OPENROUTER_API_KEY,
+});
+
+export let defaultModel = "arcee-ai/trinity-large-preview:free";
+`;
+
+const examples: Example[] = [
+	{
+		name: "Usage with AI SDK",
+		preview: Usage,
+		code: [
+			{
+				filename: "usage.svelte",
+				filecode: UsageRaw,
+			},
+			{
+				filename: "api/chat/+server.ts",
+				filecode: serverUsageFile,
+				lang: "typescript",
+			},
+			{
+				filename: "lib/config/ai.ts",
+				filecode: aiConfigFile,
+				lang: "typescript",
+			},
+		],
+	},
+];
 
 export const data: ComponentDoc = {
 	...meta,
