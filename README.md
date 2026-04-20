@@ -156,13 +156,13 @@ For markdown and streaming response rendering, this project uses [`svelte-stream
 ## Inspired By
 
 - [Vercel AI Elements](https://vercel.com/changelog/introducing-ai-elements)
-- [ibelick/prompt-kit](https://github.com/ibelick/prompt-kit)
+- [Ibelick: Prompt-Kit](https://github.com/ibelick/prompt-kit)
 
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
 <div align="center">
-  <p>Made with 😍 by <a href="https://x.com/Sikandar_Bhide">Bhide Svelte</a></p>
+  <p>Made with ❤️ by <a href="https://x.com/Sikandar_Bhide">Bhide Svelte</a></p>
 
 </div>

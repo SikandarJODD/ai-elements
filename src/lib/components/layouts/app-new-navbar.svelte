@@ -624,7 +624,7 @@
 		<div class="flex items-center gap-2 md:gap-2">
 			<!-- Search Bar -->
 			<div class="hidden md:block">
-				<McpDialog />
+				<!-- <McpDialog /> -->
 				<AppSearchbar />
 			</div>
 			<Button
