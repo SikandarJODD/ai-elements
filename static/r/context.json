@@ -25,7 +25,7 @@
 			"target": "ai-elements/context/ContextCacheUsage.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport HoverCardContent from \"$COMPONENTS$/ui/hover-card/hover-card-content.svelte\";\n\timport { cn } from \"$UTILS$\";\n\n\tinterface Props {\n\t\tchildren?: import(\"svelte\").Snippet;\n\t\tclass?: string;\n\t\t[key: string]: any;\n\t}\n\n\tlet { children, class: className, ...props }: Props = $props();\n</script>\n\n<HoverCardContent class={cn(\"min-w-[240px] divide-y overflow-hidden p-0\", className)} {...props}>\n\t{@render children?.()}\n</HoverCardContent>\n",
+			"content": "<script lang=\"ts\">\n\timport HoverCardContent from \"$COMPONENTS$/ui/hover-card/hover-card-content.svelte\";\n\timport { cn } from \"$UTILS$\";\n\n\tinterface Props {\n\t\tchildren?: import(\"svelte\").Snippet;\n\t\tclass?: string;\n\t\talign?: \"center\" | \"start\" | \"end\";\n\t\tside?: \"top\" | \"right\" | \"bottom\" | \"left\";\n\t\tsideOffset?: number;\n\t\t[key: string]: any;\n\t}\n\n\tlet {\n\t\tchildren,\n\t\tside = \"top\",\n\t\talign = \"center\",\n\t\tsideOffset = 4,\n\t\tclass: className,\n\t\t...props\n\t}: Props = $props();\n</script>\n\n<HoverCardContent\n\t{side}\n\t{align}\n\t{sideOffset}\n\tclass={cn(\"min-w-60 divide-y overflow-hidden p-0\", className)}\n\t{...props}\n>\n\t{@render children?.()}\n</HoverCardContent>\n",
 			"type": "registry:component",
 			"target": "ai-elements/context/ContextContent.svelte"
 		},
@@ -65,7 +65,7 @@
 			"target": "ai-elements/context/ContextReasoningUsage.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { Button } from \"$COMPONENTS$/ui/button\";\n\timport HoverCardTrigger from \"$COMPONENTS$/ui/hover-card/hover-card-trigger.svelte\";\n\timport ContextIcon from \"./ContextIcon.svelte\";\n\timport { getContextValue } from \"./context-context.svelte\";\n\n\tinterface Props {\n\t\tchildren?: import(\"svelte\").Snippet;\n\t\tvariant?: \"default\" | \"destructive\" | \"outline\" | \"secondary\" | \"ghost\" | \"link\";\n\t\tsize?: \"default\" | \"sm\" | \"lg\" | \"icon\";\n\t\t[key: string]: any;\n\t}\n\n\tlet { children, variant = \"ghost\", ...props }: Props = $props();\n\n\tconst context = getContextValue();\n</script>\n\n<HoverCardTrigger>\n\t{#if children}\n\t\t{@render children()}\n\t{:else}\n\t\t<Button type=\"button\" {variant} {...props}>\n\t\t\t<span class=\"text-muted-foreground font-medium\">\n\t\t\t\t{context.displayPercent}\n\t\t\t</span>\n\t\t\t<ContextIcon />\n\t\t</Button>\n\t{/if}\n</HoverCardTrigger>\n",
+			"content": "<script lang=\"ts\">\n\timport { Button, type ButtonProps } from \"$COMPONENTS$/ui/button\";\n\timport HoverCardTrigger from \"$COMPONENTS$/ui/hover-card/hover-card-trigger.svelte\";\n\timport ContextIcon from \"./ContextIcon.svelte\";\n\timport { getContextValue } from \"./context-context.svelte\";\n\n\tinterface Props extends ButtonProps {\n\t\tchildren?: import(\"svelte\").Snippet;\n\t\t[key: string]: any;\n\t}\n\n\tlet { children, variant = \"ghost\", ...props }: Props = $props();\n\n\tconst context = getContextValue();\n</script>\n\n<HoverCardTrigger>\n\t{#if children}\n\t\t{@render children()}\n\t{:else}\n\t\t<Button type=\"button\" {variant} {...props}>\n\t\t\t<span class=\"text-muted-foreground font-medium\">\n\t\t\t\t{context.displayPercent}\n\t\t\t</span>\n\t\t\t<ContextIcon />\n\t\t</Button>\n\t{/if}\n</HoverCardTrigger>\n",
 			"type": "registry:component",
 			"target": "ai-elements/context/ContextTrigger.svelte"
 		},
