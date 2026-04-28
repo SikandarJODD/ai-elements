@@ -2,21 +2,20 @@ import type { RequestHandler } from "./$types";
 import { recipes } from "$lib/config/cookbook-data";
 
 export const GET: RequestHandler = async () => {
-	const availableRecipes = recipes.filter((r) => r.status === "available");
-
 	let content = `# Svelte Cookbook - AI SDK Recipes
 
 A collection of practical recipes for building AI-powered applications with SvelteKit and the Vercel AI SDK.
 
-## Available Recipes
+## Recipes
 
-${availableRecipes
+${recipes
 	.map(
 		(r) => `### ${r.name}
 - **Slug**: ${r.slug}
 - **Description**: ${r.description}
 - **Tags**: ${r.tags.join(", ")}
 - **Documentation**: /cookbook/${r.slug}
+- **Playground**: ${r.playground_url ?? "N/A"}
 - **llms.txt**: /cookbook/${r.slug}/llms.txt
 `
 	)

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyMarkdownButton, OpenInMenu, CodeNameBlock } from "$lib/components/docs";
+	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
@@ -118,14 +118,16 @@ Keep responses concise (under 50 words).\`,
 	}}
 />
 
-<article class="mx-auto max-w-3xl px-4 py-12 md:px-6 md:py-16">
+<article class="mx-auto px-4 py-12 md:px-6 md:py-16">
 	<header class="mb-12">
 		<div class="mb-6 flex items-start justify-between gap-4">
 			<h1 class="text-4xl font-semibold tracking-tight">Send Custom Body</h1>
-			<div class="flex shrink-0 items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Send Custom Body" {llmsTxtUrl} type="cookbook" />
-			</div>
+			<CopyPageDropdown
+				class="shrink-0"
+				componentName="Send Custom Body"
+				{llmsTxtUrl}
+				type="cookbook"
+			/>
 		</div>
 
 		<div class="mb-6 flex flex-wrap items-center gap-2">

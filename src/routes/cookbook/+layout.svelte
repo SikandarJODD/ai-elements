@@ -13,7 +13,7 @@
 {#if showSidebar}
 	<Sidebar.Provider>
 		<CookbookSidebar />
-		<main class="w-full px-4 pb-6 md:px-6">
+		<main class="w-full md:max-w-5xl md:mx-auto px-4 pb-6 md:px-6">
 			{@render children?.()}
 		</main>
 		<ApiKeyCard />

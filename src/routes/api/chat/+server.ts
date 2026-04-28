@@ -3,12 +3,12 @@ import { openrouter, defaultModel } from "$lib/config/ai-config";
 import type { RequestHandler } from "./$types";
 
 export const POST: RequestHandler = async ({ request }) => {
-	const { messages, model }: { messages: UIMessage[]; model: string } = await request.json();
+	const { messages }: { messages: UIMessage[] } = await request.json();
 
-	let modelToUse = model ? model : defaultModel;
 	let result = streamText({
-		model: openrouter(modelToUse),
+		model: openrouter(defaultModel),
 		messages: await convertToModelMessages(messages),
+		system: "Response should be short and concise.",
 	});
 
 	return result.toUIMessageStreamResponse({

@@ -1,29 +1,26 @@
-export interface Guide {
-	slug: string;
+export type Guide = {
+	id: string;
+	date: string;
 	title: string;
 	description: string;
-	image: string;
-	demoUrl?: string;
-	tags?: string[];
+	playground_url?: string; // cookbook playground url
 }
 
 export const guidesData: Guide[] = [
 	{
-		slug: "basic-setup",
+		id: "basic-setup",
+		date: "29 April 2026",
 		title: "Basic Setup Guide",
 		description:
-			"Complete setup guide for Svelte AI Elements. Install Svelte, configure shadcn-svelte, set up OpenRouter API, and integrate AI SDK in 10 minutes.",
-		image: "/assets/basic_guide.png",
-		tags: ["Setup", "Getting Started", "Installation", "Beginner", "Tutorial"],
+			"Complete setup guide for Svelte AI Elements.",
 	},
 	{
-		slug: "svelte-5-ai-sdk-integration",
+		id: "svelte-5-ai-sdk-integration",
+		date: "29 April 2026",
 		title: "Svelte 5 + AI SDK Integration",
 		description:
-			"Master Svelte 5 runes with AI SDK integration. Build reactive AI chat applications using modern patterns and streaming responses.",
-		image: "/assets/svelte-ai-elements.png",
-		demoUrl: "/demo/one",
-		tags: ["Svelte 5", "AI SDK", "OpenRouter", "Streaming", "Chat"],
+			"Learn how to integrate AI Elements with the AI SDK.",
+		// playground_url: "/cookbook-playground/stream-text",
 	},
 	// Add more guides here as they are created
 ];

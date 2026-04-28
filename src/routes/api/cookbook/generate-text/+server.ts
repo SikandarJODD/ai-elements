@@ -1,24 +1,16 @@
-import { generateText } from "ai";
-import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { generateText, type ModelMessage } from "ai";
 import type { RequestHandler } from "./$types";
-import { OPENROUTER_API_KEY } from "$env/static/private";
-
-let defaultModel = "z-ai/glm-4.5-air:free";
+import { defaultModel, openrouter } from "$lib/config/ai-config";
+import { json } from "@sveltejs/kit";
 
 export const POST: RequestHandler = async ({ request }) => {
-	const { prompt }: { prompt?: string } = await request.json().catch(() => ({}));
+	const { messages }: { messages: ModelMessage[] } = await request.json();
 
-	const openrouter = createOpenRouter({
-		apiKey: OPENROUTER_API_KEY,
-	});
-
-	const result = await generateText({
+	const { response } = await generateText({
 		model: openrouter(defaultModel),
-		prompt: prompt || "What is Svelte JS? in 100 words",
-		system: "You are a helpful assistant. Respond in 100 words.",
+		messages,
+		system: "Response should be short and concise.",
 	});
 
-	return new Response(result.text, {
-		headers: { "Content-Type": "text/plain" },
-	});
+	return json({ messages: response.messages });
 };
