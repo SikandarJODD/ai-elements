@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { BlockCodeNode } from "./types";
 	import { cn } from "$lib/utils";
-	import ChevronDown from "@lucide/svelte/icons/chevron-down";
 	import ChevronRight from "@lucide/svelte/icons/chevron-right";
 	import ExternalLink from "@lucide/svelte/icons/external-link";
 	import FileCode2 from "@lucide/svelte/icons/file-code-2";
@@ -13,7 +12,7 @@
 	interface CodeTreeNodeProps {
 		node: BlockCodeNode;
 		activeFileId: string;
-		openFolderIds: Set<string>;
+		openFolderIds: string[];
 		onSelectFile: (fileId: string) => void;
 		onToggleFolder: (folderId: string) => void;
 	}
@@ -21,7 +20,7 @@
 	let { node, activeFileId, openFolderIds, onSelectFile, onToggleFolder }: CodeTreeNodeProps =
 		$props();
 
-	let isOpen = $derived(node.type === "folder" ? openFolderIds.has(node.id) : false);
+	let isOpen = $derived(node.type === "folder" ? openFolderIds.includes(node.id) : false);
 	let isExternalOnlyFile = $derived(
 		node.type === "file" && Boolean(node.externalUrl) && !node.code
 	);
@@ -35,11 +34,6 @@
 			onclick={() => onToggleFolder(node.id)}
 		>
 			<span class="flex w-4 shrink-0 items-center justify-center">
-				<!-- {#if isOpen}
-					<ChevronDown class="size-3.5" />
-				{:else}
-					<ChevronRight class="size-3.5" />
-					{/if} -->
 				<ChevronRight
 					class={[
 						"size-3.5 transition duration-150 ease-out",

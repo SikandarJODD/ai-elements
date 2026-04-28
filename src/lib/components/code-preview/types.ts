@@ -34,12 +34,19 @@ export type BlockShowcaseItem = {
 	id: string;
 	title: string;
 	description: string;
-	previewComponent: Component;
+	previewComponent?: Component;
 	codeTree: BlockCodeTree;
 	previewHref?: string;
-	previewMode: "inline" | "iframe";
+	previewMode: "inline" | "iframe" | "empty";
 	previewHeight?: number;
+	previewTitle?: string;
+	previewDescription?: string;
 	installId?: string;
+};
+
+export type CookbookPlaygroundPageData = BlockShowcaseItem & {
+	slug: string;
+	tags: string[];
 };
 
 type BlockCodeFileInput = Omit<BlockCodeFile, "type" | "name"> & {

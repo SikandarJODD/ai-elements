@@ -31,10 +31,10 @@ export const navigationData: NavigationItem[] = [
 	// Cookbook
 	{
 		title: "Cookbook",
-		href: "/cookbook",
-		description: "Recipes, guides, and templates for building AI applications with Svelte",
+		href: "/cookbook-playground",
+		description: "Playground-based recipes and setup flows for building AI applications with Svelte",
 		category: "cookbook",
-		keywords: ["cookbook", "recipes", "examples", "templates", "guides", "tutorials"],
+		keywords: ["cookbook", "playground", "recipes", "examples", "templates", "guides", "tutorials"],
 	},
 
 	// Components
