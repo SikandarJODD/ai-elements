@@ -226,8 +226,8 @@
 	});
 </script>
 
-<Sidebar.Root class="mt-16 h-[calc(100vh-4rem)] pr-2 pl-6" {...restProps} bind:ref>
-	<Sidebar.Content class="no-scrollbar bg-background mb-4 gap-0 pt-6">
+<Sidebar.Root class="mt-16 mr-2 h-[calc(100vh-4rem)] pl-0" {...restProps} bind:ref>
+	<Sidebar.Content class="no-scrollbar bg-background mb-0 gap-0 pt-6 pr-2 pl-6">
 		<!-- We create a collapsible SidebarGroup for each parent. -->
 		{#each data.navMain as item (item.title)}
 			<Collapsible.Root title={item.title} open class="group/collapsible">

@@ -8,14 +8,14 @@ const config = {
 	kit: {
 		adapter: adapter(),
 	},
-	// vitePlugin: {
-	// 	inspector: {
-	// 		toggleKeyCombo: "ctrl-shift",
-	// 		holdMode: true,
-	// 		showToggleButton: "always",
-	// 		toggleButtonPos: "bottom-right",
-	// 	},
-	// },
+	vitePlugin: {
+		inspector: {
+			toggleKeyCombo: "ctrl-shift",
+			holdMode: true,
+			showToggleButton: "always",
+			toggleButtonPos: "bottom-right",
+		},
+	},
 };
 
 export default config;

@@ -1,4 +1,8 @@
 <script lang="ts">
+	import * as Message from "$lib/components/ai-elements/message";
+	import * as PromptInput from "$lib/components/ai-elements/prompt-input";
+	import type { PromptInputMessage } from "$lib/components/ai-elements/prompt-input";
+
 	import { Chat } from "@ai-sdk/svelte";
 	import { DefaultChatTransport } from "ai";
 
@@ -9,44 +13,35 @@
 			}),
 		})
 	);
-
-	let value = $state("");
-	// key down - API Call
-	let generateMessage = async (e: KeyboardEvent) => {
-		if (e.key === "Enter") {
-			console.log("value", value);
-			chat.sendMessage({ text: value });
-			value = "";
-		}
+	let handleSubmit = (message: PromptInputMessage) => {
+		chat.sendMessage({ text: message.text });
 	};
 </script>
 
-<div class="flex h-screen flex-col items-center justify-center gap-4">
-	<h3 class="w-full max-w-md text-2xl font-bold">Stream Text</h3>
-	<div class="flex w-full max-w-md flex-col gap-2">
-		{#each chat.messages as message}
-			<div class="flex flex-col gap-1">
-				<div class="font-semibold capitalize">{message.role}:</div>
-				<div class="">
-					{#each message.parts as part}
-						{#if part.type === "text"}
-							<div>
-								{part.text}
-							</div>
-						{/if}
-					{/each}
-				</div>
-			</div>
-		{/each}
+<div>
+	<!-- Prompt Input -->
+	<div class="max-w-xl">
+		<PromptInput.Root onSubmit={handleSubmit}>
+			<PromptInput.Body>
+				<PromptInput.Textarea placeholder="Type your message..." />
+			</PromptInput.Body>
+			<PromptInput.Toolbar>
+				<PromptInput.Submit status={chat.status} />
+			</PromptInput.Toolbar>
+		</PromptInput.Root>
 	</div>
-	<div class="flex w-full max-w-md flex-col gap-1">
-		<label for="prompt"> Enter Prompt</label>
-		<input
-			type="text"
-			bind:value
-			onkeydown={generateMessage}
-			placeholder="Enter Message"
-			class="rounded-lg border border-gray-300 p-2"
-		/>
+	<!-- Chat Messages -->
+	<div class="mt-6 flex flex-col gap-4">
+		{#each chat.messages as message}
+			{#each message.parts as part}
+				<Message.Root from={message.role}>
+					{#if part.type === "text"}
+						<Message.Content>
+							<Message.Response content={part.text}></Message.Response>
+						</Message.Content>
+					{/if}
+				</Message.Root>
+			{/each}
+		{/each}
 	</div>
 </div>
