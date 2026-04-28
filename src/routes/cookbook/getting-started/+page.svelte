@@ -1,12 +1,7 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import {
-		CopyMarkdownButton,
-		OpenInMenu,
-		CodeNameBlock,
-		AiInstallCommand,
-	} from "$lib/components/docs";
+	import { CopyPageDropdown, CodeNameBlock, AiInstallCommand } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
@@ -101,10 +96,12 @@ export const POST: RequestHandler = async ({ request }) => {
 	<header class="mb-12">
 		<div class="mb-6 flex items-start justify-between gap-4">
 			<h1 class="text-4xl font-semibold tracking-tight">Getting Started</h1>
-			<div class="flex shrink-0 items-center gap-2">
-				<CopyMarkdownButton {llmsTxtUrl} />
-				<OpenInMenu componentName="Getting Started" {llmsTxtUrl} type="cookbook" />
-			</div>
+			<CopyPageDropdown
+				class="shrink-0"
+				componentName="Getting Started"
+				{llmsTxtUrl}
+				type="cookbook"
+			/>
 		</div>
 
 		<div class="mb-6 flex flex-wrap items-center gap-2">

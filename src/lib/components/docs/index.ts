@@ -8,6 +8,7 @@ import Code from "./code.svelte";
 import CodeNameBlock from "./code-name/code-name-block.svelte";
 import BasicSetupPrereq from "./basic-setup-prereq.svelte";
 import ComponentAPITable from "./component-api-table.svelte";
+import CopyPageDropdown from "./copy-page-dropdown/copy-page-dropdown.svelte";
 import CopyMarkdownButton from "./copy-markdown-button.svelte";
 import OpenInMenu from "./open-in-menu.svelte";
 import PrevNext from "./prev-next.svelte";
@@ -24,6 +25,7 @@ export {
 	CodeNameBlock,
 	BasicSetupPrereq,
 	ComponentAPITable,
+	CopyPageDropdown,
 	CopyMarkdownButton,
 	OpenInMenu,
 	PrevNext,

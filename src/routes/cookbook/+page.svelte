@@ -28,7 +28,7 @@
 />
 
 <div class="mx-auto max-w-6xl px-4 py-8 md:border-x md:px-0 md:py-12">
-	<div class="mb-10 max-w-3xl md:px-6">
+	<div class="mb-10 md:px-6">
 		<h1 class="mb-3 text-3xl font-bold tracking-tight md:text-4xl">Svelte Cookbook</h1>
 		<p class="text-muted-foreground text-base md:text-lg">
 			An open-source collection of recipes, guides, and templates for building AI applications
