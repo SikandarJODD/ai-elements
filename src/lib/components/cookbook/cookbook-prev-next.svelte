@@ -5,17 +5,12 @@
 
 	let { currentSlug }: { currentSlug: string } = $props();
 
-	// Get only available recipes for navigation
-	let availableRecipes = recipes.filter((r) => r.status === "available");
-
 	// Find current index
-	let currentIndex = $derived(availableRecipes.findIndex((r) => r.slug === currentSlug));
+	let currentIndex = $derived(recipes.findIndex((r) => r.slug === currentSlug));
 
 	// Get previous and next recipes
-	let prevRecipe = $derived(currentIndex > 0 ? availableRecipes[currentIndex - 1] : null);
-	let nextRecipe = $derived(
-		currentIndex < availableRecipes.length - 1 ? availableRecipes[currentIndex + 1] : null
-	);
+	let prevRecipe = $derived(currentIndex > 0 ? recipes[currentIndex - 1] : null);
+	let nextRecipe = $derived(currentIndex < recipes.length - 1 ? recipes[currentIndex + 1] : null);
 </script>
 
 <nav class="mt-12 border-t pt-6">

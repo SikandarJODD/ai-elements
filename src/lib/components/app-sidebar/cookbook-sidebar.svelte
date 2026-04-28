@@ -7,10 +7,6 @@
 
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 
-	// Get available recipes for the sidebar
-	let availableRecipes = recipes.filter((r) => r.status === "available");
-	let comingSoonRecipes = recipes.filter((r) => r.status === "coming-soon");
-
 	// Reactive current path - updates automatically on navigation
 	let currentPath = $derived(page.url.pathname);
 
@@ -21,12 +17,11 @@
 
 <Sidebar.Root class="mt-16 h-[calc(100vh-4rem)] pr-2 pl-6" {...restProps} bind:ref>
 	<Sidebar.Content class="no-scrollbar bg-background gap-0 pt-6">
-		<!-- Available Recipes -->
 		<Sidebar.Group class="p-0">
 			<Sidebar.GroupLabel class="text-sidebar-foreground text-sm">Recipes</Sidebar.GroupLabel>
 			<Sidebar.GroupContent>
 				<Sidebar.Menu class="gap-0.5">
-					{#each availableRecipes as recipe (recipe.slug)}
+					{#each recipes as recipe (recipe.slug)}
 						<Sidebar.MenuItem>
 							<Sidebar.MenuButton
 								isActive={isActive(recipe.slug)}
@@ -43,26 +38,6 @@
 				</Sidebar.Menu>
 			</Sidebar.GroupContent>
 		</Sidebar.Group>
-
-		<!-- Coming Soon -->
-		{#if comingSoonRecipes.length > 0}
-			<Sidebar.Group class="mt-4 p-0">
-				<Sidebar.GroupLabel class="text-muted-foreground text-xs">
-					Coming Soon
-				</Sidebar.GroupLabel>
-				<Sidebar.GroupContent>
-					<Sidebar.Menu class="gap-0.5">
-						{#each comingSoonRecipes as recipe (recipe.slug)}
-							<Sidebar.MenuItem>
-								<span class="text-muted-foreground/60 px-2 py-1.5 text-sm">
-									{recipe.name}
-								</span>
-							</Sidebar.MenuItem>
-						{/each}
-					</Sidebar.Menu>
-				</Sidebar.GroupContent>
-			</Sidebar.Group>
-		{/if}
 	</Sidebar.Content>
 
 	<Sidebar.Footer class="border-border mt-0 border-t pt-0">
