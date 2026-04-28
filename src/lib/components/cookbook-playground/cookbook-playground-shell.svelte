@@ -100,7 +100,7 @@
 			<div class="flex h-full">
 				<div class="min-w-0 flex-1">
 					<ResizablePaneGroup direction="horizontal" class="h-full">
-						<ResizablePane defaultSize={20} minSize={10} maxSize={28}>
+						<ResizablePane defaultSize={20} minSize={14} maxSize={28}>
 							<CodeTree
 								codeTree={item.codeTree}
 								{activeFileId}
@@ -130,7 +130,7 @@
 					</ResizablePaneGroup>
 				</div>
 
-				<aside class="bg-background/70 h-full w-72 shrink-0 overflow-hidden border-l">
+				<aside class="bg-background/70 h-full w-76 shrink-0 overflow-hidden border-l">
 					<CookbookPlaygroundRail {currentSlug} />
 				</aside>
 			</div>

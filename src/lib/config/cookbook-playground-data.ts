@@ -10,13 +10,6 @@ export type CookbookPlaygroundNavItem = {
 
 export const cookbookPlaygroundItems: CookbookPlaygroundNavItem[] = [
 	{
-		title: "Basic Setup",
-		slug: "basic-setup",
-		description: "Bootstrap your app, OpenRouter config, and shared AI SDK setup.",
-		tags: ["setup", "openrouter", "sveltekit"],
-		status: "active",
-	},
-	{
 		title: "Getting Started",
 		slug: "getting-started",
 		description: "Legacy onboarding recipe kept separate from the new setup-first flow.",

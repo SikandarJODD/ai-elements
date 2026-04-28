@@ -21,18 +21,18 @@
 	<div class="border-b px-3 py-3">
 		<div class="flex items-center justify-between gap-3">
 			<div>
-				<p class="text-foreground text-sm font-medium">Cookbook Items</p>
-				<p class="text-muted-foreground mt-1 text-xs">
-					{activeCount} of {cookbookPlaygroundItems.length} recipes migrated to v2.
-				</p>
+				<p class="text-foreground text-sm font-medium">Cookbook</p>
 			</div>
-
-			<Badge variant="secondary">V2</Badge>
 		</div>
 	</div>
 
-	<ScrollArea class="min-h-0 flex-1" orientation="vertical">
-		<div class="space-y-1 p-2">
+	<ScrollArea
+		class="min-h-0 flex-1"
+		orientation="vertical"
+		scrollbarYClasses="hidden"
+		fade={false}
+	>
+		<div class="space-y-1">
 			{#each cookbookPlaygroundItems as navItem (navItem.slug)}
 				{#if navItem.status === "active"}
 					<a
@@ -42,16 +42,14 @@
 							"flex h-18 flex-col justify-center px-2.5 py-2 transition-colors",
 							navItem.slug === currentSlug
 								? "bg-accent text-foreground"
-								: "hover:bg-muted/40"
+								: "hover:bg-muted/40",
 						]}
 					>
 						<div class="flex items-center justify-between gap-3">
-							<p class="text-xs font-medium leading-4">{navItem.title}</p>
-							<Badge variant="secondary" class="shrink-0 text-[10px]">
-								Live
-							</Badge>
+							<p class="text-sm leading-4 font-medium">{navItem.title}</p>
+							<Badge variant="secondary" class="shrink-0 text-[10px]">Live</Badge>
 						</div>
-						<p class="text-muted-foreground mt-1 line-clamp-2 text-[10px] leading-4">
+						<p class="text-muted-foreground mt-1 line-clamp-2 text-xs leading-4">
 							{navItem.description}
 						</p>
 					</a>
@@ -61,12 +59,10 @@
 						class="flex h-18 flex-col justify-center px-2.5 py-2 opacity-65"
 					>
 						<div class="flex items-center justify-between gap-3">
-							<p class="text-xs font-medium leading-4">{navItem.title}</p>
-							<Badge variant="outline" class="shrink-0 text-[10px]">
-								Soon
-							</Badge>
+							<p class="text-sm font-mono leading-4 font-normal">{navItem.title}</p>
+							<Badge variant="outline" class="shrink-0 text-[10px]">Soon</Badge>
 						</div>
-						<p class="text-muted-foreground mt-1 line-clamp-2 text-[10px] leading-4">
+						<p class="text-muted-foreground mt-1 line-clamp-2 text-xs leading-4">
 							{navItem.description}
 						</p>
 					</div>

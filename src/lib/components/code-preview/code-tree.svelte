@@ -28,7 +28,7 @@
 		{title}
 	</div>
 
-	<div class="min-h-0 flex-1 overflow-auto px-2 py-3">
+	<div class="min-h-0 flex-1 overflow-auto pl-2 pr-1.5 py-3">
 		{#each codeTree.nodes as node (node.id)}
 			<CodeTreeNode
 				{node}

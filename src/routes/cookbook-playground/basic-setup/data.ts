@@ -1,13 +1,17 @@
 import type { CookbookPlaygroundPageData } from "$lib/components/code-preview";
 import { createBlockCodeTree } from "$lib/components/code-preview";
 
-import aiConfigRaw from "../../../lib/config/ai-config.ts?raw";
-import openRouterKeyStoreRaw from "../../../lib/config/open-router-key.svelte.ts?raw";
 import basicSetupGuideRaw from "../../(main)/guides/basic-setup/+page.svelte?raw";
-import basicSetupContentRaw from "../../(main)/guides/basic-setup/content.md?raw";
 
 const envLocalRaw = `OPENROUTER_API_KEY=sk-or-v1-your-api-key-here`;
 
+const configRaw = `import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+
+export const ai = createOpenRouter({
+	apiKey: process.env.OPENROUTER_API_KEY
+});
+export let defaultModel = "z-ai/glm-4.5-air:free";
+`;
 export const pageData: CookbookPlaygroundPageData = {
 	id: "basic-setup",
 	slug: "basic-setup",
@@ -17,7 +21,8 @@ export const pageData: CookbookPlaygroundPageData = {
 	tags: ["setup", "openrouter", "sveltekit"],
 	previewMode: "empty",
 	previewTitle: "Preview",
-	previewDescription: "No live preview for setup-only recipes. Use the file tree and code panes as the source of truth.",
+	previewDescription:
+		"No live preview for setup-only recipes. Use the file tree and code panes as the source of truth.",
 	codeTree: createBlockCodeTree("env-local", [
 		{
 			id: "env-local",
@@ -27,27 +32,15 @@ export const pageData: CookbookPlaygroundPageData = {
 		},
 		{
 			id: "ai-config",
-			path: "src/lib/config/ai-config.ts",
-			code: aiConfigRaw,
-			lang: "typescript",
-		},
-		{
-			id: "openrouter-store",
-			path: "src/lib/config/open-router-key.svelte.ts",
-			code: openRouterKeyStoreRaw,
+			path: "src/lib/config/ai.ts",
+			code: configRaw,
 			lang: "typescript",
 		},
 		{
 			id: "basic-setup-guide",
-			path: "src/routes/(main)/guides/basic-setup/+page.svelte",
+			path: "src/routes/+page.svelte",
 			code: basicSetupGuideRaw,
 			lang: "svelte",
-		},
-		{
-			id: "basic-setup-content",
-			path: "src/routes/(main)/guides/basic-setup/content.md",
-			code: basicSetupContentRaw,
-			lang: "markdown",
 		},
 		{
 			id: "openrouter-keys-docs",
