@@ -9,4 +9,4 @@ export const openrouter = createOpenRouter({
 });
 
 // export const defaultModel = "z-ai/glm-4.5-air:free";
-export let defaultModel = "arcee-ai/trinity-large-preview:free";
+export let defaultModel = "z-ai/glm-4.5-air:free";

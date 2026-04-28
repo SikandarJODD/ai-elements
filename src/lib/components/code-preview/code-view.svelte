@@ -29,11 +29,11 @@
 			<p class="text-foreground min-w-0 truncate font-mono text-sm">
 				{activeFile?.name ?? "No file selected"}
 			</p>
-			{#if activeFile}
+			<!-- {#if activeFile}
 				<p class="text-muted-foreground truncate font-mono text-xs">
 					{activeFile.path}
 				</p>
-			{/if}
+			{/if} -->
 		</div>
 
 		<div class="flex items-center gap-1">
@@ -74,7 +74,7 @@
 
 	<div class="min-h-0 flex-1">
 		{#if activeFile?.code}
-			<Code code={activeFile.code} lang={activeFile.lang} highlight={activeFile.highlight} />
+			<Code class='rounded-none border-none' code={activeFile.code} lang={activeFile.lang} highlight={activeFile.highlight} />
 		{:else if activeFile?.externalUrl}
 			<div class="flex h-full min-h-[20rem] items-center justify-center px-6">
 				<div class="max-w-md text-center">

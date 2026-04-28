@@ -12,15 +12,12 @@
 	let PreviewComponent = $derived(item.previewComponent);
 	let previewHeight = $derived(item.previewHeight ?? 420);
 	let previewTitle = $derived(item.previewTitle ?? "Preview");
-	let previewDescription = $derived(
-		item.previewDescription ?? "Run the example here while keeping the code and file tree visible."
-	);
 </script>
 
 <div class="flex h-full min-h-0 flex-col">
 	<div class="border-b px-4 py-3">
 		<p class="text-foreground text-sm font-medium">{previewTitle}</p>
-		<p class="text-muted-foreground mt-1 text-sm">{previewDescription}</p>
+		<!-- <p class="text-muted-foreground mt-1 text-sm">{previewDescription}</p> -->
 	</div>
 
 	<div class="min-h-0 flex-1 overflow-auto">

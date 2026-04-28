@@ -22,6 +22,14 @@
 	{...restProps}
 >
 	{#if withHandle}
-		<div class="bg-border h-6 w-1 rounded-lg z-10 flex shrink-0"></div>
+		<div
+			class="bg-muted z-10 flex h-8 w-2 shrink-0 items-center justify-center rounded-sm! border"
+		>
+			<!-- <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"
+				><path
+					d="M104,60A12,12,0,1,1,92,48,12,12,0,0,1,104,60Zm60,12a12,12,0,1,0-12-12A12,12,0,0,0,164,72ZM92,116a12,12,0,1,0,12,12A12,12,0,0,0,92,116Zm72,0a12,12,0,1,0,12,12A12,12,0,0,0,164,116ZM92,184a12,12,0,1,0,12,12A12,12,0,0,0,92,184Zm72,0a12,12,0,1,0,12,12A12,12,0,0,0,164,184Z"
+				></path></svg
+			> -->
+		</div>
 	{/if}
 </ResizablePrimitive.PaneResizer>

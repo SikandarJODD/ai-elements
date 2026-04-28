@@ -59,10 +59,10 @@
 	}
 </script>
 
-<section class="mx-auto flex max-w-[1800px] flex-col px-4 py-6 md:px-6">
+<section class="mx-auto flex h-[90vh] w-full  flex-col overflow-hidden">
 	{#if useMobileLayout}
-		<div class="overflow-hidden rounded-2xl border bg-card/40">
-			<Tabs.Root bind:value={mobileTab}>
+		<div class="h-full overflow-hidden">
+			<Tabs.Root bind:value={mobileTab} class="flex h-full flex-col">
 				<div class="border-b px-2 pt-2">
 					<Tabs.List class="grid h-auto w-full grid-cols-4 bg-transparent">
 						<Tabs.Trigger value="files">Files</Tabs.Trigger>
@@ -72,7 +72,7 @@
 					</Tabs.List>
 				</div>
 
-				<Tabs.Content value="files" class="mt-0 min-h-[65vh]">
+				<Tabs.Content value="files" class="mt-0 min-h-0 flex-1 overflow-hidden">
 					<CodeTree
 						codeTree={item.codeTree}
 						{activeFileId}
@@ -82,25 +82,25 @@
 					/>
 				</Tabs.Content>
 
-				<Tabs.Content value="code" class="mt-0 min-h-[65vh]">
+				<Tabs.Content value="code" class="mt-0 min-h-0 flex-1 overflow-hidden">
 					<CodeView {activeFile} />
 				</Tabs.Content>
 
-				<Tabs.Content value="preview" class="mt-0 min-h-[65vh]">
-					<BlockPreview item={item} />
+				<Tabs.Content value="preview" class="mt-0 min-h-0 flex-1 overflow-hidden">
+					<BlockPreview {item} />
 				</Tabs.Content>
 
-				<Tabs.Content value="recipes" class="mt-0 min-h-[65vh]">
+				<Tabs.Content value="recipes" class="mt-0 min-h-0 flex-1 overflow-hidden">
 					<CookbookPlaygroundRail {currentSlug} />
 				</Tabs.Content>
 			</Tabs.Root>
 		</div>
 	{:else}
-		<div class="overflow-hidden rounded-2xl border bg-card/40">
-			<div class="flex min-h-[calc(100vh-9rem)]">
+		<div class="h-full overflow-hidden">
+			<div class="flex h-full">
 				<div class="min-w-0 flex-1">
-					<ResizablePaneGroup direction="horizontal" class="min-h-[calc(100vh-9rem)]">
-						<ResizablePane defaultSize={20} minSize={15} maxSize={28}>
+					<ResizablePaneGroup direction="horizontal" class="h-full">
+						<ResizablePane defaultSize={20} minSize={10} maxSize={28}>
 							<CodeTree
 								codeTree={item.codeTree}
 								{activeFileId}
@@ -112,7 +112,7 @@
 
 						<ResizableHandle
 							withHandle
-							class="bg-border/60 hover:bg-border data-[direction=horizontal]:w-3 data-[direction=horizontal]:after:w-3 [&>div]:h-10 [&>div]:w-1.5 [&>div]:rounded-full [&>div]:bg-foreground/30"
+							// class="bg-border/60 hover:bg-border [&>div]:bg-foreground/30 data-[direction=horizontal]:w-3 data-[direction=horizontal]:after:w-3 [&>div]:h-10 [&>div]:w-1.5 [&>div]:rounded-full"
 						/>
 
 						<ResizablePane defaultSize={42} minSize={25}>
@@ -121,16 +121,16 @@
 
 						<ResizableHandle
 							withHandle
-							class="bg-border/60 hover:bg-border data-[direction=horizontal]:w-3 data-[direction=horizontal]:after:w-3 [&>div]:h-10 [&>div]:w-1.5 [&>div]:rounded-full [&>div]:bg-foreground/30"
+							// class="bg-border/60 hover:bg-border [&>div]:bg-foreground/30 data-[direction=horizontal]:w-3 data-[direction=horizontal]:after:w-3 [&>div]:h-10 [&>div]:w-1.5 [&>div]:rounded-full"
 						/>
 
 						<ResizablePane defaultSize={38} minSize={20}>
-							<BlockPreview item={item} />
+							<BlockPreview {item} />
 						</ResizablePane>
 					</ResizablePaneGroup>
 				</div>
 
-				<aside class="h-[70vh] w-72 shrink-0 self-start overflow-hidden border-l bg-background/70">
+				<aside class="bg-background/70 h-full w-72 shrink-0 overflow-hidden border-l">
 					<CookbookPlaygroundRail {currentSlug} />
 				</aside>
 			</div>
