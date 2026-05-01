@@ -14,7 +14,7 @@
 
 	let prompt = $state("New social media activity");
 	let isLoading = $state(false);
-	let notifications = $state<Notification[]>([]);
+	let notifications: Notification[] = $state([]);
 
 	async function handleSubmit(e: SubmitEvent) {
 		e.preventDefault();
@@ -58,6 +58,26 @@
 			</Button>
 		</form>
 
+		<!-- Generated notifications -->
+		{#if notifications.length > 0 && !isLoading}
+			<div class="space-y-2">
+				{#each notifications as notification, i}
+					<div
+						class="animate-in fade-in slide-in-from-bottom-2 rounded-lg border p-3"
+						style="animation-delay: {i * 100}ms"
+					>
+						<div class="flex items-center justify-between">
+							<span class="font-medium">{notification.name}</span>
+							<span class="text-muted-foreground text-xs"
+								>{notification.minutesAgo}m ago</span
+							>
+						</div>
+						<p class="text-muted-foreground mt-1 text-sm">{notification.message}</p>
+					</div>
+				{/each}
+			</div>
+		{/if}
+
 		<!-- Loading skeleton -->
 		{#if isLoading}
 			<div class="space-y-2">
@@ -75,26 +95,6 @@
 							<div class="bg-muted h-3 w-12 animate-pulse rounded"></div>
 						</div>
 						<div class="bg-muted mt-2 h-3 w-48 animate-pulse rounded"></div>
-					</div>
-				{/each}
-			</div>
-		{/if}
-
-		<!-- Generated notifications -->
-		{#if notifications.length > 0 && !isLoading}
-			<div class="space-y-2">
-				{#each notifications as notification, i}
-					<div
-						class="animate-in fade-in slide-in-from-bottom-2 rounded-lg border p-3"
-						style="animation-delay: {i * 100}ms"
-					>
-						<div class="flex items-center justify-between">
-							<span class="font-medium">{notification.name}</span>
-							<span class="text-muted-foreground text-xs"
-								>{notification.minutesAgo}m ago</span
-							>
-						</div>
-						<p class="text-muted-foreground mt-1 text-sm">{notification.message}</p>
 					</div>
 				{/each}
 			</div>
