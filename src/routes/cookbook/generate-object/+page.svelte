@@ -6,6 +6,8 @@
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import DemoCode from "./demo/demo.svelte?raw";
+	import CodeChip from "$lib/components/markdown/CodeChip.svelte";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/generate-object/llms.txt`;
 
@@ -22,100 +24,30 @@ export const notificationSchema = z.object({
   )
 });`;
 
-	let serverCode = `import { generateText, Output } from "ai";
-import { z } from "zod";
+	let serverCode = `import { openrouter } from "$lib/config/ai";
+import { generateText, Output } from "ai";
+import { notificationSchema } from "$lib/schema/notification-schema";
+import type { RequestHandler } from "./$types";
 import { json } from "@sveltejs/kit";
-import { createOpenRouter } from "@openrouter/ai-sdk-provider";
-import { OPENROUTER_API_KEY } from "$env/static/private";
 
-export const POST = async ({ request }) => {
-  const { prompt }: { prompt: string } = await request.json();
+export const POST: RequestHandler = async ({ request }) => {
+	let { prompt }: { prompt: string } = await request.json();
 
-  const openrouter = createOpenRouter({
-    apiKey: OPENROUTER_API_KEY,
-  });
+	let result = await generateText({
+		model: openrouter("openrouter/owl-alpha"),
+		system: "You generate three notifications for a messages app.",
+		prompt: prompt,
+		output: Output.object({
+			schema: notificationSchema,
+		}),
+	});
 
-  const { output } = await generateText({
-    model: openrouter("z-ai/glm-4.5-air:free"),
-    system: "You generate three notifications for a messages app.",
-    prompt: prompt,
-    output: Output.object({
-      schema: z.object({
-        notifications: z.array(
-          z.object({
-            name: z.string().describe("Name of a fictional person."),
-            message: z.string().describe("Do not use emojis or links."),
-            minutesAgo: z.number(),
-          })
-        ),
-      }),
-    }),
-  });
+	return json(result.output);
+	// return json(result.notifications);
+};
+`;
 
-  return json(output);
-};`;
-
-	let clientCode = `<script lang="ts">
-  import LoaderIcon from "@lucide/svelte/icons/loader";
-  import SparklesIcon from "@lucide/svelte/icons/sparkles";
-  import SendIcon from "@lucide/svelte/icons/send";
-
-  type Notification = { name: string; message: string; minutesAgo: number };
-
-  let prompt = $state("New social media activity");
-  let isLoading = $state(false);
-  let notifications = $state<Notification[]>([]);
-
-  async function handleSubmit(e: SubmitEvent) {
-    e.preventDefault();
-    if (!prompt.trim() || isLoading) return;
-
-    isLoading = true;
-    notifications = [];
-
-    const res = await fetch("/api/generate-object", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt: prompt.trim() }),
-    });
-
-    const data = await res.json();
-    notifications = data.notifications;
-    isLoading = false;
-  }
-<\/script>
-
-<form onsubmit={handleSubmit}>
-  <input bind:value={prompt} placeholder="Enter topic..." disabled={isLoading} />
-  <button type="submit" disabled={isLoading || !prompt.trim()}>
-    {#if isLoading}<LoaderIcon class="animate-spin" />{:else}<SendIcon />{/if}
-  </button>
-</form>
-
-<!-- Loading skeleton -->
-{#if isLoading}
-  <div class="flex items-center gap-2">
-    <SparklesIcon class="animate-pulse" />
-    <span>Generating notifications...</span>
-  </div>
-  {#each [1, 2, 3] as _}
-    <div class="skeleton-card">
-      <div class="bg-muted h-4 w-24 animate-pulse rounded"></div>
-      <div class="bg-muted h-3 w-48 animate-pulse rounded"></div>
-    </div>
-  {/each}
-{/if}
-
-<!-- Generated notifications -->
-{#if notifications.length > 0 && !isLoading}
-  {#each notifications as notification}
-    <div class="notification">
-      <strong>{notification.name}</strong>
-      <span>{notification.minutesAgo}m ago</span>
-      <p>{notification.message}</p>
-    </div>
-  {/each}
-{/if}`;
+	let clientCode = DemoCode;
 </script>
 
 <MetaTags
@@ -155,55 +87,49 @@ export const POST = async ({ request }) => {
 		</p>
 	</header>
 
-	<section class="prose prose-neutral dark:prose-invert mb-12 max-w-none">
-		<h2 class="mb-4 text-2xl font-semibold">Why Use generateObject?</h2>
-		<p class="text-muted-foreground leading-relaxed">
-			Unlike plain text generation, <code class="text-foreground">generateObject</code> ensures
-			your AI responses match a specific structure. This means no more parsing JSON from text or
-			handling malformed responses—you get type-safe data every time.
-		</p>
-	</section>
-
 	<section class="mb-12">
-		<h2 class="mb-6 text-3xl font-semibold">Demo</h2>
+		<h2 class="mb-3 text-3xl font-semibold">Demo</h2>
 		<Demo />
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Define Your Schema</h2>
+		<h2 class="mb-3 text-3xl font-semibold">Step 1: Define Your Schema</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Start by defining a Zod schema. The <code class="text-foreground">.describe()</code> method
-			helps the AI understand what each field should contain.
+			Start by defining a Zod schema. The <CodeChip>.describe()</CodeChip> method helps the AI understand
+			what each field should contain.
 		</p>
 		<CodeNameBlock filename="schema.ts" lang="typescript" code={schemaCode} />
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Server Endpoint</h2>
+		<h2 class="mb-3 text-3xl font-semibold">Step 2: Create API Endpoint</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
-			The server uses <code class="text-foreground">generateObject</code> with your schema.
-			The
-			<code class="text-foreground">toJsonResponse()</code> method returns properly formatted JSON.
+			The api uses <CodeChip>generateText</CodeChip> with <CodeChip>Output.object()</CodeChip> to ensure the response adheres to our Zod schema. This allows us to receive fully typed data on the client.
 		</p>
 		<CodeNameBlock
 			filename="+server.ts"
 			lang="typescript"
 			code={serverCode}
-			highlight={[4, 17]}
+			highlight={[
+				[1, 3],
+				[14, 16],
+			]}
 		/>
 	</section>
 
 	<section class="mb-10">
-		<h2 class="mb-6 text-3xl font-semibold">Client Component</h2>
+		<h2 class="mb-3 text-3xl font-semibold">Step 3: Create Notification Component</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Fetch the structured data with a loading skeleton that mimics the final layout. The
-			skeleton provides visual feedback while waiting for the AI response.
+			Let's build a simple Svelte component to display the generated notifications. This component will receive the structured data from our API.
 		</p>
 		<CodeNameBlock
 			filename="+page.svelte"
 			lang="svelte"
 			code={clientCode}
-			highlight={[[52, 61]]}
+			highlight={[
+				[27, 31],
+				[62, 79],
+			]}
 		/>
 	</section>
 

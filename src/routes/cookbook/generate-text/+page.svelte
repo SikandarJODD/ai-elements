@@ -68,9 +68,9 @@ export const POST: RequestHandler = async ({ request }) => {
 		</div>
 
 		<div class="mb-6 flex flex-wrap items-center gap-2">
-			<Badge variant="secondary" class="text-sm">Svelte</Badge>
-			<Badge variant="secondary" class="text-sm">AI SDK</Badge>
-			<Badge variant="secondary" class="text-sm">Text Generation</Badge>
+			<Badge variant="secondary" class="text-xs">Svelte</Badge>
+			<Badge variant="secondary" class="text-xs">AI SDK</Badge>
+			<Badge variant="secondary" class="text-xs">Text Generation</Badge>
 		</div>
 
 		<p class="text-muted-foreground text-lg leading-relaxed md:text-xl">
