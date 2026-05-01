@@ -15,13 +15,14 @@
 	} from "$lib/components/ai-elements/open-in-chat";
 	import { CopyMarkdown } from "$lib/components/ui/copy-markdown";
 	import MarkdownIcon from "$lib/components/icons/markdown.svelte";
-	import { ChevronDown, ExternalLink } from "@lucide/svelte";
+	import { ArrowRightIcon, ChevronDown, ExternalLink } from "@lucide/svelte";
 	import {
 		getAiElementsGithubUrl,
 		getCookbookGithubUrl,
 		getPromptKitGithubUrl,
 	} from "$lib/config/github-paths";
 	import { cn } from "$lib/utils";
+	import AnimatedShinyText from "$lib/components/ui/animated-shiny-text/animated-shiny-text.svelte";
 
 	interface Props {
 		componentName: string;
@@ -70,8 +71,42 @@
 
 <div class={cn("flex items-center gap-2", className)}>
 	{#if playgroundUrl}
-		<Button href={playgroundUrl} variant="outline" size="sm" rel="noreferrer" class="shrink-0">
-			Visit Playground
+		<Button
+			href={playgroundUrl}
+			variant="outline"
+			size="sm"
+			rel="noreferrer"
+			class="relative shrink-0 border-x-yellow-900/70! border-t-yellow-950! border-b-yellow-800/80! bg-yellow-950/20!"
+		>
+			<div
+				class="absolute inset-x-0 -top-px mx-auto h-px w-3/5 bg-linear-to-r from-transparent via-yellow-500 to-transparent shadow-2xl"
+			></div>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="size-4"
+				viewBox="0 0 24 24"
+				fill="none"
+				xmlns:xlink="http://www.w3.org/1999/xlink"
+				role="img"
+				color="currentColor"
+			>
+				<path
+					opacity="0.4"
+					d="M16 6.99998L19.0664 9.64296C20.3554 10.7541 21 11.3096 21 12C21 12.6903 20.3555 13.2459 19.0664 14.357L16 17"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				></path>
+				<path
+					d="M8 6.99998L4.93365 9.64296C3.64455 10.7541 3 11.3096 3 12C3 12.6903 3.64455 13.2459 4.93365 14.357L8 17"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				></path>
+			</svg>
+			<AnimatedShinyText class='text-yellow-500/70! font-mono'>Code Playground</AnimatedShinyText>
 		</Button>
 	{/if}
 

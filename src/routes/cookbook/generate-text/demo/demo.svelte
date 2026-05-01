@@ -2,11 +2,13 @@
 	import { Button } from "$lib/components/ui/button";
 	import { Textarea } from "$lib/components/ui/textarea";
 	import type { ModelMessage } from "ai";
-	let value = $state("");
+
+	let value = $state("What is Life?"); // Default Prompt
 	let messages = $state<ModelMessage[]>([]);
 
 	let handleSubmit = async () => {
 		if (!value.trim()) return;
+		// Add user prompt to messages
 		messages = [...messages, { role: "user", content: value }];
 
 		const response = await fetch("/api/cookbook/generate-text", {
@@ -19,6 +21,7 @@
 
 		const data = await response.json();
 		value = "";
+		// Append AI response to messages
 		messages = [...messages, ...data.messages];
 	};
 </script>
