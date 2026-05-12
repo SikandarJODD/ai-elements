@@ -640,40 +640,6 @@
 			}
 		},
 		{
-			"name": "message-old",
-			"title": "Message (Old)",
-			"type": "registry:block",
-			"author": "SikandarJODD",
-			"description": "The Message component displays a chat interface message from either a user or an AI. It includes an avatar, a name, and a message content.",
-			"files": [
-				{
-					"path": "src/lib/components/ai-elements/message-old/Message.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/message-old/Message.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/message-old/MessageAvatar.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/message-old/MessageAvatar.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/message-old/MessageContent.svelte",
-					"type": "registry:component",
-					"target": "ai-elements/message-old/MessageContent.svelte"
-				},
-				{
-					"path": "src/lib/components/ai-elements/message-old/index.ts",
-					"type": "registry:file",
-					"target": "ai-elements/message-old/index.ts"
-				}
-			],
-			"registryDependencies": ["avatar"],
-			"dependencies": ["ai", "tailwind-variants"],
-			"meta": {
-				"author": "SikandarJODD"
-			}
-		},
-		{
 			"name": "message",
 			"title": "Message",
 			"type": "registry:block",
