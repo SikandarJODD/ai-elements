@@ -10,7 +10,6 @@ export type {
 	BlockCodeNode,
 	BlockCodeTree,
 	BlockShowcaseItem,
-	CookbookPlaygroundPageData,
 } from "./types";
 
 export {

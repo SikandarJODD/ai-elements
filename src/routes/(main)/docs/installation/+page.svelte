@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import {
-		Heading,
-		Subheading,
 		CodeSpan,
 		AiInstallCommand,
 		Installation,

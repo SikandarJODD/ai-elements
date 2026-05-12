@@ -341,7 +341,7 @@
 	// Component dropdown items
 	const componentItems: ComponentDropdownItem[] = [
 		{
-			href: "/components/actions",
+			href: "/components/prompt-input",
 			title: "Svelte AI Elements",
 			description: "Svelte Port of Vercel AI Elements",
 			icon: SparklesIcon,
@@ -352,18 +352,6 @@
 			description: "20 core building blocks for AI apps",
 			icon: ZapIcon,
 		},
-		// {
-		// 	href: "/prompt-kit/blocks",
-		// 	title: "8 UI Blocks",
-		// 	description: "Pre-built conversation layouts ready to use",
-		// 	icon: BoxesIcon,
-		// },
-		// {
-		// 	href: "/demo-play",
-		// 	title: "Demo Play",
-		// 	description: "Pre-built conversation layouts ready to use",
-		// 	icon: BoxesIcon,
-		// },
 	];
 </script>
 
@@ -596,24 +584,6 @@
 								class="text-muted-foreground hover:text-primary focus:text-primary data-[active]:bg-accent/50 data-[active]:text-accent-foreground bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-transparent focus:bg-transparent"
 							>
 								Cookbook
-							</NavigationMenuLink>
-						</NavigationMenuItem>
-
-						<!-- Playground Link -->
-						<NavigationMenuItem>
-							<NavigationMenuLink
-								href="/playground"
-								class="text-muted-foreground hover:text-primary focus:text-primary data-[active]:bg-accent/50 data-[active]:text-accent-foreground bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-transparent focus:bg-transparent"
-							>
-								<span class="flex items-center gap-1.5">
-									Playground
-									<Badge
-										variant="secondary"
-										class="bg-primary/10 text-primary hover:bg-primary/20 border-primary/20 h-4 border px-1 py-0 text-[10px] font-semibold"
-									>
-										New
-									</Badge>
-								</span>
 							</NavigationMenuLink>
 						</NavigationMenuItem>
 					</NavigationMenuList>

@@ -18,7 +18,7 @@
 
 	let { files, class: className, defaultFile }: Props = $props();
 
-	let selectedFile = $state<string>(defaultFile || files[0]?.name || "");
+	let selectedFile = $derived<string>(defaultFile || files[0]?.name || "");
 	let folderExpanded = $state<boolean>(true);
 
 	function getLanguage(
@@ -109,7 +109,7 @@
 			<Code.Root
 				code={currentFile.content}
 				lang={currentLang}
-				class="no-scrollbar h-full max-h-[600px] rounded-none border-none"
+				class="no-scrollbar h-full max-h-150 rounded-none border-none"
 			>
 				<Code.CopyButton />
 			</Code.Root>

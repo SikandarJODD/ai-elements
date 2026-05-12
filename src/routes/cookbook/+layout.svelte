@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from "$app/state";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-	import CookbookSidebar from "$lib/components/app-sidebar/cookbook-sidebar.svelte";
+	import CookbookSidebar from "$lib/components/layouts/app-sidebar/cookbook-sidebar.svelte";
 	import ApiKeyCard from "$lib/components/cookbook/api-key-card.svelte";
 
 	let { children } = $props();

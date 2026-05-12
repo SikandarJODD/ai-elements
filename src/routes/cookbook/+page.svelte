@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { Badge } from "$lib/components/ui/badge";
 	import { recipes } from "$lib/config/cookbook-data";
-	import { Button } from "$lib/components/ui/button";
 	import { FullWidthDivider } from "$lib/components/ui/full-width-divider";
 </script>
 
@@ -51,11 +49,6 @@
 							{recipe.name}
 						</h3>
 						<span class="w-full border-b-2 border-dashed"></span>
-						{#if recipe.playground_url}
-							<Button href={recipe.playground_url} rel="noreferrer">
-								Visit Playground
-							</Button>
-						{/if}
 					</div>
 
 					<div class="mt-2 flex items-center justify-between gap-4">

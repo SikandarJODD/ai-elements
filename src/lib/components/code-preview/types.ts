@@ -44,11 +44,6 @@ export type BlockShowcaseItem = {
 	installId?: string;
 };
 
-export type CookbookPlaygroundPageData = BlockShowcaseItem & {
-	slug: string;
-	tags: string[];
-};
-
 type BlockCodeFileInput = Omit<BlockCodeFile, "type" | "name"> & {
 	name?: string;
 };

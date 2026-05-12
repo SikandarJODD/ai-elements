@@ -1,31 +1,3 @@
-/**
- * OpenRouter API Key Store
- *
- * Global store for managing OpenRouter API key with localStorage persistence.
- * Uses Svelte 5 class-based store pattern.
- *
- * ## Usage
- * ```svelte
- * <script lang="ts">
- *   import { openRouterKeyStore } from "$lib/config/open-router-key.svelte";
- *
- *   let apiKey = $state("");
- *
- *   onMount(() => {
- *     apiKey = openRouterKeyStore.key;
- *   });
- *
- *   function saveKey() {
- *     openRouterKeyStore.key = apiKey;
- *   }
- *
- *   function removeKey() {
- *     openRouterKeyStore.clear();
- *   }
- * </script>
- * ```
- */
-
 const STORAGE_KEY = "openrouter-api-key";
 
 export class OpenRouterKeyStore {

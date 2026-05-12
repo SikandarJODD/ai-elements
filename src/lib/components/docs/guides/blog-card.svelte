@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Guide } from "$lib/config/guides-data";
 	import { cn } from "$lib/utils";
-	import { Button } from "../ui/button";
+	import { Button } from "../../ui/button";
 
 	type Props = Guide & {
 		class?: string;
@@ -12,7 +12,6 @@
 		date,
 		title,
 		description,
-		playground_url,
 		// author,
 		class: className = "",
 		...props
@@ -53,8 +52,5 @@
 	</div> -->
 	<div>
 		<Button variant="outline" size="sm" href="/guides/{id}">Read More</Button>
-		{#if playground_url}
-			<Button href={playground_url} target="_blank" class="h-8">Visit Playground</Button>
-		{/if}
 	</div>
 </a>

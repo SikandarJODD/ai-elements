@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-	import PromptKitSidebar from "$lib/components/app-sidebar/prompt-kit-sidebar.svelte";
+	import PromptKitSidebar from "$lib/components/layouts/app-sidebar/prompt-kit-sidebar.svelte";
 	import Toc from "$lib/components/docs/toc/toc.svelte";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
 
