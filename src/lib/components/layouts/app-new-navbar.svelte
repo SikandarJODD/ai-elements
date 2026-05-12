@@ -341,7 +341,7 @@
 	// Component dropdown items
 	const componentItems: ComponentDropdownItem[] = [
 		{
-			href: "/components/actions",
+			href: "/components/prompt-input",
 			title: "Svelte AI Elements",
 			description: "Svelte Port of Vercel AI Elements",
 			icon: SparklesIcon,

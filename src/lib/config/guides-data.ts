@@ -3,8 +3,7 @@ export type Guide = {
 	date: string;
 	title: string;
 	description: string;
-	playground_url?: string; // cookbook playground url
-}
+};
 
 export const guidesData: Guide[] = [
 	{
@@ -20,7 +19,6 @@ export const guidesData: Guide[] = [
 		title: "Svelte 5 + AI SDK Integration",
 		description:
 			"Learn how to integrate AI Elements with the AI SDK.",
-		// playground_url: "/cookbook-playground/stream-text",
 	},
 	// Add more guides here as they are created
 ];

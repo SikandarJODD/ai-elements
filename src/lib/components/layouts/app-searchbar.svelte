@@ -50,8 +50,13 @@
 		() => ({ query: searchQuery, isOpen: open }),
 		({ query, isOpen }) => {
 			if (!query.trim() && isOpen) {
-				// Show docs, AI Elements, and Prompt Kit when search is empty
-				searchResults = [...navigationGroups.docs, ...navigationGroups.components];
+				searchResults = [
+					...navigationGroups.docs,
+					...navigationGroups.aiElements,
+					...navigationGroups.promptKit,
+					...navigationGroups.cookbook,
+					...navigationGroups.guides,
+				];
 			}
 		}
 	);
@@ -156,7 +161,7 @@
 			<Command.Separator />
 
 			<Command.Group heading="AI Elements">
-				{#each navigationGroups.components.filter((item) => !item.title.startsWith("Prompt Kit")) as item (item.href)}
+				{#each navigationGroups.aiElements as item (item.href)}
 					{@const Icon = getCategoryIcon(item.category)}
 					<Command.Item value={item.title} onSelect={() => handleSelect(item.href)}>
 						<Icon class="mr-2 size-4" strokeWidth={1.2} />
@@ -174,12 +179,30 @@
 			<Command.Separator />
 
 			<Command.Group heading="Prompt Kit">
-				{#each navigationGroups.components.filter( (item) => item.title.startsWith("Prompt Kit") ) as item (item.href)}
+				{#each navigationGroups.promptKit as item (item.href)}
 					{@const Icon = getCategoryIcon(item.category)}
 					<Command.Item value={item.title} onSelect={() => handleSelect(item.href)}>
 						<Icon class="mr-2 size-4" strokeWidth={1.2} />
 						<div class="flex flex-col">
-							<span>{item.title.replace("Prompt Kit - ", "")}</span>
+							<span>{item.title}</span>
+							{#if item.description}
+								<span class="text-muted-foreground text-xs">{item.description}</span
+								>
+							{/if}
+						</div>
+					</Command.Item>
+				{/each}
+			</Command.Group>
+
+			<Command.Separator />
+
+			<Command.Group heading="Cookbook">
+				{#each navigationGroups.cookbook as item (item.href)}
+					{@const Icon = getCategoryIcon(item.category)}
+					<Command.Item value={item.title} onSelect={() => handleSelect(item.href)}>
+						<Icon class="mr-2 size-4" strokeWidth={1.2} />
+						<div class="flex flex-col">
+							<span>{item.title}</span>
 							{#if item.description}
 								<span class="text-muted-foreground text-xs">{item.description}</span
 								>

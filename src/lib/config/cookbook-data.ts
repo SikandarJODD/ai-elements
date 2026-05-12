@@ -3,7 +3,6 @@ export interface Recipe {
 	slug: string;
 	description: string;
 	tags: string[];
-	playground_url?: string;
 }
 
 export const recipes: Recipe[] = [
@@ -19,7 +18,6 @@ export const recipes: Recipe[] = [
 		slug: "generate-text",
 		description: "Learn how to generate text using AI models with simple prompts",
 		tags: ["text", "generation", "basics"],
-		playground_url: "/cookbook-playground/generate-text",
 	},
 	{
 		name: "Stream Text",

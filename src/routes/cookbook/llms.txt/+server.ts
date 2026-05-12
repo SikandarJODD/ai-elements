@@ -15,7 +15,6 @@ ${recipes
 - **Description**: ${r.description}
 - **Tags**: ${r.tags.join(", ")}
 - **Documentation**: /cookbook/${r.slug}
-- **Playground**: ${r.playground_url ?? "N/A"}
 - **llms.txt**: /cookbook/${r.slug}/llms.txt
 `
 	)

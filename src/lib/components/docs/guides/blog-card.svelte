@@ -12,7 +12,6 @@
 		date,
 		title,
 		description,
-		playground_url,
 		// author,
 		class: className = "",
 		...props
@@ -53,8 +52,5 @@
 	</div> -->
 	<div>
 		<Button variant="outline" size="sm" href="/guides/{id}">Read More</Button>
-		{#if playground_url}
-			<Button href={playground_url} target="_blank" class="h-8">Visit Playground</Button>
-		{/if}
 	</div>
 </a>
