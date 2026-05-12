@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CookbookPlaygroundShell from "$lib/components/cookbook-playground/cookbook-playground-shell.svelte";
+	import CookbookPlaygroundShell from "$lib/components/cookbook/playground/cookbook-playground-shell.svelte";
 	import { pageData } from "./data";
 </script>
 

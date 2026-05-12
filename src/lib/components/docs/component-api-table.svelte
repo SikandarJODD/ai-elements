@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { H3 } from "$lib/components/docs";
 	import { cn } from "$lib/utils/utils";
+	import H3 from "../markdown/H3.svelte";
 	import type { ComponentAPITableProps } from "./component-api-table.types";
 
 	let { componentName, props, class: className, id }: ComponentAPITableProps = $props();

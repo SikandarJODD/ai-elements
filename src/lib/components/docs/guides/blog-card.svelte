@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Guide } from "$lib/config/guides-data";
 	import { cn } from "$lib/utils";
-	import { Button } from "../ui/button";
+	import { Button } from "../../ui/button";
 
 	type Props = Guide & {
 		class?: string;
