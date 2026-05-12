@@ -9,7 +9,7 @@
 		orientation = "vertical",
 		scrollbarXClasses = "",
 		scrollbarYClasses = "",
-		fade = true,
+		fade = false,
 		children,
 		...restProps
 	}: WithoutChild<ScrollAreaPrimitive.RootProps> & {

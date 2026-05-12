@@ -4,7 +4,7 @@
 	import type { Snippet } from "svelte";
 
 	interface Props extends Omit<ButtonProps, "onclick"> {
-		suggestion: string;
+		suggestion?: string;
 		onclick?: (suggestion: string) => void;
 		children?: Snippet;
 		class?: string;
@@ -23,7 +23,7 @@
 	}: Props = $props();
 
 	let handleClick = () => {
-		onclick?.(suggestion);
+		onclick?.(suggestion || "");
 	};
 </script>
 

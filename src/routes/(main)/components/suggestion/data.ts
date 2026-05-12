@@ -1,15 +1,15 @@
 import Basic from "./examples/basic.svelte";
 import basicRaw from "./examples/basic.svelte?raw";
 
-import type { Example } from "$lib/structure/examples";
 import type { SEO } from "$lib/structure/seo";
 import type { ComponentDoc, ComponentMeta } from "$lib/structure/structure";
+import Preview from "./examples/preview.svelte";
 
 export const meta: ComponentMeta = {
 	id: "suggestion",
 	title: "Suggestion",
 	description:
-		"The Suggestion component displays a horizontal row of clickable suggestions for user interaction.",
+		"The Suggestion component displays a horizontal row of clickable suggestions for user interaction."
 };
 
 const seo: SEO = {
@@ -19,11 +19,9 @@ const seo: SEO = {
 	keywords: ["Svelte", "Suggestion", "Prompt suggestions", "Svelte AI Elements"],
 };
 
-const examples: Example[] = [];
-
 export const data: ComponentDoc = {
 	...meta,
-	preview: Basic,
+	preview: Preview,
 	previewCode: {
 		filename: "basic.svelte",
 		filecode: basicRaw,
@@ -31,7 +29,6 @@ export const data: ComponentDoc = {
 		isExpand: true,
 	},
 	seo,
-	examples,
 	props: [
 		{
 			name: "Suggestion",
