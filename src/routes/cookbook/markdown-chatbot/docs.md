@@ -4,7 +4,7 @@
 
 ## Overview
 
-AI models often return responses in markdown format - especially when explaining code, providing instructions, or formatting data. This recipe shows how to render that markdown beautifully using the `svelte-streamdown` library, which handles streaming markdown content with proper syntax highlighting.
+AI models often return responses in markdown format - especially when explaining code, providing instructions, or formatting data. This recipe shows how to render that markdown beautifully using the `streamdown-svelte` library, which handles streaming markdown content with proper syntax highlighting.
 
 ## Why Markdown Rendering Matters
 
@@ -20,11 +20,11 @@ Rendered markdown is clear and professional:
 
 ## The Markdown Component
 
-We use `svelte-streamdown` for optimal streaming markdown:
+We use `streamdown-svelte` for optimal streaming markdown:
 
 ```svelte
 <script lang="ts">
-  import { Streamdown } from "svelte-streamdown";
+  import { Streamdown } from "streamdown-svelte";
   import { mode } from "mode-watcher";
 </script>
 
@@ -76,12 +76,12 @@ Handle text parts and render them with the Markdown component:
 1. **Use dark/light themes** - Match your app's color scheme
 2. **Add prose classes** - Tailwind prose classes style markdown elements
 3. **Handle empty content** - Show placeholder when no content yet
-4. **Stream smoothly** - svelte-streamdown handles partial markdown gracefully
+4. **Stream smoothly** - streamdown-svelte handles partial markdown gracefully
 
 ## Dependencies
 
 ```bash
-npm install svelte-streamdown mode-watcher
+npm install streamdown-svelte mode-watcher
 ```
 
 ## Related Recipes

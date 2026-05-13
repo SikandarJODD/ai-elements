@@ -15,7 +15,7 @@ Add the following imports to your `app.css` file to include Tailwind CSS and Str
 ```css
 @import "tailwindcss";
 /* Add Streamdown styles to your Tailwind build */
-@source "../node_modules/svelte-streamdown/**/*";
+@source "../node_modules/streamdown-svelte/dist/**/*.{js,svelte,ts}";
 ```
 
 ## Usage
@@ -104,13 +104,13 @@ console.log("Hello, world!");
 - **Code highlighting**: Automatic syntax highlighting for code blocks using Shiki
 - **Theme support**: Automatic dark/light mode theme switching
 - **Customizable**: Easy to style and extend with custom classes
-- **Built on Streamdown**: Leverages the powerful svelte-streamdown library
+- **Built on Streamdown**: Leverages the powerful streamdown-svelte library
 
 ## Dependencies
 
 This component requires:
 
-- `svelte-streamdown` - For markdown rendering and streaming support
+- `streamdown-svelte` - For markdown rendering and streaming support
 - `shiki` - For syntax highlighting in code blocks
 
 ---

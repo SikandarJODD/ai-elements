@@ -6,7 +6,8 @@
 	"author": "SikandarJODD",
 	"description": "A comprehensive suite of components for displaying chat messages, including message rendering, branching, actions, and markdown responses.",
 	"dependencies": [
-		"svelte-streamdown",
+		"streamdown-svelte",
+		"@streamdown-svelte/code",
 		"mode-watcher",
 		"@shikijs/themes",
 		"@lucide/svelte"
@@ -51,7 +52,7 @@
 			"target": "ai-elements/message/core/MessageContent.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport { Streamdown, type StreamdownProps } from \"svelte-streamdown\";\n\timport Code from \"svelte-streamdown/code\";\n\timport MathRenderer from \"svelte-streamdown/math\";\n\timport Mermaid from \"svelte-streamdown/mermaid\";\n\timport { mode } from \"mode-watcher\";\n\timport githubDarkDefault from \"@shikijs/themes/github-dark-default\";\n\timport githubLightDefault from \"@shikijs/themes/github-light-default\";\n\timport { cn } from \"$UTILS$\";\n\n\ttype StreamdownComponents = NonNullable<StreamdownProps[\"components\"]>;\n\n\ttype Props = {\n\t\tcontent: string;\n\t\tclass?: string;\n\t\tcomponents?: StreamdownComponents;\n\t} & Omit<StreamdownProps, \"class\" | \"content\" | \"components\">;\n\n\tlet { content, class: className, components, ...restProps }: Props = $props();\n\n\tconst defaultComponents = {\n\t\tcode: Code,\n\t\tmermaid: Mermaid,\n\t\tmath: MathRenderer,\n\t} satisfies StreamdownComponents;\n\n\tlet currentTheme = $derived(\n\t\tmode.current === \"dark\" ? \"github-dark-default\" : \"github-light-default\"\n\t);\n\tlet mergedComponents = $derived({ ...defaultComponents, ...components });\n</script>\n\n<div class={cn(\"size-full [&>*:first-child]:mt-0 [&>*:last-child]:mb-0\", className)}>\n\t<Streamdown\n\t\t{content}\n\t\tbaseTheme=\"shadcn\"\n\t\tcomponents={mergedComponents}\n\t\tshikiTheme={currentTheme}\n\t\tshikiThemes={{\n\t\t\t\"github-light-default\": githubLightDefault,\n\t\t\t\"github-dark-default\": githubDarkDefault,\n\t\t}}\n\t\t{...restProps}\n\t/>\n</div>\n",
+			"content": "<script lang=\"ts\">\n\timport { Streamdown, type StreamdownProps } from 'streamdown-svelte';\n\t// import { code } from '@streamdown-svelte/code';\n\t// import { mermaid } from '@streamdown-svelte/mermaid';\n\t// import { math } from '@streamdown-svelte/math';\n\t// import { cjk } from '@streamdown-svelte/cjk';\n\t// import 'katex/dist/katex.min.css';\n\n\timport { mode } from 'mode-watcher';\n\timport githubDarkDefault from '@shikijs/themes/github-dark-default';\n\timport githubLightDefault from '@shikijs/themes/github-light-default';\n\timport { cn } from '$LIB$/utils';\n\ttype Props = StreamdownProps;\n\n\tlet { content, class: className, components, ...restProps }: Props = $props();\n\tlet currentTheme = $derived(\n\t\tmode.current === 'dark' ? 'github-dark-default' : 'github-light-default'\n\t);\n</script>\n\n<div class={cn('size-full [&>*:first-child]:mt-0 [&>*:last-child]:mb-0', className)}>\n\t<Streamdown\n\t\t{content}\n\t\tbaseTheme=\"shadcn\"\n\t\tshikiTheme={currentTheme}\n\t\tshikiThemes={{\n\t\t\t'github-light-default': githubLightDefault,\n\t\t\t'github-dark-default': githubDarkDefault\n\t\t}}\n\t\t// plugins={{ code, mermaid, math, cjk }}\n\t\t{...restProps}\n\t/>\n</div>\n",
 			"type": "registry:component",
 			"target": "ai-elements/message/response/MessageResponse.svelte"
 		},

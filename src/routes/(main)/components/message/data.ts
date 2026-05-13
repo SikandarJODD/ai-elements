@@ -143,7 +143,7 @@ export const data: ComponentDoc = {
 				{
 					name: "content",
 					type: "string",
-					description: "Markdown content rendered through svelte-streamdown.",
+					description: "Markdown content rendered through streamdown-svelte.",
 				},
 				{
 					name: "components",

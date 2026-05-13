@@ -9,13 +9,13 @@ export const meta: ComponentMeta = {
 	id: "response",
 	title: "Response",
 	description:
-		"The Response component renders a Markdown response from a large language model. It uses Streamdown under the hood to render the markdown.",
+		"The Response component renders a Markdown response from a large language model. It uses Streamdown-Svelte under the hood to render the markdown.",
 };
 
 const seo: SEO = {
 	title: "Response",
 	description:
-		"The Response component renders a Markdown response from a large language model. It uses Streamdown under the hood to render the markdown.",
+		"The Response component renders a Markdown response from a large language model. It uses Streamdown-Svelte under the hood to render the markdown.",
 	keywords: ["Svelte", "Response", "Markdown", "Svelte AI Elements"],
 };
 

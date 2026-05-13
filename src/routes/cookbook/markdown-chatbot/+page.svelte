@@ -47,7 +47,7 @@ Always format code with the correct language identifier.\`,
 };`;
 
 	let markdownCode = `<script lang="ts">
-  import { Streamdown } from "svelte-streamdown";
+  import { Streamdown } from "streamdown-svelte";
   import { mode } from "mode-watcher";
 <\/script>
 
@@ -118,7 +118,7 @@ Always format code with the correct language identifier.\`,
 		<h2 class="mb-4 text-2xl font-semibold">Overview</h2>
 		<p class="text-muted-foreground leading-relaxed">
 			Most AI responses contain markdown - code blocks, bullet points, headers. Raw markdown
-			is hard to read. This recipe uses <code class="text-foreground">svelte-streamdown</code>
+			is hard to read. This recipe uses <code class="text-foreground">streamdown-svelte</code>
 			to render streaming markdown with Shiki-powered syntax highlighting that works perfectly in
 			both light and dark modes.
 		</p>
@@ -151,7 +151,7 @@ Always format code with the correct language identifier.\`,
 	<section class="mb-12">
 		<h2 class="mb-6 text-2xl font-semibold">The Markdown Component</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
-			<code class="text-foreground">svelte-streamdown</code> handles streaming markdown gracefully,
+			<code class="text-foreground">streamdown-svelte</code> handles streaming markdown gracefully,
 			rendering partial content as it arrives:
 		</p>
 		<CodeNameBlock
@@ -184,7 +184,7 @@ Always format code with the correct language identifier.\`,
 				<h3 class="text-foreground mb-1 font-medium">Streaming Support</h3>
 				<p class="text-muted-foreground text-sm leading-relaxed">
 					Unlike regular markdown renderers, <code class="text-foreground"
-						>svelte-streamdown</code
+						>streamdown-svelte</code
 					>
 					handles partial markdown gracefully - no flickering or broken rendering mid-stream.
 				</p>

@@ -3,19 +3,19 @@
 	import { cn } from "$lib/utils/utils";
 	import { watch } from "runed";
 	import type { Snippet } from "svelte";
-	import { Streamdown } from "svelte-streamdown";
+	import { Streamdown } from "streamdown-svelte";
 	import { mode } from "mode-watcher";
 
 	// Import Shiki themes
 	import githubLightDefault from "@shikijs/themes/github-light-default";
 	import githubDarkDefault from "@shikijs/themes/github-dark-default";
-	import Code from "svelte-streamdown/code";
+	import { code } from '@streamdown-svelte/code';
 
 	interface Props {
 		children?: Snippet;
 		content?: string;
 		class?: string;
-		contentClassName?: string;
+		contentClass?: string;
 		markdown?: boolean;
 		[key: string]: any;
 	}
@@ -24,7 +24,7 @@
 		children,
 		content, // for streamdown purpose only
 		class: className,
-		contentClassName,
+		contentClass,
 		markdown = false,
 		...rest
 	}: Props = $props();
@@ -71,7 +71,7 @@
 >
 	<div
 		bind:this={innerRef}
-		class={cn("text-muted-foreground prose prose-sm dark:prose-invert", contentClassName)}
+		class={cn("text-muted-foreground prose prose-sm dark:prose-invert", contentClass)}
 	>
 		{#if content}
 			<!-- Basic -->
@@ -85,8 +85,8 @@
 					"github-light-default": githubLightDefault,
 					"github-dark-default": githubDarkDefault,
 				}}
-				components={{ code: Code }}
 				baseTheme="shadcn"
+				plugins={{ code }}
 			/>
 		{:else}
 			{@render children?.()}

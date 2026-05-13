@@ -658,7 +658,8 @@
 			],
 			"registryDependencies": ["button", "button-group", "tooltip", "dialog"],
 			"dependencies": [
-				"svelte-streamdown",
+				"streamdown-svelte",
+				"@streamdown-svelte/code",
 				"mode-watcher",
 				"@shikijs/themes",
 				"@lucide/svelte"
