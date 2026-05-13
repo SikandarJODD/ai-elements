@@ -49,11 +49,13 @@
 		</PreviewComponent>
 	{/if}
 
-	<Installation
-		specifier={installation.specifier}
-		is_jsrepo={installation.isJsrepo}
-		blockname={installation.blockname}
-	/>
+	<div class="mb-12 mt-8">
+		<Installation
+			specifier={installation.specifier}
+			is_jsrepo={installation.isJsrepo}
+			blockname={installation.blockname}
+		/>
+	</div>
 
 	{#if examples.length > 0}
 		<section>

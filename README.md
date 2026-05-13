@@ -151,7 +151,7 @@ Prompt Kit also includes eight ready-to-use UI blocks for faster composition. Br
 
 ## Streaming Responses
 
-For markdown and streaming response rendering, this project uses [`svelte-streamdown`](https://github.com/beynar/svelte-streamdown), the Svelte port used throughout the repo for streamed markdown output.
+For markdown and streaming response rendering, this project uses [`streamdown-svelte`](https://github.com/PacificStudio/streamdown-svelte), the Svelte port used throughout the repo for streamed markdown output.
 
 ## Inspired By
 

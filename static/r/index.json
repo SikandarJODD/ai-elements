@@ -249,31 +249,14 @@
 		"relativeUrl": "loader.json"
 	},
 	{
-		"name": "message-old",
-		"title": "Message (Old)",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Message component displays a chat interface message from either a user or an AI. It includes an avatar, a name, and a message content.",
-		"dependencies": [
-			"ai",
-			"tailwind-variants"
-		],
-		"registryDependencies": [
-			"avatar"
-		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
-		"relativeUrl": "message-old.json"
-	},
-	{
 		"name": "message",
 		"title": "Message",
 		"type": "registry:block",
 		"author": "SikandarJODD",
 		"description": "A comprehensive suite of components for displaying chat messages, including message rendering, branching, actions, and markdown responses.",
 		"dependencies": [
-			"svelte-streamdown",
+			"streamdown-svelte",
+			"@streamdown-svelte/code",
 			"mode-watcher",
 			"@shikijs/themes",
 			"@lucide/svelte"
@@ -401,7 +384,8 @@
 		"type": "registry:block",
 		"description": "The Response component provides a structured container for displaying AI responses with consistent formatting and styling.",
 		"dependencies": [
-			"svelte-streamdown"
+			"streamdown-svelte",
+			"@streamdown-svelte/code"
 		],
 		"registryDependencies": [],
 		"meta": {
@@ -786,59 +770,5 @@
 			"featured": false
 		},
 		"relativeUrl": "toolbar.json"
-	},
-	{
-		"name": "playground",
-		"title": "AI Chat Playground",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "A complete AI chat playground with OpenRouter integration, featuring prompt suggestions with icons, code viewer dialog, reasoning support, and FREE AI model. Perfect for testing and learning AI chat interfaces.",
-		"dependencies": [
-			"ai",
-			"@ai-sdk/svelte",
-			"@openrouter/ai-sdk-provider",
-			"runed",
-			"marked",
-			"svelte-sonner",
-			"@lucide/svelte"
-		],
-		"registryDependencies": [
-			"button",
-			"badge",
-			"input",
-			"label",
-			"hover-card",
-			"dialog",
-			"tabs",
-			"tooltip",
-			"local:message",
-			"local:conversation",
-			"local:action",
-			"local:response",
-			"local:reasoning",
-			"local:code",
-			"local:prompt-input",
-			"local:prompt-suggestion"
-		],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"playground",
-				"chat",
-				"ai",
-				"openrouter",
-				"example",
-				"free-model",
-				"suggestions"
-			],
-			"category": "Examples",
-			"documentation": "https://svelte-ai-elements.vercel.app/playground",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "advanced",
-			"updated": "2025-11-02",
-			"featured": true
-		},
-		"relativeUrl": "playground.json"
 	}
 ]

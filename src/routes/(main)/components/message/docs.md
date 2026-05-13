@@ -199,7 +199,7 @@ Message
 ## Key Props
 
 - `Message`: set `from` to control role-aware layout.
-- `MessageResponse`: pass `content` for markdown, plus optional `components` overrides for `svelte-streamdown`.
+- `MessageResponse`: pass `content` for markdown, plus optional `components` overrides for `streamdown-svelte`.
 - `MessageBranch`: use `defaultBranch` and `onBranchChange` to manage branched assistant output.
 - `MessageBranchContent`: pass `versions: { id: string; content: string }[]`.
 - `MessageAttachment`: pass `data: { type: "file"; filename?: string; mediaType?: string; url?: string }`.

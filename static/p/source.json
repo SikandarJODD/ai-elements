@@ -3,11 +3,21 @@
 	"name": "source",
 	"type": "registry:block",
 	"description": "The Source component displays collapsible source information and references in AI responses. Features trigger and content components with context management for showing citations and sources.",
-	"registryDependencies": ["collapsible", "button", "hover-card"],
+	"registryDependencies": [
+		"collapsible",
+		"button",
+		"hover-card"
+	],
 	"meta": {
 		"author": "SikandarJODD",
 		"version": "1.0.0",
-		"tags": ["prompt-kit", "source", "citation", "reference", "collapsible"],
+		"tags": [
+			"prompt-kit",
+			"source",
+			"citation",
+			"reference",
+			"collapsible"
+		],
 		"category": "Prompt Kit",
 		"documentation": "https://svelte-ai-elements.vercel.app//prompt-kit/source",
 		"repository": "https://github.com/SikandarJODD/ai-elements",

@@ -1242,7 +1242,10 @@
 				}
 			],
 			"registryDependencies": [],
-			"dependencies": ["svelte-streamdown"],
+			"dependencies": [
+				"streamdown-svelte",
+				"@streamdown-svelte/code"
+			],
 			"meta": {
 				"author": "SikandarJODD"
 			}
