@@ -9,10 +9,10 @@
 	import { mode } from 'mode-watcher';
 	import githubDarkDefault from '@shikijs/themes/github-dark-default';
 	import githubLightDefault from '@shikijs/themes/github-light-default';
-	import { cn } from '$lib/utils';
+	import { cn } from '$lib/utils/utils';
 	type Props = StreamdownProps;
 
-	let { content, class: className, components, ...restProps }: Props = $props();
+	let { content, class: className, ...restProps }: Props = $props();
 	let currentTheme = $derived(
 		mode.current === 'dark' ? 'github-dark-default' : 'github-light-default'
 	);
