@@ -1,0 +1,48 @@
+<script lang="ts">
+	import Button from "$lib/components/ui/extra/button.svelte";
+	import { useCodeOverflow } from "./code.svelte.js";
+	import { box } from "svelte-toolbelt";
+	import type { CodeOverflowProps } from "./types";
+	import { cn } from "$lib/utils.js";
+
+	let {
+		collapsed = $bindable(true),
+		class: className,
+		children,
+		...props
+	}: CodeOverflowProps = $props();
+
+	const state = useCodeOverflow({
+		collapsed: box.with(
+			() => collapsed,
+			(v) => (collapsed = v)
+		)
+	});
+</script>
+
+<div
+	{...props}
+	data-code-overflow
+	data-collapsed={collapsed}
+	class={cn(
+		"relative overflow-y-hidden data-[collapsed=true]:max-h-75",
+		className
+	)}
+>
+	{@render children?.()}
+	{#if collapsed}
+		<div
+			class="absolute bottom-0 left-0 z-10 h-full w-full bg-linear-to-t from-card from-15% to-transparent"
+		></div>
+	{/if}
+	{#if collapsed}
+		<Button
+			variant="secondary"
+			size="sm"
+			class="absolute bottom-2 left-1/2 z-20 w-fit -translate-x-1/2"
+			onclick={state.toggleCollapsed}
+		>
+			Expand
+		</Button>
+	{/if}
+</div>
