@@ -7,6 +7,9 @@ const config = {
 
 	kit: {
 		adapter: adapter(),
+		alias: {
+			$markdown: "src/lib/components/docs/markdown",
+		},
 	},
 	vitePlugin: {
 		inspector: {
