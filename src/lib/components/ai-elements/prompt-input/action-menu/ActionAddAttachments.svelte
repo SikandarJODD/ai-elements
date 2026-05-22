@@ -2,7 +2,7 @@
 	import { getAttachmentsContext } from "../context/attachments.svelte.js";
 	import ActionMenuItem from "./ActionMenuItem.svelte";
 	import ImageIcon from "@lucide/svelte/icons/image";
-	import { cn } from "$lib/utils/utils.js";
+	import { cn } from "$lib/utils";
 
 	interface Props {
 		onSelect?: () => void;

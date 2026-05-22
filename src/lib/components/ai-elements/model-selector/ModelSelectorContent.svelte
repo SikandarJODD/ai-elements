@@ -2,9 +2,9 @@
 	import * as Dialog from "$lib/components/ui/dialog/index.js";
 	import * as Command from "$lib/components/ui/command/index.js";
 	import type { Dialog as DialogPrimitive } from "bits-ui";
-	import type { WithoutChildrenOrChild } from "$lib/utils/utils.js";
+	import type { WithoutChildrenOrChild } from "$lib/utils";
 	import type { Snippet } from "svelte";
-	import { cn } from "$lib/utils/utils.js";
+	import { cn } from "$lib/utils";
 
 	let {
 		ref = $bindable(null),
