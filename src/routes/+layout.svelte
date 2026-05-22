@@ -2,7 +2,7 @@
 	import "../app.css";
 	import favicon from "$lib/assets/favicon.svg";
 	import { ModeWatcher, toggleMode } from "mode-watcher";
-	import AppNewNavbar from "$lib/components/layouts/app-new-navbar.svelte";
+	// import AppNewNavbar from "$lib/components/layouts/navbar.svelte";
 	import { Toaster } from "svelte-sonner";
 	import { PressedKeys, activeElement } from "runed";
 	let { children } = $props();
@@ -26,6 +26,6 @@
 <Toaster richColors position="bottom-center" />
 
 <!-- <AppNavbar /> -->
-<AppNewNavbar />
+<!-- <AppNewNavbar /> -->
 <div class="h-16"></div>
 {@render children?.()}
