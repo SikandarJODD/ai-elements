@@ -31,18 +31,6 @@ const seo: SEO = {
 	keywords: ["Svelte", "Chain Of Thought", "Component"],
 };
 
-const examples: Example[] = [
-	{
-		name: "Demo",
-		preview: DemoExample,
-		code: {
-			name: "demo-example.svelte",
-			code: DemoExampleRaw,
-			lang: "svelte",
-		},
-	},
-];
-
 const install_block: InstallComponentDocs = {
 	packages: [],
 	install_code: [
@@ -81,18 +69,22 @@ const install_block: InstallComponentDocs = {
 		{ name: "chain-of-thought.svelte", code: ChainOfThoughtSvelteRaw, lang: "svelte" },
 		{ name: "index.ts", code: IndexTsRaw, lang: "typescript" },
 	],
-	folder_structure:
-		"src/\n`-- lib/\n    `-- components/\n        `-- ai-elements/\n            `-- chain-of-thought/\n                |-- chain-of-thought-content.svelte\n                |-- chain-of-thought-context.svelte.ts\n                |-- chain-of-thought-header.svelte\n                |-- chain-of-thought-image.svelte\n                |-- chain-of-thought-search-result.svelte\n                |-- chain-of-thought-search-results.svelte\n                |-- chain-of-thought-step.svelte\n                |-- chain-of-thought.svelte\n                `-- index.ts",
+	folder_structure: `src/
+└── lib/
+    └── components/
+        └── ai-elements/
+            └── chain-of-thought/
+                ├── chain-of-thought-content.svelte
+                ├── chain-of-thought-context.svelte.ts
+                ├── chain-of-thought-header.svelte
+                ├── chain-of-thought-image.svelte
+                ├── chain-of-thought-search-result.svelte
+                ├── chain-of-thought-search-results.svelte
+                ├── chain-of-thought-step.svelte
+                ├── chain-of-thought.svelte
+                └── index.ts`,
 };
 
-// preview: Preview,
-// preview_code: {
-// 	name: "preview.svelte",
-// 	code: PreviewCode,
-// 	lang: "svelte",
-// 	hideLines: true,
-// },
-// preview_class: "items-start justify-start pt-10",
 export const data: ComponentDoc = {
 	...meta,
 	preview: {
@@ -107,7 +99,6 @@ export const data: ComponentDoc = {
 		is_center: false,
 	},
 	install_block,
-	examples,
 	seo,
 	props: [],
 };

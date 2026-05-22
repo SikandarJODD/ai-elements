@@ -28,6 +28,7 @@
 	import { jsrepo } from "$lib/config/repo";
 	import { page } from "$app/state";
 	import type { InstallComponentDocs } from "$lib/types/structure";
+	import * as Code from "$lib/components/ui/code";
 
 	let {
 		installUrl,
@@ -37,7 +38,7 @@
 		folderStructure = "",
 		packages = [],
 		jsrepoID = "",
-		install
+		install,
 	}: InstallComponentProps = $props();
 
 	let activeTab = $state("cli");
@@ -130,18 +131,12 @@
 			/>
 		</Tabs.Content>
 
-		<Tabs.Content value="manual" class="mt-2 ml-2" data-toc-ignore="true">
+		<Tabs.Content value="manual" class="mt-2 ml-2" data-toc-index="false">
 			<Steps>
 				{#if packages.length > 0}
 					<Step title="Install dependencies">
-						<p class="mb-4">
-							Install the required packages for this component:
-						</p>
-						<PMCommand
-							command="add"
-							args={packages}
-							bind:agent={agent.current}
-						/>
+						<p class="mb-4">Install the required packages for this component:</p>
+						<PMCommand command="add" args={packages} bind:agent={agent.current} />
 					</Step>
 				{/if}
 				{#if install && install.shadcn_components && install.shadcn_components.length > 0}
@@ -151,32 +146,39 @@
 						</p>
 						<PMCommand
 							command="execute"
-							args={[
-								"shadcn-svelte@latest",
-								"add",
-								...install.shadcn_components
-							]}
+							args={["shadcn-svelte@latest", "add", ...install.shadcn_components]}
 							bind:agent={agent.current}
 						/>
 					</Step>
 				{/if}
 
 				<!-- Folder Structure -->
-				<!-- 
+
 				{#if folderStructure}
-					<Step title="Folder Structure">
+					<Step title="Composition">
 						<div class="mt-2">
-							<SingleFile
+							<!-- <SingleFile
 								code={{
-									name: "Folder Structure",
+									name: "Composition",
 									code: folderStructure,
-									lang: "bash",
+									lang: "markdown",
 									hideLines: true
 								}}
-							/>
+							/> -->
+							<div class="flex w-full">
+								<Code.Root
+									lang="markdown"
+									class="w-full text-muted-foreground!"
+									variant="secondary"
+									hideLines
+									code={folderStructure}
+								>
+									<Code.CopyButton />
+								</Code.Root>
+							</div>
 						</div>
 					</Step>
-				{/if} -->
+				{/if}
 
 				{#if codeBlocks}
 					<Step title="Copy the Source Code" titleBaseClass="mb-0">
@@ -189,10 +191,7 @@
 									<SingleFile code={codeBlock} />
 								{/each} -->
 								<!-- <MultipleFiles code={codeBlocks} /> -->
-								<MultipleSelectFiles
-									code={codeBlocks}
-									{folderStructure}
-								/>
+								<MultipleSelectFiles code={codeBlocks} {folderStructure} />
 							{:else}
 								<SingleFile code={codeBlocks} />
 							{/if}

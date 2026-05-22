@@ -11,8 +11,8 @@ export const codeVariants = tv({
   base: "not-prose relative h-full overflow-auto rounded-lg border",
   variants: {
     variant: {
-      default: "border-border bg-card",
-      secondary: "bg-secondary/50 border-transparent",
+      default: "border-border bg-background",
+      secondary: "bg-neutral-200/20 dark:bg-card/50 border-none",
     },
   },
 });

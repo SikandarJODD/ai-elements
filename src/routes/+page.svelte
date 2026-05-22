@@ -63,11 +63,11 @@
 			<div class="mx-auto max-w-5xl px-6 md:px-6">
 				<div class="sm:mx-auto lg:mt-0 lg:mr-auto">
 					<h1
-						class="mt-8 max-w-2xl font-geist-pixel-circle text-5xl font-semibold text-balance md:text-6xl lg:mt-16"
+						class="mt-8 max-w-2xl font-geist-pixel-circle dark:font-geist-pixel-grid text-5xl font-medium text-balance md:text-6xl lg:mt-16"
 					>
 						Svelte AI Elements
 					</h1>
-					<p class="text-muted-foreground font-geist-pixel-grid dark:font-geist-pixel-circle mt-8 max-w-2xl text-lg text-pretty">
+					<p class="text-muted-foreground font-geist-pixel-square dark:font-geist-pixel-circle mt-8 max-w-2xl text-lg text-pretty">
 						Svelte AI Elements is a custom registry built on top of
 						<a
 							href="https://shadcn-svelte.com"

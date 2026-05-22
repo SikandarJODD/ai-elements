@@ -19,7 +19,7 @@
 	{#each links as link (link.href)}
 		<a
 			class={cn(
-				"rounded-md px-2.5 py-1 text-sm font-light transition-colors hover:bg-accent/60",
+				"rounded-md px-2.5 py-1 text-sm transition-colors hover:bg-accent/60",
 				isActive(link.href)
 					? "bg-accent text-foreground"
 					: "text-muted-foreground hover:text-foreground"

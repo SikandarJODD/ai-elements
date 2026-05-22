@@ -6,9 +6,9 @@ type SeoConfig = {
 	url: string;
 };
 export let seo_config: SeoConfig = {
-	title: "Svelte Prompt Kit",
-	description: "A SvelteKit template for building and documenting Svelte components.",
-	title_template: "%s | Svelte Prompt Kit",
-	site_name: "Svelte Prompt Kit",
-	url: "https://sv-prompt-kit.vercel.app",
+	title: "Svelte AI Elements",
+	description: "Core building blocks for creating AI-powered applications with Svelte.",
+	title_template: "%s | Svelte AI Elements",
+	site_name: "Svelte AI Elements",
+	url: "https://svelte-ai-elements.vercel.app",
 };

@@ -23,6 +23,12 @@ let components: Component[] = [
     href: "/components/chain-of-thought",
     desc: "TODO: Chain Of Thought.",
   },
+  {
+    id: "checkpoint",
+    name: "Checkpoint",
+    href: "/components/checkpoint",
+    desc: "TODO: Checkpoint.",
+  },
 ];
 
 export { components };

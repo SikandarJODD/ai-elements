@@ -10,12 +10,12 @@
 	const websites2 = ["https://www.github.com", "https://www.dribbble.com"];
 </script>
 
-<ChainOfThought.Root>
+<ChainOfThought.Root defaultOpen>
 	<ChainOfThought.Header />
 	<ChainOfThought.Content>
 		<ChainOfThought.Step
 			icon={SearchIcon}
-			label="Searching for profiles for Hayden Bleasel"
+			label="Searching for profiles for Bhide Svelte"
 			status="complete"
 		>
 			<ChainOfThought.SearchResults>
@@ -29,11 +29,11 @@
 
 		<ChainOfThought.Step
 			icon={ImageIcon}
-			label="Found the profile photo for Hayden Bleasel"
+			label="Found the profile photo for Bhide Svelte"
 			status="complete"
 		>
 			<ChainOfThought.Image
-				caption="Hayden Bleasel's profile photo from x.com, showing a Ghibli-style man."
+				caption="Bhide Svelte's profile photo from x.com, showing a Ghibli-style man."
 			>
 				<!-- svelte-ignore a11y_img_redundant_alt -->
 				<img
@@ -45,7 +45,7 @@
 		</ChainOfThought.Step>
 
 		<ChainOfThought.Step
-			label="Hayden Bleasel is an Australian product designer, software engineer, and founder. He is currently based in the United States working for Vercel, an American cloud application company."
+			label="Bhide Svelte is Indian Software Engineer, currently working on Svelte Open Source Projects. He is passionate about building tools and libraries that empower developers to create amazing web applications."
 			status="complete"
 		/>
 

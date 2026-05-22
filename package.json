@@ -17,6 +17,7 @@
 		"create:routes": "node scripts/create-routes.js"
 	},
 	"devDependencies": {
+		"@fontsource-variable/figtree": "^5.2.10",
 		"@fontsource-variable/inter": "^5.2.8",
 		"@internationalized/date": "^3.12.0",
 		"@lucide/svelte": "^1.16.0",

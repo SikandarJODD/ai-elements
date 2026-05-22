@@ -53,7 +53,7 @@
 	}
 
 	:global(pre.shiki) {
-		@apply overflow-x-auto rounded-none bg-inherit py-4 text-sm dark:bg-background!;
+		@apply overflow-x-auto rounded-none bg-inherit py-4 text-sm;
 	}
 
 	:global(pre.shiki:not([data-code-overflow] *):not([data-code-overflow])) {
