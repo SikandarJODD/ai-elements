@@ -29,6 +29,54 @@ let components: Component[] = [
     href: "/components/checkpoint",
     desc: "TODO: Checkpoint.",
   },
+  {
+    id: "confirmation",
+    name: "Confirmation",
+    href: "/components/confirmation",
+    desc: "TODO: Confirmation.",
+  },
+  {
+    id: "context",
+    name: "Context",
+    href: "/components/context",
+    desc: "TODO: Context.",
+  },
+  {
+    id: "conversation",
+    name: "Conversation",
+    href: "/components/conversation",
+    desc: "TODO: Conversation.",
+  },
+  {
+    id: "image",
+    name: "Image",
+    href: "/components/image",
+    desc: "TODO: Image.",
+  },
+  {
+    id: "inline-citation",
+    name: "Inline Citation",
+    href: "/components/inline-citation",
+    desc: "TODO: Inline Citation.",
+  },
+  {
+    id: "loader",
+    name: "Loader",
+    href: "/components/loader",
+    desc: "TODO: Loader.",
+  },
+  {
+    id: "message",
+    name: "Message",
+    href: "/components/message",
+    desc: "TODO: Message.",
+  },
+  {
+    id: "model-selector",
+    name: "Model Selector",
+    href: "/components/model-selector",
+    desc: "TODO: Model Selector.",
+  },
 ];
 
 export { components };

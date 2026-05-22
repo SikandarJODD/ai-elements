@@ -21,7 +21,7 @@
 
 <div
 	bind:this={ref}
-	class={cn("text-muted-foreground flex items-center gap-0.5", className)}
+	class={cn("flex items-center gap-0.5 overflow-hidden text-muted-foreground", className)}
 	{...restProps}
 >
 	{@render children?.()}

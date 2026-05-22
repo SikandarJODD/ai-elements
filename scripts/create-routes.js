@@ -512,12 +512,9 @@ import type {
 \tComponentMeta,
 \tInstallComponentDocs,
 } from "$lib/types/structure";
-import type { Example } from "$lib/types/example";
 import type { SEO } from "$lib/types/seo";
 import Preview from "./examples/preview.svelte";
 import PreviewCode from "./examples/preview.svelte?raw";
-import DemoExample from "./examples/demo-example.svelte";
-import DemoExampleRaw from "./examples/demo-example.svelte?raw";
 
 export const meta: ComponentMeta = {
 \tid: ${JSON.stringify(slug)},
@@ -531,18 +528,6 @@ const seo: SEO = {
 \tdescription: ${JSON.stringify(seoDescription)},
 \tkeywords: ["Svelte", ${JSON.stringify(title)}, "Component"],
 };
-
-const examples: Example[] = [
-\t{
-\t\tname: "Demo",
-\t\tpreview: DemoExample,
-\t\tcode: {
-\t\t\tname: "demo-example.svelte",
-\t\t\tcode: DemoExampleRaw,
-\t\t\tlang: "svelte",
-\t\t},
-\t},
-];
 
 const install_block: InstallComponentDocs = {
 \tpackages: [],
@@ -561,7 +546,6 @@ export const data: ComponentDoc = {
 \t\t},
 \t},
 \tinstall_block,
-\texamples,
 \tseo,
 \tprops: [],
 };
@@ -812,14 +796,6 @@ function buildGeneratedFiles(routePlan) {
 		{
 			contents: renderPreviewSvelte(importStatement, routePlan.localName, routePlan.title),
 			filePath: path.join(examplesDirectory, "preview.svelte"),
-		},
-		{
-			contents: renderDemoExampleSvelte(
-				importStatement,
-				routePlan.localName,
-				routePlan.title
-			),
-			filePath: path.join(examplesDirectory, "demo-example.svelte"),
 		},
 	];
 }

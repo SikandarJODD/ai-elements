@@ -32,9 +32,12 @@
 <Sidebar.Provider>
 	<AppSidebar />
 	<div
-		class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-8 gap-x-8 px-4 py-6 sm:px-6 lg:gap-x-10 xl:gap-x-16 lg:pr-4 lg:pl-6 xl:pl-10"
+		class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-8 w-full xl:grid-cols-8 gap-x-8 px-4 py-6 sm:px-6 lg:gap-x-10 lg:pr-4 lg:pl-6 xl:pl-10"
 	>
-		<main class="w-full sm:col-span-6 lg:col-span-6" bind:this={toc.ref}>
+		<main
+			class="min-w-full md:col-span-6 lg:col-span-6 xl:col-span-6"
+			bind:this={toc.ref}
+		>
 			<!-- Main area -->
 			{@render children()}
 
@@ -42,9 +45,9 @@
 			<DocsNavigation previous={navigation.previous} next={navigation.next} />
 		</main>
 
-		<aside class="hidden w-full shrink-0 lg:block lg:col-span-2">
-			<div class='sticky top-21'>
-				<div class="flex h-[calc(100vh-7.5rem)] min-h-0 flex-col">
+		<aside class="hidden w-full shrink-0 lg:block lg:col-span-2 xl:col-span-2">
+			<div class="sticky top-21">
+				<div class="flex h-[calc(100vh-8rem)] min-h-0 flex-col">
 					<div>
 						<h2 class="mb-2 text-sm font-medium">On this page</h2>
 					</div>

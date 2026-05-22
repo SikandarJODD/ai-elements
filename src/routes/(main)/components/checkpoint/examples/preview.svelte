@@ -43,30 +43,28 @@
 	}
 </script>
 
-<div class="flex size-full flex-col rounded-lg border p-6">
-	<Conversation>
-		<ConversationContent>
-			{#each messages as message, index (message.id)}
-				<Message from={message.role}>
-					<MessageContent>
-						{message.content}
-					</MessageContent>
-				</Message>
+<Conversation>
+	<ConversationContent class='flex flex-col gap-4'>
+		{#each messages as message, index (message.id)}
+			<Message from={message.role}>
+				<MessageContent>
+					{message.content}
+				</MessageContent>
+			</Message>
 
-				{#each checkpoints as checkpoint (checkpoint.timestamp)}
-					{#if checkpoint.messageCount === index + 1}
-						<Checkpoint>
-							<CheckpointIcon />
-							<CheckpointTrigger
-								onclick={() => handleRestore(checkpoint.messageCount)}
-								tooltip="Restores workspace and chat to this point"
-							>
-								Restore checkpoint
-							</CheckpointTrigger>
-						</Checkpoint>
-					{/if}
-				{/each}
+			{#each checkpoints as checkpoint (checkpoint.timestamp)}
+				{#if checkpoint.messageCount === index + 1}
+					<Checkpoint>
+						<CheckpointIcon />
+						<CheckpointTrigger
+							onclick={() => handleRestore(checkpoint.messageCount)}
+							tooltip="Restores workspace and chat to this point"
+						>
+							Restore checkpoint
+						</CheckpointTrigger>
+					</Checkpoint>
+				{/if}
 			{/each}
-		</ConversationContent>
-	</Conversation>
-</div>
+		{/each}
+	</ConversationContent>
+</Conversation>

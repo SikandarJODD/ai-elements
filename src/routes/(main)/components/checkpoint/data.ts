@@ -26,17 +26,6 @@ const seo: SEO = {
 	keywords: ["Svelte", "Checkpoint", "Component"],
 };
 
-const examples: Example[] = [
-	{
-		name: "Demo",
-		preview: DemoExample,
-		code: {
-			name: "demo-example.svelte",
-			code: DemoExampleRaw,
-			lang: "svelte",
-		},
-	},
-];
 
 const install_block: InstallComponentDocs = {
 	packages: [],
@@ -51,8 +40,15 @@ const install_block: InstallComponentDocs = {
 		{ name: "checkpoint.svelte", code: CheckpointSvelteRaw, lang: "svelte" },
 		{ name: "index.ts", code: IndexTsRaw, lang: "typescript" },
 	],
-	folder_structure:
-		"src/\n`-- lib/\n    `-- components/\n        `-- ai-elements/\n            `-- checkpoint/\n                |-- checkpoint-icon.svelte\n                |-- checkpoint-trigger.svelte\n                |-- checkpoint.svelte\n                `-- index.ts",
+	folder_structure: `src/
+└── lib/
+    └── components/
+        └── ai-elements/
+            └── checkpoint/
+                ├── checkpoint-icon.svelte
+                ├── checkpoint-trigger.svelte
+                ├── checkpoint.svelte
+                └── index.ts`,
 };
 
 export const data: ComponentDoc = {
@@ -64,9 +60,9 @@ export const data: ComponentDoc = {
 			code: PreviewCode,
 			lang: "svelte",
 		},
+		preview_class:'min-h-100 items-start pt-15',
 	},
 	install_block,
-	examples,
 	seo,
 	props: [],
 };
