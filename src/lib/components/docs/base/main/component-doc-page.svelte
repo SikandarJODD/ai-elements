@@ -28,7 +28,7 @@
 
 <script lang="ts">
 	import { page } from "$app/state";
-	import { H1, H2, Paragraph, H3 } from "$markdown";
+	import { H1, H2, Paragraph, H3 } from "$lib/components/docs/markdown";
 	import type { CodeBlock } from "$lib/types/code";
 	import PackageBadges from "./package-badges.svelte";
 	import InstallComponent from "./install-component.svelte";
