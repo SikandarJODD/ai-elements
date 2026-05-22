@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import type { ButtonProps } from "$lib/components/ui/button/index.js";
 
 	export interface ConversationScrollButtonProps extends ButtonProps {}

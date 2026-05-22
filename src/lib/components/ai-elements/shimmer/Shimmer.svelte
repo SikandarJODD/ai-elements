@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import { watch } from "runed";
 	import type { ShimmerProps } from "./types";
 

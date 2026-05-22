@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Card } from "$lib/components/ui/card";
 	import { Handle, Position } from "@xyflow/svelte";
-	import { cn, type WithElementRef } from "$lib/utils/utils";
+	import { cn, type WithElementRef } from "$lib/utils";
 	import type { HTMLAttributes } from "svelte/elements";
 
 	type Props = WithElementRef<HTMLAttributes<HTMLDivElement>> & {

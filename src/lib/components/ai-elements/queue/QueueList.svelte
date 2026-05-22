@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { cn, type WithoutChild } from "$lib/utils/utils";
+	import { cn, type WithoutChild } from "$lib/utils";
 	import type { Snippet } from "svelte";
 	import type { ScrollArea as ScrollAreaPrimitive } from "bits-ui";
 

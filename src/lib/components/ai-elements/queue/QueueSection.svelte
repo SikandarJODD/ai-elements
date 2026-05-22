@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import type { Snippet } from "svelte";
 	import type { Collapsible as CollapsiblePrimitive } from "bits-ui";
 

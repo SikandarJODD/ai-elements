@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import type { ChatStatus } from "../context/types.js";
 	import LoaderIcon from "@lucide/svelte/icons/loader";
 	import SendIcon from "@lucide/svelte/icons/send";

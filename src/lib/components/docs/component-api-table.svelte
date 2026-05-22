@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import H3 from "../markdown/H3.svelte";
 	import type { ComponentAPITableProps } from "./component-api-table.types";
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import InfoPopover from "./InfoPopover.svelte";
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import { H3, Table, Tbody, Td, Thead, Tr, Th } from "$lib/components/markdown";
 
 	type PropDef = {

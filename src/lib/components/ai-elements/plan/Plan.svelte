@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Collapsible } from "$lib/components/ui/collapsible/index.js";
 	import { Card } from "$lib/components/ui/card/index.js";
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import { setPlanContext } from "./plan-context.svelte.js";
 	import type { PlanProps } from "./types.js";
 

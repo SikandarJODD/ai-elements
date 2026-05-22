@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { cn, type WithElementRef } from "$lib/utils/utils";
+	import { cn, type WithElementRef } from "$lib/utils";
 	import type { HTMLImgAttributes } from "svelte/elements";
 
 	export interface QueueItemImageProps extends WithElementRef<HTMLImgAttributes> {}

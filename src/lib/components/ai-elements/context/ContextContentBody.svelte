@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	interface Props {
 		children?: import("svelte").Snippet;
 		class?: string;

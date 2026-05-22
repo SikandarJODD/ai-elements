@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { CardDescription } from "$lib/components/ui/card/index.js";
 	import { Shimmer } from "$lib/components/ai-elements/shimmer/index.js";
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import { getPlanContext } from "./plan-context.svelte.js";
 	import type { PlanDescriptionProps } from "./types.js";
 

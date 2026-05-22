@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 
 	interface Props {
 		class?: string;

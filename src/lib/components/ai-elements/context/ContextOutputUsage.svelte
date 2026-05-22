@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import { getContextValue, estimateCost } from "./context-context.svelte.js";
 	import TokensWithCost from "./TokensWithCost.svelte";
 

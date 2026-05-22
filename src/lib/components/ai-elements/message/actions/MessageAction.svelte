@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Button, type ButtonProps } from "$lib/components/ui/button/index.js";
 	import * as Tooltip from "$lib/components/ui/tooltip/index.js";
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import type { Snippet } from "svelte";
 
 	type MessageButtonProps = Omit<ButtonProps, "children" | "type" | "href">;

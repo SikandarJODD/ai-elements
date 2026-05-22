@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Dialog from "$lib/components/ui/dialog/index.js";
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import type { MessageAttachmentData } from "../context/message-context.svelte.js";
 
 	interface Props {

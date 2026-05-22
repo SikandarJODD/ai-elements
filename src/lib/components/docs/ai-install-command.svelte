@@ -29,7 +29,7 @@
 </script>
 
 <script lang="ts">
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import type { Command, Agent } from "package-manager-detector";
 	import { resolveCommand } from "package-manager-detector/commands";
 	import ClipboardIcon from "@lucide/svelte/icons/clipboard";

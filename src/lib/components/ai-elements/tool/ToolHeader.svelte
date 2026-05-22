@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { CollapsibleTrigger } from "$lib/components/ui/collapsible/index.js";
 	import { Badge } from "$lib/components/ui/badge/index.js";
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 
 	import CheckCircleIcon from "@lucide/svelte/icons/check-circle";
 	import ChevronDownIcon from "@lucide/svelte/icons/chevron-down";

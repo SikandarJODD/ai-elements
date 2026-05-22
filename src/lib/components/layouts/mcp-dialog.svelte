@@ -2,7 +2,7 @@
 	import * as Dialog from "$lib/components/ui/dialog/index.js";
 	import * as Tabs from "$lib/components/ui/tabs/index.js";
 	import * as Code from "$lib/components/ai-elements/code/index.js";
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import { buttonVariants } from "$lib/components/ui/button/index.js";
 	import CodeSpan from "$lib/components/docs/code-span.svelte";
 	import * as Icons from "$lib/components/icons";

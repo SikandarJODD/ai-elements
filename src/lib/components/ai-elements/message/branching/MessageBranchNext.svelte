@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Button, type ButtonProps } from "$lib/components/ui/button/index.js";
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import ChevronRight from "@lucide/svelte/icons/chevron-right";
 	import type { Snippet } from "svelte";
 	import { getMessageBranchContext } from "../context/message-context.svelte.js";

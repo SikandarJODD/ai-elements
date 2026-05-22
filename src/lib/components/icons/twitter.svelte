@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Props } from "./index.js";
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 
 	let { class: className, ...rest }: Props = $props();
 </script>

@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { type WithElementRef, type WithoutChildren } from "$lib/utils/utils";
+	import { type WithElementRef, type WithoutChildren } from "$lib/utils";
 	import type { WithChildren } from "bits-ui";
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from "svelte/elements";
 	import { type VariantProps, tv } from "tailwind-variants";

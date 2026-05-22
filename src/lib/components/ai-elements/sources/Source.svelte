@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import BookIcon from "@lucide/svelte/icons/book";
 
 	interface Props {

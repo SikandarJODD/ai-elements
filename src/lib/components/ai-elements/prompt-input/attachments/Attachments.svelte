@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import { watch } from "runed";
 	import { getAttachmentsContext } from "../context/attachments.svelte.js";
 	import type { PromptInputAttachment } from "../context/types.js";

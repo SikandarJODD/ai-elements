@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { FileUIPart } from "ai";
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import { watch } from "runed";
 	import { onDestroy } from "svelte";
 	import { AttachmentsContext, setAttachmentsContext } from "../context/attachments.svelte.js";

@@ -3,7 +3,7 @@
 	import * as Tabs from "$lib/components/ui/tabs/index.js";
 	import * as Code from "$lib/components/docs/code/code-block/index.js";
 	import { Button } from "$lib/components/ui/button";
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import type { AnalyticsRegistry } from "$lib/utils/analytics.js";
 
 	import RefreshCwIcon from "@lucide/svelte/icons/refresh-cw";

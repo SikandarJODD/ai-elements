@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import * as Code from "$lib/components/ai-elements/code";
 	import { fly } from "svelte/transition";
 	import { Svelte } from "$lib/components/icons/index";

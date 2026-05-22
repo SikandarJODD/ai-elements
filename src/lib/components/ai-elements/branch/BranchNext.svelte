@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import { getBranchContext } from "./branch-context.js";
 	import { Button } from "$lib/components/ui/button";
 	import type { Snippet } from "svelte";

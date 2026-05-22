@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import * as Code from "$lib/components/ai-elements/code/index.js";
 	import { CopyButton } from "$lib/components/ai-elements/copy-button/index.js";
 	import {
