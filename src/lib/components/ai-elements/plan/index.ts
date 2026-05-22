@@ -1,11 +1,11 @@
-import Plan from "./Plan.svelte";
-import PlanHeader from "./PlanHeader.svelte";
-import PlanTitle from "./PlanTitle.svelte";
-import PlanDescription from "./PlanDescription.svelte";
-import PlanAction from "./PlanAction.svelte";
-import PlanContent from "./PlanContent.svelte";
-import PlanFooter from "./PlanFooter.svelte";
-import PlanTrigger from "./PlanTrigger.svelte";
+import Plan from "./plan.svelte";
+import PlanHeader from "./plan-header.svelte";
+import PlanTitle from "./plan-title.svelte";
+import PlanDescription from "./plan-description.svelte";
+import PlanAction from "./plan-action.svelte";
+import PlanContent from "./plan-content.svelte";
+import PlanFooter from "./plan-footer.svelte";
+import PlanTrigger from "./plan-trigger.svelte";
 
 export type {
 	PlanProps,

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cn } from "$lib/utils";
 	import { getContextValue, estimateCost } from "./context-context.svelte.js";
-	import TokensWithCost from "./TokensWithCost.svelte";
+	import TokensWithCost from "./tokens-with-cost.svelte";
 
 	interface Props {
 		children?: import("svelte").Snippet;
@@ -13,28 +13,28 @@
 
 	let context = getContextValue();
 
-	let inputTokens = $derived.by(() => context.usage?.inputTokens ?? 0);
+	let reasoningTokens = $derived.by(() => context.usage?.reasoningTokens ?? 0);
 
-	let inputCostText = $derived.by(() => {
-		if (!inputTokens || !context.modelId) return undefined;
+	let reasoningCostText = $derived.by(() => {
+		if (!reasoningTokens || !context.modelId) return undefined;
 
-		const inputCost = estimateCost({
+		const reasoningCost = estimateCost({
 			modelId: context.modelId,
-			usage: { input: inputTokens, output: 0 },
+			usage: { reasoningTokens },
 		}).totalUSD;
 
 		return new Intl.NumberFormat("en-US", {
 			style: "currency",
 			currency: "USD",
-		}).format(inputCost);
+		}).format(reasoningCost);
 	});
 </script>
 
 {#if children}
 	{@render children()}
-{:else if inputTokens}
+{:else if reasoningTokens}
 	<div class={cn("flex items-center justify-between text-xs", className)} {...props}>
-		<span class="text-muted-foreground">Input</span>
-		<TokensWithCost tokens={inputTokens} costText={inputCostText} />
+		<span class="text-muted-foreground">Reasoning</span>
+		<TokensWithCost tokens={reasoningTokens} costText={reasoningCostText} />
 	</div>
 {/if}

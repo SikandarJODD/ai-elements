@@ -1,17 +1,17 @@
-import Root from "./ModelSelector.svelte";
-import Trigger from "./ModelSelectorTrigger.svelte";
-import Content from "./ModelSelectorContent.svelte";
-import Dialog from "./ModelSelectorDialog.svelte";
-import Input from "./ModelSelectorInput.svelte";
-import List from "./ModelSelectorList.svelte";
-import Empty from "./ModelSelectorEmpty.svelte";
-import Group from "./ModelSelectorGroup.svelte";
-import Item from "./ModelSelectorItem.svelte";
-import Shortcut from "./ModelSelectorShortcut.svelte";
-import Separator from "./ModelSelectorSeparator.svelte";
-import Logo from "./ModelSelectorLogo.svelte";
-import LogoGroup from "./ModelSelectorLogoGroup.svelte";
-import Name from "./ModelSelectorName.svelte";
+import Root from "./model-selector.svelte";
+import Trigger from "./model-selector-trigger.svelte";
+import Content from "./model-selector-content.svelte";
+import Dialog from "./model-selector-dialog.svelte";
+import Input from "./model-selector-input.svelte";
+import List from "./model-selector-list.svelte";
+import Empty from "./model-selector-empty.svelte";
+import Group from "./model-selector-group.svelte";
+import Item from "./model-selector-item.svelte";
+import Shortcut from "./model-selector-shortcut.svelte";
+import Separator from "./model-selector-separator.svelte";
+import Logo from "./model-selector-logo.svelte";
+import LogoGroup from "./model-selector-logo-group.svelte";
+import Name from "./model-selector-name.svelte";
 
 export {
 	Root,

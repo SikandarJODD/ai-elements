@@ -1,10 +1,10 @@
-import ChainOfThought from "./ChainOfThought.svelte";
-import ChainOfThoughtHeader from "./ChainOfThoughtHeader.svelte";
-import ChainOfThoughtStep from "./ChainOfThoughtStep.svelte";
-import ChainOfThoughtContent from "./ChainOfThoughtContent.svelte";
-import ChainOfThoughtSearchResults from "./ChainOfThoughtSearchResults.svelte";
-import ChainOfThoughtSearchResult from "./ChainOfThoughtSearchResult.svelte";
-import ChainOfThoughtImage from "./ChainOfThoughtImage.svelte";
+import ChainOfThought from "./chain-of-thought.svelte";
+import ChainOfThoughtHeader from "./chain-of-thought-header.svelte";
+import ChainOfThoughtStep from "./chain-of-thought-step.svelte";
+import ChainOfThoughtContent from "./chain-of-thought-content.svelte";
+import ChainOfThoughtSearchResults from "./chain-of-thought-search-results.svelte";
+import ChainOfThoughtSearchResult from "./chain-of-thought-search-result.svelte";
+import ChainOfThoughtImage from "./chain-of-thought-image.svelte";
 
 export {
 	ChainOfThoughtContext,

@@ -1,24 +1,24 @@
 // Main components
-import OpenIn from "./OpenIn.svelte";
-import OpenInContent from "./OpenInContent.svelte";
-import OpenInItem from "./OpenInItem.svelte";
-import OpenInLabel from "./OpenInLabel.svelte";
-import OpenInSeparator from "./OpenInSeparator.svelte";
-import OpenInTrigger from "./OpenInTrigger.svelte";
+import OpenIn from "./open-in.svelte";
+import OpenInContent from "./open-in-content.svelte";
+import OpenInItem from "./open-in-item.svelte";
+import OpenInLabel from "./open-in-label.svelte";
+import OpenInSeparator from "./open-in-separator.svelte";
+import OpenInTrigger from "./open-in-trigger.svelte";
 
 // Provider-specific components
-import OpenInChatGPT from "./OpenInChatGPT.svelte";
-import OpenInClaude from "./OpenInClaude.svelte";
-import OpenInT3 from "./OpenInT3.svelte";
-import OpenInScira from "./OpenInScira.svelte";
-import OpenInV0 from "./OpenInV0.svelte";
+import OpenInChatGPT from "./open-in-chat-gpt.svelte";
+import OpenInClaude from "./open-in-claude.svelte";
+import OpenInT3 from "./open-in-t3.svelte";
+import OpenInScira from "./open-in-scira.svelte";
+import OpenInV0 from "./open-in-v0.svelte";
 
 // Icon components
-import GitHubIcon from "./GitHubIcon.svelte";
-import SciraIcon from "./SciraIcon.svelte";
-import ChatGPTIcon from "./ChatGPTIcon.svelte";
-import ClaudeIcon from "./ClaudeIcon.svelte";
-import V0Icon from "./V0Icon.svelte";
+import GitHubIcon from "./git-hub-icon.svelte";
+import SciraIcon from "./scira-icon.svelte";
+import ChatGPTIcon from "./chat-gpt-icon.svelte";
+import ClaudeIcon from "./claude-icon.svelte";
+import V0Icon from "./v0-icon.svelte";
 
 // Context
 export {
