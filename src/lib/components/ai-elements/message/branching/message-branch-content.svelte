@@ -5,8 +5,8 @@
 		getMessageBranchContext,
 		type MessageVersion,
 	} from "../context/message-context.svelte.js";
-	import MessageContent from "../core/MessageContent.svelte";
-	import MessageResponse from "../response/MessageResponse.svelte";
+	import MessageContent from "../core/message-content.svelte";
+	import MessageResponse from "../response/message-response.svelte";
 
 	interface Props extends HTMLAttributes<HTMLDivElement> {
 		versions: MessageVersion[];

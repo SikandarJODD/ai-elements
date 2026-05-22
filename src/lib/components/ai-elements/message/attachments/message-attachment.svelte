@@ -6,7 +6,7 @@
 	import X from "@lucide/svelte/icons/x";
 	import type { HTMLAttributes } from "svelte/elements";
 	import type { MessageAttachmentData } from "../context/message-context.svelte.js";
-	import MessageAttachmentPreview from "./MessageAttachmentPreview.svelte";
+	import MessageAttachmentPreview from "./message-attachment-preview.svelte";
 
 	interface Props extends HTMLAttributes<HTMLDivElement> {
 		data: MessageAttachmentData;

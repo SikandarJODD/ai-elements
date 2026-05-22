@@ -1,4 +1,4 @@
-import Suggestion from "./Suggestion.svelte";
-import Suggestions from "./Suggestions.svelte";
+import Suggestion from "./suggestion.svelte";
+import Suggestions from "./suggestions.svelte";
 
 export { Suggestion, Suggestions };

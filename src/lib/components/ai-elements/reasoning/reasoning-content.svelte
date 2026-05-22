@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cn } from "$lib/utils";
 	import { CollapsibleContent } from "$lib/components/ui/collapsible/index.js";
-	import Response from "./Response.svelte";
+	import Response from "./response.svelte";
 
 	interface Props {
 		class?: string;

@@ -1,5 +1,5 @@
-import Temporary from "./Temporary.svelte";
-import Animated from "./Animated.svelte";
+import Temporary from "./temporary.svelte";
+import Animated from "./animated.svelte";
 
 export const Edge = {
 	Temporary,

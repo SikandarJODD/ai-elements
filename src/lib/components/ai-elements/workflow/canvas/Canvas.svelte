@@ -4,7 +4,7 @@
 	import "@xyflow/svelte/dist/style.css";
 
 	import { mode } from "mode-watcher";
-	import Controls from "../controls/Controls.svelte";
+	import Controls from "../controls/controls.svelte";
 	import type { Snippet } from "svelte";
 
 	type CanvasProps = SvelteFlowProps & {

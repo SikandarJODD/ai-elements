@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getAttachmentsContext } from "../context/attachments.svelte.js";
-	import ActionMenuItem from "./ActionMenuItem.svelte";
+	import ActionMenuItem from "./action-menu-item.svelte";
 	import ImageIcon from "@lucide/svelte/icons/image";
 	import { cn } from "$lib/utils";
 
