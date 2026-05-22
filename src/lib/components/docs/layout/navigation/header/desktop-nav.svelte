@@ -5,7 +5,7 @@
 	const links = [
 		{ label: "Home", href: "/" },
 		{ label: "Components", href: "/components/chain-of-thought" },
-		{ label: "Docs", href: "/docs" }
+		// { label: "Docs", href: "/docs" }
 	];
 
 	const isActive = (href: string) => {
@@ -15,7 +15,7 @@
 	};
 </script>
 
-<div class="hidden items-center gap-1 md:flex">
+<div class="hidden items-center gap-1.5 md:flex">
 	{#each links as link (link.href)}
 		<a
 			class={cn(

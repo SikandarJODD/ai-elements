@@ -1,31 +1,9 @@
-.changeset
-.DS_Store
-node_modules
-**/build
-**/.svelte-kit
-**/package
-**/dist
-.env
-.env.*
-!.env.example
-
-# Ignore files for PNPM, NPM and YARN
-pnpm-lock.yaml
+# Package Managers
 package-lock.json
+pnpm-lock.yaml
 yarn.lock
-CHANGELOG.md
+bun.lock
+bun.lockb
 
-.github/
-registry-template
-
-# docs site specific
-docs/other/themes/dark.json
-docs/other/themes/light.json
-docs/static
-docs/.velite
-docs/src/__registry__
-packages/cli/test/fixtures
-playgrounds
-registry-template/static
-.svelte-kit
-docs/src/routes/og/*-otf.json
+# Miscellaneous
+/static/

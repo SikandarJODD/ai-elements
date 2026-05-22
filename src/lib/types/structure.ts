@@ -6,42 +6,48 @@ import type { CodeBlock } from "./code";
 export type ComponentBadge = "new" | "beta" | "updated" | "deprecated";
 
 export type ComponentMeta = {
-  id: string;
-  title: string;
-  description: string;
-  category?: string;
-  badge?: ComponentBadge;
+	id: string;
+	title: string;
+	description: string;
+	category?: string;
+	badge?: ComponentBadge;
 };
 
 export type PropDef = {
-  name: string;
-  type: string;
-  default?: string;
-  required?: boolean;
-  description?: string;
+	name: string;
+	type: string;
+	default?: string;
+	required?: boolean;
+	description?: string;
 };
 
 export type PropsTable = {
-  name?: string;
-  desc?: string;
-  props: PropDef[];
+	name?: string;
+	desc?: string;
+	props: PropDef[];
 };
 
 export type InstallComponentDocs = {
-  install_code?: CodeBlock | CodeBlock[];
-  tailwind?: CodeBlock;
-  folder_structure?: string;
-  packages?: string[];
-  shadcn_components?: string[]; // button, card etc..
+	install_code?: CodeBlock | CodeBlock[];
+	tailwind?: CodeBlock;
+	folder_structure?: string;
+	packages?: string[];
+	shadcn_components?: string[]; // button, card etc..
+};
+
+export type PreviewComp = {
+	preview: Component;
+	code: CodeBlock;
+	preview_class?: string;
+	is_center?: boolean;
+	show_retry?: boolean;
 };
 
 export type ComponentDoc = ComponentMeta & {
-  preview?: Component;
-  preview_code?: CodeBlock | CodeBlock[];
-  preview_class?: string;
-  install_block?: InstallComponentDocs;
-  examples?: Example[];
-  seo: SEO;
-  props?: PropsTable[];
-  folder_structure?: string;
+	preview?: PreviewComp;
+	install_block?: InstallComponentDocs;
+	examples?: Example[];
+	seo: SEO;
+	props?: PropsTable[];
+	folder_structure?: string;
 };

@@ -1,11 +1,7 @@
 <script lang="ts" module>
-	import type { Component } from "svelte";
 	import type { SEO } from "$lib/types/seo";
 	import type { Example } from "$lib/types/example";
-	import type {
-		InstallComponentDocs,
-		PropsTable
-	} from "$lib/types/structure";
+	import type { InstallComponentDocs, PreviewComp, PropsTable } from "$lib/types/structure";
 
 	export type ComponentDocPageProps = {
 		id: string;
@@ -13,8 +9,7 @@
 		description: string;
 		seo: SEO;
 		installPathPrefix?: "r" | "s" | "f";
-		preview?: Component;
-		previewCode?: CodeBlock | CodeBlock[];
+		preview?: PreviewComp;
 		installCodeBlocks?: CodeBlock | CodeBlock[];
 		installPackages?: string[];
 		installFolderStructure?: string;
@@ -32,7 +27,6 @@
 	import type { CodeBlock } from "$lib/types/code";
 	import PackageBadges from "./package-badges.svelte";
 	import InstallComponent from "./install-component.svelte";
-	import ApiTable from "../api-table/api-table.svelte";
 	import Seo from "./seo.svelte";
 	import { PreviewComponent } from "$lib/components/ui/preview-component";
 	import CopyPageDropdown from "./copy-page-dropdown.svelte";
@@ -45,7 +39,6 @@
 		seo,
 		installPathPrefix,
 		preview,
-		previewCode,
 		installCodeBlocks,
 		installPackages = [],
 		installFolderStructure,
@@ -53,10 +46,10 @@
 		examples = [],
 		propsTables = [],
 		descriptionClass = "",
-		install
+		install,
 	}: ComponentDocPageProps = $props();
 
-	let PreviewComp = $derived(preview);
+	let PreviewComp = $derived(preview?.preview);
 	let installUrl = $derived(`${page.url.origin}/r/${id}.json`);
 
 	let getURLPath = (url: string) => {
@@ -71,9 +64,7 @@
 <Seo title={seo.title} description={seo.description} keywords={seo.keywords} />
 <div class="space-y-6 md:space-y-8">
 	<section>
-		<div
-			class="flex flex-col justify-between gap-3 md:flex-row md:items-center md:gap-4"
-		>
+		<div class="flex flex-col justify-between gap-3 md:flex-row md:items-center md:gap-4">
 			<H1 id="introduction">{title}</H1>
 			<CopyPageDropdown componentName={title} {llmsTxtUrl} />
 		</div>
@@ -87,7 +78,7 @@
 	</section>
 
 	<section>
-		<PreviewComponent code={previewCode}>
+		<PreviewComponent code={preview?.code} class={preview?.preview_class} isCentered={preview?.is_center} showRetry={preview?.show_retry}>
 			{#if PreviewComp}
 				<PreviewComp />
 			{/if}
@@ -98,9 +89,7 @@
 		<H2 id="installation">Installation</H2>
 		<InstallComponent
 			{installUrl}
-			tailwindConfig={installTailwindCode
-				? { code: installTailwindCode }
-				: undefined}
+			tailwindConfig={installTailwindCode ? { code: installTailwindCode } : undefined}
 			codeBlocks={installCodeBlocks}
 			packages={installPackages}
 			folderStructure={installFolderStructure}
@@ -115,10 +104,7 @@
 			<div class="mt-4 space-y-8">
 				{#each examples as example (example.name)}
 					<div class="space-y-0">
-						<H3
-							id={example.name.toLowerCase().replace(/\s+/g, "-")}
-							class="mt-0"
-						>
+						<H3 id={example.name.toLowerCase().replace(/\s+/g, "-")} class="mt-0">
 							{example.name}
 						</H3>
 						{#if example.description}
@@ -126,10 +112,7 @@
 								{example.description}
 							</Paragraph>
 						{/if}
-						<PreviewComponent
-							code={example.code}
-							class={example.previewClass}
-						>
+						<PreviewComponent code={example.code} class={example.previewClass}>
 							<example.preview />
 						</PreviewComponent>
 					</div>

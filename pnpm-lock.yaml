@@ -10,13 +10,16 @@ importers:
     dependencies:
       '@ai-sdk/openai':
         specifier: ^3.0.5
-        version: 3.0.64(zod@4.4.3)
+        version: 3.0.65(zod@4.4.3)
       '@ai-sdk/svelte':
         specifier: ^4.0.12
-        version: 4.0.189(svelte@5.55.9)(zod@4.4.3)
+        version: 4.0.190(svelte@5.55.9)(zod@4.4.3)
+      '@fontsource-variable/geist-mono':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@openrouter/ai-sdk-provider':
         specifier: ^2.5.0
-        version: 2.9.0(ai@6.0.189(zod@4.4.3))(zod@4.4.3)
+        version: 2.9.0(ai@6.0.190(zod@4.4.3))(zod@4.4.3)
       '@shikijs/langs':
         specifier: ^4.0.2
         version: 4.1.0
@@ -34,7 +37,7 @@ importers:
         version: 1.5.2(svelte@5.55.9)
       ai:
         specifier: ^6.0.12
-        version: 6.0.189(zod@4.4.3)
+        version: 6.0.190(zod@4.4.3)
       dompurify:
         specifier: ^3.3.1
         version: 3.4.5
@@ -104,10 +107,10 @@ importers:
         version: 3.8.3
       prettier-plugin-svelte:
         specifier: ^4.0.0
-        version: 4.0.0(prettier@3.8.3)(svelte@5.55.9)
+        version: 4.0.1(prettier@3.8.3)(svelte@5.55.9)
       prettier-plugin-tailwindcss:
         specifier: ^0.8.0
-        version: 0.8.0(prettier-plugin-svelte@4.0.0(prettier@3.8.3)(svelte@5.55.9))(prettier@3.8.3)
+        version: 0.8.0(prettier-plugin-svelte@4.0.1(prettier@3.8.3)(svelte@5.55.9))(prettier@3.8.3)
       shadcn-svelte:
         specifier: ^1.2.7
         version: 1.2.7(svelte@5.55.9)
@@ -141,14 +144,14 @@ importers:
 
 packages:
 
-  '@ai-sdk/gateway@3.0.118':
-    resolution: {integrity: sha512-XYPbVoDo1TDMVLe5Eg42gIjdOyxaizh9H0kiSSnTXr+AdrqZvutk/ypLOiqBXPV3D1K3+BSm/sbFeomZJlM64A==}
+  '@ai-sdk/gateway@3.0.119':
+    resolution: {integrity: sha512-VAhfRWC+JexZakkVfmjaJKaTj00x7/UHdE8kMWL3NhuQAlf8oXtg9r4dfvFZrByXxchGRBvYE3biEUyibkg0xg==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
-  '@ai-sdk/openai@3.0.64':
-    resolution: {integrity: sha512-epO4iS6QwktaY2PF6uBcPnDTJ3BxPOfsGS7/OEtBe3GtNj7C8h8gMDVtIe5K8W16HNDbn0tbR4dcQfpfs+XVFg==}
+  '@ai-sdk/openai@3.0.65':
+    resolution: {integrity: sha512-ZlVoWH+zrdiYDiUt6n/xvfCsk33mzsB81TUQkBRVx79rxU1FKZqVH9J/QCtEpSLqx0cUzjvtIw9l9p7EbUv+dw==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -163,8 +166,8 @@ packages:
     resolution: {integrity: sha512-Q3BZ27qfpYqnCYGvE3vt+Qi6LGOF9R5Nmzn+9JoM1lCRsD9mYaIhfJLkSunN48nfGXJ6n+XNV0J/XVpqGQl7Dw==}
     engines: {node: '>=18'}
 
-  '@ai-sdk/svelte@4.0.189':
-    resolution: {integrity: sha512-uwUFfW2CFTZ1U+V+vqY32DxBqQs4ppj8DaMFzSbRu79nlsxJQY5WK+8uDoP+XAk3JMDNV1qLMYJNM2UGsjkraw==}
+  '@ai-sdk/svelte@4.0.190':
+    resolution: {integrity: sha512-PXDKAHWwRI2tarILjQo4AemzlrTC6JKBn5/6RgGm8iQsv1CjWREmD9IgqROkeJ/y3R8MrXF6EIiQ7Adx+tpVxw==}
     engines: {node: '>=18'}
     peerDependencies:
       svelte: ^5.31.0
@@ -351,6 +354,9 @@ packages:
 
   '@floating-ui/utils@0.2.11':
     resolution: {integrity: sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg==}
+
+  '@fontsource-variable/geist-mono@5.2.8':
+    resolution: {integrity: sha512-KI5bj+hkkRiHttYHmccotUZ80ZuZyai+RwI1d7UId0clkx/jXxlo8qYK8j54WzmpBjtMoEMPyllV7faDcj+6RA==}
 
   '@fontsource-variable/inter@5.2.8':
     resolution: {integrity: sha512-kOfP2D+ykbcX/P3IFnokOhVRNoTozo5/JxhAIVYLpea/UBmCQ/YWPBfWIDuBImXX/15KH+eKh4xpEUyS2sQQGQ==}
@@ -896,8 +902,8 @@ packages:
     resolution: {integrity: sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==}
     engines: {node: '>= 14'}
 
-  ai@6.0.189:
-    resolution: {integrity: sha512-Quz97oHJp+XhOdKV7FCefOfGVsRAKRFCO0KFpNDGg8dBkclWvYZ04K57rkdNUrdAUmZ11MkG12S7blRXSh/Xdw==}
+  ai@6.0.190:
+    resolution: {integrity: sha512-T+ixHbWZ6jmHRREpVVJTkFyWJeCekCdzLPan7lp1F32jG5OUw4+odlVYjtMRXVzogU+pWzpMmXdRiHUmdL/q0w==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -1759,8 +1765,8 @@ packages:
     resolution: {integrity: sha512-FfR8sjd4em2T6fb3I2MwAJU7HWVMr9zba+enmQeeWFfCbm+UOC/0X4DS8XtpUTMwWMGbjKYP7xjfNekzyGmB3A==}
     engines: {node: ^10 || ^12 || >=14}
 
-  prettier-plugin-svelte@4.0.0:
-    resolution: {integrity: sha512-StoBMZGsfE9ztz1i9ejLhYU2nlP1+FdoWqGCb7Bh7EGVVBW2smCcyoCPxWCdszVdx1SsDiK7n4uAv/YUsHqimQ==}
+  prettier-plugin-svelte@4.0.1:
+    resolution: {integrity: sha512-oDVmtKi+M8bJeUoMfPvulUqZYcuXrs5AmhhLYPKtBeg6hcpMdx7UYYisVCqEaLQuKtiPSYFpotfwp4cZK3D4xw==}
     engines: {node: '>=20'}
     peerDependencies:
       prettier: ^3.0.0
@@ -1961,8 +1967,8 @@ packages:
   schema-dts@1.1.5:
     resolution: {integrity: sha512-RJr9EaCmsLzBX2NDiO5Z3ux2BVosNZN5jo0gWgsyKvxKIUL5R3swNvoorulAeL9kLB0iTSX7V6aokhla2m7xbg==}
 
-  semver@7.8.0:
-    resolution: {integrity: sha512-AcM7dV/5ul4EekoQ29Agm5vri8JNqRyj39o0qpX6vDF2GZrtutZl5RwgD1XnZjiTAfncsJhMI48QQH3sN87YNA==}
+  semver@7.8.1:
+    resolution: {integrity: sha512-rkVq3IXh+4FDGch+KwzX3aV9W3kO54GyEgpvBzSyctDA6Xtd7RJQV1xmXbeQp5v7+VzLOfVqiutSE6GICgPFvg==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -2225,14 +2231,14 @@ packages:
 
 snapshots:
 
-  '@ai-sdk/gateway@3.0.118(zod@4.4.3)':
+  '@ai-sdk/gateway@3.0.119(zod@4.4.3)':
     dependencies:
       '@ai-sdk/provider': 3.0.10
       '@ai-sdk/provider-utils': 4.0.27(zod@4.4.3)
       '@vercel/oidc': 3.2.0
       zod: 4.4.3
 
-  '@ai-sdk/openai@3.0.64(zod@4.4.3)':
+  '@ai-sdk/openai@3.0.65(zod@4.4.3)':
     dependencies:
       '@ai-sdk/provider': 3.0.10
       '@ai-sdk/provider-utils': 4.0.27(zod@4.4.3)
@@ -2249,10 +2255,10 @@ snapshots:
     dependencies:
       json-schema: 0.4.0
 
-  '@ai-sdk/svelte@4.0.189(svelte@5.55.9)(zod@4.4.3)':
+  '@ai-sdk/svelte@4.0.190(svelte@5.55.9)(zod@4.4.3)':
     dependencies:
       '@ai-sdk/provider-utils': 4.0.27(zod@4.4.3)
-      ai: 6.0.189(zod@4.4.3)
+      ai: 6.0.190(zod@4.4.3)
       svelte: 5.55.9
     transitivePeerDependencies:
       - zod
@@ -2371,6 +2377,8 @@ snapshots:
 
   '@floating-ui/utils@0.2.11': {}
 
+  '@fontsource-variable/geist-mono@5.2.8': {}
+
   '@fontsource-variable/inter@5.2.8': {}
 
   '@iconify/types@2.0.0': {}
@@ -2419,7 +2427,7 @@ snapshots:
       https-proxy-agent: 7.0.6
       node-fetch: 2.7.0
       nopt: 8.1.0
-      semver: 7.8.0
+      semver: 7.8.1
       tar: 7.5.15
     transitivePeerDependencies:
       - encoding
@@ -2436,9 +2444,9 @@ snapshots:
       '@tybys/wasm-util': 0.10.2
     optional: true
 
-  '@openrouter/ai-sdk-provider@2.9.0(ai@6.0.189(zod@4.4.3))(zod@4.4.3)':
+  '@openrouter/ai-sdk-provider@2.9.0(ai@6.0.190(zod@4.4.3))(zod@4.4.3)':
     dependencies:
-      ai: 6.0.189(zod@4.4.3)
+      ai: 6.0.190(zod@4.4.3)
       zod: 4.4.3
 
   '@opentelemetry/api@1.9.1': {}
@@ -2936,9 +2944,9 @@ snapshots:
 
   agent-base@7.1.4: {}
 
-  ai@6.0.189(zod@4.4.3):
+  ai@6.0.190(zod@4.4.3):
     dependencies:
-      '@ai-sdk/gateway': 3.0.118(zod@4.4.3)
+      '@ai-sdk/gateway': 3.0.119(zod@4.4.3)
       '@ai-sdk/provider': 3.0.10
       '@ai-sdk/provider-utils': 4.0.27(zod@4.4.3)
       '@opentelemetry/api': 1.9.1
@@ -4027,16 +4035,16 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  prettier-plugin-svelte@4.0.0(prettier@3.8.3)(svelte@5.55.9):
+  prettier-plugin-svelte@4.0.1(prettier@3.8.3)(svelte@5.55.9):
     dependencies:
       prettier: 3.8.3
       svelte: 5.55.9
 
-  prettier-plugin-tailwindcss@0.8.0(prettier-plugin-svelte@4.0.0(prettier@3.8.3)(svelte@5.55.9))(prettier@3.8.3):
+  prettier-plugin-tailwindcss@0.8.0(prettier-plugin-svelte@4.0.1(prettier@3.8.3)(svelte@5.55.9))(prettier@3.8.3):
     dependencies:
       prettier: 3.8.3
     optionalDependencies:
-      prettier-plugin-svelte: 4.0.0(prettier@3.8.3)(svelte@5.55.9)
+      prettier-plugin-svelte: 4.0.1(prettier@3.8.3)(svelte@5.55.9)
 
   prettier@3.8.3: {}
 
@@ -4229,7 +4237,7 @@ snapshots:
 
   schema-dts@1.1.5: {}
 
-  semver@7.8.0: {}
+  semver@7.8.1: {}
 
   set-cookie-parser@3.1.0: {}
 

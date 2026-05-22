@@ -9,7 +9,6 @@
 	description={data.description}
 	seo={data.seo}
 	preview={data.preview}
-	previewCode={data.preview_code}
 	installCodeBlocks={data.install_block?.install_code}
 	installPackages={data.install_block?.packages}
 	installFolderStructure={data.install_block?.folder_structure}

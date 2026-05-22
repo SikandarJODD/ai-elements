@@ -41,15 +41,10 @@
 		"typescript": "^6.0.2",
 		"vite": "^8.0.7"
 	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"@tailwindcss/oxide",
-			"esbuild"
-		]
-	},
 	"dependencies": {
 		"@ai-sdk/openai": "^3.0.5",
 		"@ai-sdk/svelte": "^4.0.12",
+		"@fontsource-variable/geist-mono": "^5.2.8",
 		"@openrouter/ai-sdk-provider": "^2.5.0",
 		"@shikijs/langs": "^4.0.2",
 		"@shikijs/themes": "^4.0.2",

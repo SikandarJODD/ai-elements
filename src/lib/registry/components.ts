@@ -37,7 +37,7 @@ let docsPages: DocPage[] = [
 	{
 		id: "installation",
 		name: "Installation",
-		href: "/docs/installation",
+		href: "/",
 		desc: "Set up SvelteKit, initialize shadcn-svelte, and add your first Prompt Kit component."
 	}
 ];

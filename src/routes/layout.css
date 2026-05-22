@@ -2,11 +2,60 @@
 @import "tw-animate-css";
 @import "shadcn-svelte/tailwind.css";
 @import "@fontsource-variable/inter";
+@import "@fontsource-variable/geist-mono";
 
 /* Add Streamdown styles to your Tailwind build */
 @source "../node_modules/streamdown-svelte/dist/**/*.{js,svelte,ts}";
 
 @custom-variant dark (&:is(.dark *));
+
+@font-face {
+	font-family: "GeistPixel";
+	src: url("/fonts/GeistPixel-Square.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeistPixel Circle";
+	src: url("/fonts/GeistPixel-Circle.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeistPixel Grid";
+	src: url("/fonts/GeistPixel-Grid.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeistPixel Line";
+	src: url("/fonts/GeistPixel-Line.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeistPixel Square";
+	src: url("/fonts/GeistPixel-Square.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "GeistPixel Triangle";
+	src: url("/fonts/GeistPixel-Triangle.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
 
 :root {
 	--radius: 0.625rem;
@@ -87,8 +136,14 @@
 
 @theme inline {
 	/* Font  */
-	--font-sans: 'Inter Variable', sans-serif;
-	--font-mono: "Geist Mono", monospace;
+	--font-sans: "Inter Variable", sans-serif;
+	--font-mono: "Geist Mono Variable", monospace;
+	--font-geist-pixel: "GeistPixel", monospace;
+	--font-geist-pixel-circle: "GeistPixel Circle", monospace;
+	--font-geist-pixel-grid: "GeistPixel Grid", monospace;
+	--font-geist-pixel-line: "GeistPixel Line", monospace;
+	--font-geist-pixel-square: "GeistPixel Square", monospace;
+	--font-geist-pixel-triangle: "GeistPixel Triangle", monospace;
 
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);

@@ -13,7 +13,7 @@
 	import { page } from "$app/state";
 	import SearchNavigation from "$lib/components/docs/layout/navigation/search-navigation.svelte";
 
-	let scroll = createScroll(50);
+	let scroll = createScroll(100);
 	let isComponentorDocsPage = $derived.by(() => {
 		let path = page.url.pathname;
 		return path.startsWith("/components") || path.startsWith("/docs") || path.startsWith("/primitives");
@@ -39,7 +39,7 @@
 	>
 		<div class="flex items-center gap-5">
 			<a
-				class="rounded-lg px-3 py-2.5 hover:bg-muted dark:hover:bg-muted/50"
+				class="rounded-lg p-2 hover:bg-muted dark:hover:bg-muted/50"
 				href="/"
 			>
 				<Logo class="h-4" />

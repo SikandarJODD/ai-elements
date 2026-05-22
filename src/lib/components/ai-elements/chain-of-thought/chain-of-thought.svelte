@@ -43,8 +43,8 @@
 	setChainOfThoughtContext(context);
 </script>
 
-<Collapsible open={context.isOpen} onOpenChange={context.setIsOpen}>
-	<div class={cn("not-prose max-w-prose space-y-4", className)} {...restProps}>
+<Collapsible open={context.isOpen} class='w-full' onOpenChange={context.setIsOpen}>
+	<div class={cn("w-full space-y-4", className)} {...restProps}>
 		{@render children()}
 	</div>
 </Collapsible>

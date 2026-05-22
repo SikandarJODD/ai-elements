@@ -1,6 +1,6 @@
 # Chain Of Thought
 
-TODO: Chain Of Thought.
+A collapsible component that visualizes AI reasoning steps with support for search results, images, and step-by-step progress indicators.
 
 ## Installation
 
@@ -33,12 +33,3 @@ Copy the component source files into your project and update the example files w
 <ChainOfThought />
 ```
 
-## Props
-
-Document the Chain Of Thought props here.
-
-## Features
-
-- Replace this placeholder bullet with a real Chain Of Thought feature.
-- Add one or two implementation details that matter to consumers.
-- Include usage constraints or accessibility notes if they apply.
