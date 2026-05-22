@@ -4,10 +4,10 @@
 	import * as Command from "$lib/components/ui/command/index.js";
 	import * as Kbd from "$lib/components/ui/kbd/index.js";
 	import {
-		blockPages,
+		// blockPages,
 		components,
 		docsPages,
-		primitivePages
+		// primitivePages
 	} from "$lib/registry/components";
 	import { type Component } from "$lib/registry/components";
 	let open = $state(false);
@@ -21,8 +21,8 @@
 
 	// For Now we would use Magic UI - Components, Later on we would update it
 	let docs: Component[] = docsPages;
-	let primitives: Component[] = primitivePages;
-	let blocks: Component[] = blockPages;
+	// let primitives: Component[] = primitivePages;
+	// let blocks: Component[] = blockPages;
 </script>
 
 <svelte:document onkeydown={handleKeydown} />
@@ -117,7 +117,7 @@
 				>
 			{/each}
 		</Command.Group>
-		<Command.Group heading="Primitives">
+		<!-- <Command.Group heading="Primitives">
 			{#each primitives as primitive (primitive.id)}
 				<Command.LinkItem
 					value={primitive.id}
@@ -152,8 +152,8 @@
 					{primitive.name}
 				</Command.LinkItem>
 			{/each}
-		</Command.Group>
-		<Command.Group heading="Blocks">
+		</Command.Group> -->
+		<!-- <Command.Group heading="Blocks">
 			{#each blocks as block (block.id)}
 				<Command.LinkItem
 					value={block.id}
@@ -189,7 +189,7 @@
 					{block.name}
 				</Command.LinkItem>
 			{/each}
-		</Command.Group>
+		</Command.Group> -->
 		<Command.Group heading="Components">
 			{#each components as component (component.id)}
 				<Command.LinkItem

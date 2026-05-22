@@ -1,9 +1,9 @@
 <script lang="ts" module>
 	import {
-		blockPages,
+		// blockPages,
 		components,
 		docsPages,
-		primitivePages,
+		// primitivePages,
 		type BadgeType
 	} from "$lib/registry/components";
 
@@ -24,22 +24,22 @@
 					url: page.href
 				})) as NavItem[]
 			},
-			{
-				title: "Primitives",
-				url: "#",
-				items: primitivePages.map((page) => ({
-					title: page.name,
-					url: page.href
-				})) as NavItem[]
-			},
-			{
-				title: "Blocks",
-				url: "#",
-				items: blockPages.map((page) => ({
-					title: page.name,
-					url: page.href
-				})) as NavItem[]
-			},
+			// {
+			// 	title: "Primitives",
+			// 	url: "#",
+			// 	items: primitivePages.map((page) => ({
+			// 		title: page.name,
+			// 		url: page.href
+			// 	})) as NavItem[]
+			// },
+			// {
+			// 	title: "Blocks",
+			// 	url: "#",
+			// 	items: blockPages.map((page) => ({
+			// 		title: page.name,
+			// 		url: page.href
+			// 	})) as NavItem[]
+			// },
 			{
 				title: "Components",
 				url: "#",

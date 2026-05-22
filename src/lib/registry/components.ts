@@ -17,12 +17,12 @@ export interface DocPage {
 }
 
 let components: Component[] = [
-	{
-		id: "chain-of-thought",
-		name: "Chain Of Thought",
-		href: "/components/chain-of-thought",
-		desc: "Display step-by-step reasoning and collapsible thought processes in AI interfaces"
-	},
+  {
+    id: "chain-of-thought",
+    name: "Chain Of Thought",
+    href: "/components/chain-of-thought",
+    desc: "TODO: Chain Of Thought.",
+  },
 ];
 
 export { components };
@@ -44,32 +44,33 @@ let docsPages: DocPage[] = [
 
 export { docsPages };
 
-let primitivePages: DocPage[] = [
-	{
-		id: "full-chatbot",
-		name: "Full Chatbot",
-		href: "/primitives/full-chatbot",
-		desc: "A full AI chatbot setup with UI, model config, and API route wiring."
-	}
-];
+// let primitivePages: DocPage[] = [
+// 	{
+// 		id: "full-chatbot",
+// 		name: "Full Chatbot",
+// 		href: "/primitives/full-chatbot",
+// 		desc: "A full AI chatbot setup with UI, model config, and API route wiring."
+// 	}
+// ];
 
-export { primitivePages };
+// export { primitivePages };
 
-let blockPages: DocPage[] = [
-	{
-		id: "blocks",
-		name: "Blocks",
-		href: "/blocks",
-		desc: "Composable block-level examples built from Prompt Kit components."
-	}
-];
+// let blockPages: DocPage[] = [
+// 	{
+// 		id: "blocks",
+// 		name: "Blocks",
+// 		href: "/blocks",
+// 		desc: "Composable block-level examples built from Prompt Kit components."
+// 	}
+// ];
 
-export { blockPages };
+// export { blockPages };
 
 type NavigationItem = DocPage | Component;
 
 function getNavigationItems(): NavigationItem[] {
-	return [...docsPages, ...primitivePages, ...blockPages, ...components];
+	// ...primitivePages, ...blockPages,
+	return [...docsPages, ...components];
 }
 
 export function getPrevNext(id: string): {

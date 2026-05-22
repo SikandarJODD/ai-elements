@@ -4,7 +4,7 @@
 	import type { CodeRootProps } from "./types";
 	import { useCode } from "./code.svelte.js";
 	import { box } from "svelte-toolbelt";
-	// import '../../../../routes/layout.css'
+	// import "../../../../app.css";
 
 	let {
 		ref = $bindable(null),
@@ -33,7 +33,7 @@
 </div>
 
 <style lang="postcss">
-	@reference '../../../../routes/layout.css';
+	@reference '../../../../app.css';
 
 	:global(.dark) {
 		:global(.shiki, .shiki span) {

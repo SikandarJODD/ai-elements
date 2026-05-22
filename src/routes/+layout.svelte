@@ -2,9 +2,9 @@
 	import "../app.css";
 	import favicon from "$lib/assets/favicon.svg";
 	import { ModeWatcher, toggleMode } from "mode-watcher";
-	// import AppNewNavbar from "$lib/components/layouts/navbar.svelte";
 	import { Toaster } from "svelte-sonner";
 	import { PressedKeys, activeElement } from "runed";
+	import AppHeader from "$lib/components/docs/layout/navigation/header/app-header.svelte";
 	let { children } = $props();
 
 	let keys = new PressedKeys();
@@ -25,7 +25,5 @@
 <ModeWatcher defaultMode="dark" />
 <Toaster richColors position="bottom-center" />
 
-<!-- <AppNavbar /> -->
-<!-- <AppNewNavbar /> -->
-<div class="h-16"></div>
+<AppHeader />
 {@render children?.()}

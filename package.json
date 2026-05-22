@@ -12,11 +12,9 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
 		"files:kebab": "node scripts/rename-files-to-kebab-case.mjs",
-		"build:ai-elements": "pnpm shadcn-svelte registry build ./ai-elements.json -o ./static/r",
-		"build:prompt-kit": "pnpm shadcn-svelte registry build ./prompt-kit.json -o ./static/p",
-		"jsrepo:build": "jsrepo build",
-		"jsrepo:publish": "jsrepo publish",
-		"jsrepo:publish:dry": "jsrepo publish --dry-run"
+		"build:blocks": "pnpm shadcn-svelte registry build",
+		"create:route": "node scripts/create-route.js",
+		"create:routes": "node scripts/create-routes.js"
 	},
 	"devDependencies": {
 		"@fontsource-variable/inter": "^5.2.8",
