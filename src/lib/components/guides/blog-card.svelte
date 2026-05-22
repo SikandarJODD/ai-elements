@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Guide } from "$lib/config/guides-data";
+	import type { Guide } from "$lib/config/guides";
 	import { cn } from "$lib/utils";
 	import { Button } from "../ui/button";
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { FullWidthDivider } from "$lib/components/ui/full-width-divider";
 	import { GridFiller } from "$lib/components/ui/grid-filler";
-	import type { Guide } from "$lib/config/guides-data";
+	import type { Guide } from "$lib/config/guides";
 	import BlogCard from "./blog-card.svelte";
 
 	type Props = Guide[];

@@ -2,7 +2,7 @@
 	import { page } from "$app/state";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import ExternalLinkIcon from "@lucide/svelte/icons/external-link";
-	import { recipes } from "$lib/config/cookbook-data";
+	import { recipes } from "$lib/config/cookbook";
 	import { type ComponentProps } from "svelte";
 
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import { recipes } from "$lib/config/cookbook-data";
+	import { recipes } from "$lib/config/cookbook";
 	import { FullWidthDivider } from "$lib/components/ui/full-width-divider";
 </script>
 

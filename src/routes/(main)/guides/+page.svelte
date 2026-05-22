@@ -2,7 +2,7 @@
 	import { MetaTags } from "svelte-meta-tags";
 	import * as Card from "$lib/components/ui/card";
 	import { Button } from "$lib/components/ui/button/index.js";
-	import { guidesData } from "$lib/config/guides-data";
+	import { guidesData } from "$lib/config/guides";
 	import AllBlogs from "$lib/components/guides/all-blogs.svelte";
 </script>
 

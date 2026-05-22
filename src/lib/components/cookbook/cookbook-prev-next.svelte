@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { recipes } from "$lib/config/cookbook-data";
+	import { recipes } from "$lib/config/cookbook";
 	import ChevronLeft from "@lucide/svelte/icons/chevron-left";
 	import ChevronRight from "@lucide/svelte/icons/chevron-right";
 
