@@ -1,5 +1,5 @@
 import { streamText, type UIMessage, convertToModelMessages } from "ai";
-import { openrouter, defaultModel } from "$lib/config/ai-config";
+import { openrouter, defaultModel } from "$lib/config/ai";
 import type { RequestHandler } from "./$types";
 
 export const POST: RequestHandler = async ({ request }) => {

@@ -183,7 +183,7 @@ Configure the import alias for ui: › <span class="text-primary">$lib/component
 
 				<div class="mb-6">
 					<CodeNameBlock
-						filename="src/lib/ai-config.ts"
+						filename="src/lib/ai.ts"
 						lang="typescript"
 						code={`import { createOpenRouter } from '@openrouter/ai-sdk-provider';
 import { OPENROUTER_API_KEY } from '$env/static/private';

@@ -1,5 +1,5 @@
 import { streamText, Output } from "ai";
-import { openrouter, defaultModel } from "$lib/config/ai-config";
+import { openrouter, defaultModel } from "$lib/config/ai";
 import type { RequestHandler } from "./$types";
 import { codeSchema } from "$lib/schema/code-schema";
 

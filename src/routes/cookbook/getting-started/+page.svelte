@@ -12,7 +12,7 @@
 
 	let envCode = `OPENROUTER_API_KEY=sk-or-v1-your-api-key-here`;
 
-	let configCode = `// src/lib/config/ai-config.ts
+	let configCode = `// src/lib/config/ai.ts
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { OPENROUTER_API_KEY } from "$env/static/private";
 
@@ -25,7 +25,7 @@ export const defaultModel = "z-ai/glm-4.5-air:free";`;
 
 	let serverCode = `// src/routes/api/chat/+server.ts
 import { streamText, convertToModelMessages, type UIMessage } from "ai";
-import { openrouter, defaultModel } from "$lib/config/ai-config";
+import { openrouter, defaultModel } from "$lib/config/ai";
 import type { RequestHandler } from "./$types";
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -191,7 +191,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			Create a shared configuration file. This keeps your AI setup DRY and makes it easy to
 			switch models.
 		</p>
-		<CodeNameBlock filename="src/lib/config/ai-config.ts" lang="typescript" code={configCode} />
+		<CodeNameBlock filename="src/lib/config/ai.ts" lang="typescript" code={configCode} />
 	</section>
 
 	<!-- Step 4: Server Endpoint -->

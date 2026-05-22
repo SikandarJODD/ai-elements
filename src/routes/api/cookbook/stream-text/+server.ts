@@ -1,6 +1,6 @@
 import { type UIMessage, convertToModelMessages, streamText } from "ai";
 import type { RequestHandler } from "./$types";
-import { defaultModel, openrouter } from "$lib/config/ai-config";
+import { defaultModel, openrouter } from "$lib/config/ai";
 
 export const POST: RequestHandler = async ({ request }) => {
 	const { messages }: { messages: UIMessage[] } = await request.json();
