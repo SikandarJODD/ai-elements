@@ -19,7 +19,6 @@
 Project is divided into two parts:
 
 1. **AI Elements**: Full-featured, production-ready components for complex AI interfaces, including chat apps, reasoning UIs, tool integrations, and workflow builders.
-2. **Prompt Kit**: Lightweight, composable UI primitives for prompt engineering and simple conversational interfaces.
 
 ## Installation
 
@@ -125,29 +124,6 @@ Lightweight prompt engineering and conversational UI components that are easy to
 | `Response`     | Streaming markdown response rendering                 |
 | `Reasoning`    | Expandable AI thinking and reasoning views            |
 
-### Prompt Kit
-
-| Component           | What it helps with                          |
-| ------------------- | ------------------------------------------- |
-| `Message`           | Lightweight assistant and user message UI   |
-| `Prompt Input`      | Chat-style prompt input with actions        |
-| `Chat Container`    | Sticky-to-bottom chat layout and scrolling  |
-| `Markdown`          | Render streamed markdown responses          |
-| `Prompt Suggestion` | Clickable starter prompts and suggestions   |
-| `System Message`    | Inline status, warning, and helper messages |
-
-## 8 Prompt Kit UI Blocks
-
-Prompt Kit also includes eight ready-to-use UI blocks for faster composition. Browse them here: https://svelte-ai-elements.vercel.app/prompt-kit/blocks
-
-- `Prompt Input with Actions`
-- `Prompt Input with Suggestions`
-- `Prompt Input with Autocomplete`
-- `Basic Full Conversation`
-- `Conversation with Avatars`
-- `Conversation with Actions`
-- `Conversation with Scroll`
-- `Conversation with Prompt Input`
 
 ## Streaming Responses
 
@@ -156,7 +132,6 @@ For markdown and streaming response rendering, this project uses [`streamdown-sv
 ## Inspired By
 
 - [Vercel AI Elements](https://vercel.com/changelog/introducing-ai-elements)
-- [Ibelick: Prompt-Kit](https://github.com/ibelick/prompt-kit)
 
 ## License
 

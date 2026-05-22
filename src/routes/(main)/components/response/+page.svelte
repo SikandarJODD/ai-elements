@@ -3,8 +3,8 @@
 
 	import Installation from "$lib/components/docs/installation.svelte";
 	import Code from "$lib/components/docs/code.svelte";
-	import { APITable } from "$lib/components/docs/api-table";
-	import { CopyPageDropdown } from "$lib/components/docs/copy-page-dropdown";
+	import { APITable } from "$lib/components/docs/base/api-table";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main/copy-page-dropdown";
 	import { CodeSpan, H1, H2, H3, Paragraph } from "$lib/components/markdown";
 	import { PMCommand } from "$lib/components/ui/pm-command";
 	import { PreviewComponent } from "$lib/components/ui/preview-component";

@@ -11,7 +11,7 @@
 	}
 
 	let currentItem = $derived(getAIElementByHref(normalizePath(page.url.pathname)));
-	import Toc from "$lib/components/docs/toc/toc.svelte";
+	import Toc from "$lib/components/docs/base/toc/toc.svelte";
 	let toc = new UseToc();
 </script>
 

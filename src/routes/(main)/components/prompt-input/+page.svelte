@@ -2,8 +2,8 @@
 	import { MetaTags } from "svelte-meta-tags";
 
 	import Installation from "$lib/components/docs/installation.svelte";
-	import { APITable } from "$lib/components/docs/api-table";
-	import { CopyPageDropdown } from "$lib/components/docs/copy-page-dropdown";
+	import { APITable } from "$lib/components/docs/base/api-table";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main/copy-page-dropdown";
 	import { H1, H2, H3, Paragraph } from "$lib/components/markdown";
 	import { PreviewComponent } from "$lib/components/ui/preview-component";
 	import { data } from "./data";

@@ -3,7 +3,7 @@
  * Simple data attributes approach
  */
 
-export type AnalyticsRegistry = "prompt-kit" | "ai-elements";
+export type AnalyticsRegistry =  "ai-elements";
 
 export type AnalyticsSource = "installation" | "example" | "documentation";
 
