@@ -28,5 +28,4 @@
 <!-- <AppNavbar /> -->
 <AppNewNavbar />
 <div class="h-16"></div>
-<!-- Spacer to prevent content from being hidden under fixed navbar -->
 {@render children?.()}
