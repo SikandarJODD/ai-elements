@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/render-visual-interface/llms.txt`;
 
@@ -207,7 +208,6 @@ export const POST: RequestHandler = async ({ request }) => {
 				class="shrink-0"
 				componentName="Render Visual Interface"
 				{llmsTxtUrl}
-				type="cookbook"
 			/>
 		</div>
 
@@ -245,7 +245,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			tools have an <code class="text-foreground">execute</code> function, while client-side tools
 			only define schemas—the client handles the execution.
 		</p>
-		<CodeNameBlock filename="tools.ts" lang="typescript" code={toolsCode} />
+		<SingleFile
+			code={{
+				name: "tools.ts",
+				lang: "typescript",
+				code: toolsCode,
+			}}
+		/>
 	</section>
 
 	<section class="mb-16">
@@ -255,7 +261,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			types for client-side type safety using
 			<code class="text-foreground">InferUITools</code>.
 		</p>
-		<CodeNameBlock filename="+server.ts" lang="typescript" code={serverCode} />
+		<SingleFile
+			code={{
+				name: "src/routes/api/chat/+server.ts",
+				lang: "typescript",
+				code: serverCode,
+			}}
+		/>
 	</section>
 
 	<section class="mb-10">
@@ -267,7 +279,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			and
 			<code class="text-foreground">part.state</code>.
 		</p>
-		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} />
+		<SingleFile
+			code={{
+				name: "+page.svelte",
+				lang: "svelte",
+				code: clientCode,
+			}}
+		/>
 	</section>
 
 	<footer>

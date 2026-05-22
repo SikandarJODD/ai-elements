@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/call-tool-multiple-steps/llms.txt`;
 
@@ -166,7 +167,6 @@ export const POST = async ({ request }) => {
 				class="shrink-0"
 				componentName="Call Tool Multiple Steps"
 				{llmsTxtUrl}
-				type="cookbook"
 			/>
 		</div>
 
@@ -202,12 +202,24 @@ export const POST = async ({ request }) => {
 
 	<section class="mb-16">
 		<h2 class="mb-6 text-3xl font-semibold">Execution Flow</h2>
-		<CodeNameBlock filename="flow.ts" lang="typescript" code={flowCode} />
+		<SingleFile
+			code={{
+				code: flowCode,
+				name: "flow.ts",
+				lang: "typescript",
+			}}
+		/>
 	</section>
 
 	<section class="mb-16">
 		<h2 class="mb-6 text-3xl font-semibold">Define Multiple Tools</h2>
-		<CodeNameBlock filename="tools.ts" lang="typescript" code={toolsCode} />
+		<SingleFile
+			code={{
+				code: toolsCode,
+				name: "tools.ts",
+				lang: "typescript",
+			}}
+		/>
 	</section>
 
 	<section class="mb-16">
@@ -216,7 +228,13 @@ export const POST = async ({ request }) => {
 			Simply pass all tools to <code class="text-foreground">streamText</code>. The AI handles
 			the orchestration.
 		</p>
-		<CodeNameBlock filename="+server.ts" lang="typescript" code={serverCode} />
+		<SingleFile
+			code={{
+				code: serverCode,
+				name: "/+server.ts",
+				lang: "typescript",
+			}}
+		/>
 	</section>
 
 	<section class="mb-10">
@@ -225,7 +243,13 @@ export const POST = async ({ request }) => {
 			The client uses the <code class="text-foreground">Chat</code> class to send messages and render
 			tool call results as they stream in.
 		</p>
-		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} />
+		<SingleFile
+			code={{
+				code: clientCode,
+				name: "+page.svelte",
+				lang: "svelte",
+			}}
+		/>
 	</section>
 
 	<footer>

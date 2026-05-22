@@ -2,13 +2,14 @@
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
 	import * as Item from "$lib/components/ui/item/index.js";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
 
 	import GenerateTextRaw from "./demo/demo.svelte?raw";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/generate-text/llms.txt`;
 
@@ -63,7 +64,6 @@ export const POST: RequestHandler = async ({ request }) => {
 				class="shrink-0"
 				componentName="Generate Text"
 				{llmsTxtUrl}
-				type="cookbook"
 			/>
 		</div>
 
@@ -97,11 +97,16 @@ export const POST: RequestHandler = async ({ request }) => {
 		</p>
 
 		<div class="mb-4">
-			<CodeNameBlock
-				filename="+page.svelte"
-				lang="svelte"
-				code={clientCode}
-				highlight={[4, [14, 20]]}
+			<SingleFile
+				code={{
+					name: "+page.svelte",
+					lang: "svelte",
+					code: clientCode,
+					highlight: [
+						4,
+						[14, 20],
+					],
+				}}
 			/>
 		</div>
 	</section>
@@ -116,7 +121,13 @@ export const POST: RequestHandler = async ({ request }) => {
 		</p>
 
 		<div class="mb-4">
-			<CodeNameBlock filename="src/lib/config/ai.ts" lang="typescript" code={aiConfigCode} />
+			<SingleFile
+				code={{
+					name: "src/lib/config/ai.ts",
+					lang: "typescript",
+					code: aiConfigCode,
+				}}
+			/>
 		</div>
 
 		<Item.Root variant="muted" size="sm">
@@ -153,10 +164,12 @@ export const POST: RequestHandler = async ({ request }) => {
 		</p>
 
 		<div class="mb-4">
-			<CodeNameBlock
-				filename="src/routes/api/cookbook/generate-text/+server.ts"
-				lang="typescript"
-				code={serverCode}
+			<SingleFile
+				code={{
+					name: "src/routes/api/cookbook/generate-text/+server.ts",
+					lang: "typescript",
+					code: serverCode,
+				}}
 			/>
 		</div>
 	</section>

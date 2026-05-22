@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
 	import DemoCode from "./demo/demo.svelte?raw";
-	import CodeChip from "$lib/components/markdown/CodeChip.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { SingleFile } from "$lib/components/ui/code";
+	import { CodeChip } from "$markdown";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/generate-object/llms.txt`;
 
@@ -66,12 +67,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	<header class="mb-12">
 		<div class="mb-6 flex items-start justify-between gap-4">
 			<h1 class="text-4xl font-semibold tracking-tight">Generate Object</h1>
-			<CopyPageDropdown
-				class="shrink-0"
-				componentName="Generate Object"
-				{llmsTxtUrl}
-				type="cookbook"
-			/>
+			<CopyPageDropdown class="shrink-0" componentName="Generate Object" {llmsTxtUrl} />
 		</div>
 
 		<div class="mb-6 flex flex-wrap items-center gap-2">
@@ -98,38 +94,51 @@ export const POST: RequestHandler = async ({ request }) => {
 			Start by defining a Zod schema. The <CodeChip>.describe()</CodeChip> method helps the AI understand
 			what each field should contain.
 		</p>
-		<CodeNameBlock filename="schema.ts" lang="typescript" code={schemaCode} />
+		<SingleFile
+			code={{
+				code: schemaCode,
+				name: "schema.ts",
+				lang: "typescript",
+			}}
+		/>
 	</section>
 
 	<section class="mb-16">
 		<h2 class="mb-3 text-3xl font-semibold">Step 2: Create API Endpoint</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
-			The api uses <CodeChip>generateText</CodeChip> with <CodeChip>Output.object()</CodeChip> to ensure the response adheres to our Zod schema. This allows us to receive fully typed data on the client.
+			The api uses <CodeChip>generateText</CodeChip> with <CodeChip>Output.object()</CodeChip> to
+			ensure the response adheres to our Zod schema. This allows us to receive fully typed data
+			on the client.
 		</p>
-		<CodeNameBlock
-			filename="+server.ts"
-			lang="typescript"
-			code={serverCode}
-			highlight={[
-				[1, 3],
-				[14, 16],
-			]}
+		<SingleFile
+			code={{
+				code: serverCode,
+				name: "+server.ts",
+				lang: "typescript",
+				highlight: [
+					[1, 3],
+					[14, 16],
+				],
+			}}
 		/>
 	</section>
 
 	<section class="mb-10">
 		<h2 class="mb-3 text-3xl font-semibold">Step 3: Create Notification Component</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Let's build a simple Svelte component to display the generated notifications. This component will receive the structured data from our API.
+			Let's build a simple Svelte component to display the generated notifications. This
+			component will receive the structured data from our API.
 		</p>
-		<CodeNameBlock
-			filename="+page.svelte"
-			lang="svelte"
-			code={clientCode}
-			highlight={[
-				[27, 31],
-				[62, 79],
-			]}
+		<SingleFile
+			code={{
+				code: clientCode,
+				name: "+page.svelte",
+				lang: "svelte",
+				highlight: [
+					[27, 31],
+					[62, 79],
+				],
+			}}
 		/>
 	</section>
 

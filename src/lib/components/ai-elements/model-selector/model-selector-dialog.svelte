@@ -12,7 +12,7 @@
 		description = "Search for a model",
 		portalProps,
 		children,
-		...restProps
+		...rest
 	}: WithoutChildrenOrChild<DialogPrimitive.RootProps> &
 		WithoutChildrenOrChild<CommandPrimitive.RootProps> & {
 			portalProps?: DialogPrimitive.PortalProps;
@@ -21,7 +21,7 @@
 			description?: string;
 		} = $props();
 </script>
-
-<Command.Dialog bind:open bind:ref bind:value {title} {description} {portalProps} {...restProps}>
+<!-- ...rest props removed for now -->
+<Command.Dialog bind:open bind:ref bind:value {title} {description} {portalProps}>
 	{@render children()}
 </Command.Dialog>

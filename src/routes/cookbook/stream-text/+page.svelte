@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
 
 	import DemoCode from "./demo/demo.svelte?raw";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { SingleFile } from "$lib/components/ui/code";
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/stream-text/llms.txt`;
 
 	let clientCode = DemoCode;
@@ -49,7 +50,6 @@ export const POST: RequestHandler = async ({ request }) => {
 				class="shrink-0"
 				componentName="Stream Text"
 				{llmsTxtUrl}
-				type="cookbook"
 			/>
 		</div>
 
@@ -88,7 +88,14 @@ export const POST: RequestHandler = async ({ request }) => {
 		<p class="text-muted-foreground mb-6 leading-relaxed">
 			Start by creating a simple chat interface with an input field and a submit button.
 		</p>
-		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} highlight={[2,3,[9,14],20]} />
+		<SingleFile
+			code={{
+				name: "+page.svelte",
+				lang: "svelte",
+				code: clientCode,
+				highlight: [[2, 3], [9, 14], [20, 20]],
+			}}
+		/>
 	</section>
 
 	<!-- Server Section -->
@@ -99,10 +106,12 @@ export const POST: RequestHandler = async ({ request }) => {
 			responses and <code class="rounded-sm bg-yellow-900/40 text-yellow-500 px-1">toUIMessageStreamResponse()</code> to stream them
 			back to the client in a format the Chat class can consume.
 		</p>
-		<CodeNameBlock
-			filename="src/routes/api/cookbook/stream-text/+server.ts"
-			lang="typescript"
-			code={serverCode}
+		<SingleFile
+			code={{
+				name: "src/routes/api/cookbook/stream-text/+server.ts",
+				lang: "typescript",
+				code: serverCode,
+			}}
 		/>
 	</section>
 	<CookbookPrevNext currentSlug="stream-text" />

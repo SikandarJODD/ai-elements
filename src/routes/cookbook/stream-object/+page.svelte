@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/stream-object/llms.txt`;
 
@@ -133,7 +134,6 @@ export const POST: RequestHandler = async ({ request }) => {
 				class="shrink-0"
 				componentName="Stream Object"
 				{llmsTxtUrl}
-				type="cookbook"
 			/>
 		</div>
 
@@ -171,7 +171,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			<code class="text-foreground">generateObject</code>. The key difference is
 			<code class="text-foreground">toTextStreamResponse()</code> which streams chunks to the client.
 		</p>
-		<CodeNameBlock filename="+server.ts" lang="typescript" code={serverCode} />
+		<SingleFile
+			code={{
+				name: "+server.ts",
+				lang: "typescript",
+				code: serverCode,
+			}}
+		/>
 	</section>
 
 	<section class="mb-10">
@@ -180,7 +186,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			Use the <code class="text-foreground">ReadableStream</code> API to manually read chunks and
 			parse partial JSON as it arrives. This gives you full control over the streaming experience.
 		</p>
-		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} />
+		<SingleFile
+			code={{
+				name: "+page.svelte",
+				lang: "svelte",
+				code: clientCode,
+			}}
+		/>
 	</section>
 
 	<footer>

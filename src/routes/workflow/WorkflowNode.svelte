@@ -22,6 +22,7 @@
 	let { data, ...restProps }: Props = $props();
 
 	// Type assertion for data since NodeProps data is unknown by default
+	// svelte-ignore state_referenced_locally
 	let workflowData = data as WorkflowNodeData;
 </script>
 

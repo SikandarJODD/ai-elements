@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock, AiInstallCommand } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
 	import CheckIcon from "@lucide/svelte/icons/check";
 	import ExternalLinkIcon from "@lucide/svelte/icons/external-link";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { PMCommand } from "$lib/components/ui/pm-command";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/getting-started/llms.txt`;
 
@@ -96,12 +98,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	<header class="mb-12">
 		<div class="mb-6 flex items-start justify-between gap-4">
 			<h1 class="text-4xl font-semibold tracking-tight">Getting Started</h1>
-			<CopyPageDropdown
-				class="shrink-0"
-				componentName="Getting Started"
-				{llmsTxtUrl}
-				type="cookbook"
-			/>
+			<CopyPageDropdown class="shrink-0" componentName="Getting Started" {llmsTxtUrl} />
 		</div>
 
 		<div class="mb-6 flex flex-wrap items-center gap-2">
@@ -158,7 +155,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			Install the AI SDK core, Svelte bindings, OpenRouter provider, and Zod for schema
 			validation.
 		</p>
-		<AiInstallCommand
+		<PMCommand
 			command="add"
 			args={["ai", "@ai-sdk/svelte", "@openrouter/ai-sdk-provider", "zod"]}
 		/>
@@ -171,7 +168,14 @@ export const POST: RequestHandler = async ({ request }) => {
 			Create a <code class="text-foreground">.env</code> file in your project root with your OpenRouter
 			API key.
 		</p>
-		<CodeNameBlock filename=".env" lang="bash" code={envCode} hideLines />
+		<SingleFile
+			code={{
+				name: ".env",
+				lang: "bash",
+				code: envCode,
+				highlight: [1],
+			}}
+		/>
 		<p class="text-muted-foreground mt-3 text-sm">
 			Get your free API key from
 			<a
@@ -191,7 +195,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			Create a shared configuration file. This keeps your AI setup DRY and makes it easy to
 			switch models.
 		</p>
-		<CodeNameBlock filename="src/lib/config/ai.ts" lang="typescript" code={configCode} />
+		<SingleFile
+			code={{
+				name: "src/lib/config/ai.ts",
+				lang: "typescript",
+				code: configCode,
+			}}
+		/>
 	</section>
 
 	<!-- Step 4: Server Endpoint -->
@@ -201,10 +211,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			Create a server endpoint that handles chat messages. The
 			<code class="text-foreground">streamText</code> function streams the AI response in real-time.
 		</p>
-		<CodeNameBlock
-			filename="src/routes/api/chat/+server.ts"
-			lang="typescript"
-			code={serverCode}
+		<SingleFile
+			code={{
+				name: "src/routes/api/chat/+server.ts",
+				lang: "typescript",
+				code: serverCode,
+				highlight: [9, [17, 20], 23],
+			}}
 		/>
 	</section>
 
@@ -217,11 +230,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			<code class="text-foreground">@ai-sdk/svelte</code>
 			handles all the state management.
 		</p>
-		<CodeNameBlock
-			filename="src/routes/+page.svelte"
-			lang="svelte"
-			code={clientCode}
-			highlight={[[5, 9], 16]}
+		<SingleFile
+			code={{
+				name: "src/routes/+page.svelte",
+				lang: "svelte",
+				code: clientCode,
+				highlight: [[5, 9], 16],
+			}}
 		/>
 	</section>
 

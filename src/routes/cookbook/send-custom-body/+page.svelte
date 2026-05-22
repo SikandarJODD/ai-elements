@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/send-custom-body/llms.txt`;
 
@@ -126,7 +127,6 @@ Keep responses concise (under 50 words).\`,
 				class="shrink-0"
 				componentName="Send Custom Body"
 				{llmsTxtUrl}
-				type="cookbook"
 			/>
 		</div>
 
@@ -165,11 +165,13 @@ Keep responses concise (under 50 words).\`,
 			The <code class="text-foreground">body</code> option accepts any object. The loading state
 			shows a personalized message with the user's name and age while the AI curates a response.
 		</p>
-		<CodeNameBlock
-			filename="+page.svelte"
-			lang="svelte"
-			code={clientCode}
-			highlight={[[23, 34]]}
+		<SingleFile
+			code={{
+				name: "+page.svelte",
+				lang: "svelte",
+				code: clientCode,
+				highlight: [[23, 34]],
+			}}
 		/>
 	</section>
 
@@ -179,7 +181,13 @@ Keep responses concise (under 50 words).\`,
 			Destructure your custom fields from the request body. Use them to personalize the system
 			prompt or for any server-side logic.
 		</p>
-		<CodeNameBlock filename="+server.ts" lang="typescript" code={serverCode} />
+		<SingleFile
+			code={{
+				name: "src/routes/api/chat/+server.ts",
+				lang: "typescript",
+				code: serverCode,
+			}}
+		/>
 	</section>
 
 	<footer>

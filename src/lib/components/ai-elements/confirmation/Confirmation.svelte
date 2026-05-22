@@ -31,6 +31,7 @@
 	);
 
 	// Set context for child components immediately (for SSR)
+	// svelte-ignore state_referenced_locally
 	setConfirmationContext({ approval, state });
 
 	// Watch for changes and update context reactively

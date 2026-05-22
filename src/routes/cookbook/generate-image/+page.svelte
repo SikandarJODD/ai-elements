@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/generate-image/llms.txt`;
 
@@ -91,12 +92,7 @@ export const POST = async ({ request }) => {
 	<header class="mb-12">
 		<div class="mb-6 flex items-start justify-between gap-4">
 			<h1 class="text-4xl font-semibold tracking-tight">Generate Image</h1>
-			<CopyPageDropdown
-				class="shrink-0"
-				componentName="Generate Image"
-				{llmsTxtUrl}
-				type="cookbook"
-			/>
+			<CopyPageDropdown class="shrink-0" componentName="Generate Image" {llmsTxtUrl} />
 		</div>
 
 		<div class="mb-6 flex flex-wrap items-center gap-2">
@@ -123,21 +119,25 @@ export const POST = async ({ request }) => {
 			The <code class="text-foreground">experimental_generateImage</code> function creates images
 			from prompts. Wrap it in a tool so the AI can call it when needed.
 		</p>
-		<CodeNameBlock
-			filename="tools/generate-image.ts"
-			lang="typescript"
-			code={toolCode}
-			highlight={[[10, 14]]}
+		<SingleFile
+			code={{
+				code: toolCode,
+				name: "tools/generate-image.ts",
+				lang: "typescript",
+				highlight: [[10, 14]],
+			}}
 		/>
 	</section>
 
 	<section class="mb-16">
 		<h2 class="mb-6 text-3xl font-semibold">Server Endpoint</h2>
-		<CodeNameBlock
-			filename="+server.ts"
-			lang="typescript"
-			code={serverCode}
-			highlight={[[3, 3]]}
+		<SingleFile
+			code={{
+				code: serverCode,
+				name: "/+server.ts",
+				lang: "typescript",
+				highlight: [[3, 3]],
+			}}
 		/>
 	</section>
 
@@ -147,11 +147,13 @@ export const POST = async ({ request }) => {
 			Images are returned as base64. Use a data URL to display them immediately without
 			needing to upload to storage first.
 		</p>
-		<CodeNameBlock
-			filename="+page.svelte"
-			lang="svelte"
-			code={displayCode}
-			highlight={[[4, 7]]}
+		<SingleFile	
+			code={{
+				code: displayCode,
+				name: "+page.svelte",
+				lang: "svelte",
+				highlight: [[2, 8]],
+			}}
 		/>
 	</section>
 

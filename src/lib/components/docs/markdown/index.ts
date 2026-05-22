@@ -18,6 +18,8 @@ import Th from "./th.svelte";
 import Thead from "./thead.svelte";
 import Tr from "./tr.svelte";
 import Table from "./table.svelte";
+import SubHeading from "./sub-heading.svelte";
+import CodeChip from "./code-chip.svelte";
 
 export {
   Blockquote,
@@ -40,4 +42,6 @@ export {
   Thead,
   Tr,
   UnorderedList,
+  SubHeading,
+  CodeChip,
 };

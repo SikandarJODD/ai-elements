@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/markdown-chatbot/llms.txt`;
 
@@ -97,7 +98,6 @@ Always format code with the correct language identifier.\`,
 				class="shrink-0"
 				componentName="Markdown Chatbot"
 				{llmsTxtUrl}
-				type="cookbook"
 			/>
 		</div>
 
@@ -139,11 +139,13 @@ Always format code with the correct language identifier.\`,
 		<p class="text-muted-foreground mb-6 leading-relaxed">
 			Guide the AI to use markdown formatting with a system prompt:
 		</p>
-		<CodeNameBlock
-			filename="src/routes/api/chat/+server.ts"
-			lang="typescript"
-			code={serverCode}
-			highlight={[[19, 21]]}
+		<SingleFile
+			code={{
+				name: "src/routes/api/chat/+server.ts",
+				lang: "typescript",
+				code: serverCode,
+				highlight: [[19, 21]],
+			}}
 		/>
 	</section>
 
@@ -154,11 +156,13 @@ Always format code with the correct language identifier.\`,
 			<code class="text-foreground">streamdown-svelte</code> handles streaming markdown gracefully,
 			rendering partial content as it arrives:
 		</p>
-		<CodeNameBlock
-			filename="markdown.svelte"
-			lang="svelte"
-			code={markdownCode}
-			highlight={[[7, 11]]}
+		<SingleFile
+			code={{
+				name: "markdown.svelte",
+				lang: "svelte",
+				code: markdownCode,
+				highlight: [[7, 11]],
+			}}
 		/>
 	</section>
 
@@ -168,11 +172,13 @@ Always format code with the correct language identifier.\`,
 		<p class="text-muted-foreground mb-6 leading-relaxed">
 			Render user messages as plain text and assistant messages as markdown:
 		</p>
-		<CodeNameBlock
-			filename="+page.svelte"
-			lang="svelte"
-			code={clientCode}
-			highlight={[6, [7, 11]]}
+		<SingleFile
+			code={{
+				name: "src/routes/+page.svelte",
+				lang: "svelte",
+				code: clientCode,
+				highlight: [[5, 9], 16],
+			}}
 		/>
 	</section>
 

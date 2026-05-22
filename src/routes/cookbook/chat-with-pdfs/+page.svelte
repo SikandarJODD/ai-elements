@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/chat-with-pdfs/llms.txt`;
 
@@ -157,7 +158,6 @@ export const POST = async ({ request }) => {
 				class="shrink-0"
 				componentName="Chat with PDFs"
 				{llmsTxtUrl}
-				type="cookbook"
 			/>
 		</div>
 
@@ -185,7 +185,13 @@ export const POST = async ({ request }) => {
 			The <code class="text-foreground">FileReader</code> API converts uploaded files into base64
 			data URLs that can be sent to the AI model.
 		</p>
-		<CodeNameBlock filename="utils.ts" lang="typescript" code={convertCode} />
+		<SingleFile
+			code={{
+				code: convertCode,
+				name: "utils.ts",
+				lang: "typescript",
+			}}
+		/>
 	</section>
 
 	<section class="mb-16">
@@ -194,7 +200,13 @@ export const POST = async ({ request }) => {
 			Send both text and file parts in a single message. The
 			<code class="text-foreground">parts</code> array can contain multiple content types.
 		</p>
-		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} />
+		<SingleFile
+			code={{
+				code: clientCode,
+				name: "+page.svelte",
+				lang: "svelte",
+			}}
+		/>
 	</section>
 
 	<section class="mb-10">
@@ -203,7 +215,13 @@ export const POST = async ({ request }) => {
 			Uses a model that supports document understanding. The
 			<code class="text-foreground">convertToModelMessages</code> handles the multi-part format.
 		</p>
-		<CodeNameBlock filename="+server.ts" lang="typescript" code={serverCode} />
+		<SingleFile
+			code={{
+				code: serverCode,
+				name: "/+server.ts",
+				lang: "typescript",
+			}}
+		/>
 	</section>
 
 	<footer>

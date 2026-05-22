@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
+	// import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/stream-text-with-chat-prompt/llms.txt`;
 
@@ -102,7 +104,6 @@ export const POST: RequestHandler = async ({ request }) => {
 				class="shrink-0"
 				componentName="Stream Text with Chat Prompt"
 				{llmsTxtUrl}
-				type="cookbook"
 			/>
 		</div>
 
@@ -148,11 +149,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			transforms client messages to the format expected by
 			<code class="text-foreground">streamText</code>.
 		</p>
-		<CodeNameBlock
-			filename="src/routes/api/chat/+server.ts"
-			lang="typescript"
-			code={serverCode}
-			highlight={[18, [25, 29], 32]}
+		<SingleFile
+			code={{
+				name: "Server Endpoint",
+				code: serverCode,
+				highlight: [1, 4, [6, 12], 15],
+				lang: "typescript",
+			}}
 		/>
 	</section>
 
@@ -164,11 +167,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			streaming state, and reactive updates. Just call
 			<code class="text-foreground">sendMessage()</code>!
 		</p>
-		<CodeNameBlock
-			filename="+page.svelte"
-			lang="svelte"
-			code={clientCode}
-			highlight={[[5, 11], 18, 25]}
+		<SingleFile
+			code={{
+				name: "Client Component",
+				code: clientCode,
+				highlight: [[5, 11], 18, 25],
+				lang: "svelte",
+			}}
 		/>
 	</section>
 

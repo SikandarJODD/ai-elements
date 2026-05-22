@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as HoverCard from "$lib/components/ui/hover-card/index.js";
 	import { ContextClass, setContextValue, type ContextSchema } from "./context-context.svelte";
+	import { untrack } from "svelte";
 
 	interface Props extends ContextSchema {
 		children?: import("svelte").Snippet;
@@ -22,10 +23,10 @@
 	}: Props = $props();
 
 	const contextInstance = new ContextClass({
-		usedTokens,
-		maxTokens,
-		usage,
-		modelId,
+		usedTokens: untrack(() => usedTokens),
+		maxTokens: untrack(() => maxTokens),
+		usage: untrack(() => usage),
+		modelId: untrack(() => modelId),
 	});
 
 	// Update context when props change

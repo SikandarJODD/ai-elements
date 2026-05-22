@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/generate-text-with-chat-prompt/llms.txt`;
 
@@ -104,7 +105,6 @@ export const POST: RequestHandler = async ({ request }) => {
 				class="shrink-0"
 				componentName="Generate Text with Chat Prompt"
 				{llmsTxtUrl}
-				type="cookbook"
 			/>
 		</div>
 
@@ -149,11 +149,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			full conversation history. Using <code class="text-foreground">ModelMessage[]</code> type
 			ensures proper structure.
 		</p>
-		<CodeNameBlock
-			filename="src/routes/api/chat/+server.ts"
-			lang="typescript"
-			code={serverCode}
-			highlight={[9, [17, 20], 23]}
+		<SingleFile
+			code={{
+				name: "src/routes/api/chat/+server.ts",
+				lang: "typescript",
+				code: serverCode,
+				highlight: [9, [17, 20], 23],
+			}}
 		/>
 	</section>
 
@@ -164,11 +166,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			The client maintains local message state and sends the complete history with each
 			request. This lets the AI maintain context across turns.
 		</p>
-		<CodeNameBlock
-			filename="+page.svelte"
-			lang="svelte"
-			code={clientCode}
-			highlight={[8, [15, 18]]}
+		<SingleFile
+			code={{
+				name: "+page.svelte",
+				lang: "svelte",
+				code: clientCode,
+				highlight: [8, [15, 18]],
+			}}
 		/>
 	</section>
 

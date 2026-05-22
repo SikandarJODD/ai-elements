@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/call-tool/llms.txt`;
 
@@ -105,12 +106,7 @@ export const POST = async ({ request }) => {
 	<header class="mb-12">
 		<div class="mb-6 flex items-start justify-between gap-4">
 			<h1 class="text-4xl font-semibold tracking-tight">Call Tool</h1>
-			<CopyPageDropdown
-				class="shrink-0"
-				componentName="Call Tool"
-				{llmsTxtUrl}
-				type="cookbook"
-			/>
+			<CopyPageDropdown class="shrink-0" componentName="Call Tool" {llmsTxtUrl} />
 		</div>
 
 		<div class="mb-6 flex flex-wrap items-center gap-2">
@@ -148,7 +144,13 @@ export const POST = async ({ request }) => {
 			(validates parameters), and an <code class="text-foreground">execute</code> function (runs
 			when called).
 		</p>
-		<CodeNameBlock filename="tools/get-weather.ts" lang="typescript" code={toolCode} />
+		<SingleFile
+			code={{
+				code: toolCode,
+				name: "tools/get-weather.ts",
+				lang: "typescript",
+			}}
+		/>
 	</section>
 
 	<section class="mb-16">
@@ -157,11 +159,12 @@ export const POST = async ({ request }) => {
 			Pass tools to <code class="text-foreground">streamText</code>. The
 			<code class="text-foreground">stopWhen: stepCountIs(5)</code> prevents infinite tool loops.
 		</p>
-		<CodeNameBlock
-			filename="+server.ts"
-			lang="typescript"
-			code={serverCode}
-			highlight={[2, [15, 16]]}
+		<SingleFile
+			code={{
+				code: serverCode,
+				name: "src/routes/api/cookbook/call-tool/+server.ts",
+				lang: "typescript",
+			}}
 		/>
 	</section>
 
@@ -171,7 +174,13 @@ export const POST = async ({ request }) => {
 			Check <code class="text-foreground">part.type === "tool-invocation"</code> to display tool
 			calls and their results in your UI.
 		</p>
-		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} />
+		<SingleFile
+			code={{
+				code: clientCode,
+				name: "src/routes/cookbook/call-tool/+page.svelte",
+				lang: "svelte",
+			}}
+		/>
 	</section>
 
 	<footer>

@@ -5,7 +5,7 @@
 		ChainOfThoughtContext,
 		setChainOfThoughtContext,
 	} from "./chain-of-thought-context.svelte.js";
-	import type { Snippet } from "svelte";
+	import { untrack, type Snippet } from "svelte";
 	import type { HTMLAttributes } from "svelte/elements";
 
 	interface ChainOfThoughtProps extends HTMLAttributes<HTMLDivElement> {
@@ -27,7 +27,8 @@
 
 	// Create context instance with proper controllable state
 	const context = new ChainOfThoughtContext({
-		isOpen: open !== undefined ? open : defaultOpen,
+		isOpen: open !== undefined ? open : untrack(() => defaultOpen),
+		// svelte-ignore state_referenced_locally
 		onOpenChange,
 	});
 

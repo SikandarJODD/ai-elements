@@ -3,6 +3,7 @@
 	import { watch } from "runed";
 	import { Collapsible } from "$lib/components/ui/collapsible/index.js";
 	import { ReasoningContext, setReasoningContext } from "./reasoning-context.svelte";
+	import { untrack } from "svelte";
 
 	interface Props {
 		class?: string;
@@ -30,13 +31,13 @@
 
 	// Create the reasoning context
 	let reasoningContext = new ReasoningContext({
-		isStreaming,
-		isOpen: open ?? defaultOpen,
+		isStreaming: untrack(() => isStreaming),
+		isOpen: open ?? untrack(() => defaultOpen),
 		duration: duration ?? 0,
 	});
 
 	// Set up controllable state for open
-	let isOpen = $state(open ?? defaultOpen);
+	let isOpen = $state(open ?? untrack(() => defaultOpen));
 	let currentDuration = $state(duration ?? 0);
 	let hasAutoClosed = $state(false);
 	let startTime = $state<number | null>(null);

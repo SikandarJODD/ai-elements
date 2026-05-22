@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { cn } from "$lib/utils";
+	import { untrack } from "svelte";
 	import { WebPreviewContext, setWebPreviewContext } from "./web-preview-context.svelte.js";
 
 	let {
@@ -17,7 +18,11 @@
 	} = $props();
 
 	// Create and set the context
-	let context = new WebPreviewContext(defaultUrl, onUrlChange);
+	let context = new WebPreviewContext(
+		untrack(() => defaultUrl),
+		// svelte-ignore state_referenced_locally
+		onUrlChange
+	);
 	setWebPreviewContext(context);
 </script>
 

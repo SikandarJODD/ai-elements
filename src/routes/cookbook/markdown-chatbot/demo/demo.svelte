@@ -4,7 +4,7 @@
 	import { Card, CardContent } from "$lib/components/ui/card";
 	import { Button } from "$lib/components/ui/button";
 	import { Input } from "$lib/components/ui/input";
-	import { Markdown } from "$lib/components/prompt-kit/markdown";
+	import Response from "$lib/components/ai-elements/response/response.svelte";
 
 	let chat = $derived(
 		new Chat({
@@ -51,7 +51,7 @@
 							{:else}
 								{#each message.parts as part}
 									{#if part.type === "text"}
-										<Markdown
+										<Response
 											content={part.text}
 											class="prose prose-sm prose-neutral dark:prose-invert prose-pre:bg-muted prose-pre:border prose-pre:rounded-lg prose-code:before:content-none prose-code:after:content-none max-w-none"
 										/>
