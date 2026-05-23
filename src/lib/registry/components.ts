@@ -77,6 +77,72 @@ let components: Component[] = [
     href: "/components/model-selector",
     desc: "TODO: Model Selector.",
   },
+  {
+    id: "open-in-chat",
+    name: "Open In Chat",
+    href: "/components/open-in-chat",
+    desc: "TODO: Open In Chat.",
+  },
+  {
+    id: "plan",
+    name: "Plan",
+    href: "/components/plan",
+    desc: "TODO: Plan.",
+  },
+  {
+    id: "prompt-input",
+    name: "Prompt Input",
+    href: "/components/prompt-input",
+    desc: "TODO: Prompt Input.",
+  },
+  {
+    id: "queue",
+    name: "Queue",
+    href: "/components/queue",
+    desc: "TODO: Queue.",
+  },
+  {
+    id: "reasoning",
+    name: "Reasoning",
+    href: "/components/reasoning",
+    desc: "TODO: Reasoning.",
+  },
+  {
+    id: "response",
+    name: "Response",
+    href: "/components/response",
+    desc: "TODO: Response.",
+  },
+  {
+    id: "shimmer",
+    name: "Shimmer",
+    href: "/components/shimmer",
+    desc: "TODO: Shimmer.",
+  },
+  {
+    id: "sources",
+    name: "Sources",
+    href: "/components/sources",
+    desc: "TODO: Sources.",
+  },
+  {
+    id: "task",
+    name: "Task",
+    href: "/components/task",
+    desc: "TODO: Task.",
+  },
+  {
+    id: "tool",
+    name: "Tool",
+    href: "/components/tool",
+    desc: "TODO: Tool.",
+  },
+  {
+    id: "web-preview",
+    name: "Web Preview",
+    href: "/components/web-preview",
+    desc: "TODO: Web Preview.",
+  },
 ];
 
 export { components };
