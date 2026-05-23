@@ -28,13 +28,13 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "message",
 	title: "Message",
-	description: "TODO: Message.",
+	description: "Composable chat message primitives for Svelte with markdown responses, attachments, branching, and action slots.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Message",
-	description: "TODO: Message.",
+	description: "Composable chat message primitives for Svelte with markdown responses, attachments, branching, and action slots.",
 	keywords: ["Svelte", "Message", "Component"],
 };
 

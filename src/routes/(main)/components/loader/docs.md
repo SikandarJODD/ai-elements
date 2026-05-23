@@ -1,6 +1,6 @@
 # Loader
 
-TODO: Loader.
+The Loader component provides a spinning animation to indicate loading states in your AI applications.
 
 ## Installation
 

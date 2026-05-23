@@ -66,7 +66,6 @@
 		cardType: "summary_large_image",
 		title: title,
 		description: description,
-		// image: images && images[0] ? images[0].url : "https://sv-animations.vercel.app/svelte.svg",
 		imageAlt: images && images[0] ? images[0].alt : seo_config.site_name,
 	}}
 />

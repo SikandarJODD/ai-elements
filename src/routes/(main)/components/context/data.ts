@@ -25,13 +25,14 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "context",
 	title: "Context",
-	description: "TODO: Context.",
+	description:
+		"The Context component provides a comprehensive view of AI model usage through a compound component system.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Context",
-	description: "TODO: Context.",
+	description: "The Context component provides a comprehensive view of AI model usage through a compound component system.",
 	keywords: ["Svelte", "Context", "Component"],
 };
 

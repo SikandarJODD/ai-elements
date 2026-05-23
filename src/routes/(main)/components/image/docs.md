@@ -1,6 +1,6 @@
 # Image
 
-TODO: Image.
+The Image component displays AI-generated images from base64 encoded data. It's designed to work seamlessly with the AI SDK's Experimental_GeneratedImage type and provides automatic styling with proper accessibility features.
 
 ## Installation
 

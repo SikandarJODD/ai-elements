@@ -1,6 +1,6 @@
 # Message
 
-TODO: Message.
+Composable chat message primitives for Svelte with markdown responses, attachments, branching, and action slots.
 
 ## Installation
 

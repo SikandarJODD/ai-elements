@@ -1,6 +1,6 @@
 # Model Selector
 
-TODO: Model Selector.
+A searchable command palette for selecting AI models in your chat interface.
 
 ## Installation
 

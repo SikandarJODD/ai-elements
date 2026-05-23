@@ -27,13 +27,15 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "inline-citation",
 	title: "Inline Citation",
-	description: "TODO: Inline Citation.",
+	description:
+		"The Inline Citation component provides a way to display citations inline with text content, similar to academic papers or research documents. It consists of a citation pill that shows detailed source information on hover, making it perfect for AI-generated content that needs to reference sources.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Inline Citation",
-	description: "TODO: Inline Citation.",
+	description:
+		"The Inline Citation component provides a way to display citations inline with text content, similar to academic papers or research documents.",
 	keywords: ["Svelte", "Inline Citation", "Component"],
 };
 

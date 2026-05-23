@@ -26,13 +26,13 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "model-selector",
 	title: "Model Selector",
-	description: "TODO: Model Selector.",
+	description: "A searchable command palette for selecting AI models in your chat interface.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Model Selector",
-	description: "TODO: Model Selector.",
+	description: "A searchable command palette for selecting AI models in your chat interface.",
 	keywords: ["Svelte", "Model Selector", "Component"],
 };
 

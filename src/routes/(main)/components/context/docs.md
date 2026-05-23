@@ -1,6 +1,6 @@
 # Context
 
-TODO: Context.
+The Context component provides a comprehensive view of AI model usage through a compound component system.
 
 ## Installation
 

@@ -14,13 +14,15 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "image",
 	title: "Image",
-	description: "TODO: Image.",
+	description:
+		"The Image component displays AI-generated images from base64 encoded data. It's designed to work seamlessly with the AI SDK's Experimental_GeneratedImage type and provides automatic styling with proper accessibility features.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Image",
-	description: "TODO: Image.",
+	description:
+		"The Image component displays AI-generated images from base64 encoded data.",
 	keywords: ["Svelte", "Image", "Component"],
 };
 

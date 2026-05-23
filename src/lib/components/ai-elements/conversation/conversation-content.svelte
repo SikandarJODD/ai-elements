@@ -39,7 +39,7 @@
 <div
 	bind:this={element}
 	bind:this={ref}
-	class={cn("flex-1 overflow-y-auto p-4", className)}
+	class={cn("flex flex-col gap-8 p-4", className)}
 	{...restProps}
 >
 	{@render children?.()}

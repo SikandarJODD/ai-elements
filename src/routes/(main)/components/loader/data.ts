@@ -14,13 +14,13 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "loader",
 	title: "Loader",
-	description: "TODO: Loader.",
+	description: "The Loader component provides a spinning animation to indicate loading states in your AI applications.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Loader",
-	description: "TODO: Loader.",
+	description: "The Loader component provides a spinning animation to indicate loading states in your AI applications.",
 	keywords: ["Svelte", "Loader", "Component"],
 };
 
