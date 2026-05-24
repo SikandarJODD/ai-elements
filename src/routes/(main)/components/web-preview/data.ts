@@ -19,13 +19,13 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "web-preview",
 	title: "Web Preview",
-	description: "TODO: Web Preview.",
+	description: "The Web Preview component provides a flexible way to showcase the result of a generated UI component, along with its source code.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Web Preview",
-	description: "TODO: Web Preview.",
+	description: "The Web Preview component provides a flexible way to showcase the result of a generated UI component, along with its source code.",
 	keywords: ["Svelte", "Web Preview", "Component"],
 };
 

@@ -7,7 +7,7 @@ import OpenInSeparator from "./open-in-separator.svelte";
 import OpenInTrigger from "./open-in-trigger.svelte";
 
 // Provider-specific components
-import OpenInChatGPT from "./open-in-chat-gpt.svelte";
+import OpenInChatGPT from "./open-in-chatgpt.svelte";
 import OpenInClaude from "./open-in-claude.svelte";
 import OpenInT3 from "./open-in-t3.svelte";
 import OpenInScira from "./open-in-scira.svelte";
@@ -16,7 +16,7 @@ import OpenInV0 from "./open-in-v0.svelte";
 // Icon components
 import GitHubIcon from "./github-icon.svelte";
 import SciraIcon from "./scira-icon.svelte";
-import ChatGPTIcon from "./chat-gpt-icon.svelte";
+import ChatGPTIcon from "./chatgpt-icon.svelte";
 import ClaudeIcon from "./claude-icon.svelte";
 import V0Icon from "./v0-icon.svelte";
 

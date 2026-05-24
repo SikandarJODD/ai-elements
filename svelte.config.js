@@ -13,14 +13,14 @@ const config = {
 			$markdown: "src/lib/components/docs/markdown",
 		},
 	},
-	vitePlugin: {
-		inspector: {
-			toggleKeyCombo: "ctrl-shift",
-			holdMode: true,
-			showToggleButton: "always",
-			toggleButtonPos: "bottom-right",
-		},
-	},
+	// vitePlugin: {
+	// 	inspector: {
+	// 		toggleKeyCombo: "ctrl-shift",
+	// 		holdMode: true,
+	// 		showToggleButton: "always",
+	// 		toggleButtonPos: "bottom-right",
+	// 	},
+	// },
 };
 
 export default config;

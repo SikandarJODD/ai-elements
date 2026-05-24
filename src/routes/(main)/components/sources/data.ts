@@ -16,13 +16,13 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "sources",
 	title: "Sources",
-	description: "TODO: Sources.",
+	description: "The Sources component allows a user to view the sources or citations used to generate a response.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Sources",
-	description: "TODO: Sources.",
+	description: "The Sources component allows a user to view the sources or citations used to generate a response.",
 	keywords: ["Svelte", "Sources", "Component"],
 };
 

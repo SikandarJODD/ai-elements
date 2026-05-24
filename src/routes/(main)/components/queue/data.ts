@@ -28,13 +28,13 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "queue",
 	title: "Queue",
-	description: "TODO: Queue.",
+	description: "A comprehensive queue component system for displaying message lists, todos, and collapsible task sections in AI applications.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Queue",
-	description: "TODO: Queue.",
+	description: "A comprehensive queue component system for displaying message lists, todos, and collapsible task sections in AI applications.",
 	keywords: ["Svelte", "Queue", "Component"],
 };
 

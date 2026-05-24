@@ -22,13 +22,13 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "plan",
 	title: "Plan",
-	description: "TODO: Plan.",
+	description: "A collapsible plan component for displaying AI-generated execution plans with streaming support and shimmer animations.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Plan",
-	description: "TODO: Plan.",
+	description: "A collapsible plan component for displaying AI-generated execution plans with streaming support and shimmer animations.",
 	keywords: ["Svelte", "Plan", "Component"],
 };
 

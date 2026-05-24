@@ -52,13 +52,13 @@
 	};
 </script>
 
-<div class="mx-auto max-w-2xl space-y-6 p-6">
+<div class="mx-auto w-2xl space-y-6 p-6">
 	<h1 class="text-2xl font-bold">Tool Components Example</h1>
 
 	<!-- Successful Tool Example -->
 	<Tool.Root>
 		<Tool.Header type={toolData.type} state={toolData.state} />
-		<Tool.Content>
+		<Tool.Content >
 			<Tool.Input input={toolData.input} />
 			<Tool.Output output={toolData.output} />
 		</Tool.Content>

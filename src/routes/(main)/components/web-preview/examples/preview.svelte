@@ -54,7 +54,7 @@
 <div class="mx-auto w-full max-w-4xl">
 	<!-- <h2 class="text-2xl font-bold">Web Preview Component Example</h2> -->
 
-	<WebPreview.Root defaultUrl={currentUrl} onUrlChange={handleUrlChange} class="h-96">
+	<WebPreview.Root defaultUrl={currentUrl} onUrlChange={handleUrlChange} class="h-120">
 		<WebPreview.Navigation>
 			<WebPreview.NavigationButton onclick={goBack} tooltip="Go Back">
 				<ArrowLeft class="h-4 w-4" />

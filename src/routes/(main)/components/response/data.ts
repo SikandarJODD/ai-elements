@@ -13,13 +13,13 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "response",
 	title: "Response",
-	description: "TODO: Response.",
+	description: "The Response component renders a Markdown response from a large language model. It uses Streamdown-Svelte under the hood to render the markdown.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Response",
-	description: "TODO: Response.",
+	description: "The Response component renders a Markdown response from a large language model. It uses Streamdown-Svelte under the hood to render the markdown.",
 	keywords: ["Svelte", "Response", "Component"],
 };
 
@@ -41,6 +41,7 @@ export const data: ComponentDoc = {
 			code: PreviewCode,
 			lang: "svelte",
 		},
+		preview_class: 'max-h-120 overflow-auto',
 	},
 	install_block,
 	seo,

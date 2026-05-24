@@ -1,5 +1,4 @@
 import IndexTsRaw from "$lib/components/ai-elements/task/index.ts?raw";
-import SvelteIconSvelteRaw from "$lib/components/ai-elements/task/svelte-icon.svelte?raw";
 import TaskContentSvelteRaw from "$lib/components/ai-elements/task/task-content.svelte?raw";
 import TaskItemFileSvelteRaw from "$lib/components/ai-elements/task/task-item-file.svelte?raw";
 import TaskItemSvelteRaw from "$lib/components/ai-elements/task/task-item.svelte?raw";
@@ -18,13 +17,13 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "task",
 	title: "Task",
-	description: "TODO: Task.",
+	description: "The Task component provides a structured way to display task lists or workflow progress with collapsible details, status indicators, and progress tracking.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Task",
-	description: "TODO: Task.",
+	description: "The Task component provides a structured way to display task lists or workflow progress with collapsible details, status indicators, and progress tracking.",
 	keywords: ["Svelte", "Task", "Component"],
 };
 
@@ -32,7 +31,6 @@ const install_block: InstallComponentDocs = {
 	packages: [],
 	install_code: [
 		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true, },
-		{ name: "svelte-icon.svelte", code: SvelteIconSvelteRaw, lang: "svelte", },
 		{ name: "task-content.svelte", code: TaskContentSvelteRaw, lang: "svelte", },
 		{ name: "task-item-file.svelte", code: TaskItemFileSvelteRaw, lang: "svelte", },
 		{ name: "task-item.svelte", code: TaskItemSvelteRaw, lang: "svelte", },

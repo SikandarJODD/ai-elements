@@ -14,13 +14,13 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "shimmer",
 	title: "Shimmer",
-	description: "TODO: Shimmer.",
+	description: "An animated text shimmer component for creating eye-catching loading states and progressive reveal effects.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Shimmer",
-	description: "TODO: Shimmer.",
+	description: "An animated text shimmer component for creating eye-catching loading states and progressive reveal effects.",
 	keywords: ["Svelte", "Shimmer", "Component"],
 };
 

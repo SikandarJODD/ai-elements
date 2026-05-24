@@ -16,11 +16,13 @@
 </script>
 
 <DropdownMenu.Item {...restProps}>
-	<a href={url} rel="noopener" target="_blank" class="flex w-full items-center gap-2">
-		<span class="shrink-0">
-			<V0Icon size="1em" />
-		</span>
-		<span class="flex-1">{providers.v0.title}</span>
-		<ExternalLink class="size-4 shrink-0" />
-	</a>
+	{#snippet child({ props })}
+		<a href={url} rel="noopener" target="_blank" {...props}>
+			<span class="shrink-0">
+				<V0Icon size="1em" />
+			</span>
+			<span class="flex-1">{providers.v0.title}</span>
+			<!-- <ExternalLink class="size-4 shrink-0" /> -->
+		</a>
+	{/snippet}
 </DropdownMenu.Item>

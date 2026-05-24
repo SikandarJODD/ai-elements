@@ -14,13 +14,13 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "suggestion",
 	title: "Suggestion",
-	description: "TODO: Suggestion.",
+	description: "The Suggestion component displays a horizontal row of clickable suggestions for user interaction.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Suggestion",
-	description: "TODO: Suggestion.",
+	description: "The Suggestion component displays a horizontal row of clickable suggestions for user interaction.",
 	keywords: ["Svelte", "Suggestion", "Component"],
 };
 

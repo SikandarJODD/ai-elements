@@ -1,8 +1,8 @@
-import ChatGptIconSvelteRaw from "$lib/components/ai-elements/open-in-chat/chat-gpt-icon.svelte?raw";
+import ChatGptIconSvelteRaw from "$lib/components/ai-elements/open-in-chat/chatgpt-icon.svelte?raw";
 import ClaudeIconSvelteRaw from "$lib/components/ai-elements/open-in-chat/claude-icon.svelte?raw";
 import GitHubIconSvelteRaw from "$lib/components/ai-elements/open-in-chat/github-icon.svelte?raw";
 import IndexTsRaw from "$lib/components/ai-elements/open-in-chat/index.ts?raw";
-import OpenInChatGptSvelteRaw from "$lib/components/ai-elements/open-in-chat/open-in-chat-gpt.svelte?raw";
+import OpenInChatGptSvelteRaw from "$lib/components/ai-elements/open-in-chat/open-in-chatgpt.svelte?raw";
 import OpenInClaudeSvelteRaw from "$lib/components/ai-elements/open-in-chat/open-in-claude.svelte?raw";
 import OpenInContentSvelteRaw from "$lib/components/ai-elements/open-in-chat/open-in-content.svelte?raw";
 import OpenInContextSvelteTsRaw from "$lib/components/ai-elements/open-in-chat/open-in-context.svelte.ts?raw";
@@ -42,11 +42,11 @@ const seo: SEO = {
 const install_block: InstallComponentDocs = {
 	packages: [],
 	install_code: [
-		{ name: "chat-gpt-icon.svelte", code: ChatGptIconSvelteRaw, lang: "svelte", isExpand: true, },
+		{ name: "chatgpt-icon.svelte", code: ChatGptIconSvelteRaw, lang: "svelte", isExpand: true, },
 		{ name: "claude-icon.svelte", code: ClaudeIconSvelteRaw, lang: "svelte", },
 		{ name: "github-icon.svelte", code: GitHubIconSvelteRaw, lang: "svelte", },
 		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", },
-		{ name: "open-in-chat-gpt.svelte", code: OpenInChatGptSvelteRaw, lang: "svelte", },
+		{ name: "open-in-chatgpt.svelte", code: OpenInChatGptSvelteRaw, lang: "svelte", },
 		{ name: "open-in-claude.svelte", code: OpenInClaudeSvelteRaw, lang: "svelte", },
 		{ name: "open-in-content.svelte", code: OpenInContentSvelteRaw, lang: "svelte", },
 		{ name: "open-in-context.svelte.ts", code: OpenInContextSvelteTsRaw, lang: "typescript", },

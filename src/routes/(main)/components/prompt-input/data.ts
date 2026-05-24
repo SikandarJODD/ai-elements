@@ -34,13 +34,13 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "prompt-input",
 	title: "Prompt Input",
-	description: "TODO: Prompt Input.",
+	description: "The Prompt Input component allows a user to send a message with file attachments to a large language model. It includes a textarea, file upload capabilities, a submit button, and a dropdown for selecting the model.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Prompt Input",
-	description: "TODO: Prompt Input.",
+	description: "The Prompt Input component allows a user to send a message with file attachments to a large language model. It includes a textarea, file upload capabilities, a submit button, and a dropdown for selecting the model.",
 	keywords: ["Svelte", "Prompt Input", "Component"],
 };
 

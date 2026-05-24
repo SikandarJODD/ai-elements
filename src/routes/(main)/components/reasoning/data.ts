@@ -3,7 +3,6 @@ import ReasoningContentSvelteRaw from "$lib/components/ai-elements/reasoning/rea
 import ReasoningContextSvelteTsRaw from "$lib/components/ai-elements/reasoning/reasoning-context.svelte.ts?raw";
 import ReasoningTriggerSvelteRaw from "$lib/components/ai-elements/reasoning/reasoning-trigger.svelte?raw";
 import ReasoningSvelteRaw from "$lib/components/ai-elements/reasoning/reasoning.svelte?raw";
-import ResponseSvelteRaw from "$lib/components/ai-elements/reasoning/response.svelte?raw";
 
 import type {
 	ComponentDoc,
@@ -17,13 +16,13 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "reasoning",
 	title: "Reasoning",
-	description: "TODO: Reasoning.",
+	description: "The Reasoning component displays AI reasoning content, automatically opening during streaming and closing when finished.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Reasoning",
-	description: "TODO: Reasoning.",
+	description: "The Reasoning component displays AI reasoning content, automatically opening during streaming and closing when finished.",
 	keywords: ["Svelte", "Reasoning", "Component"],
 };
 
@@ -35,7 +34,6 @@ const install_block: InstallComponentDocs = {
 		{ name: "reasoning-context.svelte.ts", code: ReasoningContextSvelteTsRaw, lang: "typescript", },
 		{ name: "reasoning-trigger.svelte", code: ReasoningTriggerSvelteRaw, lang: "svelte", },
 		{ name: "reasoning.svelte", code: ReasoningSvelteRaw, lang: "svelte", },
-		{ name: "response.svelte", code: ResponseSvelteRaw, lang: "svelte", }
 	],
 	folder_structure: "",
 };

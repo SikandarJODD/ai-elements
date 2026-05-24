@@ -18,13 +18,13 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "tool",
 	title: "Tool",
-	description: "TODO: Tool.",
+	description: "The Tool component displays a collapsible interface for showing and hiding tool details from AI SDK tool parts.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Tool",
-	description: "TODO: Tool.",
+	description: "The Tool component displays a collapsible interface for showing and hiding tool details from AI SDK tool parts.",
 	keywords: ["Svelte", "Tool", "Component"],
 };
 
