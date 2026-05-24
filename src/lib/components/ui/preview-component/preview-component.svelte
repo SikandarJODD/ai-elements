@@ -57,6 +57,7 @@
 					isCentered ? "items-center justify-center" : "",
 					className
 				)}
+				data-toc-index="false"
 			>
 				{#if showRetry && value === "preview"}
 					<Button

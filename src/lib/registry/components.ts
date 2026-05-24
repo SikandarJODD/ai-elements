@@ -143,6 +143,12 @@ let components: Component[] = [
     href: "/components/web-preview",
     desc: "TODO: Web Preview.",
   },
+  {
+    id: "suggestion",
+    name: "Suggestion",
+    href: "/components/suggestion",
+    desc: "TODO: Suggestion.",
+  },
 ];
 
 export { components };

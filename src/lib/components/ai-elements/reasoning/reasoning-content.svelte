@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { cn } from "$lib/utils";
 	import { CollapsibleContent } from "$lib/components/ui/collapsible/index.js";
-	import Response from "./response.svelte";
+	import Response from "$lib/components/ai-elements/response/response.svelte";
 
 	interface Props {
 		class?: string;
-		children?: import("svelte").Snippet;
+		content: string;
 	}
 
-	let { class: className = "", children, ...props }: Props = $props();
+	let { class: className = "", content, ...props }: Props = $props();
 </script>
 
 <CollapsibleContent
@@ -19,7 +19,5 @@
 	)}
 	{...props}
 >
-	<Response class="grid gap-2">
-		{@render children?.()}
-	</Response>
+	<Response class="grid gap-2" {content} />
 </CollapsibleContent>

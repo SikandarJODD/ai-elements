@@ -71,7 +71,11 @@ export const data: ComponentDoc = {
 			code: PreviewCode,
 			lang: "svelte",
 		},
+		preview_class: "max-h-140 overflow-y-auto",
+		is_center: false,
+		show_retry: false,
 	},
+
 	install_block,
 	seo,
 	props: [],

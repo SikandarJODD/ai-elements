@@ -14,7 +14,7 @@ import OpenInScira from "./open-in-scira.svelte";
 import OpenInV0 from "./open-in-v0.svelte";
 
 // Icon components
-import GitHubIcon from "./git-hub-icon.svelte";
+import GitHubIcon from "./github-icon.svelte";
 import SciraIcon from "./scira-icon.svelte";
 import ChatGPTIcon from "./chat-gpt-icon.svelte";
 import ClaudeIcon from "./claude-icon.svelte";

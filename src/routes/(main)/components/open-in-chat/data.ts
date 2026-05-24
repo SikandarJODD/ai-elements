@@ -1,6 +1,6 @@
 import ChatGptIconSvelteRaw from "$lib/components/ai-elements/open-in-chat/chat-gpt-icon.svelte?raw";
 import ClaudeIconSvelteRaw from "$lib/components/ai-elements/open-in-chat/claude-icon.svelte?raw";
-import GitHubIconSvelteRaw from "$lib/components/ai-elements/open-in-chat/git-hub-icon.svelte?raw";
+import GitHubIconSvelteRaw from "$lib/components/ai-elements/open-in-chat/github-icon.svelte?raw";
 import IndexTsRaw from "$lib/components/ai-elements/open-in-chat/index.ts?raw";
 import OpenInChatGptSvelteRaw from "$lib/components/ai-elements/open-in-chat/open-in-chat-gpt.svelte?raw";
 import OpenInClaudeSvelteRaw from "$lib/components/ai-elements/open-in-chat/open-in-claude.svelte?raw";
@@ -29,13 +29,13 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "open-in-chat",
 	title: "Open In Chat",
-	description: "TODO: Open In Chat.",
+	description: "The Open In Chat component provides a dropdown menu that allows users to open queries in different AI chat platforms with a single click.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Open In Chat",
-	description: "TODO: Open In Chat.",
+	description: "The Open In Chat component provides a dropdown menu that allows users to open queries in different AI chat platforms with a single click.",
 	keywords: ["Svelte", "Open In Chat", "Component"],
 };
 
@@ -44,7 +44,7 @@ const install_block: InstallComponentDocs = {
 	install_code: [
 		{ name: "chat-gpt-icon.svelte", code: ChatGptIconSvelteRaw, lang: "svelte", isExpand: true, },
 		{ name: "claude-icon.svelte", code: ClaudeIconSvelteRaw, lang: "svelte", },
-		{ name: "git-hub-icon.svelte", code: GitHubIconSvelteRaw, lang: "svelte", },
+		{ name: "github-icon.svelte", code: GitHubIconSvelteRaw, lang: "svelte", },
 		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", },
 		{ name: "open-in-chat-gpt.svelte", code: OpenInChatGptSvelteRaw, lang: "svelte", },
 		{ name: "open-in-claude.svelte", code: OpenInClaudeSvelteRaw, lang: "svelte", },
