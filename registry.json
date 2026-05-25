@@ -15,8 +15,13 @@
 			"title": "Chain Of Thought",
 			"description": "A collapsible component that visualizes AI reasoning steps with support for search results, images, and step-by-step progress indicators.",
 			"type": "registry:block",
-			"dependencies": ["@lucide/svelte@^1.16.0"],
-			"registryDependencies": ["collapsible", "badge"],
+			"dependencies": [
+				"@lucide/svelte@^1.16.0"
+			],
+			"registryDependencies": [
+				"collapsible",
+				"badge"
+			],
 			"files": [
 				{
 					"path": "src/lib/components/ai-elements/chain-of-thought/chain-of-thought-content.svelte",
@@ -62,6 +67,755 @@
 					"path": "src/lib/components/ai-elements/chain-of-thought/index.ts",
 					"type": "registry:file",
 					"target": "ai-elements/chain-of-thought/index.ts"
+				}
+			]
+		},
+		{
+			"name": "checkpoint",
+			"title": "Checkpoint",
+			"description": "A compact checkpoint component that pairs a separator with icon and trigger helpers for workflow checkpoints.",
+			"type": "registry:block",
+			"dependencies": [
+				"@lucide/svelte@^1.16.0"
+			],
+			"registryDependencies": [
+				"button",
+				"separator",
+				"tooltip"
+			],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/checkpoint/checkpoint-icon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/checkpoint/checkpoint-icon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/checkpoint/checkpoint-trigger.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/checkpoint/checkpoint-trigger.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/checkpoint/checkpoint.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/checkpoint/checkpoint.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/checkpoint/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/checkpoint/index.ts"
+				}
+			]
+		},
+		{
+			"name": "confirmation",
+			"title": "Confirmation",
+			"description": "A confirmation workflow component for tool approval states, request and response rendering, and action handling.",
+			"type": "registry:block",
+			"dependencies": [
+				"runed@^0.37.1"
+			],
+			"registryDependencies": [
+				"alert",
+				"button"
+			],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/confirmation/confirmation-accepted.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/confirmation/confirmation-accepted.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/confirmation-action.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/confirmation/confirmation-action.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/confirmation-actions.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/confirmation/confirmation-actions.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/confirmation-context.svelte.ts",
+					"type": "registry:hook",
+					"target": "ai-elements/confirmation/confirmation-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/confirmation-rejected.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/confirmation/confirmation-rejected.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/confirmation-request.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/confirmation/confirmation-request.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/confirmation-title.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/confirmation/confirmation-title.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/confirmation.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/confirmation/confirmation.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/confirmation/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/confirmation/index.ts"
+				}
+			]
+		},
+		{
+			"name": "context",
+			"title": "Context",
+			"description": "A hover-card-based context window usage component with token, cost, and model usage breakdowns.",
+			"type": "registry:block",
+			"registryDependencies": [
+				"button",
+				"hover-card",
+				"progress"
+			],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/context/context-content-body.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/context/context-content-body.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/context/context-content-footer.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/context/context-content-footer.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/context/context-content-header.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/context/context-content-header.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/context/context-cache-usage.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/context/context-cache-usage.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/context/context-context.svelte.ts",
+					"type": "registry:hook",
+					"target": "ai-elements/context/context-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/context/context-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/context/context-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/context/context-icon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/context/context-icon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/context/context-input-usage.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/context/context-input-usage.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/context/context-output-usage.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/context/context-output-usage.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/context/context-reasoning-usage.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/context/context-reasoning-usage.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/context/context-trigger.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/context/context-trigger.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/context/context.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/context/context.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/context/tokens-with-cost.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/context/tokens-with-cost.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/context/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/context/index.ts"
+				}
+			]
+		},
+		{
+			"name": "conversation",
+			"title": "Conversation",
+			"description": "A sticky-bottom conversation container with empty state and scroll-to-bottom controls for chat interfaces.",
+			"type": "registry:block",
+			"dependencies": [
+				"@lucide/svelte@^1.16.0",
+				"runed@^0.37.1"
+			],
+			"registryDependencies": [
+				"button"
+			],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/conversation/conversation-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/conversation/conversation-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/conversation/conversation-empty-state.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/conversation/conversation-empty-state.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/conversation/conversation-scroll-button.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/conversation/conversation-scroll-button.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/conversation/conversation.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/conversation/conversation.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/conversation/stick-to-bottom-context.svelte.ts",
+					"type": "registry:hook",
+					"target": "ai-elements/conversation/stick-to-bottom-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/conversation/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/conversation/index.ts"
+				}
+			]
+		},
+		{
+			"name": "image",
+			"title": "Image",
+			"description": "A data-URL image component with typed props for AI-generated image payloads.",
+			"type": "registry:block",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/image/image.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/image/image.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/image/types.ts",
+					"type": "registry:file",
+					"target": "ai-elements/image/types.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/image/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/image/index.ts"
+				}
+			]
+		},
+		{
+			"name": "loader",
+			"title": "Loader",
+			"description": "A lightweight animated loader with a separate icon component.",
+			"type": "registry:block",
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/loader/loader-icon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/loader/loader-icon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/loader/loader.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/loader/loader.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/loader/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/loader/index.ts"
+				}
+			]
+		},
+		{
+			"name": "message",
+			"title": "Message",
+			"description": "A full chat message system with branching, attachments, actions, and markdown streaming responses.",
+			"type": "registry:block",
+			"dependencies": [
+				"@lucide/svelte@^1.16.0",
+				"mode-watcher@^1.1.0",
+				"@shikijs/themes@^4.0.2",
+				"streamdown-svelte@^3.0.6"
+			],
+			"registryDependencies": [
+				"button",
+				"button-group",
+				"dialog",
+				"tooltip"
+			],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/message/actions/message-action.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/message/actions/message-action.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/actions/message-actions.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/message/actions/message-actions.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/actions/message-toolbar.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/message/actions/message-toolbar.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/attachments/message-attachment-preview.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/message/attachments/message-attachment-preview.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/attachments/message-attachment.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/message/attachments/message-attachment.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/attachments/message-attachments.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/message/attachments/message-attachments.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/branching/message-branch-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/message/branching/message-branch-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/branching/message-branch-next.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/message/branching/message-branch-next.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/branching/message-branch-page.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/message/branching/message-branch-page.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/branching/message-branch-previous.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/message/branching/message-branch-previous.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/branching/message-branch-selector.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/message/branching/message-branch-selector.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/branching/message-branch.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/message/branching/message-branch.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/context/message-context.svelte.ts",
+					"type": "registry:hook",
+					"target": "ai-elements/message/context/message-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/core/message-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/message/core/message-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/core/message.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/message/core/message.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/response/message-response.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/message/response/message-response.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/message/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/message/index.ts"
+				}
+			]
+		},
+		{
+			"name": "model-selector",
+			"title": "Model Selector",
+			"description": "A searchable model selector dialog built on command and dialog primitives.",
+			"type": "registry:block",
+			"dependencies": ["bits-ui@^2.16.3"],
+			"registryDependencies": ["command", "dialog"],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/model-selector/model-selector-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/model-selector/model-selector-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/model-selector/model-selector-dialog.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/model-selector/model-selector-dialog.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/model-selector/model-selector-empty.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/model-selector/model-selector-empty.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/model-selector/model-selector-group.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/model-selector/model-selector-group.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/model-selector/model-selector-input.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/model-selector/model-selector-input.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/model-selector/model-selector-item.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/model-selector/model-selector-item.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/model-selector/model-selector-list.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/model-selector/model-selector-list.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/model-selector/model-selector-logo-group.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/model-selector/model-selector-logo-group.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/model-selector/model-selector-logo.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/model-selector/model-selector-logo.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/model-selector/model-selector-name.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/model-selector/model-selector-name.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/model-selector/model-selector-separator.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/model-selector/model-selector-separator.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/model-selector/model-selector-shortcut.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/model-selector/model-selector-shortcut.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/model-selector/model-selector.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/model-selector/model-selector.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/model-selector/model-selector-trigger.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/model-selector/model-selector-trigger.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/model-selector/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/model-selector/index.ts"
+				}
+			]
+		},
+		{
+			"name": "open-in-chat",
+			"title": "Open In Chat",
+			"description": "A provider menu for opening prompts in external chat and AI tools.",
+			"type": "registry:block",
+			"dependencies": [
+				"@lucide/svelte@^1.16.0",
+				"runed@^0.37.1"
+			],
+			"registryDependencies": ["button", "dropdown-menu"],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/chatgpt-icon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/chatgpt-icon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/claude-icon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/claude-icon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/github-icon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/github-icon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/open-in-chatgpt.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/open-in-chatgpt.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/open-in-claude.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/open-in-claude.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/open-in-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/open-in-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/open-in-context.svelte.ts",
+					"type": "registry:hook",
+					"target": "ai-elements/open-in-chat/open-in-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/open-in-item.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/open-in-item.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/open-in-label.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/open-in-label.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/open-in-scira.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/open-in-scira.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/open-in-separator.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/open-in-separator.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/open-in-t3.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/open-in-t3.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/open-in-trigger.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/open-in-trigger.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/open-in-v0.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/open-in-v0.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/open-in.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/open-in.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/scira-icon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/scira-icon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/v0-icon.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/open-in-chat/v0-icon.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/open-in-chat/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/open-in-chat/index.ts"
+				}
+			]
+		},
+		{
+			"name": "plan",
+			"title": "Plan",
+			"description": "A plan card component with collapsible content and streaming-aware description shimmer.",
+			"type": "registry:block",
+			"dependencies": [
+				"@lucide/svelte@^1.16.0",
+				"bits-ui@^2.16.3",
+				"runed@^0.37.1"
+			],
+			"registryDependencies": [
+				"button",
+				"card",
+				"collapsible"
+			],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/plan/plan-action.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/plan/plan-action.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/plan/plan-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/plan/plan-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/plan/plan-context.svelte.ts",
+					"type": "registry:hook",
+					"target": "ai-elements/plan/plan-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/plan/plan-description.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/plan/plan-description.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/plan/plan-footer.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/plan/plan-footer.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/plan/plan-header.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/plan/plan-header.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/plan/plan.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/plan/plan.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/plan/plan-title.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/plan/plan-title.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/plan/plan-trigger.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/plan/plan-trigger.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/plan/types.ts",
+					"type": "registry:file",
+					"target": "ai-elements/plan/types.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/shimmer/shimmer.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/shimmer/shimmer.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/shimmer/types.ts",
+					"type": "registry:file",
+					"target": "ai-elements/shimmer/types.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/shimmer/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/shimmer/index.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/plan/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/plan/index.ts"
+				}
+			]
+		},
+		{
+			"name": "inline-citation",
+			"title": "Inline Citation",
+			"description": "An inline citation system with hover cards and carousel views for source-backed AI content.",
+			"type": "registry:block",
+			"dependencies": [
+				"@lucide/svelte@^1.16.0"
+			],
+			"registryDependencies": [
+				"badge",
+				"carousel",
+				"hover-card"
+			],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/carousel-context.svelte.ts",
+					"type": "registry:hook",
+					"target": "ai-elements/inline-citation/carousel-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/inline-citation-card-body.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/inline-citation/inline-citation-card-body.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/inline-citation-card-trigger.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/inline-citation/inline-citation-card-trigger.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/inline-citation-card.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/inline-citation/inline-citation-card.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/inline-citation-carousel-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/inline-citation/inline-citation-carousel-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/inline-citation-carousel-header.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/inline-citation/inline-citation-carousel-header.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/inline-citation-carousel-index.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/inline-citation/inline-citation-carousel-index.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/inline-citation-carousel-next.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/inline-citation/inline-citation-carousel-next.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/inline-citation-carousel-item.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/inline-citation/inline-citation-carousel-item.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/inline-citation-carousel-prev.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/inline-citation/inline-citation-carousel-prev.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/inline-citation-carousel.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/inline-citation/inline-citation-carousel.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/inline-citation-quote.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/inline-citation/inline-citation-quote.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/inline-citation-source.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/inline-citation/inline-citation-source.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/inline-citation-text.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/inline-citation/inline-citation-text.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/inline-citation.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/inline-citation/inline-citation.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/inline-citation/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/inline-citation/index.ts"
 				}
 			]
 		}

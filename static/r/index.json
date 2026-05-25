@@ -12,5 +12,156 @@
 			"badge"
 		],
 		"relativeUrl": "chain-of-thought.json"
+	},
+	{
+		"name": "checkpoint",
+		"title": "Checkpoint",
+		"type": "registry:block",
+		"description": "A compact checkpoint component that pairs a separator with icon and trigger helpers for workflow checkpoints.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0"
+		],
+		"registryDependencies": [
+			"button",
+			"separator",
+			"tooltip"
+		],
+		"relativeUrl": "checkpoint.json"
+	},
+	{
+		"name": "confirmation",
+		"title": "Confirmation",
+		"type": "registry:block",
+		"description": "A confirmation workflow component for tool approval states, request and response rendering, and action handling.",
+		"dependencies": [
+			"runed@^0.37.1"
+		],
+		"registryDependencies": [
+			"alert",
+			"button"
+		],
+		"relativeUrl": "confirmation.json"
+	},
+	{
+		"name": "context",
+		"title": "Context",
+		"type": "registry:block",
+		"description": "A hover-card-based context window usage component with token, cost, and model usage breakdowns.",
+		"registryDependencies": [
+			"button",
+			"hover-card",
+			"progress"
+		],
+		"relativeUrl": "context.json"
+	},
+	{
+		"name": "conversation",
+		"title": "Conversation",
+		"type": "registry:block",
+		"description": "A sticky-bottom conversation container with empty state and scroll-to-bottom controls for chat interfaces.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0",
+			"runed@^0.37.1"
+		],
+		"registryDependencies": [
+			"button"
+		],
+		"relativeUrl": "conversation.json"
+	},
+	{
+		"name": "image",
+		"title": "Image",
+		"type": "registry:block",
+		"description": "A data-URL image component with typed props for AI-generated image payloads.",
+		"registryDependencies": [],
+		"relativeUrl": "image.json"
+	},
+	{
+		"name": "loader",
+		"title": "Loader",
+		"type": "registry:block",
+		"description": "A lightweight animated loader with a separate icon component.",
+		"registryDependencies": [],
+		"relativeUrl": "loader.json"
+	},
+	{
+		"name": "message",
+		"title": "Message",
+		"type": "registry:block",
+		"description": "A full chat message system with branching, attachments, actions, and markdown streaming responses.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0",
+			"mode-watcher@^1.1.0",
+			"@shikijs/themes@^4.0.2",
+			"streamdown-svelte@^3.0.6"
+		],
+		"registryDependencies": [
+			"button",
+			"button-group",
+			"dialog",
+			"tooltip"
+		],
+		"relativeUrl": "message.json"
+	},
+	{
+		"name": "model-selector",
+		"title": "Model Selector",
+		"type": "registry:block",
+		"description": "A searchable model selector dialog built on command and dialog primitives.",
+		"dependencies": [
+			"bits-ui@^2.16.3"
+		],
+		"registryDependencies": [
+			"command",
+			"dialog"
+		],
+		"relativeUrl": "model-selector.json"
+	},
+	{
+		"name": "open-in-chat",
+		"title": "Open In Chat",
+		"type": "registry:block",
+		"description": "A provider menu for opening prompts in external chat and AI tools.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0",
+			"runed@^0.37.1"
+		],
+		"registryDependencies": [
+			"button",
+			"dropdown-menu"
+		],
+		"relativeUrl": "open-in-chat.json"
+	},
+	{
+		"name": "plan",
+		"title": "Plan",
+		"type": "registry:block",
+		"description": "A plan card component with collapsible content and streaming-aware description shimmer.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0",
+			"bits-ui@^2.16.3",
+			"runed@^0.37.1"
+		],
+		"registryDependencies": [
+			"button",
+			"card",
+			"collapsible"
+		],
+		"relativeUrl": "plan.json"
+	},
+	{
+		"name": "inline-citation",
+		"title": "Inline Citation",
+		"type": "registry:block",
+		"description": "An inline citation system with hover cards and carousel views for source-backed AI content.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0"
+		],
+		"registryDependencies": [
+			"badge",
+			"carousel",
+			"hover-card"
+		],
+		"relativeUrl": "inline-citation.json"
 	}
 ]
