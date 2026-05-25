@@ -3,6 +3,7 @@
 	import Button from "$lib/components/ui/button/button.svelte";
 	import * as Command from "$lib/components/ui/command/index.js";
 	import * as Kbd from "$lib/components/ui/kbd/index.js";
+	import { recipes } from "$lib/config/cookbook";
 	import {
 		// blockPages,
 		components,
@@ -21,6 +22,11 @@
 
 	// For Now we would use Magic UI - Components, Later on we would update it
 	let docs: Component[] = docsPages;
+	let cookbookRecipes = recipes.map((recipe) => ({
+		id: recipe.slug,
+		name: recipe.name,
+		href: `/cookbook/${recipe.slug}`,
+	}));
 	// let primitives: Component[] = primitivePages;
 	// let blocks: Component[] = blockPages;
 </script>
@@ -77,11 +83,7 @@
 		<Command.Empty>No results found.</Command.Empty>
 		<Command.Group heading="Documentation">
 			{#each docs as doc (doc.id)}
-				<Command.LinkItem
-					value={doc.id}
-					onclick={() => (open = false)}
-					href={doc.href}
-				>
+				<Command.LinkItem value={doc.id} onclick={() => (open = false)} href={doc.href}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="16"
@@ -206,13 +208,7 @@
 						role="img"
 						color="currentColor"
 					>
-						<circle
-							opacity="0.2"
-							cx="12"
-							cy="12"
-							r="10"
-							fill="currentColor"
-						></circle>
+						<circle opacity="0.2" cx="12" cy="12" r="10" fill="currentColor"></circle>
 						<circle
 							cx="12"
 							cy="12"
@@ -224,6 +220,35 @@
 					</svg>
 					{component.name}
 				</Command.LinkItem>
+			{/each}
+		</Command.Group>
+		<Command.Group heading="Cookbook Recipes">
+			{#each cookbookRecipes as recipe (recipe.id)}
+				<Command.LinkItem
+					value={recipe.id}
+					onclick={() => (open = false)}
+					href={recipe.href}
+					keywords={[recipe.name]}
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="16"
+						height="16"
+						viewBox="0 0 24 24"
+						fill="none"
+						role="img"
+						color="currentColor"
+					>
+						<path
+							d="M15 3H6.2C5.0799 3 4.51984 3 4.09202 3.21799C3.71569 3.40973 3.40973 3.71569 3.21799 4.09202C3 4.51984 3 5.0799 3 6.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V9M15 3L21 9M15 3V9H21"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						></path>
+					</svg>
+					{recipe.name}</Command.LinkItem
+				>
 			{/each}
 		</Command.Group>
 	</Command.List>

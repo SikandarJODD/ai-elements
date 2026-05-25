@@ -21,7 +21,7 @@
 	let stars = $state(200);
 	const repo = { owner: github_repo.owner, repo: github_repo.name };
 	onMount(async () => {
-		stars = await getStars({ ...repo, fallback: 0 });
+		stars = await getStars({ ...repo, fallback: 250 });
 	});
 </script>
 

@@ -13,7 +13,7 @@ export let github_repo: GitHubRepo = {
 	owner: "SikandarJODD",
 	url: "https://github.com/SikandarJODD/ai-elements",
 	name: "ai-elements",
-	fallback_stars: 0,
+	fallback_stars: 250,
 };
 
 export let jsrepo: JsRepo = {
