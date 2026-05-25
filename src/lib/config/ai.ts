@@ -9,4 +9,4 @@ export const openrouter = createOpenRouter({
 });
 
 // export const defaultModel = "z-ai/glm-4.5-air:free";
-export let defaultModel = "openrouter/owl-alpha";
+export let defaultModel = "openrouter/free";

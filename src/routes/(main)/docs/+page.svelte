@@ -59,9 +59,7 @@
 	<section class="mb-12">
 		<h2 class="mb-4 text-3xl font-semibold">Goal</h2>
 		<p class="text-muted-foreground max-w-3xl leading-relaxed">
-			The goal is to make AI UI implementation in Svelte faster and less
-			repetitive by giving you ready-to-adapt primitives for chat, prompts,
-			messages, reasoning, tools, and other interaction-heavy surfaces.
+			The goal is to bring similar AI components to Svelte Ecosystem.
 		</p>
 	</section>
 </article>

@@ -5,6 +5,7 @@
 	import { cn } from "$lib/utils";
 	import type { CodeBlock } from "$lib/types/code";
 	import {MultipleFiles,SingleFile} from "$lib/components/ui/code";
+	import MultipleSelectFiles from "../code/multiple-select-files.svelte";
 
 	interface PreviewComponentProps {
 		children: Snippet;
@@ -96,7 +97,8 @@
 		{:else if value === "code"}
 			<div>
 				{#if Array.isArray(code)}
-					<MultipleFiles {code} />
+					<!-- <MultipleFiles {code} /> -->
+					 <MultipleSelectFiles {code} />
 				{:else if code}
 					<SingleFile {code} />
 				{/if}
