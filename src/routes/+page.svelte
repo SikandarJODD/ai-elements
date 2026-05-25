@@ -67,7 +67,9 @@
 					>
 						Svelte AI Elements
 					</h1>
-					<p class="text-muted-foreground font-geist-pixel-square dark:font-geist-pixel-circle mt-8 max-w-2xl text-lg text-pretty">
+					<p
+						class="text-muted-foreground font-geist-pixel-square dark:font-geist-pixel-circle mt-8 max-w-2xl text-lg text-pretty"
+					>
 						Svelte AI Elements is a custom registry built on top of
 						<a
 							href="https://shadcn-svelte.com"
@@ -89,14 +91,21 @@
 						</Button>
 						<Button
 							size="lg"
-							variant="secondary"
-							href="https://github.com/SikandarJODD/ai-elements"
+							variant="outline"
+							href="https://github.com/sponsors/SikandarJODD"
 							target="_blank"
 							rel="noreferrer"
-							class="border-secondary h-10.5 rounded-full border px-4 font-normal md:text-base"
+							class="font-geist-pixel-circle h-10.5 rounded-full px-4 font-normal md:text-base"
 						>
-							<Icons.GitHub class="mr-1 size-5" />
-							Star on Github
+							<span>
+								<img
+									src="https://github.com/SikandarJODD.png"
+									alt="Bhide Svelte"
+									class="size-5 rounded-full"
+								/>
+							</span>
+							<!-- <Icons.GitHub class="mr-1 size-5" /> -->
+							Support My Work
 						</Button>
 					</div>
 				</div>

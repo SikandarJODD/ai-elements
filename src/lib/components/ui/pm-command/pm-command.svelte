@@ -6,9 +6,9 @@
 		variants: {
 			variant: {
 				default: "bg-card",
-				secondary: "bg-secondary/50 border-transparent"
-			}
-		}
+				secondary: "bg-secondary/50 border-transparent",
+			},
+		},
 	});
 
 	type Variant = VariantProps<typeof style>["variant"];
@@ -39,7 +39,7 @@
 		command,
 		agents = ["pnpm", "npm", "yarn", "bun"],
 		args,
-		agent = $bindable("pnpm")
+		agent = $bindable("pnpm"),
 	}: PMCommandProps = $props();
 
 	const cmd = $derived(resolveCommand(agent, command, args));
@@ -48,13 +48,9 @@
 </script>
 
 <div data-slot="pm-command" class={cn(style({ variant }), className)}>
-	<div
-		class="flex place-items-center justify-between gap-2 border-b border-border py-1 pr-2"
-	>
+	<div class="flex place-items-center justify-between gap-2 border-b border-border py-1 pr-2">
 		<div class="flex place-items-center gap-2 px-2">
-			<div
-				class="flex size-4 place-items-center justify-center bg-foreground opacity-50"
-			>
+			<div class="flex size-4 place-items-center justify-center bg-foreground opacity-50">
 				<TerminalIcon class="size-3 text-background" />
 			</div>
 			<Tabs.Root bind:value={agent}>
@@ -74,11 +70,7 @@
 			<Tooltip.Root>
 				<Tooltip.Trigger>
 					{#snippet child({ props })}
-						<CopyButton
-							{...props}
-							text={commandText}
-							class="size-6 [&_svg]:size-3"
-						>
+						<CopyButton {...props} text={commandText} class="size-6 [&_svg]:size-3">
 							{#snippet icon()}
 								<ClipboardIcon />
 							{/snippet}

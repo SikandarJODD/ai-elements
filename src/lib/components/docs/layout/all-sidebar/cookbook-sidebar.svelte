@@ -15,7 +15,7 @@
 	}
 </script>
 
-<Sidebar.Root class="mt-16 h-[calc(100vh-4rem)] pr-2 pl-6" {...restProps} bind:ref>
+<Sidebar.Root class="mt-14 h-[calc(100vh-4rem)] pr-2 pl-6" {...restProps} bind:ref>
 	<Sidebar.Content class="no-scrollbar bg-background gap-0 pt-6">
 		<Sidebar.Group class="p-0">
 			<Sidebar.GroupLabel class="text-sidebar-foreground text-sm">Recipes</Sidebar.GroupLabel>

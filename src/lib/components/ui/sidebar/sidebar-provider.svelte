@@ -38,11 +38,12 @@
 <svelte:window onkeydown={sidebar.handleShortcutKeydown} />
 
 <Tooltip.Provider delayDuration={0}>
+	<!-- min-h-svh -->
 	<div
 		data-slot="sidebar-wrapper"
 		style="--sidebar-width: {SIDEBAR_WIDTH}; --sidebar-width-icon: {SIDEBAR_WIDTH_ICON}; {style}"
 		class={cn(
-			"group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full",
+			"group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex  w-full",
 			className
 		)}
 		bind:this={ref}

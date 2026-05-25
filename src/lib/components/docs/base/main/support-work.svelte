@@ -42,7 +42,6 @@
 			class="w-full"
 			target="_blank"
 			data-s-event="sponsor_click"
-			variant={mode.current==='dark' ? 'outline' : 'default'}
 			href="https://github.com/sponsors/{github_repo.owner}"
 		>
 			Sponsor Bhide Svelte

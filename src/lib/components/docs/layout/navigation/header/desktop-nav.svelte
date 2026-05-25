@@ -5,7 +5,8 @@
 	const links = [
 		{ label: "Home", href: "/" },
 		{ label: "Components", href: "/components/chain-of-thought" },
-		// { label: "Docs", href: "/docs" }
+		{ label: "Docs", href: "/docs" },
+		{ label: "Cookbook", href: "/cookbook/getting-started" }
 	];
 
 	const isActive = (href: string) => {

@@ -55,7 +55,7 @@
 
 <script lang="ts">
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-	import { ScrollFadeEffect } from "$lib/components/ui/scroll-area/index.js";
+	import { ScrollArea, ScrollFadeEffect } from "$lib/components/ui/scroll-area/index.js";
 	import Badge from "$lib/components/ui/spell/badge/badge.svelte";
 	import { page } from "$app/state";
 	import type { ComponentProps } from "svelte";

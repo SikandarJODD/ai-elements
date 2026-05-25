@@ -16,7 +16,7 @@
 	let scroll = createScroll(100);
 	let isComponentorDocsPage = $derived.by(() => {
 		let path = page.url.pathname;
-		return path.startsWith("/components") || path.startsWith("/docs") || path.startsWith("/primitives");
+		return path.startsWith("/components") || path.startsWith("/docs") || path.startsWith("/primitives") || path.startsWith("/cookbook");
 	});
 	let stars = $state(200);
 	const repo = { owner: github_repo.owner, repo: github_repo.name };
