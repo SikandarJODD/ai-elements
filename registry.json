@@ -818,6 +818,616 @@
 					"target": "ai-elements/inline-citation/index.ts"
 				}
 			]
+		},
+		{
+			"name": "prompt-input",
+			"title": "Prompt Input",
+			"description": "A composable prompt input surface with attachments, action menus, and provider-driven text handling.",
+			"type": "registry:block",
+			"dependencies": [
+				"@lucide/svelte@^1.16.0",
+				"ai@^6.0.12",
+				"runed@^0.37.1"
+			],
+			"registryDependencies": [
+				"aspect-ratio",
+				"button",
+				"dialog",
+				"dropdown-menu",
+				"textarea",
+				"tooltip"
+			],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/action-menu/action-add-attachments.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/action-menu/action-add-attachments.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/action-menu/action-menu-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/action-menu/action-menu-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/action-menu/action-menu-item.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/action-menu/action-menu-item.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/action-menu/action-menu-trigger.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/action-menu/action-menu-trigger.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/action-menu/action-menu.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/action-menu/action-menu.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/attachments/attachment-image-preview.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/attachments/attachment-image-preview.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/attachments/attachment.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/attachments/attachment.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/attachments/attachments.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/attachments/attachments.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/context/attachments.svelte.ts",
+					"type": "registry:hook",
+					"target": "ai-elements/prompt-input/context/attachments.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/context/provider.svelte.ts",
+					"type": "registry:hook",
+					"target": "ai-elements/prompt-input/context/provider.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/context/text-registration.svelte.ts",
+					"type": "registry:hook",
+					"target": "ai-elements/prompt-input/context/text-registration.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/context/types.ts",
+					"type": "registry:file",
+					"target": "ai-elements/prompt-input/context/types.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/controls/button.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/controls/button.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/controls/submit.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/controls/submit.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/controls/textarea.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/controls/textarea.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/core/provider.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/core/provider.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/core/root.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/core/root.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/layout/body.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/layout/body.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/layout/header.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/layout/header.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/layout/tools.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/layout/tools.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/layout/toolbar.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/prompt-input/layout/toolbar.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/guide.md",
+					"type": "registry:file",
+					"target": "ai-elements/prompt-input/guide.md"
+				},
+				{
+					"path": "src/lib/components/ai-elements/prompt-input/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/prompt-input/index.ts"
+				}
+			]
+		},
+		{
+			"name": "queue",
+			"title": "Queue",
+			"description": "A structured queue view with sections, items, attachments, and action controls.",
+			"type": "registry:block",
+			"dependencies": [
+				"@lucide/svelte@^1.16.0",
+				"bits-ui@^2.16.3"
+			],
+			"registryDependencies": [
+				"button",
+				"collapsible",
+				"scroll-area"
+			],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/queue/queue-item-action.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/queue/queue-item-action.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/queue-item-actions.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/queue/queue-item-actions.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/queue-item-attachment.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/queue/queue-item-attachment.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/queue-item-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/queue/queue-item-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/queue-item-description.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/queue/queue-item-description.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/queue-item-file.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/queue/queue-item-file.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/queue-item-image.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/queue/queue-item-image.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/queue-item-indicator.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/queue/queue-item-indicator.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/queue-item.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/queue/queue-item.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/queue-list.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/queue/queue-list.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/queue-section-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/queue/queue-section-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/queue-section-label.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/queue/queue-section-label.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/queue-section-trigger.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/queue/queue-section-trigger.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/queue-section.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/queue/queue-section.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/queue.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/queue/queue.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/types.ts",
+					"type": "registry:file",
+					"target": "ai-elements/queue/types.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/queue/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/queue/index.ts"
+				}
+			]
+		},
+		{
+			"name": "reasoning",
+			"title": "Reasoning",
+			"description": "A collapsible reasoning block that tracks streaming duration and renders a markdown response.",
+			"type": "registry:block",
+			"dependencies": [
+				"@lucide/svelte@^1.16.0",
+				"mode-watcher@^1.1.0",
+				"@shikijs/themes@^4.0.2",
+				"streamdown-svelte@^3.0.6",
+				"runed@^0.37.1"
+			],
+			"registryDependencies": ["collapsible", "local:response"],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/reasoning/reasoning-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/reasoning/reasoning-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/reasoning/reasoning-context.svelte.ts",
+					"type": "registry:hook",
+					"target": "ai-elements/reasoning/reasoning-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/reasoning/reasoning-trigger.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/reasoning/reasoning-trigger.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/reasoning/reasoning.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/reasoning/reasoning.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/reasoning/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/reasoning/index.ts"
+				}
+			]
+		},
+		{
+			"name": "response",
+			"title": "Response",
+			"description": "A markdown response renderer for streamed AI content.",
+			"type": "registry:block",
+			"dependencies": [
+				"@shikijs/themes@^4.0.2",
+				"mode-watcher@^1.1.0",
+				"streamdown-svelte@^3.0.6"
+			],
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/response/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/response/index.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/response/response.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/response/response.svelte"
+				}
+			]
+		},
+		{
+			"name": "shimmer",
+			"title": "Shimmer",
+			"description": "A text shimmer utility component with configurable spread and duration.",
+			"type": "registry:block",
+			"registryDependencies": [],
+			"dependencies": ["runed@^0.37.1"],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/shimmer/shimmer.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/shimmer/shimmer.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/shimmer/types.ts",
+					"type": "registry:file",
+					"target": "ai-elements/shimmer/types.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/shimmer/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/shimmer/index.ts"
+				}
+			]
+		},
+		{
+			"name": "sources",
+			"title": "Sources",
+			"description": "A collapsible sources list for rendering cited links and source groups.",
+			"type": "registry:block",
+			"dependencies": ["@lucide/svelte@^1.16.0"],
+			"registryDependencies": ["collapsible"],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/sources/source.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/sources/source.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/sources/sources-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/sources/sources-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/sources/sources-trigger.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/sources/sources-trigger.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/sources/sources.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/sources/sources.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/sources/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/sources/index.ts"
+				}
+			]
+		},
+		{
+			"name": "suggestion",
+			"title": "Suggestion",
+			"description": "A compact suggestion button set for displaying prompt ideas and quick actions.",
+			"type": "registry:block",
+			"registryDependencies": ["button"],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/suggestion/suggestion.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/suggestion/suggestion.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/suggestion/suggestions.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/suggestion/suggestions.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/suggestion/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/suggestion/index.ts"
+				}
+			]
+		},
+		{
+			"name": "task",
+			"title": "Task",
+			"description": "A collapsible task panel for tracking task state and nested task items.",
+			"type": "registry:block",
+			"dependencies": [
+				"@lucide/svelte@^1.16.0",
+				"bits-ui@^2.16.3"
+			],
+			"registryDependencies": ["collapsible"],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/task/task-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/task/task-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/task/task-item-file.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/task/task-item-file.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/task/task-item.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/task/task-item.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/task/task-trigger.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/task/task-trigger.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/task/task.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/task/task.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/task/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/task/index.ts"
+				}
+			]
+		},
+		{
+			"name": "tool",
+			"title": "Tool",
+			"description": "A collapsible tool call block with parameter and result rendering.",
+			"type": "registry:block",
+			"dependencies": [
+				"@lucide/svelte@^1.16.0",
+				"runed@^0.37.1"
+			],
+			"registryDependencies": [
+				"badge",
+				"collapsible",
+				"local:code"
+			],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/tool/tool-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/tool/tool-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/tool/tool-context.svelte.ts",
+					"type": "registry:hook",
+					"target": "ai-elements/tool/tool-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/tool/tool-header.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/tool/tool-header.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/tool/tool-input.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/tool/tool-input.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/tool/tool-output.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/tool/tool-output.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/tool/tool.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/tool/tool.svelte"
+				}
+			]
+		},
+		{
+			"name": "code",
+			"title": "Code",
+			"description": "A syntax-highlighted code block with overflow handling and a copy action.",
+			"type": "registry:block",
+			"dependencies": [
+				"@shikijs/langs@^4.0.2",
+				"@shikijs/themes@^4.0.2",
+				"dompurify@^3.3.1",
+				"runed@^0.37.1",
+				"shiki@^4.0.2",
+				"svelte-toolbelt@^0.10.5",
+				"tailwind-variants@^3.2.2"
+			],
+			"registryDependencies": ["button","local:copy-button"],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/code/code-copy-button.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/code/code-copy-button.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/code/code-overflow.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/code/code-overflow.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/code/code.svelte.ts",
+					"type": "registry:hook",
+					"target": "ai-elements/code/code.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/code/code.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/code/code.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/code/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/code/index.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/code/shiki.ts",
+					"type": "registry:file",
+					"target": "ai-elements/code/shiki.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/code/types.ts",
+					"type": "registry:file",
+					"target": "ai-elements/code/types.ts"
+				}
+			]
+		},
+		{
+			"name": "copy-button",
+			"title": "Copy Button",
+			"description": "A clipboard-driven button with success and failure states.",
+			"type": "registry:block",
+			"dependencies": ["@lucide/svelte@^1.16.0"],
+			"registryDependencies": ["button"],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/copy-button/copy-button.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/copy-button/copy-button.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/copy-button/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/copy-button/index.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/copy-button/types.ts",
+					"type": "registry:file",
+					"target": "ai-elements/copy-button/types.ts"
+				},
+				{
+					"path": "src/lib/hooks/use-clipboard.svelte.ts",
+					"type": "registry:hook",
+					"target": "hooks/use-clipboard.svelte.ts"
+				}
+			]
+		},
+		{
+			"name": "web-preview",
+			"title": "Web Preview",
+			"description": "A browser-style preview frame with navigation controls and a log console.",
+			"type": "registry:block",
+			"dependencies": ["@lucide/svelte@^1.16.0"],
+			"registryDependencies": ["button", "collapsible"],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/web-preview/web-preview-body.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/web-preview/web-preview-body.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/web-preview/web-preview-console.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/web-preview/web-preview-console.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/web-preview/web-preview-context.svelte.ts",
+					"type": "registry:hook",
+					"target": "ai-elements/web-preview/web-preview-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/web-preview/web-preview-navigation-button.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/web-preview/web-preview-navigation-button.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/web-preview/web-preview-navigation.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/web-preview/web-preview-navigation.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/web-preview/web-preview-url.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/web-preview/web-preview-url.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/web-preview/web-preview.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/web-preview/web-preview.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/web-preview/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/web-preview/index.ts"
+				}
+			]
 		}
 	]
 }

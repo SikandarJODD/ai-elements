@@ -1,0 +1,51 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "task",
+	"title": "Task",
+	"type": "registry:block",
+	"description": "A collapsible task panel for tracking task state and nested task items.",
+	"dependencies": [
+		"@lucide/svelte@^1.16.0",
+		"bits-ui@^2.16.3"
+	],
+	"devDependencies": [
+		"bits-ui@^2.16.3",
+		"@internationalized/date@^3.12.0",
+		"@lucide/svelte@^1.16.0"
+	],
+	"registryDependencies": [
+		"collapsible"
+	],
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { CollapsibleContent } from \"$COMPONENTS$/ui/collapsible/index.js\";\n\timport { cn } from \"$UTILS$\";\n\timport { Collapsible as CollapsiblePrimitive } from \"bits-ui\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface TaskContentProps extends CollapsiblePrimitive.ContentProps {\n\t\tchildren?: Snippet;\n\t\tclass?: string;\n\t}\n\n\tlet { children, class: className, ...restProps }: TaskContentProps = $props();\n</script>\n\n<CollapsibleContent\n\tclass={cn(\n\t\t\"data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2 data-[state=open]:slide-in-from-top-2 text-popover-foreground data-[state=closed]:animate-out data-[state=open]:animate-in outline-none\",\n\t\tclassName\n\t)}\n\t{...restProps}\n>\n\t<div class=\"border-muted mt-4 space-y-2 border-l-2 pl-4\">\n\t\t{@render children?.()}\n\t</div>\n</CollapsibleContent>\n",
+			"type": "registry:component",
+			"target": "ai-elements/task/task-content.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\texport interface TaskItemFileProps extends HTMLAttributes<HTMLDivElement> {\n\t\tchildren?: Snippet;\n\t\tclass?: string;\n\t}\n\n\tlet { children, class: className, ...restProps }: TaskItemFileProps = $props();\n</script>\n\n<div\n\tclass={cn(\n\t\t\"bg-secondary text-foreground inline-flex items-center gap-1 rounded-md border px-1.5 py-0.5 text-xs\",\n\t\tclassName\n\t)}\n\t{...restProps}\n>\n\t{@render children?.()}\n</div>\n",
+			"type": "registry:component",
+			"target": "ai-elements/task/task-item-file.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\texport interface TaskItemProps extends HTMLAttributes<HTMLDivElement> {\n\t\tchildren?: Snippet;\n\t\tclass?: string;\n\t}\n\n\tlet { children, class: className, ...restProps }: TaskItemProps = $props();\n</script>\n\n<div class={cn(\"text-muted-foreground text-sm\", className)} {...restProps}>\n\t{@render children?.()}\n</div>\n",
+			"type": "registry:component",
+			"target": "ai-elements/task/task-item.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { CollapsibleTrigger } from \"$COMPONENTS$/ui/collapsible/index.js\";\n\timport { cn } from \"$UTILS$\";\n\timport ChevronDown from \"@lucide/svelte/icons/chevron-down\";\n\timport Search from \"@lucide/svelte/icons/search\";\n\timport { Collapsible as CollapsiblePrimitive } from \"bits-ui\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface TaskTriggerProps extends CollapsiblePrimitive.TriggerProps {\n\t\ttitle: string;\n\t\tclass?: string;\n\t\tchildren?: Snippet;\n\t}\n\n\tlet { children, class: className, title, ...restProps }: TaskTriggerProps = $props();\n\n\tlet randomId = crypto.randomUUID();\n</script>\n\n{#if children}\n\t<CollapsibleTrigger class={cn(\"group\", className)} {...restProps}>\n\t\t{@render children?.()}\n\t</CollapsibleTrigger>\n{:else}\n\t<CollapsibleTrigger class={cn(\"group\", className)} {...restProps}>\n\t\t<div\n\t\t\tclass=\"text-muted-foreground hover:text-foreground flex w-full cursor-pointer items-center gap-2 text-sm transition-colors\"\n\t\t>\n\t\t\t<Search class=\"size-4\" />\n\t\t\t<p class=\"text-sm\">{title}</p>\n\t\t\t<ChevronDown class=\"size-4 transition-transform group-data-[state=open]:rotate-180\" />\n\t\t</div>\n\t</CollapsibleTrigger>\n{/if}\n",
+			"type": "registry:component",
+			"target": "ai-elements/task/task-trigger.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { Collapsible } from \"$COMPONENTS$/ui/collapsible/index.js\";\n\timport { cn } from \"$UTILS$\";\n\timport { Collapsible as CollapsiblePrimitive } from \"bits-ui\";\n\timport type { Snippet } from \"svelte\";\n\n\texport interface TaskProps extends CollapsiblePrimitive.RootProps {\n\t\tclass?: string;\n\t\tchildren?: Snippet;\n\t}\n\t// indexing\n\n\tlet { open = $bindable(true), class: className, children, ...restProps }: TaskProps = $props();\n</script>\n\n<Collapsible\n\tclass={cn(\n\t\t\"data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2 data-[state=open]:slide-in-from-top-2 data-[state=closed]:animate-out data-[state=open]:animate-in\",\n\t\tclassName\n\t)}\n\tbind:open\n\t{...restProps}\n>\n\t{@render children?.()}\n</Collapsible>\n",
+			"type": "registry:component",
+			"target": "ai-elements/task/task.svelte"
+		},
+		{
+			"content": "import Task from \"./task.svelte\";\nimport TaskContent from \"./task-content.svelte\";\nimport TaskItem from \"./task-item.svelte\";\nimport TaskItemFile from \"./task-item-file.svelte\";\nimport TaskTrigger from \"./task-trigger.svelte\";\n\nexport {\n\tTask,\n\tTaskContent,\n\tTaskItem,\n\tTaskItemFile,\n\tTaskTrigger,\n\t//\n\tTask as Root,\n\tTaskTrigger as Trigger,\n\tTaskContent as Content,\n\tTaskItem as Item,\n\tTaskItemFile as ItemFile,\n};\n\nexport type { TaskProps } from \"./task.svelte\";\nexport type { TaskContentProps } from \"./task-content.svelte\";\nexport type { TaskItemProps } from \"./task-item.svelte\";\nexport type { TaskItemFileProps } from \"./task-item-file.svelte\";\nexport type { TaskTriggerProps } from \"./task-trigger.svelte\";\n",
+			"type": "registry:file",
+			"target": "ai-elements/task/index.ts"
+		}
+	]
+}

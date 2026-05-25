@@ -1,0 +1,27 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "suggestion",
+	"title": "Suggestion",
+	"type": "registry:block",
+	"description": "A compact suggestion button set for displaying prompt ideas and quick actions.",
+	"registryDependencies": [
+		"button"
+	],
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { Button, type ButtonProps } from \"$COMPONENTS$/ui/button/index.js\";\n\timport { cn } from \"$UTILS$\";\n\timport type { Snippet } from \"svelte\";\n\t// indexing\n\tinterface Props extends Omit<ButtonProps, \"onclick\"> {\n\t\tsuggestion?: string;\n\t\tonclick?: (suggestion: string) => void;\n\t\tchildren?: Snippet;\n\t\tclass?: string;\n\t\tvariant?: ButtonProps[\"variant\"];\n\t\tsize?: ButtonProps[\"size\"];\n\t}\n\n\tlet {\n\t\tsuggestion,\n\t\tonclick,\n\t\tclass: className,\n\t\tvariant = \"outline\",\n\t\tsize = \"sm\",\n\t\tchildren,\n\t\t...restProps\n\t}: Props = $props();\n\n\tlet handleClick = () => {\n\t\tonclick?.(suggestion || \"\");\n\t};\n</script>\n\n<Button\n\tclass={cn(\"cursor-pointer rounded-full px-4\", className)}\n\tonclick={handleClick}\n\t{size}\n\ttype=\"button\"\n\t{variant}\n\t{...restProps}\n>\n\t{#if children}\n\t\t{@render children?.()}\n\t{:else}\n\t\t{suggestion}\n\t{/if}\n</Button>\n",
+			"type": "registry:component",
+			"target": "ai-elements/suggestion/suggestion.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { ScrollArea } from \"$COMPONENTS$/ui/scroll-area/index.js\";\n\timport { cn } from \"$UTILS$\";\n\timport type { Snippet } from \"svelte\";\n\n\tinterface Props {\n\t\tchildren?: Snippet;\n\t\tclass?: string;\n\t\torientation?: \"vertical\" | \"horizontal\" | \"both\";\n\t\tscrollbarXClasses?: string;\n\t\tscrollbarYClasses?: string;\n\t}\n\n\tlet {\n\t\tchildren,\n\t\tclass: className,\n\t\torientation = \"horizontal\",\n\t\tscrollbarXClasses,\n\t\tscrollbarYClasses,\n\t\t...restProps\n\t}: Props = $props();\n</script>\n\n<ScrollArea\n\t{orientation}\n\t{scrollbarXClasses}\n\t{scrollbarYClasses}\n\tclass=\"w-full whitespace-nowrap\"\n\t{...restProps}\n>\n\t<div class={cn(\"flex w-max flex-nowrap items-center gap-2\", className)}>\n\t\t{@render children?.()}\n\t</div>\n</ScrollArea>\n",
+			"type": "registry:component",
+			"target": "ai-elements/suggestion/suggestions.svelte"
+		},
+		{
+			"content": "import Suggestion from \"./suggestion.svelte\";\nimport Suggestions from \"./suggestions.svelte\";\n\nexport { Suggestion, Suggestions };\n",
+			"type": "registry:file",
+			"target": "ai-elements/suggestion/index.ts"
+		}
+	]
+}

@@ -163,5 +163,183 @@
 			"hover-card"
 		],
 		"relativeUrl": "inline-citation.json"
+	},
+	{
+		"name": "prompt-input",
+		"title": "Prompt Input",
+		"type": "registry:block",
+		"description": "A composable prompt input surface with attachments, action menus, and provider-driven text handling.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0",
+			"ai@^6.0.12",
+			"runed@^0.37.1"
+		],
+		"registryDependencies": [
+			"aspect-ratio",
+			"button",
+			"dialog",
+			"dropdown-menu",
+			"textarea",
+			"tooltip"
+		],
+		"relativeUrl": "prompt-input.json"
+	},
+	{
+		"name": "queue",
+		"title": "Queue",
+		"type": "registry:block",
+		"description": "A structured queue view with sections, items, attachments, and action controls.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0",
+			"bits-ui@^2.16.3"
+		],
+		"registryDependencies": [
+			"button",
+			"collapsible",
+			"scroll-area"
+		],
+		"relativeUrl": "queue.json"
+	},
+	{
+		"name": "reasoning",
+		"title": "Reasoning",
+		"type": "registry:block",
+		"description": "A collapsible reasoning block that tracks streaming duration and renders a markdown response.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0",
+			"mode-watcher@^1.1.0",
+			"@shikijs/themes@^4.0.2",
+			"streamdown-svelte@^3.0.6",
+			"runed@^0.37.1"
+		],
+		"registryDependencies": [
+			"collapsible",
+			"local:response"
+		],
+		"relativeUrl": "reasoning.json"
+	},
+	{
+		"name": "response",
+		"title": "Response",
+		"type": "registry:block",
+		"description": "A markdown response renderer for streamed AI content.",
+		"dependencies": [
+			"@shikijs/themes@^4.0.2",
+			"mode-watcher@^1.1.0",
+			"streamdown-svelte@^3.0.6"
+		],
+		"registryDependencies": [],
+		"relativeUrl": "response.json"
+	},
+	{
+		"name": "shimmer",
+		"title": "Shimmer",
+		"type": "registry:block",
+		"description": "A text shimmer utility component with configurable spread and duration.",
+		"dependencies": [
+			"runed@^0.37.1"
+		],
+		"registryDependencies": [],
+		"relativeUrl": "shimmer.json"
+	},
+	{
+		"name": "sources",
+		"title": "Sources",
+		"type": "registry:block",
+		"description": "A collapsible sources list for rendering cited links and source groups.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0"
+		],
+		"registryDependencies": [
+			"collapsible"
+		],
+		"relativeUrl": "sources.json"
+	},
+	{
+		"name": "suggestion",
+		"title": "Suggestion",
+		"type": "registry:block",
+		"description": "A compact suggestion button set for displaying prompt ideas and quick actions.",
+		"registryDependencies": [
+			"button"
+		],
+		"relativeUrl": "suggestion.json"
+	},
+	{
+		"name": "task",
+		"title": "Task",
+		"type": "registry:block",
+		"description": "A collapsible task panel for tracking task state and nested task items.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0",
+			"bits-ui@^2.16.3"
+		],
+		"registryDependencies": [
+			"collapsible"
+		],
+		"relativeUrl": "task.json"
+	},
+	{
+		"name": "tool",
+		"title": "Tool",
+		"type": "registry:block",
+		"description": "A collapsible tool call block with parameter and result rendering.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0",
+			"runed@^0.37.1"
+		],
+		"registryDependencies": [
+			"badge",
+			"collapsible",
+			"local:code"
+		],
+		"relativeUrl": "tool.json"
+	},
+	{
+		"name": "code",
+		"title": "Code",
+		"type": "registry:block",
+		"description": "A syntax-highlighted code block with overflow handling and a copy action.",
+		"dependencies": [
+			"@shikijs/langs@^4.0.2",
+			"@shikijs/themes@^4.0.2",
+			"dompurify@^3.3.1",
+			"runed@^0.37.1",
+			"shiki@^4.0.2",
+			"svelte-toolbelt@^0.10.5",
+			"tailwind-variants@^3.2.2"
+		],
+		"registryDependencies": [
+			"button",
+			"local:copy-button"
+		],
+		"relativeUrl": "code.json"
+	},
+	{
+		"name": "copy-button",
+		"title": "Copy Button",
+		"type": "registry:block",
+		"description": "A clipboard-driven button with success and failure states.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0"
+		],
+		"registryDependencies": [
+			"button"
+		],
+		"relativeUrl": "copy-button.json"
+	},
+	{
+		"name": "web-preview",
+		"title": "Web Preview",
+		"type": "registry:block",
+		"description": "A browser-style preview frame with navigation controls and a log console.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0"
+		],
+		"registryDependencies": [
+			"button",
+			"collapsible"
+		],
+		"relativeUrl": "web-preview.json"
 	}
 ]
