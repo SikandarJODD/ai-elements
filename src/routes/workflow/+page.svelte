@@ -1,9 +1,9 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { Edge } from "$lib/components/ai-elements/workflow/edge/index.js";
 	import type { Edge as EdgeType, Node as NodeType } from "@xyflow/svelte";
 	import WorkflowNode from "./WorkflowNode.svelte";
-	// import Canvas from "$lib/components/ai-elements/workflow/canvas/canvas.svelte";
-	// import Connection from "$lib/components/ai-elements/workflow/connection/connection.svelte";
+	import Canvas from "$lib/components/ai-elements/workflow/canvas/canvas.svelte";
+	import Connection from "$lib/components/ai-elements/workflow/connection/connection.svelte";
 
 	// Generate unique IDs using simple strings
 	let nodeIds = {
@@ -140,5 +140,5 @@
 </script>
 
 <div style="height: 400px; width: 100%;">
-	<!-- <Canvas bind:nodes bind:edges {nodeTypes} {edgeTypes} connectionLineComponent={Connection} /> -->
-</div>
+	<Canvas bind:nodes bind:edges {nodeTypes} {edgeTypes} connectionLineComponent={Connection} />
+</div> -->

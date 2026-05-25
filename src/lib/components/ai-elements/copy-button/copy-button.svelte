@@ -6,7 +6,7 @@
 	import CopyIcon from "@lucide/svelte/icons/copy";
 	import XIcon from "@lucide/svelte/icons/x";
 	import { scale } from "svelte/transition";
-	import type { CopyButtonProps } from "./types";
+	import type { CopyButtonProps } from "./types.ts";
 
 	let {
 		ref = $bindable(null),

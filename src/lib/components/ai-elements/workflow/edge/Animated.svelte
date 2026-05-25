@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { BaseEdge, getBezierPath, type EdgeProps } from "@xyflow/svelte";
 	// indexing
 	let {
@@ -31,4 +31,4 @@
 	<circle fill="var(--primary)" r="4">
 		<animateMotion dur="2s" path={edgePath} repeatCount="indefinite" />
 	</circle>
-{/if}
+{/if} -->
