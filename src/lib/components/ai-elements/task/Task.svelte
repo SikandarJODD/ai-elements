@@ -8,6 +8,7 @@
 		class?: string;
 		children?: Snippet;
 	}
+	// indexing
 
 	let { open = $bindable(true), class: className, children, ...restProps }: TaskProps = $props();
 </script>

@@ -11,6 +11,7 @@
 		class: className,
 		...rest
 	}: ImageProps = $props();
+	// indexing
 </script>
 
 <img

@@ -18,6 +18,7 @@
 	let newSize = $derived.by((): "default" | "sm" | "lg" | "icon" => {
 		return (size ?? hasMultipleChildren) ? "default" : "icon";
 	});
+	// indexing
 </script>
 
 <Button

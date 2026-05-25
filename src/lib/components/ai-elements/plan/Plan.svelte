@@ -10,6 +10,7 @@
 
 	// Set context for child components
 	setPlanContext({ isStreaming: untrack(() => isStreaming) });
+	// indexing
 </script>
 
 <Collapsible data-slot="plan" {...restProps}>

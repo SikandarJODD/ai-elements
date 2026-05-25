@@ -7,6 +7,7 @@
 	}
 
 	let { class: className, children, ...props }: Props = $props();
+	// indexing
 </script>
 
 <div

@@ -9,6 +9,7 @@
 		children?: any;
 		[key: string]: any;
 	}
+	// indexing
 
 	let { class: className = "", href, title, children, ...restProps }: Props = $props();
 </script>

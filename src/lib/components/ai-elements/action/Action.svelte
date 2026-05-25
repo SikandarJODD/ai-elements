@@ -7,7 +7,7 @@
 		TooltipProvider,
 		TooltipTrigger,
 	} from "$lib/components/ui/tooltip/index.js";
-
+	// indexing
 	export type ActionProps = ButtonProps & {
 		tooltip?: string;
 		label?: string;

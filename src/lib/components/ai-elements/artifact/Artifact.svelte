@@ -6,7 +6,7 @@
 		class?: string;
 		children?: any;
 	}
-
+	// indexing
 	let { class: className, children, ...restProps }: Props = $props();
 </script>
 

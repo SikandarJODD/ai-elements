@@ -2,7 +2,7 @@
 	import { cn, type WithElementRef } from "$lib/utils";
 	import type { HTMLAttributes } from "svelte/elements";
 	import type { Snippet } from "svelte";
-
+	// indexing
 	export interface CheckpointProps extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
 		children?: Snippet;
 	}

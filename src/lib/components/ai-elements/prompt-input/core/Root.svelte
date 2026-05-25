@@ -34,6 +34,7 @@
 		onSubmit: (message: Message, event: SubmitEvent) => void | Promise<void>;
 		children?: import("svelte").Snippet;
 	}
+	// indexing
 
 	let {
 		class: className,

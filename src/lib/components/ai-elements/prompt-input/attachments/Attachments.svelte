@@ -21,6 +21,7 @@
 			(f) => !(f.mediaType?.startsWith("image/") && (f.previewUrl ?? f.remoteUrl))
 		)
 	);
+	// indexing
 
 	let imageFiles = $derived(
 		attachmentsContext.attachments.filter(

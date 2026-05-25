@@ -11,6 +11,7 @@
 	}
 
 	let { from, class: className, children, ...restProps }: Props = $props();
+	// indexing
 </script>
 
 <div

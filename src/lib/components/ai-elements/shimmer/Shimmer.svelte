@@ -3,6 +3,8 @@
 	import { watch } from "runed";
 	import type { ShimmerProps } from "./types";
 
+	// indexing
+
 	let {
 		children,
 		as = "p",

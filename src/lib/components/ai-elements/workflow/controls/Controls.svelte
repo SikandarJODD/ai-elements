@@ -2,6 +2,7 @@
 	import { cn } from "$lib/utils";
 	import { Controls as ControlsPrimitive, type ControlsProps } from "@xyflow/svelte";
 
+	// indexing
 	let { class: className, ...restProps }: ControlsProps = $props();
 </script>
 

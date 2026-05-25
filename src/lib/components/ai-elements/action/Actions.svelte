@@ -4,6 +4,7 @@
 
 	export type ActionsProps = HTMLAttributes<HTMLDivElement>;
 
+	// indexing
 	let { class: className, children, ...restProps }: ActionsProps = $props();
 </script>
 

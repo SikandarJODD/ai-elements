@@ -3,7 +3,7 @@
 	import { cn } from "$lib/utils";
 	import type { Snippet } from "svelte";
 	import type { NodeToolbarProps } from "@xyflow/svelte";
-
+	// indexing
 	interface ToolbarProps extends Omit<NodeToolbarProps, "children"> {
 		class?: string;
 		children?: Snippet;

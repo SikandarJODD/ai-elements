@@ -3,6 +3,8 @@
 	import { cn } from "$lib/utils";
 	import type { Snippet } from "svelte";
 
+	// indexing
+
 	interface ToolProps {
 		class?: string;
 		children?: Snippet;

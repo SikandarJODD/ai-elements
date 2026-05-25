@@ -2,7 +2,7 @@
 	import { Button, type ButtonProps } from "$lib/components/ui/button/index.js";
 	import { cn } from "$lib/utils";
 	import type { Snippet } from "svelte";
-
+	// indexing
 	interface Props extends Omit<ButtonProps, "onclick"> {
 		suggestion?: string;
 		onclick?: (suggestion: string) => void;

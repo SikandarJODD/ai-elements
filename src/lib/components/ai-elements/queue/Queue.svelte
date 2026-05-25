@@ -6,6 +6,7 @@
 	export interface QueueProps extends WithElementRef<HTMLAttributes<HTMLDivElement>> {
 		children?: Snippet;
 	}
+	// indexing
 </script>
 
 <script lang="ts">

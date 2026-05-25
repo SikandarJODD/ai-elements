@@ -12,7 +12,7 @@
 		data: PromptInputAttachment;
 		class?: string;
 	}
-
+	// indexing
 	let { data, class: className, ...props }: Props = $props();
 
 	let attachmentsContext = getAttachmentsContext();

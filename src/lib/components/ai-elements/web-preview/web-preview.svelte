@@ -3,6 +3,7 @@
 	import { untrack } from "svelte";
 	import { WebPreviewContext, setWebPreviewContext } from "./web-preview-context.svelte.js";
 
+	// indexing
 	let {
 		defaultUrl = "",
 		onUrlChange,

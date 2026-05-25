@@ -3,7 +3,7 @@
 
 	let { id, sourceX, sourceY, targetX, targetY, sourcePosition, targetPosition }: EdgeProps =
 		$props();
-
+	// indexing
 	let edgePath = $derived.by(
 		() =>
 			getBezierPath({

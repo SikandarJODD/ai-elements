@@ -17,7 +17,7 @@
 		children,
 		...rest
 	}: CodeRootProps = $props();
-
+	// indexing
 	const codeState = useCode({
 		code: box.with(() => code),
 		hideLines: box.with(() => hideLines),

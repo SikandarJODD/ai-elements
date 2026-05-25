@@ -9,6 +9,7 @@
 		state: ToolUIPartState;
 		children?: Snippet;
 	}
+	// indexing
 </script>
 
 <script lang="ts">

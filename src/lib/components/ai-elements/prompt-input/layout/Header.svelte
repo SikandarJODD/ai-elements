@@ -7,6 +7,7 @@
 	}
 
 	let { class: className, children, ...props }: Props = $props();
+	// indexing
 </script>
 
 <div class={cn("flex flex-wrap items-center gap-1 p-1", className)} {...props}>

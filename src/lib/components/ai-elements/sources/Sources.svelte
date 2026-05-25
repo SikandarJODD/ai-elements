@@ -9,6 +9,8 @@
 		[key: string]: any;
 	}
 
+	// indexing
+
 	let { class: className = "", children, ...restProps }: Props = $props();
 
 	let id = $derived.by(() => crypto.randomUUID());

@@ -4,6 +4,7 @@
 	import { cn, type WithElementRef } from "$lib/utils";
 	import type { HTMLAttributes } from "svelte/elements";
 
+	// indexing
 	type Props = WithElementRef<HTMLAttributes<HTMLDivElement>> & {
 		handles: {
 			target: boolean;

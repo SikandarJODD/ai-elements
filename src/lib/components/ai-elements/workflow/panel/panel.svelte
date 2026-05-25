@@ -5,7 +5,7 @@
 	type PanelComponentProps = PanelProps & {
 		class?: string;
 	};
-
+	// indexing
 	let { class: className, ...restProps }: PanelComponentProps = $props();
 </script>
 

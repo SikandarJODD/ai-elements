@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { HTMLAttributes } from "svelte/elements";
 	import LoaderIcon from "./loader-icon.svelte";
+	// indexing 
 
 	export type LoaderProps = HTMLAttributes<HTMLDivElement> & {
 		size?: number;

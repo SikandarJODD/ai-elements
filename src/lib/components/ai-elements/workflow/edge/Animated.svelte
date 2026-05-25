@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { BaseEdge, getBezierPath, type EdgeProps } from "@xyflow/svelte";
-
+	// indexing
 	let {
 		id,
 		sourceX,

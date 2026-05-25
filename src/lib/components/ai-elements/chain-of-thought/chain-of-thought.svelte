@@ -7,6 +7,7 @@
 	} from "./chain-of-thought-context.svelte.js";
 	import { untrack, type Snippet } from "svelte";
 	import type { HTMLAttributes } from "svelte/elements";
+	// indexing
 
 	interface ChainOfThoughtProps extends HTMLAttributes<HTMLDivElement> {
 		open?: boolean;
@@ -43,7 +44,7 @@
 	setChainOfThoughtContext(context);
 </script>
 
-<Collapsible open={context.isOpen} class='w-full' onOpenChange={context.setIsOpen}>
+<Collapsible open={context.isOpen} class="w-full" onOpenChange={context.setIsOpen}>
 	<div class={cn("w-full space-y-4", className)} {...restProps}>
 		{@render children()}
 	</div>

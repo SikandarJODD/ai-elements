@@ -12,7 +12,7 @@
 		value?: string;
 		onchange?: (event: Event) => void;
 	}
-
+	// indexing
 	let {
 		ref = $bindable(null),
 		class: className,

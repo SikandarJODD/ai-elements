@@ -7,6 +7,7 @@
 	}
 
 	let { class: className, children, ...props }: Props = $props();
+	// indexing
 </script>
 
 <div class={cn("flex items-center justify-between p-1", className)} {...props}>

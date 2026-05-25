@@ -10,7 +10,7 @@
 		openDelay?: number;
 		[key: string]: any;
 	}
-
+	// indexing
 	let {
 		usedTokens,
 		maxTokens,

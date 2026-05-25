@@ -8,6 +8,7 @@
 		multiple?: boolean;
 		children?: import("svelte").Snippet;
 	}
+	// indexing
 
 	let { initialInput = "", accept, multiple = true, children }: Props = $props();
 

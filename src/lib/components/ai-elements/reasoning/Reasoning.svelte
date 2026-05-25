@@ -5,6 +5,8 @@
 	import { ReasoningContext, setReasoningContext } from "./reasoning-context.svelte";
 	import { untrack } from "svelte";
 
+	// indexing
+
 	interface Props {
 		class?: string;
 		isStreaming?: boolean;
