@@ -1,0 +1,16 @@
+[
+	{
+		"name": "chain-of-thought",
+		"title": "Chain Of Thought",
+		"type": "registry:block",
+		"description": "A collapsible component that visualizes AI reasoning steps with support for search results, images, and step-by-step progress indicators.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0"
+		],
+		"registryDependencies": [
+			"collapsible",
+			"badge"
+		],
+		"relativeUrl": "chain-of-thought.json"
+	}
+]

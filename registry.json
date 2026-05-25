@@ -8,5 +8,62 @@
 		"utils": "$lib/utils",
 		"ui": "$lib/components/ui",
 		"hooks": "$lib/hooks"
-	}
+	},
+	"items": [
+		{
+			"name": "chain-of-thought",
+			"title": "Chain Of Thought",
+			"description": "A collapsible component that visualizes AI reasoning steps with support for search results, images, and step-by-step progress indicators.",
+			"type": "registry:block",
+			"dependencies": ["@lucide/svelte@^1.16.0"],
+			"registryDependencies": ["collapsible", "badge"],
+			"files": [
+				{
+					"path": "src/lib/components/ai-elements/chain-of-thought/chain-of-thought-content.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/chain-of-thought/chain-of-thought-content.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/chain-of-thought/chain-of-thought-context.svelte.ts",
+					"type": "registry:hook",
+					"target": "ai-elements/chain-of-thought/chain-of-thought-context.svelte.ts"
+				},
+				{
+					"path": "src/lib/components/ai-elements/chain-of-thought/chain-of-thought-header.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/chain-of-thought/chain-of-thought-header.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/chain-of-thought/chain-of-thought-image.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/chain-of-thought/chain-of-thought-image.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/chain-of-thought/chain-of-thought-search-result.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/chain-of-thought/chain-of-thought-search-result.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/chain-of-thought/chain-of-thought-search-results.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/chain-of-thought/chain-of-thought-search-results.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/chain-of-thought/chain-of-thought-step.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/chain-of-thought/chain-of-thought-step.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/chain-of-thought/chain-of-thought.svelte",
+					"type": "registry:component",
+					"target": "ai-elements/chain-of-thought/chain-of-thought.svelte"
+				},
+				{
+					"path": "src/lib/components/ai-elements/chain-of-thought/index.ts",
+					"type": "registry:file",
+					"target": "ai-elements/chain-of-thought/index.ts"
+				}
+			]
+		}
+	]
 }
