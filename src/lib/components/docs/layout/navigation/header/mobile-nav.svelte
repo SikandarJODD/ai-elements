@@ -1,16 +1,66 @@
 <script lang="ts">
+	import { page } from '$app/state';
+	import { recipes } from '$lib/config/cookbook';
+	import { github_repo } from '$lib/config/repo';
 	import { Button } from '$lib/components/ui/button';
+	import { LightSwitch } from '$lib/components/ui/light-switch';
 	import { Portal, PortalBackdrop } from '$lib/components/ui/portal';
+	import { components, docsPages } from '$lib/registry/components';
+	import { Github, X } from '$lib/svg';
 	import { cn } from '$lib/utils';
 	import MenuIcon from '@lucide/svelte/icons/menu';
 	import XIcon from '@lucide/svelte/icons/x';
-	import LinkItem from './link-item.svelte';
-	import { navs } from './nav-links';
+
+	type SectionLink = {
+		name: string;
+		href: string;
+	};
+
+	type NavSection = {
+		title: string;
+		items: SectionLink[];
+	};
+
+	const cookbookLinks = recipes.map((recipe) => ({
+		name: recipe.name,
+		href: `/cookbook/${recipe.slug}`
+	}));
+
+	const navSections: NavSection[] = [
+		{
+			title: 'Docs',
+			items: docsPages.map((page) => ({
+				name: page.name,
+				href: page.href
+			}))
+		},
+		{
+			title: 'Components',
+			items: components.map((component) => ({
+				name: component.name,
+				href: component.href
+			}))
+		},
+		{
+			title: 'Cookbook Recipes',
+			items: cookbookLinks
+		}
+	];
 
 	let open = $state(false);
+	let pathname = $derived(page.url.pathname);
+
+	function closeMenu() {
+		open = false;
+	}
+
+	function isActive(href: string) {
+		return pathname === href;
+	}
 </script>
 
-<div class="md:hidden">
+<div class="flex items-center gap-2 md:hidden">
+	<LightSwitch />
 	<Button
 		aria-controls="mobile-menu"
 		aria-expanded={open}
@@ -34,39 +84,59 @@
 			<PortalBackdrop />
 			<div
 				class={cn(
-					'size-full overflow-y-auto p-4',
+					'size-full overflow-y-auto px-4 pb-28 pt-4',
 					'ease-out data-[slot=open]:animate-in data-[slot=open]:zoom-in-97'
 				)}
 				data-slot={open ? 'open' : 'closed'}
+				id="mobile-menu"
 			>
-				<div class="flex w-full flex-col gap-y-2">
-					<span class="text-sm">Product</span>
-					<!-- {#each productLinks as link}
-						<LinkItem class="rounded-lg p-2 active:bg-muted dark:active:bg-muted/50" {...link} />
-					{/each}
-					<span class="text-sm">Company</span>
-					{#each companyLinks as link}
-						<LinkItem class="rounded-lg p-2 active:bg-muted dark:active:bg-muted/50" {...link} />
-					{/each}
-					{#each companyLinks2 as link}
-						<LinkItem class="rounded-lg p-2 active:bg-muted dark:active:bg-muted/50" {...link} />
-					{/each} -->
-					{#each navs as nav}
-						{#if nav.sub}
-							{#each nav.sub as item}
-								<LinkItem
-									class="rounded-lg p-2 active:bg-muted dark:active:bg-muted/50"
-									{...item}
-								/>
-							{/each}
-						{:else}
-							<LinkItem class="rounded-lg p-2 active:bg-muted dark:active:bg-muted/50" {...nav} />
-						{/if}
+				<div class="mx-auto flex w-full max-w-6xl flex-col gap-6">
+					{#each navSections as section (section.title)}
+						<section>
+							<h2 class="pb-2 text-sm font-semibold text-muted-foreground">
+								{section.title}
+							</h2>
+							<div class="flex flex-col">
+								{#each section.items as item (item.href)}
+									<a
+										class={cn(
+											'border-b py-2 text-sm text-foreground transition-colors last:border-b-0 active:text-foreground/70',
+											isActive(item.href) && 'font-medium'
+										)}
+										href={item.href}
+										onclick={closeMenu}
+									>
+										{item.name}
+									</a>
+								{/each}
+							</div>
+						</section>
 					{/each}
 				</div>
-				<div class="mt-5 flex flex-col gap-2">
-					<Button class="w-full" variant="outline">Sign In</Button>
-					<Button class="w-full">Get Started</Button>
+
+				<div class="fixed bottom-4 right-4 z-10 flex items-center gap-2">
+					<Button
+						aria-label="Open X profile"
+						class="size-9 rounded-full shadow-md"
+						href="https://x.com/Sikandar_Bhide"
+						rel="noopener noreferrer"
+						size="icon"
+						target="_blank"
+						variant="outline"
+					>
+						<X class="size-3.5" />
+					</Button>
+					<Button
+						aria-label="Open GitHub repository"
+						class="size-9 rounded-full shadow-md"
+						href={github_repo.url}
+						rel="noopener noreferrer"
+						size="icon"
+						target="_blank"
+						variant="default"
+					>
+						<Github class="size-3.5" />
+					</Button>
 				</div>
 			</div>
 		</Portal>

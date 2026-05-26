@@ -200,10 +200,10 @@ export const POST: RequestHandler = async ({ request }) => {
 	}}
 />
 
-<article class="mx-auto px-4 py-12 md:px-6 md:py-16">
+<article class="mx-auto px-4 py-8 md:px-6 md:py-10">
 	<header class="mb-12">
-		<div class="mb-6 flex items-start justify-between gap-4">
-			<h1 class="text-4xl font-semibold tracking-tight">Render Visual Interface</h1>
+		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
+			<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Render Visual Interface</h1>
 			<CopyPageDropdown
 				class="shrink-0"
 				componentName="Render Visual Interface"
@@ -217,7 +217,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			<Badge variant="secondary">Tools</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-lg leading-relaxed">
+		<p class="text-muted-foreground text-base leading-relaxed sm:text-lg">
 			Render rich UI components based on tool results. Create weather cards, confirmation
 			dialogs, charts, or any custom interface elements—not just text.
 		</p>

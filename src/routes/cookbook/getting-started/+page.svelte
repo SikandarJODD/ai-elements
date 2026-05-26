@@ -94,10 +94,10 @@ export const POST: RequestHandler = async ({ request }) => {
 	}}
 />
 
-<article class="mx-auto px-4 py-12 md:px-6 md:py-16">
+<article class="mx-auto px-4 py-8 md:px-6 md:py-10">
 	<header class="mb-12">
-		<div class="mb-6 flex items-start justify-between gap-4">
-			<h1 class="text-4xl font-semibold tracking-tight">Getting Started</h1>
+		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
+			<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Getting Started</h1>
 			<CopyPageDropdown class="shrink-0" componentName="Getting Started" {llmsTxtUrl} />
 		</div>
 
@@ -107,7 +107,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			<Badge variant="secondary">SvelteKit</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-lg leading-relaxed">
+		<p class="text-muted-foreground text-base leading-relaxed sm:text-lg">
 			Build AI-powered Svelte applications in minutes. This guide covers everything you need
 			to get started with the Vercel AI SDK and SvelteKit.
 		</p>
@@ -241,7 +241,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	</section>
 
 	<!-- What's Next -->
-	<section class="mb-10">
+	<section class="mb-10" data-toc-index="false">
 		<h2 class="mb-6 text-3xl font-semibold">What's Next?</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
 			You're all set! Explore more recipes to level up your AI app:

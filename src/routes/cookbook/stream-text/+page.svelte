@@ -41,11 +41,11 @@ export const POST: RequestHandler = async ({ request }) => {
 	}}
 />
 
-<article class="mx-auto px-4 py-12 md:px-6 md:py-16">
+<article class="mx-auto px-4 py-8 md:px-6 md:py-10">
 	<!-- Header -->
 	<header class="mb-12">
-		<div class="mb-6 flex items-start justify-between gap-4">
-			<h1 class="text-4xl font-semibold tracking-tight">Stream Text</h1>
+		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
+			<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Stream Text</h1>
 			<CopyPageDropdown
 				class="shrink-0"
 				componentName="Stream Text"

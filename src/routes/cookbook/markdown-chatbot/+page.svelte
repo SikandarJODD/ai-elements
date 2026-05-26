@@ -89,11 +89,11 @@ Always format code with the correct language identifier.\`,
 	}}
 />
 
-<article class="mx-auto px-4 py-12 md:px-6 md:py-16">
+<article class="mx-auto px-4 py-8 md:px-6 md:py-10">
 	<!-- Header -->
 	<header class="mb-12">
-		<div class="mb-6 flex items-start justify-between gap-4">
-			<h1 class="text-4xl font-semibold tracking-tight">Markdown Chatbot</h1>
+		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
+			<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Markdown Chatbot</h1>
 			<CopyPageDropdown
 				class="shrink-0"
 				componentName="Markdown Chatbot"
@@ -107,7 +107,7 @@ Always format code with the correct language identifier.\`,
 			<Badge variant="secondary" class="text-sm">Streaming</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-lg leading-relaxed md:text-xl">
+		<p class="text-muted-foreground text-base leading-relaxed sm:text-lg md:text-xl">
 			Transform plain AI responses into beautifully formatted content with
 			<strong>syntax-highlighted code</strong>, lists, tables, and more.
 		</p>
@@ -180,38 +180,6 @@ Always format code with the correct language identifier.\`,
 				highlight: [[5, 9], 16],
 			}}
 		/>
-	</section>
-
-	<!-- Key Features -->
-	<section class="mb-12">
-		<h2 class="mb-6 text-2xl font-semibold">Key Features</h2>
-		<div class="space-y-4">
-			<div>
-				<h3 class="text-foreground mb-1 font-medium">Streaming Support</h3>
-				<p class="text-muted-foreground text-sm leading-relaxed">
-					Unlike regular markdown renderers, <code class="text-foreground"
-						>streamdown-svelte</code
-					>
-					handles partial markdown gracefully - no flickering or broken rendering mid-stream.
-				</p>
-			</div>
-			<div>
-				<h3 class="text-foreground mb-1 font-medium">Syntax Highlighting</h3>
-				<p class="text-muted-foreground text-sm leading-relaxed">
-					Shiki provides beautiful syntax highlighting for 100+ languages. Themes adapt
-					automatically to light/dark mode.
-				</p>
-			</div>
-			<div>
-				<h3 class="text-foreground mb-1 font-medium">Prose Styling</h3>
-				<p class="text-muted-foreground text-sm leading-relaxed">
-					Tailwind's <code class="text-foreground">prose</code> classes style headings,
-					lists, links, and more. Use
-					<code class="text-foreground">dark:prose-invert</code>
-					for dark mode.
-				</p>
-			</div>
-		</div>
 	</section>
 
 	<!-- GitHub Link -->

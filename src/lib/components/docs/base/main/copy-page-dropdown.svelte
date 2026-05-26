@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { page } from "$app/state";
+	import { recipes } from "$lib/config/cookbook";
 	import { getPrevNext } from "$lib/registry/components";
 	import { Button } from "$lib/components/ui/button";
 	import * as ButtonGroup from "$lib/components/ui/button-group";
@@ -21,8 +22,7 @@
 	import {
 		ChevronDown,
 		ChevronLeft,
-		ChevronRight,
-		ExternalLink
+		ChevronRight
 	} from "@lucide/svelte";
 
 	type NavLink = {
@@ -43,12 +43,60 @@
 		`Read ${llmsTxtUrl} and help me understand ${componentName}`
 	);
 
+	function getCookbookPrevNext(slug: string): {
+		prev: NavLink;
+		next: NavLink;
+	} {
+		const index = recipes.findIndex((recipe) => recipe.slug === slug);
+		if (index === -1) return { prev: null, next: null };
+
+		return {
+			prev:
+				index > 0
+					? {
+							name: recipes[index - 1].name,
+							href: `/cookbook/${recipes[index - 1].slug}`
+						}
+					: null,
+			next:
+				index < recipes.length - 1
+					? {
+							name: recipes[index + 1].name,
+							href: `/cookbook/${recipes[index + 1].slug}`
+						}
+					: null
+		};
+	}
+
 	let nav = $derived.by(() => {
 		const pathname = page.url.pathname;
 		const currentId = pathname.split("/").filter(Boolean).at(-1) ?? "";
+
+		if (pathname === "/docs" || pathname.startsWith("/docs/")) {
+			return {
+				isSupported: true,
+				...getPrevNext(currentId || "docs")
+			};
+		}
+
+		if (pathname.startsWith("/components/")) {
+			return {
+				isSupported: true,
+				...getPrevNext(currentId)
+			};
+		}
+
+		if (pathname.startsWith("/cookbook/")) {
+			return {
+				isSupported: true,
+				...getCookbookPrevNext(currentId)
+			};
+		}
+
 		return {
-			isSupported: true,
-			...getPrevNext(currentId || "docs")
+			isSupported: false,
+			prev: null,
+			next: null
 		};
 	});
 
