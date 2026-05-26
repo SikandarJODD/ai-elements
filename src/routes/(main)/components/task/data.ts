@@ -37,7 +37,17 @@ const install_block: InstallComponentDocs = {
 		{ name: "task-trigger.svelte", code: TaskTriggerSvelteRaw, lang: "svelte", },
 		{ name: "task.svelte", code: TaskSvelteRaw, lang: "svelte", }
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── task/
+				├── index.ts
+				├── task-content.svelte
+				├── task-item-file.svelte
+				├── task-item.svelte
+				├── task-trigger.svelte
+				└── task.svelte`,
 };
 
 export const data: ComponentDoc = {

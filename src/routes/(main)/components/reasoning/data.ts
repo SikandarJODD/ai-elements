@@ -35,7 +35,16 @@ const install_block: InstallComponentDocs = {
 		{ name: "reasoning-trigger.svelte", code: ReasoningTriggerSvelteRaw, lang: "svelte", },
 		{ name: "reasoning.svelte", code: ReasoningSvelteRaw, lang: "svelte", },
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── reasoning/
+				├── index.ts
+				├── reasoning-content.svelte
+				├── reasoning-context.svelte.ts
+				├── reasoning-trigger.svelte
+				└── reasoning.svelte`,
 };
 
 export const data: ComponentDoc = {

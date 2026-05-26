@@ -31,7 +31,14 @@ const install_block: InstallComponentDocs = {
 		{ name: "suggestion.svelte", code: SuggestionSvelteRaw, lang: "svelte", },
 		{ name: "suggestions.svelte", code: SuggestionsSvelteRaw, lang: "svelte", }
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── suggestion/
+				├── index.ts
+				├── suggestion.svelte
+				└── suggestions.svelte`,
 };
 
 export const data: ComponentDoc = {

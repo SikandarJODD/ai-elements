@@ -41,7 +41,19 @@ const install_block: InstallComponentDocs = {
 		{ name: "web-preview-url.svelte", code: WebPreviewUrlSvelteRaw, lang: "svelte", },
 		{ name: "web-preview.svelte", code: WebPreviewSvelteRaw, lang: "svelte", }
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── web-preview/
+				├── index.ts
+				├── web-preview-body.svelte
+				├── web-preview-console.svelte
+				├── web-preview-context.svelte.ts
+				├── web-preview-navigation-button.svelte
+				├── web-preview-navigation.svelte
+				├── web-preview-url.svelte
+				└── web-preview.svelte`,
 };
 
 export const data: ComponentDoc = {

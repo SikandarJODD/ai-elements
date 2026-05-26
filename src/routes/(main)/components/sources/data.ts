@@ -35,7 +35,16 @@ const install_block: InstallComponentDocs = {
 		{ name: "sources-trigger.svelte", code: SourcesTriggerSvelteRaw, lang: "svelte", },
 		{ name: "sources.svelte", code: SourcesSvelteRaw, lang: "svelte", }
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── sources/
+				├── index.ts
+				├── source.svelte
+				├── sources-content.svelte
+				├── sources-trigger.svelte
+				└── sources.svelte`,
 };
 
 export const data: ComponentDoc = {

@@ -16,9 +16,12 @@
 
 **Svelte AI Elements** is a developer-focused component registry for building AI-native interfaces with **SvelteKit**. It is built on top of [shadcn-svelte](https://www.shadcn-svelte.com/)
 
+Looking for the lighter prompt-focused project? Visit **Svelte Prompt Kit**: https://sv-prompt-kit.vercel.app
+
 Project is divided into two parts:
 
 1. **AI Elements**: Full-featured, production-ready components for complex AI interfaces, including chat apps, reasoning UIs, tool integrations, and workflow builders.
+2. **Svelte Prompt Kit**: Lightweight prompt engineering and conversational UI components for simpler AI interfaces. Visit https://sv-prompt-kit.vercel.app
 
 ## Installation
 
@@ -109,7 +112,7 @@ Full-featured components for chat apps, streaming responses, reasoning UIs, tool
 
 Lightweight prompt engineering and conversational UI components that are easy to compose into simple AI interfaces.
 
-- Docs: https://svelte-ai-elements.vercel.app/prompt-kit
+- Site: https://sv-prompt-kit.vercel.app
 - Registry: https://svelte-ai-elements.vercel.app/p/index.json
 
 ## Most Used Components

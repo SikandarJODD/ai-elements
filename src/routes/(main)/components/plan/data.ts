@@ -47,7 +47,22 @@ const install_block: InstallComponentDocs = {
 		{ name: "plan.svelte", code: PlanSvelteRaw, lang: "svelte", },
 		{ name: "types.ts", code: TypesTsRaw, lang: "typescript", }
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── plan/
+				├── index.ts
+				├── plan-action.svelte
+				├── plan-content.svelte
+				├── plan-context.svelte.ts
+				├── plan-description.svelte
+				├── plan-footer.svelte
+				├── plan-header.svelte
+				├── plan-title.svelte
+				├── plan-trigger.svelte
+				├── plan.svelte
+				└── types.ts`,
 };
 
 export const data: ComponentDoc = {

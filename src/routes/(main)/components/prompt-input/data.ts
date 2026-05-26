@@ -130,7 +130,40 @@ const install_block: InstallComponentDocs = {
 		{ name: "layout/toolbar.svelte", code: LayoutToolbarSvelteRaw, lang: "svelte" },
 		{ name: "layout/tools.svelte", code: LayoutToolsSvelteRaw, lang: "svelte" },
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── prompt-input/
+				├── action-menu/
+				│   ├── action-add-attachments.svelte
+				│   ├── action-menu-content.svelte
+				│   ├── action-menu-item.svelte
+				│   ├── action-menu-trigger.svelte
+				│   └── action-menu.svelte
+				├── attachments/
+				│   ├── attachment-image-preview.svelte
+				│   ├── attachment.svelte
+				│   └── attachments.svelte
+				├── context/
+				│   ├── attachments.svelte.ts
+				│   ├── provider.svelte.ts
+				│   ├── text-registration.svelte.ts
+				│   └── types.ts
+				├── controls/
+				│   ├── button.svelte
+				│   ├── submit.svelte
+				│   └── textarea.svelte
+				├── core/
+				│   ├── provider.svelte
+				│   └── root.svelte
+				├── layout/
+				│   ├── body.svelte
+				│   ├── header.svelte
+				│   ├── toolbar.svelte
+				│   └── tools.svelte
+				├── guide.md
+				└── index.ts`,
 };
 
 // Usage with AI SDK Example Code

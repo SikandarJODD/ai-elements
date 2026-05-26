@@ -31,7 +31,14 @@ const install_block: InstallComponentDocs = {
 		{ name: "shimmer.svelte", code: ShimmerSvelteRaw, lang: "svelte", },
 		{ name: "types.ts", code: TypesTsRaw, lang: "typescript", }
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── shimmer/
+				├── index.ts
+				├── shimmer.svelte
+				└── types.ts`,
 };
 
 export const data: ComponentDoc = {

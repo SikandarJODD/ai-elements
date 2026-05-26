@@ -7,6 +7,7 @@
 		{ label: "Components", href: "/components/chain-of-thought" },
 		{ label: "Docs", href: "/docs" },
 		{ label: "Cookbook", href: "/cookbook/getting-started" },
+		{ label: "Changelog", href: "/changelog" },
 	];
 
 	const isActive = (href: string) => {
@@ -23,17 +24,17 @@
 				"rounded-md px-2.5 relative py-1 text-sm transition-colors hover:bg-accent/60",
 				isActive(link.href)
 					? "bg-accent text-foreground"
-					: "text-muted-foreground hover:text-foreground",
-				link.label === "Cookbook" && "bg-accent text-foreground"	
+					: "text-muted-foreground hover:text-foreground"
+				// link.label === "Cookbook" && "bg-accent text-foreground"
 			)}
 			href={link.href}
 		>
-			{#if link.label === "Cookbook"}
+			<!-- {#if link.label === "Cookbook"}
 				<span
 					aria-hidden="true"
 					class="absolute inset-e-0 top-0 size-2 rounded-full bg-muted-foreground outline-2 outline-background"
 				></span>
-			{/if}
+			{/if} -->
 			{link.label}
 		</a>
 	{/each}

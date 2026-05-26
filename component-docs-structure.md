@@ -26,7 +26,7 @@ most used stuff
  `src/
 └── lib/
     └── components/
-        └── ai/
+        └── ai-elements/
             └── chat-container/
                 ├── chat-container-content.svelte
                 ├── chat-container.svelte

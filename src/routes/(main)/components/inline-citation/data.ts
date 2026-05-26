@@ -15,11 +15,7 @@ import InlineCitationSourceSvelteRaw from "$lib/components/ai-elements/inline-ci
 import InlineCitationTextSvelteRaw from "$lib/components/ai-elements/inline-citation/inline-citation-text.svelte?raw";
 import InlineCitationSvelteRaw from "$lib/components/ai-elements/inline-citation/inline-citation.svelte?raw";
 
-import type {
-	ComponentDoc,
-	ComponentMeta,
-	InstallComponentDocs,
-} from "$lib/types/structure";
+import type { ComponentDoc, ComponentMeta, InstallComponentDocs } from "$lib/types/structure";
 import type { SEO } from "$lib/types/seo";
 import Preview from "./examples/preview.svelte";
 import PreviewCode from "./examples/preview.svelte?raw";
@@ -42,24 +38,93 @@ const seo: SEO = {
 const install_block: InstallComponentDocs = {
 	packages: [],
 	install_code: [
-		{ name: "carousel-context.svelte.ts", code: CarouselContextSvelteTsRaw, lang: "typescript", isExpand: true, },
-		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", },
-		{ name: "inline-citation-card-body.svelte", code: InlineCitationCardBodySvelteRaw, lang: "svelte", },
-		{ name: "inline-citation-card-trigger.svelte", code: InlineCitationCardTriggerSvelteRaw, lang: "svelte", },
-		{ name: "inline-citation-card.svelte", code: InlineCitationCardSvelteRaw, lang: "svelte", },
-		{ name: "inline-citation-carousel-content.svelte", code: InlineCitationCarouselContentSvelteRaw, lang: "svelte", },
-		{ name: "inline-citation-carousel-header.svelte", code: InlineCitationCarouselHeaderSvelteRaw, lang: "svelte", },
-		{ name: "inline-citation-carousel-index.svelte", code: InlineCitationCarouselIndexSvelteRaw, lang: "svelte", },
-		{ name: "inline-citation-carousel-item.svelte", code: InlineCitationCarouselItemSvelteRaw, lang: "svelte", },
-		{ name: "inline-citation-carousel-next.svelte", code: InlineCitationCarouselNextSvelteRaw, lang: "svelte", },
-		{ name: "inline-citation-carousel-prev.svelte", code: InlineCitationCarouselPrevSvelteRaw, lang: "svelte", },
-		{ name: "inline-citation-carousel.svelte", code: InlineCitationCarouselSvelteRaw, lang: "svelte", },
-		{ name: "inline-citation-quote.svelte", code: InlineCitationQuoteSvelteRaw, lang: "svelte", },
-		{ name: "inline-citation-source.svelte", code: InlineCitationSourceSvelteRaw, lang: "svelte", },
-		{ name: "inline-citation-text.svelte", code: InlineCitationTextSvelteRaw, lang: "svelte", },
-		{ name: "inline-citation.svelte", code: InlineCitationSvelteRaw, lang: "svelte", }
+		{
+			name: "carousel-context.svelte.ts",
+			code: CarouselContextSvelteTsRaw,
+			lang: "typescript",
+			isExpand: true,
+		},
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript" },
+		{
+			name: "inline-citation-card-body.svelte",
+			code: InlineCitationCardBodySvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "inline-citation-card-trigger.svelte",
+			code: InlineCitationCardTriggerSvelteRaw,
+			lang: "svelte",
+		},
+		{ name: "inline-citation-card.svelte", code: InlineCitationCardSvelteRaw, lang: "svelte" },
+		{
+			name: "inline-citation-carousel-content.svelte",
+			code: InlineCitationCarouselContentSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "inline-citation-carousel-header.svelte",
+			code: InlineCitationCarouselHeaderSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "inline-citation-carousel-index.svelte",
+			code: InlineCitationCarouselIndexSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "inline-citation-carousel-item.svelte",
+			code: InlineCitationCarouselItemSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "inline-citation-carousel-next.svelte",
+			code: InlineCitationCarouselNextSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "inline-citation-carousel-prev.svelte",
+			code: InlineCitationCarouselPrevSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "inline-citation-carousel.svelte",
+			code: InlineCitationCarouselSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "inline-citation-quote.svelte",
+			code: InlineCitationQuoteSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "inline-citation-source.svelte",
+			code: InlineCitationSourceSvelteRaw,
+			lang: "svelte",
+		},
+		{ name: "inline-citation-text.svelte", code: InlineCitationTextSvelteRaw, lang: "svelte" },
+		{ name: "inline-citation.svelte", code: InlineCitationSvelteRaw, lang: "svelte" },
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── inline-citation/
+				├── carousel-context.svelte.ts
+				├── index.ts
+				├── inline-citation-card-body.svelte
+				├── inline-citation-card-trigger.svelte
+				├── inline-citation-card.svelte
+				├── inline-citation-carousel-content.svelte
+				├── inline-citation-carousel-header.svelte
+				├── inline-citation-carousel-index.svelte
+				├── inline-citation-carousel-item.svelte
+				├── inline-citation-carousel-next.svelte
+				├── inline-citation-carousel-prev.svelte
+				├── inline-citation-carousel.svelte
+				├── inline-citation-quote.svelte
+				├── inline-citation-source.svelte
+				├── inline-citation-text.svelte
+				└── inline-citation.svelte`,
 };
 
 export const data: ComponentDoc = {

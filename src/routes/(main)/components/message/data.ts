@@ -121,7 +121,34 @@ const install_block: InstallComponentDocs = {
 			lang: "svelte",
 		},
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── message/
+				├── actions/
+				│   ├── message-action.svelte
+				│   ├── message-actions.svelte
+				│   └── message-toolbar.svelte
+				├── attachments/
+				│   ├── message-attachment-preview.svelte
+				│   ├── message-attachment.svelte
+				│   └── message-attachments.svelte
+				├── branching/
+				│   ├── message-branch-content.svelte
+				│   ├── message-branch-next.svelte
+				│   ├── message-branch-page.svelte
+				│   ├── message-branch-previous.svelte
+				│   ├── message-branch-selector.svelte
+				│   └── message-branch.svelte
+				├── context/
+				│   └── message-context.svelte.ts
+				├── core/
+				│   ├── message-content.svelte
+				│   └── message.svelte
+				├── response/
+				│   └── message-response.svelte
+				└── index.ts`,
 };
 
 // Usage with AI SDK Example Code

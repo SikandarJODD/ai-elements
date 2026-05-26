@@ -68,17 +68,25 @@
 						Svelte AI Elements
 					</h1>
 					<p
-						class="text-muted-foreground font-geist-pixel-square dark:font-geist-pixel-circle mt-8 max-w-2xl text-lg text-pretty"
+						class="text-muted-foreground font-geist-pixel-circle dark:font-geist-pixel-grid mt-8 pl-1 max-w-3xl text-lg text-pretty"
 					>
-						Svelte AI Elements is a custom registry built on top of
-						<a
-							href="https://shadcn-svelte.com"
-							target="_blank"
-							class="text-primary underline underline-offset-2">shadcn-svelte</a
-						>
-						to help you build AI-native applications faster.
+						High-quality, customizable core building blocks for Svelte AI apps.
 						<br /> It provides pre-built components like conversations, messages, prompt input,
 						response and more.
+					</p>
+					<p
+						class="text-muted-foreground/85 mt-4 max-w-2xl text-base text-pretty"
+					>
+						Svelte Prompt Kit is now a separate project. Visit
+						<a
+							href="https://sv-prompt-kit.vercel.app"
+							target="_blank"
+							rel="noreferrer"
+							class="text-primary underline underline-offset-2"
+						>
+							Svelte Prompt Kit
+						</a>
+						to explore it.
 					</p>
 
 					<div class="mt-12 flex items-center gap-1 md:gap-3">

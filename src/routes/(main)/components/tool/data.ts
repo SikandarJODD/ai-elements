@@ -39,7 +39,18 @@ const install_block: InstallComponentDocs = {
 		{ name: "tool-output.svelte", code: ToolOutputSvelteRaw, lang: "svelte", },
 		{ name: "tool.svelte", code: ToolSvelteRaw, lang: "svelte", }
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── tool/
+				├── index.ts
+				├── tool-content.svelte
+				├── tool-context.svelte.ts
+				├── tool-header.svelte
+				├── tool-input.svelte
+				├── tool-output.svelte
+				└── tool.svelte`,
 };
 
 export const data: ComponentDoc = {

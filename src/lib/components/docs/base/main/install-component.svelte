@@ -167,7 +167,7 @@
 							/> -->
 							<div class="flex w-full">
 								<Code.Root
-									lang="markdown"
+									lang='bash'
 									class="w-full text-muted-foreground!"
 									variant="secondary"
 									hideLines

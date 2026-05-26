@@ -29,11 +29,18 @@ const seo: SEO = {
 const install_block: InstallComponentDocs = {
 	packages: [],
 	install_code: [
-		{ name: "image.svelte", code: ImageSvelteRaw, lang: "svelte", isExpand: true, },
-		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", },
-		{ name: "types.ts", code: TypesTsRaw, lang: "typescript", }
+		{ name: "image.svelte", code: ImageSvelteRaw, lang: "svelte", isExpand: true },
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript" },
+		{ name: "types.ts", code: TypesTsRaw, lang: "typescript" },
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+    └── components/
+        └── ai-elements/
+            └── image/
+                ├── image.svelte
+                ├── index.ts
+                └── types.ts`,
 };
 
 export const data: ComponentDoc = {

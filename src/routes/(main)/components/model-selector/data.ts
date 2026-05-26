@@ -55,7 +55,26 @@ const install_block: InstallComponentDocs = {
 		{ name: "model-selector-trigger.svelte", code: ModelSelectorTriggerSvelteRaw, lang: "svelte", },
 		{ name: "model-selector.svelte", code: ModelSelectorSvelteRaw, lang: "svelte", }
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── model-selector/
+				├── index.ts
+				├── model-selector-content.svelte
+				├── model-selector-dialog.svelte
+				├── model-selector-empty.svelte
+				├── model-selector-group.svelte
+				├── model-selector-input.svelte
+				├── model-selector-item.svelte
+				├── model-selector-list.svelte
+				├── model-selector-logo-group.svelte
+				├── model-selector-logo.svelte
+				├── model-selector-name.svelte
+				├── model-selector-separator.svelte
+				├── model-selector-shortcut.svelte
+				├── model-selector-trigger.svelte
+				└── model-selector.svelte`,
 };
 
 export const data: ComponentDoc = {

@@ -21,12 +21,24 @@
 		items: SectionLink[];
 	};
 
+	const primaryLinks: SectionLink[] = [
+		{ name: 'Home', href: '/' },
+		{ name: 'Components', href: '/components/chain-of-thought' },
+		{ name: 'Docs', href: '/docs' },
+		{ name: 'Cookbook', href: '/cookbook/getting-started' },
+		{ name: 'Changelog', href: '/changelog' }
+	];
+
 	const cookbookLinks = recipes.map((recipe) => ({
 		name: recipe.name,
 		href: `/cookbook/${recipe.slug}`
 	}));
 
 	const navSections: NavSection[] = [
+		{
+			title: 'Explore',
+			items: primaryLinks
+		},
 		{
 			title: 'Docs',
 			items: docsPages.map((page) => ({

@@ -29,7 +29,13 @@ const install_block: InstallComponentDocs = {
 		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true, },
 		{ name: "response.svelte", code: ResponseSvelteRaw, lang: "svelte", }
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── response/
+				├── index.ts
+				└── response.svelte`,
 };
 
 export const data: ComponentDoc = {

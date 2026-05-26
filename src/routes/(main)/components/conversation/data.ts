@@ -52,7 +52,17 @@ const install_block: InstallComponentDocs = {
 			lang: "typescript",
 		},
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+    └── components/
+        └── ai-elements/
+            └── conversation/
+                ├── conversation-content.svelte
+                ├── conversation-empty-state.svelte
+                ├── conversation-scroll-button.svelte
+                ├── conversation.svelte
+                ├── stick-to-bottom-context.svelte.ts
+                └── index.ts`,
 };
 
 export const data: ComponentDoc = {

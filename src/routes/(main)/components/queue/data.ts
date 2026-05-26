@@ -59,7 +59,28 @@ const install_block: InstallComponentDocs = {
 		{ name: "queue.svelte", code: QueueSvelteRaw, lang: "svelte", },
 		{ name: "types.ts", code: TypesTsRaw, lang: "typescript", }
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── queue/
+				├── index.ts
+				├── queue-item-action.svelte
+				├── queue-item-actions.svelte
+				├── queue-item-attachment.svelte
+				├── queue-item-content.svelte
+				├── queue-item-description.svelte
+				├── queue-item-file.svelte
+				├── queue-item-image.svelte
+				├── queue-item-indicator.svelte
+				├── queue-item.svelte
+				├── queue-list.svelte
+				├── queue-section-content.svelte
+				├── queue-section-label.svelte
+				├── queue-section-trigger.svelte
+				├── queue-section.svelte
+				├── queue.svelte
+				└── types.ts`,
 };
 
 export const data: ComponentDoc = {

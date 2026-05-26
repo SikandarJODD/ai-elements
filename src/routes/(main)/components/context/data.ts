@@ -71,7 +71,24 @@ const install_block: InstallComponentDocs = {
 		{ name: "index.ts", code: IndexTsRaw, lang: "typescript" },
 		{ name: "tokens-with-cost.svelte", code: TokensWithCostSvelteRaw, lang: "svelte" },
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+    └── components/
+        └── ai-elements/
+            └── context/
+                ├── context-cache-usage.svelte
+                ├── context-content-body.svelte
+                ├── context-content-footer.svelte
+                ├── context-content-header.svelte
+                ├── context-content.svelte
+                ├── context-context.svelte.ts
+                ├── context-icon.svelte
+                ├── context-input-usage.svelte
+                ├── context-output-usage.svelte
+                ├── context-reasoning-usage.svelte
+                ├── context-trigger.svelte
+                ├── context.svelte
+                └── index.ts`,
 };
 
 // Usage with AI SDK Example Code

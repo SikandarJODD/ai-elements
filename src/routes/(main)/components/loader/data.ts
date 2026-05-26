@@ -31,7 +31,14 @@ const install_block: InstallComponentDocs = {
 		{ name: "loader-icon.svelte", code: LoaderIconSvelteRaw, lang: "svelte", },
 		{ name: "loader.svelte", code: LoaderSvelteRaw, lang: "svelte", }
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── loader/
+				├── index.ts
+				├── loader-icon.svelte
+				└── loader.svelte`,
 };
 
 export const data: ComponentDoc = {

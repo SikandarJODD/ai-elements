@@ -61,7 +61,29 @@ const install_block: InstallComponentDocs = {
 		{ name: "scira-icon.svelte", code: SciraIconSvelteRaw, lang: "svelte", },
 		{ name: "v0-icon.svelte", code: V0IconSvelteRaw, lang: "svelte", }
 	],
-	folder_structure: "",
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── open-in-chat/
+				├── chatgpt-icon.svelte
+				├── claude-icon.svelte
+				├── github-icon.svelte
+				├── index.ts
+				├── open-in-chatgpt.svelte
+				├── open-in-claude.svelte
+				├── open-in-content.svelte
+				├── open-in-context.svelte.ts
+				├── open-in-item.svelte
+				├── open-in-label.svelte
+				├── open-in-scira.svelte
+				├── open-in-separator.svelte
+				├── open-in-t3.svelte
+				├── open-in-trigger.svelte
+				├── open-in-v0.svelte
+				├── open-in.svelte
+				├── scira-icon.svelte
+				└── v0-icon.svelte`,
 };
 
 export const data: ComponentDoc = {
