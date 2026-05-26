@@ -91,7 +91,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		description:
 			"Combine streaming with chat prompts for responsive conversational AI in SvelteKit.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/stream-text-with-chat-prompt",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/stream-text-with-chat-prompt",
 	}}
 />
 

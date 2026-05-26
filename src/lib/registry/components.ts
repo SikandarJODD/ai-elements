@@ -51,7 +51,7 @@ let components: Component[] = [
 		id: "image",
 		name: "Image",
 		href: "/components/image",
-		desc: "TODO: Image.",
+		desc: "Displays AI-generated images from the AI SDK.",
 	},
 	{
 		id: "inline-citation",
@@ -59,12 +59,12 @@ let components: Component[] = [
 		href: "/components/inline-citation",
 		desc: "A hoverable citation component that displays source information and quotes inline with text, perfect for AI-generated content with references.",
 	},
-	{
-		id: "loader",
-		name: "Loader",
-		href: "/components/loader",
-		desc: "TODO: Loader.",
-	},
+	// {
+	// 	id: "loader",
+	// 	name: "Loader",
+	// 	href: "/components/loader",
+	// 	desc: "TODO: Loader.",
+	// },
 	{
 		id: "message",
 		name: "Message",

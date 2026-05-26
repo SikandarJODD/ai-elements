@@ -8,23 +8,23 @@
 	let isHovered = $state(false);
 </script>
 
-<!-- {#if isHovered} -->
-<!-- in:fly={{ y: 20, duration: 280 }} out:fly={{ duration: 200, y: 20 }} -->
-<div class="w-full left-0">
-	<div
-		class="h-7 flex items-center w-[80%] mx-auto gap-1.5 rounded-t-md border-t border-x border-orange-600/80 bg-orange-50 dark:bg-orange-800/20 px-4 text-white text-xs font-medium"
-	>
-		<span
-			><img
-				src="https://github.com/SikandarJODD.png"
-				class="size-4 rounded-full"
-				alt="Bhide Svelte"
-			/></span
+{#if isHovered}
+	<div in:fly={{ y: 20, duration: 280 }} out:fly={{ duration: 200, y: 20 }} class="w-full left-0">
+		<div
+			class="h-7 flex items-center w-[80%] mx-auto gap-1.5 rounded-t-md border-t border-x border-orange-600/80 bg-orange-50 dark:bg-orange-800/20 px-4 text-white text-xs font-medium"
 		>
-		<span class="text-orange-600 dark:text-white">Thankyouuuu soo much 😍</span>
+			<span
+				><img
+					src="https://github.com/SikandarJODD.png"
+					class="size-4 rounded-full"
+					alt="Bhide Svelte"
+				/></span
+			>
+			<span class="text-orange-600 dark:text-white">Thankyouuuu soo much 😍</span>
+		</div>
 	</div>
-</div>
-<!-- {/if} -->
+{/if}
+
 <Card.Root
 	onmouseenter={() => (isHovered = true)}
 	onmouseleave={() => (isHovered = false)}

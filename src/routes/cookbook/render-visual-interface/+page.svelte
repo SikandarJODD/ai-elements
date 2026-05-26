@@ -196,7 +196,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		title: "Render Visual Interface - Svelte Cookbook",
 		description: "Render custom UI components for different tool outputs.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/render-visual-interface",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/render-visual-interface",
 	}}
 />
 

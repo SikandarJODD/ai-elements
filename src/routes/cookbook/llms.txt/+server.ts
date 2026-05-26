@@ -1,7 +1,7 @@
 import type { RequestHandler } from "./$types";
 import { recipes } from "$lib/config/cookbook";
 
-const cookbookBaseUrl = "https://ai-elements.vercel.app/cookbook";
+const cookbookBaseUrl = "https://svelte-ai-elements.vercel.app/cookbook";
 
 const allRecipes = [
 	...recipes,

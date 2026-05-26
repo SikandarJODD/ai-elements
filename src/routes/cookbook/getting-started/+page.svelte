@@ -7,6 +7,16 @@
 	import CheckIcon from "@lucide/svelte/icons/check";
 	import ExternalLinkIcon from "@lucide/svelte/icons/external-link";
 	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import {
+		CodeChip,
+		H1,
+		H2,
+		H3,
+		Link,
+		ListItem,
+		Paragraph,
+		UnorderedList
+	} from "$lib/components/docs/markdown";
 	import { PMCommand } from "$lib/components/ui/pm-command";
 	import { SingleFile } from "$lib/components/ui/code";
 
@@ -81,6 +91,29 @@ export const POST: RequestHandler = async ({ request }) => {
     </button>
   </form>
 </div>`;
+
+	const nextRecipes = [
+		{
+			href: "/cookbook/stream-text",
+			title: "Stream Text",
+			description: "Real-time streaming responses"
+		},
+		{
+			href: "/cookbook/generate-object",
+			title: "Generate Object",
+			description: "Type-safe structured data"
+		},
+		{
+			href: "/cookbook/call-tool",
+			title: "Call Tool",
+			description: "AI-powered function calling"
+		},
+		{
+			href: "/cookbook/generate-image",
+			title: "Generate Image",
+			description: "Create images from text"
+		}
+	];
 </script>
 
 <MetaTags
@@ -90,14 +123,16 @@ export const POST: RequestHandler = async ({ request }) => {
 		title: "Getting Started - Svelte AI Cookbook",
 		description: "Build AI-powered Svelte applications with the Vercel AI SDK.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/getting-started",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/getting-started",
 	}}
 />
 
 <article class="mx-auto px-4 py-8 md:px-6 md:py-10">
 	<header class="mb-12">
 		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
-			<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Getting Started</h1>
+			<H1 id="getting-started" class="text-3xl font-semibold tracking-tight sm:text-4xl">
+				Getting Started
+			</H1>
 			<CopyPageDropdown class="shrink-0" componentName="Getting Started" {llmsTxtUrl} />
 		</div>
 
@@ -107,54 +142,58 @@ export const POST: RequestHandler = async ({ request }) => {
 			<Badge variant="secondary">SvelteKit</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-base leading-relaxed sm:text-lg">
+		<Paragraph class="mt-0 text-base sm:text-lg">
 			Build AI-powered Svelte applications in minutes. This guide covers everything you need
 			to get started with the Vercel AI SDK and SvelteKit.
-		</p>
+		</Paragraph>
 	</header>
 
 	<!-- Prerequisites -->
 	<section class="mb-12">
-		<h2 class="mb-6 text-3xl font-semibold">Prerequisites</h2>
-		<div class="space-y-3">
-			<div class="flex items-center gap-3">
+		<H2 id="prerequisites" class="mt-0 mb-6 text-3xl font-semibold">Prerequisites</H2>
+		<UnorderedList class="mt-0 list-none space-y-3 pl-0">
+			<ListItem class="text-foreground flex items-center gap-3">
 				<CheckIcon class="size-5 text-green-500" />
-				<span>Node.js 18+ installed</span>
-			</div>
-			<div class="flex items-center gap-3">
+				<Paragraph class="text-foreground mt-0">Node.js 18+ installed</Paragraph>
+			</ListItem>
+			<ListItem class="text-foreground flex items-center gap-3">
 				<CheckIcon class="size-5 text-green-500" />
-				<span
-					>A SvelteKit project with <a
+				<Paragraph class="text-foreground mt-0">
+					A SvelteKit project with
+					<Link
 						href="https://next.shadcn-svelte.com/docs/installation"
 						target="_blank"
-						class="text-primary inline-flex items-center gap-1 underline underline-offset-2"
-						>shadcn-svelte <ExternalLinkIcon class="size-3" /></a
-					></span
-				>
-			</div>
-			<div class="flex items-center gap-3">
+						class="text-primary inline-flex items-center gap-1 align-middle"
+					>
+						shadcn-svelte <ExternalLinkIcon class="size-3" />
+					</Link>
+				</Paragraph>
+			</ListItem>
+			<ListItem class="text-foreground flex items-center gap-3">
 				<CheckIcon class="size-5 text-green-500" />
-				<span>
+				<Paragraph class="text-foreground mt-0">
 					An OpenRouter API key
-					<a
+					<Link
 						href="https://openrouter.ai/keys"
 						target="_blank"
-						class="text-primary ml-1 inline-flex items-center gap-1 underline underline-offset-2"
+						class="text-primary ml-1 inline-flex items-center gap-1 align-middle"
 					>
 						(get one free) <ExternalLinkIcon class="size-3" />
-					</a>
-				</span>
-			</div>
-		</div>
+					</Link>
+				</Paragraph>
+			</ListItem>
+		</UnorderedList>
 	</section>
 
 	<!-- Step 1: Installation -->
 	<section class="mb-12">
-		<h2 class="mb-4 text-3xl font-semibold">1. Install Packages</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
+		<H2 id="install-packages" class="mt-0 mb-4 text-3xl font-semibold">
+			1. Install Packages
+		</H2>
+		<Paragraph class="mb-6">
 			Install the AI SDK core, Svelte bindings, OpenRouter provider, and Zod for schema
 			validation.
-		</p>
+		</Paragraph>
 		<PMCommand
 			command="add"
 			args={["ai", "@ai-sdk/svelte", "@openrouter/ai-sdk-provider", "zod"]}
@@ -163,11 +202,13 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	<!-- Step 2: Environment -->
 	<section class="mb-12">
-		<h2 class="mb-4 text-3xl font-semibold">2. Set Up Environment</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Create a <code class="text-foreground">.env</code> file in your project root with your OpenRouter
+		<H2 id="set-up-environment" class="mt-0 mb-4 text-3xl font-semibold">
+			2. Set Up Environment
+		</H2>
+		<Paragraph class="mb-6">
+			Create a <CodeChip>.env</CodeChip> file in your project root with your OpenRouter
 			API key.
-		</p>
+		</Paragraph>
 		<SingleFile
 			code={{
 				name: ".env",
@@ -176,25 +217,27 @@ export const POST: RequestHandler = async ({ request }) => {
 				highlight: [1],
 			}}
 		/>
-		<p class="text-muted-foreground mt-3 text-sm">
+		<Paragraph class="mt-3 text-sm">
 			Get your free API key from
-			<a
+			<Link
 				href="https://openrouter.ai/keys"
 				target="_blank"
-				class="text-primary inline-flex items-center gap-1 underline underline-offset-2"
+				class="text-primary inline-flex items-center gap-1 align-middle"
 			>
 				openrouter.ai/keys <ExternalLinkIcon class="size-3" />
-			</a>
-		</p>
+			</Link>
+		</Paragraph>
 	</section>
 
 	<!-- Step 3: AI Config -->
 	<section class="mb-12">
-		<h2 class="mb-4 text-3xl font-semibold">3. Create AI Config</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
+		<H2 id="create-ai-config" class="mt-0 mb-4 text-3xl font-semibold">
+			3. Create AI Config
+		</H2>
+		<Paragraph class="mb-6">
 			Create a shared configuration file. This keeps your AI setup DRY and makes it easy to
 			switch models.
-		</p>
+		</Paragraph>
 		<SingleFile
 			code={{
 				name: "src/lib/config/ai.ts",
@@ -206,11 +249,14 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	<!-- Step 4: Server Endpoint -->
 	<section class="mb-12">
-		<h2 class="mb-4 text-3xl font-semibold">4. Create API Endpoint</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
+		<H2 id="create-api-endpoint" class="mt-0 mb-4 text-3xl font-semibold">
+			4. Create API Endpoint
+		</H2>
+		<Paragraph class="mb-6">
 			Create a server endpoint that handles chat messages. The
-			<code class="text-foreground">streamText</code> function streams the AI response in real-time.
-		</p>
+			<CodeChip>streamText</CodeChip>
+			function streams the AI response in real-time.
+		</Paragraph>
 		<SingleFile
 			code={{
 				name: "src/routes/api/chat/+server.ts",
@@ -223,13 +269,15 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	<!-- Step 5: Client Component -->
 	<section class="mb-12">
-		<h2 class="mb-4 text-3xl font-semibold">5. Build Your Chat UI</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Create a Svelte component that connects to your API. The
-			<code class="text-foreground">Chat</code> class from
-			<code class="text-foreground">@ai-sdk/svelte</code>
+		<H2 id="build-your-chat-ui" class="mt-0 mb-4 text-3xl font-semibold">
+			5. Build Your Chat UI
+		</H2>
+		<Paragraph class="mb-6">
+			Create a Svelte component that connects to your API. The <CodeChip>Chat</CodeChip>
+			class from
+			<CodeChip>@ai-sdk/svelte</CodeChip>
 			handles all the state management.
-		</p>
+		</Paragraph>
 		<SingleFile
 			code={{
 				name: "src/routes/+page.svelte",
@@ -242,39 +290,20 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	<!-- What's Next -->
 	<section class="mb-10" data-toc-index="false">
-		<h2 class="mb-6 text-3xl font-semibold">What's Next?</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
+		<H2 id="whats-next" class="mt-0 mb-6 text-3xl font-semibold">What's Next?</H2>
+		<Paragraph class="mb-6">
 			You're all set! Explore more recipes to level up your AI app:
-		</p>
+		</Paragraph>
 		<div class="grid gap-4 sm:grid-cols-2">
-			<a
-				href="/cookbook/stream-text"
-				class="hover:bg-secondary rounded-lg border p-4 transition-colors"
-			>
-				<h3 class="font-medium">Stream Text</h3>
-				<p class="text-muted-foreground text-sm">Real-time streaming responses</p>
-			</a>
-			<a
-				href="/cookbook/generate-object"
-				class="hover:bg-secondary rounded-lg border p-4 transition-colors"
-			>
-				<h3 class="font-medium">Generate Object</h3>
-				<p class="text-muted-foreground text-sm">Type-safe structured data</p>
-			</a>
-			<a
-				href="/cookbook/call-tool"
-				class="hover:bg-secondary rounded-lg border p-4 transition-colors"
-			>
-				<h3 class="font-medium">Call Tool</h3>
-				<p class="text-muted-foreground text-sm">AI-powered function calling</p>
-			</a>
-			<a
-				href="/cookbook/generate-image"
-				class="hover:bg-secondary rounded-lg border p-4 transition-colors"
-			>
-				<h3 class="font-medium">Generate Image</h3>
-				<p class="text-muted-foreground text-sm">Create images from text</p>
-			</a>
+			{#each nextRecipes as recipe (recipe.href)}
+				<Link
+					href={recipe.href}
+					class="hover:bg-secondary rounded-lg border p-4 no-underline transition-colors"
+				>
+					<H3 class="mt-0 text-base font-medium">{recipe.title}</H3>
+					<Paragraph class="mt-1 text-sm">{recipe.description}</Paragraph>
+				</Link>
+			{/each}
 		</div>
 	</section>
 

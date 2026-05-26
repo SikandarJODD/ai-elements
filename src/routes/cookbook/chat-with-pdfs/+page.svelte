@@ -146,7 +146,7 @@ export const POST = async ({ request }) => {
 		title: "Chat with PDFs - Svelte Cookbook",
 		description: "Build an AI assistant that reads and answers questions about PDF documents.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/chat-with-pdfs",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/chat-with-pdfs",
 	}}
 />
 

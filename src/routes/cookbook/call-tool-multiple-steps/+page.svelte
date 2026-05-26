@@ -155,7 +155,7 @@ export const POST = async ({ request }) => {
 		title: "Call Tool Multiple Steps - Svelte Cookbook",
 		description: "Chain multiple AI tool calls where each step depends on the previous result.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/call-tool-multiple-steps",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/call-tool-multiple-steps",
 	}}
 />
 

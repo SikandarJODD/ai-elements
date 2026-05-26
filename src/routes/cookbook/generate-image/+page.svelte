@@ -84,7 +84,7 @@ export const POST = async ({ request }) => {
 		title: "Generate Image - Svelte Cookbook",
 		description: "Generate images from text prompts using AI image generation models.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/generate-image",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/generate-image",
 	}}
 />
 

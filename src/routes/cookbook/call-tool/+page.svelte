@@ -98,7 +98,7 @@ export const POST = async ({ request }) => {
 		title: "Call Tool - Svelte Cookbook",
 		description: "Enable AI to call custom tools and functions.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/call-tool",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/call-tool",
 	}}
 />
 

@@ -115,7 +115,7 @@ Keep responses concise (under 50 words).\`,
 		title: "Send Custom Body - Svelte Cookbook",
 		description: "Send additional data alongside chat messages to your API endpoint.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/send-custom-body",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/send-custom-body",
 	}}
 />
 

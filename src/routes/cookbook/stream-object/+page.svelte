@@ -122,7 +122,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		title: "Stream Object - Svelte Cookbook",
 		description: "Stream structured JSON objects progressively with real-time updates.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/stream-object",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/stream-object",
 	}}
 />
 

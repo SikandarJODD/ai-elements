@@ -14,45 +14,53 @@
 </script>
 
 <nav class="mt-12 border-t pt-6">
-	<div class="flex items-center justify-between">
+	<div class="grid gap-4 sm:grid-cols-2">
 		<!-- Previous -->
 		{#if prevRecipe}
 			<a
 				href="/cookbook/{prevRecipe.slug}"
-				class="group flex items-center gap-2 text-sm transition-colors"
+				class="group border-border bg-background hover:bg-muted/50 flex rounded-xl border px-5 py-4 transition-colors"
 			>
-				<ChevronLeft
-					class="text-muted-foreground group-hover:text-foreground h-4 w-4 transition-colors"
-				/>
-				<div class="text-left">
-					<div class="text-muted-foreground text-xs">Previous</div>
-					<div class="text-foreground group-hover:text-primary font-medium">
-						{prevRecipe.name}
+				<div class="flex items-center gap-3">
+					<ChevronLeft
+						class="text-muted-foreground group-hover:text-foreground h-4 w-4 shrink-0 transition-colors"
+					/>
+					<div class="text-left">
+						<div class="text-muted-foreground mb-1 text-[11px] uppercase tracking-[0.22em]">
+							Previous
+						</div>
+						<div class="text-foreground text-base font-medium leading-tight">
+							{prevRecipe.name}
+						</div>
 					</div>
 				</div>
 			</a>
 		{:else}
-			<div></div>
+			<div class="hidden sm:block"></div>
 		{/if}
 
 		<!-- Next -->
 		{#if nextRecipe}
 			<a
 				href="/cookbook/{nextRecipe.slug}"
-				class="group flex items-center gap-2 text-sm transition-colors"
+				class="group border-border bg-background hover:bg-muted/50 flex rounded-xl border px-5 py-4 transition-colors sm:justify-end"
 			>
-				<div class="text-right">
-					<div class="text-muted-foreground text-xs">Next</div>
-					<div class="text-foreground group-hover:text-primary font-medium">
-						{nextRecipe.name}
+				<div class="flex items-center gap-3 sm:flex-row-reverse">
+					<ChevronRight
+						class="text-muted-foreground group-hover:text-foreground h-4 w-4 shrink-0 transition-colors"
+					/>
+					<div class="text-left sm:text-right">
+						<div class="text-muted-foreground mb-1 text-[11px] uppercase tracking-[0.22em]">
+							Next
+						</div>
+						<div class="text-foreground text-base font-medium leading-tight">
+							{nextRecipe.name}
+						</div>
 					</div>
 				</div>
-				<ChevronRight
-					class="text-muted-foreground group-hover:text-foreground h-4 w-4 transition-colors"
-				/>
 			</a>
 		{:else}
-			<div></div>
+			<div class="hidden sm:block"></div>
 		{/if}
 	</div>
 </nav>

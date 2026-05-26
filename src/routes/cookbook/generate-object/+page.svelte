@@ -59,7 +59,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		description:
 			"Generate structured JSON objects with type-safe Zod schemas using the Vercel AI SDK.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/generate-object",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/generate-object",
 	}}
 />
 

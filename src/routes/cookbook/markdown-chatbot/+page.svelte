@@ -85,7 +85,7 @@ Always format code with the correct language identifier.\`,
 		description:
 			"Render AI responses in beautiful markdown with syntax-highlighted code blocks.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/markdown-chatbot",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/markdown-chatbot",
 	}}
 />
 

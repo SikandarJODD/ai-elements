@@ -50,7 +50,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		title: "Generate Text - Svelte Cookbook",
 		description: "Learn how to generate text using AI models with simple prompts in SvelteKit.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/generate-text",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/generate-text",
 	}}
 />
 

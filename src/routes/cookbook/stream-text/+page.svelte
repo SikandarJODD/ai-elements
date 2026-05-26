@@ -37,7 +37,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		description:
 			"Learn how to stream text responses in real-time for better user experience with SvelteKit.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/stream-text",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/stream-text",
 	}}
 />
 

@@ -92,7 +92,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		description:
 			"Use chat-style prompts with generateText for conversational AI interactions in SvelteKit.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/generate-text-with-chat-prompt",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/generate-text-with-chat-prompt",
 	}}
 />
 
