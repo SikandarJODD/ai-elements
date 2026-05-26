@@ -1,140 +1,99 @@
-import Basic from "./examples/basic.svelte";
-import basicRaw from "./examples/basic.svelte?raw";
+import IndexTsRaw from "$lib/components/ai-elements/queue/index.ts?raw";
+import QueueItemActionSvelteRaw from "$lib/components/ai-elements/queue/queue-item-action.svelte?raw";
+import QueueItemActionsSvelteRaw from "$lib/components/ai-elements/queue/queue-item-actions.svelte?raw";
+import QueueItemAttachmentSvelteRaw from "$lib/components/ai-elements/queue/queue-item-attachment.svelte?raw";
+import QueueItemContentSvelteRaw from "$lib/components/ai-elements/queue/queue-item-content.svelte?raw";
+import QueueItemDescriptionSvelteRaw from "$lib/components/ai-elements/queue/queue-item-description.svelte?raw";
+import QueueItemFileSvelteRaw from "$lib/components/ai-elements/queue/queue-item-file.svelte?raw";
+import QueueItemImageSvelteRaw from "$lib/components/ai-elements/queue/queue-item-image.svelte?raw";
+import QueueItemIndicatorSvelteRaw from "$lib/components/ai-elements/queue/queue-item-indicator.svelte?raw";
+import QueueItemSvelteRaw from "$lib/components/ai-elements/queue/queue-item.svelte?raw";
+import QueueListSvelteRaw from "$lib/components/ai-elements/queue/queue-list.svelte?raw";
+import QueueSectionContentSvelteRaw from "$lib/components/ai-elements/queue/queue-section-content.svelte?raw";
+import QueueSectionLabelSvelteRaw from "$lib/components/ai-elements/queue/queue-section-label.svelte?raw";
+import QueueSectionTriggerSvelteRaw from "$lib/components/ai-elements/queue/queue-section-trigger.svelte?raw";
+import QueueSectionSvelteRaw from "$lib/components/ai-elements/queue/queue-section.svelte?raw";
+import QueueSvelteRaw from "$lib/components/ai-elements/queue/queue.svelte?raw";
+import TypesTsRaw from "$lib/components/ai-elements/queue/types.ts?raw";
 
-import type { Example } from "$lib/structure/examples";
-import type { SEO } from "$lib/structure/seo";
-import type { ComponentDoc, ComponentMeta } from "$lib/structure/structure";
+import type {
+	ComponentDoc,
+	ComponentMeta,
+	InstallComponentDocs,
+} from "$lib/types/structure";
+import type { SEO } from "$lib/types/seo";
+import Preview from "./examples/preview.svelte";
+import PreviewCode from "./examples/preview.svelte?raw";
 
 export const meta: ComponentMeta = {
 	id: "queue",
 	title: "Queue",
-	description:
-		"A flexible component for displaying lists of pending and completed tasks, messages, or items with collapsible sections and attachment support.",
+	description: "A comprehensive queue component system for displaying message lists, todos, and collapsible task sections in AI applications.",
+	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Queue",
-	description:
-		"A flexible component for displaying lists of pending and completed tasks, messages, or items with collapsible sections and attachment support.",
-	keywords: ["Svelte", "Queue", "Task lists", "Svelte AI Elements"],
+	description: "A comprehensive queue component system for displaying message lists, todos, and collapsible task sections in AI applications.",
+	keywords: ["Svelte", "Queue", "Component"],
 };
 
-const examples: Example[] = [];
+const install_block: InstallComponentDocs = {
+	packages: [],
+	install_code: [
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true, },
+		{ name: "queue-item-action.svelte", code: QueueItemActionSvelteRaw, lang: "svelte", },
+		{ name: "queue-item-actions.svelte", code: QueueItemActionsSvelteRaw, lang: "svelte", },
+		{ name: "queue-item-attachment.svelte", code: QueueItemAttachmentSvelteRaw, lang: "svelte", },
+		{ name: "queue-item-content.svelte", code: QueueItemContentSvelteRaw, lang: "svelte", },
+		{ name: "queue-item-description.svelte", code: QueueItemDescriptionSvelteRaw, lang: "svelte", },
+		{ name: "queue-item-file.svelte", code: QueueItemFileSvelteRaw, lang: "svelte", },
+		{ name: "queue-item-image.svelte", code: QueueItemImageSvelteRaw, lang: "svelte", },
+		{ name: "queue-item-indicator.svelte", code: QueueItemIndicatorSvelteRaw, lang: "svelte", },
+		{ name: "queue-item.svelte", code: QueueItemSvelteRaw, lang: "svelte", },
+		{ name: "queue-list.svelte", code: QueueListSvelteRaw, lang: "svelte", },
+		{ name: "queue-section-content.svelte", code: QueueSectionContentSvelteRaw, lang: "svelte", },
+		{ name: "queue-section-label.svelte", code: QueueSectionLabelSvelteRaw, lang: "svelte", },
+		{ name: "queue-section-trigger.svelte", code: QueueSectionTriggerSvelteRaw, lang: "svelte", },
+		{ name: "queue-section.svelte", code: QueueSectionSvelteRaw, lang: "svelte", },
+		{ name: "queue.svelte", code: QueueSvelteRaw, lang: "svelte", },
+		{ name: "types.ts", code: TypesTsRaw, lang: "typescript", }
+	],
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── queue/
+				├── index.ts
+				├── queue-item-action.svelte
+				├── queue-item-actions.svelte
+				├── queue-item-attachment.svelte
+				├── queue-item-content.svelte
+				├── queue-item-description.svelte
+				├── queue-item-file.svelte
+				├── queue-item-image.svelte
+				├── queue-item-indicator.svelte
+				├── queue-item.svelte
+				├── queue-list.svelte
+				├── queue-section-content.svelte
+				├── queue-section-label.svelte
+				├── queue-section-trigger.svelte
+				├── queue-section.svelte
+				├── queue.svelte
+				└── types.ts`,
+};
 
 export const data: ComponentDoc = {
 	...meta,
-	preview: Basic,
-	previewCode: {
-		filename: "basic.svelte",
-		filecode: basicRaw,
-		lang: "svelte",
-		isExpand: true,
+	preview: {
+		preview: Preview,
+		code: {
+			name: "preview.svelte",
+			code: PreviewCode,
+			lang: "svelte",
+		},
 	},
+	install_block,
 	seo,
-	examples,
-	props: [
-		{
-			name: "Queue",
-			props: [
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the container",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Child components",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLAttributes<HTMLDivElement>",
-					description: "All other div props are supported",
-				},
-			],
-		},
-		{
-			name: "QueueSection",
-			props: [
-				{
-					name: "defaultOpen",
-					type: "boolean",
-					default: "true",
-					description: "Whether the section is open by default",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Child components",
-				},
-				{
-					name: "...restProps",
-					type: "CollapsibleProps",
-					description: "All other Collapsible props are supported",
-				},
-			],
-		},
-		{
-			name: "QueueItem",
-			props: [
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Child components",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLLiAttributes",
-					description: "All other li props are supported",
-				},
-			],
-		},
-		{
-			name: "QueueItemIndicator",
-			props: [
-				{
-					name: "completed",
-					type: "boolean",
-					default: "false",
-					description: "Whether the item is completed",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes",
-				},
-			],
-		},
-		{
-			name: "QueueItemContent",
-			props: [
-				{
-					name: "completed",
-					type: "boolean",
-					default: "false",
-					description: "Whether the item is completed",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Content to display",
-				},
-			],
-		},
-	],
+	props: [],
 };

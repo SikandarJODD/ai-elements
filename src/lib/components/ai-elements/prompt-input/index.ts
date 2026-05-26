@@ -1,20 +1,20 @@
-import Root from "./core/Root.svelte";
-import Provider from "./core/Provider.svelte";
-import Header from "./layout/Header.svelte";
-import Body from "./layout/Body.svelte";
-import Toolbar from "./layout/Toolbar.svelte";
-import Tools from "./layout/Tools.svelte";
-import Button from "./controls/Button.svelte";
-import Textarea from "./controls/Textarea.svelte";
-import Submit from "./controls/Submit.svelte";
-import Attachment from "./attachments/Attachment.svelte";
-import AttachmentImagePreview from "./attachments/AttachmentImagePreview.svelte";
-import Attachments from "./attachments/Attachments.svelte";
-import ActionMenu from "./action-menu/ActionMenu.svelte";
-import ActionMenuTrigger from "./action-menu/ActionMenuTrigger.svelte";
-import ActionMenuContent from "./action-menu/ActionMenuContent.svelte";
-import ActionMenuItem from "./action-menu/ActionMenuItem.svelte";
-import ActionAddAttachments from "./action-menu/ActionAddAttachments.svelte";
+import Root from "./core/root.svelte";
+import Provider from "./core/provider.svelte";
+import Header from "./layout/header.svelte";
+import Body from "./layout/body.svelte";
+import Toolbar from "./layout/toolbar.svelte";
+import Tools from "./layout/tools.svelte";
+import Button from "./controls/button.svelte";
+import Textarea from "./controls/textarea.svelte";
+import Submit from "./controls/submit.svelte";
+import Attachment from "./attachments/attachment.svelte";
+import AttachmentImagePreview from "./attachments/attachment-image-preview.svelte";
+import Attachments from "./attachments/attachments.svelte";
+import ActionMenu from "./action-menu/action-menu.svelte";
+import ActionMenuTrigger from "./action-menu/action-menu-trigger.svelte";
+import ActionMenuContent from "./action-menu/action-menu-content.svelte";
+import ActionMenuItem from "./action-menu/action-menu-item.svelte";
+import ActionAddAttachments from "./action-menu/action-add-attachments.svelte";
 
 export {
 	Root,

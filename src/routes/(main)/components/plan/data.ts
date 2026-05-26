@@ -1,121 +1,81 @@
-import Basic from "./examples/basic.svelte";
-import basicRaw from "./examples/basic.svelte?raw";
+import IndexTsRaw from "$lib/components/ai-elements/plan/index.ts?raw";
+import PlanActionSvelteRaw from "$lib/components/ai-elements/plan/plan-action.svelte?raw";
+import PlanContentSvelteRaw from "$lib/components/ai-elements/plan/plan-content.svelte?raw";
+import PlanContextSvelteTsRaw from "$lib/components/ai-elements/plan/plan-context.svelte.ts?raw";
+import PlanDescriptionSvelteRaw from "$lib/components/ai-elements/plan/plan-description.svelte?raw";
+import PlanFooterSvelteRaw from "$lib/components/ai-elements/plan/plan-footer.svelte?raw";
+import PlanHeaderSvelteRaw from "$lib/components/ai-elements/plan/plan-header.svelte?raw";
+import PlanTitleSvelteRaw from "$lib/components/ai-elements/plan/plan-title.svelte?raw";
+import PlanTriggerSvelteRaw from "$lib/components/ai-elements/plan/plan-trigger.svelte?raw";
+import PlanSvelteRaw from "$lib/components/ai-elements/plan/plan.svelte?raw";
+import TypesTsRaw from "$lib/components/ai-elements/plan/types.ts?raw";
 
-import type { Example } from "$lib/structure/examples";
-import type { SEO } from "$lib/structure/seo";
-import type { ComponentDoc, ComponentMeta } from "$lib/structure/structure";
+import type {
+	ComponentDoc,
+	ComponentMeta,
+	InstallComponentDocs,
+} from "$lib/types/structure";
+import type { SEO } from "$lib/types/seo";
+import Preview from "./examples/preview.svelte";
+import PreviewCode from "./examples/preview.svelte?raw";
 
 export const meta: ComponentMeta = {
 	id: "plan",
 	title: "Plan",
-	description:
-		"A collapsible plan component for displaying AI-generated execution plans with streaming support and shimmer animations.",
+	description: "A collapsible plan component for displaying AI-generated execution plans with streaming support and shimmer animations.",
+	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Plan",
-	description:
-		"A collapsible plan component for displaying AI-generated execution plans with streaming support and shimmer animations.",
-	keywords: ["Svelte", "Plan", "AI plans", "Svelte AI Elements"],
+	description: "A collapsible plan component for displaying AI-generated execution plans with streaming support and shimmer animations.",
+	keywords: ["Svelte", "Plan", "Component"],
 };
 
-const examples: Example[] = [];
+const install_block: InstallComponentDocs = {
+	packages: [],
+	install_code: [
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true, },
+		{ name: "plan-action.svelte", code: PlanActionSvelteRaw, lang: "svelte", },
+		{ name: "plan-content.svelte", code: PlanContentSvelteRaw, lang: "svelte", },
+		{ name: "plan-context.svelte.ts", code: PlanContextSvelteTsRaw, lang: "typescript", },
+		{ name: "plan-description.svelte", code: PlanDescriptionSvelteRaw, lang: "svelte", },
+		{ name: "plan-footer.svelte", code: PlanFooterSvelteRaw, lang: "svelte", },
+		{ name: "plan-header.svelte", code: PlanHeaderSvelteRaw, lang: "svelte", },
+		{ name: "plan-title.svelte", code: PlanTitleSvelteRaw, lang: "svelte", },
+		{ name: "plan-trigger.svelte", code: PlanTriggerSvelteRaw, lang: "svelte", },
+		{ name: "plan.svelte", code: PlanSvelteRaw, lang: "svelte", },
+		{ name: "types.ts", code: TypesTsRaw, lang: "typescript", }
+	],
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── plan/
+				├── index.ts
+				├── plan-action.svelte
+				├── plan-content.svelte
+				├── plan-context.svelte.ts
+				├── plan-description.svelte
+				├── plan-footer.svelte
+				├── plan-header.svelte
+				├── plan-title.svelte
+				├── plan-trigger.svelte
+				├── plan.svelte
+				└── types.ts`,
+};
 
 export const data: ComponentDoc = {
 	...meta,
-	preview: Basic,
-	previewCode: {
-		filename: "basic.svelte",
-		filecode: basicRaw,
-		lang: "svelte",
-		isExpand: true,
+	preview: {
+		preview: Preview,
+		code: {
+			name: "preview.svelte",
+			code: PreviewCode,
+			lang: "svelte",
+		},
 	},
+	install_block,
 	seo,
-	examples,
-	props: [
-		{
-			name: "Plan",
-			props: [
-				{
-					name: "isStreaming",
-					type: "boolean",
-					default: "false",
-					description: "Whether the plan is in streaming state and shows shimmer effects",
-				},
-				{
-					name: "defaultOpen",
-					type: "boolean",
-					default: "false",
-					description: "Whether the plan is expanded by default",
-				},
-				{
-					name: "open",
-					type: "boolean",
-					description: "Controlled open state",
-				},
-				{
-					name: "onOpenChange",
-					type: "(open: boolean) => void",
-					description: "Callback when the open state changes",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Plan content, typically PlanHeader, PlanContent, and PlanFooter",
-				},
-			],
-		},
-		{
-			name: "PlanTitle",
-			props: [
-				{
-					name: "children",
-					type: "Snippet",
-					description:
-						"Title content that automatically gets a shimmer effect while streaming",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply",
-				},
-			],
-		},
-		{
-			name: "PlanDescription",
-			props: [
-				{
-					name: "children",
-					type: "Snippet",
-					description:
-						"Description content that automatically gets a shimmer effect while streaming",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply",
-				},
-			],
-		},
-		{
-			name: "PlanContent",
-			props: [
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Collapsible content for plan details",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply",
-				},
-			],
-		},
-	],
+	props: [],
 };

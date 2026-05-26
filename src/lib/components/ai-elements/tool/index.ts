@@ -1,8 +1,8 @@
-import Tool from "./Tool.svelte";
-import ToolContent from "./ToolContent.svelte";
-import ToolHeader from "./ToolHeader.svelte";
-import ToolInput from "./ToolInput.svelte";
-import ToolOutput from "./ToolOutput.svelte";
+import Tool from "./tool.svelte";
+import ToolContent from "./tool-content.svelte";
+import ToolHeader from "./tool-header.svelte";
+import ToolInput from "./tool-input.svelte";
+import ToolOutput from "./tool-output.svelte";
 
 export {
 	Tool,

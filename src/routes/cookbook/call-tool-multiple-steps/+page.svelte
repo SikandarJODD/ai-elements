@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { CodeChip, H1, H2, Paragraph } from "$lib/components/docs/markdown";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/call-tool-multiple-steps/llms.txt`;
 
@@ -27,7 +29,7 @@ export const getWeather = tool({
     unit: z.enum(["C", "F"])
   }),
   execute: async ({ city, unit }) => {
-    return \`24°\${unit} and Sunny in \${city}\`;
+    return \`24Â°\${unit} and Sunny in \${city}\`;
   }
 });`;
 
@@ -75,13 +77,13 @@ export const POST = async ({ request }) => {
 // User: "What's the weather where I am?"
 //
 // Step 1: AI calls getLocation()
-//         → Returns "San Francisco"
+//         â†’ Returns "San Francisco"
 //
 // Step 2: AI calls getWeather({ city: "San Francisco", unit: "C" })
-//         → Returns "24°C and Sunny in San Francisco"
+//         â†’ Returns "24Â°C and Sunny in San Francisco"
 //
 // Step 3: AI responds with natural language
-//         → "The weather in San Francisco is 24°C and sunny!"`;
+//         â†’ "The weather in San Francisco is 24Â°C and sunny!"`;
 
 	let clientCode = `<script lang="ts">
   import { Chat } from "@ai-sdk/svelte";
@@ -132,7 +134,7 @@ export const POST = async ({ request }) => {
                 <div class="rounded border p-2 text-xs">
                   <span class="font-medium">{part.toolName}</span>
                   {#if part.state === "output-available"}
-                    <span class="text-green-500">✓</span>
+                    <span class="text-green-500">âœ“</span>
                   {:else}
                     <span class="animate-pulse">...</span>
                   {/if}
@@ -154,19 +156,23 @@ export const POST = async ({ request }) => {
 		title: "Call Tool Multiple Steps - Svelte Cookbook",
 		description: "Chain multiple AI tool calls where each step depends on the previous result.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/call-tool-multiple-steps",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/call-tool-multiple-steps",
 	}}
 />
 
-<article class="mx-auto px-4 py-12 md:px-6 md:py-16">
+<article class="mx-auto px-4 py-8 md:px-6 md:py-10">
 	<header class="mb-12">
-		<div class="mb-6 flex items-start justify-between gap-4">
-			<h1 class="text-4xl font-semibold tracking-tight">Call Tool Multiple Steps</h1>
+		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
+			<H1
+				id="call-tool-multiple-steps"
+				class="text-3xl font-semibold tracking-tight sm:text-4xl"
+			>
+				Call Tool Multiple Steps
+			</H1>
 			<CopyPageDropdown
 				class="shrink-0"
 				componentName="Call Tool Multiple Steps"
 				{llmsTxtUrl}
-				type="cookbook"
 			/>
 		</div>
 
@@ -176,56 +182,81 @@ export const POST = async ({ request }) => {
 			<Badge variant="secondary">Chaining</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-lg leading-relaxed">
+		<Paragraph class="mt-0 text-base sm:text-lg">
 			Chain multiple tool calls where the output of one becomes the input of another. The AI
 			autonomously decides the execution order to fulfill the user's request.
-		</p>
+		</Paragraph>
 	</header>
 
-	<section class="prose prose-neutral dark:prose-invert mb-12 max-w-none">
-		<h2 class="mb-4 text-2xl font-semibold">The Chain in Action</h2>
-		<p class="text-muted-foreground leading-relaxed">
+	<section class="mb-12">
+		<H2 id="the-chain-in-action" class="mb-4 text-2xl font-semibold">The Chain in Action</H2>
+		<Paragraph class="mt-0">
 			When you ask "What's the weather where I am?", the AI first calls
-			<code class="text-foreground">getLocation</code> to find your city, then uses that
-			result to call <code class="text-foreground">getWeather</code>. All automatic—no manual
-			orchestration needed.
-		</p>
+			<CodeChip>getLocation</CodeChip> to find your city, then uses that result to call
+			<CodeChip>getWeather</CodeChip>. All automatic - no manual orchestration needed.
+		</Paragraph>
 	</section>
 
 	<section class="mb-12">
-		<h2 class="mb-6 text-3xl font-semibold">Demo</h2>
-		<p class="text-muted-foreground mb-4 text-sm">
-			Watch the AI chain location → weather calls!
-		</p>
+		<H2 id="demo" class="mb-6 text-3xl font-semibold">Demo</H2>
+		<Paragraph class="mb-4 mt-0 text-sm"
+			>Watch the AI chain location -> weather calls!</Paragraph
+		>
 		<Demo />
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Execution Flow</h2>
-		<CodeNameBlock filename="flow.ts" lang="typescript" code={flowCode} />
+		<H2 id="execution-flow" class="mb-6 text-3xl font-semibold">Execution Flow</H2>
+		<SingleFile
+			code={{
+				code: flowCode,
+				name: "flow.ts",
+				lang: "typescript",
+			}}
+		/>
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Define Multiple Tools</h2>
-		<CodeNameBlock filename="tools.ts" lang="typescript" code={toolsCode} />
+		<H2 id="define-multiple-tools" class="mb-6 text-3xl font-semibold">
+			Define Multiple Tools
+		</H2>
+		<SingleFile
+			code={{
+				code: toolsCode,
+				name: "tools.ts",
+				lang: "typescript",
+			}}
+		/>
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Server Endpoint</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Simply pass all tools to <code class="text-foreground">streamText</code>. The AI handles
-			the orchestration.
-		</p>
-		<CodeNameBlock filename="+server.ts" lang="typescript" code={serverCode} />
+		<H2 id="server-endpoint" class="mb-6 text-3xl font-semibold">Server Endpoint</H2>
+		<Paragraph class="mb-6 mt-0">
+			Simply pass all tools to <CodeChip>streamText</CodeChip>. The AI handles the
+			orchestration.
+		</Paragraph>
+		<SingleFile
+			code={{
+				code: serverCode,
+				name: "/+server.ts",
+				lang: "typescript",
+			}}
+		/>
 	</section>
 
 	<section class="mb-10">
-		<h2 class="mb-6 text-3xl font-semibold">Client Component</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			The client uses the <code class="text-foreground">Chat</code> class to send messages and render
-			tool call results as they stream in.
-		</p>
-		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} />
+		<H2 id="client-component" class="mb-6 text-3xl font-semibold">Client Component</H2>
+		<Paragraph class="mb-6 mt-0">
+			The client uses the <CodeChip>Chat</CodeChip> class to send messages and render tool call
+			results as they stream in.
+		</Paragraph>
+		<SingleFile
+			code={{
+				code: clientCode,
+				name: "+page.svelte",
+				lang: "svelte",
+			}}
+		/>
 	</section>
 
 	<footer>

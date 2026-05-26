@@ -1,170 +1,72 @@
-import Basic from "./examples/basic.svelte";
-import basicRaw from "./examples/basic.svelte?raw";
+import IndexTsRaw from "$lib/components/ai-elements/web-preview/index.ts?raw";
+import WebPreviewBodySvelteRaw from "$lib/components/ai-elements/web-preview/web-preview-body.svelte?raw";
+import WebPreviewConsoleSvelteRaw from "$lib/components/ai-elements/web-preview/web-preview-console.svelte?raw";
+import WebPreviewContextSvelteTsRaw from "$lib/components/ai-elements/web-preview/web-preview-context.svelte.ts?raw";
+import WebPreviewNavigationButtonSvelteRaw from "$lib/components/ai-elements/web-preview/web-preview-navigation-button.svelte?raw";
+import WebPreviewNavigationSvelteRaw from "$lib/components/ai-elements/web-preview/web-preview-navigation.svelte?raw";
+import WebPreviewUrlSvelteRaw from "$lib/components/ai-elements/web-preview/web-preview-url.svelte?raw";
+import WebPreviewSvelteRaw from "$lib/components/ai-elements/web-preview/web-preview.svelte?raw";
 
-import type { Example } from "$lib/structure/examples";
-import type { SEO } from "$lib/structure/seo";
-import type { ComponentDoc, ComponentMeta } from "$lib/structure/structure";
+import type {
+	ComponentDoc,
+	ComponentMeta,
+	InstallComponentDocs,
+} from "$lib/types/structure";
+import type { SEO } from "$lib/types/seo";
+import Preview from "./examples/preview.svelte";
+import PreviewCode from "./examples/preview.svelte?raw";
 
 export const meta: ComponentMeta = {
 	id: "web-preview",
 	title: "Web Preview",
-	description:
-		"The Web Preview component provides a flexible way to showcase the result of a generated UI component, along with its source code.",
+	description: "The Web Preview component provides a flexible way to showcase the result of a generated UI component, along with its source code.",
+	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Web Preview",
-	description:
-		"The Web Preview component provides a flexible way to showcase the result of a generated UI component, along with its source code.",
-	keywords: ["Svelte", "Web Preview", "UI preview", "Svelte AI Elements"],
+	description: "The Web Preview component provides a flexible way to showcase the result of a generated UI component, along with its source code.",
+	keywords: ["Svelte", "Web Preview", "Component"],
 };
 
-const examples: Example[] = [];
+const install_block: InstallComponentDocs = {
+	packages: [],
+	install_code: [
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true, },
+		{ name: "web-preview-body.svelte", code: WebPreviewBodySvelteRaw, lang: "svelte", },
+		{ name: "web-preview-console.svelte", code: WebPreviewConsoleSvelteRaw, lang: "svelte", },
+		{ name: "web-preview-context.svelte.ts", code: WebPreviewContextSvelteTsRaw, lang: "typescript", },
+		{ name: "web-preview-navigation-button.svelte", code: WebPreviewNavigationButtonSvelteRaw, lang: "svelte", },
+		{ name: "web-preview-navigation.svelte", code: WebPreviewNavigationSvelteRaw, lang: "svelte", },
+		{ name: "web-preview-url.svelte", code: WebPreviewUrlSvelteRaw, lang: "svelte", },
+		{ name: "web-preview.svelte", code: WebPreviewSvelteRaw, lang: "svelte", }
+	],
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── web-preview/
+				├── index.ts
+				├── web-preview-body.svelte
+				├── web-preview-console.svelte
+				├── web-preview-context.svelte.ts
+				├── web-preview-navigation-button.svelte
+				├── web-preview-navigation.svelte
+				├── web-preview-url.svelte
+				└── web-preview.svelte`,
+};
 
 export const data: ComponentDoc = {
 	...meta,
-	preview: Basic,
-	previewCode: {
-		filename: "basic.svelte",
-		filecode: basicRaw,
-		lang: "svelte",
-		isExpand: true,
+	preview: {
+		preview: Preview,
+		code: {
+			name: "preview.svelte",
+			code: PreviewCode,
+			lang: "svelte",
+		},
 	},
+	install_block,
 	seo,
-	examples,
-	props: [
-		{
-			name: "WebPreview",
-			props: [
-				{
-					name: "defaultUrl",
-					type: "string",
-					default: '""',
-					description: "Default URL to display in the preview",
-				},
-				{
-					name: "onUrlChange",
-					type: "(url: string) => void",
-					description: "Callback function called when the URL changes",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the container",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description:
-						"Child components, typically WebPreviewNavigation and WebPreviewBody",
-				},
-			],
-		},
-		{
-			name: "WebPreviewNavigation",
-			props: [
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the navigation bar",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description:
-						"Navigation content, typically WebPreviewUrl and WebPreviewNavigationButton",
-				},
-			],
-		},
-		{
-			name: "WebPreviewNavigationButton",
-			props: [
-				{
-					name: "onclick",
-					type: "(event: MouseEvent) => void",
-					description: "Click handler for the button",
-				},
-				{
-					name: "disabled",
-					type: "boolean",
-					description: "Whether the button is disabled",
-				},
-				{
-					name: "tooltip",
-					type: "string",
-					description: "Tooltip text to display on hover",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Button content, typically an icon",
-				},
-			],
-		},
-		{
-			name: "WebPreviewUrl",
-			props: [
-				{
-					name: "value",
-					type: "string",
-					description: "Current URL value and is bindable",
-				},
-				{
-					name: "onchange",
-					type: "(event: Event) => void",
-					description: "Change event handler",
-				},
-				{
-					name: "onkeydown",
-					type: "(event: KeyboardEvent) => void",
-					description: "Keydown event handler used to update the preview URL",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the input",
-				},
-			],
-		},
-		{
-			name: "WebPreviewBody",
-			props: [
-				{
-					name: "src",
-					type: "string",
-					description: "URL to display in the iframe and overrides the context URL",
-				},
-				{
-					name: "loading",
-					type: "Snippet",
-					description: "Loading state content to display",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the iframe",
-				},
-			],
-		},
-		{
-			name: "WebPreviewConsole",
-			props: [
-				{
-					name: "logs",
-					type: "LogEntry[]",
-					description: "Array of console log entries to display",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the console container",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Additional console content",
-				},
-			],
-		},
-	],
+	props: [],
 };

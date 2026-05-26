@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { CodeChip, H1, H2, Paragraph } from "$lib/components/docs/markdown";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/stream-object/llms.txt`;
 
@@ -121,20 +123,17 @@ export const POST: RequestHandler = async ({ request }) => {
 		title: "Stream Object - Svelte Cookbook",
 		description: "Stream structured JSON objects progressively with real-time updates.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/stream-object",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/stream-object",
 	}}
 />
 
-<article class="mx-auto px-4 py-12 md:px-6 md:py-16">
+<article class="mx-auto px-4 py-8 md:px-6 md:py-10">
 	<header class="mb-12">
-		<div class="mb-6 flex items-start justify-between gap-4">
-			<h1 class="text-4xl font-semibold tracking-tight">Stream Object</h1>
-			<CopyPageDropdown
-				class="shrink-0"
-				componentName="Stream Object"
-				{llmsTxtUrl}
-				type="cookbook"
-			/>
+		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
+			<H1 id="stream-object" class="text-3xl font-semibold tracking-tight sm:text-4xl">
+				Stream Object
+			</H1>
+			<CopyPageDropdown class="shrink-0" componentName="Stream Object" {llmsTxtUrl} />
 		</div>
 
 		<div class="mb-6 flex flex-wrap items-center gap-2">
@@ -143,44 +142,55 @@ export const POST: RequestHandler = async ({ request }) => {
 			<Badge variant="secondary">Real-time</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-lg leading-relaxed">
+		<Paragraph class="mt-0 text-base sm:text-lg">
 			Stream structured objects progressively as they're generated. Watch your UI update in
-			real-time as each field arrives—perfect for complex data that takes time to generate.
-		</p>
+			real-time as each field arrives - perfect for complex data that takes time to generate.
+		</Paragraph>
 	</header>
 
-	<section class="prose prose-neutral dark:prose-invert mb-12 max-w-none">
-		<h2 class="mb-4 text-2xl font-semibold">Streaming vs. Waiting</h2>
-		<p class="text-muted-foreground leading-relaxed">
-			With <code class="text-foreground">generateObject</code>, users wait for the complete
-			response. With <code class="text-foreground">streamObject</code>, they see data
-			appearing progressively—names first, then messages, creating a much more responsive
-			experience.
-		</p>
+	<section class="mb-12">
+		<H2 id="streaming-vs-waiting" class="mb-4 text-2xl font-semibold">Streaming vs. Waiting</H2>
+		<Paragraph class="mt-0">
+			With <CodeChip>generateObject</CodeChip>, users wait for the complete response. With
+			<CodeChip>streamObject</CodeChip>, they see data appearing progressively - names first,
+			then messages, creating a much more responsive experience.
+		</Paragraph>
 	</section>
 
 	<section class="mb-12">
-		<h2 class="mb-6 text-3xl font-semibold">Demo</h2>
+		<H2 id="demo" class="mb-6 text-3xl font-semibold">Demo</H2>
 		<Demo />
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Server Endpoint</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Use <code class="text-foreground">streamObject</code> instead of
-			<code class="text-foreground">generateObject</code>. The key difference is
-			<code class="text-foreground">toTextStreamResponse()</code> which streams chunks to the client.
-		</p>
-		<CodeNameBlock filename="+server.ts" lang="typescript" code={serverCode} />
+		<H2 id="server-endpoint" class="mb-6 text-3xl font-semibold">Server Endpoint</H2>
+		<Paragraph class="mb-6 mt-0">
+			Use <CodeChip>streamObject</CodeChip> instead of <CodeChip>generateObject</CodeChip>.
+			The key difference is <CodeChip>toTextStreamResponse()</CodeChip> which streams chunks to
+			the client.
+		</Paragraph>
+		<SingleFile
+			code={{
+				name: "+server.ts",
+				lang: "typescript",
+				code: serverCode,
+			}}
+		/>
 	</section>
 
 	<section class="mb-10">
-		<h2 class="mb-6 text-3xl font-semibold">Client Component</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Use the <code class="text-foreground">ReadableStream</code> API to manually read chunks and
-			parse partial JSON as it arrives. This gives you full control over the streaming experience.
-		</p>
-		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} />
+		<H2 id="client-component" class="mb-6 text-3xl font-semibold">Client Component</H2>
+		<Paragraph class="mb-6 mt-0">
+			Use the <CodeChip>ReadableStream</CodeChip> API to manually read chunks and parse partial
+			JSON as it arrives. This gives you full control over the streaming experience.
+		</Paragraph>
+		<SingleFile
+			code={{
+				name: "+page.svelte",
+				lang: "svelte",
+				code: clientCode,
+			}}
+		/>
 	</section>
 
 	<footer>

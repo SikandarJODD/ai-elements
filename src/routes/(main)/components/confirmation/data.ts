@@ -1,204 +1,88 @@
-import Basic from "./examples/basic.svelte";
-import basicRaw from "./examples/basic.svelte?raw";
-import ApprovalRequest from "./examples/approval-request.svelte";
-import approvalRequestRaw from "./examples/approval-request.svelte?raw";
-import Approved from "./examples/approved.svelte";
-import approvedRaw from "./examples/approved.svelte?raw";
-import Rejected from "./examples/rejected.svelte";
-import rejectedRaw from "./examples/rejected.svelte?raw";
+import ConfirmationAcceptedSvelteRaw from "$lib/components/ai-elements/confirmation/confirmation-accepted.svelte?raw";
+import ConfirmationActionSvelteRaw from "$lib/components/ai-elements/confirmation/confirmation-action.svelte?raw";
+import ConfirmationActionsSvelteRaw from "$lib/components/ai-elements/confirmation/confirmation-actions.svelte?raw";
+import ConfirmationContextSvelteTsRaw from "$lib/components/ai-elements/confirmation/confirmation-context.svelte.ts?raw";
+import ConfirmationRejectedSvelteRaw from "$lib/components/ai-elements/confirmation/confirmation-rejected.svelte?raw";
+import ConfirmationRequestSvelteRaw from "$lib/components/ai-elements/confirmation/confirmation-request.svelte?raw";
+import ConfirmationTitleSvelteRaw from "$lib/components/ai-elements/confirmation/confirmation-title.svelte?raw";
+import ConfirmationSvelteRaw from "$lib/components/ai-elements/confirmation/confirmation.svelte?raw";
+import IndexTsRaw from "$lib/components/ai-elements/confirmation/index.ts?raw";
 
-import type { Example } from "$lib/structure/examples";
-import type { SEO } from "$lib/structure/seo";
-import type { ComponentDoc, ComponentMeta } from "$lib/structure/structure";
+import type { ComponentDoc, ComponentMeta, InstallComponentDocs } from "$lib/types/structure";
+import type { Example } from "$lib/types/example";
+import type { SEO } from "$lib/types/seo";
+import Preview from "./examples/preview.svelte";
+import PreviewCode from "./examples/preview.svelte?raw";
+import DemoExample from "./examples/demo-example.svelte";
+import DemoExampleRaw from "./examples/demo-example.svelte?raw";
 
 export const meta: ComponentMeta = {
 	id: "confirmation",
 	title: "Confirmation",
 	description:
-		"A component for requesting user approval before executing sensitive AI actions. Displays different states for approval requests, accepted, and rejected actions.",
+		"An alert-based component for managing tool execution approval workflows with request, accept, and reject states.",
+	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Confirmation",
 	description:
-		"A component for requesting user approval before executing sensitive AI actions. Displays different states for approval requests, accepted, and rejected actions.",
-	keywords: ["Svelte", "Confirmation", "Approval", "Svelte AI Elements"],
+		"An alert-based component for managing tool execution approval workflows with request, accept, and reject states.",
+	keywords: ["Svelte", "Confirmation", "Component"],
 };
 
-const examples: Example[] = [
-	{
-		name: "Approval Request State",
-		preview: ApprovalRequest,
-		code: {
-			filename: "approval-request.svelte",
-			filecode: approvalRequestRaw,
+const install_block: InstallComponentDocs = {
+	packages: [],
+	install_code: [
+		{
+			name: "confirmation-accepted.svelte",
+			code: ConfirmationAcceptedSvelteRaw,
 			lang: "svelte",
 			isExpand: true,
 		},
-	},
-	{
-		name: "Approved State",
-		preview: Approved,
-		code: {
-			filename: "approved.svelte",
-			filecode: approvedRaw,
-			lang: "svelte",
-			isExpand: true,
+		{ name: "confirmation-action.svelte", code: ConfirmationActionSvelteRaw, lang: "svelte" },
+		{ name: "confirmation-actions.svelte", code: ConfirmationActionsSvelteRaw, lang: "svelte" },
+		{
+			name: "confirmation-context.svelte.ts",
+			code: ConfirmationContextSvelteTsRaw,
+			lang: "typescript",
 		},
-	},
-	{
-		name: "Rejected State",
-		preview: Rejected,
-		code: {
-			filename: "rejected.svelte",
-			filecode: rejectedRaw,
+		{
+			name: "confirmation-rejected.svelte",
+			code: ConfirmationRejectedSvelteRaw,
 			lang: "svelte",
-			isExpand: true,
 		},
-	},
-];
+		{ name: "confirmation-request.svelte", code: ConfirmationRequestSvelteRaw, lang: "svelte" },
+		{ name: "confirmation-title.svelte", code: ConfirmationTitleSvelteRaw, lang: "svelte" },
+		{ name: "confirmation.svelte", code: ConfirmationSvelteRaw, lang: "svelte" },
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript" },
+	],
+	folder_structure: `src/
+└── lib/
+    └── components/
+        └── ai-elements/
+            └── confirmation/
+                ├── confirmation-accepted.svelte
+                ├── confirmation-action.svelte
+                ├── confirmation-actions.svelte
+                ├── confirmation-context.svelte.ts
+                ├── confirmation-rejected.svelte
+                ├── confirmation-request.svelte
+                ├── confirmation-title.svelte
+                └── index.ts`,
+};
 
 export const data: ComponentDoc = {
 	...meta,
-	preview: Basic,
-	previewCode: {
-		filename: "basic.svelte",
-		filecode: basicRaw,
-		lang: "svelte",
-		isExpand: true,
+	preview: {
+		preview: Preview,
+		code: {
+			name: "preview.svelte",
+			code: PreviewCode,
+			lang: "svelte",
+		},
 	},
+	install_block,
 	seo,
-	examples,
-	props: [
-		{
-			name: "Confirmation",
-			props: [
-				{
-					name: "approval",
-					type: "ToolUIPartApproval",
-					description:
-						"Approval object containing id, approved status, and optional reason",
-				},
-				{
-					name: "state",
-					type: "ToolUIPartState",
-					description:
-						"Current state: 'approval-requested' | 'approval-responded' | 'output-denied' | 'output-available'",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the alert container",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Child components (ConfirmationTitle, ConfirmationRequest, etc.)",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLAttributes<HTMLDivElement>",
-					description: "All other div props are supported",
-				},
-			],
-		},
-		{
-			name: "ConfirmationTitle",
-			props: [
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the title",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Title content",
-				},
-			],
-		},
-		{
-			name: "ConfirmationRequest",
-			props: [
-				{
-					name: "children",
-					type: "Snippet",
-					description:
-						"Content to show when approval is requested (typically ConfirmationActions)",
-				},
-			],
-		},
-		{
-			name: "ConfirmationAccepted",
-			props: [
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Content to show when action is approved",
-				},
-			],
-		},
-		{
-			name: "ConfirmationRejected",
-			props: [
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Content to show when action is rejected",
-				},
-			],
-		},
-		{
-			name: "ConfirmationActions",
-			props: [
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the actions container",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Action buttons (ConfirmationAction components)",
-				},
-			],
-		},
-		{
-			name: "ConfirmationAction",
-			props: [
-				{
-					name: "variant",
-					type: "'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'",
-					default: "'default'",
-					description: "Button variant style",
-				},
-				{
-					name: "size",
-					type: "'default' | 'sm' | 'lg' | 'icon'",
-					default: "'sm'",
-					description: "Button size",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the button",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Button content",
-				},
-				{
-					name: "onclick",
-					type: "(e: MouseEvent) => void",
-					description: "Click handler function",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLButtonAttributes",
-					description: "All other button props are supported",
-				},
-			],
-		},
-	],
+	props: [],
 };

@@ -1,7 +1,7 @@
 import { tv, type VariantProps } from "tailwind-variants";
-import Root from "./Code.svelte";
-import Overflow from "./CodeOverflow.svelte";
-import CopyButton from "./CodeCopyButton.svelte";
+import Root from "./code.svelte";
+import Overflow from "./code-overflow.svelte";
+import CopyButton from "./code-copy-button.svelte";
 import type { CodeCopyButtonProps, CodeRootProps } from "./types";
 
 export const codeVariants = tv({

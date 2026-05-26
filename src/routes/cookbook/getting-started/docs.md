@@ -33,7 +33,7 @@ Get your API key at https://openrouter.ai/keys
 Create a shared config file for your AI setup:
 
 ```typescript
-// src/lib/config/ai-config.ts
+// src/lib/config/ai.ts
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { OPENROUTER_API_KEY } from "$env/static/private";
 
@@ -49,7 +49,7 @@ export const defaultModel = "z-ai/glm-4.5-air:free";
 ```typescript
 // src/routes/api/chat/+server.ts
 import { streamText, convertToModelMessages, type UIMessage } from "ai";
-import { openrouter, defaultModel } from "$lib/config/ai-config";
+import { openrouter, defaultModel } from "$lib/config/ai";
 
 export const POST = async ({ request }) => {
   const { messages }: { messages: UIMessage[] } = await request.json();

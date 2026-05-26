@@ -16,5 +16,8 @@
 		"**/.vercel/**": true,
 		"**/node_modules/**": true,
 		"**/build/**": true
+	},
+	"files.associations": {
+		"*.css": "tailwindcss"
 	}
 }

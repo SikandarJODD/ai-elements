@@ -1,14 +1,11 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
-	import {
-		CodeNameBlock,
-		CodeSpan,
-		Subheading,
-	} from "$lib/components/docs";
-	import * as Toc from "$lib/components/docs/toc";
+	import * as Toc from "$lib/components/docs/base/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
-	import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
+	// import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
 	import { PMCommand } from "$lib/components/ui/pm-command";
+	import { CodeSpan, SubHeading } from "$markdown";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let toc = new UseToc();
 </script>
@@ -76,7 +73,7 @@
 
 			<!-- Step 1: Installing Svelte -->
 			<section class="mb-12 sm:mb-16">
-				<Subheading>Step 1: Installing Svelte</Subheading>
+				<SubHeading>Step 1: Installing Svelte</SubHeading>
 				<p class="mb-6 text-sm leading-relaxed sm:text-base">
 					Create a new SvelteKit project with TypeScript and Tailwind CSS.
 				</p>
@@ -111,7 +108,7 @@
 
 			<!-- Step 2: Installing shadcn-svelte -->
 			<section class="mb-12 sm:mb-16">
-				<Subheading>Step 2: Installing shadcn-svelte</Subheading>
+				<SubHeading>Step 2: Installing shadcn-svelte</SubHeading>
 				<div class="mb-6">
 					<PMCommand command="execute" args={["shadcn-svelte@latest", "init"]} />
 				</div>
@@ -141,7 +138,7 @@ Configure the import alias for ui: › <span class="text-primary">$lib/component
 
 			<!-- Step 3: Configuring OpenRouter -->
 			<section class="mb-12 sm:mb-16">
-				<Subheading>Step 3: OpenRouter Setup</Subheading>
+				<SubHeading>Step 3: OpenRouter Setup</SubHeading>
 				<p class="mb-6 text-sm leading-relaxed sm:text-base">
 					OpenRouter provides free access to multiple AI models through a single API.
 					<a
@@ -153,18 +150,20 @@ Configure the import alias for ui: › <span class="text-primary">$lib/component
 				</p>
 
 				<div class="mb-6 space-y-4">
-					<CodeNameBlock
-						filename=".env.local"
-						lang="bash"
-						code={`OPENROUTER_API_KEY=your_api_key_here`}
-						hideLines={true}
+					<SingleFile
+						code={{
+							code: `OPENROUTER_API_KEY=your_api_key_here`,
+							lang: "bash",
+							hideLines: true,
+							name: ".env.local",
+						}}
 					/>
 				</div>
 			</section>
 
 			<!-- Step 4: AI SDK Integration -->
 			<section class="mb-12 sm:mb-16">
-				<Subheading>Step 4: AI SDK Integration</Subheading>
+				<SubHeading>Step 4: AI SDK Integration</SubHeading>
 				<p class="mb-6 text-sm leading-relaxed sm:text-base">
 					Install the Vercel AI SDK and OpenRouter provider to enable streaming AI
 					responses:
@@ -182,10 +181,9 @@ Configure the import alias for ui: › <span class="text-primary">$lib/component
 				</p>
 
 				<div class="mb-6">
-					<CodeNameBlock
-						filename="src/lib/ai-config.ts"
-						lang="typescript"
-						code={`import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+					<SingleFile
+						code={{
+							code: `import { createOpenRouter } from '@openrouter/ai-sdk-provider';
 import { OPENROUTER_API_KEY } from '$env/static/private';
 
 export const openrouter = createOpenRouter({
@@ -193,14 +191,18 @@ export const openrouter = createOpenRouter({
 });
 
 // Choose your preferred free model from OpenRouter : https://openrouter.ai/models
-export const defaultModel = 'z-ai/glm-4.5-air:free';`}
+export const defaultModel = 'z-ai/glm-4.5-air:free';`,
+							lang: "typescript",
+							name: "src/lib/config/ai.ts",
+							hideLines: true,
+						}}
 					/>
 				</div>
 			</section>
 
 			<!-- Step 5: Adding Components -->
 			<section class="mb-12 sm:mb-16">
-				<Subheading>Step 5: Add Components</Subheading>
+				<SubHeading>Step 5: Add Components</SubHeading>
 				<p class="text-muted-foreground mb-6 text-sm leading-relaxed sm:text-base">
 					Svelte AI Elements provides pre-built components for common AI patterns.
 					<br />
@@ -219,7 +221,7 @@ export const defaultModel = 'z-ai/glm-4.5-air:free';`}
 				</div>
 			</section>
 
-			<AiElementsPrevNext currentSlug="basic-setup" />
+			<!-- <AiElementsPrevNext currentSlug="basic-setup" /> -->
 		</article>
 
 		<!-- Table of Contents Sidebar -->

@@ -2,13 +2,14 @@
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
 	import * as Item from "$lib/components/ui/item/index.js";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
 
 	import GenerateTextRaw from "./demo/demo.svelte?raw";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/generate-text/llms.txt`;
 
@@ -49,21 +50,22 @@ export const POST: RequestHandler = async ({ request }) => {
 		title: "Generate Text - Svelte Cookbook",
 		description: "Learn how to generate text using AI models with simple prompts in SvelteKit.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/generate-text",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/generate-text",
 	}}
 />
 
 <!-- Blog-style layout -->
-<article class="mx-auto px-4 py-12 md:px-6 md:py-16">
+<article class="mx-auto px-4 py-8 md:px-6 md:py-10">
 	<!-- Header -->
 	<header class="mb-12">
-		<div class="mb-6 flex items-start justify-between gap-4">
-			<h1 class="text-4xl font-semibold tracking-tight md:text-4xl">Generate Text</h1>
+		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
+			<h1 id="generate-text" class="text-3xl font-semibold tracking-tight sm:text-4xl">
+				Generate Text
+			</h1>
 			<CopyPageDropdown
 				class="shrink-0"
 				componentName="Generate Text"
 				{llmsTxtUrl}
-				type="cookbook"
 			/>
 		</div>
 
@@ -73,13 +75,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			<Badge variant="secondary" class="text-xs">Text Generation</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-lg leading-relaxed md:text-xl">
-			Learn how to generate text using Vercel AI SDK + OpenRouter in Sveltekit.
+		<p class="text-muted-foreground text-base leading-relaxed sm:text-lg md:text-xl">
+			Learn how to generate text using Vercel AI SDK and OpenRouter.
 		</p>
 	</header>
 	<!-- Demo Section -->
 	<section class="mb-12">
-		<h2 class="mb-2 text-3xl font-semibold">Demo</h2>
+		<h2 id="demo" class="mb-2 text-3xl font-semibold">Demo</h2>
 		<div class="overflow-hidden">
 			<div class="w-full overflow-auto rounded-lg border p-2">
 				<Demo />
@@ -89,7 +91,9 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	<!-- Client Section -->
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Step 1: Create Prompt UI</h2>
+		<h2 id="create-prompt-ui" class="mb-6 text-3xl font-semibold">
+			Step 1: Create Prompt UI
+		</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
 			Let's start by building a simple Svelte component that allows users to input a prompt
 			and submit it. When the user submits, we'll send the prompt to our SvelteKit API route
@@ -97,18 +101,25 @@ export const POST: RequestHandler = async ({ request }) => {
 		</p>
 
 		<div class="mb-4">
-			<CodeNameBlock
-				filename="+page.svelte"
-				lang="svelte"
-				code={clientCode}
-				highlight={[4, [14, 20]]}
+			<SingleFile
+				code={{
+					name: "+page.svelte",
+					lang: "svelte",
+					code: clientCode,
+					highlight: [
+						4,
+						[14, 20],
+					],
+				}}
 			/>
 		</div>
 	</section>
 
 	<!-- AI Config Setup Section -->
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Step 2: AI Config Setup</h2>
+		<h2 id="ai-config-setup" class="mb-6 text-3xl font-semibold">
+			Step 2: AI Config Setup
+		</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
 			Set up a shared AI configuration first so your provider and model settings live in one
 			place. That keeps your SvelteKit project easier to maintain and makes it simple to
@@ -116,7 +127,13 @@ export const POST: RequestHandler = async ({ request }) => {
 		</p>
 
 		<div class="mb-4">
-			<CodeNameBlock filename="src/lib/config/ai.ts" lang="typescript" code={aiConfigCode} />
+			<SingleFile
+				code={{
+					name: "src/lib/config/ai.ts",
+					lang: "typescript",
+					code: aiConfigCode,
+				}}
+			/>
 		</div>
 
 		<Item.Root variant="muted" size="sm">
@@ -145,7 +162,9 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	<!-- Server Section -->
 	<section class="mb-10">
-		<h2 class="mb-6 text-3xl font-semibold">Step 3: Create API Route</h2>
+		<h2 id="create-api-route" class="mb-6 text-3xl font-semibold">
+			Step 3: Create API Route
+		</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
 			Create a SvelteKit API route to handle the request and generate text with the AI SDK.
 			This route receives the submitted messages, runs the model, and returns the generated
@@ -153,10 +172,12 @@ export const POST: RequestHandler = async ({ request }) => {
 		</p>
 
 		<div class="mb-4">
-			<CodeNameBlock
-				filename="src/routes/api/cookbook/generate-text/+server.ts"
-				lang="typescript"
-				code={serverCode}
+			<SingleFile
+				code={{
+					name: "src/routes/api/cookbook/generate-text/+server.ts",
+					lang: "typescript",
+					code: serverCode,
+				}}
 			/>
 		</div>
 	</section>

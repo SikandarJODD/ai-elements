@@ -1,18 +1,12 @@
 <script lang="ts">
 	import { MetaTags } from "svelte-meta-tags";
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
-	import {
-		CodeNameBlock,
-		CodeSpan,
-		AiInstallCommand,
-		Installation,
-		Subheading,
-		BasicSetupPrereq,
-	} from "$lib/components/docs";
-	import * as Toc from "$lib/components/docs/toc";
+	import * as Toc from "$lib/components/docs/base/toc";
 	import { UseToc } from "$lib/hooks/use-toc.svelte";
-	import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
+	// import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
 	import { PMCommand } from "$lib/components/ui/pm-command";
+	import { CodeSpan, SubHeading } from "$markdown";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let toc = new UseToc();
 </script>
@@ -76,7 +70,7 @@
 				</h1>
 			</header>
 			<section class="mb-10 sm:mb-12">
-				<Subheading>Step 1: Install Required Components</Subheading>
+				<SubHeading>Step 1: Install Required Components</SubHeading>
 				<p class="mb-6 text-sm leading-relaxed sm:text-base">
 					Let's install message and prompt input components.
 				</p>
@@ -102,16 +96,15 @@
 			</section>
 
 			<section class="mb-10 sm:mb-12">
-				<Subheading>Step 2: Create Server Endpoint</Subheading>
+				<SubHeading>Step 2: Create Server Endpoint</SubHeading>
 				<p class="mb-6 text-sm leading-relaxed sm:text-base">
 					Create the API endpoint in <CodeSpan>src/routes/api/chat/+server.ts</CodeSpan>
 				</p>
 
 				<div class="mb-6">
-					<CodeNameBlock
-						filename="+server.ts"
-						lang="typescript"
-						code={`import { streamText, type UIMessage, convertToModelMessages } from 'ai';
+					<SingleFile
+						code={{
+							code: `import { streamText, type UIMessage, convertToModelMessages } from 'ai';
 import { openrouter, defaultModel } from '$lib/ai/config';
 import type { RequestHandler } from './$types';
 
@@ -124,7 +117,11 @@ export const POST: RequestHandler = async ({ request }) => {
   });
 
   return result.toUIMessageStreamResponse();
-};`}
+};`,
+							lang: "typescript",
+							name: "src/routes/api/chat/+server.ts",
+							hideLines: true,
+						}}
 					/>
 				</div>
 
@@ -135,15 +132,14 @@ export const POST: RequestHandler = async ({ request }) => {
 			</section>
 
 			<section class="mb-10 sm:mb-12">
-				<Subheading>Step 3: Create Frontend Chat Interface</Subheading>
+				<SubHeading>Step 3: Create Frontend Chat Interface</SubHeading>
 				<p class="mb-6 text-sm leading-relaxed sm:text-base">
 					Build the chat interface inside <CodeSpan>src/routes/+page.svelte</CodeSpan>
 					using AI SDK's Svelte:
 				</p>
-				<CodeNameBlock
-					filename="+page.svelte"
-					lang="svelte"
-					code={`\<script lang="ts"\>
+				<SingleFile
+					code={{
+						code: `\<script lang="ts"\>
   import { Chat } from "@ai-sdk/svelte";
   import * as Message from "$lib/components/ai-elements/message";
 	import * as PromptInput from "$lib/components/ai-elements/prompt-input";
@@ -183,7 +179,11 @@ export const POST: RequestHandler = async ({ request }) => {
 		{/each}
 	</div>
 </div>
-`}
+`,
+						lang: "svelte",
+						name: "src/routes/+page.svelte",
+						hideLines: true,
+					}}
 				/>
 
 				<p class="text-muted-foreground mt-6 leading-relaxed">
@@ -202,7 +202,7 @@ export const POST: RequestHandler = async ({ request }) => {
 					>.
 				</p>
 			</section>
-			<AiElementsPrevNext currentSlug="svelte-5-ai-sdk-integration" />
+			<!-- <AiElementsPrevNext currentSlug="svelte-5-ai-sdk-integration" /> -->
 		</article>
 
 		<!-- Table of Contents -->

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { HTMLAttributes } from "svelte/elements";
 	import { getEmblaContext } from "./context.js";
-	import { cn, type WithElementRef } from "$lib/utils/utils";
+	import { cn, type WithElementRef } from "$lib/utils.js";
 
 	let {
 		ref = $bindable(null),
@@ -20,7 +20,7 @@
 	aria-roledescription="slide"
 	class={cn(
 		"min-w-0 shrink-0 grow-0 basis-full",
-		emblaCtx.orientation === "horizontal" ? "pl-4" : "pt-4",
+		emblaCtx.orientation === "horizontal" ? "ps-4" : "pt-4",
 		className
 	)}
 	data-embla-slide=""

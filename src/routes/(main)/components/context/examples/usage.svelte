@@ -4,6 +4,7 @@
 	import * as Context from "$lib/components/ai-elements/context/index.js";
 	import type { PromptInputMessage } from "$lib/components/ai-elements/prompt-input/context/types";
 	import { Chat } from "@ai-sdk/svelte";
+	import { DefaultChatTransport } from "ai";
 
 	type TokenUsageMetadata = {
 		inputTokens?: number;
@@ -29,6 +30,9 @@
 			};
 			// console.log("Chat finished. Token usage:", tokensData);
 		},
+		transport: new DefaultChatTransport({
+			api: "/api/context",
+		}),
 	});
 
 	let handleSubmit = (content: PromptInputMessage) => {

@@ -1,22 +1,22 @@
 <script lang="ts">
 	import { ScrollArea as ScrollAreaPrimitive } from "bits-ui";
 	import { Scrollbar } from "./index.js";
-	import { cn, type WithoutChild } from "$lib/utils/utils";
+	import { cn, type WithoutChild } from "$lib/utils.js";
 
 	let {
 		ref = $bindable(null),
+		viewportRef = $bindable(null),
 		class: className,
 		orientation = "vertical",
 		scrollbarXClasses = "",
 		scrollbarYClasses = "",
-		fade = false,
 		children,
 		...restProps
 	}: WithoutChild<ScrollAreaPrimitive.RootProps> & {
 		orientation?: "vertical" | "horizontal" | "both" | undefined;
 		scrollbarXClasses?: string | undefined;
 		scrollbarYClasses?: string | undefined;
-		fade?: boolean;
+		viewportRef?: HTMLElement | null;
 	} = $props();
 </script>
 
@@ -27,15 +27,9 @@
 	{...restProps}
 >
 	<ScrollAreaPrimitive.Viewport
+		bind:ref={viewportRef}
 		data-slot="scroll-area-viewport"
-		data-orientation={orientation}
-		class={cn(
-			"ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 size-full rounded-[inherit] transition-[color,box-shadow] focus-visible:ring-4 focus-visible:outline-1",
-			fade &&
-				"data-[orientation=horizontal]:scroll-fade-effect-x data-[orientation=vertical]:scroll-fade-effect-y data-[orientation=horizontal]:overflow-x-auto data-[orientation=vertical]:overflow-y-auto",
-			fade &&
-				"data-[orientation=both]:scroll-fade-effect-x data-[orientation=both]:scroll-fade-effect-y data-[orientation=both]:overflow-auto"
-		)}
+		class="cn-scroll-area-viewport focus-visible:ring-ring/50 size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1"
 	>
 		{@render children?.()}
 	</ScrollAreaPrimitive.Viewport>

@@ -1,118 +1,44 @@
 # Response
 
-> A component that renders Markdown responses from large language models with syntax highlighting and streaming support.
+TODO: Response.
 
 ## Installation
 
+<Tabs items={["CLI", "Manual"]}>
+<Tab value="CLI">
+
+### Using CLI
+
 ```bash
-npx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app//r/response.json
+npx shadcn-svelte@latest add https://sv-animations.vercel.app/r/response.json
 ```
 
-## CSS Configuration
+</Tab>
+<Tab value="Manual">
 
-Add the following imports to your `app.css` file to include Tailwind CSS and Streamdown styles:
+### Manual Installation
 
-```css
-@import "tailwindcss";
-/* Add Streamdown styles to your Tailwind build */
-@source "../node_modules/streamdown-svelte/dist/**/*.{js,svelte,ts}";
-```
+Copy the component source files into your project and update the example files with real usage.
+
+</Tab>
+</Tabs>
 
 ## Usage
 
-### Basic Example
-
 ```svelte
 <script lang="ts">
   import { Response } from "$lib/components/ai-elements/response";
-
-  const content = `# Hello World
-
-This is a **markdown** response with:
-- Lists
-- Code blocks
-- And more!
-
-\`\`\`javascript
-console.log("Hello, world!");
-\`\`\`
-`;
 </script>
 
-<Response {content} />
+<Response />
 ```
 
-### With Streaming
+## Props
 
-```svelte
-<script lang="ts">
-  import { Response } from "$lib/components/ai-elements/response";
-  import { Chat } from "@ai-sdk/svelte";
-
-  const chat = new Chat();
-</script>
-
-<div>
-  {#each chat.messages as message}
-    {#if message.role === "assistant"}
-      <Response content={message.content} />
-    {/if}
-  {/each}
-</div>
-```
-
-### Custom Theme
-
-```svelte
-<script lang="ts">
-  import { Response } from "$lib/components/ai-elements/response";
-
-  const content = "# Custom Theme\n\nThis uses a custom base theme.";
-</script>
-
-<Response {content} baseTheme="github" />
-```
-
-### With Custom Styling
-
-```svelte
-<script lang="ts">
-  import { Response } from "$lib/components/ai-elements/response";
-
-  const content = "# Styled Response\n\nThis has custom styling applied.";
-</script>
-
-<Response {content} class="rounded-lg border p-4" />
-```
-
-## Component API
-
-### Response
-
-| Prop         | Type            | Default  | Description                                                                  |
-| ------------ | --------------- | -------- | ---------------------------------------------------------------------------- |
-| content      | string          | -        | Markdown content to render                                                   |
-| class        | string          | -        | Additional CSS classes to apply to the response container                    |
-| shikiTheme   | string          | -        | Shiki theme for code syntax highlighting (auto-set based on dark/light mode) |
-| baseTheme    | string          | 'shadcn' | Base theme for markdown styling                                              |
-| ...restProps | StreamdownProps | -        | All other Streamdown component props are supported                           |
+Document the Response props here.
 
 ## Features
 
-- **Markdown rendering**: Full markdown support with syntax highlighting
-- **Streaming support**: Works seamlessly with streaming AI responses
-- **Code highlighting**: Automatic syntax highlighting for code blocks using Shiki
-- **Theme support**: Automatic dark/light mode theme switching
-- **Customizable**: Easy to style and extend with custom classes
-- **Built on Streamdown**: Leverages the powerful streamdown-svelte library
-
-## Dependencies
-
-This component requires:
-
-- `streamdown-svelte` - For markdown rendering and streaming support
-- `shiki` - For syntax highlighting in code blocks
-
----
-
-For more information, visit: https://svelte-ai-elements.vercel.app/components/response
+- Replace this placeholder bullet with a real Response feature.
+- Add one or two implementation details that matter to consumers.
+- Include usage constraints or accessibility notes if they apply.

@@ -1,18 +1,18 @@
 <script lang="ts">
-	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
-	import { ComponentPageDocs } from "$lib/components/docs";
+	import ComponentDocPage from "$lib/components/docs/base/main/component-doc-page.svelte";
 	import { data } from "./data";
-
-	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/web-preview/llms.txt`;
 </script>
 
-<ComponentPageDocs
-	{data}
-	{llmsTxtUrl}
-	intro="The Web Preview component provides a flexible way to showcase the result of a generated UI component, along with its source code."
-	installation={{
-		specifier: `${PUBLIC_WEBSITE_URL}/r/web-preview.json`,
-		blockname: "web-preview",
-		isJsrepo: true,
-	}}
+<ComponentDocPage
+	id={data.id}
+	title={data.title}
+	description={data.description}
+	seo={data.seo}
+	preview={data.preview}
+	installCodeBlocks={data.install_block?.install_code}
+	installPackages={data.install_block?.packages}
+	installFolderStructure={data.install_block?.folder_structure}
+	installTailwindCode={data.install_block?.tailwind}
+	examples={data.examples}
+	propsTables={data.props}
 />

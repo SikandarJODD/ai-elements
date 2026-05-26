@@ -1,4 +1,4 @@
-import Loader from "./Loader.svelte";
-import LoaderIcon from "./LoaderIcon.svelte";
+import Loader from "./loader.svelte";
+import LoaderIcon from "./loader-icon.svelte";
 
 export { Loader, LoaderIcon };

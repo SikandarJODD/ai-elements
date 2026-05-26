@@ -1,6 +1,6 @@
-import Checkpoint from "./Checkpoint.svelte";
-import CheckpointIcon from "./CheckpointIcon.svelte";
-import CheckpointTrigger from "./CheckpointTrigger.svelte";
+import Checkpoint from "./checkpoint.svelte";
+import CheckpointIcon from "./checkpoint-icon.svelte";
+import CheckpointTrigger from "./checkpoint-trigger.svelte";
 
 export {
 	Checkpoint,

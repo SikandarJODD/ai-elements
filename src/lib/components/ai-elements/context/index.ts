@@ -1,15 +1,15 @@
-import Context from "./Context.svelte";
-import ContextIcon from "./ContextIcon.svelte";
-import ContextTrigger from "./ContextTrigger.svelte";
-import ContextContent from "./ContextContent.svelte";
-import ContextContentHeader from "./ContextContentHeader.svelte";
-import ContextContentBody from "./ContextContentBody.svelte";
-import ContextContentFooter from "./ContextContentFooter.svelte";
-import ContextInputUsage from "./ContextInputUsage.svelte";
-import ContextOutputUsage from "./ContextOutputUsage.svelte";
-import ContextReasoningUsage from "./ContextReasoningUsage.svelte";
-import ContextCacheUsage from "./ContextCacheUsage.svelte";
-import TokensWithCost from "./TokensWithCost.svelte";
+import Context from "./context.svelte";
+import ContextIcon from "./context-icon.svelte";
+import ContextTrigger from "./context-trigger.svelte";
+import ContextContent from "./context-content.svelte";
+import ContextContentHeader from "./context-content-header.svelte";
+import ContextContentBody from "./context-content-body.svelte";
+import ContextContentFooter from "./context-content-footer.svelte";
+import ContextInputUsage from "./context-input-usage.svelte";
+import ContextOutputUsage from "./context-output-usage.svelte";
+import ContextReasoningUsage from "./context-reasoning-usage.svelte";
+import ContextCacheUsage from "./context-cache-usage.svelte";
+import TokensWithCost from "./tokens-with-cost.svelte";
 
 export * from "./context-context.svelte.js";
 

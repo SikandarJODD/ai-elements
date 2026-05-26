@@ -5,7 +5,7 @@
 		type EmblaContext,
 		setEmblaContext,
 	} from "./context.js";
-	import { cn, type WithElementRef } from "$lib/utils/utils";
+	import { cn, type WithElementRef } from "$lib/utils.js";
 
 	let {
 		ref = $bindable(null),
@@ -18,6 +18,7 @@
 		...restProps
 	}: WithElementRef<CarouselProps> = $props();
 
+	// svelte-ignore state_referenced_locally
 	let carouselState = $state<EmblaContext>({
 		api: undefined,
 		scrollPrev,

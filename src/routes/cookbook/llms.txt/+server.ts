@@ -1,24 +1,33 @@
 import type { RequestHandler } from "./$types";
-import { recipes } from "$lib/config/cookbook-data";
+import { recipes } from "$lib/config/cookbook";
+
+const cookbookBaseUrl = "https://svelte-ai-elements.vercel.app/cookbook";
+
+const allRecipes = [
+	...recipes,
+	{
+		name: "Generate Image",
+		slug: "generate-image",
+		description: "Generate images from text prompts using AI image generation models",
+		tags: ["images", "generation", "tools"],
+	},
+];
 
 export const GET: RequestHandler = async () => {
+	const recipeList = allRecipes
+		.map(
+			(recipe) =>
+				`- ${recipe.name}: ${recipe.description}\n  Link: ${cookbookBaseUrl}/${recipe.slug}`,
+		)
+		.join("\n\n");
+
 	let content = `# Svelte Cookbook - AI SDK Recipes
 
 A collection of practical recipes for building AI-powered applications with SvelteKit and the Vercel AI SDK.
 
 ## Recipes
 
-${recipes
-	.map(
-		(r) => `### ${r.name}
-- **Slug**: ${r.slug}
-- **Description**: ${r.description}
-- **Tags**: ${r.tags.join(", ")}
-- **Documentation**: /cookbook/${r.slug}
-- **llms.txt**: /cookbook/${r.slug}/llms.txt
-`
-	)
-	.join("\n")}
+${recipeList}
 
 ## Resources
 

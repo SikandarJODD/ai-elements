@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { CodeChip, H1, H2, Paragraph } from "$lib/components/docs/markdown";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/render-visual-interface/llms.txt`;
 
@@ -151,10 +153,10 @@ export const POST: RequestHandler = async ({ request }) => {
           {:else if part.type === "tool-getWeatherInformation"}
             {#if part.state === "output-available"}
               <div class="weather-card">
-                <div class="temp">{part.output.value}°</div>
+                <div class="temp">{part.output.value}Â°</div>
                 <div class="forecast">
                   {#each part.output.weeklyForecast as day}
-                    <span>{day.day}: {day.value}°</span>
+                    <span>{day.day}: {day.value}Â°</span>
                   {/each}
                 </div>
               </div>
@@ -178,7 +180,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
           {:else if part.type === "tool-getLocation"}
             <span class="text-muted-foreground text-xs">
-              {part.state === "output-available" ? \`📍 \${part.output}\` : "Getting location..."}
+              {part.state === "output-available" ? \`ðŸ“ \${part.output}\` : "Getting location..."}
             </span>
           {/if}
         {/each}
@@ -195,19 +197,23 @@ export const POST: RequestHandler = async ({ request }) => {
 		title: "Render Visual Interface - Svelte Cookbook",
 		description: "Render custom UI components for different tool outputs.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/render-visual-interface",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/render-visual-interface",
 	}}
 />
 
-<article class="mx-auto px-4 py-12 md:px-6 md:py-16">
+<article class="mx-auto px-4 py-8 md:px-6 md:py-10">
 	<header class="mb-12">
-		<div class="mb-6 flex items-start justify-between gap-4">
-			<h1 class="text-4xl font-semibold tracking-tight">Render Visual Interface</h1>
+		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
+			<H1
+				id="render-visual-interface"
+				class="text-3xl font-semibold tracking-tight sm:text-4xl"
+			>
+				Render Visual Interface
+			</H1>
 			<CopyPageDropdown
 				class="shrink-0"
 				componentName="Render Visual Interface"
 				{llmsTxtUrl}
-				type="cookbook"
 			/>
 		</div>
 
@@ -217,57 +223,74 @@ export const POST: RequestHandler = async ({ request }) => {
 			<Badge variant="secondary">Tools</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-lg leading-relaxed">
+		<Paragraph class="mt-0 text-base sm:text-lg">
 			Render rich UI components based on tool results. Create weather cards, confirmation
-			dialogs, charts, or any custom interface elements—not just text.
-		</p>
+			dialogs, charts, or any custom interface elements - not just text.
+		</Paragraph>
 	</header>
 
-	<section class="prose prose-neutral dark:prose-invert mb-12 max-w-none">
-		<h2 class="mb-4 text-2xl font-semibold">Beyond Text Responses</h2>
-		<p class="text-muted-foreground leading-relaxed">
+	<section class="mb-12">
+		<H2 id="beyond-text-responses" class="mb-4 text-2xl font-semibold">
+			Beyond Text Responses
+		</H2>
+		<Paragraph class="mt-0">
 			When the AI calls a weather tool, instead of showing raw JSON, render a beautiful
 			weather card. For confirmations, show interactive buttons. Each tool can have its own
 			custom UI.
-		</p>
+		</Paragraph>
 	</section>
 
 	<section class="mb-12">
-		<h2 class="mb-6 text-3xl font-semibold">Demo</h2>
-		<p class="text-muted-foreground mb-4 text-sm">Ask about weather to see the visual card!</p>
+		<H2 id="demo" class="mb-6 text-3xl font-semibold">Demo</H2>
+		<Paragraph class="mb-4 mt-0 text-sm">Ask about weather to see the visual card!</Paragraph>
 		<Demo />
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Define Tools</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Create tools using <code class="text-foreground">tool()</code> from AI SDK. Server-side
-			tools have an <code class="text-foreground">execute</code> function, while client-side tools
-			only define schemas—the client handles the execution.
-		</p>
-		<CodeNameBlock filename="tools.ts" lang="typescript" code={toolsCode} />
+		<H2 id="define-tools" class="mb-6 text-3xl font-semibold">Define Tools</H2>
+		<Paragraph class="mb-6 mt-0">
+			Create tools using <CodeChip>tool()</CodeChip> from AI SDK. Server-side tools have an
+			<CodeChip>execute</CodeChip> function, while client-side tools only define schemas - the client
+			handles the execution.
+		</Paragraph>
+		<SingleFile
+			code={{
+				name: "tools.ts",
+				lang: "typescript",
+				code: toolsCode,
+			}}
+		/>
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Server Endpoint</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Import tools and pass them to <code class="text-foreground">streamText</code>. Export
-			types for client-side type safety using
-			<code class="text-foreground">InferUITools</code>.
-		</p>
-		<CodeNameBlock filename="+server.ts" lang="typescript" code={serverCode} />
+		<H2 id="server-endpoint" class="mb-6 text-3xl font-semibold">Server Endpoint</H2>
+		<Paragraph class="mb-6 mt-0">
+			Import tools and pass them to <CodeChip>streamText</CodeChip>. Export types for
+			client-side type safety using <CodeChip>InferUITools</CodeChip>.
+		</Paragraph>
+		<SingleFile
+			code={{
+				name: "src/routes/api/chat/+server.ts",
+				lang: "typescript",
+				code: serverCode,
+			}}
+		/>
 	</section>
 
 	<section class="mb-10">
-		<h2 class="mb-6 text-3xl font-semibold">Client Component</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Use <code class="text-foreground">onToolCall</code> to handle client-side tools, and
-			render different UI for each tool type based on
-			<code class="text-foreground">part.type</code>
-			and
-			<code class="text-foreground">part.state</code>.
-		</p>
-		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} />
+		<H2 id="client-component" class="mb-6 text-3xl font-semibold">Client Component</H2>
+		<Paragraph class="mb-6 mt-0">
+			Use <CodeChip>onToolCall</CodeChip> to handle client-side tools, and render different UI for
+			each tool type based on <CodeChip>part.type</CodeChip> and
+			<CodeChip>part.state</CodeChip>.
+		</Paragraph>
+		<SingleFile
+			code={{
+				name: "+page.svelte",
+				lang: "svelte",
+				code: clientCode,
+			}}
+		/>
 	</section>
 
 	<footer>

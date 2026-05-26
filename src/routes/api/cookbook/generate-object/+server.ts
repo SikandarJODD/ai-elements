@@ -1,4 +1,4 @@
-import { openrouter } from "$lib/config/ai-config";
+import { openrouter } from "$lib/config/ai";
 import { generateText, Output } from "ai";
 import type { RequestHandler } from "./$types";
 import { notificationSchema } from "$lib/schema/notification-schema";

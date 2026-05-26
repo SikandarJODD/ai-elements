@@ -1,18 +1,18 @@
-import Confirmation from "./Confirmation.svelte";
-import ConfirmationTitle from "./ConfirmationTitle.svelte";
-import ConfirmationRequest from "./ConfirmationRequest.svelte";
-import ConfirmationAccepted from "./ConfirmationAccepted.svelte";
-import ConfirmationRejected from "./ConfirmationRejected.svelte";
-import ConfirmationActions from "./ConfirmationActions.svelte";
-import ConfirmationAction from "./ConfirmationAction.svelte";
+import Confirmation from "./confirmation.svelte";
+import ConfirmationTitle from "./confirmation-title.svelte";
+import ConfirmationRequest from "./confirmation-request.svelte";
+import ConfirmationAccepted from "./confirmation-accepted.svelte";
+import ConfirmationRejected from "./confirmation-rejected.svelte";
+import ConfirmationActions from "./confirmation-actions.svelte";
+import ConfirmationAction from "./confirmation-action.svelte";
 
-import { type ConfirmationProps } from "./Confirmation.svelte";
-import { type ConfirmationTitleProps } from "./ConfirmationTitle.svelte";
-import { type ConfirmationRequestProps } from "./ConfirmationRequest.svelte";
-import { type ConfirmationAcceptedProps } from "./ConfirmationAccepted.svelte";
-import { type ConfirmationRejectedProps } from "./ConfirmationRejected.svelte";
-import { type ConfirmationActionsProps } from "./ConfirmationActions.svelte";
-import { type ConfirmationActionProps } from "./ConfirmationAction.svelte";
+import { type ConfirmationProps } from "./confirmation.svelte";
+import { type ConfirmationTitleProps } from "./confirmation-title.svelte";
+import { type ConfirmationRequestProps } from "./confirmation-request.svelte";
+import { type ConfirmationAcceptedProps } from "./confirmation-accepted.svelte";
+import { type ConfirmationRejectedProps } from "./confirmation-rejected.svelte";
+import { type ConfirmationActionsProps } from "./confirmation-actions.svelte";
+import { type ConfirmationActionProps } from "./confirmation-action.svelte";
 
 export type {
 	ToolUIPartApproval,

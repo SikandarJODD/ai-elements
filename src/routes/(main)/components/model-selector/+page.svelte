@@ -1,18 +1,18 @@
 <script lang="ts">
-	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
-	import { ComponentPageDocs } from "$lib/components/docs";
+	import ComponentDocPage from "$lib/components/docs/base/main/component-doc-page.svelte";
 	import { data } from "./data";
-
-	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/model-selector/llms.txt`;
 </script>
 
-<ComponentPageDocs
-	{data}
-	{llmsTxtUrl}
-	intro="A searchable command palette for selecting AI models in your chat interface."
-	installation={{
-		specifier: `${PUBLIC_WEBSITE_URL}/r/model-selector.json`,
-		blockname: "model-selector",
-		isJsrepo: true,
-	}}
+<ComponentDocPage
+	id={data.id}
+	title={data.title}
+	description={data.description}
+	seo={data.seo}
+	preview={data.preview}
+	installCodeBlocks={data.install_block?.install_code}
+	installPackages={data.install_block?.packages}
+	installFolderStructure={data.install_block?.folder_structure}
+	installTailwindCode={data.install_block?.tailwind}
+	examples={data.examples}
+	propsTables={data.props}
 />

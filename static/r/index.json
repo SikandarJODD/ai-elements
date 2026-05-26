@@ -1,774 +1,345 @@
 [
 	{
-		"name": "action",
-		"title": "Action Buttons",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Actions component provides a flexible row of action buttons for AI responses with common actions like retry, like, dislike, copy, and share.",
-		"registryDependencies": [
-			"button",
-			"tooltip"
-		],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"actions",
-				"buttons",
-				"ai-response",
-				"interactive",
-				"feedback"
-			],
-			"category": "AI Response",
-			"documentation": "https://svelte-ai-elements.vercel.app//components/actions",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "beginner",
-			"updated": "2025-09-24",
-			"featured": true
-		},
-		"relativeUrl": "action.json"
-	},
-	{
-		"name": "artifact",
-		"title": "Artifact",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Artifact component provides a structured container for displaying generated content like code, documents, or other outputs with built-in header actions.",
-		"registryDependencies": [
-			"button",
-			"tooltip"
-		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
-		"relativeUrl": "artifact.json"
-	},
-	{
 		"name": "chain-of-thought",
-		"title": "Chain of Thought",
+		"title": "Chain Of Thought",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The ChainOfThought component provides a visual representation of an AI's reasoning process, showing step-by-step thinking with support for search results, images, and progress indicators. It helps users understand how AI arrives at conclusions.",
+		"description": "A collapsible component that visualizes AI reasoning steps with support for search results, images, and step-by-step progress indicators.",
 		"dependencies": [
-			"ai",
-			"@lucide/svelte"
+			"@lucide/svelte@^1.16.0"
 		],
 		"registryDependencies": [
-			"badge",
-			"collapsible"
+			"collapsible",
+			"badge"
 		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
 		"relativeUrl": "chain-of-thought.json"
 	},
 	{
 		"name": "checkpoint",
 		"title": "Checkpoint",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "A simple component for marking conversation history points and restoring the chat to a previous state. Inspired by VSCode's Copilot checkpoint feature.",
+		"description": "A compact checkpoint component that pairs a separator with icon and trigger helpers for workflow checkpoints.",
 		"dependencies": [
-			"@lucide/svelte"
+			"@lucide/svelte@^1.16.0"
 		],
 		"registryDependencies": [
 			"button",
 			"separator",
 			"tooltip"
 		],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"checkpoint",
-				"conversation",
-				"history",
-				"restore",
-				"undo"
-			],
-			"category": "Conversation",
-			"documentation": "https://svelte-ai-elements.vercel.app/components/checkpoint",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "beginner",
-			"updated": "2025-11-08",
-			"featured": false
-		},
 		"relativeUrl": "checkpoint.json"
 	},
 	{
 		"name": "confirmation",
 		"title": "Confirmation",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "A component for requesting user approval before executing sensitive AI actions. Displays different states for approval requests, accepted, and rejected actions.",
+		"description": "A confirmation workflow component for tool approval states, request and response rendering, and action handling.",
 		"dependencies": [
-			"@lucide/svelte",
-			"runed"
+			"runed@^0.37.1"
 		],
 		"registryDependencies": [
-			"button",
-			"alert"
+			"alert",
+			"button"
 		],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"confirmation",
-				"approval",
-				"ai-actions",
-				"permissions",
-				"security"
-			],
-			"category": "AI Response",
-			"documentation": "https://ai-elements.vercel.app/components/confirmation",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "intermediate",
-			"updated": "2025-11-08",
-			"featured": false
-		},
 		"relativeUrl": "confirmation.json"
 	},
 	{
-		"name": "code",
-		"title": "Code Block",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Code component displays formatted code snippets with syntax highlighting, line numbers, and a copy-to-clipboard feature. It supports multiple programming languages and themes for better readability.",
-		"dependencies": [
-			"svelte-toolbelt",
-			"isomorphic-dompurify",
-			"shiki",
-			"runed",
-			"@shikijs/langs",
-			"@shikijs/themes"
-		],
-		"registryDependencies": [
-			"local:copy-button",
-			"button",
-			"tooltip"
-		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
-		"relativeUrl": "code.json"
-	},
-	{
 		"name": "context",
-		"title": "Context Usage",
+		"title": "Context",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Context component provides a comprehensive view of AI model usage, displaying token consumption, costs, and performance metrics through an interactive hover card interface.",
+		"description": "A hover-card-based context window usage component with token, cost, and model usage breakdowns.",
 		"registryDependencies": [
+			"button",
 			"hover-card",
-			"progress",
-			"button"
+			"progress"
 		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
 		"relativeUrl": "context.json"
 	},
 	{
 		"name": "conversation",
 		"title": "Conversation",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Conversation component provides a structured layout for displaying a series of chat messages between a user and an AI. It supports features like message grouping, typing indicators, and customizable avatars.",
+		"description": "A sticky-bottom conversation container with empty state and scroll-to-bottom controls for chat interfaces.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0",
+			"runed@^0.37.1"
+		],
 		"registryDependencies": [
 			"button"
 		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
 		"relativeUrl": "conversation.json"
 	},
 	{
-		"name": "copy-button",
-		"title": "Copy Button",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The CopyButton component provides a button that allows users to copy text to their clipboard with visual feedback indicating success or failure.",
-		"dependencies": [
-			"@lucide/svelte"
-		],
-		"registryDependencies": [
-			"button",
-			"tooltip"
-		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
-		"relativeUrl": "copy-button.json"
-	},
-	{
 		"name": "image",
-		"title": "AI Image",
+		"title": "Image",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Image component displays AI-generated images from base64 encoded data with proper styling and accessibility features.",
-		"dependencies": [
-			"ai"
-		],
+		"description": "A data-URL image component with typed props for AI-generated image payloads.",
 		"registryDependencies": [],
-		"meta": {
-			"author": "SikandarJODD"
-		},
 		"relativeUrl": "image.json"
-	},
-	{
-		"name": "inline-citation",
-		"title": "Inline Citation",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The InlineCitation component displays a citation or reference within text, typically used to attribute sources in AI-generated content. It includes a tooltip for additional information.",
-		"dependencies": [
-			"@lucide/svelte"
-		],
-		"registryDependencies": [
-			"tooltip",
-			"hover-card",
-			"badge",
-			"button",
-			"carousel"
-		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
-		"relativeUrl": "inline-citation.json"
 	},
 	{
 		"name": "loader",
 		"title": "Loader",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Loader component provides a visual indicator of loading or processing states in an AI application. It includes various styles and animations to enhance user experience during wait times.",
+		"description": "A lightweight animated loader with a separate icon component.",
 		"registryDependencies": [],
-		"meta": {
-			"author": "SikandarJODD"
-		},
 		"relativeUrl": "loader.json"
 	},
 	{
 		"name": "message",
 		"title": "Message",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "A comprehensive suite of components for displaying chat messages, including message rendering, branching, actions, and markdown responses.",
+		"description": "A full chat message system with branching, attachments, actions, and markdown streaming responses.",
 		"dependencies": [
-			"streamdown-svelte",
-			"@streamdown-svelte/code",
-			"mode-watcher",
-			"@shikijs/themes",
-			"@lucide/svelte"
+			"@lucide/svelte@^1.16.0",
+			"mode-watcher@^1.1.0",
+			"@shikijs/themes@^4.0.2",
+			"streamdown-svelte@^3.0.6"
 		],
 		"registryDependencies": [
 			"button",
 			"button-group",
-			"tooltip",
-			"dialog"
+			"dialog",
+			"tooltip"
 		],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"message",
-				"branching",
-				"attachments",
-				"markdown",
-				"actions",
-				"chat",
-				"preview"
-			],
-			"category": "AI Chat",
-			"documentation": "https://svelte-ai-elements.vercel.app/components/message",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "intermediate",
-			"updated": "2026-04-11",
-			"featured": true
-		},
 		"relativeUrl": "message.json"
 	},
 	{
 		"name": "model-selector",
 		"title": "Model Selector",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "A searchable command palette for selecting AI models with provider logos and multi-provider support.",
+		"description": "A searchable model selector dialog built on command and dialog primitives.",
 		"dependencies": [
-			"@lucide/svelte"
+			"bits-ui@^2.16.3"
 		],
 		"registryDependencies": [
-			"dialog",
 			"command",
-			"button"
+			"dialog"
 		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
 		"relativeUrl": "model-selector.json"
 	},
 	{
 		"name": "open-in-chat",
-		"title": "Open in Chat",
+		"title": "Open In Chat",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The OpenIn component provides a dropdown menu that allows users to open queries in different AI chat platforms (ChatGPT, Claude, V0, etc.) with a single click.",
+		"description": "A provider menu for opening prompts in external chat and AI tools.",
 		"dependencies": [
-			"@lucide/svelte"
+			"@lucide/svelte@^1.16.0",
+			"runed@^0.37.1"
 		],
 		"registryDependencies": [
 			"button",
+			"dropdown-menu"
+		],
+		"relativeUrl": "open-in-chat.json"
+	},
+	{
+		"name": "plan",
+		"title": "Plan",
+		"type": "registry:block",
+		"description": "A plan card component with collapsible content and streaming-aware description shimmer.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0",
+			"bits-ui@^2.16.3",
+			"runed@^0.37.1"
+		],
+		"registryDependencies": [
+			"button",
+			"card",
+			"collapsible"
+		],
+		"relativeUrl": "plan.json"
+	},
+	{
+		"name": "inline-citation",
+		"title": "Inline Citation",
+		"type": "registry:block",
+		"description": "An inline citation system with hover cards and carousel views for source-backed AI content.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0"
+		],
+		"registryDependencies": [
+			"badge",
+			"carousel",
+			"hover-card"
+		],
+		"relativeUrl": "inline-citation.json"
+	},
+	{
+		"name": "prompt-input",
+		"title": "Prompt Input",
+		"type": "registry:block",
+		"description": "A composable prompt input surface with attachments, action menus, and provider-driven text handling.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0",
+			"ai@^6.0.12",
+			"runed@^0.37.1"
+		],
+		"registryDependencies": [
+			"aspect-ratio",
+			"button",
+			"dialog",
 			"dropdown-menu",
+			"textarea",
 			"tooltip"
 		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
-		"relativeUrl": "open-in-chat.json"
+		"relativeUrl": "prompt-input.json"
 	},
 	{
 		"name": "queue",
 		"title": "Queue",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "A flexible component for displaying lists of pending and completed tasks, messages, or items with collapsible sections and attachment support.",
+		"description": "A structured queue view with sections, items, attachments, and action controls.",
 		"dependencies": [
-			"@lucide/svelte"
+			"@lucide/svelte@^1.16.0",
+			"bits-ui@^2.16.3"
 		],
 		"registryDependencies": [
 			"button",
 			"collapsible",
 			"scroll-area"
 		],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"queue",
-				"tasks",
-				"todo",
-				"list",
-				"collapsible",
-				"attachments"
-			],
-			"category": "Task Management",
-			"documentation": "https://svelte-ai-elements.vercel.app/components/queue",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "intermediate",
-			"updated": "2025-11-08",
-			"featured": false
-		},
 		"relativeUrl": "queue.json"
 	},
 	{
 		"name": "reasoning",
 		"title": "Reasoning",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Reasoning component displays AI reasoning content, automatically opening during streaming and closing when finished.",
+		"description": "A collapsible reasoning block that tracks streaming duration and renders a markdown response.",
 		"dependencies": [
-			"runed",
-			"@lucide/svelte"
+			"@lucide/svelte@^1.16.0",
+			"mode-watcher@^1.1.0",
+			"@shikijs/themes@^4.0.2",
+			"streamdown-svelte@^3.0.6",
+			"runed@^0.37.1"
 		],
 		"registryDependencies": [
-			"collapsible"
+			"collapsible",
+			"local:response"
 		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
 		"relativeUrl": "reasoning.json"
 	},
 	{
 		"name": "response",
 		"title": "Response",
 		"type": "registry:block",
-		"description": "The Response component provides a structured container for displaying AI responses with consistent formatting and styling.",
+		"description": "A markdown response renderer for streamed AI content.",
 		"dependencies": [
-			"streamdown-svelte",
-			"@streamdown-svelte/code"
+			"@shikijs/themes@^4.0.2",
+			"mode-watcher@^1.1.0",
+			"streamdown-svelte@^3.0.6"
 		],
 		"registryDependencies": [],
-		"meta": {
-			"author": "SikandarJODD"
-		},
 		"relativeUrl": "response.json"
 	},
 	{
 		"name": "shimmer",
 		"title": "Shimmer",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Shimmer component provides an animated shimmer effect for text, perfect for loading states and highlighting content in your AI applications.",
+		"description": "A text shimmer utility component with configurable spread and duration.",
 		"dependencies": [
-			"runed"
+			"runed@^0.37.1"
 		],
 		"registryDependencies": [],
-		"meta": {
-			"author": "SikandarJODD"
-		},
 		"relativeUrl": "shimmer.json"
-	},
-	{
-		"name": "plan",
-		"title": "Plan",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "A collapsible plan component for displaying AI-generated execution plans with streaming support and shimmer animations.",
-		"dependencies": [
-			"@lucide/svelte"
-		],
-		"registryDependencies": [
-			"card",
-			"button",
-			"collapsible",
-			"shimmer"
-		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
-		"relativeUrl": "plan.json"
-	},
-	{
-		"name": "prompt-input",
-		"title": "Prompt Input",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "A comprehensive prompt input component for AI chat interfaces with provider-backed state management, attachments, action menus, and submit or stop controls. Includes a composable header, body, toolbar, tools, and attachment previews for building polished AI input experiences.",
-		"dependencies": [
-			"runed",
-			"ai"
-		],
-		"registryDependencies": [
-			"button",
-			"textarea",
-			"dropdown-menu",
-			"tooltip",
-			"dialog",
-			"aspect-ratio"
-		],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "3.0.0",
-			"tags": [
-				"prompt",
-				"input",
-				"chat",
-				"attachments",
-				"action-menu",
-				"provider",
-				"ai-interface",
-				"multimodal"
-			],
-			"category": "AI Input",
-			"documentation": "https://svelte-ai-elements.vercel.app//components/prompt-input",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "intermediate",
-			"updated": "2026-04-14",
-			"featured": true,
-			"features": [
-				"Composable header, body, toolbar, and tools layout",
-				"Provider-backed external state management",
-				"Attachment previews with image and file rendering",
-				"Action menu for quick attachment actions",
-				"Success-only draft clearing with optional native form reset",
-				"Submit and stop button state handling",
-				"Drag and drop file upload",
-				"Global drop zone support",
-				"Paste image support",
-				"File validation and attachment lifecycle management"
-			]
-		},
-		"relativeUrl": "prompt-input.json"
 	},
 	{
 		"name": "sources",
 		"title": "Sources",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Sources component displays a collapsible list of sources and references used in AI responses, with expandable content and visual indicators.",
+		"description": "A collapsible sources list for rendering cited links and source groups.",
 		"dependencies": [
-			"@lucide/svelte"
+			"@lucide/svelte@^1.16.0"
 		],
 		"registryDependencies": [
 			"collapsible"
 		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
 		"relativeUrl": "sources.json"
 	},
 	{
 		"name": "suggestion",
 		"title": "Suggestion",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Suggestion component provides interactive suggestions for user input, offering quick actions and prompts to enhance the conversation experience.",
+		"description": "A compact suggestion button set for displaying prompt ideas and quick actions.",
 		"registryDependencies": [
-			"button",
-			"scroll-area"
+			"button"
 		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
 		"relativeUrl": "suggestion.json"
 	},
 	{
 		"name": "task",
 		"title": "Task",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Task component displays structured task information with collapsible content, file attachments, and progress indicators for AI-generated tasks.",
-		"registryDependencies": [
-			"collapsible",
-			"badge"
+		"description": "A collapsible task panel for tracking task state and nested task items.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0",
+			"bits-ui@^2.16.3"
 		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
+		"registryDependencies": [
+			"collapsible"
+		],
 		"relativeUrl": "task.json"
 	},
 	{
 		"name": "tool",
 		"title": "Tool",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Tool component provides a comprehensive interface for displaying AI tool usage, including input parameters, execution status, and output results with collapsible sections.",
-		"registryDependencies": [
-			"local:code",
-			"collapsible",
-			"badge"
+		"description": "A collapsible tool call block with parameter and result rendering.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0",
+			"runed@^0.37.1"
 		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
+		"registryDependencies": [
+			"badge",
+			"collapsible",
+			"local:code"
+		],
 		"relativeUrl": "tool.json"
+	},
+	{
+		"name": "code",
+		"title": "Code",
+		"type": "registry:block",
+		"description": "A syntax-highlighted code block with overflow handling and a copy action.",
+		"dependencies": [
+			"@shikijs/langs@^4.0.2",
+			"@shikijs/themes@^4.0.2",
+			"dompurify@^3.3.1",
+			"runed@^0.37.1",
+			"shiki@^4.0.2",
+			"svelte-toolbelt@^0.10.5",
+			"tailwind-variants@^3.2.2"
+		],
+		"registryDependencies": [
+			"button",
+			"local:copy-button"
+		],
+		"relativeUrl": "code.json"
+	},
+	{
+		"name": "copy-button",
+		"title": "Copy Button",
+		"type": "registry:block",
+		"description": "A clipboard-driven button with success and failure states.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0"
+		],
+		"registryDependencies": [
+			"button"
+		],
+		"relativeUrl": "copy-button.json"
 	},
 	{
 		"name": "web-preview",
 		"title": "Web Preview",
 		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The WebPreview component provides an interactive web browser interface for displaying and navigating web content with console logging capabilities.",
+		"description": "A browser-style preview frame with navigation controls and a log console.",
+		"dependencies": [
+			"@lucide/svelte@^1.16.0"
+		],
 		"registryDependencies": [
 			"button",
-			"input",
-			"tooltip",
 			"collapsible"
 		],
-		"meta": {
-			"author": "SikandarJODD"
-		},
 		"relativeUrl": "web-preview.json"
-	},
-	{
-		"name": "canvas",
-		"title": "Workflow Canvas",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Canvas component provides the main container for rendering workflow diagrams with nodes and edges. It wraps @xyflow/svelte's SvelteFlow component with custom styling and configuration for AI workflow visualization.",
-		"dependencies": [
-			"@xyflow/svelte"
-		],
-		"registryDependencies": [
-			"local:controls"
-		],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"workflow",
-				"canvas",
-				"flow",
-				"diagram",
-				"visualization"
-			],
-			"category": "AI Workflow",
-			"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "intermediate",
-			"updated": "2025-10-10",
-			"featured": false
-		},
-		"relativeUrl": "canvas.json"
-	},
-	{
-		"name": "connection",
-		"title": "Workflow Connection",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Connection component displays the connection line preview when dragging to create new edges between nodes in the workflow. It provides visual feedback during node connection operations.",
-		"dependencies": [
-			"@xyflow/svelte"
-		],
-		"registryDependencies": [],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"workflow",
-				"connection",
-				"edge",
-				"drag",
-				"preview"
-			],
-			"category": "AI Workflow",
-			"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "intermediate",
-			"updated": "2025-10-10",
-			"featured": false
-		},
-		"relativeUrl": "connection.json"
-	},
-	{
-		"name": "controls",
-		"title": "Workflow Controls",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Controls component provides interactive controls for manipulating the workflow canvas, including zoom in, zoom out, fit view, and other navigation controls for better workflow visualization.",
-		"dependencies": [
-			"@xyflow/svelte"
-		],
-		"registryDependencies": [
-			"button"
-		],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"workflow",
-				"controls",
-				"zoom",
-				"navigation",
-				"viewport"
-			],
-			"category": "AI Workflow",
-			"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "beginner",
-			"updated": "2025-10-10",
-			"featured": false
-		},
-		"relativeUrl": "controls.json"
-	},
-	{
-		"name": "edge",
-		"title": "Workflow Edge",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Edge component provides custom edge types for workflow connections. Includes Animated edges for active connections and Temporary edges for conditional or inactive paths, with smooth transitions and visual styling.",
-		"dependencies": [
-			"@xyflow/svelte"
-		],
-		"registryDependencies": [],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"workflow",
-				"edge",
-				"connection",
-				"animated",
-				"path"
-			],
-			"category": "AI Workflow",
-			"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "intermediate",
-			"updated": "2025-10-10",
-			"featured": false
-		},
-		"relativeUrl": "edge.json"
-	},
-	{
-		"name": "node",
-		"title": "Workflow Node",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Node component provides a comprehensive set of sub-components for building workflow nodes. Includes Node container with handle management, Header, Title, Description, Action buttons, Content area, and Footer for displaying workflow step information with full customization.",
-		"dependencies": [
-			"@xyflow/svelte"
-		],
-		"registryDependencies": [
-			"card"
-		],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"workflow",
-				"node",
-				"step",
-				"card",
-				"process"
-			],
-			"category": "AI Workflow",
-			"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "intermediate",
-			"updated": "2025-10-10",
-			"featured": true
-		},
-		"relativeUrl": "node.json"
-	},
-	{
-		"name": "panel",
-		"title": "Workflow Panel",
-		"type": "registry:block",
-		"author": "SikandarJODD",
-		"description": "The Panel component provides an overlay panel for displaying additional workflow information, settings, or controls. It can be positioned at various locations on the canvas for contextual information display.",
-		"dependencies": [
-			"@xyflow/svelte"
-		],
-		"registryDependencies": [
-			"card"
-		],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"workflow",
-				"panel",
-				"overlay",
-				"information",
-				"settings"
-			],
-			"category": "AI Workflow",
-			"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "beginner",
-			"updated": "2025-10-10",
-			"featured": false
-		},
-		"relativeUrl": "panel.json"
-	},
-	{
-		"name": "toolbar",
-		"type": "registry:block",
-		"description": "The Toolbar component provides an action toolbar that appears on hover over workflow nodes. It contains quick action buttons for common node operations like edit, delete, duplicate, or other custom actions.",
-		"dependencies": [
-			"@xyflow/svelte"
-		],
-		"registryDependencies": [
-			"button"
-		],
-		"meta": {
-			"author": "SikandarJODD",
-			"version": "1.0.0",
-			"tags": [
-				"workflow",
-				"toolbar",
-				"actions",
-				"node-actions",
-				"hover"
-			],
-			"category": "AI Workflow",
-			"documentation": "https://svelte-ai-elements.vercel.app//components/workflow",
-			"repository": "https://github.com/SikandarJODD/ai-elements",
-			"complexity": "beginner",
-			"updated": "2025-10-10",
-			"featured": false
-		},
-		"relativeUrl": "toolbar.json"
 	}
 ]

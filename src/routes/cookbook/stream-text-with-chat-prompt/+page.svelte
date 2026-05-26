@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { CodeChip, H1, H2, H3, Paragraph, Strong } from "$lib/components/docs/markdown";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/stream-text-with-chat-prompt/llms.txt`;
 
@@ -89,20 +91,23 @@ export const POST: RequestHandler = async ({ request }) => {
 		description:
 			"Combine streaming with chat prompts for responsive conversational AI in SvelteKit.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/stream-text-with-chat-prompt",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/stream-text-with-chat-prompt",
 	}}
 />
 
-<article class="mx-auto px-4 py-12 md:px-6 md:py-16">
-	<!-- Header -->
+<article class="mx-auto px-4 py-8 md:px-6 md:py-10">
 	<header class="mb-12">
-		<div class="mb-6 flex items-start justify-between gap-4">
-			<h1 class="text-4xl font-semibold tracking-tight">Stream Text with Chat Prompt</h1>
+		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
+			<H1
+				id="stream-text-with-chat-prompt"
+				class="text-3xl font-semibold tracking-tight sm:text-4xl"
+			>
+				Stream Text with Chat Prompt
+			</H1>
 			<CopyPageDropdown
 				class="shrink-0"
 				componentName="Stream Text with Chat Prompt"
 				{llmsTxtUrl}
-				type="cookbook"
 			/>
 		</div>
 
@@ -112,98 +117,96 @@ export const POST: RequestHandler = async ({ request }) => {
 			<Badge variant="secondary" class="text-sm">AI SDK</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-lg leading-relaxed md:text-xl">
-			The best of both worlds: <strong>streaming</strong> for real-time feedback and
-			<strong>chat prompts</strong> for context-aware conversations.
-		</p>
+		<Paragraph class="mt-0 text-base sm:text-lg md:text-xl">
+			The best of both worlds: <Strong>streaming</Strong> for real-time feedback and
+			<Strong>chat prompts</Strong> for context-aware conversations.
+		</Paragraph>
 	</header>
 
-	<!-- Overview -->
-	<section class="prose prose-neutral dark:prose-invert mb-12 max-w-none">
-		<h2 class="mb-4 text-2xl font-semibold">Overview</h2>
-		<p class="text-muted-foreground leading-relaxed">
+	<section class="mb-12">
+		<H2 id="overview" class="mb-4 text-2xl font-semibold">Overview</H2>
+		<Paragraph class="mt-0">
 			This pattern is the foundation of modern AI chat interfaces. Users see text appear
 			character-by-character (streaming), while the AI maintains full awareness of the
-			conversation history (chat prompts). The <code class="text-foreground">Chat</code>
-			class from <code class="text-foreground">@ai-sdk/svelte</code> handles all the complexity
-			for you.
-		</p>
+			conversation history (chat prompts). The <CodeChip>Chat</CodeChip> class from
+			<CodeChip>@ai-sdk/svelte</CodeChip> handles all the complexity for you.
+		</Paragraph>
 	</section>
 
-	<!-- Demo Section -->
 	<section class="mb-12">
-		<h2 class="mb-6 text-2xl font-semibold">Demo</h2>
-		<p class="text-muted-foreground mb-4 text-sm">
+		<H2 id="demo" class="mb-6 text-2xl font-semibold">Demo</H2>
+		<Paragraph class="mb-4 mt-0 text-sm">
 			Watch the text stream in real-time. Try asking follow-up questions - the AI remembers
 			context!
-		</p>
+		</Paragraph>
 		<Demo />
 	</section>
 
-	<!-- Server Section -->
 	<section class="mb-12">
-		<h2 class="mb-6 text-2xl font-semibold">Server Endpoint</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			The key is <code class="text-foreground">convertToModelMessages()</code> which
-			transforms client messages to the format expected by
-			<code class="text-foreground">streamText</code>.
-		</p>
-		<CodeNameBlock
-			filename="src/routes/api/chat/+server.ts"
-			lang="typescript"
-			code={serverCode}
-			highlight={[18, [25, 29], 32]}
+		<H2 id="server-endpoint" class="mb-6 text-2xl font-semibold">Server Endpoint</H2>
+		<Paragraph class="mb-6 mt-0">
+			The key is <CodeChip>convertToModelMessages()</CodeChip> which transforms client messages
+			to the format expected by <CodeChip>streamText</CodeChip>.
+		</Paragraph>
+		<SingleFile
+			code={{
+				name: "Server Endpoint",
+				code: serverCode,
+				highlight: [1, 4, [6, 12], 15],
+				lang: "typescript",
+			}}
 		/>
 	</section>
 
-	<!-- Client Section -->
 	<section class="mb-12">
-		<h2 class="mb-6 text-2xl font-semibold">Client Component</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			The <code class="text-foreground">Chat</code> class handles message management,
-			streaming state, and reactive updates. Just call
-			<code class="text-foreground">sendMessage()</code>!
-		</p>
-		<CodeNameBlock
-			filename="+page.svelte"
-			lang="svelte"
-			code={clientCode}
-			highlight={[[5, 11], 18, 25]}
+		<H2 id="client-component" class="mb-6 text-2xl font-semibold">Client Component</H2>
+		<Paragraph class="mb-6 mt-0">
+			The <CodeChip>Chat</CodeChip> class handles message management, streaming state, and reactive
+			updates. Just call <CodeChip>sendMessage()</CodeChip>!
+		</Paragraph>
+		<SingleFile
+			code={{
+				name: "Client Component",
+				code: clientCode,
+				highlight: [[5, 11], 18, 25],
+				lang: "svelte",
+			}}
 		/>
 	</section>
 
-	<!-- Key Concepts -->
 	<section class="mb-12">
-		<h2 class="mb-6 text-2xl font-semibold">Key Concepts</h2>
+		<H2 id="key-concepts" class="mb-6 text-2xl font-semibold">Key Concepts</H2>
 		<div class="space-y-4">
 			<div>
-				<h3 class="text-foreground mb-1 font-medium">convertToModelMessages()</h3>
-				<p class="text-muted-foreground text-sm leading-relaxed">
-					Transforms <code class="text-foreground">UIMessage[]</code> (client format) to
-					<code class="text-foreground">ModelMessage[]</code> (model format). Essential for
-					combining Chat class with streamText.
-				</p>
+				<H3 id="convert-to-model-messages" class="mb-1 mt-0 font-medium">
+					convertToModelMessages()
+				</H3>
+				<Paragraph class="mt-0 text-sm">
+					Transforms <CodeChip>UIMessage[]</CodeChip> (client format) to
+					<CodeChip>ModelMessage[]</CodeChip> (model format). Essential for combining Chat class
+					with streamText.
+				</Paragraph>
 			</div>
 			<div>
-				<h3 class="text-foreground mb-1 font-medium">toUIMessageStreamResponse()</h3>
-				<p class="text-muted-foreground text-sm leading-relaxed">
+				<H3 id="to-ui-message-stream-response" class="mb-1 mt-0 font-medium">
+					toUIMessageStreamResponse()
+				</H3>
+				<Paragraph class="mt-0 text-sm">
 					Returns a streaming response in the format the Chat class expects. Handles all
 					the SSE complexity automatically.
-				</p>
+				</Paragraph>
 			</div>
 			<div>
-				<h3 class="text-foreground mb-1 font-medium">chat.status</h3>
-				<p class="text-muted-foreground text-sm leading-relaxed">
-					Track streaming state: <code class="text-foreground">"idle"</code>,
-					<code class="text-foreground">"streaming"</code>, or
-					<code class="text-foreground">"error"</code>. Use it to disable inputs and show
-					loading states.
-				</p>
+				<H3 id="chat-status" class="mb-1 mt-0 font-medium">chat.status</H3>
+				<Paragraph class="mt-0 text-sm">
+					Track streaming state: <CodeChip>"idle"</CodeChip>,
+					<CodeChip>"streaming"</CodeChip>, or <CodeChip>"error"</CodeChip>. Use it to
+					disable inputs and show loading states.
+				</Paragraph>
 			</div>
 		</div>
 	</section>
 
-	<!-- GitHub Link -->
 	<footer>
 		<Button
 			href="https://github.com/SikandarJODD/ai-elements/tree/master/src/routes/cookbook/stream-text-with-chat-prompt"

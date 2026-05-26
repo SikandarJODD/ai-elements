@@ -1,20 +1,18 @@
 <script lang="ts">
-	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
-	import { ComponentPageDocs } from "$lib/components/docs";
+	import ComponentDocPage from "$lib/components/docs/base/main/component-doc-page.svelte";
 	import { data } from "./data";
-
-	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/components/reasoning/llms.txt`;
 </script>
 
-<ComponentPageDocs
-	{data}
-	{llmsTxtUrl}
-	intro="The Reasoning component displays AI reasoning content, automatically opening during streaming and closing when finished."
-	installation={{
-		specifier: `${PUBLIC_WEBSITE_URL}/r/reasoning.json`,
-		blockname: "reasoning",
-		isJsrepo: true,
-	}}
-	previewIsCentered={false}
-	previewClass="items-start justify-start p-0"
+<ComponentDocPage
+	id={data.id}
+	title={data.title}
+	description={data.description}
+	seo={data.seo}
+	preview={data.preview}
+	installCodeBlocks={data.install_block?.install_code}
+	installPackages={data.install_block?.packages}
+	installFolderStructure={data.install_block?.folder_structure}
+	installTailwindCode={data.install_block?.tailwind}
+	examples={data.examples}
+	propsTables={data.props}
 />

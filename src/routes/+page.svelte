@@ -63,40 +63,57 @@
 			<div class="mx-auto max-w-5xl px-6 md:px-6">
 				<div class="sm:mx-auto lg:mt-0 lg:mr-auto">
 					<h1
-						class="mt-8 max-w-2xl text-5xl font-semibold text-balance md:text-6xl lg:mt-16"
+						class="mt-8 max-w-2xl font-geist-pixel-circle dark:font-geist-pixel-grid text-5xl font-medium text-balance md:text-6xl lg:mt-16"
 					>
 						Svelte AI Elements
 					</h1>
-					<p class="text-muted-foreground mt-8 max-w-2xl text-lg text-pretty">
-						Svelte AI Elements is a custom registry built on top of
-						<a
-							href="https://shadcn-svelte.com"
-							target="_blank"
-							class="text-primary underline underline-offset-2">shadcn-svelte</a
-						>
-						to help you build AI-native applications faster.
+					<p
+						class="text-muted-foreground font-geist-pixel-circle dark:font-geist-pixel-grid mt-8 pl-1 max-w-3xl text-lg text-pretty"
+					>
+						High-quality, customizable core building blocks for Svelte AI apps.
 						<br /> It provides pre-built components like conversations, messages, prompt input,
 						response and more.
+					</p>
+					<p
+						class="text-muted-foreground/85 mt-4 max-w-2xl text-base text-pretty"
+					>
+						Svelte Prompt Kit is now a separate project. Visit
+						<a
+							href="https://sv-prompt-kit.vercel.app"
+							target="_blank"
+							rel="noreferrer"
+							class="text-primary underline underline-offset-2"
+						>
+							Svelte Prompt Kit
+						</a>
+						to explore it.
 					</p>
 
 					<div class="mt-12 flex items-center gap-1 md:gap-3">
 						<Button
 							size="lg"
 							class="h-10.5 rounded-full px-4 font-normal md:text-base"
-							href="/docs/introduction"
+							href="/docs"
 						>
 							Get Started
 						</Button>
 						<Button
 							size="lg"
-							variant="secondary"
-							href="https://github.com/SikandarJODD/ai-elements"
+							variant="outline"
+							href="https://github.com/sponsors/SikandarJODD"
 							target="_blank"
 							rel="noreferrer"
-							class="border-secondary h-10.5 rounded-full border px-4 font-normal md:text-base"
+							class="font-geist-pixel-circle h-10.5 rounded-full px-4 font-normal md:text-base"
 						>
-							<Icons.GitHub class="mr-1 size-5" />
-							Star on Github
+							<span>
+								<img
+									src="https://github.com/SikandarJODD.png"
+									alt="Bhide Svelte"
+									class="size-5 rounded-full"
+								/>
+							</span>
+							<!-- <Icons.GitHub class="mr-1 size-5" /> -->
+							Support My Work
 						</Button>
 					</div>
 				</div>

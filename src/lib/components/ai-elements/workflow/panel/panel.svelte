@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { Panel as PanelPrimitive, type PanelProps } from "@xyflow/svelte";
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 
 	type PanelComponentProps = PanelProps & {
 		class?: string;
 	};
-
+	// indexing
 	let { class: className, ...restProps }: PanelComponentProps = $props();
 </script>
 

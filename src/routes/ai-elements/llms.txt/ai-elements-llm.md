@@ -10,7 +10,7 @@
 
 - **Website**: https://svelte-ai-elements.vercel.app
 - **GitHub**: https://github.com/SikandarJODD/ai-elements
-- **Documentation**: https://svelte-ai-elements.vercel.app/docs/introduction
+- **Documentation**: https://svelte-ai-elements.vercel.app/docs
 - **Component Registry**: https://svelte-ai-elements.vercel.app/r/index.json
 - **Playground**: https://svelte-ai-elements.vercel.app/playground
 
@@ -267,7 +267,7 @@ AI Elements is perfect for building:
 
 ## Resources
 
-- **Documentation**: https://svelte-ai-elements.vercel.app/docs/introduction
+- **Documentation**: https://svelte-ai-elements.vercel.app/docs
 - **Installation Guide**: https://svelte-ai-elements.vercel.app/docs/installation
 - **Component Examples**: https://svelte-ai-elements.vercel.app/components
 - **Guides**: https://svelte-ai-elements.vercel.app/guides

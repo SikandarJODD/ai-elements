@@ -3,8 +3,8 @@
 	import { Input } from "$lib/components/ui/input";
 	import * as Popover from "$lib/components/ui/popover";
 	import * as HoverCard from "$lib/components/ui/hover-card";
-	import { openRouterKeyStore } from "$lib/config/open-router-key.svelte";
-	import { aiGatewayKeyStore } from "$lib/config/ai-gateway-key.svelte";
+	// import { openRouterKeyStore } from "$lib/config/open-router-key.svelte";
+	// import { aiGatewayKeyStore } from "$lib/config/ai-gateway-key.svelte";
 	import KeyIcon from "@lucide/svelte/icons/key-round";
 	import Trash2Icon from "@lucide/svelte/icons/trash-2";
 	import CheckIcon from "@lucide/svelte/icons/check";
@@ -16,26 +16,14 @@
 
 	function saveOpenRouterKey() {
 		if (openRouterKeyInput.trim()) {
-			openRouterKeyStore.key = openRouterKeyInput.trim();
+			// openRouterKeyStore.key = openRouterKeyInput.trim();
 			openRouterKeyInput = "";
 		}
 	}
 
 	function clearOpenRouterKey() {
-		openRouterKeyStore.clear();
+		// openRouterKeyStore.clear();
 		openRouterKeyInput = "";
-	}
-
-	function saveAiGatewayKey() {
-		if (aiGatewayKeyInput.trim()) {
-			aiGatewayKeyStore.key = aiGatewayKeyInput.trim();
-			aiGatewayKeyInput = "";
-		}
-	}
-
-	function clearAiGatewayKey() {
-		aiGatewayKeyStore.clear();
-		aiGatewayKeyInput = "";
 	}
 
 	// Models used in cookbook
@@ -51,15 +39,15 @@
 			<Button
 				variant="outline"
 				size="sm"
-				class="gap-2 shadow-md {openRouterKeyStore.hasKey && aiGatewayKeyStore.hasKey
-					? 'border-green-500/50 bg-green-500/10'
-					: ''}"
+				// class="gap-2 shadow-md {openRouterKeyStore.hasKey && aiGatewayKeyStore.hasKey
+				// 	? 'border-green-500/50 bg-green-500/10'
+				// 	: ''}"
 			>
 				<KeyIcon class="size-4" />
 				API Keys
-				{#if openRouterKeyStore.hasKey && aiGatewayKeyStore.hasKey}
+				<!-- {#if openRouterKeyStore.hasKey && aiGatewayKeyStore.hasKey}
 					<CheckIcon class="size-3 text-green-500" />
-				{/if}
+				{/if} -->
 			</Button>
 		</Popover.Trigger>
 
@@ -89,7 +77,7 @@
 					<p class="text-muted-foreground text-xs">
 						Used for text generation & streaming
 					</p>
-					{#if openRouterKeyStore.hasKey}
+					<!-- {#if openRouterKeyStore.hasKey}
 						<div class="bg-muted/50 space-y-2 rounded-lg border p-3">
 							<div class="flex items-center gap-2">
 								<CheckIcon class="size-4 text-green-500" />
@@ -125,7 +113,7 @@
 								Save Key
 							</Button>
 						</div>
-					{/if}
+					{/if} -->
 					<p class="text-muted-foreground text-xs">
 						Get key at
 						<a

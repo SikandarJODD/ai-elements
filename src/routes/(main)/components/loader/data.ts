@@ -1,69 +1,57 @@
-import Basic from "./examples/basic.svelte";
-import basicRaw from "./examples/basic.svelte?raw";
+import IndexTsRaw from "$lib/components/ai-elements/loader/index.ts?raw";
+import LoaderIconSvelteRaw from "$lib/components/ai-elements/loader/loader-icon.svelte?raw";
+import LoaderSvelteRaw from "$lib/components/ai-elements/loader/loader.svelte?raw";
 
-import type { Example } from "$lib/structure/examples";
-import type { SEO } from "$lib/structure/seo";
-import type { ComponentDoc, ComponentMeta } from "$lib/structure/structure";
+import type {
+	ComponentDoc,
+	ComponentMeta,
+	InstallComponentDocs,
+} from "$lib/types/structure";
+import type { SEO } from "$lib/types/seo";
+import Preview from "./examples/preview.svelte";
+import PreviewCode from "./examples/preview.svelte?raw";
 
 export const meta: ComponentMeta = {
 	id: "loader",
 	title: "Loader",
-	description:
-		"The Loader component provides a spinning animation to indicate loading states in your AI applications. It includes both a customizable wrapper component and the underlying icon for flexible usage.",
+	description: "The Loader component provides a spinning animation to indicate loading states in your AI applications.",
+	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Loader",
-	description:
-		"The Loader component provides a spinning animation to indicate loading states in your AI applications. It includes both a customizable wrapper component and the underlying icon for flexible usage.",
-	keywords: ["Svelte", "Loader", "Loading states", "Svelte AI Elements"],
+	description: "The Loader component provides a spinning animation to indicate loading states in your AI applications.",
+	keywords: ["Svelte", "Loader", "Component"],
 };
 
-const examples: Example[] = [];
+const install_block: InstallComponentDocs = {
+	packages: [],
+	install_code: [
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true, },
+		{ name: "loader-icon.svelte", code: LoaderIconSvelteRaw, lang: "svelte", },
+		{ name: "loader.svelte", code: LoaderSvelteRaw, lang: "svelte", }
+	],
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── loader/
+				├── index.ts
+				├── loader-icon.svelte
+				└── loader.svelte`,
+};
 
 export const data: ComponentDoc = {
 	...meta,
-	preview: Basic,
-	previewCode: {
-		filename: "basic.svelte",
-		filecode: basicRaw,
-		lang: "svelte",
-		isExpand: true,
+	preview: {
+		preview: Preview,
+		code: {
+			name: "preview.svelte",
+			code: PreviewCode,
+			lang: "svelte",
+		},
 	},
+	install_block,
 	seo,
-	examples,
-	props: [
-		{
-			name: "Loader",
-			props: [
-				{
-					name: "size",
-					type: "number",
-					default: "16",
-					description: "Size of the loader icon in pixels",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the loader container",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLAttributes<HTMLDivElement>",
-					description: "All other div props are supported",
-				},
-			],
-		},
-		{
-			name: "LoaderIcon",
-			props: [
-				{
-					name: "size",
-					type: "number",
-					default: "16",
-					description: "Size of the loader icon in pixels",
-				},
-			],
-		},
-	],
+	props: [],
 };

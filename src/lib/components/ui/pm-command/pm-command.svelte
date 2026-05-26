@@ -6,7 +6,7 @@
 		variants: {
 			variant: {
 				default: "bg-card",
-				secondary: "bg-secondary dark:bg-secondary/50 border-transparent",
+				secondary: "bg-secondary/50 border-transparent",
 			},
 		},
 	});
@@ -37,7 +37,7 @@
 		variant = "secondary",
 		class: className,
 		command,
-		agents = ["npm", "pnpm", "yarn", "bun"],
+		agents = ["pnpm", "npm", "yarn", "bun"],
 		args,
 		agent = $bindable("pnpm"),
 	}: PMCommandProps = $props();
@@ -47,18 +47,18 @@
 	const commandText = $derived(`${cmd?.command} ${cmd?.args.join(" ")}`);
 </script>
 
-<div class={cn(style({ variant }), className)}>
-	<div class="border-border flex place-items-center justify-between gap-2 border-b py-1 pr-2">
+<div data-slot="pm-command" class={cn(style({ variant }), className)}>
+	<div class="flex place-items-center justify-between gap-2 border-b border-border py-1 pr-2">
 		<div class="flex place-items-center gap-2 px-2">
-			<div class="bg-foreground flex size-4 place-items-center justify-center opacity-50">
-				<TerminalIcon class="text-background size-3" />
+			<div class="flex size-4 place-items-center justify-center bg-foreground opacity-50">
+				<TerminalIcon class="size-3 text-background" />
 			</div>
 			<Tabs.Root bind:value={agent}>
 				<Tabs.List class="h-auto bg-transparent p-0">
 					{#each agents as pm (pm)}
 						<Tabs.Trigger
 							value={pm}
-							class="text-muted-foreground data-[state=active]:text-primary h-7 border-none font-mono text-sm font-light shadow-none! data-[state=active]:bg-neutral-200/60"
+							class="h-7 border-none font-mono text-sm font-light shadow-none! outline-none data-active:bg-neutral-200/50"
 						>
 							{pm}
 						</Tabs.Trigger>
@@ -83,7 +83,7 @@
 	</div>
 	<div class="no-scrollbar overflow-x-auto p-3">
 		<span
-			class="text-primary dark:text-muted-foreground font-mono text-sm leading-none font-light text-nowrap"
+			class="command-text font-mono text-sm leading-none font-light text-nowrap text-primary"
 		>
 			{commandText}
 		</span>

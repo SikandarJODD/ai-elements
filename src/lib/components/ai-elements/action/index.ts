@@ -1,4 +1,4 @@
-import Action from "./Action.svelte";
-import Actions from "./Actions.svelte";
+import Action from "./action.svelte";
+import Actions from "./actions.svelte";
 
 export { Action, Actions };

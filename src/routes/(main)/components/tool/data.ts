@@ -1,153 +1,69 @@
-import Basic from "./examples/basic.svelte";
-import basicRaw from "./examples/basic.svelte?raw";
+import IndexTsRaw from "$lib/components/ai-elements/tool/index.ts?raw";
+import ToolContentSvelteRaw from "$lib/components/ai-elements/tool/tool-content.svelte?raw";
+import ToolContextSvelteTsRaw from "$lib/components/ai-elements/tool/tool-context.svelte.ts?raw";
+import ToolHeaderSvelteRaw from "$lib/components/ai-elements/tool/tool-header.svelte?raw";
+import ToolInputSvelteRaw from "$lib/components/ai-elements/tool/tool-input.svelte?raw";
+import ToolOutputSvelteRaw from "$lib/components/ai-elements/tool/tool-output.svelte?raw";
+import ToolSvelteRaw from "$lib/components/ai-elements/tool/tool.svelte?raw";
 
-import type { Example } from "$lib/structure/examples";
-import type { SEO } from "$lib/structure/seo";
-import type { ComponentDoc, ComponentMeta } from "$lib/structure/structure";
+import type {
+	ComponentDoc,
+	ComponentMeta,
+	InstallComponentDocs,
+} from "$lib/types/structure";
+import type { SEO } from "$lib/types/seo";
+import Preview from "./examples/preview.svelte";
+import PreviewCode from "./examples/preview.svelte?raw";
 
 export const meta: ComponentMeta = {
 	id: "tool",
 	title: "Tool",
-	description:
-		"The Tool component displays a collapsible interface for showing and hiding tool details from AI SDK tool parts.",
+	description: "The Tool component displays a collapsible interface for showing and hiding tool details from AI SDK tool parts.",
+	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Tool",
-	description:
-		"The Tool component displays a collapsible interface for showing and hiding tool details from AI SDK tool parts.",
-	keywords: ["Svelte", "Tool", "AI SDK", "Svelte AI Elements"],
+	description: "The Tool component displays a collapsible interface for showing and hiding tool details from AI SDK tool parts.",
+	keywords: ["Svelte", "Tool", "Component"],
 };
 
-const examples: Example[] = [];
+const install_block: InstallComponentDocs = {
+	packages: [],
+	install_code: [
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true, },
+		{ name: "tool-content.svelte", code: ToolContentSvelteRaw, lang: "svelte", },
+		{ name: "tool-context.svelte.ts", code: ToolContextSvelteTsRaw, lang: "typescript", },
+		{ name: "tool-header.svelte", code: ToolHeaderSvelteRaw, lang: "svelte", },
+		{ name: "tool-input.svelte", code: ToolInputSvelteRaw, lang: "svelte", },
+		{ name: "tool-output.svelte", code: ToolOutputSvelteRaw, lang: "svelte", },
+		{ name: "tool.svelte", code: ToolSvelteRaw, lang: "svelte", }
+	],
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── tool/
+				├── index.ts
+				├── tool-content.svelte
+				├── tool-context.svelte.ts
+				├── tool-header.svelte
+				├── tool-input.svelte
+				├── tool-output.svelte
+				└── tool.svelte`,
+};
 
 export const data: ComponentDoc = {
 	...meta,
-	preview: Basic,
-	previewCode: {
-		filename: "basic.svelte",
-		filecode: basicRaw,
-		lang: "svelte",
-		isExpand: true,
+	preview: {
+		preview: Preview,
+		code: {
+			name: "preview.svelte",
+			code: PreviewCode,
+			lang: "svelte",
+		},
 	},
+	install_block,
 	seo,
-	examples,
-	props: [
-		{
-			name: "Tool",
-			props: [
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the tool container",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description:
-						"Child components, typically ToolHeader, ToolInput, ToolOutput, and ToolContent",
-				},
-				{
-					name: "...restProps",
-					type: "CollapsibleProps",
-					description: "All other Collapsible component props are supported",
-				},
-			],
-		},
-		{
-			name: "ToolHeader",
-			props: [
-				{
-					name: "type",
-					type: "string",
-					description: "The name or type of the tool being executed",
-				},
-				{
-					name: "state",
-					type: "'input-streaming' | 'input-available' | 'output-available' | 'output-error'",
-					description: "Current state of the tool execution",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the header",
-				},
-				{
-					name: "...restProps",
-					type: "CollapsibleTriggerProps",
-					description: "All other CollapsibleTrigger component props are supported",
-				},
-			],
-		},
-		{
-			name: "ToolInput",
-			props: [
-				{
-					name: "input",
-					type: "any",
-					description: "The input parameters passed to the tool",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the input container",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLAttributes<HTMLDivElement>",
-					description: "All other div props are supported",
-				},
-			],
-		},
-		{
-			name: "ToolOutput",
-			props: [
-				{
-					name: "output",
-					type: "any",
-					description: "The output result from the tool execution",
-				},
-				{
-					name: "errorText",
-					type: "string",
-					description: "Error message to display if the tool execution failed",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the output container",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Custom content to render instead of the default output display",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLAttributes<HTMLDivElement>",
-					description: "All other div props are supported",
-				},
-			],
-		},
-		{
-			name: "ToolContent",
-			props: [
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the content container",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Custom content to display in the collapsible area",
-				},
-				{
-					name: "...restProps",
-					type: "CollapsibleContentProps",
-					description: "All other CollapsibleContent component props are supported",
-				},
-			],
-		},
-	],
+	props: [],
 };

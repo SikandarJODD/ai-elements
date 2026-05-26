@@ -1,342 +1,122 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
-	import {
-		CodeSpan,
-		AiInstallCommand,
-		Installation,
-	} from "$lib/components/docs";
-	import Code from "$lib/components/docs/code.svelte";
-	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { SingleFile } from "$lib/components/ui/code";
+	import { PMCommand } from "$lib/components/ui/pm-command";
+	import { Badge } from "$lib/components/ui/badge";
+	import { Button } from "$lib/components/ui/button";
+	import PromptInputPreview from "../../components/prompt-input/examples/preview.svelte";
+	import CheckIcon from "@lucide/svelte/icons/check";
+	import ArrowRightIcon from "@lucide/svelte/icons/arrow-right";
 	import { MetaTags } from "svelte-meta-tags";
-	import InfoIcon from "@lucide/svelte/icons/info";
-	import AiElementsPrevNext from "$lib/components/ai-elements/ai-elements-prev-next.svelte";
+
+	const llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/docs/installation/llms.txt`;
+
+	const usageCode = `<script lang="ts">
+  import * as PromptInput from "$lib/components/ai-elements/prompt-input";
+
+  function handleSubmit(message: { text: string }) {
+    console.log(message.text);
+  }
+<\/script>
+
+<PromptInput.Root onSubmit={handleSubmit}>
+  <PromptInput.Body>
+    <PromptInput.Textarea />
+  </PromptInput.Body>
+
+  <PromptInput.Toolbar class="justify-end">
+    <PromptInput.Submit />
+  </PromptInput.Toolbar>
+</PromptInput.Root>`;
 </script>
 
 <MetaTags
 	title="Installation - Svelte AI Elements"
-	description="Learn how to install and set up AI Elements in your SvelteKit project with shadcn-svelte."
+	description="Let's install Svelte AI Elements and start with prompt-input."
+	canonical="https://svelte-ai-elements.vercel.app/docs/installation"
 	openGraph={{
+		url: "https://svelte-ai-elements.vercel.app/docs/installation",
 		title: "Installation - Svelte AI Elements",
-		description:
-			"Learn how to install and set up AI Elements in your SvelteKit project with shadcn-svelte.",
-		type: "website",
-		url: "https://svelte-ai-elements.vercel.app//docs/installation",
-		images: [
-			{
-				url: "https://svelte-ai-elements.vercel.app//assets/svelte-ai-elements.png",
-				width: 1200,
-				height: 630,
-				alt: "Svelte AI Elements",
-				type: "image/png",
-			},
-		],
+		description: "Let's install Svelte AI Elements and start with prompt-input.",
+		type: "article",
+		siteName: "Svelte AI Elements",
 	}}
 />
 
-<div class="px-4 py-8 md:px-10 md:py-12 lg:py-12">
-	<h1
-		class="text-foreground text-3xl leading-tight font-semibold tracking-tight md:text-4xl md:font-bold"
-	>
-		Installation
-	</h1>
-
-	<div class="mt-8 flex flex-col gap-8 md:gap-10">
-		<section>
-			<h2
-				class="text-foreground mb-4 text-xl leading-tight font-semibold tracking-tight md:text-2xl"
-			>
-				Prerequisites
-			</h2>
-
-			<p
-				class="text-muted-foreground mb-6 max-w-4xl text-base leading-7 sm:text-lg md:leading-8"
-			>
-				Before installing Svelte AI Elements, ensure you have the following:
-			</p>
-
-			<ul class="ml-6 list-disc space-y-3 text-base leading-7 sm:text-lg md:leading-8">
-				<li>
-					<a
-						href="https://nodejs.org/en/download/"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="hover:text-primary text-primary underline underline-offset-2"
-						>Node.js</a
-					> version 18 or later
-				</li>
-				<li>
-					<a
-						href="https://kit.svelte.dev/"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="hover:text-primary text-primary underline underline-offset-2"
-						>SvelteKit</a
-					> project set up
-				</li>
-				<li>
-					<a
-						href="https://www.shadcn-svelte.com/"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="hover:text-primary text-primary underline underline-offset-2"
-						>shadcn-svelte</a
-					> configured in your project
-				</li>
-			</ul>
-		</section>
-
-		<section>
-			<h2
-				class="text-foreground mb-4 text-xl leading-tight font-semibold tracking-tight md:text-2xl"
-			>
-				Install SvelteKit
-			</h2>
-
-			<p
-				class="text-muted-foreground mb-6 max-w-4xl text-base leading-7 sm:text-lg md:leading-8"
-			>
-				If you don't have a SvelteKit project yet, create one using the following command:
-			</p>
-
-			<div class="mb-6">
-				<AiInstallCommand command="execute" args={["sv", "create", "my-app"]} />
+<article class="mx-auto">
+	<header class="mb-12">
+		<div class="mb-6 flex flex-col md:flex-row  items-start justify-between gap-4">
+			<div class="space-y-4">
+				<!-- <div class="flex flex-wrap items-center gap-2">
+					<Badge variant="secondary">Docs</Badge>
+					<Badge variant="secondary">Installation</Badge>
+				</div> -->
+				<h1 class="text-4xl font-semibold tracking-tight">Installation</h1>
+				<p class="text-muted-foreground max-w-3xl text-lg leading-relaxed">
+					Let's install Svelte AI Elements and start with
+					<code class="text-foreground">prompt-input</code>.
+				</p>
 			</div>
+			<CopyPageDropdown
+				class="shrink-0"
+				componentName="Svelte AI Elements Installation"
+				{llmsTxtUrl}
+			/>
+		</div>
+	</header>
 
-			<p
-				class="text-muted-foreground mb-4 max-w-4xl text-base leading-7 sm:text-lg md:leading-8"
-			>
-				Make sure to select <CodeSpan>Tailwind CSS</CodeSpan> when prompted during the setup process.
-			</p>
+	<section class="mb-12">
+		<h2 class="mb-4 text-3xl font-semibold">1. Create a SvelteKit app</h2>
+		<p class="text-muted-foreground mb-6 max-w-3xl leading-relaxed">
+			Make sure to select Tailwind CSS and Typescript options for easier integration.
+		</p>
+		<!-- pnpm dlx sv create my-app --template minimal --types ts --install pnpm --add tailwindcss prettier -->
+		<PMCommand
+			command="execute"
+			args={[
+				"sv",
+				"create",
+				"my-app",
+			]}
+		/>
+	</section>
 
-			<p
-				class="text-muted-foreground mb-4 max-w-4xl text-base leading-7 sm:text-lg md:leading-8"
-			>
-				Navigate to your project directory:
-			</p>
+	<section class="mb-12">
+		<h2 class="mb-4 text-3xl font-semibold">2. Initialize shadcn-svelte</h2>
+		<PMCommand command="execute" args={["shadcn-svelte@latest", "init"]} />
+	</section>
 
-			<div class="bg-card border-border w-full rounded-lg border">
-				<div class="no-scrollbar overflow-x-auto p-4">
-					<span
-						class="dark:text-muted-foreground font-mono text-sm leading-none font-light text-nowrap"
-					>
-						cd my-app
-					</span>
-				</div>
+	<section class="mb-12">
+		<h2 class="mb-4 text-3xl font-semibold">3. Add prompt-input Component</h2>
+		<p class="text-muted-foreground mb-6 max-w-3xl leading-relaxed">
+			Install the first component directly from the Svelte AI Elements registry.
+		</p>
+		<PMCommand
+			command="execute"
+			args={["shadcn-svelte@latest", "add", `${PUBLIC_WEBSITE_URL}/r/prompt-input.json`]}
+		/>
+	</section>
+
+	<section class="mb-12">
+		<h2 class="mb-4 text-3xl font-semibold">Usage</h2>
+		<p class="text-muted-foreground mb-6 max-w-3xl leading-relaxed">
+			Start with a simple prompt surface, then wire
+			<code class="text-foreground">onSubmit</code> into your own chat or API flow.
+		</p>
+		<div class="border-border bg-background mb-6 overflow-hidden rounded-lg border">
+			<div class="flex min-h-64 items-center justify-center p-6">
+				<PromptInputPreview />
 			</div>
-		</section>
-
-		<section>
-			<h2
-				class="text-foreground mb-4 text-xl leading-tight font-semibold tracking-tight md:text-2xl"
-			>
-				Install shadcn-svelte
-			</h2>
-
-			<p
-				class="text-muted-foreground mb-6 max-w-4xl text-base leading-7 sm:text-lg md:leading-8"
-			>
-				First, you'll need to install and configure <CodeSpan>shadcn-svelte</CodeSpan>
-				in your project. Run the init command to set up your project:
-			</p>
-
-			<div class="mb-6">
-				<AiInstallCommand command="execute" args={["shadcn-svelte@latest", "init"]} />
-			</div>
-
-			<p
-				class="text-muted-foreground mb-4 max-w-4xl text-base leading-7 sm:text-lg md:leading-8"
-			>
-				Follow the prompts to configure <CodeSpan>components.json</CodeSpan>:
-			</p>
-
-			<div class="bg-card border-border w-full rounded-lg border">
-				<div class="no-scrollbar overflow-x-auto p-4">
-					<pre class="dark:text-muted-foreground font-mono text-sm leading-relaxed"><code
-							>Which base color would you like to use? › Slate
-Where is your global CSS file? (this file will be overwritten) › src/app.css
-Configure the import alias for lib: › $lib
-Configure the import alias for components: › $lib/components
-Configure the import alias for utils: › $lib/utils
-Configure the import alias for hooks: › $lib/hooks
-Configure the import alias for ui: › $lib/components/ui</code
-						></pre>
-				</div>
-			</div>
-		</section>
-
-		<section>
-			<h2
-				class="text-foreground mb-4 text-xl leading-tight font-semibold tracking-tight md:text-2xl"
-			>
-				Using the shadcn CLI
-			</h2>
-
-			<p
-				class="text-muted-foreground mb-6 max-w-4xl text-base leading-7 sm:text-lg md:leading-8"
-			>
-				Once shadcn-svelte is set up, you can install components using the shadcn CLI. Use
-				the following command pattern to add any component:
-			</p>
-
-			<div class="mb-6">
-				<Installation specifier={`${PUBLIC_WEBSITE_URL}/r/[COMPONENT].json`} />
-			</div>
-
-			<p
-				class="text-muted-foreground mb-4 max-w-4xl text-base leading-7 sm:text-lg md:leading-8"
-			>
-				Available components include:
-			</p>
-
-			<ul class="ml-6 list-disc space-y-3 text-base leading-7 sm:text-lg md:leading-8">
-				<li>
-					<CodeSpan>message</CodeSpan> - Chat message component with role-based styling
-				</li>
-				<li>
-					<CodeSpan>prompt-input</CodeSpan> - Advanced prompt input with suggestions
-				</li>
-				<li>
-					<CodeSpan>conversation</CodeSpan> - Complete conversation container
-				</li>
-				<li>
-					<CodeSpan>code</CodeSpan> - Syntax-highlighted code blocks
-				</li>
-				<li>
-					<CodeSpan>reasoning</CodeSpan> - AI reasoning display component
-				</li>
-				<li>
-					<CodeSpan>loader</CodeSpan> - Loading states for AI responses
-				</li>
-				<li>
-					<CodeSpan>response</CodeSpan> - AI stream response display component
-				</li>
-				<li>And many more...</li>
-			</ul>
-
-			<p
-				class="text-muted-foreground mt-8 mb-4 max-w-4xl text-base leading-7 sm:text-lg md:leading-8"
-			>
-				For example, to install the message component:
-			</p>
-
-			<div>
-				<Installation specifier={`${PUBLIC_WEBSITE_URL}/r/message.json`} />
-			</div>
-		</section>
-
-		<section>
-			<h2
-				class="text-foreground mb-4 text-xl leading-tight font-semibold tracking-tight md:text-2xl"
-			>
-				Usage
-			</h2>
-
-			<p
-				class="text-muted-foreground mb-6 max-w-4xl text-base leading-7 sm:text-lg md:leading-8"
-			>
-				After installation, import and start using the components in your project:
-			</p>
-
-			<div class="md:max-w-4xl lg:max-w-5xl">
-				<Code
-					lang="svelte"
-					code={`\<script lang="ts"\>
- import {
-    Message,
-    MessageAvatar,
-    MessageContent,
-  } from "$lib/components/ai-elements/message/index.js";
-
-  type MessageData = {
-    key: string;
-    from: "user" | "assistant";
-    content: string;
-    avatar: string;
-    name: string;
-  };
-
-  let messages: MessageData[] = $state([
-    {
-      key: crypto.randomUUID(),
-      from: "user",
-      content: "Hello, how are you?",
-      avatar: "https://github.com/haydenbleasel.png",
-      name: "Hayden Bleasel",
-    },
-    {
-      key: crypto.randomUUID(),
-      from: "assistant",
-      content:
-        "Hello! I'm doing well, thank you for asking. How can I help you today?",
-      avatar: "https://github.com/copilot.png",
-      name: "Assistant",
-    },
-    {
-      key: crypto.randomUUID(),
-      from: "user",
-      content: "Can you help me understand Svelte 5 runes?",
-      avatar: "https://github.com/haydenbleasel.png",
-      name: "Hayden Bleasel",
-    },
-    {
-      key: crypto.randomUUID(),
-      from: "assistant",
-      content:
-        "Absolutely! Svelte 5 introduces runes like $state, $derived, and $props which provide a more powerful and flexible reactivity system. Would you like me to explain any specific rune?",
-      avatar: "https://github.com/copilot.png",
-      name: "Assistant",
-    },
-  ]);
-\<\/script\>
-
-<div class="space-y-4">
-  {#each messages as { content, from, avatar, name }}
-    <Message {from}>
-      <MessageContent>{content}</MessageContent>
-      <MessageAvatar {name} src={avatar} />
-    </Message>
-  {/each}
-</div>`}
-				/>
-			</div>
-
-			<p
-				class="text-muted-foreground mt-8 max-w-4xl text-base leading-7 sm:text-lg md:leading-8"
-			>
-				That's it! You're now ready to build amazing AI-powered interfaces with Svelte AI
-				Elements. Check out the individual component documentation for detailed usage
-				examples and API references.
-			</p>
-		</section>
-
-		<section>
-			<div
-				class="bg-muted dark:bg-muted/40 border-muted/50 dark:border-muted/30 rounded-lg border p-6 backdrop-blur-sm"
-			>
-				<div class="flex">
-					<div class="flex-shrink-0">
-						<InfoIcon class="text-muted-foreground mt-0.5 h-5 w-5" />
-					</div>
-					<div class="ml-4">
-						<h3 class="text-muted-foreground mb-2 text-sm font-medium">Need Help?</h3>
-						<div class="text-muted-foreground/70 text-sm leading-relaxed">
-							<p>
-								If you encounter any issues during installation, visit our
-								<a
-									href="https://github.com/SikandarJODD/ai-elements"
-									target="_blank"
-									rel="noopener noreferrer"
-									class="hover:text-foreground/90 text-foreground/75 font-medium underline underline-offset-2"
-									>GitHub repository</a
-								>
-								for support.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<AiElementsPrevNext currentSlug="installation" />
-	</div>
-</div>
+		</div>
+		<div>
+			<SingleFile
+				code={{
+					name: "src/routes/+page.svelte",
+					lang: "svelte",
+					code: usageCode,
+				}}
+			/>
+		</div>
+	</section>
+</article>

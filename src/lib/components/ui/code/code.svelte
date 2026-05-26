@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils.js";
 	import { codeVariants } from ".";
 	import type { CodeRootProps } from "./types";
 	import { useCode } from "./code.svelte.js";
 	import { box } from "svelte-toolbelt";
+	// import "../../../../routes/layout.css";
 
 	let {
 		ref = $bindable(null),
@@ -18,20 +19,21 @@
 	}: CodeRootProps = $props();
 
 	const codeState = useCode({
-		code: box.with(() => code),
+		code: box.with(() => code.trimEnd()),
 		hideLines: box.with(() => hideLines),
 		highlight: box.with(() => highlight),
-		lang: box.with(() => lang),
+		lang: box.with(() => lang)
 	});
 </script>
 
 <div {...rest} bind:this={ref} class={cn(codeVariants({ variant }), className)}>
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html codeState.highlighted}
 	{@render children?.()}
 </div>
 
-<style>
-	@reference '../../../../app.css';
+<style lang="postcss">
+	@reference "../../../../routes/layout.css";
 
 	:global(.dark) {
 		:global(.shiki, .shiki span) {
@@ -51,9 +53,7 @@
 	}
 
 	:global(pre.shiki) {
-		@apply overflow-x-auto rounded-lg bg-inherit py-2 text-sm;
-		-ms-overflow-style: none;
-		scrollbar-width: none;
+		@apply overflow-x-auto rounded-none bg-inherit py-4 text-sm;
 	}
 
 	:global(pre.shiki:not([data-code-overflow] *):not([data-code-overflow])) {
@@ -62,7 +62,7 @@
 	}
 
 	:global(pre.shiki code) {
-		@apply grid min-w-full rounded-none border-0 bg-transparent p-0 break-words;
+		@apply grid min-w-full rounded-none border-0 bg-transparent p-0 wrap-break-word;
 		counter-reset: line;
 		box-decoration-break: clone;
 	}
@@ -76,17 +76,17 @@
 		content: counter(step);
 		counter-increment: step;
 		display: inline-block;
-		width: 1.6rem;
-		margin-right: 1rem;
+		width: 1.8rem;
+		margin-right: 1.4rem;
 		text-align: right;
 	}
 
 	:global(pre.line-numbers .line::before) {
-		@apply text-muted-foreground font-mono text-xs;
+		@apply text-muted-foreground;
 	}
 
 	:global(pre .line.line--highlighted) {
-		@apply bg-secondary dark:bg-secondary/60 border-primary/30 dark:border-primary/70 border-l;
+		@apply bg-secondary;
 	}
 
 	:global(pre .line.line--highlighted span) {
@@ -98,6 +98,6 @@
 	}
 
 	:global(pre.line-numbers .line) {
-		@apply px-1;
+		@apply px-2;
 	}
 </style>

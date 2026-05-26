@@ -1,4 +1,4 @@
-import Image from "./Image.svelte";
+import Image from "./image.svelte";
 
 export { Image };
 export type { ImageProps } from "./types";

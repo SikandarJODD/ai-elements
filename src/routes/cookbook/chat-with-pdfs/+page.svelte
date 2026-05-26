@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { CodeChip, H1, H2, Paragraph } from "$lib/components/docs/markdown";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/chat-with-pdfs/llms.txt`;
 
@@ -73,7 +75,7 @@ async function convertFilesToDataURLs(files: FileList) {
 />
 
 {#if files?.length}
-  <div class="text-green-600">📄 {files[0].name} ready</div>
+  <div class="text-green-600">ðŸ“„ {files[0].name} ready</div>
 {/if}
 
 <form onsubmit={handleSubmit} class="flex gap-2">
@@ -145,20 +147,17 @@ export const POST = async ({ request }) => {
 		title: "Chat with PDFs - Svelte Cookbook",
 		description: "Build an AI assistant that reads and answers questions about PDF documents.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/chat-with-pdfs",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/chat-with-pdfs",
 	}}
 />
 
-<article class="mx-auto px-4 py-12 md:px-6 md:py-16">
+<article class="mx-auto px-4 py-8 md:px-6 md:py-10">
 	<header class="mb-12">
-		<div class="mb-6 flex items-start justify-between gap-4">
-			<h1 class="text-4xl font-semibold tracking-tight">Chat with PDFs</h1>
-			<CopyPageDropdown
-				class="shrink-0"
-				componentName="Chat with PDFs"
-				{llmsTxtUrl}
-				type="cookbook"
-			/>
+		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
+			<H1 id="chat-with-pdfs" class="text-3xl font-semibold tracking-tight sm:text-4xl">
+				Chat with PDFs
+			</H1>
+			<CopyPageDropdown class="shrink-0" componentName="Chat with PDFs" {llmsTxtUrl} />
 		</div>
 
 		<div class="mb-6 flex flex-wrap items-center gap-2">
@@ -167,43 +166,63 @@ export const POST = async ({ request }) => {
 			<Badge variant="secondary">Vision</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-lg leading-relaxed">
+		<Paragraph class="mt-0 text-base sm:text-lg">
 			Upload PDF documents and have a conversation about their content. The AI reads the
 			document and answers questions based on what it finds.
-		</p>
+		</Paragraph>
 	</header>
 
 	<section class="mb-12">
-		<h2 class="mb-6 text-3xl font-semibold">Demo</h2>
-		<p class="text-muted-foreground mb-4 text-sm">Upload a PDF and ask questions about it!</p>
+		<H2 id="demo" class="mb-6 text-3xl font-semibold">Demo</H2>
+		<Paragraph class="mb-4 mt-0 text-sm">Upload a PDF and ask questions about it!</Paragraph>
 		<Demo />
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Convert Files to Data URLs</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			The <code class="text-foreground">FileReader</code> API converts uploaded files into base64
-			data URLs that can be sent to the AI model.
-		</p>
-		<CodeNameBlock filename="utils.ts" lang="typescript" code={convertCode} />
+		<H2 id="convert-files-to-data-urls" class="mb-6 text-3xl font-semibold">
+			Convert Files to Data URLs
+		</H2>
+		<Paragraph class="mb-6 mt-0">
+			The <CodeChip>FileReader</CodeChip> API converts uploaded files into base64 data URLs that
+			can be sent to the AI model.
+		</Paragraph>
+		<SingleFile
+			code={{
+				code: convertCode,
+				name: "utils.ts",
+				lang: "typescript",
+			}}
+		/>
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Client Component</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Send both text and file parts in a single message. The
-			<code class="text-foreground">parts</code> array can contain multiple content types.
-		</p>
-		<CodeNameBlock filename="+page.svelte" lang="svelte" code={clientCode} />
+		<H2 id="client-component" class="mb-6 text-3xl font-semibold">Client Component</H2>
+		<Paragraph class="mb-6 mt-0">
+			Send both text and file parts in a single message. The <CodeChip>parts</CodeChip> array can
+			contain multiple content types.
+		</Paragraph>
+		<SingleFile
+			code={{
+				code: clientCode,
+				name: "+page.svelte",
+				lang: "svelte",
+			}}
+		/>
 	</section>
 
 	<section class="mb-10">
-		<h2 class="mb-6 text-3xl font-semibold">Server Endpoint</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
+		<H2 id="server-endpoint" class="mb-6 text-3xl font-semibold">Server Endpoint</H2>
+		<Paragraph class="mb-6 mt-0">
 			Uses a model that supports document understanding. The
-			<code class="text-foreground">convertToModelMessages</code> handles the multi-part format.
-		</p>
-		<CodeNameBlock filename="+server.ts" lang="typescript" code={serverCode} />
+			<CodeChip>convertToModelMessages</CodeChip> handles the multi-part format.
+		</Paragraph>
+		<SingleFile
+			code={{
+				code: serverCode,
+				name: "/+server.ts",
+				lang: "typescript",
+			}}
+		/>
 	</section>
 
 	<footer>

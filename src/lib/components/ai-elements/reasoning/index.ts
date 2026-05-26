@@ -1,14 +1,13 @@
-import Reasoning from "./Reasoning.svelte";
-import ReasoningTrigger from "./ReasoningTrigger.svelte";
-import ReasoningContent from "./ReasoningContent.svelte";
-import Response from "./Response.svelte";
+import Reasoning from "./reasoning.svelte";
+import ReasoningTrigger from "./reasoning-trigger.svelte";
+import ReasoningContent from "./reasoning-content.svelte";
+
 export * from "./reasoning-context.svelte.js";
 
 export {
 	Reasoning,
 	ReasoningTrigger,
 	ReasoningContent,
-	Response,
 	//
 	Reasoning as Root,
 	ReasoningTrigger as Trigger,

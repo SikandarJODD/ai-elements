@@ -19,3 +19,16 @@ component-name/
 - `data.ts`: owns component meta, SEO, examples, preview imports, and props tables.
 - `llms.txt/+server.ts`: returns `docs.md?raw`.
 - `+page.svelte`: stays thin and renders `ComponentPageDocs` with the route data.
+
+
+most used stuff
+
+ `src/
+└── lib/
+    └── components/
+        └── ai-elements/
+            └── chat-container/
+                ├── chat-container-content.svelte
+                ├── chat-container.svelte
+                ├── context.svelte.ts
+                └── index.ts`

@@ -1,448 +1,241 @@
-import Preview from "./examples/preview.svelte";
-import previewRaw from "./examples/preview.svelte?raw";
-import Basic from "./examples/basic.svelte";
-import basicRaw from "./examples/basic.svelte?raw";
-import FileAttachment from "./examples/file-attachment.svelte";
-import fileAttachmentRaw from "./examples/file-attachment.svelte?raw";
-import Branch from "./examples/branch.svelte";
-import branchRaw from "./examples/branch.svelte?raw";
-import PromptInputExample from "./examples/message-chat.svelte";
-import promptInputRaw from "./examples/message-chat.svelte?raw";
+import ActionsMessageActionSvelteRaw from "$lib/components/ai-elements/message/actions/message-action.svelte?raw";
+import ActionsMessageActionsSvelteRaw from "$lib/components/ai-elements/message/actions/message-actions.svelte?raw";
+import ActionsMessageToolbarSvelteRaw from "$lib/components/ai-elements/message/actions/message-toolbar.svelte?raw";
+import AttachmentsMessageAttachmentPreviewSvelteRaw from "$lib/components/ai-elements/message/attachments/message-attachment-preview.svelte?raw";
+import AttachmentsMessageAttachmentSvelteRaw from "$lib/components/ai-elements/message/attachments/message-attachment.svelte?raw";
+import AttachmentsMessageAttachmentsSvelteRaw from "$lib/components/ai-elements/message/attachments/message-attachments.svelte?raw";
+import BranchingMessageBranchContentSvelteRaw from "$lib/components/ai-elements/message/branching/message-branch-content.svelte?raw";
+import BranchingMessageBranchNextSvelteRaw from "$lib/components/ai-elements/message/branching/message-branch-next.svelte?raw";
+import BranchingMessageBranchPageSvelteRaw from "$lib/components/ai-elements/message/branching/message-branch-page.svelte?raw";
+import BranchingMessageBranchPreviousSvelteRaw from "$lib/components/ai-elements/message/branching/message-branch-previous.svelte?raw";
+import BranchingMessageBranchSelectorSvelteRaw from "$lib/components/ai-elements/message/branching/message-branch-selector.svelte?raw";
+import BranchingMessageBranchSvelteRaw from "$lib/components/ai-elements/message/branching/message-branch.svelte?raw";
+import ContextMessageContextSvelteTsRaw from "$lib/components/ai-elements/message/context/message-context.svelte.ts?raw";
+import CoreMessageContentSvelteRaw from "$lib/components/ai-elements/message/core/message-content.svelte?raw";
+import CoreMessageSvelteRaw from "$lib/components/ai-elements/message/core/message.svelte?raw";
+import IndexTsRaw from "$lib/components/ai-elements/message/index.ts?raw";
+import ResponseMessageResponseSvelteRaw from "$lib/components/ai-elements/message/response/message-response.svelte?raw";
 
-import type { ComponentDoc, ComponentMeta } from "$lib/structure/structure";
-import type { Example } from "$lib/structure/examples";
-import type { SEO } from "$lib/structure/seo";
+import type { ComponentDoc, ComponentMeta, InstallComponentDocs } from "$lib/types/structure";
+import type { SEO } from "$lib/types/seo";
+import Preview from "./examples/preview.svelte";
+import PreviewCode from "./examples/preview.svelte?raw";
+import type { Example } from "$lib/types/example";
+import Usage from "./examples/usage.svelte";
+import UsageRaw from "./examples/usage.svelte?raw";
+import FileAttachmentExample from "./examples/file-attachment-example.svelte";
+import FileAttachmentExampleRaw from "./examples/file-attachment-example.svelte?raw";
+import BranchExample from "./examples/branch-example.svelte";
+import BranchExampleRaw from "./examples/branch-example.svelte?raw";
 
 export const meta: ComponentMeta = {
 	id: "message",
 	title: "Message",
 	description:
 		"Composable chat message primitives for Svelte with markdown responses, attachments, branching, and action slots.",
-	category: "utilities",
+	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Message",
 	description:
-		"Build chat interfaces with role-aware messages, markdown rendering, file attachments, and branch navigation in Svelte.",
-	keywords: ["Svelte", "Message", "Chat UI", "Svelte AI Elements"],
+		"Composable chat message primitives for Svelte with markdown responses, attachments, branching, and action slots.",
+	keywords: ["Svelte", "Message", "Component"],
 };
 
-const examples: Example[] = [
-	{
-		name: "Basic Example",
-		description: "Render user and assistant messages with markdown output.",
-		preview: Basic,
-		code: {
-			filename: "basic.svelte",
-			filecode: basicRaw,
+const install_block: InstallComponentDocs = {
+	packages: [],
+	install_code: [
+		{
+			name: "actions/message-action.svelte",
+			code: ActionsMessageActionSvelteRaw,
 			lang: "svelte",
 			isExpand: true,
 		},
-		showRetry: false,
-	},
+		{
+			name: "actions/message-actions.svelte",
+			code: ActionsMessageActionsSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "actions/message-toolbar.svelte",
+			code: ActionsMessageToolbarSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "attachments/message-attachment-preview.svelte",
+			code: AttachmentsMessageAttachmentPreviewSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "attachments/message-attachment.svelte",
+			code: AttachmentsMessageAttachmentSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "attachments/message-attachments.svelte",
+			code: AttachmentsMessageAttachmentsSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "branching/message-branch-content.svelte",
+			code: BranchingMessageBranchContentSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "branching/message-branch-next.svelte",
+			code: BranchingMessageBranchNextSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "branching/message-branch-page.svelte",
+			code: BranchingMessageBranchPageSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "branching/message-branch-previous.svelte",
+			code: BranchingMessageBranchPreviousSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "branching/message-branch-selector.svelte",
+			code: BranchingMessageBranchSelectorSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "branching/message-branch.svelte",
+			code: BranchingMessageBranchSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "context/message-context.svelte.ts",
+			code: ContextMessageContextSvelteTsRaw,
+			lang: "typescript",
+		},
+		{ name: "core/message-content.svelte", code: CoreMessageContentSvelteRaw, lang: "svelte" },
+		{ name: "core/message.svelte", code: CoreMessageSvelteRaw, lang: "svelte" },
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript" },
+		{
+			name: "response/message-response.svelte",
+			code: ResponseMessageResponseSvelteRaw,
+			lang: "svelte",
+		},
+	],
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── message/
+				├── actions/
+				│   ├── message-action.svelte
+				│   ├── message-actions.svelte
+				│   └── message-toolbar.svelte
+				├── attachments/
+				│   ├── message-attachment-preview.svelte
+				│   ├── message-attachment.svelte
+				│   └── message-attachments.svelte
+				├── branching/
+				│   ├── message-branch-content.svelte
+				│   ├── message-branch-next.svelte
+				│   ├── message-branch-page.svelte
+				│   ├── message-branch-previous.svelte
+				│   ├── message-branch-selector.svelte
+				│   └── message-branch.svelte
+				├── context/
+				│   └── message-context.svelte.ts
+				├── core/
+				│   ├── message-content.svelte
+				│   └── message.svelte
+				├── response/
+				│   └── message-response.svelte
+				└── index.ts`,
+};
+
+// Usage with AI SDK Example Code
+let aiConfigRaw = `import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { OPENROUTER_API_KEY } from "$env/static/private";
+
+export const openrouter = createOpenRouter({
+	apiKey: OPENROUTER_API_KEY,
+});
+
+export let defaultModel = "arcee-ai/trinity-large-preview:free";
+`;
+
+let serverTsRaw = `import { streamText, type UIMessage, convertToModelMessages } from "ai";
+import { openrouter, defaultModel } from "$lib/config/ai";
+import type { RequestHandler } from "./$types";
+
+export const POST: RequestHandler = async ({ request }) => {
+	const { messages }: { messages: UIMessage[];} = await request.json();
+
+	let result = streamText({
+		model: openrouter(defaultModel),
+		messages: await convertToModelMessages(messages),
+	});
+
+	return result.toUIMessageStreamResponse();
+};
+`;
+
+
+let examples: Example[] = [
 	{
 		name: "File Attachment Example",
-		description: "Show image and file attachments with the built-in preview dialog.",
-		preview: FileAttachment,
+		preview: FileAttachmentExample,
 		code: {
-			filename: "file-attachment.svelte",
-			filecode: fileAttachmentRaw,
+			name: "file-attachment-example.svelte",
+			code: FileAttachmentExampleRaw,
 			lang: "svelte",
-			isExpand: true,
 		},
-		showRetry: false,
 	},
 	{
-		name: "Branch Example",
-		description:
-			"Switch between multiple assistant versions with the simplified branching API.",
-		preview: Branch,
+		name: "Branch Message Example",
+		preview: BranchExample,
 		code: {
-			filename: "branch.svelte",
-			filecode: branchRaw,
+			name: "branch-example.svelte",
+			code: BranchExampleRaw,
 			lang: "svelte",
-			isExpand: true,
-		},
-		showRetry: false,
+		}
 	},
 	{
-		name: "Usage AI SDK",
-		description: "Compose prompt-input with message using a local text-only workflow.",
-		preview: PromptInputExample,
-		code: {
-			filename: "message-chat.svelte",
-			filecode: promptInputRaw,
-			lang: "svelte",
-			isExpand: true,
-		},
+		name: "Usage with AI SDK",
+		preview: Usage,
+		code: [
+			{
+				name: "config/ai.ts",
+				code: aiConfigRaw,
+				lang: "typescript",
+			},
+			{
+				name: "routes/api/message/route.ts",
+				code: serverTsRaw,
+				lang: "typescript",
+			},
+			{
+				name: "+page.svelte",
+				code: UsageRaw,
+				lang: "svelte",
+			},
+		],
 	},
 ];
 
 export const data: ComponentDoc = {
 	...meta,
-	preview: Preview,
-	previewCode: {
-		filename: "preview.svelte",
-		filecode: previewRaw,
-		lang: "svelte",
-		isExpand: false,
+	preview: {
+		preview: Preview,
+		code: {
+			name: "preview.svelte",
+			code: PreviewCode,
+			lang: "svelte",
+		},
+		preview_class: "max-h-140 overflow-y-auto",
+		is_center: false,
+		show_retry: false,
 	},
-	seo,
 	examples,
-	props: [
-		{
-			name: "Message",
-			props: [
-				{
-					name: "from",
-					type: "'user' | 'assistant' | 'system' | 'function' | 'data' | 'tool'",
-					description: "Controls alignment and role-aware styling.",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description:
-						"MessageContent, MessageBranch, MessageAttachments, or MessageToolbar.",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes for the outer message wrapper.",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLAttributes<HTMLDivElement>",
-					description: "All other div props are supported.",
-				},
-			],
-		},
-		{
-			name: "MessageContent",
-			props: [
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Plain text or nested renderers such as MessageResponse.",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes for the message body container.",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLAttributes<HTMLDivElement>",
-					description: "All other div props are supported.",
-				},
-			],
-		},
-		{
-			name: "MessageResponse",
-			props: [
-				{
-					name: "content",
-					type: "string",
-					description: "Markdown content rendered through streamdown-svelte.",
-				},
-				{
-					name: "components",
-					type: 'StreamdownProps["components"]',
-					description:
-						"Optional component overrides merged with the built-in code, mermaid, and math renderers.",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes for the markdown wrapper.",
-				},
-				{
-					name: "...restProps",
-					type: 'Omit<StreamdownProps, "class" | "content" | "components">',
-					description: "Additional Streamdown props are forwarded.",
-				},
-			],
-		},
-		{
-			name: "MessageToolbar",
-			props: [
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Usually MessageActions or MessageBranchSelector.",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes for the toolbar row.",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLAttributes<HTMLDivElement>",
-					description: "All other div props are supported.",
-				},
-			],
-		},
-		{
-			name: "MessageActions",
-			props: [
-				{
-					name: "children",
-					type: "Snippet",
-					description: "One or more MessageAction components.",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes for the actions row.",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLAttributes<HTMLDivElement>",
-					description: "All other div props are supported.",
-				},
-			],
-		},
-		{
-			name: "MessageAction",
-			props: [
-				{
-					name: "tooltip",
-					type: "string",
-					description: "Tooltip text displayed on hover.",
-				},
-				{
-					name: "label",
-					type: "string",
-					description: "Accessible label used for screen readers.",
-				},
-				{
-					name: "variant",
-					type: "ButtonVariant",
-					default: "'ghost'",
-					description: "Visual button variant.",
-				},
-				{
-					name: "size",
-					type: "ButtonSize",
-					default: "'icon'",
-					description: "Button size passed to the shared button component.",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes for the action button.",
-				},
-				{
-					name: "disabled",
-					type: "boolean",
-					description: "Disables the action button.",
-				},
-				{
-					name: "onclick",
-					type: "(event: MouseEvent) => void",
-					description: "Click handler for the action button.",
-				},
-				{
-					name: "...restProps",
-					type: 'Omit<ButtonProps, "children" | "type" | "href">',
-					description: "Additional button props are forwarded.",
-				},
-			],
-		},
-		{
-			name: "MessageBranch",
-			props: [
-				{
-					name: "defaultBranch",
-					type: "number",
-					default: "0",
-					description: "Initial version index.",
-				},
-				{
-					name: "onBranchChange",
-					type: "(branchIndex: number) => void",
-					description: "Called whenever the active branch changes.",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description:
-						"Usually MessageBranchContent plus a MessageToolbar containing MessageBranchSelector.",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes for the branch wrapper.",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLAttributes<HTMLDivElement>",
-					description: "All other div props are supported.",
-				},
-			],
-		},
-		{
-			name: "MessageBranchContent",
-			props: [
-				{
-					name: "versions",
-					type: "{ id: string; content: string }[]",
-					description:
-						"Assistant message versions rendered with MessageResponse internally.",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes for each rendered version container.",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLAttributes<HTMLDivElement>",
-					description: "All other div props are supported.",
-				},
-			],
-		},
-		{
-			name: "MessageBranchSelector",
-			props: [
-				{
-					name: "children",
-					type: "Snippet",
-					description:
-						"Typically MessageBranchPrevious, MessageBranchPage, and MessageBranchNext.",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes for the button group.",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLAttributes<HTMLDivElement>",
-					description: "All other div props are supported.",
-				},
-			],
-		},
-		{
-			name: "MessageBranchPrevious",
-			props: [
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Optional custom previous icon/content.",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes for the previous button.",
-				},
-				{
-					name: "...restProps",
-					type: 'Omit<ButtonProps, "children" | "type" | "href">',
-					description: "Additional button props are forwarded.",
-				},
-			],
-		},
-		{
-			name: "MessageBranchNext",
-			props: [
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Optional custom next icon/content.",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes for the next button.",
-				},
-				{
-					name: "...restProps",
-					type: 'Omit<ButtonProps, "children" | "type" | "href">',
-					description: "Additional button props are forwarded.",
-				},
-			],
-		},
-		{
-			name: "MessageBranchPage",
-			props: [
-				{
-					name: "children",
-					type: "Snippet",
-					description: 'Optional custom page text. Defaults to "current of total".',
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes for the page label.",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLAttributes<HTMLDivElement>",
-					description: "All other div props are supported.",
-				},
-			],
-		},
-		{
-			name: "MessageAttachments",
-			props: [
-				{
-					name: "children",
-					type: "Snippet",
-					description: "One or more MessageAttachment components.",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes for the attachments row.",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLAttributes<HTMLDivElement>",
-					description: "All other div props are supported.",
-				},
-			],
-		},
-		{
-			name: "MessageAttachment",
-			props: [
-				{
-					name: "data",
-					type: '{ type: "file"; filename?: string; mediaType?: string; url?: string }',
-					description: "Attachment payload used for images and generic files.",
-				},
-				{
-					name: "onRemove",
-					type: "() => void",
-					description: "Optional handler for the remove button.",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes for the attachment tile.",
-				},
-				{
-					name: "...restProps",
-					type: "HTMLAttributes<HTMLDivElement>",
-					description: "All other div props are supported.",
-				},
-			],
-		},
-		{
-			name: "MessageAttachmentPreview",
-			props: [
-				{
-					name: "data",
-					type: '{ type: "file"; filename?: string; mediaType?: string; url?: string }',
-					description: "Image attachment data rendered inside the preview dialog.",
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes for the trigger surface.",
-				},
-			],
-		},
-	],
+	install_block,
+	seo,
+	props: [],
 };

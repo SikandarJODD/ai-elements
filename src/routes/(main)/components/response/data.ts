@@ -1,68 +1,55 @@
-import Basic from "./examples/basic.svelte";
-import basicRaw from "./examples/basic.svelte?raw";
+import IndexTsRaw from "$lib/components/ai-elements/response/index.ts?raw";
+import ResponseSvelteRaw from "$lib/components/ai-elements/response/response.svelte?raw";
 
-import type { Example } from "$lib/structure/examples";
-import type { SEO } from "$lib/structure/seo";
-import type { ComponentDoc, ComponentMeta } from "$lib/structure/structure";
+import type {
+	ComponentDoc,
+	ComponentMeta,
+	InstallComponentDocs,
+} from "$lib/types/structure";
+import type { SEO } from "$lib/types/seo";
+import Preview from "./examples/preview.svelte";
+import PreviewCode from "./examples/preview.svelte?raw";
 
 export const meta: ComponentMeta = {
 	id: "response",
 	title: "Response",
-	description:
-		"The Response component renders a Markdown response from a large language model. It uses Streamdown-Svelte under the hood to render the markdown.",
+	description: "The Response component renders a Markdown response from a large language model. It uses Streamdown-Svelte under the hood to render the markdown.",
+	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Response",
-	description:
-		"The Response component renders a Markdown response from a large language model. It uses Streamdown-Svelte under the hood to render the markdown.",
-	keywords: ["Svelte", "Response", "Markdown", "Svelte AI Elements"],
+	description: "The Response component renders a Markdown response from a large language model. It uses Streamdown-Svelte under the hood to render the markdown.",
+	keywords: ["Svelte", "Response", "Component"],
 };
 
-const examples: Example[] = [];
+const install_block: InstallComponentDocs = {
+	packages: [],
+	install_code: [
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true, },
+		{ name: "response.svelte", code: ResponseSvelteRaw, lang: "svelte", }
+	],
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── response/
+				├── index.ts
+				└── response.svelte`,
+};
 
 export const data: ComponentDoc = {
 	...meta,
-	preview: Basic,
-	previewCode: {
-		filename: "basic.svelte",
-		filecode: basicRaw,
-		lang: "svelte",
-		isExpand: true,
-	},
-	seo,
-	examples,
-	props: [
-		{
-			name: "Response",
-			props: [
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes to apply to the response container",
-				},
-				{
-					name: "content",
-					type: "string",
-					description: "Markdown content to render",
-				},
-				{
-					name: "shikiTheme",
-					type: "string",
-					description: "Shiki theme for code syntax highlighting",
-				},
-				{
-					name: "baseTheme",
-					type: "string",
-					default: "'shadcn'",
-					description: "Base theme for markdown styling",
-				},
-				{
-					name: "...restProps",
-					type: "StreamdownProps",
-					description: "All other Streamdown component props are supported",
-				},
-			],
+	preview: {
+		preview: Preview,
+		code: {
+			name: "preview.svelte",
+			code: PreviewCode,
+			lang: "svelte",
 		},
-	],
+		preview_class: 'max-h-120 overflow-auto',
+	},
+	install_block,
+	seo,
+	props: [],
 };

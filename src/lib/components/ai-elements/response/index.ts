@@ -1,2 +1,2 @@
-import Response from "./Response.svelte";
+import Response from "./response.svelte";
 export { Response };

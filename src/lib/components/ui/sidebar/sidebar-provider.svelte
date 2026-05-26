@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Tooltip from "$lib/components/ui/tooltip/index.js";
-	import { cn, type WithElementRef } from "$lib/utils/utils";
+	import { cn, type WithElementRef } from "$lib/utils.js";
 	import type { HTMLAttributes } from "svelte/elements";
 	import {
 		SIDEBAR_COOKIE_MAX_AGE,
@@ -38,11 +38,12 @@
 <svelte:window onkeydown={sidebar.handleShortcutKeydown} />
 
 <Tooltip.Provider delayDuration={0}>
+	<!-- min-h-svh -->
 	<div
 		data-slot="sidebar-wrapper"
 		style="--sidebar-width: {SIDEBAR_WIDTH}; --sidebar-width-icon: {SIDEBAR_WIDTH_ICON}; {style}"
 		class={cn(
-			"group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-[calc(100vh-4.09rem)] w-full",
+			"group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex  w-full",
 			className
 		)}
 		bind:this={ref}

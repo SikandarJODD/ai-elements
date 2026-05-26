@@ -1,17 +1,15 @@
 <script lang="ts">
 	import * as Tabs from "$lib/components/ui/tabs/index.js";
 	import type { Snippet } from "svelte";
-	import type { SupportedLanguage } from "$lib/components/ui/code/shiki";
-	import type { CodeBlock as MagicCode } from "$lib/components/ui/code/index";
-	import MultipleCode from "$lib/components/ui/code/multiple-code.svelte";
-	import SingleCodeFilename from "../code/single-code-filename.svelte";
 	import { Button } from "$lib/components/ui/button";
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
+	import type { CodeBlock } from "$lib/types/code";
+	import {MultipleFiles,SingleFile} from "$lib/components/ui/code";
+	import MultipleSelectFiles from "../code/multiple-select-files.svelte";
 
 	interface PreviewComponentProps {
 		children: Snippet;
-		code?: MagicCode | MagicCode[];
-		lang?: SupportedLanguage;
+		code?: CodeBlock | CodeBlock[];
 		showRetry?: boolean;
 		isCentered?: boolean;
 		class?: string;
@@ -20,7 +18,6 @@
 	let {
 		code,
 		children,
-		lang = "svelte",
 		showRetry = true,
 		isCentered = true,
 		class: className = "",
@@ -56,19 +53,19 @@
 		{#if value === "preview"}
 			<!-- <ComponentView> -->
 			<div
-				data-toc-index="false"
 				class={cn(
 					"border-border relative flex min-h-64 w-full overflow-hidden rounded-lg border p-6",
 					isCentered ? "items-center justify-center" : "",
 					className
 				)}
+				data-toc-index="false"
 			>
 				{#if showRetry && value === "preview"}
 					<Button
 						variant="secondary"
-						size="icon"
+						size="icon-sm"
 						onclick={handleRetry}
-						class="absolute top-1.5 right-1.5 z-30"
+						class="group absolute top-1.5 right-1.5 z-30"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +77,7 @@
 							stroke-width="2"
 							stroke-linecap="round"
 							stroke-linejoin="round"
-							class="lucide lucide-rotate-cw-icon lucide-rotate-cw"
+							class="lucide lucide-rotate-cw-icon lucide-rotate-cw transition-transform duration-200 ease-out group-hover:rotate-45"
 							><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" /><path
 								d="M21 3v5h-5"
 							/></svg
@@ -100,9 +97,10 @@
 		{:else if value === "code"}
 			<div>
 				{#if Array.isArray(code)}
-					<MultipleCode {code} />
+					<!-- <MultipleFiles {code} /> -->
+					 <MultipleSelectFiles {code} />
 				{:else if code}
-					<SingleCodeFilename {code} />
+					<SingleFile {code} />
 				{/if}
 			</div>
 		{/if}

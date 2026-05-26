@@ -1,7 +1,7 @@
-import Conversation from "./Conversation.svelte";
-import ConversationContent from "./ConversationContent.svelte";
-import ConversationEmptyState from "./ConversationEmptyState.svelte";
-import ConversationScrollButton from "./ConversationScrollButton.svelte";
+import Conversation from "./conversation.svelte";
+import ConversationContent from "./conversation-content.svelte";
+import ConversationEmptyState from "./conversation-empty-state.svelte";
+import ConversationScrollButton from "./conversation-scroll-button.svelte";
 import {
 	getStickToBottomContext,
 	setStickToBottomContext,

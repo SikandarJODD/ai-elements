@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { PUBLIC_WEBSITE_URL } from "$env/static/public";
 	import { MetaTags } from "svelte-meta-tags";
-	import { CopyPageDropdown, CodeNameBlock } from "$lib/components/docs";
 	import { Button } from "$lib/components/ui/button";
 	import { Badge } from "$lib/components/ui/badge";
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
 	import DemoCode from "./demo/demo.svelte?raw";
-	import CodeChip from "$lib/components/markdown/CodeChip.svelte";
+	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { CodeChip, H1, H2, Paragraph } from "$lib/components/docs/markdown";
+	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/generate-object/llms.txt`;
 
@@ -58,20 +59,17 @@ export const POST: RequestHandler = async ({ request }) => {
 		description:
 			"Generate structured JSON objects with type-safe Zod schemas using the Vercel AI SDK.",
 		type: "article",
-		url: "https://ai-elements.vercel.app/cookbook/generate-object",
+		url: "https://svelte-ai-elements.vercel.app/cookbook/generate-object",
 	}}
 />
 
-<article class="mx-auto px-4 py-12 md:px-6 md:py-16">
+<article class="mx-auto px-4 py-8 md:px-6 md:py-10">
 	<header class="mb-12">
-		<div class="mb-6 flex items-start justify-between gap-4">
-			<h1 class="text-4xl font-semibold tracking-tight">Generate Object</h1>
-			<CopyPageDropdown
-				class="shrink-0"
-				componentName="Generate Object"
-				{llmsTxtUrl}
-				type="cookbook"
-			/>
+		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
+			<H1 id="generate-object" class="text-3xl font-semibold tracking-tight sm:text-4xl">
+				Generate Object
+			</H1>
+			<CopyPageDropdown class="shrink-0" componentName="Generate Object" {llmsTxtUrl} />
 		</div>
 
 		<div class="mb-6 flex flex-wrap items-center gap-2">
@@ -80,56 +78,75 @@ export const POST: RequestHandler = async ({ request }) => {
 			<Badge variant="secondary">Type-safe</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-lg leading-relaxed">
+		<Paragraph class="mt-0 text-base sm:text-lg">
 			Generate structured JSON objects that conform to a Zod schema. Perfect for creating
 			typed data like notifications, cards, or extracting structured information from AI
 			responses.
-		</p>
+		</Paragraph>
 	</header>
 
 	<section class="mb-12">
-		<h2 class="mb-3 text-3xl font-semibold">Demo</h2>
+		<H2 id="demo" class="mb-3 text-3xl font-semibold">Demo</H2>
 		<Demo />
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-3 text-3xl font-semibold">Step 1: Define Your Schema</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
+		<H2 id="define-your-schema" class="mb-3 text-3xl font-semibold">
+			Step 1: Define Your Schema
+		</H2>
+		<Paragraph class="mb-6 mt-0">
 			Start by defining a Zod schema. The <CodeChip>.describe()</CodeChip> method helps the AI understand
 			what each field should contain.
-		</p>
-		<CodeNameBlock filename="schema.ts" lang="typescript" code={schemaCode} />
+		</Paragraph>
+		<SingleFile
+			code={{
+				code: schemaCode,
+				name: "schema.ts",
+				lang: "typescript",
+			}}
+		/>
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-3 text-3xl font-semibold">Step 2: Create API Endpoint</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			The api uses <CodeChip>generateText</CodeChip> with <CodeChip>Output.object()</CodeChip> to ensure the response adheres to our Zod schema. This allows us to receive fully typed data on the client.
-		</p>
-		<CodeNameBlock
-			filename="+server.ts"
-			lang="typescript"
-			code={serverCode}
-			highlight={[
-				[1, 3],
-				[14, 16],
-			]}
+		<H2 id="create-api-endpoint" class="mb-3 text-3xl font-semibold">
+			Step 2: Create API Endpoint
+		</H2>
+		<Paragraph class="mb-6 mt-0">
+			The api uses <CodeChip>generateText</CodeChip> with <CodeChip>Output.object()</CodeChip> to
+			ensure the response adheres to our Zod schema. This allows us to receive fully typed data
+			on the client.
+		</Paragraph>
+		<SingleFile
+			code={{
+				code: serverCode,
+				name: "+server.ts",
+				lang: "typescript",
+				highlight: [
+					[1, 3],
+					[14, 16],
+				],
+			}}
 		/>
 	</section>
 
 	<section class="mb-10">
-		<h2 class="mb-3 text-3xl font-semibold">Step 3: Create Notification Component</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Let's build a simple Svelte component to display the generated notifications. This component will receive the structured data from our API.
-		</p>
-		<CodeNameBlock
-			filename="+page.svelte"
-			lang="svelte"
-			code={clientCode}
-			highlight={[
-				[27, 31],
-				[62, 79],
-			]}
+		<H2 id="create-notification-component" class="mb-3 text-3xl font-semibold">
+			Step 3: Create Notification Component
+		</H2>
+		<Paragraph class="mb-6 mt-0">
+			Let's build a simple Svelte component to display the generated notifications. This
+			component will receive the structured data from our API.
+		</Paragraph>
+		<SingleFile
+			code={{
+				code: clientCode,
+				name: "+page.svelte",
+				lang: "svelte",
+				highlight: [
+					[27, 31],
+					[62, 79],
+				],
+			}}
 		/>
 	</section>
 

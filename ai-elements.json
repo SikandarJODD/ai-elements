@@ -5,7 +5,7 @@
 	"aliases": {
 		"lib": "$lib",
 		"components": "$lib/components",
-		"utils": "$lib/utils/utils",
+		"utils": "$lib/utils",
 		"ui": "$lib/components/ui",
 		"hooks": "$lib/hooks"
 	},
@@ -265,7 +265,7 @@
 				"version": "1.0.0",
 				"tags": ["confirmation", "approval", "ai-actions", "permissions", "security"],
 				"category": "AI Response",
-				"documentation": "https://ai-elements.vercel.app/components/confirmation",
+				"documentation": "https://svelte-ai-elements.vercel.app/components/confirmation",
 				"repository": "https://github.com/SikandarJODD/ai-elements",
 				"complexity": "intermediate",
 				"updated": "2025-11-08",

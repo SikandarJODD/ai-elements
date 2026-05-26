@@ -1,142 +1,93 @@
-import Basic from "./examples/basic.svelte";
-import basicRaw from "./examples/basic.svelte?raw";
-import WithDialog from "./examples/with-dialog.svelte";
-import withDialogRaw from "./examples/with-dialog.svelte?raw";
+import IndexTsRaw from "$lib/components/ai-elements/model-selector/index.ts?raw";
+import ModelSelectorContentSvelteRaw from "$lib/components/ai-elements/model-selector/model-selector-content.svelte?raw";
+import ModelSelectorDialogSvelteRaw from "$lib/components/ai-elements/model-selector/model-selector-dialog.svelte?raw";
+import ModelSelectorEmptySvelteRaw from "$lib/components/ai-elements/model-selector/model-selector-empty.svelte?raw";
+import ModelSelectorGroupSvelteRaw from "$lib/components/ai-elements/model-selector/model-selector-group.svelte?raw";
+import ModelSelectorInputSvelteRaw from "$lib/components/ai-elements/model-selector/model-selector-input.svelte?raw";
+import ModelSelectorItemSvelteRaw from "$lib/components/ai-elements/model-selector/model-selector-item.svelte?raw";
+import ModelSelectorListSvelteRaw from "$lib/components/ai-elements/model-selector/model-selector-list.svelte?raw";
+import ModelSelectorLogoGroupSvelteRaw from "$lib/components/ai-elements/model-selector/model-selector-logo-group.svelte?raw";
+import ModelSelectorLogoSvelteRaw from "$lib/components/ai-elements/model-selector/model-selector-logo.svelte?raw";
+import ModelSelectorNameSvelteRaw from "$lib/components/ai-elements/model-selector/model-selector-name.svelte?raw";
+import ModelSelectorSeparatorSvelteRaw from "$lib/components/ai-elements/model-selector/model-selector-separator.svelte?raw";
+import ModelSelectorShortcutSvelteRaw from "$lib/components/ai-elements/model-selector/model-selector-shortcut.svelte?raw";
+import ModelSelectorTriggerSvelteRaw from "$lib/components/ai-elements/model-selector/model-selector-trigger.svelte?raw";
+import ModelSelectorSvelteRaw from "$lib/components/ai-elements/model-selector/model-selector.svelte?raw";
 
-import type { Example } from "$lib/structure/examples";
-import type { SEO } from "$lib/structure/seo";
-import type { ComponentDoc, ComponentMeta } from "$lib/structure/structure";
+import type {
+	ComponentDoc,
+	ComponentMeta,
+	InstallComponentDocs,
+} from "$lib/types/structure";
+import type { SEO } from "$lib/types/seo";
+import Preview from "./examples/preview.svelte";
+import PreviewCode from "./examples/preview.svelte?raw";
 
 export const meta: ComponentMeta = {
 	id: "model-selector",
 	title: "Model Selector",
-	description:
-		"A searchable command palette for selecting AI models with provider logos and multi-provider support.",
+	description: "A searchable command palette for selecting AI models in your chat interface.",
+	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Model Selector",
-	description:
-		"A searchable command palette for selecting AI models with provider logos and multi-provider support.",
-	keywords: ["Svelte", "Model Selector", "AI models", "Svelte AI Elements"],
+	description: "A searchable command palette for selecting AI models in your chat interface.",
+	keywords: ["Svelte", "Model Selector", "Component"],
 };
 
-const examples: Example[] = [
-	{
-		name: "With Dialog",
-		preview: WithDialog,
-		code: {
-			filename: "with-dialog.svelte",
-			filecode: withDialogRaw,
-			lang: "svelte",
-			isExpand: true,
-		},
-	},
-];
+const install_block: InstallComponentDocs = {
+	packages: [],
+	install_code: [
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true, },
+		{ name: "model-selector-content.svelte", code: ModelSelectorContentSvelteRaw, lang: "svelte", },
+		{ name: "model-selector-dialog.svelte", code: ModelSelectorDialogSvelteRaw, lang: "svelte", },
+		{ name: "model-selector-empty.svelte", code: ModelSelectorEmptySvelteRaw, lang: "svelte", },
+		{ name: "model-selector-group.svelte", code: ModelSelectorGroupSvelteRaw, lang: "svelte", },
+		{ name: "model-selector-input.svelte", code: ModelSelectorInputSvelteRaw, lang: "svelte", },
+		{ name: "model-selector-item.svelte", code: ModelSelectorItemSvelteRaw, lang: "svelte", },
+		{ name: "model-selector-list.svelte", code: ModelSelectorListSvelteRaw, lang: "svelte", },
+		{ name: "model-selector-logo-group.svelte", code: ModelSelectorLogoGroupSvelteRaw, lang: "svelte", },
+		{ name: "model-selector-logo.svelte", code: ModelSelectorLogoSvelteRaw, lang: "svelte", },
+		{ name: "model-selector-name.svelte", code: ModelSelectorNameSvelteRaw, lang: "svelte", },
+		{ name: "model-selector-separator.svelte", code: ModelSelectorSeparatorSvelteRaw, lang: "svelte", },
+		{ name: "model-selector-shortcut.svelte", code: ModelSelectorShortcutSvelteRaw, lang: "svelte", },
+		{ name: "model-selector-trigger.svelte", code: ModelSelectorTriggerSvelteRaw, lang: "svelte", },
+		{ name: "model-selector.svelte", code: ModelSelectorSvelteRaw, lang: "svelte", }
+	],
+	folder_structure: `src/
+└── lib/
+	└── components/
+		└── ai-elements/
+			└── model-selector/
+				├── index.ts
+				├── model-selector-content.svelte
+				├── model-selector-dialog.svelte
+				├── model-selector-empty.svelte
+				├── model-selector-group.svelte
+				├── model-selector-input.svelte
+				├── model-selector-item.svelte
+				├── model-selector-list.svelte
+				├── model-selector-logo-group.svelte
+				├── model-selector-logo.svelte
+				├── model-selector-name.svelte
+				├── model-selector-separator.svelte
+				├── model-selector-shortcut.svelte
+				├── model-selector-trigger.svelte
+				└── model-selector.svelte`,
+};
 
 export const data: ComponentDoc = {
 	...meta,
-	preview: Basic,
-	previewCode: {
-		filename: "basic.svelte",
-		filecode: basicRaw,
-		lang: "svelte",
-		isExpand: true,
+	preview: {
+		preview: Preview,
+		code: {
+			name: "preview.svelte",
+			code: PreviewCode,
+			lang: "svelte",
+		},
 	},
+	install_block,
 	seo,
-	examples,
-	props: [
-		{
-			name: "ModelSelector",
-			props: [
-				{
-					name: "open",
-					type: "boolean",
-					description: "Controlled open state and is bindable",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Selector content",
-				},
-			],
-		},
-		{
-			name: "ModelSelectorDialog",
-			props: [
-				{
-					name: "open",
-					type: "boolean",
-					description: "Controlled open state and is bindable",
-				},
-				{
-					name: "title",
-					type: "string",
-					default: '"Model Selector"',
-					description: "Dialog title",
-				},
-				{
-					name: "description",
-					type: "string",
-					default: '"Search for a model"',
-					description: "Dialog description",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Dialog content",
-				},
-			],
-		},
-		{
-			name: "ModelSelectorLogo",
-			props: [
-				{
-					name: "provider",
-					type: "string",
-					description: 'Provider slug, for example "openai" or "anthropic"',
-				},
-				{
-					name: "class",
-					type: "string",
-					description: "Additional CSS classes",
-				},
-			],
-		},
-		{
-			name: "ModelSelectorGroup",
-			props: [
-				{
-					name: "heading",
-					type: "string",
-					description: "Group heading text",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Group items",
-				},
-			],
-		},
-		{
-			name: "ModelSelectorItem",
-			props: [
-				{
-					name: "value",
-					type: "string",
-					description: "Item value for search and selection",
-				},
-				{
-					name: "onSelect",
-					type: "() => void",
-					description: "Callback when the item is selected",
-				},
-				{
-					name: "children",
-					type: "Snippet",
-					description: "Item content",
-				},
-			],
-		},
-	],
+	props: [],
 };

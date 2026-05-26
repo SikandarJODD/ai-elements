@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { NodeToolbar, Position } from "@xyflow/svelte";
-	import { cn } from "$lib/utils/utils";
+	import { cn } from "$lib/utils";
 	import type { Snippet } from "svelte";
 	import type { NodeToolbarProps } from "@xyflow/svelte";
-
+	// indexing
 	interface ToolbarProps extends Omit<NodeToolbarProps, "children"> {
 		class?: string;
 		children?: Snippet;
