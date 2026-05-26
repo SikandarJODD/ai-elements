@@ -6,6 +6,7 @@
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
 	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { CodeChip, H1, H2, Paragraph, Strong } from "$lib/components/docs/markdown";
 	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/markdown-chatbot/llms.txt`;
@@ -90,15 +91,12 @@ Always format code with the correct language identifier.\`,
 />
 
 <article class="mx-auto px-4 py-8 md:px-6 md:py-10">
-	<!-- Header -->
 	<header class="mb-12">
 		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
-			<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Markdown Chatbot</h1>
-			<CopyPageDropdown
-				class="shrink-0"
-				componentName="Markdown Chatbot"
-				{llmsTxtUrl}
-			/>
+			<H1 id="markdown-chatbot" class="text-3xl font-semibold tracking-tight sm:text-4xl">
+				Markdown Chatbot
+			</H1>
+			<CopyPageDropdown class="shrink-0" componentName="Markdown Chatbot" {llmsTxtUrl} />
 		</div>
 
 		<div class="mb-6 flex flex-wrap items-center gap-2">
@@ -107,38 +105,35 @@ Always format code with the correct language identifier.\`,
 			<Badge variant="secondary" class="text-sm">Streaming</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-base leading-relaxed sm:text-lg md:text-xl">
+		<Paragraph class="mt-0 text-base sm:text-lg md:text-xl">
 			Transform plain AI responses into beautifully formatted content with
-			<strong>syntax-highlighted code</strong>, lists, tables, and more.
-		</p>
+			<Strong>syntax-highlighted code</Strong>, lists, tables, and more.
+		</Paragraph>
 	</header>
 
-	<!-- Overview -->
-	<section class="prose prose-neutral dark:prose-invert mb-12 max-w-none">
-		<h2 class="mb-4 text-2xl font-semibold">Overview</h2>
-		<p class="text-muted-foreground leading-relaxed">
+	<section class="mb-12">
+		<H2 id="overview" class="mb-4 text-2xl font-semibold">Overview</H2>
+		<Paragraph class="mt-0">
 			Most AI responses contain markdown - code blocks, bullet points, headers. Raw markdown
-			is hard to read. This recipe uses <code class="text-foreground">streamdown-svelte</code>
-			to render streaming markdown with Shiki-powered syntax highlighting that works perfectly in
-			both light and dark modes.
-		</p>
+			is hard to read. This recipe uses <CodeChip>streamdown-svelte</CodeChip> to render streaming
+			markdown with Shiki-powered syntax highlighting that works perfectly in both light and dark
+			modes.
+		</Paragraph>
 	</section>
 
-	<!-- Demo Section -->
 	<section class="mb-12">
-		<h2 class="mb-6 text-2xl font-semibold">Demo</h2>
-		<p class="text-muted-foreground mb-4 text-sm">
+		<H2 id="demo" class="mb-6 text-2xl font-semibold">Demo</H2>
+		<Paragraph class="mb-4 mt-0 text-sm">
 			Ask for code examples to see syntax highlighting in action!
-		</p>
+		</Paragraph>
 		<Demo />
 	</section>
 
-	<!-- Server Section -->
 	<section class="mb-12">
-		<h2 class="mb-6 text-2xl font-semibold">Server Endpoint</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
+		<H2 id="server-endpoint" class="mb-6 text-2xl font-semibold">Server Endpoint</H2>
+		<Paragraph class="mb-6 mt-0">
 			Guide the AI to use markdown formatting with a system prompt:
-		</p>
+		</Paragraph>
 		<SingleFile
 			code={{
 				name: "src/routes/api/chat/+server.ts",
@@ -149,13 +144,14 @@ Always format code with the correct language identifier.\`,
 		/>
 	</section>
 
-	<!-- Markdown Component Section -->
 	<section class="mb-12">
-		<h2 class="mb-6 text-2xl font-semibold">The Markdown Component</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			<code class="text-foreground">streamdown-svelte</code> handles streaming markdown gracefully,
-			rendering partial content as it arrives:
-		</p>
+		<H2 id="the-markdown-component" class="mb-6 text-2xl font-semibold">
+			The Markdown Component
+		</H2>
+		<Paragraph class="mb-6 mt-0">
+			<CodeChip>streamdown-svelte</CodeChip> handles streaming markdown gracefully, rendering partial
+			content as it arrives:
+		</Paragraph>
 		<SingleFile
 			code={{
 				name: "markdown.svelte",
@@ -166,12 +162,11 @@ Always format code with the correct language identifier.\`,
 		/>
 	</section>
 
-	<!-- Client Rendering Section -->
 	<section class="mb-12">
-		<h2 class="mb-6 text-2xl font-semibold">Rendering Messages</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
+		<H2 id="rendering-messages" class="mb-6 text-2xl font-semibold">Rendering Messages</H2>
+		<Paragraph class="mb-6 mt-0">
 			Render user messages as plain text and assistant messages as markdown:
-		</p>
+		</Paragraph>
 		<SingleFile
 			code={{
 				name: "src/routes/+page.svelte",
@@ -182,7 +177,6 @@ Always format code with the correct language identifier.\`,
 		/>
 	</section>
 
-	<!-- GitHub Link -->
 	<footer>
 		<Button
 			href="https://github.com/SikandarJODD/ai-elements/tree/master/src/routes/cookbook/markdown-chatbot"

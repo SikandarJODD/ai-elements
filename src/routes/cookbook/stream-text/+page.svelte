@@ -7,7 +7,9 @@
 
 	import DemoCode from "./demo/demo.svelte?raw";
 	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { CodeChip, H1, H2, Paragraph } from "$lib/components/docs/markdown";
 	import { SingleFile } from "$lib/components/ui/code";
+
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/stream-text/llms.txt`;
 
 	let clientCode = DemoCode;
@@ -42,15 +44,12 @@ export const POST: RequestHandler = async ({ request }) => {
 />
 
 <article class="mx-auto px-4 py-8 md:px-6 md:py-10">
-	<!-- Header -->
 	<header class="mb-12">
 		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
-			<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Stream Text</h1>
-			<CopyPageDropdown
-				class="shrink-0"
-				componentName="Stream Text"
-				{llmsTxtUrl}
-			/>
+			<H1 id="stream-text" class="text-3xl font-semibold tracking-tight sm:text-4xl">
+				Stream Text
+			</H1>
+			<CopyPageDropdown class="shrink-0" componentName="Stream Text" {llmsTxtUrl} />
 		</div>
 
 		<div class="mb-6 flex flex-wrap items-center gap-2">
@@ -60,52 +59,54 @@ export const POST: RequestHandler = async ({ request }) => {
 		</div>
 	</header>
 
-	<!-- Overview -->
-	<section class="prose prose-neutral dark:prose-invert mb-12 max-w-none">
-		<h2 class="mb-4 text-2xl font-semibold">Overview</h2>
-		<p class="text-muted-foreground leading-relaxed">
+	<section class="mb-12">
+		<H2 id="overview" class="mb-4 text-2xl font-semibold">Overview</H2>
+		<Paragraph class="mt-0">
 			Streaming is essential for building responsive AI applications. Instead of waiting for
 			the complete response, users see text appearing character by character, providing
 			immediate feedback and a more engaging experience.
-		</p>
-		<p class="text-muted-foreground leading-relaxed">
-			This recipe uses the <code class="rounded-sm bg-yellow-900/40 text-yellow-500 px-1">Chat</code> class from
-			<code class="rounded-sm bg-yellow-900/40 text-yellow-500 px-1">@ai-sdk/svelte</code>
+		</Paragraph>
+		<Paragraph>
+			This recipe uses the <CodeChip>Chat</CodeChip> class from
+			<CodeChip>@ai-sdk/svelte</CodeChip>
 			which manages conversation state and provides reactive updates, making it easy to build chat
 			interfaces in Svelte 5.
-		</p>
+		</Paragraph>
 	</section>
 
-	<!-- Demo Section -->
 	<section class="mb-12">
-		<h2 class="mb-6 text-2xl font-semibold">Demo</h2>
+		<H2 id="demo" class="mb-6 text-2xl font-semibold">Demo</H2>
 		<Demo />
 	</section>
 
-	<!-- Client Section -->
 	<section class="mb-12">
-		<h2 class="mb-2 text-2xl font-semibold">Step 1: Create Prompt UI</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
+		<H2 id="create-prompt-ui" class="mb-2 text-2xl font-semibold">Step 1: Create Prompt UI</H2>
+		<Paragraph class="mb-6 mt-0">
 			Start by creating a simple chat interface with an input field and a submit button.
-		</p>
+		</Paragraph>
 		<SingleFile
 			code={{
 				name: "+page.svelte",
 				lang: "svelte",
 				code: clientCode,
-				highlight: [[2, 3], [9, 14], [20, 20]],
+				highlight: [
+					[2, 3],
+					[9, 14],
+					[20, 20],
+				],
 			}}
 		/>
 	</section>
 
-	<!-- Server Section -->
 	<section class="mb-12">
-		<h2 class="mb-6 text-2xl font-semibold">Step 2: Create API Endpoint</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			The server endpoint uses <code class="rounded-sm bg-yellow-900/40 text-yellow-500 px-1">streamText</code> to generate
-			responses and <code class="rounded-sm bg-yellow-900/40 text-yellow-500 px-1">toUIMessageStreamResponse()</code> to stream them
-			back to the client in a format the Chat class can consume.
-		</p>
+		<H2 id="create-api-endpoint" class="mb-6 text-2xl font-semibold">
+			Step 2: Create API Endpoint
+		</H2>
+		<Paragraph class="mb-6 mt-0">
+			The server endpoint uses <CodeChip>streamText</CodeChip> to generate responses and
+			<CodeChip>toUIMessageStreamResponse()</CodeChip> to stream them back to the client in a format
+			the Chat class can consume.
+		</Paragraph>
 		<SingleFile
 			code={{
 				name: "src/routes/api/cookbook/stream-text/+server.ts",
@@ -114,5 +115,6 @@ export const POST: RequestHandler = async ({ request }) => {
 			}}
 		/>
 	</section>
+
 	<CookbookPrevNext currentSlug="stream-text" />
 </article>

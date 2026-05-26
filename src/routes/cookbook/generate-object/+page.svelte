@@ -7,8 +7,8 @@
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
 	import DemoCode from "./demo/demo.svelte?raw";
 	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { CodeChip, H1, H2, Paragraph } from "$lib/components/docs/markdown";
 	import { SingleFile } from "$lib/components/ui/code";
-	import { CodeChip } from "$markdown";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/generate-object/llms.txt`;
 
@@ -66,7 +66,9 @@ export const POST: RequestHandler = async ({ request }) => {
 <article class="mx-auto px-4 py-8 md:px-6 md:py-10">
 	<header class="mb-12">
 		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
-			<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Generate Object</h1>
+			<H1 id="generate-object" class="text-3xl font-semibold tracking-tight sm:text-4xl">
+				Generate Object
+			</H1>
 			<CopyPageDropdown class="shrink-0" componentName="Generate Object" {llmsTxtUrl} />
 		</div>
 
@@ -76,24 +78,26 @@ export const POST: RequestHandler = async ({ request }) => {
 			<Badge variant="secondary">Type-safe</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-base leading-relaxed sm:text-lg">
+		<Paragraph class="mt-0 text-base sm:text-lg">
 			Generate structured JSON objects that conform to a Zod schema. Perfect for creating
 			typed data like notifications, cards, or extracting structured information from AI
 			responses.
-		</p>
+		</Paragraph>
 	</header>
 
 	<section class="mb-12">
-		<h2 class="mb-3 text-3xl font-semibold">Demo</h2>
+		<H2 id="demo" class="mb-3 text-3xl font-semibold">Demo</H2>
 		<Demo />
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-3 text-3xl font-semibold">Step 1: Define Your Schema</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
+		<H2 id="define-your-schema" class="mb-3 text-3xl font-semibold">
+			Step 1: Define Your Schema
+		</H2>
+		<Paragraph class="mb-6 mt-0">
 			Start by defining a Zod schema. The <CodeChip>.describe()</CodeChip> method helps the AI understand
 			what each field should contain.
-		</p>
+		</Paragraph>
 		<SingleFile
 			code={{
 				code: schemaCode,
@@ -104,12 +108,14 @@ export const POST: RequestHandler = async ({ request }) => {
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-3 text-3xl font-semibold">Step 2: Create API Endpoint</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
+		<H2 id="create-api-endpoint" class="mb-3 text-3xl font-semibold">
+			Step 2: Create API Endpoint
+		</H2>
+		<Paragraph class="mb-6 mt-0">
 			The api uses <CodeChip>generateText</CodeChip> with <CodeChip>Output.object()</CodeChip> to
 			ensure the response adheres to our Zod schema. This allows us to receive fully typed data
 			on the client.
-		</p>
+		</Paragraph>
 		<SingleFile
 			code={{
 				code: serverCode,
@@ -124,11 +130,13 @@ export const POST: RequestHandler = async ({ request }) => {
 	</section>
 
 	<section class="mb-10">
-		<h2 class="mb-3 text-3xl font-semibold">Step 3: Create Notification Component</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
+		<H2 id="create-notification-component" class="mb-3 text-3xl font-semibold">
+			Step 3: Create Notification Component
+		</H2>
+		<Paragraph class="mb-6 mt-0">
 			Let's build a simple Svelte component to display the generated notifications. This
 			component will receive the structured data from our API.
-		</p>
+		</Paragraph>
 		<SingleFile
 			code={{
 				code: clientCode,

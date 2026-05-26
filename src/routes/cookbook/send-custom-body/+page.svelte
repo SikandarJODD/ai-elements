@@ -6,6 +6,7 @@
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
 	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { CodeChip, H1, H2, Paragraph } from "$lib/components/docs/markdown";
 	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/send-custom-body/llms.txt`;
@@ -122,12 +123,10 @@ Keep responses concise (under 50 words).\`,
 <article class="mx-auto px-4 py-8 md:px-6 md:py-10">
 	<header class="mb-12">
 		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
-			<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Send Custom Body</h1>
-			<CopyPageDropdown
-				class="shrink-0"
-				componentName="Send Custom Body"
-				{llmsTxtUrl}
-			/>
+			<H1 id="send-custom-body" class="text-3xl font-semibold tracking-tight sm:text-4xl">
+				Send Custom Body
+			</H1>
+			<CopyPageDropdown class="shrink-0" componentName="Send Custom Body" {llmsTxtUrl} />
 		</div>
 
 		<div class="mb-6 flex flex-wrap items-center gap-2">
@@ -136,35 +135,35 @@ Keep responses concise (under 50 words).\`,
 			<Badge variant="secondary">API</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-base leading-relaxed sm:text-lg">
+		<Paragraph class="mt-0 text-base sm:text-lg">
 			Send additional data with every chat request. Perfect for user preferences, session
 			info, or any custom parameters your API needs.
-		</p>
+		</Paragraph>
 	</header>
 
-	<section class="prose prose-neutral dark:prose-invert mb-12 max-w-none">
-		<h2 class="mb-4 text-2xl font-semibold">Use Cases</h2>
-		<p class="text-muted-foreground leading-relaxed">
+	<section class="mb-12">
+		<H2 id="use-cases" class="mb-4 text-2xl font-semibold">Use Cases</H2>
+		<Paragraph class="mt-0">
 			Common scenarios include sending user IDs for personalization, API keys for different
 			providers, theme preferences, or any application state that should influence the AI
 			response.
-		</p>
+		</Paragraph>
 	</section>
 
 	<section class="mb-12">
-		<h2 class="mb-6 text-3xl font-semibold">Demo</h2>
-		<p class="text-muted-foreground mb-4 text-sm">
+		<H2 id="demo" class="mb-6 text-3xl font-semibold">Demo</H2>
+		<Paragraph class="mb-4 mt-0 text-sm">
 			Change the name and age, then send a message!
-		</p>
+		</Paragraph>
 		<Demo />
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Client Component</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			The <code class="text-foreground">body</code> option accepts any object. The loading state
-			shows a personalized message with the user's name and age while the AI curates a response.
-		</p>
+		<H2 id="client-component" class="mb-6 text-3xl font-semibold">Client Component</H2>
+		<Paragraph class="mb-6 mt-0">
+			The <CodeChip>body</CodeChip> option accepts any object. The loading state shows a personalized
+			message with the user's name and age while the AI curates a response.
+		</Paragraph>
 		<SingleFile
 			code={{
 				name: "+page.svelte",
@@ -176,11 +175,11 @@ Keep responses concise (under 50 words).\`,
 	</section>
 
 	<section class="mb-10">
-		<h2 class="mb-6 text-3xl font-semibold">Server Endpoint</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
+		<H2 id="server-endpoint" class="mb-6 text-3xl font-semibold">Server Endpoint</H2>
+		<Paragraph class="mb-6 mt-0">
 			Destructure your custom fields from the request body. Use them to personalize the system
 			prompt or for any server-side logic.
-		</p>
+		</Paragraph>
 		<SingleFile
 			code={{
 				name: "src/routes/api/chat/+server.ts",

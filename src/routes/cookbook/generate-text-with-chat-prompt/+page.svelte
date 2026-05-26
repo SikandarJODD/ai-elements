@@ -6,6 +6,7 @@
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
 	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { CodeChip, H1, H2, H3, Paragraph, Strong } from "$lib/components/docs/markdown";
 	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/generate-text-with-chat-prompt/llms.txt`;
@@ -97,10 +98,14 @@ export const POST: RequestHandler = async ({ request }) => {
 />
 
 <article class="mx-auto px-4 py-8 md:px-6 md:py-10">
-	<!-- Header -->
 	<header class="mb-12">
 		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
-			<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Generate Text with Chat Prompt</h1>
+			<H1
+				id="generate-text-with-chat-prompt"
+				class="text-3xl font-semibold tracking-tight sm:text-4xl"
+			>
+				Generate Text with Chat Prompt
+			</H1>
 			<CopyPageDropdown
 				class="shrink-0"
 				componentName="Generate Text with Chat Prompt"
@@ -114,41 +119,37 @@ export const POST: RequestHandler = async ({ request }) => {
 			<Badge variant="secondary" class="text-sm">AI SDK</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-base leading-relaxed sm:text-lg md:text-xl">
-			Use chat-style prompts with <code class="text-foreground">generateText</code> to build conversational
-			AI with system instructions and message history.
-		</p>
+		<Paragraph class="mt-0 text-base sm:text-lg md:text-xl">
+			Use chat-style prompts with <CodeChip>generateText</CodeChip> to build conversational AI with
+			system instructions and message history.
+		</Paragraph>
 	</header>
 
-	<!-- Overview -->
-	<section class="prose prose-neutral dark:prose-invert mb-12 max-w-none">
-		<h2 class="mb-4 text-2xl font-semibold">Overview</h2>
-		<p class="text-muted-foreground leading-relaxed">
+	<section class="mb-12">
+		<H2 id="overview" class="mb-4 text-2xl font-semibold">Overview</H2>
+		<Paragraph class="mt-0">
 			While simple prompts work for basic tasks, chat prompts unlock powerful features:
-			<strong>system instructions</strong> to define AI behavior,
-			<strong>conversation history</strong> for context-aware responses, and
-			<strong>multi-turn interactions</strong> where the AI remembers previous exchanges.
-		</p>
+			<Strong>system instructions</Strong> to define AI behavior,
+			<Strong>conversation history</Strong> for context-aware responses, and
+			<Strong>multi-turn interactions</Strong> where the AI remembers previous exchanges.
+		</Paragraph>
 	</section>
 
-	<!-- Demo Section -->
 	<section class="mb-12">
-		<h2 class="mb-6 text-2xl font-semibold">Demo</h2>
-		<p class="text-muted-foreground mb-4 text-sm">
+		<H2 id="demo" class="mb-6 text-2xl font-semibold">Demo</H2>
+		<Paragraph class="mb-4 mt-0 text-sm">
 			Try a multi-turn conversation. Say your name, then ask "What's my name?" - the AI
 			remembers!
-		</p>
+		</Paragraph>
 		<Demo />
 	</section>
 
-	<!-- Server Section -->
 	<section class="mb-12">
-		<h2 class="mb-6 text-2xl font-semibold">Server Endpoint</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			The server accepts a <code class="text-foreground">messages</code> array containing the
-			full conversation history. Using <code class="text-foreground">ModelMessage[]</code> type
-			ensures proper structure.
-		</p>
+		<H2 id="server-endpoint" class="mb-6 text-2xl font-semibold">Server Endpoint</H2>
+		<Paragraph class="mb-6 mt-0">
+			The server accepts a <CodeChip>messages</CodeChip> array containing the full conversation
+			history. Using <CodeChip>ModelMessage[]</CodeChip> type ensures proper structure.
+		</Paragraph>
 		<SingleFile
 			code={{
 				name: "src/routes/api/chat/+server.ts",
@@ -159,13 +160,12 @@ export const POST: RequestHandler = async ({ request }) => {
 		/>
 	</section>
 
-	<!-- Client Section -->
 	<section class="mb-12">
-		<h2 class="mb-6 text-2xl font-semibold">Client Component</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
+		<H2 id="client-component" class="mb-6 text-2xl font-semibold">Client Component</H2>
+		<Paragraph class="mb-6 mt-0">
 			The client maintains local message state and sends the complete history with each
 			request. This lets the AI maintain context across turns.
-		</p>
+		</Paragraph>
 		<SingleFile
 			code={{
 				name: "+page.svelte",
@@ -176,36 +176,35 @@ export const POST: RequestHandler = async ({ request }) => {
 		/>
 	</section>
 
-	<!-- Key Concepts -->
 	<section class="mb-12">
-		<h2 class="mb-6 text-2xl font-semibold">Key Concepts</h2>
+		<H2 id="key-concepts" class="mb-6 text-2xl font-semibold">Key Concepts</H2>
 		<div class="space-y-4">
 			<div>
-				<h3 class="text-foreground mb-1 font-medium">ModelMessage Type</h3>
-				<p class="text-muted-foreground text-sm leading-relaxed">
-					Each message has a <code class="text-foreground">role</code>
-					(user/assistant/system) and <code class="text-foreground">content</code>. This
-					structure enables multi-turn conversations.
-				</p>
+				<H3 id="model-message-type" class="mb-1 mt-0 font-medium">ModelMessage Type</H3>
+				<Paragraph class="mt-0 text-sm">
+					Each message has a <CodeChip>role</CodeChip> (user/assistant/system) and
+					<CodeChip>content</CodeChip>. This structure enables multi-turn conversations.
+				</Paragraph>
 			</div>
 			<div>
-				<h3 class="text-foreground mb-1 font-medium">System Message</h3>
-				<p class="text-muted-foreground text-sm leading-relaxed">
-					Use the <code class="text-foreground">system</code> parameter to set persistent instructions.
-					This shapes the AI's personality and response style.
-				</p>
+				<H3 id="system-message" class="mb-1 mt-0 font-medium">System Message</H3>
+				<Paragraph class="mt-0 text-sm">
+					Use the <CodeChip>system</CodeChip> parameter to set persistent instructions. This
+					shapes the AI's personality and response style.
+				</Paragraph>
 			</div>
 			<div>
-				<h3 class="text-foreground mb-1 font-medium">Conversation History</h3>
-				<p class="text-muted-foreground text-sm leading-relaxed">
+				<H3 id="conversation-history" class="mb-1 mt-0 font-medium">
+					Conversation History
+				</H3>
+				<Paragraph class="mt-0 text-sm">
 					Send all previous messages with each request. The AI uses this context to give
 					relevant, coherent responses.
-				</p>
+				</Paragraph>
 			</div>
 		</div>
 	</section>
 
-	<!-- GitHub Link -->
 	<footer>
 		<Button
 			href="https://github.com/SikandarJODD/ai-elements/tree/master/src/routes/cookbook/generate-text-with-chat-prompt"

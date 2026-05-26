@@ -6,16 +6,16 @@
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
 	import CheckIcon from "@lucide/svelte/icons/check";
 	import ExternalLinkIcon from "@lucide/svelte/icons/external-link";
+	import Demo from "./demo/demo.svelte";
 	import { CopyPageDropdown } from "$lib/components/docs/base/main";
 	import {
 		CodeChip,
 		H1,
 		H2,
-		H3,
 		Link,
 		ListItem,
 		Paragraph,
-		UnorderedList
+		UnorderedList,
 	} from "$lib/components/docs/markdown";
 	import { PMCommand } from "$lib/components/ui/pm-command";
 	import { SingleFile } from "$lib/components/ui/code";
@@ -32,8 +32,7 @@ export const openrouter = createOpenRouter({
   apiKey: OPENROUTER_API_KEY,
 });
 
-// Free model - great for development
-export const defaultModel = "z-ai/glm-4.5-air:free";`;
+export const defaultModel = "openrouter/free";`;
 
 	let serverCode = `// src/routes/api/chat/+server.ts
 import { streamText, convertToModelMessages, type UIMessage } from "ai";
@@ -53,67 +52,36 @@ export const POST: RequestHandler = async ({ request }) => {
 };`;
 
 	let clientCode = `<script lang="ts">
-  import { Chat } from "@ai-sdk/svelte";
-  import { DefaultChatTransport } from "ai";
+	import { Chat } from "@ai-sdk/svelte";
 
-  let chat = new Chat({
-    transport: new DefaultChatTransport({
-      api: "/api/chat"
-    })
-  });
+	let chat = new Chat({});
+	let input = $state("");
 
-  let input = $state("");
+	function handleSubmit(e: SubmitEvent) {
+		e.preventDefault();
+		if (!input.trim()) return;
+		chat.sendMessage({ text: input });
+		input = "";
+	}
+\<\/script>
 
-  function handleSubmit(e: SubmitEvent) {
-    e.preventDefault();
-    if (!input.trim()) return;
-    chat.sendMessage({ text: input });
-    input = "";
-  }
-<\/script>
+<div class="p-4 space-y-4">
+	<form onsubmit={handleSubmit} class="flex gap-2 max-w-md ">
+		<input bind:value={input} class="flex-1 border px-4 py-2 rounded-full" placeholder="Ask anything..." />
+		<button type="submit" class="bg-blue-500 text-white px-4 rounded-full"> Send </button>
+	</form>
 
-<div class="max-w-md mx-auto p-4">
-  {#each chat.messages as message}
-    <div class="mb-2">
-      <strong>{message.role === "user" ? "You" : "AI"}:</strong>
-      {#each message.parts as part}
-        {#if part.type === "text"}
-          <span>{part.text}</span>
-        {/if}
-      {/each}
-    </div>
-  {/each}
-
-  <form onsubmit={handleSubmit} class="flex gap-2">
-    <input bind:value={input} class="flex-1 border p-2 rounded" />
-    <button type="submit" class="bg-blue-500 text-white px-4 rounded">
-      Send
-    </button>
-  </form>
+	{#each chat.messages as message}
+		<div class="mb-2">
+			<strong>{message.role === "user" ? "You" : "AI"}:</strong>
+			{#each message.parts as part}
+				{#if part.type === "text"}
+					<span>{part.text}</span>
+				{/if}
+			{/each}
+		</div>
+	{/each}
 </div>`;
-
-	const nextRecipes = [
-		{
-			href: "/cookbook/stream-text",
-			title: "Stream Text",
-			description: "Real-time streaming responses"
-		},
-		{
-			href: "/cookbook/generate-object",
-			title: "Generate Object",
-			description: "Type-safe structured data"
-		},
-		{
-			href: "/cookbook/call-tool",
-			title: "Call Tool",
-			description: "AI-powered function calling"
-		},
-		{
-			href: "/cookbook/generate-image",
-			title: "Generate Image",
-			description: "Create images from text"
-		}
-	];
 </script>
 
 <MetaTags
@@ -143,8 +111,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		</div>
 
 		<Paragraph class="mt-0 text-base sm:text-lg">
-			Build AI-powered Svelte applications in minutes. This guide covers everything you need
-			to get started with the Vercel AI SDK and SvelteKit.
+			Let&apos;s set up a basic AI app with SvelteKit, OpenRouter, and the AI SDK.
 		</Paragraph>
 	</header>
 
@@ -159,14 +126,21 @@ export const POST: RequestHandler = async ({ request }) => {
 			<ListItem class="text-foreground flex items-center gap-3">
 				<CheckIcon class="size-5 text-green-500" />
 				<Paragraph class="text-foreground mt-0">
-					A SvelteKit project with
+					A SvelteKit project with Tailwind CSS and TypeScript
+				</Paragraph>
+			</ListItem>
+			<ListItem class="text-foreground flex items-center gap-3">
+				<CheckIcon class="size-5 text-green-500" />
+				<Paragraph class="text-foreground mt-0">
+					Add
 					<Link
 						href="https://next.shadcn-svelte.com/docs/installation"
 						target="_blank"
-						class="text-primary inline-flex items-center gap-1 align-middle"
+						class="text-primary mx-1 inline-flex items-center gap-1 align-middle"
 					>
 						shadcn-svelte <ExternalLinkIcon class="size-3" />
 					</Link>
+					to your project
 				</Paragraph>
 			</ListItem>
 			<ListItem class="text-foreground flex items-center gap-3">
@@ -187,12 +161,9 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	<!-- Step 1: Installation -->
 	<section class="mb-12">
-		<H2 id="install-packages" class="mt-0 mb-4 text-3xl font-semibold">
-			1. Install Packages
-		</H2>
+		<H2 id="install-packages" class="mt-0 mb-4 text-3xl font-semibold">1. Install Packages</H2>
 		<Paragraph class="mb-6">
-			Install the AI SDK core, Svelte bindings, OpenRouter provider, and Zod for schema
-			validation.
+			Install the AI SDK, the Svelte bindings, the OpenRouter provider, and Zod.
 		</Paragraph>
 		<PMCommand
 			command="add"
@@ -206,8 +177,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			2. Set Up Environment
 		</H2>
 		<Paragraph class="mb-6">
-			Create a <CodeChip>.env</CodeChip> file in your project root with your OpenRouter
-			API key.
+			Add your OpenRouter API key to a <CodeChip>.env</CodeChip> file in the project root.
 		</Paragraph>
 		<SingleFile
 			code={{
@@ -231,12 +201,9 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	<!-- Step 3: AI Config -->
 	<section class="mb-12">
-		<H2 id="create-ai-config" class="mt-0 mb-4 text-3xl font-semibold">
-			3. Create AI Config
-		</H2>
+		<H2 id="create-ai-config" class="mt-0 mb-4 text-3xl font-semibold">3. Create AI Config</H2>
 		<Paragraph class="mb-6">
-			Create a shared configuration file. This keeps your AI setup DRY and makes it easy to
-			switch models.
+			Create one shared AI config file so you can reuse the same provider and model anywhere.
 		</Paragraph>
 		<SingleFile
 			code={{
@@ -262,7 +229,6 @@ export const POST: RequestHandler = async ({ request }) => {
 				name: "src/routes/api/chat/+server.ts",
 				lang: "typescript",
 				code: serverCode,
-				highlight: [9, [17, 20], 23],
 			}}
 		/>
 	</section>
@@ -283,32 +249,27 @@ export const POST: RequestHandler = async ({ request }) => {
 				name: "src/routes/+page.svelte",
 				lang: "svelte",
 				code: clientCode,
-				highlight: [[5, 9], 16],
+				highlight: [[2, 4], 10],
 			}}
 		/>
 	</section>
 
-	<!-- What's Next -->
-	<section class="mb-10" data-toc-index="false">
-		<H2 id="whats-next" class="mt-0 mb-6 text-3xl font-semibold">What's Next?</H2>
+	<section class="mb-12">
+		<H2 id="preview" class="mt-0 mb-4 text-3xl font-semibold">Preview</H2>
 		<Paragraph class="mb-6">
-			You're all set! Explore more recipes to level up your AI app:
+			This is the simple chat app you will have at the end of this setup.
 		</Paragraph>
-		<div class="grid gap-4 sm:grid-cols-2">
-			{#each nextRecipes as recipe (recipe.href)}
-				<Link
-					href={recipe.href}
-					class="hover:bg-secondary rounded-lg border p-4 no-underline transition-colors"
-				>
-					<H3 class="mt-0 text-base font-medium">{recipe.title}</H3>
-					<Paragraph class="mt-1 text-sm">{recipe.description}</Paragraph>
-				</Link>
-			{/each}
+		<div class="overflow-hidden rounded-lg border p-3 min-h-80 mb-4">
+			<Demo />
 		</div>
+		<Paragraph class="mb-6">
+			Want to keep going? Visit the <Link href="/cookbook/generate-text">Generate Text</Link>
+			recipe for the next example.
+		</Paragraph>
 	</section>
 
 	<footer>
-		<Button
+		<!-- <Button
 			href="https://github.com/SikandarJODD/ai-elements/tree/master/src/routes/cookbook/getting-started"
 			target="_blank"
 			variant="outline"
@@ -320,7 +281,7 @@ export const POST: RequestHandler = async ({ request }) => {
 				/>
 			</svg>
 			View on GitHub
-		</Button>
+		</Button> -->
 		<CookbookPrevNext currentSlug="getting-started" />
 	</footer>
 </article>

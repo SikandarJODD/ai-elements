@@ -59,7 +59,9 @@ export const POST: RequestHandler = async ({ request }) => {
 	<!-- Header -->
 	<header class="mb-12">
 		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
-			<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Generate Text</h1>
+			<h1 id="generate-text" class="text-3xl font-semibold tracking-tight sm:text-4xl">
+				Generate Text
+			</h1>
 			<CopyPageDropdown
 				class="shrink-0"
 				componentName="Generate Text"
@@ -74,12 +76,12 @@ export const POST: RequestHandler = async ({ request }) => {
 		</div>
 
 		<p class="text-muted-foreground text-base leading-relaxed sm:text-lg md:text-xl">
-			Learn how to generate text using Vercel AI SDK + OpenRouter in Sveltekit.
+			Learn how to generate text using Vercel AI SDK and OpenRouter.
 		</p>
 	</header>
 	<!-- Demo Section -->
 	<section class="mb-12">
-		<h2 class="mb-2 text-3xl font-semibold">Demo</h2>
+		<h2 id="demo" class="mb-2 text-3xl font-semibold">Demo</h2>
 		<div class="overflow-hidden">
 			<div class="w-full overflow-auto rounded-lg border p-2">
 				<Demo />
@@ -89,7 +91,9 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	<!-- Client Section -->
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Step 1: Create Prompt UI</h2>
+		<h2 id="create-prompt-ui" class="mb-6 text-3xl font-semibold">
+			Step 1: Create Prompt UI
+		</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
 			Let's start by building a simple Svelte component that allows users to input a prompt
 			and submit it. When the user submits, we'll send the prompt to our SvelteKit API route
@@ -113,7 +117,9 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	<!-- AI Config Setup Section -->
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Step 2: AI Config Setup</h2>
+		<h2 id="ai-config-setup" class="mb-6 text-3xl font-semibold">
+			Step 2: AI Config Setup
+		</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
 			Set up a shared AI configuration first so your provider and model settings live in one
 			place. That keeps your SvelteKit project easier to maintain and makes it simple to
@@ -156,7 +162,9 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	<!-- Server Section -->
 	<section class="mb-10">
-		<h2 class="mb-6 text-3xl font-semibold">Step 3: Create API Route</h2>
+		<h2 id="create-api-route" class="mb-6 text-3xl font-semibold">
+			Step 3: Create API Route
+		</h2>
 		<p class="text-muted-foreground mb-6 leading-relaxed">
 			Create a SvelteKit API route to handle the request and generate text with the AI SDK.
 			This route receives the submitted messages, runs the model, and returns the generated

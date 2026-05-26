@@ -6,6 +6,7 @@
 	import Demo from "./demo/demo.svelte";
 	import CookbookPrevNext from "$lib/components/cookbook/cookbook-prev-next.svelte";
 	import { CopyPageDropdown } from "$lib/components/docs/base/main";
+	import { CodeChip, H1, H2, Paragraph } from "$lib/components/docs/markdown";
 	import { SingleFile } from "$lib/components/ui/code";
 
 	let llmsTxtUrl = `${PUBLIC_WEBSITE_URL}/cookbook/call-tool/llms.txt`;
@@ -22,7 +23,7 @@ export const getWeather = tool({
   execute: async ({ city, unit }) => {
     // In production, call a real weather API
     const weather = { value: 24, description: "Sunny" };
-    return \`It is \${weather.value}°\${unit} and \${weather.description} in \${city}!\`;
+    return \`It is \${weather.value}Â°\${unit} and \${weather.description} in \${city}!\`;
   }
 });`;
 
@@ -105,7 +106,9 @@ export const POST = async ({ request }) => {
 <article class="mx-auto px-4 py-8 md:px-6 md:py-10">
 	<header class="mb-12">
 		<div class="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
-			<h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Call Tool</h1>
+			<H1 id="call-tool" class="text-3xl font-semibold tracking-tight sm:text-4xl">
+				Call Tool
+			</H1>
 			<CopyPageDropdown class="shrink-0" componentName="Call Tool" {llmsTxtUrl} />
 		</div>
 
@@ -115,35 +118,34 @@ export const POST = async ({ request }) => {
 			<Badge variant="secondary">Zod</Badge>
 		</div>
 
-		<p class="text-muted-foreground text-base leading-relaxed sm:text-lg">
+		<Paragraph class="mt-0 text-base sm:text-lg">
 			Give your AI the ability to call custom functions. The AI decides when to use tools
-			based on the conversation—like fetching weather, querying databases, or calling APIs.
-		</p>
+			based on the conversation - like fetching weather, querying databases, or calling APIs.
+		</Paragraph>
 	</header>
 
-	<section class="prose prose-neutral dark:prose-invert mb-12 max-w-none">
-		<h2 class="mb-4 text-2xl font-semibold">How Tools Work</h2>
-		<p class="text-muted-foreground leading-relaxed">
+	<section class="mb-12">
+		<H2 id="how-tools-work" class="mb-4 text-2xl font-semibold">How Tools Work</H2>
+		<Paragraph class="mt-0">
 			When you ask "What's the weather in Tokyo?", the AI recognizes it needs weather data. It
-			calls the <code class="text-foreground">getWeather</code> tool with the right parameters,
-			gets the result, and formulates a natural response.
-		</p>
+			calls the <CodeChip>getWeather</CodeChip> tool with the right parameters, gets the result,
+			and formulates a natural response.
+		</Paragraph>
 	</section>
 
 	<section class="mb-12">
-		<h2 class="mb-6 text-3xl font-semibold">Demo</h2>
-		<p class="text-muted-foreground mb-4 text-sm">Try asking about weather in any city!</p>
+		<H2 id="demo" class="mb-6 text-3xl font-semibold">Demo</H2>
+		<Paragraph class="mb-4 mt-0 text-sm">Try asking about weather in any city!</Paragraph>
 		<Demo />
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Define a Tool</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Tools have three parts: a <code class="text-foreground">description</code> (helps AI
-			understand when to use it), an <code class="text-foreground">inputSchema</code>
-			(validates parameters), and an <code class="text-foreground">execute</code> function (runs
-			when called).
-		</p>
+		<H2 id="define-a-tool" class="mb-6 text-3xl font-semibold">Define a Tool</H2>
+		<Paragraph class="mb-6 mt-0">
+			Tools have three parts: a <CodeChip>description</CodeChip> (helps AI understand when to use
+			it), an <CodeChip>inputSchema</CodeChip> (validates parameters), and an
+			<CodeChip>execute</CodeChip> function (runs when called).
+		</Paragraph>
 		<SingleFile
 			code={{
 				code: toolCode,
@@ -154,11 +156,11 @@ export const POST = async ({ request }) => {
 	</section>
 
 	<section class="mb-16">
-		<h2 class="mb-6 text-3xl font-semibold">Server Endpoint</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Pass tools to <code class="text-foreground">streamText</code>. The
-			<code class="text-foreground">stopWhen: stepCountIs(5)</code> prevents infinite tool loops.
-		</p>
+		<H2 id="server-endpoint" class="mb-6 text-3xl font-semibold">Server Endpoint</H2>
+		<Paragraph class="mb-6 mt-0">
+			Pass tools to <CodeChip>streamText</CodeChip>. The
+			<CodeChip>stopWhen: stepCountIs(5)</CodeChip> prevents infinite tool loops.
+		</Paragraph>
 		<SingleFile
 			code={{
 				code: serverCode,
@@ -169,11 +171,11 @@ export const POST = async ({ request }) => {
 	</section>
 
 	<section class="mb-10">
-		<h2 class="mb-6 text-3xl font-semibold">Client Component</h2>
-		<p class="text-muted-foreground mb-6 leading-relaxed">
-			Check <code class="text-foreground">part.type === "tool-invocation"</code> to display tool
-			calls and their results in your UI.
-		</p>
+		<H2 id="client-component" class="mb-6 text-3xl font-semibold">Client Component</H2>
+		<Paragraph class="mb-6 mt-0">
+			Check <CodeChip>part.type === "tool-invocation"</CodeChip> to display tool calls and their
+			results in your UI.
+		</Paragraph>
 		<SingleFile
 			code={{
 				code: clientCode,
