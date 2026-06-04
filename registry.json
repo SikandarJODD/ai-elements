@@ -136,7 +136,7 @@
 				},
 				{
 					"path": "src/lib/components/ai-elements/confirmation/confirmation-context.svelte.ts",
-					"type": "registry:hook",
+					"type": "registry:component",
 					"target": "ai-elements/confirmation/confirmation-context.svelte.ts"
 				},
 				{
@@ -199,7 +199,7 @@
 				},
 				{
 					"path": "src/lib/components/ai-elements/context/context-context.svelte.ts",
-					"type": "registry:hook",
+					"type": "registry:component",
 					"target": "ai-elements/context/context-context.svelte.ts"
 				},
 				{
@@ -284,7 +284,7 @@
 				},
 				{
 					"path": "src/lib/components/ai-elements/conversation/stick-to-bottom-context.svelte.ts",
-					"type": "registry:hook",
+					"type": "registry:component",
 					"target": "ai-elements/conversation/stick-to-bottom-context.svelte.ts"
 				},
 				{
@@ -422,7 +422,7 @@
 				},
 				{
 					"path": "src/lib/components/ai-elements/message/context/message-context.svelte.ts",
-					"type": "registry:hook",
+					"type": "registry:component",
 					"target": "ai-elements/message/context/message-context.svelte.ts"
 				},
 				{
@@ -575,7 +575,7 @@
 				},
 				{
 					"path": "src/lib/components/ai-elements/open-in-chat/open-in-context.svelte.ts",
-					"type": "registry:hook",
+					"type": "registry:component",
 					"target": "ai-elements/open-in-chat/open-in-context.svelte.ts"
 				},
 				{
@@ -663,7 +663,7 @@
 				},
 				{
 					"path": "src/lib/components/ai-elements/plan/plan-context.svelte.ts",
-					"type": "registry:hook",
+					"type": "registry:component",
 					"target": "ai-elements/plan/plan-context.svelte.ts"
 				},
 				{
@@ -739,7 +739,7 @@
 			"files": [
 				{
 					"path": "src/lib/components/ai-elements/inline-citation/carousel-context.svelte.ts",
-					"type": "registry:hook",
+					"type": "registry:component",
 					"target": "ai-elements/inline-citation/carousel-context.svelte.ts"
 				},
 				{
@@ -880,17 +880,17 @@
 				},
 				{
 					"path": "src/lib/components/ai-elements/prompt-input/context/attachments.svelte.ts",
-					"type": "registry:hook",
+					"type": "registry:component",
 					"target": "ai-elements/prompt-input/context/attachments.svelte.ts"
 				},
 				{
 					"path": "src/lib/components/ai-elements/prompt-input/context/provider.svelte.ts",
-					"type": "registry:hook",
+					"type": "registry:component",
 					"target": "ai-elements/prompt-input/context/provider.svelte.ts"
 				},
 				{
 					"path": "src/lib/components/ai-elements/prompt-input/context/text-registration.svelte.ts",
-					"type": "registry:hook",
+					"type": "registry:component",
 					"target": "ai-elements/prompt-input/context/text-registration.svelte.ts"
 				},
 				{
@@ -1078,7 +1078,7 @@
 				},
 				{
 					"path": "src/lib/components/ai-elements/reasoning/reasoning-context.svelte.ts",
-					"type": "registry:hook",
+					"type": "registry:component",
 					"target": "ai-elements/reasoning/reasoning-context.svelte.ts"
 				},
 				{
@@ -1271,7 +1271,7 @@
 				},
 				{
 					"path": "src/lib/components/ai-elements/tool/tool-context.svelte.ts",
-					"type": "registry:hook",
+					"type": "registry:component",
 					"target": "ai-elements/tool/tool-context.svelte.ts"
 				},
 				{
@@ -1324,7 +1324,7 @@
 				},
 				{
 					"path": "src/lib/components/ai-elements/code/code.svelte.ts",
-					"type": "registry:hook",
+					"type": "registry:component",
 					"target": "ai-elements/code/code.svelte.ts"
 				},
 				{
