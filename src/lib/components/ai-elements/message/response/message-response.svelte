@@ -12,7 +12,7 @@
 	import { cn } from "$lib/utils";
 	type Props = StreamdownProps;
 
-	let { content, class: className, components, ...rest }: Props = $props();
+	let { content, class: className, ...rest }: Props = $props();
 	let currentTheme = $derived(
 		mode.current === "dark" ? "github-dark-default" : "github-light-default"
 	);
