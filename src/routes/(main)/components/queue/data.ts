@@ -16,11 +16,7 @@ import QueueSectionSvelteRaw from "$lib/components/ai-elements/queue/queue-secti
 import QueueSvelteRaw from "$lib/components/ai-elements/queue/queue.svelte?raw";
 import TypesTsRaw from "$lib/components/ai-elements/queue/types.ts?raw";
 
-import type {
-	ComponentDoc,
-	ComponentMeta,
-	InstallComponentDocs,
-} from "$lib/types/structure";
+import type { ComponentDoc, ComponentMeta, InstallComponentDocs } from "$lib/types/structure";
 import type { SEO } from "$lib/types/seo";
 import Preview from "./examples/preview.svelte";
 import PreviewCode from "./examples/preview.svelte?raw";
@@ -28,36 +24,54 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "queue",
 	title: "Queue",
-	description: "A comprehensive queue component system for displaying message lists, todos, and collapsible task sections in AI applications.",
+	description:
+		"A comprehensive queue component system for displaying message lists, todos, and collapsible task sections in AI applications.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Queue",
-	description: "A comprehensive queue component system for displaying message lists, todos, and collapsible task sections in AI applications.",
+	description:
+		"A comprehensive queue component system for displaying message lists, todos, and collapsible task sections in AI applications.",
 	keywords: ["Svelte", "Queue", "Component"],
 };
 
 const install_block: InstallComponentDocs = {
 	packages: [],
 	install_code: [
-		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true, },
-		{ name: "queue-item-action.svelte", code: QueueItemActionSvelteRaw, lang: "svelte", },
-		{ name: "queue-item-actions.svelte", code: QueueItemActionsSvelteRaw, lang: "svelte", },
-		{ name: "queue-item-attachment.svelte", code: QueueItemAttachmentSvelteRaw, lang: "svelte", },
-		{ name: "queue-item-content.svelte", code: QueueItemContentSvelteRaw, lang: "svelte", },
-		{ name: "queue-item-description.svelte", code: QueueItemDescriptionSvelteRaw, lang: "svelte", },
-		{ name: "queue-item-file.svelte", code: QueueItemFileSvelteRaw, lang: "svelte", },
-		{ name: "queue-item-image.svelte", code: QueueItemImageSvelteRaw, lang: "svelte", },
-		{ name: "queue-item-indicator.svelte", code: QueueItemIndicatorSvelteRaw, lang: "svelte", },
-		{ name: "queue-item.svelte", code: QueueItemSvelteRaw, lang: "svelte", },
-		{ name: "queue-list.svelte", code: QueueListSvelteRaw, lang: "svelte", },
-		{ name: "queue-section-content.svelte", code: QueueSectionContentSvelteRaw, lang: "svelte", },
-		{ name: "queue-section-label.svelte", code: QueueSectionLabelSvelteRaw, lang: "svelte", },
-		{ name: "queue-section-trigger.svelte", code: QueueSectionTriggerSvelteRaw, lang: "svelte", },
-		{ name: "queue-section.svelte", code: QueueSectionSvelteRaw, lang: "svelte", },
-		{ name: "queue.svelte", code: QueueSvelteRaw, lang: "svelte", },
-		{ name: "types.ts", code: TypesTsRaw, lang: "typescript", }
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true },
+		{ name: "queue-item-action.svelte", code: QueueItemActionSvelteRaw, lang: "svelte" },
+		{ name: "queue-item-actions.svelte", code: QueueItemActionsSvelteRaw, lang: "svelte" },
+		{
+			name: "queue-item-attachment.svelte",
+			code: QueueItemAttachmentSvelteRaw,
+			lang: "svelte",
+		},
+		{ name: "queue-item-content.svelte", code: QueueItemContentSvelteRaw, lang: "svelte" },
+		{
+			name: "queue-item-description.svelte",
+			code: QueueItemDescriptionSvelteRaw,
+			lang: "svelte",
+		},
+		{ name: "queue-item-file.svelte", code: QueueItemFileSvelteRaw, lang: "svelte" },
+		{ name: "queue-item-image.svelte", code: QueueItemImageSvelteRaw, lang: "svelte" },
+		{ name: "queue-item-indicator.svelte", code: QueueItemIndicatorSvelteRaw, lang: "svelte" },
+		{ name: "queue-item.svelte", code: QueueItemSvelteRaw, lang: "svelte" },
+		{ name: "queue-list.svelte", code: QueueListSvelteRaw, lang: "svelte" },
+		{
+			name: "queue-section-content.svelte",
+			code: QueueSectionContentSvelteRaw,
+			lang: "svelte",
+		},
+		{ name: "queue-section-label.svelte", code: QueueSectionLabelSvelteRaw, lang: "svelte" },
+		{
+			name: "queue-section-trigger.svelte",
+			code: QueueSectionTriggerSvelteRaw,
+			lang: "svelte",
+		},
+		{ name: "queue-section.svelte", code: QueueSectionSvelteRaw, lang: "svelte" },
+		{ name: "queue.svelte", code: QueueSvelteRaw, lang: "svelte" },
+		{ name: "types.ts", code: TypesTsRaw, lang: "typescript" },
 	],
 	folder_structure: `src/
 └── lib/

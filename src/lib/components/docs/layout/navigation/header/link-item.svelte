@@ -6,14 +6,7 @@
 	import type { LucideIcon } from "@lucide/svelte";
 
 	type Props = LinkItemType & HTMLAttributes<HTMLAnchorElement>;
-	let {
-		name,
-		description,
-		icon,
-		href,
-		class: className,
-		...props
-	}: Props = $props();
+	let { name, description, icon, href, class: className, ...props }: Props = $props();
 
 	// i have added Svelte Component, Lucide Icon so you can have custom-icon.svelte and lucide icon both
 	let IconComponent: Component | LucideIcon | null = $derived(icon || null);

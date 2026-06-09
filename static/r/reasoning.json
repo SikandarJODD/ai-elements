@@ -26,7 +26,7 @@
 		},
 		{
 			"content": "import { getContext, setContext } from \"svelte\";\n\nconst REASONING_CONTEXT_KEY = Symbol(\"reasoning-context\");\n\nexport class ReasoningContext {\n\t#isStreaming = $state(false);\n\t#isOpen = $state(true);\n\t#duration = $state(0);\n\n\tconstructor(\n\t\toptions: {\n\t\t\tisStreaming?: boolean;\n\t\t\tisOpen?: boolean;\n\t\t\tduration?: number;\n\t\t} = {}\n\t) {\n\t\tthis.#isStreaming = options.isStreaming ?? false;\n\t\tthis.#isOpen = options.isOpen ?? true;\n\t\tthis.#duration = options.duration ?? 0;\n\t}\n\n\tget isStreaming() {\n\t\treturn this.#isStreaming;\n\t}\n\n\tset isStreaming(value: boolean) {\n\t\tthis.#isStreaming = value;\n\t}\n\n\tget isOpen() {\n\t\treturn this.#isOpen;\n\t}\n\n\tset isOpen(value: boolean) {\n\t\tthis.#isOpen = value;\n\t}\n\n\tget duration() {\n\t\treturn this.#duration;\n\t}\n\n\tset duration(value: number) {\n\t\tthis.#duration = value;\n\t}\n\n\tsetIsOpen(open: boolean) {\n\t\tthis.#isOpen = open;\n\t}\n}\n\nexport function setReasoningContext(context: ReasoningContext) {\n\tsetContext(REASONING_CONTEXT_KEY, context);\n}\n\nexport function getReasoningContext(): ReasoningContext {\n\tlet context = getContext<ReasoningContext | undefined>(REASONING_CONTEXT_KEY);\n\tif (!context) {\n\t\tthrow new Error(\"Reasoning components must be used within Reasoning\");\n\t}\n\treturn context;\n}\n",
-			"type": "registry:hook",
+			"type": "registry:component",
 			"target": "ai-elements/reasoning/reasoning-context.svelte.ts"
 		},
 		{

@@ -127,7 +127,6 @@ Lightweight prompt engineering and conversational UI components that are easy to
 | `Response`     | Streaming markdown response rendering                 |
 | `Reasoning`    | Expandable AI thinking and reasoning views            |
 
-
 ## Streaming Responses
 
 For markdown and streaming response rendering, this project uses [`streamdown-svelte`](https://github.com/PacificStudio/streamdown-svelte), the Svelte port used throughout the repo for streamed markdown output.

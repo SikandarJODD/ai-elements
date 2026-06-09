@@ -2,11 +2,7 @@ import ImageSvelteRaw from "$lib/components/ai-elements/image/image.svelte?raw";
 import IndexTsRaw from "$lib/components/ai-elements/image/index.ts?raw";
 import TypesTsRaw from "$lib/components/ai-elements/image/types.ts?raw";
 
-import type {
-	ComponentDoc,
-	ComponentMeta,
-	InstallComponentDocs,
-} from "$lib/types/structure";
+import type { ComponentDoc, ComponentMeta, InstallComponentDocs } from "$lib/types/structure";
 import type { SEO } from "$lib/types/seo";
 import Preview from "./examples/preview.svelte";
 import PreviewCode from "./examples/preview.svelte?raw";
@@ -21,8 +17,7 @@ export const meta: ComponentMeta = {
 
 const seo: SEO = {
 	title: "Image",
-	description:
-		"The Image component displays AI-generated images from base64 encoded data.",
+	description: "The Image component displays AI-generated images from base64 encoded data.",
 	keywords: ["Svelte", "Image", "Component"],
 };
 

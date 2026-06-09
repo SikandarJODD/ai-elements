@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Context from "$lib/components/ai-elements/context/index.js";
-	// you can get info of models from 
+	// you can get info of models from
 	// https://openrouter.ai/models
 	// https://models.dev
 </script>

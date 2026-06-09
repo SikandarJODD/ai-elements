@@ -17,7 +17,7 @@ export const GET: RequestHandler = async () => {
 	const recipeList = allRecipes
 		.map(
 			(recipe) =>
-				`- ${recipe.name}: ${recipe.description}\n  Link: ${cookbookBaseUrl}/${recipe.slug}`,
+				`- ${recipe.name}: ${recipe.description}\n  Link: ${cookbookBaseUrl}/${recipe.slug}`
 		)
 		.join("\n\n");
 

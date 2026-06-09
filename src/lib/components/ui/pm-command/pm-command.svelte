@@ -32,6 +32,7 @@
 	import TerminalIcon from "@lucide/svelte/icons/terminal";
 	import * as Tooltip from "$lib/components/ui/tooltip";
 	import * as Tabs from "$lib/components/ui/tabs";
+	import { page } from "$app/state";
 
 	let {
 		variant = "secondary",
@@ -45,6 +46,11 @@
 	const cmd = $derived(resolveCommand(agent, command, args));
 
 	const commandText = $derived(`${cmd?.command} ${cmd?.args.join(" ")}`);
+
+	let componentID = $derived(() => {
+		let pathname = page.url.pathname.split("/");
+		return pathname[pathname.length - 1] || "";
+	});
 </script>
 
 <div data-slot="pm-command" class={cn(style({ variant }), className)}>
@@ -70,7 +76,12 @@
 			<Tooltip.Root>
 				<Tooltip.Trigger>
 					{#snippet child({ props })}
-						<CopyButton {...props} text={commandText} class="size-6 [&_svg]:size-3">
+						<CopyButton
+							{...props}
+							text={commandText}
+							data-s-event="copy-{componentID}"
+							class="size-6 [&_svg]:size-3"
+						>
 							{#snippet icon()}
 								<ClipboardIcon />
 							{/snippet}

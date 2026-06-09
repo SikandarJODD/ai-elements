@@ -4,7 +4,7 @@
 	import { Button } from "$lib/components/ui/button";
 	import { cn } from "$lib/utils";
 	import type { CodeBlock } from "$lib/types/code";
-	import {MultipleFiles,SingleFile} from "$lib/components/ui/code";
+	import { MultipleFiles, SingleFile } from "$lib/components/ui/code";
 	import MultipleSelectFiles from "../code/multiple-select-files.svelte";
 
 	interface PreviewComponentProps {
@@ -98,7 +98,7 @@
 			<div>
 				{#if Array.isArray(code)}
 					<!-- <MultipleFiles {code} /> -->
-					 <MultipleSelectFiles {code} />
+					<MultipleSelectFiles {code} />
 				{:else if code}
 					<SingleFile {code} />
 				{/if}

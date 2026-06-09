@@ -28,7 +28,6 @@ export const AI_ELEMENTS_GITHUB_PATHS: Record<string, string> = {
 	"Web Preview": `${GITHUB_REPO_BASE}/src/lib/components/ai-elements/web-preview`,
 };
 
-
 export function getAiElementsGithubUrl(componentName: string): string | undefined {
 	return AI_ELEMENTS_GITHUB_PATHS[componentName];
 }

@@ -30,6 +30,6 @@
 			totalItems={blogs.length}
 		/>
 	</div>
-	<FullWidthDivider contained  />
+	<FullWidthDivider contained />
 </div>
 <!-- </div> -->

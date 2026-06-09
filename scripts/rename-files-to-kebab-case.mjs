@@ -1,15 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-const CODE_EXTENSIONS = new Set([
-	".js",
-	".mjs",
-	".cjs",
-	".ts",
-	".mts",
-	".cts",
-	".svelte",
-]);
+const CODE_EXTENSIONS = new Set([".js", ".mjs", ".cjs", ".ts", ".mts", ".cts", ".svelte"]);
 
 const IGNORE_DIRECTORIES = new Set([".git", ".svelte-kit", "node_modules"]);
 const RELATIVE_SPECIFIER_RE = /(['"])(\.{1,2}\/[^'"\\\r\n]+)\1/g;
@@ -148,11 +140,15 @@ function createRenamePlan(filePaths) {
 		collisions.set(collisionKey, existing);
 	}
 
-	const duplicateDestinations = [...collisions.entries()].filter(([, sources]) => sources.length > 1);
+	const duplicateDestinations = [...collisions.entries()].filter(
+		([, sources]) => sources.length > 1
+	);
 
 	if (duplicateDestinations.length > 0) {
 		const message = duplicateDestinations
-			.map(([, sources]) => sources.map((source) => `  - ${path.relative(process.cwd(), source)}`).join("\n"))
+			.map(([, sources]) =>
+				sources.map((source) => `  - ${path.relative(process.cwd(), source)}`).join("\n")
+			)
 			.join("\n");
 		throw new Error(`Multiple files would rename to the same destination:\n${message}`);
 	}
@@ -201,17 +197,20 @@ async function findRewritePlan(rootDirectory, aliasMap) {
 		const originalContent = await fs.readFile(filePath, "utf8");
 		let changed = false;
 
-		const updatedContent = originalContent.replace(RELATIVE_SPECIFIER_RE, (match, quote, specifier) => {
-			const resolvedSpecifier = path.resolve(path.dirname(filePath), specifier);
-			const renamedTarget = aliasMap.get(normalizePath(resolvedSpecifier));
+		const updatedContent = originalContent.replace(
+			RELATIVE_SPECIFIER_RE,
+			(match, quote, specifier) => {
+				const resolvedSpecifier = path.resolve(path.dirname(filePath), specifier);
+				const renamedTarget = aliasMap.get(normalizePath(resolvedSpecifier));
 
-			if (!renamedTarget) {
-				return match;
+				if (!renamedTarget) {
+					return match;
+				}
+
+				changed = true;
+				return `${quote}${toRelativeSpecifier(path.dirname(filePath), renamedTarget)}${quote}`;
 			}
-
-			changed = true;
-			return `${quote}${toRelativeSpecifier(path.dirname(filePath), renamedTarget)}${quote}`;
-		});
+		);
 
 		if (changed) {
 			rewrites.push({
@@ -227,7 +226,11 @@ async function findRewritePlan(rootDirectory, aliasMap) {
 async function main() {
 	const argumentsList = process.argv.slice(2);
 
-	if (argumentsList.length === 0 || argumentsList.includes("--help") || argumentsList.includes("-h")) {
+	if (
+		argumentsList.length === 0 ||
+		argumentsList.includes("--help") ||
+		argumentsList.includes("-h")
+	) {
 		printUsage();
 		process.exit(argumentsList.length === 0 ? 1 : 0);
 	}
@@ -259,10 +262,14 @@ async function main() {
 	const aliasMap = createAliasMap(renames);
 	const rewrites = await findRewritePlan(rootDirectory, aliasMap);
 
-	console.log(`${applyChanges ? "Applying" : "Dry run"} rename plan for ${path.relative(rootDirectory, targetDirectory)}\n`);
+	console.log(
+		`${applyChanges ? "Applying" : "Dry run"} rename plan for ${path.relative(rootDirectory, targetDirectory)}\n`
+	);
 
 	for (const rename of renames) {
-		console.log(`rename  ${path.relative(rootDirectory, rename.oldPath)} -> ${path.relative(rootDirectory, rename.newPath)}`);
+		console.log(
+			`rename  ${path.relative(rootDirectory, rename.oldPath)} -> ${path.relative(rootDirectory, rename.newPath)}`
+		);
 	}
 
 	if (rewrites.length > 0) {

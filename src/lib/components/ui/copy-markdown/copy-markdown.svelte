@@ -15,8 +15,7 @@
 	async function copyMarkdown() {
 		try {
 			const response = await fetch(llmsTxtUrl);
-			if (!response.ok)
-				throw new Error("Failed to fetch markdown content");
+			if (!response.ok) throw new Error("Failed to fetch markdown content");
 
 			const markdown = await response.text();
 			await navigator.clipboard.writeText(markdown);

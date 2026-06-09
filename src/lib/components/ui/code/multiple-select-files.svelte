@@ -8,14 +8,7 @@
 	import { Button } from "$lib/components/ui/button/index.js";
 	import { CopyButton } from "$lib/components/ui/copy-button";
 	import { mergeProps } from "bits-ui";
-	import {
-		CodeIcon,
-		CSS,
-		Markdown,
-		Svelte,
-		Terminal,
-		TypeScript
-	} from "$lib/components/icons";
+	import { CodeIcon, CSS, Markdown, Svelte, Terminal, TypeScript } from "$lib/components/icons";
 	import { FolderIcon, FolderTreeIcon } from "@lucide/svelte";
 
 	type Props = {
@@ -24,13 +17,7 @@
 		folderStructure?: string;
 	};
 
-	type FileKind =
-		| "svelte"
-		| "typescript"
-		| "css"
-		| "markdown"
-		| "bash"
-		| "file";
+	type FileKind = "svelte" | "typescript" | "css" | "markdown" | "bash" | "file";
 
 	type TreeEntry = {
 		id: string;
@@ -60,9 +47,7 @@
 	});
 	let selectedCode = $derived(code[selectedIndex] ?? code[0]);
 	let folderEntries = $derived.by(() => {
-		let parsedEntries = folderStructure
-			? parseFolderStructure(folderStructure)
-			: [];
+		let parsedEntries = folderStructure ? parseFolderStructure(folderStructure) : [];
 
 		if (parsedEntries.length > 0) {
 			return parsedEntries;
@@ -75,25 +60,16 @@
 		return buildFolderEntries(folderPath, code);
 	});
 
-	const CONNECTOR_PREFIXES = [
-		"\u251c\u2500\u2500 ",
-		"\u2514\u2500\u2500 ",
-		"|-- ",
-		"`-- "
-	];
+	const CONNECTOR_PREFIXES = ["\u251c\u2500\u2500 ", "\u2514\u2500\u2500 ", "|-- ", "`-- "];
 
 	const INDENT_PREFIXES = ["\u2502   ", "    ", "|   "];
 
-	function createNode(
-		name: string,
-		kind: TreeNode["kind"],
-		fileKind?: FileKind
-	): TreeNode {
+	function createNode(name: string, kind: TreeNode["kind"], fileKind?: FileKind): TreeNode {
 		return {
 			name,
 			kind,
 			fileKind,
-			children: new Map()
+			children: new Map(),
 		};
 	}
 
@@ -122,10 +98,7 @@
 		) {
 			return "typescript";
 		}
-		if (
-			normalizedName.endsWith(".css") ||
-			normalizedName.endsWith(".pcss")
-		) {
+		if (normalizedName.endsWith(".css") || normalizedName.endsWith(".pcss")) {
 			return "css";
 		}
 		if (normalizedName.endsWith(".md") || normalizedName.endsWith(".svx")) {
@@ -178,7 +151,7 @@
 					name: node.name,
 					depth,
 					kind: node.kind,
-					fileKind: node.fileKind
+					fileKind: node.fileKind,
 				});
 			}
 
@@ -267,7 +240,7 @@
 				name,
 				depth,
 				kind: isFolder ? "folder" : "file",
-				fileKind: isFolder ? undefined : inferFileKind(name)
+				fileKind: isFolder ? undefined : inferFileKind(name),
 			});
 		}
 
@@ -297,13 +270,9 @@
 			<Select.Content align="start" class="max-h-80 overflow-auto p-1">
 				{#each code as item, index (`${item.name}-${index}`)}
 					<Select.Item value={String(index)} class="gap-2 pr-9">
-						{@const ItemIcon = getIconForKind(
-							inferFileKind(item.name, item.lang)
-						)}
+						{@const ItemIcon = getIconForKind(inferFileKind(item.name, item.lang))}
 						<ItemIcon class="size-4" />
-						<span class="truncate font-mono text-sm"
-							>{item.name}</span
-						>
+						<span class="truncate font-mono text-sm">{item.name}</span>
 					</Select.Item>
 				{/each}
 			</Select.Content>
@@ -317,23 +286,16 @@
 							<Tooltip.Trigger>
 								{#snippet child({ props: tooltipProps })}
 									<DropdownMenu.Trigger>
-										{#snippet child({
-											props: dropdownProps
-										})}
+										{#snippet child({ props: dropdownProps })}
 											<Button
-												{...mergeProps(
-													tooltipProps,
-													dropdownProps
-												)}
+												{...mergeProps(tooltipProps, dropdownProps)}
 												type="button"
 												variant="secondary"
 												size="icon-sm"
 												class="relative text-muted-foreground"
 												aria-label="Show folder structure"
 											>
-												<FolderTreeIcon
-													class="size-4"
-												/>
+												<FolderTreeIcon class="size-4" />
 												<span
 													aria-hidden="true"
 													class="absolute inset-e-0 -top-0.5 -right-0.5 size-2 rounded-full dark:bg-emerald-400 bg-emerald-500 outline-2 outline-background"
@@ -348,14 +310,10 @@
 								align="end"
 								class="w-[min(24rem,calc(100vw-2rem))] p-0"
 							>
-								<div
-									class="border-b border-border/70 px-3 py-2"
-								>
+								<div class="border-b border-border/70 px-3 py-2">
 									<p class="font-medium">Folder structure</p>
 									{#if folderPath}
-										<p
-											class="truncate font-mono text-xs text-muted-foreground"
-										>
+										<p class="truncate font-mono text-xs text-muted-foreground">
 											{folderPath}
 										</p>
 									{/if}
@@ -377,20 +335,12 @@
 														class="size-4 shrink-0 text-amber-600 dark:text-amber-400"
 													/>
 												{:else}
-													{@const EntryIcon =
-														getIconForKind(
-															entry.fileKind ??
-																inferFileKind(
-																	entry.name
-																)
-														)}
-													<EntryIcon
-														class="size-4 shrink-0"
-													/>
+													{@const EntryIcon = getIconForKind(
+														entry.fileKind ?? inferFileKind(entry.name)
+													)}
+													<EntryIcon class="size-4 shrink-0" />
 												{/if}
-												<span
-													class="truncate font-mono text-xs sm:text-sm"
-												>
+												<span class="truncate font-mono text-xs sm:text-sm">
 													{entry.name}
 												</span>
 											</div>

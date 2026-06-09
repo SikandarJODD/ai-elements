@@ -26,7 +26,6 @@ const seo: SEO = {
 	keywords: ["Svelte", "Checkpoint", "Component"],
 };
 
-
 const install_block: InstallComponentDocs = {
 	packages: [],
 	install_code: [
@@ -60,7 +59,7 @@ export const data: ComponentDoc = {
 			code: PreviewCode,
 			lang: "svelte",
 		},
-		preview_class:'min-h-100 items-start pt-15',
+		preview_class: "min-h-100 items-start pt-15",
 	},
 	install_block,
 	seo,

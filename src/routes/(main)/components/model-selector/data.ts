@@ -14,11 +14,7 @@ import ModelSelectorShortcutSvelteRaw from "$lib/components/ai-elements/model-se
 import ModelSelectorTriggerSvelteRaw from "$lib/components/ai-elements/model-selector/model-selector-trigger.svelte?raw";
 import ModelSelectorSvelteRaw from "$lib/components/ai-elements/model-selector/model-selector.svelte?raw";
 
-import type {
-	ComponentDoc,
-	ComponentMeta,
-	InstallComponentDocs,
-} from "$lib/types/structure";
+import type { ComponentDoc, ComponentMeta, InstallComponentDocs } from "$lib/types/structure";
 import type { SEO } from "$lib/types/seo";
 import Preview from "./examples/preview.svelte";
 import PreviewCode from "./examples/preview.svelte?raw";
@@ -39,21 +35,45 @@ const seo: SEO = {
 const install_block: InstallComponentDocs = {
 	packages: [],
 	install_code: [
-		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true, },
-		{ name: "model-selector-content.svelte", code: ModelSelectorContentSvelteRaw, lang: "svelte", },
-		{ name: "model-selector-dialog.svelte", code: ModelSelectorDialogSvelteRaw, lang: "svelte", },
-		{ name: "model-selector-empty.svelte", code: ModelSelectorEmptySvelteRaw, lang: "svelte", },
-		{ name: "model-selector-group.svelte", code: ModelSelectorGroupSvelteRaw, lang: "svelte", },
-		{ name: "model-selector-input.svelte", code: ModelSelectorInputSvelteRaw, lang: "svelte", },
-		{ name: "model-selector-item.svelte", code: ModelSelectorItemSvelteRaw, lang: "svelte", },
-		{ name: "model-selector-list.svelte", code: ModelSelectorListSvelteRaw, lang: "svelte", },
-		{ name: "model-selector-logo-group.svelte", code: ModelSelectorLogoGroupSvelteRaw, lang: "svelte", },
-		{ name: "model-selector-logo.svelte", code: ModelSelectorLogoSvelteRaw, lang: "svelte", },
-		{ name: "model-selector-name.svelte", code: ModelSelectorNameSvelteRaw, lang: "svelte", },
-		{ name: "model-selector-separator.svelte", code: ModelSelectorSeparatorSvelteRaw, lang: "svelte", },
-		{ name: "model-selector-shortcut.svelte", code: ModelSelectorShortcutSvelteRaw, lang: "svelte", },
-		{ name: "model-selector-trigger.svelte", code: ModelSelectorTriggerSvelteRaw, lang: "svelte", },
-		{ name: "model-selector.svelte", code: ModelSelectorSvelteRaw, lang: "svelte", }
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true },
+		{
+			name: "model-selector-content.svelte",
+			code: ModelSelectorContentSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "model-selector-dialog.svelte",
+			code: ModelSelectorDialogSvelteRaw,
+			lang: "svelte",
+		},
+		{ name: "model-selector-empty.svelte", code: ModelSelectorEmptySvelteRaw, lang: "svelte" },
+		{ name: "model-selector-group.svelte", code: ModelSelectorGroupSvelteRaw, lang: "svelte" },
+		{ name: "model-selector-input.svelte", code: ModelSelectorInputSvelteRaw, lang: "svelte" },
+		{ name: "model-selector-item.svelte", code: ModelSelectorItemSvelteRaw, lang: "svelte" },
+		{ name: "model-selector-list.svelte", code: ModelSelectorListSvelteRaw, lang: "svelte" },
+		{
+			name: "model-selector-logo-group.svelte",
+			code: ModelSelectorLogoGroupSvelteRaw,
+			lang: "svelte",
+		},
+		{ name: "model-selector-logo.svelte", code: ModelSelectorLogoSvelteRaw, lang: "svelte" },
+		{ name: "model-selector-name.svelte", code: ModelSelectorNameSvelteRaw, lang: "svelte" },
+		{
+			name: "model-selector-separator.svelte",
+			code: ModelSelectorSeparatorSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "model-selector-shortcut.svelte",
+			code: ModelSelectorShortcutSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "model-selector-trigger.svelte",
+			code: ModelSelectorTriggerSvelteRaw,
+			lang: "svelte",
+		},
+		{ name: "model-selector.svelte", code: ModelSelectorSvelteRaw, lang: "svelte" },
 	],
 	folder_structure: `src/
 └── lib/

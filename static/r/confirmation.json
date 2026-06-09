@@ -29,7 +29,7 @@
 		},
 		{
 			"content": "import { getContext, setContext } from \"svelte\";\n\nconst CONFIRMATION_CONTEXT_KEY = Symbol(\"confirmation-context\");\n\nexport type ToolUIPartApproval =\n\t| {\n\t\t\tid: string;\n\t\t\tapproved?: never;\n\t\t\treason?: never;\n\t  }\n\t| {\n\t\t\tid: string;\n\t\t\tapproved: boolean;\n\t\t\treason?: string;\n\t  }\n\t| {\n\t\t\tid: string;\n\t\t\tapproved: true;\n\t\t\treason?: string;\n\t  }\n\t| {\n\t\t\tid: string;\n\t\t\tapproved: false;\n\t\t\treason?: string;\n\t  }\n\t| undefined;\n\nexport type ToolUIPartState =\n\t| \"input-streaming\"\n\t| \"input-available\"\n\t| \"approval-requested\"\n\t| \"approval-responded\"\n\t| \"output-denied\"\n\t| \"output-available\";\n\nexport type ConfirmationContextValue = {\n\tapproval: ToolUIPartApproval;\n\tstate: ToolUIPartState;\n};\n\nexport function setConfirmationContext(value: ConfirmationContextValue) {\n\tsetContext(CONFIRMATION_CONTEXT_KEY, value);\n}\n\nexport function getConfirmationContext(): ConfirmationContextValue {\n\tconst context = getContext<ConfirmationContextValue>(CONFIRMATION_CONTEXT_KEY);\n\tif (!context) {\n\t\tthrow new Error(\"Confirmation components must be used within Confirmation\");\n\t}\n\treturn context;\n}\n",
-			"type": "registry:hook",
+			"type": "registry:component",
 			"target": "ai-elements/confirmation/confirmation-context.svelte.ts"
 		},
 		{

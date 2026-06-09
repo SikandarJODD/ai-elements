@@ -15,15 +15,11 @@
 		OpenInChatGPT,
 		OpenInClaude,
 		OpenInScira,
-		OpenInT3
+		OpenInT3,
 	} from "$lib/components/ui/open-in-chat";
 	import { CopyMarkdown } from "$lib/components/ui/copy-markdown";
 	import MarkdownIcon from "$lib/components/icons/markdown.svelte";
-	import {
-		ChevronDown,
-		ChevronLeft,
-		ChevronRight
-	} from "@lucide/svelte";
+	import { ChevronDown, ChevronLeft, ChevronRight } from "@lucide/svelte";
 
 	type NavLink = {
 		name: string;
@@ -39,9 +35,7 @@
 	let { componentName, llmsTxtUrl, class: className }: Props = $props();
 
 	// Create the query for AI assistants
-	let query = $derived(
-		`Read ${llmsTxtUrl} and help me understand ${componentName}`
-	);
+	let query = $derived(`Read ${llmsTxtUrl} and help me understand ${componentName}`);
 
 	function getCookbookPrevNext(slug: string): {
 		prev: NavLink;
@@ -55,16 +49,16 @@
 				index > 0
 					? {
 							name: recipes[index - 1].name,
-							href: `/cookbook/${recipes[index - 1].slug}`
+							href: `/cookbook/${recipes[index - 1].slug}`,
 						}
 					: null,
 			next:
 				index < recipes.length - 1
 					? {
 							name: recipes[index + 1].name,
-							href: `/cookbook/${recipes[index + 1].slug}`
+							href: `/cookbook/${recipes[index + 1].slug}`,
 						}
-					: null
+					: null,
 		};
 	}
 
@@ -75,28 +69,28 @@
 		if (pathname === "/docs" || pathname.startsWith("/docs/")) {
 			return {
 				isSupported: true,
-				...getPrevNext(currentId || "docs")
+				...getPrevNext(currentId || "docs"),
 			};
 		}
 
 		if (pathname.startsWith("/components/")) {
 			return {
 				isSupported: true,
-				...getPrevNext(currentId)
+				...getPrevNext(currentId),
 			};
 		}
 
 		if (pathname.startsWith("/cookbook/")) {
 			return {
 				isSupported: true,
-				...getCookbookPrevNext(currentId)
+				...getCookbookPrevNext(currentId),
 			};
 		}
 
 		return {
 			isSupported: false,
 			prev: null,
-			next: null
+			next: null,
 		};
 	});
 
@@ -104,8 +98,7 @@
 		if (!(target instanceof HTMLElement)) return false;
 		if (target.isContentEditable) return true;
 
-		const interactiveSelector =
-			"input, textarea, select, [contenteditable='true']";
+		const interactiveSelector = "input, textarea, select, [contenteditable='true']";
 		return target.closest(interactiveSelector) !== null;
 	}
 
@@ -116,8 +109,7 @@
 
 	function handleArrowNavigation(event: KeyboardEvent) {
 		if (!nav.isSupported || event.defaultPrevented) return;
-		if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey)
-			return;
+		if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
 		if (isTypingTarget(event.target)) return;
 
 		if (event.key === "ArrowLeft" && nav.prev) {
@@ -140,12 +132,7 @@
 		<OpenIn {query}>
 			<DropdownMenu.Trigger>
 				{#snippet child({ props })}
-					<Button
-						{...props}
-						variant="secondary"
-						size="sm"
-						class="px-2"
-					>
+					<Button {...props} variant="secondary" size="sm" class="px-2">
 						<ChevronDown class="size-4" />
 					</Button>
 				{/snippet}
@@ -158,12 +145,7 @@
 				<OpenInSeparator />
 				<DropdownMenu.Item class="cursor-pointer gap-2">
 					{#snippet child({ props })}
-						<a
-							href={llmsTxtUrl}
-							target="_blank"
-							rel="noopener"
-							{...props}
-						>
+						<a href={llmsTxtUrl} target="_blank" rel="noopener" {...props}>
 							<MarkdownIcon class="size-4" />
 							<span class="flex-1">View as Markdown</span>
 							<!-- <ExternalLink class="size-4" /> -->
@@ -199,9 +181,7 @@
 							<div class="text-sm font-medium">
 								{nav.prev?.name}
 							</div>
-							<div
-								class="flex items-center gap-2 text-xs text-background/80"
-							>
+							<div class="flex items-center gap-2 text-xs text-background/80">
 								<span>Press</span>
 								<Kbd.Root>&larr;</Kbd.Root>
 							</div>
@@ -240,9 +220,7 @@
 							<div class="text-sm font-medium">
 								{nav.next?.name}
 							</div>
-							<div
-								class="flex items-center gap-2 text-xs text-background/80"
-							>
+							<div class="flex items-center gap-2 text-xs text-background/80">
 								<span>Press</span>
 								<Kbd.Root>&rarr;</Kbd.Root>
 							</div>

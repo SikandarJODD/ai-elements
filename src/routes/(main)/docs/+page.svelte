@@ -20,7 +20,7 @@
 		description:
 			"Svelte AI Elements provides core building blocks for AI apps with high-quality, accessible, customizable components.",
 		type: "article",
-		siteName: "Svelte AI Elements"
+		siteName: "Svelte AI Elements",
 	}}
 />
 
@@ -32,12 +32,10 @@
 					<Badge variant="secondary">Docs</Badge>
 					<Badge variant="secondary">Getting Started</Badge>
 				</div> -->
-				<h1 class="text-4xl font-semibold tracking-tight">
-					Introduction
-				</h1>
+				<h1 class="text-4xl font-semibold tracking-tight">Introduction</h1>
 				<p class="text-muted-foreground max-w-3xl text-lg leading-relaxed">
-					Svelte AI Elements provides core building blocks for AI apps with
-					high-quality, accessible, customizable components.
+					Svelte AI Elements provides core building blocks for AI apps with high-quality,
+					accessible, customizable components.
 				</p>
 			</div>
 			<CopyPageDropdown
@@ -51,8 +49,8 @@
 	<section class="mb-12">
 		<h2 class="mb-4 text-3xl font-semibold">Inspired by Vercel AI Elements</h2>
 		<p class="text-muted-foreground max-w-3xl leading-relaxed">
-			This project takes direct inspiration from Vercel AI Elements and adapts
-			that idea to the Svelte ecosystem.
+			This project takes direct inspiration from Vercel AI Elements and adapts that idea to
+			the Svelte ecosystem.
 		</p>
 	</section>
 

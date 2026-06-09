@@ -39,10 +39,7 @@
 				loading="lazy"
 			></iframe>
 		{:else if item.previewMode === "inline" && PreviewComponent}
-			<div
-				class="bg-background p-4"
-				style={`min-height: ${previewHeight}px;`}
-			>
+			<div class="bg-background p-4" style={`min-height: ${previewHeight}px;`}>
 				<PreviewComponent />
 			</div>
 		{:else}
@@ -55,7 +52,12 @@
 
 					{#if item.previewHref}
 						<div class="mt-4 flex justify-center">
-							<Button href={item.previewHref} target="_blank" variant="outline" size="sm">
+							<Button
+								href={item.previewHref}
+								target="_blank"
+								variant="outline"
+								size="sm"
+							>
 								<ExternalLink class="size-3.5" />
 								<span>Open preview</span>
 							</Button>

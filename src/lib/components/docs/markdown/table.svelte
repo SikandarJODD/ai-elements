@@ -8,20 +8,13 @@
 		[prop: string]: unknown;
 	};
 
-	const {
-		children,
-		class: className = "",
-		...restProps
-	}: ComponentProps = $props();
+	const { children, class: className = "", ...restProps }: ComponentProps = $props();
 </script>
 
 <div
 	class="relative mt-4 mb-10 w-full overflow-x-auto rounded-xl border border-border bg-muted/30 dark:shadow-sm"
 >
-	<table
-		{...restProps}
-		class={cn("w-full text-base [&_code]:text-sm", className)}
-	>
+	<table {...restProps} class={cn("w-full text-base [&_code]:text-sm", className)}>
 		{@render children?.()}
 	</table>
 </div>

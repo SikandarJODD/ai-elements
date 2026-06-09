@@ -58,7 +58,7 @@
 	<!-- Successful Tool Example -->
 	<Tool.Root>
 		<Tool.Header type={toolData.type} state={toolData.state} />
-		<Tool.Content >
+		<Tool.Content>
 			<Tool.Input input={toolData.input} />
 			<Tool.Output output={toolData.output} />
 		</Tool.Content>

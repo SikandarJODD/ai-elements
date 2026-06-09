@@ -9,7 +9,7 @@
 </script>
 
 <div class="flex w-2xl mx-auto flex-col gap-4">
-	<Message from="user" class='w-full'>
+	<Message from="user" class="w-full">
 		<MessageAttachments class="mb-2">
 			<MessageAttachment
 				data={{
@@ -31,7 +31,7 @@
 		<MessageContent>Please review these files before we ship the new docs page.</MessageContent>
 	</Message>
 
-	<Message from="assistant" class='w-full'>
+	<Message from="assistant" class="w-full">
 		<MessageContent>
 			<MessageResponse
 				content={`I can review both:
