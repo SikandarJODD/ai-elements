@@ -17,11 +17,7 @@ import OpenInSvelteRaw from "$lib/components/ai-elements/open-in-chat/open-in.sv
 import SciraIconSvelteRaw from "$lib/components/ai-elements/open-in-chat/scira-icon.svelte?raw";
 import V0IconSvelteRaw from "$lib/components/ai-elements/open-in-chat/v0-icon.svelte?raw";
 
-import type {
-	ComponentDoc,
-	ComponentMeta,
-	InstallComponentDocs,
-} from "$lib/types/structure";
+import type { ComponentDoc, ComponentMeta, InstallComponentDocs } from "$lib/types/structure";
 import type { SEO } from "$lib/types/seo";
 import Preview from "./examples/preview.svelte";
 import PreviewCode from "./examples/preview.svelte?raw";
@@ -29,37 +25,39 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "open-in-chat",
 	title: "Open In Chat",
-	description: "The Open In Chat component provides a dropdown menu that allows users to open queries in different AI chat platforms with a single click.",
+	description:
+		"The Open In Chat component provides a dropdown menu that allows users to open queries in different AI chat platforms with a single click.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Open In Chat",
-	description: "The Open In Chat component provides a dropdown menu that allows users to open queries in different AI chat platforms with a single click.",
+	description:
+		"The Open In Chat component provides a dropdown menu that allows users to open queries in different AI chat platforms with a single click.",
 	keywords: ["Svelte", "Open In Chat", "Component"],
 };
 
 const install_block: InstallComponentDocs = {
 	packages: [],
 	install_code: [
-		{ name: "chatgpt-icon.svelte", code: ChatGptIconSvelteRaw, lang: "svelte", isExpand: true, },
-		{ name: "claude-icon.svelte", code: ClaudeIconSvelteRaw, lang: "svelte", },
-		{ name: "github-icon.svelte", code: GitHubIconSvelteRaw, lang: "svelte", },
-		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", },
-		{ name: "open-in-chatgpt.svelte", code: OpenInChatGptSvelteRaw, lang: "svelte", },
-		{ name: "open-in-claude.svelte", code: OpenInClaudeSvelteRaw, lang: "svelte", },
-		{ name: "open-in-content.svelte", code: OpenInContentSvelteRaw, lang: "svelte", },
-		{ name: "open-in-context.svelte.ts", code: OpenInContextSvelteTsRaw, lang: "typescript", },
-		{ name: "open-in-item.svelte", code: OpenInItemSvelteRaw, lang: "svelte", },
-		{ name: "open-in-label.svelte", code: OpenInLabelSvelteRaw, lang: "svelte", },
-		{ name: "open-in-scira.svelte", code: OpenInSciraSvelteRaw, lang: "svelte", },
-		{ name: "open-in-separator.svelte", code: OpenInSeparatorSvelteRaw, lang: "svelte", },
-		{ name: "open-in-t3.svelte", code: OpenInT3SvelteRaw, lang: "svelte", },
-		{ name: "open-in-trigger.svelte", code: OpenInTriggerSvelteRaw, lang: "svelte", },
-		{ name: "open-in-v0.svelte", code: OpenInV0SvelteRaw, lang: "svelte", },
-		{ name: "open-in.svelte", code: OpenInSvelteRaw, lang: "svelte", },
-		{ name: "scira-icon.svelte", code: SciraIconSvelteRaw, lang: "svelte", },
-		{ name: "v0-icon.svelte", code: V0IconSvelteRaw, lang: "svelte", }
+		{ name: "chatgpt-icon.svelte", code: ChatGptIconSvelteRaw, lang: "svelte", isExpand: true },
+		{ name: "claude-icon.svelte", code: ClaudeIconSvelteRaw, lang: "svelte" },
+		{ name: "github-icon.svelte", code: GitHubIconSvelteRaw, lang: "svelte" },
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript" },
+		{ name: "open-in-chatgpt.svelte", code: OpenInChatGptSvelteRaw, lang: "svelte" },
+		{ name: "open-in-claude.svelte", code: OpenInClaudeSvelteRaw, lang: "svelte" },
+		{ name: "open-in-content.svelte", code: OpenInContentSvelteRaw, lang: "svelte" },
+		{ name: "open-in-context.svelte.ts", code: OpenInContextSvelteTsRaw, lang: "typescript" },
+		{ name: "open-in-item.svelte", code: OpenInItemSvelteRaw, lang: "svelte" },
+		{ name: "open-in-label.svelte", code: OpenInLabelSvelteRaw, lang: "svelte" },
+		{ name: "open-in-scira.svelte", code: OpenInSciraSvelteRaw, lang: "svelte" },
+		{ name: "open-in-separator.svelte", code: OpenInSeparatorSvelteRaw, lang: "svelte" },
+		{ name: "open-in-t3.svelte", code: OpenInT3SvelteRaw, lang: "svelte" },
+		{ name: "open-in-trigger.svelte", code: OpenInTriggerSvelteRaw, lang: "svelte" },
+		{ name: "open-in-v0.svelte", code: OpenInV0SvelteRaw, lang: "svelte" },
+		{ name: "open-in.svelte", code: OpenInSvelteRaw, lang: "svelte" },
+		{ name: "scira-icon.svelte", code: SciraIconSvelteRaw, lang: "svelte" },
+		{ name: "v0-icon.svelte", code: V0IconSvelteRaw, lang: "svelte" },
 	],
 	folder_structure: `src/
 └── lib/

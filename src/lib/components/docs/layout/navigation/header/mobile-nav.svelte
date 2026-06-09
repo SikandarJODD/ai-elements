@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { page } from '$app/state';
-	import { recipes } from '$lib/config/cookbook';
-	import { github_repo } from '$lib/config/repo';
-	import { Button } from '$lib/components/ui/button';
-	import { LightSwitch } from '$lib/components/ui/light-switch';
-	import { Portal, PortalBackdrop } from '$lib/components/ui/portal';
-	import { components, docsPages } from '$lib/registry/components';
-	import { Github, X } from '$lib/svg';
-	import { cn } from '$lib/utils';
-	import MenuIcon from '@lucide/svelte/icons/menu';
-	import XIcon from '@lucide/svelte/icons/x';
+	import { page } from "$app/state";
+	import { recipes } from "$lib/config/cookbook";
+	import { github_repo } from "$lib/config/repo";
+	import { Button } from "$lib/components/ui/button";
+	import { LightSwitch } from "$lib/components/ui/light-switch";
+	import { Portal, PortalBackdrop } from "$lib/components/ui/portal";
+	import { components, docsPages } from "$lib/registry/components";
+	import { Github, X } from "$lib/svg";
+	import { cn } from "$lib/utils";
+	import MenuIcon from "@lucide/svelte/icons/menu";
+	import XIcon from "@lucide/svelte/icons/x";
 
 	type SectionLink = {
 		name: string;
@@ -22,41 +22,41 @@
 	};
 
 	const primaryLinks: SectionLink[] = [
-		{ name: 'Home', href: '/' },
-		{ name: 'Components', href: '/components/chain-of-thought' },
-		{ name: 'Docs', href: '/docs' },
-		{ name: 'Cookbook', href: '/cookbook/getting-started' },
-		{ name: 'Changelog', href: '/changelog' }
+		{ name: "Home", href: "/" },
+		{ name: "Components", href: "/components/chain-of-thought" },
+		{ name: "Docs", href: "/docs" },
+		{ name: "Cookbook", href: "/cookbook/getting-started" },
+		{ name: "Changelog", href: "/changelog" },
 	];
 
 	const cookbookLinks = recipes.map((recipe) => ({
 		name: recipe.name,
-		href: `/cookbook/${recipe.slug}`
+		href: `/cookbook/${recipe.slug}`,
 	}));
 
 	const navSections: NavSection[] = [
 		{
-			title: 'Explore',
-			items: primaryLinks
+			title: "Explore",
+			items: primaryLinks,
 		},
 		{
-			title: 'Docs',
+			title: "Docs",
 			items: docsPages.map((page) => ({
 				name: page.name,
-				href: page.href
-			}))
+				href: page.href,
+			})),
 		},
 		{
-			title: 'Components',
+			title: "Components",
 			items: components.map((component) => ({
 				name: component.name,
-				href: component.href
-			}))
+				href: component.href,
+			})),
 		},
 		{
-			title: 'Cookbook Recipes',
-			items: cookbookLinks
-		}
+			title: "Cookbook Recipes",
+			items: cookbookLinks,
+		},
 	];
 
 	let open = $state(false);
@@ -82,11 +82,14 @@
 		size="icon"
 		variant="outline"
 	>
-		<div class={cn('transition-all', open ? 'scale-100 opacity-100' : 'scale-0 opacity-0')}>
+		<div class={cn("transition-all", open ? "scale-100 opacity-100" : "scale-0 opacity-0")}>
 			<XIcon />
 		</div>
 		<div
-			class={cn('absolute transition-all', open ? 'scale-0 opacity-0' : 'scale-100 opacity-100')}
+			class={cn(
+				"absolute transition-all",
+				open ? "scale-0 opacity-0" : "scale-100 opacity-100"
+			)}
 		>
 			<MenuIcon />
 		</div>
@@ -96,10 +99,10 @@
 			<PortalBackdrop />
 			<div
 				class={cn(
-					'size-full overflow-y-auto px-4 pb-28 pt-4',
-					'ease-out data-[slot=open]:animate-in data-[slot=open]:zoom-in-97'
+					"size-full overflow-y-auto px-4 pb-28 pt-4",
+					"ease-out data-[slot=open]:animate-in data-[slot=open]:zoom-in-97"
 				)}
-				data-slot={open ? 'open' : 'closed'}
+				data-slot={open ? "open" : "closed"}
 				id="mobile-menu"
 			>
 				<div class="mx-auto flex w-full max-w-6xl flex-col gap-6">
@@ -112,8 +115,8 @@
 								{#each section.items as item (item.href)}
 									<a
 										class={cn(
-											'border-b py-2 text-sm text-foreground transition-colors last:border-b-0 active:text-foreground/70',
-											isActive(item.href) && 'font-medium'
+											"border-b py-2 text-sm text-foreground transition-colors last:border-b-0 active:text-foreground/70",
+											isActive(item.href) && "font-medium"
 										)}
 										href={item.href}
 										onclick={closeMenu}

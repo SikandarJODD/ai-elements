@@ -32,4 +32,3 @@ Copy the component source files into your project and update the example files w
 
 <Confirmation />
 ```
-

@@ -6,11 +6,7 @@ import ToolInputSvelteRaw from "$lib/components/ai-elements/tool/tool-input.svel
 import ToolOutputSvelteRaw from "$lib/components/ai-elements/tool/tool-output.svelte?raw";
 import ToolSvelteRaw from "$lib/components/ai-elements/tool/tool.svelte?raw";
 
-import type {
-	ComponentDoc,
-	ComponentMeta,
-	InstallComponentDocs,
-} from "$lib/types/structure";
+import type { ComponentDoc, ComponentMeta, InstallComponentDocs } from "$lib/types/structure";
 import type { SEO } from "$lib/types/seo";
 import Preview from "./examples/preview.svelte";
 import PreviewCode from "./examples/preview.svelte?raw";
@@ -18,26 +14,28 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "tool",
 	title: "Tool",
-	description: "The Tool component displays a collapsible interface for showing and hiding tool details from AI SDK tool parts.",
+	description:
+		"The Tool component displays a collapsible interface for showing and hiding tool details from AI SDK tool parts.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Tool",
-	description: "The Tool component displays a collapsible interface for showing and hiding tool details from AI SDK tool parts.",
+	description:
+		"The Tool component displays a collapsible interface for showing and hiding tool details from AI SDK tool parts.",
 	keywords: ["Svelte", "Tool", "Component"],
 };
 
 const install_block: InstallComponentDocs = {
 	packages: [],
 	install_code: [
-		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true, },
-		{ name: "tool-content.svelte", code: ToolContentSvelteRaw, lang: "svelte", },
-		{ name: "tool-context.svelte.ts", code: ToolContextSvelteTsRaw, lang: "typescript", },
-		{ name: "tool-header.svelte", code: ToolHeaderSvelteRaw, lang: "svelte", },
-		{ name: "tool-input.svelte", code: ToolInputSvelteRaw, lang: "svelte", },
-		{ name: "tool-output.svelte", code: ToolOutputSvelteRaw, lang: "svelte", },
-		{ name: "tool.svelte", code: ToolSvelteRaw, lang: "svelte", }
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true },
+		{ name: "tool-content.svelte", code: ToolContentSvelteRaw, lang: "svelte" },
+		{ name: "tool-context.svelte.ts", code: ToolContextSvelteTsRaw, lang: "typescript" },
+		{ name: "tool-header.svelte", code: ToolHeaderSvelteRaw, lang: "svelte" },
+		{ name: "tool-input.svelte", code: ToolInputSvelteRaw, lang: "svelte" },
+		{ name: "tool-output.svelte", code: ToolOutputSvelteRaw, lang: "svelte" },
+		{ name: "tool.svelte", code: ToolSvelteRaw, lang: "svelte" },
 	],
 	folder_structure: `src/
 └── lib/

@@ -44,7 +44,7 @@
 </script>
 
 <Conversation>
-	<ConversationContent class='flex flex-col gap-4'>
+	<ConversationContent class="flex flex-col gap-4">
 		{#each messages as message, index (message.id)}
 			<Message from={message.role}>
 				<MessageContent>

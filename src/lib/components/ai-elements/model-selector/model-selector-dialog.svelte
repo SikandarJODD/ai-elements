@@ -21,6 +21,7 @@
 			description?: string;
 		} = $props();
 </script>
+
 <!-- ...rest props removed for now -->
 <Command.Dialog bind:open bind:ref bind:value {title} {description} {portalProps}>
 	{@render children()}

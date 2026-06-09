@@ -74,9 +74,7 @@
 						<br /> It provides pre-built components like conversations, messages, prompt input,
 						response and more.
 					</p>
-					<p
-						class="text-muted-foreground/85 mt-4 max-w-2xl text-base text-pretty"
-					>
+					<p class="text-muted-foreground/85 mt-4 max-w-2xl text-base text-pretty">
 						Svelte Prompt Kit is now a separate project. Visit
 						<a
 							href="https://sv-prompt-kit.vercel.app"

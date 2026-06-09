@@ -22,37 +22,37 @@ import V0Icon from "./v0-icon.svelte";
 
 // Context
 export {
-  createOpenInContext,
-  getOpenInContext,
-  providers,
-  type OpenInContextType,
-  type ProviderConfig,
+	createOpenInContext,
+	getOpenInContext,
+	providers,
+	type OpenInContextType,
+	type ProviderConfig,
 } from "./open-in-context.svelte.js";
 
 export {
-  OpenIn,
-  OpenInContent,
-  OpenInItem,
-  OpenInLabel,
-  OpenInSeparator,
-  OpenInTrigger,
-  //
-  OpenIn as Root,
-  OpenInTrigger as Trigger,
-  OpenInContent as Content,
-  OpenInItem as Item,
-  OpenInLabel as Label,
-  OpenInSeparator as Separator,
-  //
-  OpenInChatGPT,
-  OpenInClaude,
-  OpenInT3,
-  OpenInScira,
-  OpenInV0,
-  //
-  GitHubIcon,
-  SciraIcon,
-  ChatGPTIcon,
-  ClaudeIcon,
-  V0Icon,
+	OpenIn,
+	OpenInContent,
+	OpenInItem,
+	OpenInLabel,
+	OpenInSeparator,
+	OpenInTrigger,
+	//
+	OpenIn as Root,
+	OpenInTrigger as Trigger,
+	OpenInContent as Content,
+	OpenInItem as Item,
+	OpenInLabel as Label,
+	OpenInSeparator as Separator,
+	//
+	OpenInChatGPT,
+	OpenInClaude,
+	OpenInT3,
+	OpenInScira,
+	OpenInV0,
+	//
+	GitHubIcon,
+	SciraIcon,
+	ChatGPTIcon,
+	ClaudeIcon,
+	V0Icon,
 };

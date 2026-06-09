@@ -22,7 +22,7 @@
 		},
 		{
 			"content": "import { getContext, setContext } from \"svelte\";\n\nconst CHAIN_OF_THOUGHT_CONTEXT_KEY = \"chain-of-thought-context\";\n\nexport class ChainOfThoughtContext {\n\t#isOpen = $state(false);\n\t#onOpenChange: ((open: boolean) => void) | undefined;\n\n\tconstructor(\n\t\toptions: {\n\t\t\tisOpen?: boolean;\n\t\t\tonOpenChange?: (open: boolean) => void;\n\t\t} = {}\n\t) {\n\t\tthis.#isOpen = options.isOpen ?? false;\n\t\tthis.#onOpenChange = options.onOpenChange;\n\t}\n\n\tget isOpen() {\n\t\treturn this.#isOpen;\n\t}\n\n\tset isOpen(value: boolean) {\n\t\tthis.#isOpen = value;\n\t\tthis.#onOpenChange?.(value);\n\t}\n\n\tsetIsOpen = (open: boolean) => {\n\t\tthis.isOpen = open;\n\t};\n\n\ttoggle() {\n\t\tthis.isOpen = !this.isOpen;\n\t}\n}\n\nexport function setChainOfThoughtContext(context: ChainOfThoughtContext) {\n\tsetContext(CHAIN_OF_THOUGHT_CONTEXT_KEY, context);\n}\n\nexport function getChainOfThoughtContext(): ChainOfThoughtContext {\n\tconst context = getContext<ChainOfThoughtContext | undefined>(CHAIN_OF_THOUGHT_CONTEXT_KEY);\n\tif (!context) {\n\t\tthrow new Error(\"ChainOfThought components must be used within ChainOfThought\");\n\t}\n\treturn context;\n}\n",
-			"type": "registry:hook",
+			"type": "registry:file",
 			"target": "ai-elements/chain-of-thought/chain-of-thought-context.svelte.ts"
 		},
 		{

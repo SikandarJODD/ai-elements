@@ -7,11 +7,11 @@ import Seo from "./seo.svelte";
 import InstallComponent from "./install-component.svelte";
 
 export {
-    ComponentDocPage,
-    ContributeCard,
-    CopyPageDropdown,
-    SupportWork,
-    PackageBadges,
-    Seo,
-    InstallComponent,
+	ComponentDocPage,
+	ContributeCard,
+	CopyPageDropdown,
+	SupportWork,
+	PackageBadges,
+	Seo,
+	InstallComponent,
 };

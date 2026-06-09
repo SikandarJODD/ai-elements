@@ -27,7 +27,7 @@
 		},
 		{
 			"content": "import { getContext, setContext } from \"svelte\";\n\nconst WEB_PREVIEW_CONTEXT_KEY = Symbol(\"web-preview\");\n\nexport type LogLevel = \"log\" | \"warn\" | \"error\";\n\nexport type LogEntry = {\n\tlevel: LogLevel;\n\tmessage: string;\n\ttimestamp: Date;\n};\n\nexport class WebPreviewContext {\n\t#url = $state(\"\");\n\t#consoleOpen = $state(false);\n\t#onUrlChange?: (url: string) => void;\n\n\tconstructor(defaultUrl: string = \"\", onUrlChange?: (url: string) => void) {\n\t\tthis.#url = defaultUrl;\n\t\tthis.#onUrlChange = onUrlChange;\n\t}\n\n\tget url() {\n\t\treturn this.#url;\n\t}\n\n\tsetUrl(newUrl: string) {\n\t\tthis.#url = newUrl;\n\t\tthis.#onUrlChange?.(newUrl);\n\t}\n\n\tget consoleOpen() {\n\t\treturn this.#consoleOpen;\n\t}\n\n\tsetConsoleOpen(open: boolean) {\n\t\tthis.#consoleOpen = open;\n\t}\n}\n\nexport function setWebPreviewContext(context: WebPreviewContext) {\n\treturn setContext(WEB_PREVIEW_CONTEXT_KEY, context);\n}\n\nexport function getWebPreviewContext(): WebPreviewContext {\n\tlet context = getContext<WebPreviewContext>(WEB_PREVIEW_CONTEXT_KEY);\n\tif (!context) {\n\t\tthrow new Error(\"WebPreview components must be used within a WebPreview\");\n\t}\n\treturn context;\n}\n",
-			"type": "registry:hook",
+			"type": "registry:file",
 			"target": "ai-elements/web-preview/web-preview-context.svelte.ts"
 		},
 		{

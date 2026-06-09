@@ -46,8 +46,7 @@
 				<Button
 					class={cn(
 						`flex w-full items-center justify-start gap-1.5 rounded-none border-l-2 border-transparent  text-xs hover:bg-neutral-200/70 hover:dark:bg-zinc-900 [&_svg:not([class*='size-'])]:size-3`,
-						selectedIndex === index &&
-							" bg-neutral-200/40 dark:bg-zinc-800/50"
+						selectedIndex === index && " bg-neutral-200/40 dark:bg-zinc-800/50"
 					)}
 					variant="ghost"
 					onclick={() => (selectedIndex = index)}

@@ -13,9 +13,7 @@
 
 	let { data, class: className }: CompactPropsTableProps = $props();
 
-	const isPropsTable = (
-		value: PropsTable | PropDef[]
-	): value is PropsTable => {
+	const isPropsTable = (value: PropsTable | PropDef[]): value is PropsTable => {
 		return "props" in value;
 	};
 
@@ -30,9 +28,7 @@
 			</H3>
 		{/if}
 		{#if data.desc}
-			<p
-				class="m-0 max-w-3xl text-sm leading-relaxed text-muted-foreground"
-			>
+			<p class="m-0 max-w-3xl text-sm leading-relaxed text-muted-foreground">
 				{data.desc}
 			</p>
 		{/if}
@@ -41,9 +37,7 @@
 
 <div class={cn("overflow-hidden rounded-lg border border-border", className)}>
 	<div class="overflow-x-auto">
-		<table
-			class="w-full table-fixed text-left text-xs sm:text-sm"
-		>
+		<table class="w-full table-fixed text-left text-xs sm:text-sm">
 			<colgroup>
 				<col class="w-[20%]" />
 				<col class="w-[24%]" />
@@ -79,9 +73,7 @@
 							<code
 								class="inline-block max-w-full rounded-md bg-muted/50 px-1.5 py-0.5 font-mono text-xs leading-5 [overflow-wrap:anywhere] break-words whitespace-pre-wrap text-muted-foreground"
 							>
-								{row.required
-									? "required"
-									: (row.default ?? "-")}
+								{row.required ? "required" : (row.default ?? "-")}
 							</code>
 						</td>
 						<td

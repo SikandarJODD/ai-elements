@@ -178,7 +178,6 @@ export const POST: RequestHandler = async ({ request }) => {
 };
 `;
 
-
 let examples: Example[] = [
 	{
 		name: "File Attachment Example",
@@ -196,7 +195,7 @@ let examples: Example[] = [
 			name: "branch-example.svelte",
 			code: BranchExampleRaw,
 			lang: "svelte",
-		}
+		},
 	},
 	{
 		name: "Usage with AI SDK",

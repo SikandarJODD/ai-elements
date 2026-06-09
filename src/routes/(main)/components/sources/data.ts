@@ -4,11 +4,7 @@ import SourcesContentSvelteRaw from "$lib/components/ai-elements/sources/sources
 import SourcesTriggerSvelteRaw from "$lib/components/ai-elements/sources/sources-trigger.svelte?raw";
 import SourcesSvelteRaw from "$lib/components/ai-elements/sources/sources.svelte?raw";
 
-import type {
-	ComponentDoc,
-	ComponentMeta,
-	InstallComponentDocs,
-} from "$lib/types/structure";
+import type { ComponentDoc, ComponentMeta, InstallComponentDocs } from "$lib/types/structure";
 import type { SEO } from "$lib/types/seo";
 import Preview from "./examples/preview.svelte";
 import PreviewCode from "./examples/preview.svelte?raw";
@@ -16,24 +12,26 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "sources",
 	title: "Sources",
-	description: "The Sources component allows a user to view the sources or citations used to generate a response.",
+	description:
+		"The Sources component allows a user to view the sources or citations used to generate a response.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Sources",
-	description: "The Sources component allows a user to view the sources or citations used to generate a response.",
+	description:
+		"The Sources component allows a user to view the sources or citations used to generate a response.",
 	keywords: ["Svelte", "Sources", "Component"],
 };
 
 const install_block: InstallComponentDocs = {
 	packages: [],
 	install_code: [
-		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true, },
-		{ name: "source.svelte", code: SourceSvelteRaw, lang: "svelte", },
-		{ name: "sources-content.svelte", code: SourcesContentSvelteRaw, lang: "svelte", },
-		{ name: "sources-trigger.svelte", code: SourcesTriggerSvelteRaw, lang: "svelte", },
-		{ name: "sources.svelte", code: SourcesSvelteRaw, lang: "svelte", }
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true },
+		{ name: "source.svelte", code: SourceSvelteRaw, lang: "svelte" },
+		{ name: "sources-content.svelte", code: SourcesContentSvelteRaw, lang: "svelte" },
+		{ name: "sources-trigger.svelte", code: SourcesTriggerSvelteRaw, lang: "svelte" },
+		{ name: "sources.svelte", code: SourcesSvelteRaw, lang: "svelte" },
 	],
 	folder_structure: `src/
 └── lib/

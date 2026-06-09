@@ -5,7 +5,7 @@ import { codeSchema } from "$lib/schema/code-schema";
 
 export const POST: RequestHandler = async ({ request }) => {
 	let context = await request.json();
-    console.log("Received context for code generation:", context);
+	console.log("Received context for code generation:", context);
 
 	let result = streamText({
 		model: openrouter(defaultModel),

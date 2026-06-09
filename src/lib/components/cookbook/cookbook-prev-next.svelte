@@ -26,7 +26,9 @@
 						class="text-muted-foreground group-hover:text-foreground h-4 w-4 shrink-0 transition-colors"
 					/>
 					<div class="text-left">
-						<div class="text-muted-foreground mb-1 text-[11px] uppercase tracking-[0.22em]">
+						<div
+							class="text-muted-foreground mb-1 text-[11px] uppercase tracking-[0.22em]"
+						>
 							Previous
 						</div>
 						<div class="text-foreground text-base font-medium leading-tight">
@@ -50,7 +52,9 @@
 						class="text-muted-foreground group-hover:text-foreground h-4 w-4 shrink-0 transition-colors"
 					/>
 					<div class="text-left sm:text-right">
-						<div class="text-muted-foreground mb-1 text-[11px] uppercase tracking-[0.22em]">
+						<div
+							class="text-muted-foreground mb-1 text-[11px] uppercase tracking-[0.22em]"
+						>
 							Next
 						</div>
 						<div class="text-foreground text-base font-medium leading-tight">

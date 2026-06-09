@@ -147,7 +147,7 @@ export const POST = async ({ request }) => {
 			Images are returned as base64. Use a data URL to display them immediately without
 			needing to upload to storage first.
 		</p>
-		<SingleFile	
+		<SingleFile
 			code={{
 				code: displayCode,
 				name: "+page.svelte",

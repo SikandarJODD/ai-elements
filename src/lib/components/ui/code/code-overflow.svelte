@@ -16,7 +16,7 @@
 		collapsed: box.with(
 			() => collapsed,
 			(v) => (collapsed = v)
-		)
+		),
 	});
 </script>
 
@@ -24,10 +24,7 @@
 	{...props}
 	data-code-overflow
 	data-collapsed={collapsed}
-	class={cn(
-		"relative overflow-y-hidden data-[collapsed=true]:max-h-75",
-		className
-	)}
+	class={cn("relative overflow-y-hidden data-[collapsed=true]:max-h-75", className)}
 >
 	{@render children?.()}
 	{#if collapsed}

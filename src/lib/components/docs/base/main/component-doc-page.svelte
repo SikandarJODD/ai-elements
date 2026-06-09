@@ -78,7 +78,12 @@
 	</section>
 
 	<section>
-		<PreviewComponent code={preview?.code} class={preview?.preview_class} isCentered={preview?.is_center} showRetry={preview?.show_retry}>
+		<PreviewComponent
+			code={preview?.code}
+			class={preview?.preview_class}
+			isCentered={preview?.is_center}
+			showRetry={preview?.show_retry}
+		>
 			{#if PreviewComp}
 				<PreviewComp />
 			{/if}

@@ -1,7 +1,7 @@
 <script lang="ts" module>
-	import type { ButtonProps, Size } from '$lib/components/ui/extra/button.svelte';
+	import type { ButtonProps, Size } from "$lib/components/ui/extra/button.svelte";
 
-	export type GithubButtonProps = Omit<ButtonProps, 'href' | 'children' | 'size'> & {
+	export type GithubButtonProps = Omit<ButtonProps, "href" | "children" | "size"> & {
 		repo: {
 			owner: string;
 			repo: string;
@@ -13,18 +13,18 @@
 </script>
 
 <script lang="ts">
-	import Button, { sizeMap } from '$lib/components/ui/extra/button.svelte';
-	import { cn } from '$lib/utils';
-	import { cubicInOut } from 'svelte/easing';
-	import { Tween } from 'svelte/motion';
+	import Button, { sizeMap } from "$lib/components/ui/extra/button.svelte";
+	import { cn } from "$lib/utils";
+	import { cubicInOut } from "svelte/easing";
+	import { Tween } from "svelte/motion";
 
 	let {
 		starsTweenedDuration = 5000,
-		variant = 'ghost',
+		variant = "ghost",
 		repo,
 		class: className,
 		stars,
-		size = 'default',
+		size = "default",
 		...rest
 	}: GithubButtonProps = $props();
 
@@ -35,9 +35,9 @@
 	}
 
 	// svelte-ignore state_referenced_locally
-	const starsTweened = new Tween(typeof stars === 'number' ? stars : 0, {
+	const starsTweened = new Tween(typeof stars === "number" ? stars : 0, {
 		duration: starsTweenedDuration,
-		easing: cubicInOut
+		easing: cubicInOut,
 	});
 
 	$effect(() => {
@@ -51,13 +51,13 @@
 
 <Button
 	href={`https://github.com/${repo.owner}/${repo.repo}`}
-	class={cn('gap-2 font-mono text-xs [&_span]:text-muted-foreground', className)}
+	class={cn("gap-2 font-mono text-xs [&_span]:text-muted-foreground", className)}
 	{variant}
 	size={stars === undefined ? sizeMap[size].icon : sizeMap[size].normal}
 	{...rest}
 >
 	<svg
-		class={cn('size-4 shrink-0 fill-current text-foreground', className)}
+		class={cn("size-4 shrink-0 fill-current text-foreground", className)}
 		viewBox="0 0 256 250"
 		xmlns="http://www.w3.org/2000/svg"
 		preserveAspectRatio="xMidYMid"

@@ -15,13 +15,8 @@
 			"title": "Chain Of Thought",
 			"description": "A collapsible component that visualizes AI reasoning steps with support for search results, images, and step-by-step progress indicators.",
 			"type": "registry:block",
-			"dependencies": [
-				"@lucide/svelte@^1.16.0"
-			],
-			"registryDependencies": [
-				"collapsible",
-				"badge"
-			],
+			"dependencies": ["@lucide/svelte@^1.16.0"],
+			"registryDependencies": ["collapsible", "badge"],
 			"files": [
 				{
 					"path": "src/lib/components/ai-elements/chain-of-thought/chain-of-thought-content.svelte",
@@ -30,7 +25,7 @@
 				},
 				{
 					"path": "src/lib/components/ai-elements/chain-of-thought/chain-of-thought-context.svelte.ts",
-					"type": "registry:hook",
+					"type": "registry:file",
 					"target": "ai-elements/chain-of-thought/chain-of-thought-context.svelte.ts"
 				},
 				{
@@ -75,14 +70,8 @@
 			"title": "Checkpoint",
 			"description": "A compact checkpoint component that pairs a separator with icon and trigger helpers for workflow checkpoints.",
 			"type": "registry:block",
-			"dependencies": [
-				"@lucide/svelte@^1.16.0"
-			],
-			"registryDependencies": [
-				"button",
-				"separator",
-				"tooltip"
-			],
+			"dependencies": ["@lucide/svelte@^1.16.0"],
+			"registryDependencies": ["button", "separator", "tooltip"],
 			"files": [
 				{
 					"path": "src/lib/components/ai-elements/checkpoint/checkpoint-icon.svelte",
@@ -111,13 +100,8 @@
 			"title": "Confirmation",
 			"description": "A confirmation workflow component for tool approval states, request and response rendering, and action handling.",
 			"type": "registry:block",
-			"dependencies": [
-				"runed@^0.37.1"
-			],
-			"registryDependencies": [
-				"alert",
-				"button"
-			],
+			"dependencies": ["runed@^0.37.1"],
+			"registryDependencies": ["alert", "button"],
 			"files": [
 				{
 					"path": "src/lib/components/ai-elements/confirmation/confirmation-accepted.svelte",
@@ -171,11 +155,7 @@
 			"title": "Context",
 			"description": "A hover-card-based context window usage component with token, cost, and model usage breakdowns.",
 			"type": "registry:block",
-			"registryDependencies": [
-				"button",
-				"hover-card",
-				"progress"
-			],
+			"registryDependencies": ["button", "hover-card", "progress"],
 			"files": [
 				{
 					"path": "src/lib/components/ai-elements/context/context-content-body.svelte",
@@ -254,13 +234,8 @@
 			"title": "Conversation",
 			"description": "A sticky-bottom conversation container with empty state and scroll-to-bottom controls for chat interfaces.",
 			"type": "registry:block",
-			"dependencies": [
-				"@lucide/svelte@^1.16.0",
-				"runed@^0.37.1"
-			],
-			"registryDependencies": [
-				"button"
-			],
+			"dependencies": ["@lucide/svelte@^1.16.0", "runed@^0.37.1"],
+			"registryDependencies": ["button"],
 			"files": [
 				{
 					"path": "src/lib/components/ai-elements/conversation/conversation-content.svelte",
@@ -353,12 +328,7 @@
 				"@shikijs/themes@^4.0.2",
 				"streamdown-svelte@^3.0.6"
 			],
-			"registryDependencies": [
-				"button",
-				"button-group",
-				"dialog",
-				"tooltip"
-			],
+			"registryDependencies": ["button", "button-group", "dialog", "tooltip"],
 			"files": [
 				{
 					"path": "src/lib/components/ai-elements/message/actions/message-action.svelte",
@@ -537,10 +507,7 @@
 			"title": "Open In Chat",
 			"description": "A provider menu for opening prompts in external chat and AI tools.",
 			"type": "registry:block",
-			"dependencies": [
-				"@lucide/svelte@^1.16.0",
-				"runed@^0.37.1"
-			],
+			"dependencies": ["@lucide/svelte@^1.16.0", "runed@^0.37.1"],
 			"registryDependencies": ["button", "dropdown-menu"],
 			"files": [
 				{
@@ -640,16 +607,8 @@
 			"title": "Plan",
 			"description": "A plan card component with collapsible content and streaming-aware description shimmer.",
 			"type": "registry:block",
-			"dependencies": [
-				"@lucide/svelte@^1.16.0",
-				"bits-ui@^2.16.3",
-				"runed@^0.37.1"
-			],
-			"registryDependencies": [
-				"button",
-				"card",
-				"collapsible"
-			],
+			"dependencies": ["@lucide/svelte@^1.16.0", "bits-ui@^2.16.3", "runed@^0.37.1"],
+			"registryDependencies": ["button", "card", "collapsible"],
 			"files": [
 				{
 					"path": "src/lib/components/ai-elements/plan/plan-action.svelte",
@@ -728,14 +687,8 @@
 			"title": "Inline Citation",
 			"description": "An inline citation system with hover cards and carousel views for source-backed AI content.",
 			"type": "registry:block",
-			"dependencies": [
-				"@lucide/svelte@^1.16.0"
-			],
-			"registryDependencies": [
-				"badge",
-				"carousel",
-				"hover-card"
-			],
+			"dependencies": ["@lucide/svelte@^1.16.0"],
+			"registryDependencies": ["badge", "carousel", "hover-card"],
 			"files": [
 				{
 					"path": "src/lib/components/ai-elements/inline-citation/carousel-context.svelte.ts",
@@ -824,11 +777,7 @@
 			"title": "Prompt Input",
 			"description": "A composable prompt input surface with attachments, action menus, and provider-driven text handling.",
 			"type": "registry:block",
-			"dependencies": [
-				"@lucide/svelte@^1.16.0",
-				"ai@^6.0.12",
-				"runed@^0.37.1"
-			],
+			"dependencies": ["@lucide/svelte@^1.16.0", "ai@^6.0.12", "runed@^0.37.1"],
 			"registryDependencies": [
 				"aspect-ratio",
 				"button",
@@ -960,15 +909,8 @@
 			"title": "Queue",
 			"description": "A structured queue view with sections, items, attachments, and action controls.",
 			"type": "registry:block",
-			"dependencies": [
-				"@lucide/svelte@^1.16.0",
-				"bits-ui@^2.16.3"
-			],
-			"registryDependencies": [
-				"button",
-				"collapsible",
-				"scroll-area"
-			],
+			"dependencies": ["@lucide/svelte@^1.16.0", "bits-ui@^2.16.3"],
+			"registryDependencies": ["button", "collapsible", "scroll-area"],
 			"files": [
 				{
 					"path": "src/lib/components/ai-elements/queue/queue-item-action.svelte",
@@ -1211,10 +1153,7 @@
 			"title": "Task",
 			"description": "A collapsible task panel for tracking task state and nested task items.",
 			"type": "registry:block",
-			"dependencies": [
-				"@lucide/svelte@^1.16.0",
-				"bits-ui@^2.16.3"
-			],
+			"dependencies": ["@lucide/svelte@^1.16.0", "bits-ui@^2.16.3"],
 			"registryDependencies": ["collapsible"],
 			"files": [
 				{
@@ -1254,15 +1193,8 @@
 			"title": "Tool",
 			"description": "A collapsible tool call block with parameter and result rendering.",
 			"type": "registry:block",
-			"dependencies": [
-				"@lucide/svelte@^1.16.0",
-				"runed@^0.37.1"
-			],
-			"registryDependencies": [
-				"badge",
-				"collapsible",
-				"local:code"
-			],
+			"dependencies": ["@lucide/svelte@^1.16.0", "runed@^0.37.1"],
+			"registryDependencies": ["badge", "collapsible", "local:code"],
 			"files": [
 				{
 					"path": "src/lib/components/ai-elements/tool/tool-content.svelte",
@@ -1310,7 +1242,7 @@
 				"svelte-toolbelt@^0.10.5",
 				"tailwind-variants@^3.2.2"
 			],
-			"registryDependencies": ["button","local:copy-button"],
+			"registryDependencies": ["button", "local:copy-button"],
 			"files": [
 				{
 					"path": "src/lib/components/ai-elements/code/code-copy-button.svelte",
@@ -1399,7 +1331,7 @@
 				},
 				{
 					"path": "src/lib/components/ai-elements/web-preview/web-preview-context.svelte.ts",
-					"type": "registry:hook",
+					"type": "registry:file",
 					"target": "ai-elements/web-preview/web-preview-context.svelte.ts"
 				},
 				{

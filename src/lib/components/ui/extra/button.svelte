@@ -18,33 +18,27 @@
 	export const sizeMap = {
 		default: {
 			icon: "icon",
-			normal: "default"
+			normal: "default",
 		},
 		xs: {
 			icon: "icon-xs",
-			normal: "xs"
+			normal: "xs",
 		},
 		sm: {
 			icon: "icon-sm",
-			normal: "sm"
+			normal: "sm",
 		},
 		lg: {
 			icon: "icon-lg",
-			normal: "lg"
-		}
+			normal: "lg",
+		},
 	} as const;
 
-	export {
-		type ButtonSize,
-		type ButtonVariant
-	} from "$lib/components/ui/button";
+	export { type ButtonSize, type ButtonVariant } from "$lib/components/ui/button";
 </script>
 
 <script lang="ts">
-	import {
-		Button,
-		type ButtonProps as ButtonPrimitiveProps
-	} from "$lib/components/ui/button";
+	import { Button, type ButtonProps as ButtonPrimitiveProps } from "$lib/components/ui/button";
 	import { Spinner } from "$lib/components/ui/spinner";
 
 	let {

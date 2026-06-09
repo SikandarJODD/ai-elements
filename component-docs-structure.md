@@ -20,10 +20,9 @@ component-name/
 - `llms.txt/+server.ts`: returns `docs.md?raw`.
 - `+page.svelte`: stays thin and renders `ComponentPageDocs` with the route data.
 
-
 most used stuff
 
- `src/
+`src/
 └── lib/
     └── components/
         └── ai-elements/

@@ -30,7 +30,9 @@
 						aria-hidden="true"
 						class="bg-muted-foreground/45 mt-[0.78em] size-1 rounded-full"
 					></span>
-					<span class="min-w-0">Refactored the component set for a cleaner, more maintainable structure.</span>
+					<span class="min-w-0"
+						>Refactored the component set for a cleaner, more maintainable structure.</span
+					>
 				</li>
 
 				<li class="grid grid-cols-[0.65rem_1fr] gap-2">
@@ -39,7 +41,8 @@
 						class="bg-muted-foreground/45 mt-[0.78em] size-1 rounded-full"
 					></span>
 					<span class="min-w-0">
-						Improved consistency across the library to make future updates easier to ship.
+						Improved consistency across the library to make future updates easier to
+						ship.
 					</span>
 				</li>
 			</ul>
@@ -59,7 +62,9 @@
 						aria-hidden="true"
 						class="bg-muted-foreground/45 mt-[0.78em] size-1 rounded-full"
 					></span>
-					<span class="min-w-0">AI Elements and Prompt Kit now live as separate projects.</span>
+					<span class="min-w-0"
+						>AI Elements and Prompt Kit now live as separate projects.</span
+					>
 				</li>
 
 				<li class="grid grid-cols-[0.65rem_1fr] gap-2">

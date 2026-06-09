@@ -6,7 +6,7 @@
 		class: className,
 		children,
 		title,
-		titleBaseClass
+		titleBaseClass,
 	} = $props<{
 		class?: string;
 		children?: Snippet;
@@ -30,9 +30,7 @@
 			</h3>
 		</div>
 	{:else}
-		<div
-			class="absolute -left-4.5 rounded-full border-2 border-white dark:border-background"
-		>
+		<div class="absolute -left-4.5 rounded-full border-2 border-white dark:border-background">
 			<span
 				class="flex size-7 items-center justify-center rounded-full bg-muted font-mono text-xs font-medium text-foreground [counter-increment:step] before:content-[counter(step)] dark:bg-card"
 			></span>

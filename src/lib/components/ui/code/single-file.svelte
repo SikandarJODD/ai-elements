@@ -20,9 +20,7 @@
 
 <div class="w-full">
 	<div class="overflow-hidden rounded-lg border">
-		<div
-			class="flex items-center justify-between border-b border-border/70 py-1 pr-1 pl-4"
-		>
+		<div class="flex items-center justify-between border-b border-border/70 py-1 pr-1 pl-4">
 			<div class="flex items-center gap-1.5">
 				{#if code.lang === "svelte"}
 					<Svelte />
@@ -41,11 +39,7 @@
 			</div>
 			<div class="flex items-center gap-1">
 				{#if code.isExpand}
-					<Button
-						variant="ghost"
-						size="sm"
-						onclick={updateIsExpanded}
-					>
+					<Button variant="ghost" size="sm" onclick={updateIsExpanded}>
 						{#if isExpanded}
 							Expand
 						{:else}

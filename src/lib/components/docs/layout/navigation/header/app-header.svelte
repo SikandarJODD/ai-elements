@@ -16,7 +16,12 @@
 	let scroll = createScroll(100);
 	let isComponentorDocsPage = $derived.by(() => {
 		let path = page.url.pathname;
-		return path.startsWith("/components") || path.startsWith("/docs") || path.startsWith("/primitives") || path.startsWith("/cookbook");
+		return (
+			path.startsWith("/components") ||
+			path.startsWith("/docs") ||
+			path.startsWith("/primitives") ||
+			path.startsWith("/cookbook")
+		);
 	});
 	let stars = $state(200);
 	const repo = { owner: github_repo.owner, repo: github_repo.name };
@@ -34,14 +39,9 @@
 			"border-border bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/50"
 	)}
 >
-	<nav
-		class="mx-auto flex h-14 w-full max-w-6xl items-center justify-between px-4"
-	>
+	<nav class="mx-auto flex h-14 w-full max-w-6xl items-center justify-between px-4">
 		<div class="flex items-center gap-5">
-			<a
-				class="rounded-lg p-2 hover:bg-muted dark:hover:bg-muted/50"
-				href="/"
-			>
+			<a class="rounded-lg p-2 hover:bg-muted dark:hover:bg-muted/50" href="/">
 				<Logo class="h-4" />
 			</a>
 			<DesktopNav />

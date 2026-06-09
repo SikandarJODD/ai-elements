@@ -18,7 +18,7 @@
 	"files": [
 		{
 			"content": "import { getContext, setContext } from \"svelte\";\n\nconst CAROUSEL_CONTEXT_KEY = Symbol(\"carousel-context\");\n\nexport interface CarouselApi {\n\tscrollPrev: () => void;\n\tscrollNext: () => void;\n\tselectedScrollSnap: () => number;\n\tscrollSnapList: () => number[];\n\ton: (event: string, callback: () => void) => void;\n\toff?: (event: string, callback: () => void) => void;\n}\n\nexport class CarouselContext {\n\tapi = $state<CarouselApi | undefined>(undefined);\n\n\tsetApi(newApi: CarouselApi | undefined) {\n\t\tthis.api = newApi;\n\t}\n\n\tgetApi() {\n\t\treturn this.api;\n\t}\n}\n\nexport function setCarouselContext(context: CarouselContext) {\n\tsetContext(CAROUSEL_CONTEXT_KEY, context);\n}\n\nexport function getCarouselContext(): CarouselContext | undefined {\n\treturn getContext(CAROUSEL_CONTEXT_KEY);\n}\n",
-			"type": "registry:hook",
+			"type": "registry:component",
 			"target": "ai-elements/inline-citation/carousel-context.svelte.ts"
 		},
 		{

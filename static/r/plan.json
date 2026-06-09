@@ -32,7 +32,7 @@
 		},
 		{
 			"content": "import { getContext, setContext } from \"svelte\";\n\nconst PLAN_CONTEXT_KEY = Symbol(\"plan-context\");\n\nexport type PlanContextValue = {\n\tisStreaming: boolean;\n};\n\nexport function setPlanContext(value: PlanContextValue) {\n\tsetContext(PLAN_CONTEXT_KEY, value);\n}\n\nexport function getPlanContext(): PlanContextValue {\n\tconst context = getContext<PlanContextValue>(PLAN_CONTEXT_KEY);\n\tif (!context) {\n\t\tthrow new Error(\"Plan components must be used within Plan\");\n\t}\n\treturn context;\n}\n",
-			"type": "registry:hook",
+			"type": "registry:component",
 			"target": "ai-elements/plan/plan-context.svelte.ts"
 		},
 		{

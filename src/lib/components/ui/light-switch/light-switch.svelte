@@ -15,7 +15,7 @@
 		Button,
 		buttonVariants,
 		type ButtonSize,
-		type ButtonVariant
+		type ButtonVariant,
 	} from "$lib/components/ui/button";
 
 	let { variant = "ghost", size = "default" }: LightSwitchProps = $props();
@@ -23,18 +23,11 @@
 
 <Tooltip.Provider>
 	<Tooltip.Root>
-		<Tooltip.Trigger
-			class={buttonVariants({ variant, size })}
-			onclick={toggleMode}
-		>
+		<Tooltip.Trigger class={buttonVariants({ variant, size })} onclick={toggleMode}>
 			{#if mode.current === "dark"}
-				<MoonIcon
-					class="scale-0 rotate-90 transition-all! dark:scale-100 dark:rotate-0"
-				/>
+				<MoonIcon class="scale-0 rotate-90 transition-all! dark:scale-100 dark:rotate-0" />
 			{:else}
-				<SunIcon
-					class="scale-100 rotate-0 transition-all! dark:scale-0 dark:-rotate-90"
-				/>
+				<SunIcon class="scale-100 rotate-0 transition-all! dark:scale-0 dark:-rotate-90" />
 			{/if}
 			<span class="sr-only">Toggle theme</span>
 		</Tooltip.Trigger>

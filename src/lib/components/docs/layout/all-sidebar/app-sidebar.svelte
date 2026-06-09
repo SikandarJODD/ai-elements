@@ -4,7 +4,7 @@
 		components,
 		docsPages,
 		// primitivePages,
-		type BadgeType
+		type BadgeType,
 	} from "$lib/registry/components";
 
 	type NavItem = {
@@ -21,8 +21,8 @@
 				url: "#",
 				items: docsPages.map((page) => ({
 					title: page.name,
-					url: page.href
-				})) as NavItem[]
+					url: page.href,
+				})) as NavItem[],
 			},
 			// {
 			// 	title: "Primitives",
@@ -46,10 +46,10 @@
 				items: components.map((c) => ({
 					title: c.name,
 					url: c.href,
-					badge: c.badge
-				})) as NavItem[]
-			}
-		]
+					badge: c.badge,
+				})) as NavItem[],
+			},
+		],
 	};
 </script>
 
@@ -61,10 +61,7 @@
 	import type { ComponentProps } from "svelte";
 	import { watch } from "runed";
 
-	let {
-		ref = $bindable(null),
-		...restProps
-	}: ComponentProps<typeof Sidebar.Root> = $props();
+	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 	let contentRef = $state<HTMLElement | null>(null);
 	let pathname = $derived(page.url.pathname);
 
@@ -78,7 +75,7 @@
 			activeItem?.scrollIntoView({
 				block: "nearest",
 				inline: "nearest",
-				behavior: "smooth"
+				behavior: "smooth",
 			});
 		}
 	);
@@ -96,8 +93,7 @@
 							{#each group.items as item (item.url)}
 								<Sidebar.MenuItem>
 									<Sidebar.MenuButton
-										isActive={page.url.pathname ===
-											item.url}
+										isActive={page.url.pathname === item.url}
 										class="scroll-mt-10 scroll-mb-40"
 									>
 										{#snippet child({ props })}
@@ -105,11 +101,9 @@
 												{item.title}
 												{#if item.badge}
 													<Badge
-														variant={item.badge ===
-														"New"
+														variant={item.badge === "New"
 															? "emerald"
-															: item.badge ===
-																  "Updated"
+															: item.badge === "Updated"
 																? "cyan"
 																: "yellow"}
 														size="sm"

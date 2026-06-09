@@ -46,7 +46,7 @@
 
 <article class="mx-auto">
 	<header class="mb-12">
-		<div class="mb-6 flex flex-col md:flex-row  items-start justify-between gap-4">
+		<div class="mb-6 flex flex-col md:flex-row items-start justify-between gap-4">
 			<div class="space-y-4">
 				<!-- <div class="flex flex-wrap items-center gap-2">
 					<Badge variant="secondary">Docs</Badge>
@@ -72,14 +72,7 @@
 			Make sure to select Tailwind CSS and Typescript options for easier integration.
 		</p>
 		<!-- pnpm dlx sv create my-app --template minimal --types ts --install pnpm --add tailwindcss prettier -->
-		<PMCommand
-			command="execute"
-			args={[
-				"sv",
-				"create",
-				"my-app",
-			]}
-		/>
+		<PMCommand command="execute" args={["sv", "create", "my-app"]} />
 	</section>
 
 	<section class="mb-12">

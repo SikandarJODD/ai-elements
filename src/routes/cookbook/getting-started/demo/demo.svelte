@@ -13,8 +13,12 @@
 </script>
 
 <div class="p-4 space-y-4">
-	<form onsubmit={handleSubmit} class="flex gap-2 max-w-md ">
-		<input bind:value={input} class="flex-1 border px-4 py-2 rounded-full" placeholder="Ask anything..." />
+	<form onsubmit={handleSubmit} class="flex gap-2 max-w-md">
+		<input
+			bind:value={input}
+			class="flex-1 border px-4 py-2 rounded-full"
+			placeholder="Ask anything..."
+		/>
 		<button type="submit" class="bg-blue-500 text-white px-4 rounded-full"> Send </button>
 	</form>
 

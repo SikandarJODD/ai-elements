@@ -14,22 +14,22 @@ import Root from "./github-button.svelte";
  * @returns
  */
 export async function getStars({
-  owner,
-  repo: repoName,
-  fallback = 0,
+	owner,
+	repo: repoName,
+	fallback = 0,
 }: {
-  owner: string;
-  repo: string;
-  fallback?: number;
+	owner: string;
+	repo: string;
+	fallback?: number;
 }) {
-  try {
-    const response = await fetch(`https://ungh.cc/repos/${owner}/${repoName}`);
-    if (!response.ok) return fallback;
-    const { repo } = await response.json();
-    return repo.stars;
-  } catch {
-    return fallback;
-  }
+	try {
+		const response = await fetch(`https://ungh.cc/repos/${owner}/${repoName}`);
+		if (!response.ok) return fallback;
+		const { repo } = await response.json();
+		return repo.stars;
+	} catch {
+		return fallback;
+	}
 }
 
 export { Root as GitHubButton };

@@ -7,11 +7,7 @@ import WebPreviewNavigationSvelteRaw from "$lib/components/ai-elements/web-previ
 import WebPreviewUrlSvelteRaw from "$lib/components/ai-elements/web-preview/web-preview-url.svelte?raw";
 import WebPreviewSvelteRaw from "$lib/components/ai-elements/web-preview/web-preview.svelte?raw";
 
-import type {
-	ComponentDoc,
-	ComponentMeta,
-	InstallComponentDocs,
-} from "$lib/types/structure";
+import type { ComponentDoc, ComponentMeta, InstallComponentDocs } from "$lib/types/structure";
 import type { SEO } from "$lib/types/seo";
 import Preview from "./examples/preview.svelte";
 import PreviewCode from "./examples/preview.svelte?raw";
@@ -19,27 +15,41 @@ import PreviewCode from "./examples/preview.svelte?raw";
 export const meta: ComponentMeta = {
 	id: "web-preview",
 	title: "Web Preview",
-	description: "The Web Preview component provides a flexible way to showcase the result of a generated UI component, along with its source code.",
+	description:
+		"The Web Preview component provides a flexible way to showcase the result of a generated UI component, along with its source code.",
 	category: "ai-elements",
 };
 
 const seo: SEO = {
 	title: "Web Preview",
-	description: "The Web Preview component provides a flexible way to showcase the result of a generated UI component, along with its source code.",
+	description:
+		"The Web Preview component provides a flexible way to showcase the result of a generated UI component, along with its source code.",
 	keywords: ["Svelte", "Web Preview", "Component"],
 };
 
 const install_block: InstallComponentDocs = {
 	packages: [],
 	install_code: [
-		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true, },
-		{ name: "web-preview-body.svelte", code: WebPreviewBodySvelteRaw, lang: "svelte", },
-		{ name: "web-preview-console.svelte", code: WebPreviewConsoleSvelteRaw, lang: "svelte", },
-		{ name: "web-preview-context.svelte.ts", code: WebPreviewContextSvelteTsRaw, lang: "typescript", },
-		{ name: "web-preview-navigation-button.svelte", code: WebPreviewNavigationButtonSvelteRaw, lang: "svelte", },
-		{ name: "web-preview-navigation.svelte", code: WebPreviewNavigationSvelteRaw, lang: "svelte", },
-		{ name: "web-preview-url.svelte", code: WebPreviewUrlSvelteRaw, lang: "svelte", },
-		{ name: "web-preview.svelte", code: WebPreviewSvelteRaw, lang: "svelte", }
+		{ name: "index.ts", code: IndexTsRaw, lang: "typescript", isExpand: true },
+		{ name: "web-preview-body.svelte", code: WebPreviewBodySvelteRaw, lang: "svelte" },
+		{ name: "web-preview-console.svelte", code: WebPreviewConsoleSvelteRaw, lang: "svelte" },
+		{
+			name: "web-preview-context.svelte.ts",
+			code: WebPreviewContextSvelteTsRaw,
+			lang: "typescript",
+		},
+		{
+			name: "web-preview-navigation-button.svelte",
+			code: WebPreviewNavigationButtonSvelteRaw,
+			lang: "svelte",
+		},
+		{
+			name: "web-preview-navigation.svelte",
+			code: WebPreviewNavigationSvelteRaw,
+			lang: "svelte",
+		},
+		{ name: "web-preview-url.svelte", code: WebPreviewUrlSvelteRaw, lang: "svelte" },
+		{ name: "web-preview.svelte", code: WebPreviewSvelteRaw, lang: "svelte" },
 	],
 	folder_structure: `src/
 └── lib/
