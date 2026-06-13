@@ -8,15 +8,17 @@
 		children?: import("svelte").Snippet;
 	}
 
-	let { class: className, children, ...props }: Props = $props();
+	let { class: className, children, ...restProps }: Props = $props();
 </script>
 
 <DropdownMenu.Trigger>
-	<Button class={className} {...props}>
-		{#if children}
-			{@render children()}
-		{:else}
-			<PlusIcon class="size-4" />
-		{/if}
-	</Button>
+	{#snippet child({ props })}
+		<Button class={className} {...props} {...restProps}>
+			{#if children}
+				{@render children()}
+			{:else}
+				<PlusIcon class="size-4" />
+			{/if}
+		</Button>
+	{/snippet}
 </DropdownMenu.Trigger>
