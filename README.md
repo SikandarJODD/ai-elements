@@ -3,40 +3,22 @@
 <div align="center">
   <img src="static/assets/svelte-ai-elements.png" alt="Svelte AI Elements" />
 </div>
+<br />
+<a href="https://vercel.com/open-source-program">
+  <img alt="Vercel OSS Program" src="https://vercel.com/oss/program-badge-2026.svg" />
+</a>
+<br />
+<br />
 
-<div align='center'>
-
-[![jsrepo](https://jsrepo.com/badges/@ai/elements/dm)](https://jsrepo.com/@ai/elements)
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-Support-pink?logo=githubsponsors)](https://github.com/sponsors/SikandarJODD)
-
-</div>
-
-## Overview
-
-**Svelte AI Elements** is a developer-focused component registry for building AI-native interfaces with **SvelteKit**. It is built on top of [shadcn-svelte](https://www.shadcn-svelte.com/)
-
-Looking for the lighter prompt-focused project? Visit **Svelte Prompt Kit**: https://sv-prompt-kit.vercel.app
-
-Project is divided into two parts:
-
-1. **AI Elements**: Full-featured, production-ready components for complex AI interfaces, including chat apps, reasoning UIs, tool integrations, and workflow builders.
-2. **Svelte Prompt Kit**: Lightweight prompt engineering and conversational UI components for simpler AI interfaces. Visit https://sv-prompt-kit.vercel.app
+**Svelte AI Elements** is a unofficial port of [Vercel AI Elements](https://vercel.com/changelog/introducing-ai-elements) for Svelte. It provides a set of components and utilities to help developers build AI-powered applications with Svelte.
 
 ## Installation
-
-If you want the quickest way to try a basic prompt input, start with the lightweight **Prompt Kit** version.
 
 ### 1. Create a Svelte app
 
 ```bash
 pnpm dlx sv create my-app
 ```
-
-When prompted, select:
-
-- `TypeScript`
-- `Tailwind CSS`
 
 ### 2. Initialize shadcn-svelte
 
@@ -45,7 +27,7 @@ cd my-app
 pnpm dlx shadcn-svelte@latest init
 ```
 
-### 3. Add Prompt Input
+### 3. Add Prompt Input Component
 
 ```bash
 pnpm dlx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app/r/prompt-input.json
@@ -53,7 +35,7 @@ pnpm dlx shadcn-svelte@latest add https://svelte-ai-elements.vercel.app/r/prompt
 
 ## Usage
 
-Here is a very basic `Prompt Input` example:
+Here is a very basic `Prompt Input` example f:
 
 ```svelte
 <script lang="ts">
@@ -101,14 +83,14 @@ Here is a very basic `Prompt Input` example:
 
 ## Libraries
 
-### AI Elements
+### Svelte AI Elements
 
 Full-featured components for chat apps, streaming responses, reasoning UIs, tools, and workflow-style AI interfaces.
 
 - Docs: https://svelte-ai-elements.vercel.app/components
 - Registry: https://svelte-ai-elements.vercel.app/r/index.json
 
-### Prompt Kit
+### Svelte Prompt Kit
 
 Lightweight prompt engineering and conversational UI components that are easy to compose into simple AI interfaces.
 
@@ -117,7 +99,7 @@ Lightweight prompt engineering and conversational UI components that are easy to
 
 ## Most Used Components
 
-### AI Elements
+### Svelte AI Elements
 
 | Component      | What it helps with                                    |
 | -------------- | ----------------------------------------------------- |
