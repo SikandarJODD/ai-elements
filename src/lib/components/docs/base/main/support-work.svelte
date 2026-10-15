@@ -28,7 +28,7 @@
 <Card.Root
 	onmouseenter={() => (isHovered = true)}
 	onmouseleave={() => (isHovered = false)}
-	class="relative gap-2 py-4 ring-0 dark:bg-card z-50 border border-orange-500 dark:border-orange-700/60"
+	class="relative gap-2 py-4 ring-0 dark:bg-card z-50 border "
 >
 	<Card.Header class="px-4 z-50">
 		<Card.Title class="text-sm">
@@ -40,6 +40,7 @@
 	</Card.Header>
 	<Card.Content class="mt-2 border-none px-4!">
 		<Button
+			variant="secondary"
 			class="w-full"
 			target="_blank"
 			data-s-event="sponsor_click"

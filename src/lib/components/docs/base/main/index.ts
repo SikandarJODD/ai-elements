@@ -5,6 +5,7 @@ import SupportWork from "./support-work.svelte";
 import PackageBadges from "./package-badges.svelte";
 import Seo from "./seo.svelte";
 import InstallComponent from "./install-component.svelte";
+import Banner from "./banner.svelte";
 
 export {
 	ComponentDocPage,
@@ -14,4 +15,5 @@ export {
 	PackageBadges,
 	Seo,
 	InstallComponent,
+	Banner,
 };

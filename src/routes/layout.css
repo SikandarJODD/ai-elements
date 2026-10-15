@@ -197,6 +197,11 @@
 	html {
 		@apply scroll-smooth font-sans;
 	}
+	@media (pointer: fine) {
+		html {
+			overscroll-behavior-y: none;
+		}
+	}
 
 	/* Custom scrollbar styling. Thanks @pranathiperii. */
 	::-webkit-scrollbar {

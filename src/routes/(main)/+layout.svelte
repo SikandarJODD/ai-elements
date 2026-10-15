@@ -43,8 +43,8 @@
 		</main>
 
 		<aside class="hidden w-full shrink-0 lg:block lg:col-span-2 xl:col-span-2">
-			<div class="sticky top-21">
-				<div class="flex h-[calc(100vh-7rem)] min-h-0 flex-col">
+			<div class="sticky top-28">
+				<div class="flex h-[calc(100vh-10rem)] min-h-0 flex-col">
 					<div>
 						<h2 class="mb-2 text-sm font-medium">On this page</h2>
 					</div>

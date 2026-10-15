@@ -5,6 +5,7 @@
 	import { Toaster } from "svelte-sonner";
 	import { PressedKeys, activeElement } from "runed";
 	import AppHeader from "$lib/components/docs/layout/navigation/header/app-header.svelte";
+	import Banner from "$lib/components/docs/base/main/banner.svelte";
 	let { children } = $props();
 
 	let keys = new PressedKeys();
@@ -25,5 +26,6 @@
 <ModeWatcher defaultMode="dark" />
 <Toaster richColors position="bottom-center" />
 
+<Banner />
 <AppHeader />
 {@render children?.()}
